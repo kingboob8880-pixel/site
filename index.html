@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Лекарь Абу Мухаммад — RUKYA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0d0b08;--bg2:#151210;--bg3:#1c1814;
+  --card:#1a1612;--card2:#211c16;--card-hover:#261f18;
+  --gold:#d4a73c;--gold2:#e8be52;--gold3:#f0d078;--gold4:#c49530;--gold5:#a67b1e;
+  --goldglow:rgba(212,167,60,.12);--goldglow2:rgba(212,167,60,.06);
+  --cream:#f5ead4;--cream2:#e8dcc4;
+  --text:#f0e8d8;--text2:#bfb49e;--text3:#8a7e6c;--text4:#5e5445;
+  --green:#6aad6e;--green2:#4d8a50;
+  --red:#c45c4c;
+  --white:#fffef8;
+  --fs-base:16px;
+  --border:rgba(212,167,60,.15);
+  --border2:rgba(212,167,60,.08);
+}
+[data-theme="light"]{
+  --bg:#faf6ef;--bg2:#f3ecdf;--bg3:#ebe3d4;
+  --card:#ffffff;--card2:#f8f3ea;--card-hover:#fff9f0;
+  --gold:#b8923a;--gold2:#a07e2e;--gold3:#c9a84c;--gold4:#8a6d22;--gold5:#6e5718;
+  --goldglow:rgba(184,146,58,.1);--goldglow2:rgba(184,146,58,.05);
+  --cream:#2a2318;--cream2:#3d3325;
+  --text:#2a2318;--text2:#5a4d3a;--text3:#8a7e6c;--text4:#b0a594;
+  --green:#3d7a40;--green2:#2d6a30;
+  --red:#b04a3c;
+  --white:#2a2318;
+  --border:rgba(184,146,58,.2);
+  --border2:rgba(184,146,58,.1);
+}
+[data-theme="light"] body::before{opacity:.015}
+[data-theme="light"] body::after{opacity:.018}
+[data-theme="light"] .hero{background:linear-gradient(180deg,rgba(243,236,223,.6) 0%,var(--bg) 100%)}
+[data-theme="light"] .hero-badge{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--gold3),0 8px 40px rgba(184,146,58,.15)}
+[data-theme="light"] h1{text-shadow:none}
+[data-theme="light"] .svc:hover{box-shadow:0 8px 32px rgba(0,0,0,.06)}
+[data-theme="light"] .cta:hover{box-shadow:0 12px 36px rgba(0,0,0,.08)}
+[data-theme="light"] .svc-price{background:linear-gradient(135deg,rgba(184,146,58,.1),rgba(184,146,58,.05));border-color:rgba(184,146,58,.18)}
+[data-theme="light"] .vip{background:linear-gradient(135deg,#2a2318,#3d3325,#2a2318)}
+[data-theme="light"] .vip-title{color:var(--gold3)}
+[data-theme="light"] .vip-desc{color:rgba(255,255,255,.7)}
+[data-theme="light"] .font-btn{background:var(--card);border-color:var(--gold3);color:var(--gold4);box-shadow:0 2px 12px rgba(0,0,0,.08)}
+[data-theme="light"] .font-btn:hover{background:var(--gold3);color:#fff}
+[data-theme="light"] .about-card::before{background:linear-gradient(90deg,transparent,var(--gold3),transparent)}
+html{font-size:var(--fs-base);scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;transition:background .5s ease,color .5s ease}
+.section,.section.alt,.hero,.svc,.about-card,.treat-card,.step,.cta,.font-btn,.vip,.svc-price,.svc-badge{transition:all .4s ease}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.02;background:radial-gradient(circle at 20% 50%,var(--gold) 0%,transparent 50%),radial-gradient(circle at 80% 20%,var(--gold) 0%,transparent 40%),radial-gradient(circle at 50% 80%,var(--gold) 0%,transparent 45%)}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.03;background-image:repeating-linear-gradient(0deg,transparent,transparent 49px,rgba(212,167,60,.3) 49px,rgba(212,167,60,.3) 50px),repeating-linear-gradient(90deg,transparent,transparent 49px,rgba(212,167,60,.3) 49px,rgba(212,167,60,.3) 50px)}
+.font-controls{position:fixed;top:50%;right:14px;transform:translateY(-50%);z-index:1000;display:flex;flex-direction:column;gap:7px}
+.font-btn{width:40px;height:40px;border-radius:50%;cursor:pointer;border:1.5px solid var(--gold4);background:var(--bg2);color:var(--gold2);font-size:.95rem;font-weight:600;font-family:'Outfit',sans-serif;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 16px rgba(212,167,60,.1);transition:all .3s ease}
+.font-btn:hover{background:var(--gold5);color:var(--white);transform:scale(1.12);box-shadow:0 4px 24px rgba(212,167,60,.25)}
+.font-btn:active{transform:scale(.92)}
+.page{position:relative;z-index:1}
+ 
+.hero{text-align:center;padding:56px 24px 48px;position:relative;background:linear-gradient(180deg,rgba(26,22,18,.6) 0%,var(--bg) 100%)}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 5%,var(--gold4) 30%,var(--gold2) 50%,var(--gold4) 70%,transparent 95%)}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:280px;height:1px;background:linear-gradient(90deg,transparent,var(--gold4),transparent)}
+.ornament{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:24px}
+.orn-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold4))}
+.orn-line.r{background:linear-gradient(270deg,transparent,var(--gold4))}
+.orn-star{color:var(--gold2);font-size:1.2rem;text-shadow:0 0 12px rgba(212,167,60,.4)}
+.hero-badge{width:100px;height:100px;border-radius:50%;margin:0 auto 22px;background:linear-gradient(145deg,var(--gold5),var(--gold),var(--gold3));display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--gold4),0 8px 40px rgba(212,167,60,.2);font-size:2.8rem;position:relative}
+.hero-badge::after{content:'';position:absolute;inset:4px;border-radius:50%;border:1px solid rgba(255,255,255,.15)}
+h1{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:800;color:var(--gold2);letter-spacing:.5px;line-height:1.15;text-shadow:0 2px 20px rgba(212,167,60,.15)}
+h1 span{display:block;font-size:.85rem;font-weight:400;font-family:'Outfit',sans-serif;color:var(--gold4);margin-top:8px;letter-spacing:5px;text-transform:uppercase}
+.hero-quote{max-width:580px;margin:22px auto 0;font-size:.95rem;color:var(--text2);font-weight:300;line-height:1.85}
+.hero-quote strong{color:var(--gold2);font-weight:500}
+.hero-ayah{margin-top:20px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--gold4);line-height:1.6}
+ 
+.section{padding:44px 24px;position:relative}
+.section.alt{background:var(--bg2)}
+.section-inner{max-width:720px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:32px}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--cream);margin-bottom:4px}
+.sec-subtitle{font-size:.75rem;color:var(--text3);letter-spacing:2px;text-transform:uppercase;font-weight:400}
+.sec-line{width:48px;height:2px;margin:12px auto 0;background:linear-gradient(90deg,var(--gold4),var(--gold2),var(--gold4));border-radius:1px}
+ 
+.trust-row{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.trust-item{text-align:center}
+.trust-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:800;color:var(--gold2);line-height:1}
+.trust-label{font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
+ 
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.about-card{background:var(--card);border-radius:16px;padding:22px;border:1px solid var(--border2);position:relative;overflow:hidden}
+.about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold4),transparent)}
+.about-card.full{grid-column:1/-1}
+.about-icon{font-size:1.5rem;margin-bottom:8px;display:block}
+.about-label{font-size:.65rem;color:var(--gold4);text-transform:uppercase;letter-spacing:2px;font-weight:500;margin-bottom:6px}
+.about-text{font-size:.88rem;color:var(--text2);font-weight:300;line-height:1.85}
+.about-text strong{color:var(--cream);font-weight:600}
+ 
+.treat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.treat-card{background:var(--card);border-radius:14px;padding:18px 16px;border:1px solid var(--border2);text-align:center;transition:all .4s ease}
+.treat-card:hover{border-color:var(--border);background:var(--card2);transform:translateY(-2px)}
+.treat-icon{font-size:1.8rem;margin-bottom:6px}
+.treat-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--cream)}
+.treat-desc{font-size:.78rem;color:var(--text3);margin-top:4px;font-weight:300;line-height:1.6}
+ 
+.group{margin-bottom:36px}
+.group-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border2)}
+.group-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--goldglow);font-size:1.2rem;flex-shrink:0}
+.group-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--gold2)}
+.group-tag{margin-left:auto;font-size:.6rem;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;font-weight:400}
+ 
+.svc{background:var(--card);border-radius:14px;padding:20px 22px;margin-bottom:10px;border:1px solid var(--border2);position:relative;overflow:hidden;transition:all .4s cubic-bezier(.25,.8,.25,1)}
+.svc:hover{background:var(--card-hover);border-color:var(--border);transform:translateY(-1px);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.svc::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--gold2),var(--gold5));border-radius:0 2px 2px 0}
+.svc-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.svc-name{font-family:'Cormorant Garamond',serif;font-size:1.08rem;font-weight:600;color:var(--cream)}
+.svc-price{font-weight:700;font-size:1rem;color:var(--gold2);white-space:nowrap;padding:5px 14px;border-radius:24px;background:linear-gradient(135deg,rgba(212,167,60,.12),rgba(212,167,60,.05));border:1px solid rgba(212,167,60,.15);letter-spacing:.5px}
+.svc-desc{font-size:.85rem;color:var(--text2);margin-top:8px;font-weight:300;line-height:1.75}
+.svc-details{margin-top:10px;padding-top:10px;border-top:1px solid var(--border2);font-size:.8rem;color:var(--text3);font-weight:300;line-height:1.7}
+.svc-details strong{color:var(--text2);font-weight:500}
+.svc-badge{display:inline-block;margin-top:10px;font-size:.6rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:500;padding:4px 12px;border-radius:12px}
+.svc-badge.dist{color:var(--green);background:rgba(106,173,110,.1)}
+.svc-badge.live{color:var(--gold2);background:var(--goldglow)}
+.svc-badge.plan{color:#6ba4d4;background:rgba(107,164,212,.1)}
+ 
+.vip{background:linear-gradient(135deg,#1a1508,#221a0c,#1a1508);border-radius:20px;padding:32px 28px;margin-top:20px;text-align:center;border:1px solid rgba(212,167,60,.2);position:relative;overflow:hidden}
+.vip::before{content:'';position:absolute;inset:0;opacity:.03;background-image:repeating-linear-gradient(45deg,transparent,transparent 14px,var(--gold2) 14px,var(--gold2) 15px)}
+.vip::after{content:'';position:absolute;top:-1px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,var(--gold2),transparent)}
+.vip-icon{font-size:2.4rem;margin-bottom:10px;filter:drop-shadow(0 0 12px rgba(212,167,60,.3))}
+.vip-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold2);margin-bottom:10px;text-shadow:0 2px 12px rgba(212,167,60,.15)}
+.vip-desc{font-size:.9rem;color:var(--text2);font-weight:300;line-height:1.8;max-width:480px;margin:0 auto}
+ 
+.steps{display:flex;flex-direction:column;gap:12px;counter-reset:step}
+.step{display:flex;gap:16px;align-items:flex-start;background:var(--card);border-radius:14px;padding:18px 20px;border:1px solid var(--border2);counter-increment:step}
+.step-num{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--goldglow);color:var(--gold2);font-weight:700;font-size:.95rem;border:1px solid var(--border)}
+.step-num::after{content:counter(step)}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--cream);margin-bottom:3px}
+.step-desc{font-size:.82rem;color:var(--text3);font-weight:300;line-height:1.7}
+ 
+.cta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:560px;margin:0 auto}
+.cta{display:flex;flex-direction:column;align-items:center;gap:8px;padding:22px 14px;border-radius:16px;text-decoration:none;background:var(--card);border:1px solid var(--border2);transition:all .4s ease}
+.cta:hover{border-color:var(--gold4);background:var(--card2);transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.4)}
+.cta-icon{font-size:1.8rem}
+.cta-label{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:600;color:var(--cream);text-align:center}
+.cta-sub{font-size:.68rem;color:var(--text3);text-align:center}
+.cta.primary{border-color:var(--gold4);background:linear-gradient(135deg,rgba(212,167,60,.08),rgba(212,167,60,.03))}
+.cta.primary .cta-label{color:var(--gold2)}
+ 
+.footer{text-align:center;padding:32px 24px;border-top:1px solid var(--border2)}
+.footer-ayah{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--gold4);line-height:1.6;margin-bottom:8px}
+.footer-copy{font-size:.7rem;color:var(--text4)}
+ 
+@keyframes slideUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0}.anim.vis{animation:slideUp .7s cubic-bezier(.22,1,.36,1) forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.18s}.d3{animation-delay:.26s}.d4{animation-delay:.34s}.d5{animation-delay:.42s}.d6{animation-delay:.5s}
+ 
+@media(max-width:560px){
+  h1{font-size:2rem}
+  .about-grid,.treat-grid,.cta-grid{grid-template-columns:1fr}
+  .svc-top{flex-direction:column;align-items:flex-start;gap:6px}
+  .font-controls{right:8px}
+  .font-btn{width:34px;height:34px;font-size:.8rem}
+  .trust-row{gap:16px}
+}
+</style>
+</head>
+<body>
+<div class="font-controls">
+  <button class="font-btn theme-toggle" onclick="toggleTheme()" title="Переключить тему" id="themeBtn">☀</button>
+  <button class="font-btn" onclick="changeFont(1)" title="Увеличить текст">A+</button>
+  <button class="font-btn" onclick="changeFont(-1)" title="Уменьшить текст">A−</button>
+  <button class="font-btn" onclick="resetFont()" title="Сбросить" style="font-size:.7rem">↺</button>
+</div>
+<div class="page">
+ 
+<section class="hero">
+  <div class="ornament"><span class="orn-line"></span><span class="orn-star">✦</span><span class="orn-line r"></span></div>
+  <div class="hero-badge">☪</div>
+  <h1>Лекарь Абу Мухаммад<span>RUKYA — причина исцеления</span></h1>
+  <p class="hero-quote">Практикующий лекарь, обучавшийся у различных шейхов. Истинный учитель — <strong>Абдураззак аль-Азхар</strong>, часть знания перенята у <strong>Абу Захаби</strong>. Лечение от духовных недугов строго по <strong>Корану и Сунне</strong>. Учёба и практика продолжаются по сей день.</p>
+  <p class="hero-ayah">«Аллах Великодушный и Милостивый исцеляет Своих рабов,<br>а лекарь является лишь причиной»</p>
+</section>
+ 
+<section class="section alt">
+  <div class="section-inner">
+    <div class="trust-row anim">
+      <div class="trust-item"><div class="trust-num">1600+</div><div class="trust-label">Публикаций</div></div>
+      <div class="trust-item"><div class="trust-num">2+</div><div class="trust-label">Года практики</div></div>
+      <div class="trust-item"><div class="trust-num">284</div><div class="trust-label">Голосовых уроков</div></div>
+      <div class="trust-item"><div class="trust-num">90+</div><div class="trust-label">Отзывов</div></div>
+    </div>
+  </div>
+</section>
+ 
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-head anim"><div class="sec-title">О лекаре</div><div class="sec-subtitle">Путь знания и исцеления</div><div class="sec-line"></div></div>
+    <div class="about-grid">
+      <div class="about-card anim d1"><span class="about-icon">🎓</span><div class="about-label">Образование</div><div class="about-text">Обучался у разных шейхов. Истинный учитель — <strong>шейх Абдураззак аль-Азхар</strong>. Часть знания перенял у <strong>Абу Захаби</strong>. Требует знания по сей день и постоянно совершенствует свои навыки в области рукьи.</div></div>
+      <div class="about-card anim d2"><span class="about-icon">⚔️</span><div class="about-label">Специализация</div><div class="about-text">Лечение людей, страдающих от <strong>сихра</strong> (колдовства), <strong>влияния шайтанов</strong> и джиннов, <strong>сглаза</strong> (айн), <strong>зависти</strong> (хасад) и всех связанных духовных недугов.</div></div>
+      <div class="about-card full anim d3"><span class="about-icon">💎</span><div class="about-label">Подход к лечению</div><div class="about-text">Мощный арсенал техник и методов для борьбы с духовными проблемами. Лечение основано исключительно на <strong>Коране и Сунне</strong>. Каждый случай рассматривается индивидуально — лекарь составляет персональный план, подбирая наиболее эффективные методы. Все средства дозволены Шариатом. Если вы испытали все возможные способы и не нашли решения — не отчаивайтесь, обратитесь за помощью.</div></div>
+    </div>
+  </div>
+</section>
+ 
+<section class="section alt">
+  <div class="section-inner">
+    <div class="sec-head anim"><div class="sec-title">От чего лечим</div><div class="sec-subtitle">Виды духовных болезней</div><div class="sec-line"></div></div>
+    <div class="treat-grid">
+      <div class="treat-card anim d1"><div class="treat-icon">🔮</div><div class="treat-name">Сихр (колдовство)</div><div class="treat-desc">Все виды колдовства: съеденный, закопанный, на разлуку, на бесплодие, на болезнь, на смерть и другие</div></div>
+      <div class="treat-card anim d2"><div class="treat-icon">👁</div><div class="treat-name">Сглаз (Айн)</div><div class="treat-desc">Дурной глаз, поразивший здоровье, красоту, имущество, семью или детей</div></div>
+      <div class="treat-card anim d3"><div class="treat-icon">🌀</div><div class="treat-name">Джинн / Шайтан</div><div class="treat-desc">Одержимость джиннами, влияние шайтанов, массы (прикосновение), вселение и наущения</div></div>
+      <div class="treat-card anim d4"><div class="treat-icon">🖤</div><div class="treat-name">Хасад (зависть)</div><div class="treat-desc">Разрушительная зависть, поражающая достаток, здоровье, семейные отношения и благополучие</div></div>
+      <div class="treat-card anim d5"><div class="treat-icon">🏠</div><div class="treat-name">Чистка дома</div><div class="treat-desc">Очищение жилища от духовных недугов, негативного присутствия и влияния джиннов</div></div>
+      <div class="treat-card anim d6"><div class="treat-icon">😰</div><div class="treat-name">Зажимы в теле</div><div class="treat-desc">Физические проявления духовных болезней: зажимы, блоки, боли без медицинских причин</div></div>
+    </div>
+  </div>
+</section>
+ 
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-head anim"><div class="sec-title">Услуги и цены</div><div class="sec-subtitle">Дистанционно и очно</div><div class="sec-line"></div></div>
+ 
+    <div class="group anim d1">
+      <div class="group-head"><div class="group-icon">📿</div><div><div class="group-name">Самолечение</div></div><div class="group-tag">дистанционные практики</div></div>
+ 
+      <div class="svc">
+        <div class="svc-top"><div class="svc-name">Метод ПНС: Перезагрузка нервной системы</div><div class="svc-price">3 000 ₽</div></div>
+        <div class="svc-desc">Авторская методика для устранения узлов, замков и последствий колдовства. Воздействие на нервную систему для снятия духовных блокировок.</div>
+        <div class="svc-details"><strong>Формат:</strong> вы получаете подробные инструкции и выполняете самостоятельно дома. Поддержка лекаря на связи.</div>
+        <span class="svc-badge dist">Дистанционно</span>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><div class="svc-name">Расширенный комплекс</div><div class="svc-price">3 000 ₽</div></div>
+        <div class="svc-desc">4 группы лечения — обширная программа с множеством методов, покрывающая широкий спектр колдовства и духовных недугов.</div>
+        <div class="svc-details"><strong>Включает:</strong> 4 направления лечения, каждое нацелено на конкретный вид воздействия. Идеально для комплексных случаев.</div>
+        <span class="svc-badge dist">Дистанционно</span>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><div class="svc-name">Меры чистки дома от духовных недугов</div><div class="svc-price">3 000 ₽</div></div>
+        <div class="svc-desc">Мощный метод полной чистки жилища. Устранение негативного присутствия, защита дома и семьи от духовных воздействий.</div>
+        <div class="svc-details"><strong>Что получите:</strong> подробная инструкция и личное сопровождение по очищению вашего дома по Сунне.</div>
+        <span class="svc-badge dist">Дистанционно</span>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><div class="svc-name">Интенсивное лечение с лекарем (1 день)</div><div class="svc-price">3 000 ₽ / нед.</div></div>
+        <div class="svc-desc">Лекарь составляет персональный план лечения. Вы применяете методы и держите обратную связь в течение суток.</div>
+        <div class="svc-details"><strong>Как проходит:</strong> диагностика → персональный план → ваша практика → обратная связь и корректировки в течение дня.</div>
+        <span class="svc-badge plan">Персональный план</span>
+      </div>
+    </div>
+ 
+    <div class="group anim d2">
+      <div class="group-head"><div class="group-icon">🤲</div><div><div class="group-name">Личный сеанс у лекаря</div></div><div class="group-tag">очные процедуры</div></div>
+ 
+      <div class="svc">
+        <div class="svc-top"><div class="svc-name">Ручной сеанс (1 процедура)</div><div class="svc-price">3 000 ₽</div></div>
+        <div class="svc-desc">Индивидуальная работа с лекарем на личной встрече. Прямое воздействие рукьёй с применением методов по Корану и Сунне.</div>
+        <div class="svc-details"><strong>Длительность:</strong> определяется индивидуально. Возможны повторные сеансы для закрепления результата.</div>
+        <span class="svc-badge live">Очно</span>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><div class="svc-name">Трансформация личности: Снятие зажимов</div><div class="svc-price">7 000 ₽</div></div>
+        <div class="svc-desc">Глубокая работа с телом и духом. Убираем все зажимы из-под кожи — физические проявления духовных блокировок и негативных воздействий.</div>
+        <div class="svc-details"><strong>Результат:</strong> освобождение тела от накопленных блоков, восстановление энергии и лёгкости.</div>
+        <span class="svc-badge live">Очно</span>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><div class="svc-name">Авторский «Метод красоты»</div><div class="svc-price">5 000 ₽</div></div>
+        <div class="svc-desc">Авторская методика лекаря Абу Мухаммад для обретения красивого тела. Работа на стыке духовного и физического восстановления.</div>
+        <div class="svc-details"><strong>Для кого:</strong> для тех, кто хочет восстановить внешнюю красоту, пострадавшую от духовных воздействий.</div>
+        <span class="svc-badge live">Очно</span>
+      </div>
+    </div>
+ 
+    <div class="anim d3">
+      <div class="vip">
+        <div class="vip-icon">🔥</div>
+        <div class="vip-title">Полное сопровождение</div>
+        <div class="vip-desc">Лечение до полного выздоровления с ин-Аллах. Лекарь ведёт вас от начала и до конца — столько, сколько потребуется. Стоимость и формат обсуждаются индивидуально после первичной диагностики.</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<section class="section alt">
+  <div class="section-inner">
+    <div class="sec-head anim"><div class="sec-title">Как записаться</div><div class="sec-subtitle">Простые шаги к исцелению</div><div class="sec-line"></div></div>
+    <div class="steps">
+      <div class="step anim d1"><div class="step-num"></div><div><div class="step-title">Напишите боту для записи</div><div class="step-desc">Перейдите по ссылке @Lechenya_bot в Telegram и оставьте заявку на лечение. Опишите вашу ситуацию и симптомы.</div></div></div>
+      <div class="step anim d2"><div class="step-num"></div><div><div class="step-title">Первичная диагностика</div><div class="step-desc">Лекарь изучит вашу ситуацию, задаст уточняющие вопросы и определит характер духовной проблемы.</div></div></div>
+      <div class="step anim d3"><div class="step-num"></div><div><div class="step-title">Подбор метода лечения</div><div class="step-desc">На основе диагностики лекарь подберёт оптимальный метод: дистанционный, очный или полное сопровождение.</div></div></div>
+      <div class="step anim d4"><div class="step-num"></div><div><div class="step-title">Лечение и результат</div><div class="step-desc">Вы следуете плану лечения с постоянной поддержкой лекаря. Аллах исцеляет Своих рабов — лекарь является причиной.</div></div></div>
+    </div>
+  </div>
+</section>
+ 
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-head anim"><div class="sec-title">Контакты</div><div class="sec-subtitle">Свяжитесь с нами</div><div class="sec-line"></div></div>
+    <div class="cta-grid anim d1">
+      <a class="cta primary" href="https://t.me/Lechenya_bot" target="_blank"><span class="cta-icon">📋</span><span class="cta-label">Записаться на лечение</span><span class="cta-sub">@Lechenya_bot</span></a>
+      <a class="cta" href="https://t.me/ruqoq" target="_blank"><span class="cta-icon">💬</span><span class="cta-label">Связь с лекарем</span><span class="cta-sub">@ruqoq — Абу Мухаммад</span></a>
+      <a class="cta" href="https://t.me/health_ruqiya" target="_blank"><span class="cta-icon">📢</span><span class="cta-label">Telegram-канал</span><span class="cta-sub">@health_ruqiya — статьи, аудио, методы</span></a>
+      <a class="cta" href="https://t.me/svdeteli" target="_blank"><span class="cta-icon">⭐</span><span class="cta-label">Отзывы свидетелей</span><span class="cta-sub">@svdeteli — реальные истории исцеления</span></a>
+    </div>
+  </div>
+</section>
+ 
+<div class="footer">
+  <div class="footer-ayah">بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
+  <div class="footer-copy">RUKYA — причина исцеления · Лекарь Абу Мухаммад</div>
+</div>
+ 
+</div>
+<script>
+let s=16;const MN=12,MX=26;
+function changeFont(d){s=Math.min(MX,Math.max(MN,s+d));document.documentElement.style.setProperty('--fs-base',s+'px')}
+function resetFont(){s=16;document.documentElement.style.setProperty('--fs-base','16px')}
+ 
+let isDark=true;
+function toggleTheme(){
+  isDark=!isDark;
+  document.documentElement.setAttribute('data-theme',isDark?'dark':'light');
+  document.getElementById('themeBtn').textContent=isDark?'☀':'☾';
+}
+ 
+const o=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');o.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.anim').forEach(el=>o.observe(el));
+</script>
+</body>
+</html>
+ 
