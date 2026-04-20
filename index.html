@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Абу Мухаммад — практикующий лекарь по рукье (RUKYA): обучение у шейхов, главный учитель — шейх Абдураззак аль-Азхар. Лечение сихра, сглаза, влияния джиннов и хасада только по Корану и Сунне; авторские методики, дистанционно и очно. Более 1600 публикаций, 284 голосовых урока, 7 направлений лечения. Запись через @Lechenya_bot, канал @health_ruqiya, отзывы @svdeteli.">
 <title>Лекарь Абу Мухаммад — RUKYA</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -23,10 +24,10 @@
   --shadow:rgba(0,0,0,.35);
   --grid-c:rgba(212,167,60,.3);
   --vip-bg:linear-gradient(135deg,#1a1508,#221a0c,#1a1508);
-  --toggle-bg:#1a1612;--toggle-icon:'🌙';
+  --toggle-bg:#1a1612;
 }
 [data-theme="light"]{
-  --bg:#faf6ef;--bg2:#f3eeE4;--bg3:#ebe4d6;
+  --bg:#faf6ef;--bg2:#f3eee4;--bg3:#ebe4d6;
   --card:#ffffff;--card2:#fdfaf5;--card-h:#fff8ee;
   --gold:#b8893a;--gold2:#a07820;--gold3:#c49e45;--gold4:#96701a;--gold5:#7d5c10;
   --gglow:rgba(160,120,32,.08);
@@ -37,7 +38,7 @@
   --shadow:rgba(120,100,60,.1);
   --grid-c:rgba(160,120,32,.15);
   --vip-bg:linear-gradient(135deg,#f8f0dc,#f0e4c8,#f8f0dc);
-  --toggle-bg:#f3eeE4;--toggle-icon:'☀️';
+  --toggle-bg:#f3eee4;
 }
 
 html{font-size:var(--fs-base);scroll-behavior:smooth}
@@ -50,6 +51,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opac
 .ctrl-btn{width:40px;height:40px;border-radius:50%;cursor:pointer;border:1.5px solid var(--gold4);background:var(--toggle-bg);color:var(--gold2);font-size:.9rem;font-weight:600;font-family:'Outfit',sans-serif;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 16px rgba(212,167,60,.08);transition:all .3s ease}
 .ctrl-btn:hover{background:var(--gold5);color:#fff;transform:scale(1.12);box-shadow:0 4px 24px rgba(212,167,60,.2)}
 .ctrl-btn:active{transform:scale(.92)}
+.ctrl-btn:focus-visible,.faq-q:focus-visible,.ct:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
 .ctrl-sep{width:20px;height:1px;background:var(--border);margin:2px auto}
 
 .page{position:relative;z-index:1}
@@ -140,13 +142,13 @@ h1 span{display:block;font-size:.82rem;font-weight:400;font-family:'Outfit',sans
 
 /* FAQ */
 .faq{margin-bottom:12px}
-.faq-q{background:var(--card);border-radius:12px;padding:16px 20px;border:1px solid var(--border2);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all .3s}
+.faq-q{width:100%;margin:0;background:var(--card);border-radius:12px;padding:16px 20px;border:1px solid var(--border2);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:all .3s;font:inherit;color:inherit;text-align:left;-webkit-appearance:none;appearance:none}
 .faq-q:hover{border-color:var(--border);background:var(--card2)}
-.faq-q span{font-size:.9rem;font-weight:500;color:var(--cream)}
-.faq-arrow{color:var(--gold2);font-size:1.1rem;transition:transform .3s}
+.faq-q .faq-txt{font-size:.9rem;font-weight:500;color:var(--cream);flex:1}
+.faq-arrow{color:var(--gold2);font-size:1.1rem;transition:transform .3s;flex-shrink:0}
 .faq.open .faq-arrow{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
-.faq.open .faq-a{max-height:300px;padding:14px 20px 6px}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 20px}
+.faq.open .faq-a{padding:14px 20px 6px}
 .faq-a p{font-size:.82rem;color:var(--text3);font-weight:300;line-height:1.8}
 
 /* Steps */
@@ -175,6 +177,12 @@ h1 span{display:block;font-size:.82rem;font-weight:400;font-family:'Outfit',sans
 .an{opacity:0}.an.v{animation:su .65s cubic-bezier(.22,1,.36,1) forwards}
 .d1{animation-delay:.1s}.d2{animation-delay:.18s}.d3{animation-delay:.26s}.d4{animation-delay:.32s}.d5{animation-delay:.38s}.d6{animation-delay:.44s}
 
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .an{opacity:1;transform:none}
+  .an.v{animation:none}
+}
+
 @media(max-width:600px){
   h1{font-size:1.9rem}
   .ab-grid,.sym-grid,.cta-g{grid-template-columns:1fr}
@@ -189,21 +197,21 @@ h1 span{display:block;font-size:.82rem;font-weight:400;font-family:'Outfit',sans
 
 <!-- Controls -->
 <div class="controls">
-  <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn" title="Сменить тему">🌙</button>
+  <button type="button" class="ctrl-btn" onclick="toggleTheme()" id="themeBtn" title="Сменить тему">🌙</button>
   <div class="ctrl-sep"></div>
-  <button class="ctrl-btn" onclick="cf(1)" title="Увеличить">A+</button>
-  <button class="ctrl-btn" onclick="cf(-1)" title="Уменьшить">A−</button>
-  <button class="ctrl-btn" onclick="rf()" title="Сбросить" style="font-size:.7rem">↺</button>
+  <button type="button" class="ctrl-btn" onclick="cf(1)" title="Увеличить">A+</button>
+  <button type="button" class="ctrl-btn" onclick="cf(-1)" title="Уменьшить">A−</button>
+  <button type="button" class="ctrl-btn" onclick="rf()" title="Сбросить" style="font-size:.7rem">↺</button>
 </div>
 
-<div class="page">
+<main class="page">
 
 <!-- ══════════════════ HERO ══════════════════ -->
 <section class="hero">
   <div class="orn"><span class="orn-l"></span><span class="orn-s">✦</span><span class="orn-l r"></span></div>
   <div class="badge">☪</div>
   <h1>Лекарь Абу Мухаммад<span>RUKYA — причина исцеления</span></h1>
-  <p class="hero-p">Практикующий лекарь, обучавшийся у различных шейхов. Истинный учитель — <strong>шейх Абдураззак аль-Азхар</strong>, часть знания перенята у <strong>Абу Захаби</strong>. Лечение от духовных недугов строго по <strong>Корану и Сунне</strong>. Мощный арсенал техник для борьбы с колдовством, джиннами, сглазом и завистью. Учёба и практика продолжаются по сей день.</p>
+  <p class="hero-p">Я — <strong>абу Мухаммад</strong>, практикующий лекарь по рукье: многие годы учёбы у разных шейхов, а своим наставником в этом пути считаю <strong>шейха Абдураззак аль-Азхар</strong>; часть наследия и опыта получил также у <strong>Абу Захаби</strong>. Веду людей через духовные испытания — <strong>сихр</strong>, <strong>одержимость и наущения</strong>, <strong>айн</strong> и <strong>хасад</strong> — опираясь <strong>только на Коран и Сунну</strong>, без ширка и запретных приёмов. За плечами — регулярная практика и обратная связь от людей, <strong>более 1600 публикаций</strong> и <strong>284 голосовых урока</strong> для тех, кто хочет понимать тему глубже; авторские методики (в том числе работа с телом и нервной системой) дополняют классическую рукью. Обучение и практика не останавливаются: с каждым человеком — честный разбор ситуации и персональный план, дистанционно или очно.</p>
   <p class="hero-ayah">«Аллах Великодушный и Милостивый исцеляет Своих рабов —<br>а лекарь является лишь причиной»</p>
 </section>
 
@@ -228,17 +236,17 @@ h1 span{display:block;font-size:.82rem;font-weight:400;font-family:'Outfit',sans
       <div class="ab an d1">
         <div class="ab-ic">🎓</div>
         <div class="ab-lb">Образование и путь</div>
-        <div class="ab-tx">Меня зовут <strong>абу Мухаммад</strong>, я раб Аллаха. Обучался у разных шейхов, но своим истинным учителем считаю <strong>шейха Абдураззак аль-Азхар</strong>. Часть знания перенял у <strong>Абу Захаби</strong>. Мой путь в области рукьи начался с глубокого изучения Корана, хадисов и трудов учёных по этой теме. Требую знания и совершенствуюсь по сей день.</div>
+        <div class="ab-tx">Меня зовут <strong>абу Мухаммад</strong>, я раб Аллаха. Рукья для меня — не «одна из услуг», а ответственность перед Аллахом и людьми: поэтому я прошёл обучение у нескольких шейхов, а своим главным учителем и ориентиром в методике считаю <strong>шейха Абдураззак аль-Азхар</strong>; важный слой знаний получил у <strong>Абу Захаби</strong>. Фундамент — систематическое изучение <strong>Корана</strong>, <strong>хадисов</strong> и наследия учёных по рукье, джиннам и сихру. Параллельно веду просветительскую работу: <strong>более 1600 публикаций</strong>, <strong>284 голосовых урока</strong> и материалы в Telegram-канале — чтобы люди могли отличать дозволенное от запретного и не терялись в страхе. Постоянно углубляю знание и оттачиваю практику.</div>
       </div>
       <div class="ab an d2">
         <div class="ab-ic">⚔️</div>
         <div class="ab-lb">Специализация</div>
-        <div class="ab-tx">Лечение людей, страдающих от <strong>сихра</strong> (колдовства всех видов), <strong>влияния шайтанов</strong> и джиннов (одержимость, массы, наущения), <strong>сглаза</strong> (айн — дурной глаз), <strong>зависти</strong> (хасад). А также устранение зажимов в теле, чистка домов и авторские методики восстановления.</div>
+        <div class="ab-tx">Сопровождаю мужчин и женщин с <strong>сихром</strong> (включая сложные и запущенные формы), с <strong>влиянием джиннов и шайтана</strong> — одержимость, массы, васваса, ночные кошмары, с <strong>айном</strong> и <strong>хасадом</strong>, когда страдают здоровье, семья или благополучие. Отдельно занимаюсь <strong>очисткой домов</strong>, снятием телесных зажимов и последствий воздействий, а также развиваю <strong>авторские программы</strong> (например, работа с нервной системой и восстановлением состояния тела после духовных ударов). В арсенале — <strong>семь направлений лечения</strong>, которые комбинирую по ситуации.</div>
       </div>
       <div class="ab full an d3">
         <div class="ab-ic">💎</div>
         <div class="ab-lb">Принципы и подход</div>
-        <div class="ab-tx">Всё лечение основано <strong>исключительно на Коране и Сунне</strong>. Никаких запретных средств — только то, что дозволено Шариатом. Каждый случай уникален: лекарь проводит диагностику, определяет вид духовной болезни и составляет <strong>персональный план лечения</strong>. Работаю как дистанционно, так и очно. Если вы испытали все возможные способы и не нашли решения — не отчаивайтесь. Аллах — Исцеляющий, а я лишь причина, через которую приходит помощь.</div>
+        <div class="ab-tx">Я не обещаю «чудо за один день», но обещаю честность: сначала — внимательный опрос и диагностика, затем — ясное объяснение, что с вами происходит и <strong>что по Шариату</strong> можно и нужно делать. В работе — <strong>только Коран, Сунна и дозволённые средства</strong>: никаких амулетов, сделок с джиннами и сомнительных ритуалов. План лечения подстраиваю под человека: кто-то выздоравливает через дистанционные практики и инструкции, кому-то важен <strong>очный контакт</strong> и ручной сеанс; в тяжёлых случаях возможно <strong>длительное сопровождение</strong> до стабильного результата. Моя роль — быть <strong>причиной (сабабом)</strong>, через которую по воле Аллаха приходит облегчение; упование — только на Него.</div>
       </div>
     </div>
   </div>
@@ -365,27 +373,27 @@ h1 span{display:block;font-size:.82rem;font-weight:400;font-family:'Outfit',sans
     <div class="sh an"><div class="sh-t">Частые вопросы</div><div class="sh-s">Ответы на важные вопросы</div><div class="sh-l"></div></div>
 
     <div class="faq an d1">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Как проходит дистанционное лечение?</span><span class="faq-arrow">▾</span></div>
+      <button type="button" class="faq-q" aria-expanded="false"><span class="faq-txt">Как проходит дистанционное лечение?</span><span class="faq-arrow" aria-hidden="true">▾</span></button>
       <div class="faq-a"><p>После записи через бот @Lechenya_bot лекарь связывается с вами, проводит диагностику — задаёт вопросы о симптомах и состоянии. Затем составляет персональный план и высылает подробные инструкции. Вы выполняете практики дома, а лекарь остаётся на связи для консультаций и корректировок.</p></div>
     </div>
     <div class="faq an d2">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Можно ли лечиться, если я в другой стране?</span><span class="faq-arrow">▾</span></div>
+      <button type="button" class="faq-q" aria-expanded="false"><span class="faq-txt">Можно ли лечиться, если я в другой стране?</span><span class="faq-arrow" aria-hidden="true">▾</span></button>
       <div class="faq-a"><p>Да, дистанционные практики (Метод ПНС, Расширенный комплекс, Чистка дома, Интенсивное лечение) доступны из любой точки мира. Всё общение и сопровождение происходит через Telegram. Очные сеансы требуют личного присутствия.</p></div>
     </div>
     <div class="faq an d3">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Сколько сеансов нужно для выздоровления?</span><span class="faq-arrow">▾</span></div>
+      <button type="button" class="faq-q" aria-expanded="false"><span class="faq-txt">Сколько сеансов нужно для выздоровления?</span><span class="faq-arrow" aria-hidden="true">▾</span></button>
       <div class="faq-a"><p>Всё зависит от тяжести случая и вида воздействия. Некоторые замечают улучшение уже после первого сеанса. Сложные случаи (застарелый сихр, сильная одержимость) могут требовать нескольких сеансов или полного сопровождения. Лекарь честно скажет, что именно нужно в вашем случае.</p></div>
     </div>
     <div class="faq an d4">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Используются ли запрещённые Шариатом методы?</span><span class="faq-arrow">▾</span></div>
+      <button type="button" class="faq-q" aria-expanded="false"><span class="faq-txt">Используются ли запрещённые Шариатом методы?</span><span class="faq-arrow" aria-hidden="true">▾</span></button>
       <div class="faq-a"><p>Категорически нет. Всё лечение основано исключительно на Коране и Сунне. Никаких талисманов, амулетов, обращений к джиннам или других запрещённых средств. Только дозволенная (шариатская) рукья — чтение аятов Корана, дуа из Сунны и дозволенные лечебные средства.</p></div>
     </div>
     <div class="faq an d5">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Где можно почитать отзывы?</span><span class="faq-arrow">▾</span></div>
+      <button type="button" class="faq-q" aria-expanded="false"><span class="faq-txt">Где можно почитать отзывы?</span><span class="faq-arrow" aria-hidden="true">▾</span></button>
       <div class="faq-a"><p>Реальные истории исцеления и отзывы свидетелей собраны в отдельном Telegram-канале <strong>@svdeteli</strong>. Там вы найдёте подробные рассказы людей, которые прошли лечение у лекаря Абу Мухаммад.</p></div>
     </div>
     <div class="faq an d6">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Что делать, если я не уверен, есть ли у меня духовная болезнь?</span><span class="faq-arrow">▾</span></div>
+      <button type="button" class="faq-q" aria-expanded="false"><span class="faq-txt">Что делать, если я не уверен, есть ли у меня духовная болезнь?</span><span class="faq-arrow" aria-hidden="true">▾</span></button>
       <div class="faq-a"><p>Напишите лекарю через @Lechenya_bot или @ruqoq и опишите свои симптомы. Лекарь проведёт первичную диагностику и честно скажет, есть ли признаки духовного воздействия и нужно ли лечение. Не стесняйтесь обращаться — лучше проверить, чем терпеть.</p></div>
     </div>
   </div>
@@ -409,10 +417,10 @@ h1 span{display:block;font-size:.82rem;font-weight:400;font-family:'Outfit',sans
   <div class="inner">
     <div class="sh an"><div class="sh-t">Контакты</div><div class="sh-s">Свяжитесь с нами прямо сейчас</div><div class="sh-l"></div></div>
     <div class="cta-g an d1">
-      <a class="ct pri" href="https://t.me/Lechenya_bot" target="_blank"><span class="ct-ic">📋</span><span class="ct-lb">Записаться на лечение</span><span class="ct-sb">@Lechenya_bot — бот для заявок</span></a>
-      <a class="ct" href="https://t.me/ruqoq" target="_blank"><span class="ct-ic">💬</span><span class="ct-lb">Связь с лекарем</span><span class="ct-sb">@ruqoq — Абу Мухаммад лично</span></a>
-      <a class="ct" href="https://t.me/health_ruqiya" target="_blank"><span class="ct-ic">📢</span><span class="ct-lb">Telegram-канал</span><span class="ct-sb">@health_ruqiya — статьи, аудио, методы</span></a>
-      <a class="ct" href="https://t.me/svdeteli" target="_blank"><span class="ct-ic">⭐</span><span class="ct-lb">Отзывы свидетелей</span><span class="ct-sb">@svdeteli — реальные истории исцеления</span></a>
+      <a class="ct pri" href="https://t.me/Lechenya_bot" target="_blank" rel="noopener noreferrer"><span class="ct-ic">📋</span><span class="ct-lb">Записаться на лечение</span><span class="ct-sb">@Lechenya_bot — бот для заявок</span></a>
+      <a class="ct" href="https://t.me/ruqoq" target="_blank" rel="noopener noreferrer"><span class="ct-ic">💬</span><span class="ct-lb">Связь с лекарем</span><span class="ct-sb">@ruqoq — Абу Мухаммад лично</span></a>
+      <a class="ct" href="https://t.me/health_ruqiya" target="_blank" rel="noopener noreferrer"><span class="ct-ic">📢</span><span class="ct-lb">Telegram-канал</span><span class="ct-sb">@health_ruqiya — статьи, аудио, методы</span></a>
+      <a class="ct" href="https://t.me/svdeteli" target="_blank" rel="noopener noreferrer"><span class="ct-ic">⭐</span><span class="ct-lb">Отзывы свидетелей</span><span class="ct-sb">@svdeteli — реальные истории исцеления</span></a>
     </div>
   </div>
 </section>
@@ -422,20 +430,31 @@ h1 span{display:block;font-size:.82rem;font-weight:400;font-family:'Outfit',sans
   <div class="foot-cp">RUKYA — причина исцеления · Лекарь Абу Мухаммад</div>
 </div>
 
-</div>
+</main>
 
 <script>
-// Theme toggle
-function toggleTheme(){
+const THEME_KEY='rukya-theme';
+
+function applyTheme(theme){
   const html=document.documentElement;
   const btn=document.getElementById('themeBtn');
-  if(html.getAttribute('data-theme')==='dark'){
-    html.setAttribute('data-theme','light');
-    btn.textContent='☀️';
-  }else{
-    html.setAttribute('data-theme','dark');
-    btn.textContent='🌙';
-  }
+  html.setAttribute('data-theme',theme);
+  if(btn) btn.textContent=theme==='light'?'☀️':'🌙';
+  try{localStorage.setItem(THEME_KEY,theme)}catch(e){}
+}
+
+(function initTheme(){
+  let t='dark';
+  try{
+    const saved=localStorage.getItem(THEME_KEY);
+    if(saved==='light'||saved==='dark') t=saved;
+  }catch(e){}
+  applyTheme(t);
+})();
+
+function toggleTheme(){
+  const html=document.documentElement;
+  applyTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');
 }
 
 // Font size
@@ -443,9 +462,48 @@ let s=16;const MN=12,MX=26;
 function cf(d){s=Math.min(MX,Math.max(MN,s+d));document.documentElement.style.setProperty('--fs-base',s+'px')}
 function rf(){s=16;document.documentElement.style.setProperty('--fs-base','16px')}
 
+function setFaqPanelHeight(item,open){
+  const panel=item.querySelector('.faq-a');
+  if(!panel)return;
+  if(open){
+    panel.style.maxHeight=panel.scrollHeight+'px';
+  }else{
+    panel.style.maxHeight='0px';
+  }
+}
+
+document.querySelectorAll('.faq').forEach((item,i)=>{
+  const btn=item.querySelector('.faq-q');
+  const panel=item.querySelector('.faq-a');
+  if(!btn||!panel)return;
+  const pid='faq-panel-'+i;
+  const qid='faq-trigger-'+i;
+  btn.id=qid;
+  panel.id=pid;
+  btn.setAttribute('aria-controls',pid);
+  btn.setAttribute('aria-expanded','false');
+  panel.setAttribute('role','region');
+  panel.setAttribute('aria-labelledby',qid);
+  btn.addEventListener('click',()=>{
+    item.classList.toggle('open');
+    const open=item.classList.contains('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    setFaqPanelHeight(item,open);
+  });
+});
+
+window.addEventListener('resize',()=>{
+  document.querySelectorAll('.faq.open').forEach(item=>setFaqPanelHeight(item,true));
+});
+
 // Scroll animations
-const o=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');o.unobserve(e.target)}})},{threshold:.1});
-document.querySelectorAll('.an').forEach(el=>o.observe(el));
+const mqReduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+if(mqReduce.matches){
+  document.querySelectorAll('.an').forEach(el=>el.classList.add('v'));
+}else{
+  const o=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');o.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll('.an').forEach(el=>o.observe(el));
+}
 </script>
 </body>
 </html>
