@@ -1,3 +1,6 @@
+
+
+```html
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
 <head>
@@ -26,232 +29,452 @@
 html{scroll-behavior:smooth}
 body{font-family:'Noto Sans',sans-serif;background:var(--bg-main);color:var(--text-dark);min-height:100vh;overflow-x:hidden;font-size:var(--font-size-base);transition:background .5s ease,color .5s ease,font-size .3s ease}
 
-/* ===== CINEMATIC SPLASH ===== */
-#splashScreen{position:fixed;top:0;left:0;width:100%;height:100%;z-index:10000;background:#000;overflow:hidden;transition:opacity 1.8s cubic-bezier(.4,0,.2,1),transform 1.8s cubic-bezier(.4,0,.2,1)}
-#splashScreen.hidden{opacity:0;transform:scale(1.02);pointer-events:none}
-.letterbox-top,.letterbox-bottom{position:absolute;left:0;width:100%;height:0;background:#000;z-index:20;transition:height 2s cubic-bezier(.4,0,.2,1) .8s}
-.letterbox-top{top:0}.letterbox-bottom{bottom:0}
-#splashScreen.cinema-ready .letterbox-top,#splashScreen.cinema-ready .letterbox-bottom{height:12vh}
-.splash-bg-layer{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,#1a1000 0%,#0d0800 40%,#000 100%)}
-.splash-stars{position:absolute;inset:0;overflow:hidden;z-index:2;pointer-events:none}
-.star{position:absolute;border-radius:50%;background:#fff;animation:starTwinkle ease-in-out infinite alternate}
-@keyframes starTwinkle{0%{opacity:.1;transform:scale(.8)}100%{opacity:.8;transform:scale(1.2)}}
-.splash-dust{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:5}
-.dust{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.8) 0%,transparent 70%);animation:dustFloat linear infinite;opacity:0}
-@keyframes dustFloat{0%{opacity:0;transform:translate(0,0) scale(.3)}10%{opacity:.6}90%{opacity:.3}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.2)}}
-.splash-rays{position:absolute;inset:0;z-index:3;background:conic-gradient(from 0deg at 50% 60%,transparent 0deg,rgba(212,168,67,.03) 10deg,transparent 20deg,transparent 40deg,rgba(212,168,67,.02) 50deg,transparent 60deg,transparent 80deg,rgba(212,168,67,.04) 90deg,transparent 100deg,transparent 120deg,rgba(212,168,67,.02) 130deg,transparent 140deg,transparent 160deg,rgba(212,168,67,.03) 170deg,transparent 180deg,transparent 200deg,rgba(212,168,67,.02) 210deg,transparent 220deg,transparent 240deg,rgba(212,168,67,.04) 250deg,transparent 260deg,transparent 280deg,rgba(212,168,67,.02) 290deg,transparent 300deg,transparent 320deg,rgba(212,168,67,.03) 330deg,transparent 340deg,transparent 360deg);animation:raysRotate 40s linear infinite;opacity:0;transition:opacity 4s ease 1.5s}
-#splashScreen.cinema-ready .splash-rays{opacity:1}
-@keyframes raysRotate{to{transform:rotate(360deg)}}
-.splash-vignette{position:absolute;inset:0;z-index:4;background:radial-gradient(ellipse at 50% 50%,transparent 30%,rgba(0,0,0,.7) 100%)}
-.splash-glow{position:absolute;z-index:4;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(212,168,67,.12) 0%,rgba(212,168,67,.04) 30%,transparent 70%);animation:glowPulse 5s ease-in-out infinite alternate;opacity:0;transition:opacity 3s ease 2s}
-#splashScreen.cinema-ready .splash-glow{opacity:1}
-@keyframes glowPulse{0%{transform:translate(-50%,-50%) scale(.7)}100%{transform:translate(-50%,-50%) scale(1.4)}}
-.splash-horizon{position:absolute;z-index:6;top:50%;left:50%;transform:translate(-50%,-50%);width:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,.6),transparent);animation:horizonExpand 3s cubic-bezier(.4,0,.2,1) 2s forwards}
-@keyframes horizonExpand{to{width:min(80vw,600px)}}
-.splash-content{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:20px}
-.splash-phase1{position:absolute;display:flex;flex-direction:column;align-items:center;opacity:0;animation:phaseIn 2s ease 1.5s forwards}
-.splash-phase1.fade-out{animation:phaseOut 1.5s ease forwards}
-.splash-opening-quote{font-family:'Noto Sans',sans-serif;font-size:clamp(11px,2.5vw,14px);color:rgba(212,168,67,.5);letter-spacing:3px;text-transform:uppercase;text-align:center;line-height:2}
-.splash-phase2{position:absolute;display:flex;flex-direction:column;align-items:center;opacity:0}
-.splash-phase2.active{animation:phaseIn 2s ease forwards}
-.splash-phase2.fade-out{animation:phaseOut 1.5s ease forwards}
-.splash-bismillah{font-family:'Noto Naskh Arabic',serif;font-size:clamp(20px,5vw,36px);color:rgba(212,168,67,.7);direction:rtl;text-shadow:0 0 60px rgba(212,168,67,.3)}
-.splash-phase3{position:absolute;display:flex;flex-direction:column;align-items:center;opacity:0}
-.splash-phase3.active{animation:phaseIn 2s ease forwards}
-.splash-line{width:0;height:1px;margin:24px 0;background:linear-gradient(90deg,transparent,var(--primary),transparent)}
-.splash-phase3.active .splash-line{animation:lineGrow 2s cubic-bezier(.4,0,.2,1) .5s forwards}
-@keyframes lineGrow{to{width:min(200px,60vw)}}
-.splash-ornament-dots{display:flex;gap:8px;margin:12px 0}
-.splash-ornament-dots span{width:4px;height:4px;border-radius:50%;background:var(--primary);opacity:0;animation:dotAppear .5s ease forwards}
-.splash-phase3.active .splash-ornament-dots span:nth-child(1){animation-delay:.3s}
-.splash-phase3.active .splash-ornament-dots span:nth-child(2){animation-delay:.5s}
-.splash-phase3.active .splash-ornament-dots span:nth-child(3){animation-delay:.7s}
-.splash-phase3.active .splash-ornament-dots span:nth-child(4){animation-delay:.9s}
-.splash-phase3.active .splash-ornament-dots span:nth-child(5){animation-delay:1.1s}
-@keyframes dotAppear{from{opacity:0;transform:scale(0)}to{opacity:.6;transform:scale(1)}}
-.splash-title-wrap{overflow:hidden;margin-bottom:8px}
-.splash-title{font-family:'Amiri',serif;font-size:clamp(30px,8.5vw,60px);color:var(--primary);letter-spacing:4px;text-align:center;opacity:0;transform:translateY(100%);text-shadow:0 0 60px rgba(212,168,67,.3)}
-.splash-phase3.active .splash-title{animation:cineReveal 1.8s cubic-bezier(.16,1,.3,1) .8s forwards}
-.splash-subtitle-wrap{overflow:hidden;margin-bottom:6px}
-.splash-subtitle{font-family:'Noto Sans',sans-serif;font-size:clamp(10px,2.3vw,14px);color:rgba(245,230,163,.6);letter-spacing:8px;text-transform:uppercase;text-align:center;opacity:0;transform:translateY(100%)}
-.splash-phase3.active .splash-subtitle{animation:cineReveal 1.5s cubic-bezier(.16,1,.3,1) 1.5s forwards}
-.splash-tagline{font-family:'Noto Sans',sans-serif;font-size:clamp(10px,2vw,12px);color:rgba(212,168,67,.35);letter-spacing:2px;text-align:center;max-width:420px;line-height:1.8;margin-top:16px;opacity:0}
-.splash-phase3.active .splash-tagline{animation:cineFadeIn 2s ease 2.2s forwards}
-.splash-enter-btn{margin-top:40px;padding:16px 52px;background:transparent;color:var(--primary);border:1px solid rgba(212,168,67,.3);border-radius:0;font-family:'Noto Sans',sans-serif;font-size:clamp(10px,2.3vw,13px);font-weight:400;cursor:pointer;letter-spacing:6px;text-transform:uppercase;opacity:0;transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
-.splash-phase3.active .splash-enter-btn{animation:cineFadeIn 1.5s ease 3s forwards}
-.splash-enter-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,168,67,.15),rgba(212,168,67,.05));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.4,0,.2,1)}
-.splash-enter-btn:hover{border-color:var(--primary);color:var(--primary-shimmer)}
-.splash-enter-btn:hover::before{transform:scaleX(1)}
-.splash-countdown{position:absolute;bottom:max(14vh,60px);left:50%;transform:translateX(-50%);font-family:'Noto Sans',sans-serif;font-size:10px;color:rgba(212,168,67,.25);letter-spacing:4px;text-transform:uppercase;opacity:0;animation:cineFadeIn 1s ease 4s forwards}
-.splash-countdown span{color:var(--primary);font-weight:600}
-.cine-flash{position:absolute;inset:0;z-index:15;background:rgba(212,168,67,.06);opacity:0;pointer-events:none}
-.cine-flash.fire{animation:flashOnce .4s ease forwards}
-@keyframes flashOnce{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
-@keyframes phaseIn{from{opacity:0;transform:translateY(10px);filter:blur(4px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
-@keyframes phaseOut{from{opacity:1;transform:translateY(0);filter:blur(0)}to{opacity:0;transform:translateY(-20px);filter:blur(6px)}}
-@keyframes cineFadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
-@keyframes cineReveal{from{opacity:0;transform:translateY(100%)}to{opacity:1;transform:translateY(0)}}
+/* ===== PREMIUM CINEMATIC SPLASH ===== */
+#splashScreen{position:fixed;top:0;left:0;width:100%;height:100%;z-index:10000;background:#050208;overflow:hidden}
+#splashScreen.exit-active{animation:splashExit 2s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes splashExit{
+  0%{opacity:1;filter:brightness(1)}
+  40%{opacity:1;filter:brightness(1.8)}
+  100%{opacity:0;filter:brightness(3);transform:scale(1.05)}
+}
+
+/* Nebula Background */
+.splash-nebula{position:absolute;inset:0;background:
+  radial-gradient(ellipse 80% 60% at 20% 80%,rgba(90,50,180,.15) 0%,transparent 50%),
+  radial-gradient(ellipse 60% 80% at 80% 20%,rgba(180,120,50,.1) 0%,transparent 50%),
+  radial-gradient(ellipse 120% 120% at 50% 50%,rgba(15,8,30,1) 0%,rgba(5,2,8,1) 100%);
+  animation:nebulaShift 20s ease-in-out infinite alternate}
+@keyframes nebulaShift{
+  0%{filter:hue-rotate(0deg)}
+  100%{filter:hue-rotate(15deg)}
+}
+
+/* Starfield */
+.splash-starfield{position:absolute;inset:0;overflow:hidden}
+.splash-starfield canvas{position:absolute;inset:0;width:100%;height:100%}
+
+/* Geometric Sacred Pattern */
+.splash-sacred{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(500px,90vw);height:min(500px,90vw);opacity:0;transition:opacity 3s ease}
+#splashScreen.phase-geo .splash-sacred{opacity:1}
+.sacred-ring{position:absolute;top:50%;left:50%;border:1px solid rgba(212,168,67,.1);border-radius:50%;transform:translate(-50%,-50%)}
+.sacred-ring:nth-child(1){width:100%;height:100%;animation:sacredSpin 60s linear infinite}
+.sacred-ring:nth-child(2){width:75%;height:75%;animation:sacredSpin 45s linear infinite reverse;border-style:dashed}
+.sacred-ring:nth-child(3){width:50%;height:50%;animation:sacredSpin 30s linear infinite;border-color:rgba(212,168,67,.15)}
+.sacred-ring:nth-child(4){width:25%;height:25%;animation:sacredPulse 4s ease-in-out infinite alternate}
+@keyframes sacredSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes sacredPulse{
+  0%{transform:translate(-50%,-50%) scale(.9);border-color:rgba(212,168,67,.08)}
+  100%{transform:translate(-50%,-50%) scale(1.1);border-color:rgba(212,168,67,.25)}
+}
+
+/* Light Rays */
+.splash-lightrays{position:absolute;inset:0;opacity:0;transition:opacity 4s ease 1s}
+#splashScreen.phase-geo .splash-lightrays{opacity:1}
+.lightray{position:absolute;top:50%;left:50%;width:2px;transform-origin:bottom center;background:linear-gradient(to top,transparent,rgba(212,168,67,.06),transparent);opacity:0;animation:rayGlow 6s ease-in-out infinite alternate}
+@keyframes rayGlow{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+
+/* Central Glow */
+.splash-core-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.15) 0%,rgba(212,168,67,.05) 30%,transparent 70%);opacity:0;animation:coreBreath 5s ease-in-out infinite alternate;transition:opacity 2s ease}
+#splashScreen.phase-geo .splash-core-glow{opacity:1}
+@keyframes coreBreath{0%{transform:translate(-50%,-50%) scale(.6)}100%{transform:translate(-50%,-50%) scale(1.3)}}
+
+/* Floating Particles */
+.splash-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;border-radius:50%;pointer-events:none}
+.particle-gold{background:radial-gradient(circle,rgba(212,168,67,.9) 0%,rgba(212,168,67,0) 70%)}
+.particle-white{background:radial-gradient(circle,rgba(255,255,255,.8) 0%,rgba(255,255,255,0) 70%)}
+
+/* Vignette */
+.splash-vignette{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,transparent 0%,rgba(5,2,8,.8) 100%);pointer-events:none}
+
+/* Content Phases */
+.splash-content{position:relative;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:20px}
+
+/* Phase 1: Opening */
+.sp-phase{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;width:100%;padding:0 24px}
+
+.sp-phase.visible{opacity:1;pointer-events:auto}
+
+.sp-phase-enter{animation:phaseEnter 2s cubic-bezier(.16,1,.3,1) forwards}
+.sp-phase-exit{animation:phaseExit 1.5s cubic-bezier(.7,0,.84,0) forwards}
+
+@keyframes phaseEnter{
+  0%{opacity:0;transform:translateY(30px) scale(.95);filter:blur(8px)}
+  100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+@keyframes phaseExit{
+  0%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+  100%{opacity:0;transform:translateY(-40px) scale(1.02);filter:blur(12px)}
+}
+
+/* Phase 1 Elements */
+.sp-opening-line{width:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,.5),transparent);margin-bottom:30px;transition:width 2s cubic-bezier(.4,0,.2,1)}
+.sp-phase.visible .sp-opening-line{width:min(120px,40vw)}
+
+.sp-opening-text{font-family:'Noto Sans',sans-serif;font-size:clamp(10px,2.2vw,13px);color:rgba(212,168,67,.45);letter-spacing:clamp(3px,1vw,6px);text-transform:uppercase;text-align:center;line-height:2.2;opacity:0;animation-fill-mode:forwards}
+.sp-phase.visible .sp-opening-text{animation:textReveal 2s ease .5s forwards}
+
+.sp-opening-line-bottom{width:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,.3),transparent);margin-top:30px;transition:width 2s cubic-bezier(.4,0,.2,1) .3s}
+.sp-phase.visible .sp-opening-line-bottom{width:min(80px,25vw)}
+
+/* Phase 2 Elements */
+.sp-bismillah-glow{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.08) 0%,transparent 70%);animation:bismillahGlow 3s ease-in-out infinite alternate}
+@keyframes bismillahGlow{0%{transform:scale(.8);opacity:.5}100%{transform:scale(1.2);opacity:1}}
+
+.sp-bismillah{font-family:'Noto Naskh Arabic',serif;font-size:clamp(22px,6vw,42px);color:rgba(212,168,67,.8);direction:rtl;text-shadow:0 0 80px rgba(212,168,67,.4),0 0 160px rgba(212,168,67,.15);opacity:0;animation-fill-mode:forwards;line-height:1.8}
+.sp-phase.visible .sp-bismillah{animation:bismillahReveal 2.5s cubic-bezier(.16,1,.3,1) .3s forwards}
+@keyframes bismillahReveal{
+  0%{opacity:0;transform:scale(.9);filter:blur(6px);letter-spacing:8px}
+  60%{letter-spacing:2px}
+  100%{opacity:1;transform:scale(1);filter:blur(0);letter-spacing:1px}
+}
+
+.sp-bismillah-sub{font-family:'Noto Sans',sans-serif;font-size:clamp(9px,2vw,12px);color:rgba(212,168,67,.3);letter-spacing:3px;text-transform:uppercase;margin-top:20px;opacity:0;animation-fill-mode:forwards}
+.sp-phase.visible .sp-bismillah-sub{animation:textReveal 1.5s ease 1.5s forwards}
+
+/* Phase 3 Elements */
+.sp-ornament{display:flex;align-items:center;gap:12px;margin-bottom:20px;opacity:0;animation-fill-mode:forwards}
+.sp-phase.visible .sp-ornament{animation:textReveal 1s ease .2s forwards}
+.sp-ornament-line{width:clamp(30px,8vw,60px);height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,.4))}
+.sp-ornament-line:last-child{background:linear-gradient(90deg,rgba(212,168,67,.4),transparent)}
+.sp-ornament-diamond{width:6px;height:6px;background:var(--primary);transform:rotate(45deg);opacity:.6}
+
+.sp-title-container{overflow:hidden;margin-bottom:12px}
+.sp-title{font-family:'Amiri',serif;font-size:clamp(28px,8vw,56px);color:transparent;background:linear-gradient(135deg,#C49A3C,#F5E6A3,#D4A843,#B8860B,#F5E6A3);background-size:300% 300%;-webkit-background-clip:text;background-clip:text;letter-spacing:clamp(2px,0.5vw,5px);text-align:center;opacity:0;transform:translateY(100%);animation-fill-mode:forwards;line-height:1.3}
+.sp-phase.visible .sp-title{animation:titleCinematic 2s cubic-bezier(.16,1,.3,1) .6s forwards,titleShimmer 4s ease 2.6s infinite}
+@keyframes titleCinematic{
+  0%{opacity:0;transform:translateY(100%);filter:blur(4px)}
+  100%{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes titleShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+.sp-subtitle-container{overflow:hidden;margin-bottom:8px}
+.sp-subtitle{font-family:'Noto Sans',sans-serif;font-size:clamp(9px,2.2vw,13px);color:rgba(245,230,163,.5);letter-spacing:clamp(4px,1.5vw,10px);text-transform:uppercase;text-align:center;opacity:0;transform:translateY(100%);animation-fill-mode:forwards}
+.sp-phase.visible .sp-subtitle{animation:titleCinematic 1.5s cubic-bezier(.16,1,.3,1) 1.3s forwards}
+
+.sp-tagline{font-family:'Noto Sans',sans-serif;font-size:clamp(9px,1.8vw,11px);color:rgba(212,168,67,.25);letter-spacing:1px;text-align:center;max-width:400px;line-height:2;margin-top:16px;opacity:0;animation-fill-mode:forwards}
+.sp-phase.visible .sp-tagline{animation:textReveal 2s ease 2s forwards}
+
+.sp-divider-fancy{display:flex;align-items:center;gap:8px;margin-top:20px;opacity:0;animation-fill-mode:forwards}
+.sp-phase.visible .sp-divider-fancy{animation:textReveal 1.5s ease 2.5s forwards}
+.sp-divider-dot{width:3px;height:3px;border-radius:50%;background:rgba(212,168,67,.4)}
+.sp-divider-line{width:clamp(20px,6vw,40px);height:1px;background:rgba(212,168,67,.2)}
+
+.sp-enter-btn{margin-top:36px;padding:14px clamp(32px,10vw,56px);background:transparent;color:rgba(212,168,67,.7);border:1px solid rgba(212,168,67,.2);font-family:'Noto Sans',sans-serif;font-size:clamp(9px,2vw,12px);font-weight:400;cursor:pointer;letter-spacing:clamp(3px,1vw,7px);text-transform:uppercase;opacity:0;transition:all .6s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;animation-fill-mode:forwards}
+.sp-phase.visible .sp-enter-btn{animation:textReveal 1.5s ease 3s forwards}
+.sp-enter-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,168,67,.12),rgba(212,168,67,.03));transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.sp-enter-btn::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(212,168,67,.1),transparent);transition:left .6s ease}
+.sp-enter-btn:hover{border-color:rgba(212,168,67,.5);color:rgba(245,230,163,.9)}
+.sp-enter-btn:hover::before{transform:scaleX(1)}
+.sp-enter-btn:hover::after{left:100%}
+.sp-enter-btn:active{transform:scale(.97)}
+
+/* Auto-enter counter */
+.sp-auto-enter{position:absolute;bottom:max(12vh,40px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;opacity:0;animation:textReveal 1s ease 4s forwards;animation-fill-mode:forwards}
+.sp-auto-ring{width:28px;height:28px;position:relative}
+.sp-auto-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.sp-auto-ring-bg{fill:none;stroke:rgba(212,168,67,.1);stroke-width:2}
+.sp-auto-ring-fill{fill:none;stroke:rgba(212,168,67,.4);stroke-width:2;stroke-linecap:round;stroke-dasharray:75.4;stroke-dashoffset:75.4;transition:stroke-dashoffset 1s linear}
+.sp-auto-text{font-size:9px;color:rgba(212,168,67,.25);letter-spacing:3px;text-transform:uppercase}
+
+/* Flash overlay */
+.sp-flash{position:absolute;inset:0;z-index:25;background:radial-gradient(circle at 50% 50%,rgba(212,168,67,.15),rgba(255,255,255,.05));opacity:0;pointer-events:none}
+.sp-flash.fire{animation:flashBurst .6s ease forwards}
+@keyframes flashBurst{0%{opacity:0}20%{opacity:1}100%{opacity:0}}
+
+@keyframes textReveal{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
 
 /* ===== MAIN APP ===== */
 #mainApp{display:none;opacity:0;transition:opacity 1s cubic-bezier(.4,0,.2,1)}
 #mainApp.visible{display:block;opacity:1}
-.header{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--bg-main) 88%,transparent);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);border-bottom:1px solid color-mix(in srgb,var(--primary) 15%,transparent);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;transition:all .3s ease}
-.header.scrolled{padding:8px 16px;box-shadow:0 4px 30px var(--shadow-primary)}
-.header-brand{display:flex;align-items:center;gap:12px}
-.header-logo{width:40px;height:40px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;font-family:'Amiri',serif;font-size:20px;box-shadow:0 4px 15px var(--shadow-primary);transition:transform .3s ease,background .5s ease;position:relative;overflow:hidden}
+.header{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--bg-main) 88%,transparent);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);border-bottom:1px solid color-mix(in srgb,var(--primary) 15%,transparent);padding:10px 12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;transition:all .3s ease}
+.header.scrolled{padding:6px 12px;box-shadow:0 4px 30px var(--shadow-primary)}
+.header-brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.header-logo{width:36px;height:36px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-family:'Amiri',serif;font-size:18px;box-shadow:0 4px 15px var(--shadow-primary);transition:transform .3s ease,background .5s ease;position:relative;overflow:hidden;flex-shrink:0}
 .header-logo::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.2) 50%,transparent 60%);background-size:200% 200%;animation:logoShine 3s ease-in-out infinite}
 @keyframes logoShine{0%{background-position:200% 200%}100%{background-position:-200% -200%}}
 .header-logo:hover{transform:rotate(-5deg) scale(1.1)}
-.header-title{font-family:'Amiri',serif;font-size:clamp(14px,4vw,18px);color:var(--primary-dark);font-weight:700;transition:color .5s ease}
-.header-controls{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.theme-switcher{display:flex;gap:4px;align-items:center;padding:3px;background:color-mix(in srgb,var(--primary-light) 50%,transparent);border-radius:25px;border:1px solid var(--border-primary);transition:all .5s ease}
-.theme-dot{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .3s ease;display:flex;align-items:center;justify-content:center;position:relative}
+.header-title{font-family:'Amiri',serif;font-size:clamp(13px,3.5vw,18px);color:var(--primary-dark);font-weight:700;transition:color .5s ease;line-height:1.2}
+.header-controls{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.theme-switcher{display:flex;gap:3px;align-items:center;padding:2px;background:color-mix(in srgb,var(--primary-light) 50%,transparent);border-radius:25px;border:1px solid var(--border-primary);transition:all .5s ease}
+.theme-dot{width:24px;height:24px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .3s ease;display:flex;align-items:center;justify-content:center;position:relative}
 .theme-dot:hover{transform:scale(1.15)}
 .theme-dot.active{border-color:var(--text-dark);transform:scale(1.1)}
-.theme-dot.active::after{content:'✓';position:absolute;font-size:10px;font-weight:700;color:white;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+.theme-dot.active::after{content:'✓';position:absolute;font-size:9px;font-weight:700;color:white;text-shadow:0 1px 2px rgba(0,0,0,.5)}
 .theme-dot[data-theme="gold"]{background:linear-gradient(135deg,#B8860B,#D4A843)}
 .theme-dot[data-theme="emerald"]{background:linear-gradient(135deg,#2E7D32,#43A047)}
 .theme-dot[data-theme="sapphire"]{background:linear-gradient(135deg,#1565C0,#1E88E5)}
 .theme-dot[data-theme="amethyst"]{background:linear-gradient(135deg,#6A1B9A,#8E24AA)}
 .theme-dot[data-theme="ruby"]{background:linear-gradient(135deg,#C62828,#E53935)}
 .theme-dot[data-theme="darkgold"]{background:linear-gradient(135deg,#1A1408,#3A2E10);border:1px solid #D4A843}
-.lang-switcher{display:flex;background:color-mix(in srgb,var(--primary-light) 60%,transparent);border-radius:25px;padding:3px;border:1px solid var(--border-primary);transition:all .5s ease}
-.lang-btn{padding:6px 14px;border:none;background:transparent;border-radius:22px;font-size:12px;font-weight:600;cursor:pointer;color:var(--text-medium);transition:all .3s ease}
+.lang-switcher{display:flex;background:color-mix(in srgb,var(--primary-light) 60%,transparent);border-radius:25px;padding:2px;border:1px solid var(--border-primary);transition:all .5s ease}
+.lang-btn{padding:5px 10px;border:none;background:transparent;border-radius:22px;font-size:11px;font-weight:600;cursor:pointer;color:var(--text-medium);transition:all .3s ease}
 .lang-btn.active{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:white;box-shadow:0 2px 10px var(--shadow-primary)}
-.font-controls{display:flex;align-items:center;gap:2px;background:color-mix(in srgb,var(--primary-light) 60%,transparent);border-radius:25px;padding:3px;border:1px solid var(--border-primary);transition:all .5s ease}
-.font-btn{width:32px;height:32px;border:none;background:transparent;border-radius:50%;font-size:12px;font-weight:700;cursor:pointer;color:var(--primary-dark);display:flex;align-items:center;justify-content:center;transition:all .2s ease}
+.font-controls{display:flex;align-items:center;gap:1px;background:color-mix(in srgb,var(--primary-light) 60%,transparent);border-radius:25px;padding:2px;border:1px solid var(--border-primary);transition:all .5s ease}
+.font-btn{width:28px;height:28px;border:none;background:transparent;border-radius:50%;font-size:11px;font-weight:700;cursor:pointer;color:var(--primary-dark);display:flex;align-items:center;justify-content:center;transition:all .2s ease}
 .font-btn:hover{background:var(--primary-light)}
 .font-btn:active{transform:scale(.9)}
-.font-size-display{font-size:10px;font-weight:600;color:var(--primary-dark);min-width:32px;text-align:center;transition:color .5s ease}
-.hero{padding:50px 20px 40px;text-align:center;background:linear-gradient(180deg,var(--primary-light) 0%,var(--bg-main) 100%);position:relative;overflow:hidden;transition:background .5s ease}
+.font-size-display{font-size:9px;font-weight:600;color:var(--primary-dark);min-width:28px;text-align:center;transition:color .5s ease}
+.hero{padding:36px 16px 30px;text-align:center;background:linear-gradient(180deg,var(--primary-light) 0%,var(--bg-main) 100%);position:relative;overflow:hidden;transition:background .5s ease}
 .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at center,color-mix(in srgb,var(--primary) 8%,transparent) 0%,transparent 70%);animation:heroGlow 8s ease-in-out infinite alternate}
 @keyframes heroGlow{0%{transform:scale(1)}100%{transform:scale(1.2)}}
 .hero-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,color-mix(in srgb,var(--primary) 6%,transparent) 1px,transparent 1px),radial-gradient(circle at 80% 70%,color-mix(in srgb,var(--primary) 6%,transparent) 1px,transparent 1px);background-size:60px 60px;animation:patternMove 30s linear infinite}
 @keyframes patternMove{to{background-position:60px 60px}}
-.hero-icon{width:90px;height:90px;margin:0 auto 24px;background:linear-gradient(135deg,var(--primary-dark),var(--primary),var(--primary-shimmer));background-size:200% 200%;animation:gradientShift 4s ease infinite;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:40px;box-shadow:0 12px 40px var(--shadow-primary);position:relative;transition:all .6s cubic-bezier(.34,1.56,.64,1)}
+.hero-icon{width:72px;height:72px;margin:0 auto 18px;background:linear-gradient(135deg,var(--primary-dark),var(--primary),var(--primary-shimmer));background-size:200% 200%;animation:gradientShift 4s ease infinite;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 12px 40px var(--shadow-primary);position:relative;transition:all .6s cubic-bezier(.34,1.56,.64,1)}
 .hero-icon:hover{transform:rotate(10deg) scale(1.05)}
-.hero-icon::after{content:'';position:absolute;inset:-8px;border-radius:28px;border:2px solid var(--primary);opacity:0;animation:iconPulse 3s ease infinite}
+.hero-icon::after{content:'';position:absolute;inset:-8px;border-radius:24px;border:2px solid var(--primary);opacity:0;animation:iconPulse 3s ease infinite}
 @keyframes iconPulse{0%{transform:scale(1);opacity:.4}100%{transform:scale(1.2);opacity:0}}
 @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.hero-title{font-family:'Amiri',serif;font-size:clamp(24px,6.5vw,36px);color:var(--primary-dark);margin-bottom:12px;animation:fadeInUp .8s ease .2s both;transition:color .5s ease}
-.hero-desc{font-size:clamp(13px,3.5vw,15px);color:var(--text-medium);max-width:520px;margin:0 auto;line-height:1.8;animation:fadeInUp .8s ease .4s both;transition:color .5s ease}
+.hero-title{font-family:'Amiri',serif;font-size:clamp(20px,5.5vw,36px);color:var(--primary-dark);margin-bottom:10px;animation:fadeInUp .8s ease .2s both;transition:color .5s ease}
+.hero-desc{font-size:clamp(12px,3vw,15px);color:var(--text-medium);max-width:520px;margin:0 auto;line-height:1.7;animation:fadeInUp .8s ease .4s both;transition:color .5s ease}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.progress-section{padding:20px;background:var(--bg-card);border-bottom:1px solid color-mix(in srgb,var(--primary) 15%,transparent);animation:fadeInUp .8s ease .5s both;transition:background .5s ease}
-.progress-header{display:flex;justify-content:space-between;margin-bottom:12px;align-items:baseline}
-.progress-label{font-size:13px;font-weight:600;color:var(--text-medium);transition:color .5s ease}
-.progress-count{font-size:14px;font-weight:700;color:var(--primary-dark);transition:color .5s ease}
-.progress-bar{width:100%;height:10px;background:linear-gradient(90deg,var(--primary-light),color-mix(in srgb,var(--primary) 10%,transparent));border-radius:10px;overflow:hidden;transition:background .5s ease}
+.progress-section{padding:16px;background:var(--bg-card);border-bottom:1px solid color-mix(in srgb,var(--primary) 15%,transparent);animation:fadeInUp .8s ease .5s both;transition:background .5s ease}
+.progress-header{display:flex;justify-content:space-between;margin-bottom:10px;align-items:baseline}
+.progress-label{font-size:12px;font-weight:600;color:var(--text-medium);transition:color .5s ease}
+.progress-count{font-size:13px;font-weight:700;color:var(--primary-dark);transition:color .5s ease}
+.progress-bar{width:100%;height:8px;background:linear-gradient(90deg,var(--primary-light),color-mix(in srgb,var(--primary) 10%,transparent));border-radius:10px;overflow:hidden;transition:background .5s ease}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--primary-dark),var(--primary),var(--primary-shimmer));background-size:300% 100%;animation:progressShine 2s linear infinite;border-radius:10px;width:0%;transition:width .8s cubic-bezier(.4,0,.2,1);position:relative}
 .progress-fill::after{content:'';position:absolute;right:0;top:0;width:20px;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6));border-radius:10px;filter:blur(2px)}
 @keyframes progressShine{0%{background-position:0% 50%}100%{background-position:300% 50%}}
-.nav-tabs{display:flex;overflow-x:auto;gap:8px;padding:16px 20px;background:var(--bg-card);border-bottom:1px solid color-mix(in srgb,var(--primary) 15%,transparent);-webkit-overflow-scrolling:touch;scrollbar-width:none;animation:fadeInUp .8s ease .6s both;transition:background .5s ease}
+.nav-tabs{display:flex;overflow-x:auto;gap:6px;padding:12px 12px;background:var(--bg-card);border-bottom:1px solid color-mix(in srgb,var(--primary) 15%,transparent);-webkit-overflow-scrolling:touch;scrollbar-width:none;animation:fadeInUp .8s ease .6s both;transition:background .5s ease}
 .nav-tabs::-webkit-scrollbar{display:none}
-.nav-tab{flex-shrink:0;padding:10px 18px;border:1.5px solid var(--border-primary);border-radius:30px;background:var(--bg-card);font-size:12px;font-weight:600;color:var(--text-medium);cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.nav-tab{flex-shrink:0;padding:8px 14px;border:1.5px solid var(--border-primary);border-radius:30px;background:var(--bg-card);font-size:11px;font-weight:600;color:var(--text-medium);cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
 .nav-tab::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--primary-dark),var(--primary));opacity:0;transition:opacity .3s ease;z-index:-1}
 .nav-tab:hover{border-color:var(--primary);transform:translateY(-2px)}
 .nav-tab.active{color:white;border-color:var(--primary-dark);transform:translateY(-2px);box-shadow:0 4px 20px var(--shadow-primary)}
 .nav-tab.active::before{opacity:1}
-.section{display:none;padding:24px 16px 50px;animation:sectionReveal .6s cubic-bezier(.4,0,.2,1)}
+.section{display:none;padding:20px 12px 50px;animation:sectionReveal .6s cubic-bezier(.4,0,.2,1)}
 .section.active{display:block}
 @keyframes sectionReveal{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.section-header{text-align:center;margin-bottom:28px;padding:28px 20px;background:linear-gradient(135deg,var(--primary-light),var(--bg-card),var(--primary-light));border-radius:20px;border:1px solid var(--border-primary);position:relative;overflow:hidden;transition:all .5s ease}
-.section-icon{font-size:36px;margin-bottom:8px;display:inline-block;animation:iconBounce 2s ease-in-out infinite}
+.section-header{text-align:center;margin-bottom:24px;padding:24px 16px;background:linear-gradient(135deg,var(--primary-light),var(--bg-card),var(--primary-light));border-radius:16px;border:1px solid var(--border-primary);position:relative;overflow:hidden;transition:all .5s ease}
+.section-icon{font-size:32px;margin-bottom:6px;display:inline-block;animation:iconBounce 2s ease-in-out infinite}
 @keyframes iconBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.section-title{font-family:'Amiri',serif;font-size:clamp(20px,5.5vw,28px);color:var(--primary-dark);transition:color .5s ease}
-.info-card{background:var(--bg-card);border-radius:20px;padding:24px;margin-bottom:16px;border:1px solid color-mix(in srgb,var(--primary) 20%,transparent);position:relative;overflow:hidden;transition:all .3s ease}
+.section-title{font-family:'Amiri',serif;font-size:clamp(18px,5vw,26px);color:var(--primary-dark);transition:color .5s ease}
+.info-card{background:var(--bg-card);border-radius:16px;padding:20px;margin-bottom:14px;border:1px solid color-mix(in srgb,var(--primary) 20%,transparent);position:relative;overflow:hidden;transition:all .3s ease}
 .info-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px color-mix(in srgb,var(--primary) 12%,transparent)}
-.info-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--primary-dark),var(--primary),var(--primary-shimmer),var(--primary),var(--primary-dark));background-size:300% 100%;animation:gradientSlide 4s linear infinite}
+.info-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--primary-dark),var(--primary),var(--primary-shimmer),var(--primary),var(--primary-dark));background-size:300% 100%;animation:gradientSlide 4s linear infinite}
 @keyframes gradientSlide{0%{background-position:0% 50%}100%{background-position:300% 50%}}
-.info-card h3{font-family:'Amiri',serif;color:var(--primary-dark);font-size:clamp(16px,4.5vw,20px);margin-bottom:12px;transition:color .5s ease}
-.info-card p{color:var(--text-medium);line-height:1.8;transition:color .5s ease}
-.ruqya-card{background:var(--bg-card);border-radius:20px;margin-bottom:16px;border:1px solid color-mix(in srgb,var(--primary) 20%,transparent);overflow:hidden;transition:all .4s cubic-bezier(.4,0,.2,1);opacity:0;transform:translateY(20px);animation:cardAppear .5s ease forwards}
+.info-card h3{font-family:'Amiri',serif;color:var(--primary-dark);font-size:clamp(15px,4vw,20px);margin-bottom:10px;transition:color .5s ease}
+.info-card p{color:var(--text-medium);line-height:1.7;font-size:clamp(12px,3vw,14px);transition:color .5s ease}
+.ruqya-card{background:var(--bg-card);border-radius:16px;margin-bottom:12px;border:1px solid color-mix(in srgb,var(--primary) 20%,transparent);overflow:hidden;transition:all .4s cubic-bezier(.4,0,.2,1);opacity:0;transform:translateY(20px);animation:cardAppear .5s ease forwards}
 .ruqya-card:nth-child(2){animation-delay:.05s}.ruqya-card:nth-child(3){animation-delay:.1s}.ruqya-card:nth-child(4){animation-delay:.15s}.ruqya-card:nth-child(5){animation-delay:.2s}.ruqya-card:nth-child(6){animation-delay:.25s}.ruqya-card:nth-child(7){animation-delay:.3s}.ruqya-card:nth-child(8){animation-delay:.35s}.ruqya-card:nth-child(9){animation-delay:.4s}.ruqya-card:nth-child(10){animation-delay:.45s}.ruqya-card:nth-child(11){animation-delay:.5s}.ruqya-card:nth-child(12){animation-delay:.55s}.ruqya-card:nth-child(13){animation-delay:.6s}
 @keyframes cardAppear{to{opacity:1;transform:translateY(0)}}
 .ruqya-card:hover{box-shadow:0 8px 30px color-mix(in srgb,var(--primary) 15%,transparent);border-color:var(--primary)}
-.ruqya-card-header{padding:18px 20px;background:linear-gradient(135deg,color-mix(in srgb,var(--primary-light) 50%,transparent),var(--bg-card));border-bottom:1px solid color-mix(in srgb,var(--primary) 10%,transparent);display:flex;align-items:center;gap:14px;cursor:pointer;transition:background .3s ease;user-select:none}
+.ruqya-card-header{padding:14px 14px;background:linear-gradient(135deg,color-mix(in srgb,var(--primary-light) 50%,transparent),var(--bg-card));border-bottom:1px solid color-mix(in srgb,var(--primary) 10%,transparent);display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .3s ease;user-select:none}
 .ruqya-card-header:hover{background:linear-gradient(135deg,color-mix(in srgb,var(--primary-light) 80%,transparent),var(--bg-card))}
-.ruqya-number{width:38px;height:38px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;box-shadow:0 3px 10px var(--shadow-primary);transition:transform .3s ease}
+.ruqya-number{width:34px;height:34px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0;box-shadow:0 3px 10px var(--shadow-primary);transition:transform .3s ease}
 .ruqya-card.open .ruqya-number{transform:rotate(-5deg) scale(1.05)}
-.ruqya-card-title{flex:1;font-size:14px;font-weight:600;color:var(--text-dark);line-height:1.4;transition:color .5s ease}
-.ruqya-toggle{transition:transform .4s cubic-bezier(.4,0,.2,1);color:var(--primary);font-size:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--primary-light);flex-shrink:0}
+.ruqya-card-title{flex:1;font-size:13px;font-weight:600;color:var(--text-dark);line-height:1.4;transition:color .5s ease}
+.ruqya-toggle{transition:transform .4s cubic-bezier(.4,0,.2,1);color:var(--primary);font-size:14px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--primary-light);flex-shrink:0}
 .ruqya-card.open .ruqya-toggle{transform:rotate(180deg);background:var(--primary);color:white}
 .ruqya-card-body{max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(.4,0,.2,1)}
 .ruqya-card.open .ruqya-card-body{max-height:2000px}
-.ruqya-card-content{padding:24px 20px}
-.arabic-block{background:linear-gradient(135deg,var(--primary-light),color-mix(in srgb,var(--primary-light) 70%,var(--bg-card)));border-radius:16px;padding:24px 20px;margin:16px 0;text-align:center;border:1px solid color-mix(in srgb,var(--primary) 30%,transparent);direction:rtl;position:relative;overflow:hidden;transition:all .5s ease}
-.arabic-text{font-family:'Noto Naskh Arabic',serif;font-size:clamp(20px,5.5vw,28px);color:var(--primary-deeper);line-height:2.2;position:relative;transition:color .5s ease}
-.translation{font-size:inherit;color:var(--text-dark);margin-top:12px;line-height:1.7;padding:12px 16px;background:color-mix(in srgb,var(--primary-light) 50%,transparent);border-radius:12px;border-left:3px solid var(--primary);transition:all .5s ease}
-.transcription{font-size:inherit;color:var(--text-medium);font-style:italic;margin-top:10px;padding:8px 16px;background:color-mix(in srgb,var(--primary) 5%,transparent);border-radius:10px;transition:all .5s ease}
-.counter-section{margin:20px 0;text-align:center}
-.counter-label-top{font-size:11px;font-weight:600;color:var(--text-light);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;transition:color .5s ease}
-.counter-display{display:flex;align-items:center;justify-content:center;gap:20px}
-.counter-btn{width:44px;height:44px;border-radius:50%;border:2px solid var(--primary);background:var(--bg-card);color:var(--primary-dark);font-size:20px;font-weight:700;cursor:pointer;transition:all .2s ease;display:flex;align-items:center;justify-content:center}
+.ruqya-card-content{padding:20px 14px}
+.arabic-block{background:linear-gradient(135deg,var(--primary-light),color-mix(in srgb,var(--primary-light) 70%,var(--bg-card)));border-radius:14px;padding:20px 16px;margin:14px 0;text-align:center;border:1px solid color-mix(in srgb,var(--primary) 30%,transparent);direction:rtl;position:relative;overflow:hidden;transition:all .5s ease}
+.arabic-text{font-family:'Noto Naskh Arabic',serif;font-size:clamp(18px,5vw,26px);color:var(--primary-deeper);line-height:2.2;position:relative;transition:color .5s ease}
+.translation{font-size:inherit;color:var(--text-dark);margin-top:10px;line-height:1.7;padding:10px 14px;background:color-mix(in srgb,var(--primary-light) 50%,transparent);border-radius:10px;border-left:3px solid var(--primary);transition:all .5s ease}
+.transcription{font-size:inherit;color:var(--text-medium);font-style:italic;margin-top:8px;padding:8px 14px;background:color-mix(in srgb,var(--primary) 5%,transparent);border-radius:10px;transition:all .5s ease}
+.counter-section{margin:16px 0;text-align:center}
+.counter-label-top{font-size:10px;font-weight:600;color:var(--text-light);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;transition:color .5s ease}
+.counter-display{display:flex;align-items:center;justify-content:center;gap:16px}
+.counter-btn{width:40px;height:40px;border-radius:50%;border:2px solid var(--primary);background:var(--bg-card);color:var(--primary-dark);font-size:18px;font-weight:700;cursor:pointer;transition:all .2s ease;display:flex;align-items:center;justify-content:center}
 .counter-btn:hover{background:var(--primary-light);transform:scale(1.1)}
 .counter-btn:active{transform:scale(.95);background:var(--primary);color:white}
-.counter-circle{width:80px;height:80px;position:relative;display:flex;align-items:center;justify-content:center}
+.counter-circle{width:70px;height:70px;position:relative;display:flex;align-items:center;justify-content:center}
 .counter-circle svg{position:absolute;inset:0;transform:rotate(-90deg)}
 .counter-ring-bg{fill:none;stroke:var(--primary-light);stroke-width:3}
-.counter-ring-fill{fill:none;stroke:var(--primary);stroke-width:3;stroke-linecap:round;stroke-dasharray:226;stroke-dashoffset:226;transition:stroke-dashoffset .4s ease}
-.counter-value{font-size:28px;font-weight:700;color:var(--primary-dark);position:relative;z-index:1;transition:color .5s ease}
-.complete-btn{width:100%;padding:16px;margin-top:20px;background:linear-gradient(135deg,var(--primary-light),var(--bg-card));border:2px solid var(--border-primary);border-radius:14px;font-size:14px;font-weight:600;color:var(--primary-dark);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.counter-ring-fill{fill:none;stroke:var(--primary);stroke-width:3;stroke-linecap:round;stroke-dasharray:196;stroke-dashoffset:196;transition:stroke-dashoffset .4s ease}
+.counter-value{font-size:24px;font-weight:700;color:var(--primary-dark);position:relative;z-index:1;transition:color .5s ease}
+.complete-btn{width:100%;padding:14px;margin-top:16px;background:linear-gradient(135deg,var(--primary-light),var(--bg-card));border:2px solid var(--border-primary);border-radius:12px;font-size:13px;font-weight:600;color:var(--primary-dark);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
 .complete-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--green),var(--green-light));opacity:0;transition:opacity .4s ease;z-index:0}
 .complete-btn span{position:relative;z-index:1}
 .complete-btn:hover{transform:translateY(-2px)}
 .complete-btn:active{transform:scale(.98)}
 .complete-btn.completed{border-color:var(--green-light);color:white}
 .complete-btn.completed::before{opacity:1}
-.gradient-block{padding:28px 24px;margin:20px 0;border-radius:20px;background:linear-gradient(135deg,var(--primary-light),color-mix(in srgb,var(--primary-light) 80%,var(--bg-card)),var(--primary-light));background-size:300% 300%;animation:gradientFlow 8s ease infinite;border:1px solid var(--border-primary);text-align:center;position:relative;overflow:hidden;transition:all .5s ease}
+.gradient-block{padding:24px 20px;margin:16px 0;border-radius:16px;background:linear-gradient(135deg,var(--primary-light),color-mix(in srgb,var(--primary-light) 80%,var(--bg-card)),var(--primary-light));background-size:300% 300%;animation:gradientFlow 8s ease infinite;border:1px solid var(--border-primary);text-align:center;position:relative;overflow:hidden;transition:all .5s ease}
 .gradient-block::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shinePass 5s ease-in-out infinite}
 @keyframes shinePass{0%{left:-100%}50%{left:100%}100%{left:100%}}
 @keyframes gradientFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.gradient-block-title{font-family:'Amiri',serif;font-size:clamp(18px,5vw,24px);color:var(--primary-dark);transition:color .5s ease}
-.steps-container{display:flex;flex-direction:column;gap:14px;margin:20px 0}
-.step-item{display:flex;gap:16px;padding:18px;background:var(--bg-card);border-radius:16px;border:1px solid color-mix(in srgb,var(--primary) 20%,transparent);transition:all .3s ease;opacity:0;transform:translateX(-20px);animation:stepSlideIn .5s ease forwards}
+.gradient-block-title{font-family:'Amiri',serif;font-size:clamp(16px,4.5vw,22px);color:var(--primary-dark);transition:color .5s ease}
+.steps-container{display:flex;flex-direction:column;gap:12px;margin:16px 0}
+.step-item{display:flex;gap:12px;padding:14px;background:var(--bg-card);border-radius:14px;border:1px solid color-mix(in srgb,var(--primary) 20%,transparent);transition:all .3s ease;opacity:0;transform:translateX(-20px);animation:stepSlideIn .5s ease forwards}
 .step-item:nth-child(1){animation-delay:.1s}.step-item:nth-child(2){animation-delay:.2s}.step-item:nth-child(3){animation-delay:.3s}.step-item:nth-child(4){animation-delay:.4s}.step-item:nth-child(5){animation-delay:.5s}
 @keyframes stepSlideIn{to{opacity:1;transform:translateX(0)}}
 .step-item:hover{transform:translateX(5px)}
-.step-number{width:36px;height:36px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0}
-.step-content h4{font-size:14px;color:var(--text-dark);margin-bottom:6px;transition:color .5s ease}
-.step-content p{font-size:13px;color:var(--text-light);line-height:1.6;transition:color .5s ease}
-.important-notice{background:linear-gradient(135deg,var(--primary-light),color-mix(in srgb,var(--primary-light) 80%,var(--bg-card)));border-left:4px solid var(--primary-dark);border-radius:0 16px 16px 0;padding:20px 24px;margin:20px 0;transition:all .5s ease}
-.important-notice p{padding-top:4px;line-height:1.7}
-.footer{text-align:center;padding:40px 20px;background:linear-gradient(180deg,var(--bg-main) 0%,var(--primary-light) 100%);border-top:1px solid color-mix(in srgb,var(--primary) 20%,transparent);transition:all .5s ease}
-.footer-arabic{font-family:'Noto Naskh Arabic',serif;font-size:20px;color:var(--primary-dark);direction:rtl;transition:color .5s ease}
-.footer-text{font-size:12px;color:var(--text-light);margin-top:12px;transition:color .5s ease}
-.footer-ornament{margin:16px auto;width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent)}
-.scroll-top{position:fixed;bottom:24px;right:24px;width:52px;height:52px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border:none;border-radius:16px;color:white;font-size:20px;cursor:pointer;box-shadow:0 8px 30px var(--shadow-primary);opacity:0;transform:translateY(20px) scale(.8);transition:all .4s cubic-bezier(.4,0,.2,1);z-index:999;display:flex;align-items:center;justify-content:center}
+.step-number{width:32px;height:32px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0}
+.step-content h4{font-size:13px;color:var(--text-dark);margin-bottom:4px;transition:color .5s ease}
+.step-content p{font-size:12px;color:var(--text-light);line-height:1.6;transition:color .5s ease}
+.important-notice{background:linear-gradient(135deg,var(--primary-light),color-mix(in srgb,var(--primary-light) 80%,var(--bg-card)));border-left:4px solid var(--primary-dark);border-radius:0 14px 14px 0;padding:16px 20px;margin:16px 0;transition:all .5s ease}
+.important-notice p{padding-top:4px;line-height:1.7;font-size:clamp(12px,3vw,14px)}
+.footer{text-align:center;padding:32px 16px;background:linear-gradient(180deg,var(--bg-main) 0%,var(--primary-light) 100%);border-top:1px solid color-mix(in srgb,var(--primary) 20%,transparent);transition:all .5s ease}
+.footer-arabic{font-family:'Noto Naskh Arabic',serif;font-size:18px;color:var(--primary-dark);direction:rtl;transition:color .5s ease}
+.footer-text{font-size:11px;color:var(--text-light);margin-top:10px;transition:color .5s ease}
+.footer-ornament{margin:12px auto;width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent)}
+.scroll-top{position:fixed;bottom:20px;right:16px;width:46px;height:46px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border:none;border-radius:14px;color:white;font-size:18px;cursor:pointer;box-shadow:0 8px 30px var(--shadow-primary);opacity:0;transform:translateY(20px) scale(.8);transition:all .4s cubic-bezier(.4,0,.2,1);z-index:999;display:flex;align-items:center;justify-content:center}
 .scroll-top.visible{opacity:1;transform:translateY(0) scale(1)}
 .scroll-top:hover{transform:translateY(-3px) scale(1.05)}
 .scroll-top:active{transform:scale(.95)}
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,#2E7D32,#4CAF50);color:white;padding:14px 28px;border-radius:50px;font-size:14px;font-weight:600;box-shadow:0 8px 30px rgba(46,125,50,.3);opacity:0;transition:all .5s cubic-bezier(.4,0,.2,1);z-index:9999;pointer-events:none;white-space:nowrap}
+.toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,#2E7D32,#4CAF50);color:white;padding:12px 24px;border-radius:50px;font-size:13px;font-weight:600;box-shadow:0 8px 30px rgba(46,125,50,.3);opacity:0;transition:all .5s cubic-bezier(.4,0,.2,1);z-index:9999;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-@media(max-width:360px){.header{padding:8px 10px}.nav-tab{padding:8px 12px;font-size:11px}.ruqya-card-content{padding:16px}}
-@media(min-width:768px){.section{padding:32px 24px 60px;max-width:700px;margin:0 auto}.hero{padding:60px 40px 50px}}
+
+/* ===== RESPONSIVE MOBILE FIXES ===== */
+@media(max-width:480px){
+  .header{padding:8px 8px;gap:4px}
+  .header-brand{gap:8px}
+  .header-logo{width:32px;height:32px;font-size:16px;border-radius:8px}
+  .header-title{font-size:13px}
+  .header-controls{gap:3px}
+  .theme-switcher{gap:2px;padding:2px}
+  .theme-dot{width:20px;height:20px}
+  .theme-dot.active::after{font-size:7px}
+  .lang-btn{padding:4px 8px;font-size:10px}
+  .font-controls{padding:2px}
+  .font-btn{width:24px;height:24px;font-size:10px}
+  .font-size-display{font-size:8px;min-width:24px}
+  .hero{padding:28px 12px 24px}
+  .hero-icon{width:60px;height:60px;font-size:28px;border-radius:16px}
+  .hero-title{font-size:clamp(18px,5vw,28px);margin-bottom:8px}
+  .hero-desc{font-size:12px;line-height:1.6}
+  .progress-section{padding:12px}
+  .progress-label{font-size:11px}
+  .progress-count{font-size:12px}
+  .progress-bar{height:6px}
+  .nav-tabs{padding:10px 8px;gap:5px}
+  .nav-tab{padding:7px 10px;font-size:10px}
+  .section{padding:14px 8px 40px}
+  .section-header{padding:18px 12px;margin-bottom:18px;border-radius:12px}
+  .section-icon{font-size:28px}
+  .section-title{font-size:clamp(16px,4.5vw,22px)}
+  .info-card{padding:16px 12px;border-radius:12px;margin-bottom:10px}
+  .info-card h3{font-size:14px;margin-bottom:8px}
+  .info-card p{font-size:12px;line-height:1.6}
+  .ruqya-card{margin-bottom:10px;border-radius:12px}
+  .ruqya-card-header{padding:12px 10px;gap:8px}
+  .ruqya-number{width:30px;height:30px;font-size:12px;border-radius:8px}
+  .ruqya-card-title{font-size:12px}
+  .ruqya-toggle{width:24px;height:24px;font-size:12px}
+  .ruqya-card-content{padding:14px 10px}
+  .arabic-block{padding:16px 12px;margin:10px 0;border-radius:10px}
+  .arabic-text{font-size:clamp(16px,4.5vw,22px);line-height:2}
+  .translation{padding:8px 10px;margin-top:8px;font-size:12px;border-radius:8px}
+  .transcription{padding:6px 10px;margin-top:6px;font-size:11px;border-radius:8px}
+  .counter-section{margin:14px 0}
+  .counter-display{gap:12px}
+  .counter-btn{width:36px;height:36px;font-size:16px}
+  .counter-circle{width:60px;height:60px}
+  .counter-circle svg circle{r:28}
+  .counter-value{font-size:20px}
+  .complete-btn{padding:12px;font-size:12px;border-radius:10px;margin-top:12px}
+  .gradient-block{padding:18px 14px;margin:12px 0;border-radius:12px}
+  .gradient-block-title{font-size:clamp(14px,4vw,18px)}
+  .steps-container{gap:8px;margin:12px 0}
+  .step-item{padding:12px;gap:10px;border-radius:10px}
+  .step-number{width:28px;height:28px;font-size:12px}
+  .step-content h4{font-size:12px}
+  .step-content p{font-size:11px}
+  .important-notice{padding:14px 16px;margin:12px 0;border-radius:0 10px 10px 0}
+  .important-notice p{font-size:12px}
+  .footer{padding:24px 12px}
+  .footer-arabic{font-size:16px}
+  .footer-text{font-size:10px}
+  .scroll-top{width:40px;height:40px;bottom:16px;right:12px;border-radius:12px;font-size:16px}
+  .toast{font-size:12px;padding:10px 20px;bottom:60px}
+}
+
+@media(max-width:360px){
+  .header{padding:6px 6px}
+  .header-logo{width:28px;height:28px;font-size:14px;border-radius:7px}
+  .header-title{font-size:12px}
+  .theme-dot{width:18px;height:18px}
+  .theme-dot.active::after{font-size:6px}
+  .lang-btn{padding:3px 6px;font-size:9px}
+  .font-btn{width:22px;height:22px;font-size:9px}
+  .font-size-display{font-size:7px;min-width:20px}
+  .nav-tab{padding:6px 8px;font-size:9px}
+  .ruqya-card-header{padding:10px 8px}
+  .ruqya-number{width:26px;height:26px;font-size:11px}
+  .ruqya-card-title{font-size:11px}
+  .arabic-text{font-size:clamp(15px,4vw,20px)}
+  .section{padding:10px 6px 36px}
+}
+
+@media(min-width:768px){
+  .section{padding:32px 24px 60px;max-width:700px;margin:0 auto}
+  .hero{padding:60px 40px 50px}
+  .header{padding:12px 20px}
+}
 </style>
 </head>
 <body data-theme="gold">
 
+<!-- ===== PREMIUM SPLASH SCREEN ===== -->
 <div id="splashScreen">
-<div class="letterbox-top"></div><div class="letterbox-bottom"></div>
-<div class="splash-bg-layer"></div><div class="splash-rays"></div><div class="splash-vignette"></div>
-<div class="splash-glow"></div><div class="splash-horizon"></div>
-<div class="splash-stars" id="splashStars"></div><div class="splash-dust" id="splashDust"></div>
-<div class="cine-flash" id="cineFlash"></div>
-<div class="splash-content">
-<div class="splash-phase1" id="phase1"><div class="splash-opening-quote">С именем Аллаха Милостивого Милосердного</div></div>
-<div class="splash-phase2" id="phase2"><div class="splash-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div></div>
-<div class="splash-phase3" id="phase3">
-<div class="splash-ornament-dots"><span></span><span></span><span></span><span></span><span></span></div>
-<div class="splash-line"></div>
-<div class="splash-title-wrap"><div class="splash-title">Лекарь Абу Мухаммад</div></div>
-<div class="splash-subtitle-wrap"><div class="splash-subtitle">Курс лечения рукья</div></div>
-<div class="splash-tagline">Устранение преград (та'тыль) во всех сферах жизни</div>
-<button class="splash-enter-btn" id="enterBtn">Войти в курс</button>
+<div class="splash-nebula"></div>
+<div class="splash-starfield"><canvas id="starCanvas"></canvas></div>
+<div class="splash-sacred">
+  <div class="sacred-ring"></div><div class="sacred-ring"></div>
+  <div class="sacred-ring"></div><div class="sacred-ring"></div>
 </div>
-<div class="splash-countdown"><span id="cdNum">12</span> &nbsp;сек</div>
+<div class="splash-lightrays" id="lightRays"></div>
+<div class="splash-core-glow"></div>
+<div class="splash-particles" id="splashParticles"></div>
+<div class="splash-vignette"></div>
+<div class="sp-flash" id="spFlash"></div>
+
+<div class="splash-content">
+  <!-- Phase 1: Opening -->
+  <div class="sp-phase" id="spPhase1">
+    <div class="sp-opening-line"></div>
+    <div class="sp-opening-text">С именем Аллаха<br>Милостивого Милосердного</div>
+    <div class="sp-opening-line-bottom"></div>
+  </div>
+
+  <!-- Phase 2: Bismillah -->
+  <div class="sp-phase" id="spPhase2">
+    <div class="sp-bismillah-glow"></div>
+    <div class="sp-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <div class="sp-bismillah-sub">Во имя Аллаха Милостивого Милосердного</div>
+  </div>
+
+  <!-- Phase 3: Main -->
+  <div class="sp-phase" id="spPhase3">
+    <div class="sp-ornament">
+      <div class="sp-ornament-line"></div>
+      <div class="sp-ornament-diamond"></div>
+      <div class="sp-ornament-line" style="transform:scaleX(-1)"></div>
+    </div>
+    <div class="sp-title-container">
+      <div class="sp-title">Лекарь Абу Мухаммад</div>
+    </div>
+    <div class="sp-subtitle-container">
+      <div class="sp-subtitle">Курс лечения рукья</div>
+    </div>
+    <div class="sp-tagline">Устранение преград во всех сферах жизни<br>с помощью Всевышнего Аллаха</div>
+    <div class="sp-divider-fancy">
+      <div class="sp-divider-line"></div>
+      <div class="sp-divider-dot"></div>
+      <div class="sp-divider-dot" style="width:5px;height:5px;background:rgba(212,168,67,.6)"></div>
+      <div class="sp-divider-dot"></div>
+      <div class="sp-divider-line"></div>
+    </div>
+    <button class="sp-enter-btn" id="enterBtn">Войти в курс</button>
+  </div>
+
+  <!-- Auto-enter indicator -->
+  <div class="sp-auto-enter">
+    <div class="sp-auto-ring">
+      <svg viewBox="0 0 28 28">
+        <circle class="sp-auto-ring-bg" cx="14" cy="14" r="12"/>
+        <circle class="sp-auto-ring-fill" id="autoRing" cx="14" cy="14" r="12"/>
+      </svg>
+    </div>
+    <div class="sp-auto-text">авто-вход</div>
+  </div>
 </div>
 </div>
 
+<!-- ===== MAIN APP ===== -->
 <div id="mainApp"><div class="container">
 <header class="header" id="mainHeader">
 <div class="header-brand"><div class="header-logo">أ</div><div class="header-title" data-ru="Лекарь Абу Мухаммад" data-uz="Tabib Abu Muhammad">Лекарь Абу Мухаммад</div></div>
@@ -281,17 +504,156 @@ body{font-family:'Noto Sans',sans-serif;background:var(--bg-main);color:var(--te
 <button class="scroll-top" id="scrollTopBtn">↑</button>
 
 <script>
-// ====================== ИСПРАВЛЕННЫЕ ДАННЫЕ — БЕЗ "би сабаби" ======================
-// Формула: بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي [место преграды]
-// Для сглаза и порчи — оригинальная формула без та'тыль
+// ===== SPLASH SCREEN ENGINE =====
+(function(){
+  const splash=document.getElementById('splashScreen');
+  const canvas=document.getElementById('starCanvas');
+  const ctx=canvas.getContext('2d');
+  let animFrame,stars=[];
 
+  function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+  window.addEventListener('resize',resizeCanvas);
+  resizeCanvas();
+
+  // Create stars
+  for(let i=0;i<200;i++){
+    stars.push({
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height,
+      r:Math.random()*1.5+.3,
+      speed:Math.random()*.02+.005,
+      phase:Math.random()*Math.PI*2,
+      brightness:.1+Math.random()*.7
+    });
+  }
+
+  function drawStars(time){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    stars.forEach(s=>{
+      const twinkle=Math.sin(time*s.speed+s.phase)*.5+.5;
+      const alpha=s.brightness*twinkle;
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,248,220,${alpha})`;
+      ctx.fill();
+      if(s.r>1.2&&twinkle>.8){
+        ctx.beginPath();ctx.arc(s.x,s.y,s.r*3,0,Math.PI*2);
+        ctx.fillStyle=`rgba(212,168,67,${alpha*.15})`;ctx.fill();
+      }
+    });
+    animFrame=requestAnimationFrame(()=>drawStars(time+16));
+  }
+  drawStars(0);
+
+  // Light rays
+  const raysC=document.getElementById('lightRays');
+  for(let i=0;i<24;i++){
+    const ray=document.createElement('div');ray.className='lightray';
+    const angle=i*(360/24);
+    const len=150+Math.random()*250;
+    ray.style.cssText=`height:${len}px;transform:translate(-50%,-100%) rotate(${angle}deg);animation-delay:${Math.random()*6}s;animation-duration:${4+Math.random()*4}s`;
+    raysC.appendChild(ray);
+  }
+
+  // Particles
+  const partC=document.getElementById('splashParticles');
+  function spawnParticle(){
+    if(!splash.parentElement)return;
+    const p=document.createElement('div');
+    p.className='particle '+(Math.random()>.3?'particle-gold':'particle-white');
+    const size=2+Math.random()*4;
+    const startX=Math.random()*100;
+    const startY=Math.random()*100;
+    const dur=8+Math.random()*12;
+    p.style.cssText=`width:${size}px;height:${size}px;left:${startX}%;top:${startY}%;opacity:0;`;
+    partC.appendChild(p);
+    const dx=(Math.random()-.5)*100;const dy=(Math.random()-.5)*100;
+    p.animate([
+      {opacity:0,transform:'translate(0,0) scale(.3)'},
+      {opacity:.7,offset:.15},
+      {opacity:.4,offset:.7},
+      {opacity:0,transform:`translate(${dx}px,${dy}px) scale(1.5)`}
+    ],{duration:dur*1000,easing:'ease-in-out'});
+    setTimeout(()=>p.remove(),dur*1000);
+  }
+  const partInterval=setInterval(spawnParticle,300);
+  for(let i=0;i<15;i++)setTimeout(spawnParticle,i*200);
+
+  // Phase orchestration
+  const phases=[
+    document.getElementById('spPhase1'),
+    document.getElementById('spPhase2'),
+    document.getElementById('spPhase3')
+  ];
+  let currentPhase=-1;
+
+  function showPhase(idx){
+    if(currentPhase>=0&&currentPhase<phases.length){
+      const prev=phases[currentPhase];
+      prev.classList.remove('sp-phase-enter');
+      prev.classList.add('sp-phase-exit');
+      setTimeout(()=>{prev.classList.remove('visible','sp-phase-exit');},1500);
+    }
+    if(idx<phases.length){
+      setTimeout(()=>{
+        const cur=phases[idx];
+        cur.classList.add('visible','sp-phase-enter');
+        // Flash
+        const fl=document.getElementById('spFlash');
+        fl.classList.remove('fire');void fl.offsetWidth;fl.classList.add('fire');
+      },currentPhase>=0?1200:200);
+    }
+    currentPhase=idx;
+  }
+
+  // Activate geometry
+  setTimeout(()=>splash.classList.add('phase-geo'),500);
+
+  // Phase timeline
+  setTimeout(()=>showPhase(0),800);
+  setTimeout(()=>showPhase(1),4500);
+  setTimeout(()=>showPhase(2),8500);
+
+  // Auto-enter countdown
+  let autoTime=14;
+  const autoRing=document.getElementById('autoRing');
+  const circumference=2*Math.PI*12; // r=12
+  autoRing.style.strokeDasharray=circumference;
+  autoRing.style.strokeDashoffset=circumference;
+
+  const cdTimer=setInterval(()=>{
+    autoTime--;
+    if(autoTime<=0){clearInterval(cdTimer);enterApp();}
+    const progress=(14-autoTime)/14;
+    autoRing.style.strokeDashoffset=circumference*(1-progress);
+  },1000);
+
+  function enterApp(){
+    clearInterval(cdTimer);clearInterval(partInterval);
+    cancelAnimationFrame(animFrame);
+    splash.classList.add('exit-active');
+    setTimeout(()=>{
+      splash.style.display='none';
+      const app=document.getElementById('mainApp');
+      app.style.display='block';
+      requestAnimationFrame(()=>{app.classList.add('visible');});
+    },2000);
+  }
+
+  document.getElementById('enterBtn').addEventListener('click',enterApp);
+
+  // Skip on touch/click anywhere (after phase 3 starts)
+  splash.addEventListener('click',e=>{
+    if(e.target.id==='enterBtn')return;
+    if(currentPhase>=2)enterApp();
+  });
+})();
+
+// ====================== ДАННЫЕ ======================
 const ruqyaData = [
-  // ОБЩИЕ (3)
   {id:"g1",section:"general",num:1,ru:"Преграда в уделе (ризк)",uz:"Rizqdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الرِّزْقِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-р-ризкъ.",transRu:"С именем Аллаха, я делаю рукья от преграды в уделе.",transUz:"Allohning ismi bilan, rizqdagi to'siqdan ruqiya qilaman."},
   {id:"g2",section:"general",num:2,ru:"Преграда в успехе",uz:"Muvaffaqiyatdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّجَاحِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-наджах.",transRu:"С именем Аллаха, я делаю рукья от преграды в успехе.",transUz:"Allohning ismi bilan, muvaffaqiyatdagi to'siqdan ruqiya qilaman."},
   {id:"g3",section:"general",num:3,ru:"Преграда в продажах",uz:"Savdodagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْبَيْعِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-бай'.",transRu:"С именем Аллаха, я делаю рукья от преграды в продажах.",transUz:"Allohning ismi bilan, savdodagi to'siqdan ruqiya qilaman."},
-
-  // ПРОДАЖИ (13) — та'тыль фи + конкретное место
   {id:"s1",section:"sales",num:1,ru:"Преграда в обзвоне клиентов",uz:"Mijozlarga qo'ng'iroqdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الِاتِّصَالِ بِالْعُمَلَاءِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-иттисали би-ль-'умаля.",transRu:"С именем Аллаха, я делаю рукья от преграды в обзвоне клиентов.",transUz:"Allohning ismi bilan, mijozlarga qo'ng'iroq qilishdagi to'siqdan ruqiya qilaman."},
   {id:"s2",section:"sales",num:2,ru:"Преграда в обработке возражений",uz:"E'tirozlarni ishlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي مُعَالَجَةِ الِاعْتِرَاضَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи му'аляджати-ль-и'тирадат.",transRu:"С именем Аллаха, я делаю рукья от преграды в обработке возражений.",transUz:"Allohning ismi bilan, e'tirozlarni ishlashdagi to'siqdan ruqiya qilaman."},
   {id:"s3",section:"sales",num:3,ru:"Преграда в завершении сделки",uz:"Bitimni yakunlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي إِتْمَامِ الصَّفْقَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи итмами-с-сафкъа.",transRu:"С именем Аллаха, я делаю рукья от преграды в завершении сделки.",transUz:"Allohning ismi bilan, bitimni yakunlashdagi to'siqdan ruqiya qilaman."},
@@ -305,9 +667,7 @@ const ruqyaData = [
   {id:"s11",section:"sales",num:11,ru:"Преграда в воронке продаж",uz:"Savdo hunisidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي مَسَارِ الْبَيْعِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи масари-ль-бай'.",transRu:"С именем Аллаха, я делаю рукья от преграды в воронке продаж.",transUz:"Allohning ismi bilan, savdo hunisidagi to'siqdan ruqiya qilaman."},
   {id:"s12",section:"sales",num:12,ru:"Преграда в активности действий",uz:"Harakatlar faolligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّشَاطِ فِي الْأَعْمَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-нашати фи-ль-а'маль.",transRu:"С именем Аллаха, я делаю рукья от преграды в активности действий.",transUz:"Allohning ismi bilan, harakatlar faolligidagi to'siqdan ruqiya qilaman."},
   {id:"s13",section:"sales",num:13,ru:"Преграда в коллективе из-за зависти",uz:"Hasad sababli jamoadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْفَرِيقِ مِنَ الْحَسَدِ وَالْعَيْنِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-фарикъи мина-ль-хасади ва-ль-'айн.",transRu:"С именем Аллаха, я делаю рукья от преграды в коллективе из-за зависти и сглаза.",transUz:"Allohning ismi bilan, hasad va ko'z tegish sababli jamoadagi to'siqdan ruqiya qilaman."},
-
-  // УСПЕХ (12)
-  {id:"su1",section:"success",num:1,ru:"Преграда в смелости действовать",uz:"Harakat qilish jasоratidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الشَّجَاعَةِ لِلْعَمَلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ш-шаджа'ати ли-ль-'амаль.",transRu:"С именем Аллаха, я делаю рукья от преграды в смелости действовать.",transUz:"Allohning ismi bilan, harakat qilish jasoratidagi to'siqdan ruqiya qilaman."},
+  {id:"su1",section:"success",num:1,ru:"Преграда в смелости действовать",uz:"Harakat qilish jasoratidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الشَّجَاعَةِ لِلْعَمَلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ш-шаджа'ати ли-ль-'амаль.",transRu:"С именем Аллаха, я делаю рукья от преграды в смелости действовать.",transUz:"Allohning ismi bilan, harakat qilish jasoratidagi to'siqdan ruqiya qilaman."},
   {id:"su2",section:"success",num:2,ru:"Преграда в принятии решений",uz:"Qaror qabul qilishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي اتِّخَاذِ الْقَرَارَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ттихази-ль-къарарат.",transRu:"С именем Аллаха, я делаю рукья от преграды в принятии решений.",transUz:"Allohning ismi bilan, qaror qabul qilishdagi to'siqdan ruqiya qilaman."},
   {id:"su3",section:"success",num:3,ru:"Преграда в уверенности в себе",uz:"O'ziga ishonchdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الثِّقَةِ بِالنَّفْسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-с-сикъати би-н-нафс.",transRu:"С именем Аллаха, я делаю рукья от преграды в уверенности в себе.",transUz:"Allohning ismi bilan, o'ziga ishonchdagi to'siqdan ruqiya qilaman."},
   {id:"su4",section:"success",num:4,ru:"Преграда в мотивации",uz:"Motivatsiyadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الدَّافِعِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-д-дафи'.",transRu:"С именем Аллаха, я делаю рукья от преграды в мотивации.",transUz:"Allohning ismi bilan, motivatsiyadagi to'siqdan ruqiya qilaman."},
@@ -319,8 +679,6 @@ const ruqyaData = [
   {id:"su10",section:"success",num:10,ru:"Преграда в достижении целей",uz:"Maqsadlarga erishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي تَحْقِيقِ الْأَهْدَافِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи тахкъикъи-ль-ахдаф.",transRu:"С именем Аллаха, я делаю рукья от преграды в достижении целей.",transUz:"Allohning ismi bilan, maqsadlarga erishdagi to'siqdan ruqiya qilaman."},
   {id:"su11",section:"success",num:11,ru:"Преграда в силе воли",uz:"Iroda kuchidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قُوَّةِ الْإِرَادَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къуввати-ль-ирада.",transRu:"С именем Аллаха, я делаю рукья от преграды в силе воли.",transUz:"Allohning ismi bilan, iroda kuchidagi to'siqdan ruqiya qilaman."},
   {id:"su12",section:"success",num:12,ru:"Преграда в развитии и росте",uz:"Rivojlanish va o'sishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّطَوُّرِ وَالنُّمُوِّ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-татаввури ва-н-нумувв.",transRu:"С именем Аллаха, я делаю рукья от преграды в развитии и росте.",transUz:"Allohning ismi bilan, rivojlanish va o'sishdagi to'siqdan ruqiya qilaman."},
-
-  // ЗДОРОВЬЕ (10)
   {id:"h1",section:"health",num:1,ru:"Преграда в исцелении от болей",uz:"Og'riqlardan shifo topdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي شِفَاءِ الْآلَامِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи шифаи-ль-алям.",transRu:"С именем Аллаха, я делаю рукья от преграды в исцелении от болей.",transUz:"Allohning ismi bilan, og'riqlardan shifo topdashdagi to'siqdan ruqiya qilaman."},
   {id:"h2",section:"health",num:2,ru:"Преграда в здоровом сне",uz:"Sog'lom uyqudagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّوْمِ الصَّحِيحِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-науми-с-сахих.",transRu:"С именем Аллаха, я делаю рукья от преграды в здоровом сне.",transUz:"Allohning ismi bilan, sog'lom uyqudagi to'siqdan ruqiya qilaman."},
   {id:"h3",section:"health",num:3,ru:"Преграда в спокойствии души",uz:"Ruh xotirjamligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي سَكِينَةِ النَّفْسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сакинати-н-нафс.",transRu:"С именем Аллаха, я делаю рукья от преграды в спокойствии души.",transUz:"Allohning ismi bilan, ruh xotirjamligidagi to'siqdan ruqiya qilaman."},
@@ -331,8 +689,6 @@ const ruqyaData = [
   {id:"h8",section:"health",num:8,ru:"Преграда в крепости иммунитета",uz:"Immunitet mustahkamligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قُوَّةِ الْمَنَاعَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къуввати-ль-мана'а.",transRu:"С именем Аллаха, я делаю рукья от преграды в крепости иммунитета.",transUz:"Allohning ismi bilan, immunitet mustahkamligidagi to'siqdan ruqiya qilaman."},
   {id:"h9",section:"health",num:9,ru:"Преграда в здоровье спины и суставов",uz:"Bel va bo'g'imlar salomatligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي صِحَّةِ الظَّهْرِ وَالْمَفَاصِلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сыххати-з-захри ва-ль-мафасиль.",transRu:"С именем Аллаха, я делаю рукья от преграды в здоровье спины и суставов.",transUz:"Allohning ismi bilan, bel va bo'g'imlar salomatligidagi to'siqdan ruqiya qilaman."},
   {id:"h10",section:"health",num:10,ru:"Преграда в общем исцелении тела и духа",uz:"Tana va ruh umumiy shifo to'siqligi",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي شِفَاءِ الْجَسَدِ وَالرُّوحِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи шифаи-ль-джасади ва-р-рух.",transRu:"С именем Аллаха, я делаю рукья от преграды в исцелении тела и духа.",transUz:"Allohning ismi bilan, tana va ruh shifo topishidagi to'siqdan ruqiya qilaman."},
-
-  // ОТНОШЕНИЯ (10)
   {id:"r1",section:"relationships",num:1,ru:"Преграда в согласии между супругами",uz:"Er-xotin kelishuvdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْوِفَاقِ بَيْنَ الزَّوْجَيْنِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-вифакъи байна-з-зауджайн.",transRu:"С именем Аллаха, я делаю рукья от преграды в согласии между супругами.",transUz:"Allohning ismi bilan, er-xotin kelishuvdagi to'siqdan ruqiya qilaman."},
   {id:"r2",section:"relationships",num:2,ru:"Преграда в доверии в отношениях",uz:"Munosabatlardagi ishonchdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الثِّقَةِ فِي الْعَلَاقَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-с-сикъати фи-ль-'алякъат.",transRu:"С именем Аллаха, я делаю рукья от преграды в доверии в отношениях.",transUz:"Allohning ismi bilan, munosabatlardagi ishonchdagi to'siqdan ruqiya qilaman."},
   {id:"r3",section:"relationships",num:3,ru:"Преграда в мире и покое в семье",uz:"Oiladagi tinchlik va osoyishtalikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي السَّلَامِ فِي الْأُسْرَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-с-салями фи-ль-усра.",transRu:"С именем Аллаха, я делаю рукья от преграды в мире и покое в семье.",transUz:"Allohning ismi bilan, oiladagi tinchlikdagi to'siqdan ruqiya qilaman."},
@@ -343,8 +699,6 @@ const ruqyaData = [
   {id:"r8",section:"relationships",num:8,ru:"Преграда в понимании между поколениями",uz:"Avlodlar o'rtasidagi tushunishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّفَاهُمِ بَيْنَ الْأَجْيَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тафахуми байна-ль-аджйаль.",transRu:"С именем Аллаха, я делаю рукья от преграды в понимании между поколениями.",transUz:"Allohning ismi bilan, avlodlar o'rtasidagi tushunishdagi to'siqdan ruqiya qilaman."},
   {id:"r9",section:"relationships",num:9,ru:"Преграда в дружбе и товариществе",uz:"Do'stlik va o'rtoqlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الصَّدَاقَةِ وَالْمَوَدَّةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-с-садакъати ва-ль-маваддa.",transRu:"С именем Аллаха, я делаю рукья от преграды в дружбе и любви.",transUz:"Allohning ismi bilan, do'stlik va muhabbatdagi to'siqdan ruqiya qilaman."},
   {id:"r10",section:"relationships",num:10,ru:"Преграда в любви и милости",uz:"Sevgi va mehribonlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْمَحَبَّةِ وَالرَّحْمَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-махаббати ва-р-рахма.",transRu:"С именем Аллаха, я делаю рукья от преграды в любви и милости.",transUz:"Allohning ismi bilan, sevgi va mehribonlikdagi to'siqdan ruqiya qilaman."},
-
-  // ФИНАНСЫ (10)
   {id:"f1",section:"finances",num:1,ru:"Преграда в избавлении от долгов",uz:"Qarzlardan xalos bo'lishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قَضَاءِ الدُّيُونِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къадаи-д-дуюн.",transRu:"С именем Аллаха, я делаю рукья от преграды в избавлении от долгов.",transUz:"Allohning ismi bilan, qarzlardan xalos bo'lishdagi to'siqdan ruqiya qilaman."},
   {id:"f2",section:"finances",num:2,ru:"Преграда в разумных тратах",uz:"Oqilona xarajatlardagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْإِنْفَاقِ الرَّشِيدِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-инфакъи-р-рашид.",transRu:"С именем Аллаха, я делаю рукья от преграды в разумных тратах.",transUz:"Allohning ismi bilan, oqilona xarajatlardagi to'siqdan ruqiya qilaman."},
   {id:"f3",section:"finances",num:3,ru:"Преграда в сохранении денег",uz:"Pulni saqlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي حِفْظِ الْمَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи хифзи-ль-маль.",transRu:"С именем Аллаха, я делаю рукья от преграды в сохранении денег.",transUz:"Allohning ismi bilan, pulni saqlashdagi to'siqdan ruqiya qilaman."},
@@ -355,8 +709,6 @@ const ruqyaData = [
   {id:"f8",section:"finances",num:8,ru:"Преграда в щедрости души",uz:"Ko'ngil saxovatidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي سَخَاءِ النَّفْسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сахаи-н-нафс.",transRu:"С именем Аллаха, я делаю рукья от преграды в щедрости души.",transUz:"Allohning ismi bilan, ko'ngil saxovatidagi to'siqdan ruqiya qilaman."},
   {id:"f9",section:"finances",num:9,ru:"Преграда в открытии путей заработка",uz:"Daromad yo'llarini ochishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي فَتْحِ أَبْوَابِ الْكَسْبِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи фатхи абвабу-ль-касб.",transRu:"С именем Аллаха, я делаю рукья от преграды в открытии путей заработка.",transUz:"Allohning ismi bilan, daromad yo'llarini ochishdagi to'siqdan ruqiya qilaman."},
   {id:"f10",section:"finances",num:10,ru:"Преграда в баракате имущества",uz:"Mol-mulk barakatidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي بَرَكَةِ الْمَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи баракати-ль-маль.",transRu:"С именем Аллаха, я делаю рукья от преграды в баракате имущества.",transUz:"Allohning ismi bilan, mol-mulk barakatidagi to'siqdan ruqiya qilaman."},
-
-  // УЧЁБА (10)
   {id:"st1",section:"studies",num:1,ru:"Преграда в запоминании",uz:"Eslab qolishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْحِفْظِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-хифз.",transRu:"С именем Аллаха, я делаю рукья от преграды в запоминании.",transUz:"Allohning ismi bilan, eslab qolishdagi to'siqdan ruqiya qilaman."},
   {id:"st2",section:"studies",num:2,ru:"Преграда во внимательности на уроках",uz:"Darslarda e'tibordagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الِانْتِبَاهِ فِي الدُّرُوسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-интибахи фи-д-дурус.",transRu:"С именем Аллаха, я делаю рукья от преграды во внимательности на уроках.",transUz:"Allohning ismi bilan, darslarda e'tibordagi to'siqdan ruqiya qilaman."},
   {id:"st3",section:"studies",num:3,ru:"Преграда в спокойствии на экзаменах",uz:"Imtihonlarda xotirjamlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الطُّمَأْنِينَةِ فِي الِامْتِحَانَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тумаънинати фи-ль-имтиханат.",transRu:"С именем Аллаха, я делаю рукья от преграды в спокойствии на экзаменах.",transUz:"Allohning ismi bilan, imtihonlarda xotirjamlikdagi to'siqdan ruqiya qilaman."},
@@ -367,8 +719,6 @@ const ruqyaData = [
   {id:"st8",section:"studies",num:8,ru:"Преграда в учёбе из-за сглаза",uz:"Ko'z tegish sababli o'qishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الدِّرَاسَةِ مِنَ الْعَيْنِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-д-дирасати мина-ль-'айн.",transRu:"С именем Аллаха, я делаю рукья от преграды в учёбе из-за сглаза.",transUz:"Allohning ismi bilan, ko'z tegish sababli o'qishdagi to'siqdan ruqiya qilaman."},
   {id:"st9",section:"studies",num:9,ru:"Преграда в памяти перед экзаменом",uz:"Imtihon oldida xotiradagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الذَّاكِرَةِ قَبْلَ الِامْتِحَانِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-з-закирати къабля-ль-имтихан.",transRu:"С именем Аллаха, я делаю рукья от преграды в памяти перед экзаменом.",transUz:"Allohning ismi bilan, imtihon oldida xotiradagi to'siqdan ruqiya qilaman."},
   {id:"st10",section:"studies",num:10,ru:"Преграда в открытии дверей знания",uz:"Bilim eshiklarini ochishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي فَتْحِ أَبْوَابِ الْعِلْمِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи фатхи абвабу-ль-'ильм.",transRu:"С именем Аллаха, я делаю рукья от преграды в открытии дверей знания.",transUz:"Allohning ismi bilan, bilim eshiklarini ochishdagi to'siqdan ruqiya qilaman."},
-
-  // ДУХОВНОЕ (10)
   {id:"sp1",section:"spiritual",num:1,ru:"Преграда в поклонении",uz:"Ibodatdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْعِبَادَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-'ибада.",transRu:"С именем Аллаха, я делаю рукья от преграды в поклонении.",transUz:"Allohning ismi bilan, ibodatdagi to'siqdan ruqiya qilaman."},
   {id:"sp2",section:"spiritual",num:2,ru:"Преграда в близости к Аллаху",uz:"Allohga yaqinlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْقُرْبِ مِنَ اللَّهِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-къурби мина-Ллях.",transRu:"С именем Аллаха, я делаю рукья от преграды в близости к Аллаху.",transUz:"Allohning ismi bilan, Allohga yaqinlikdagi to'siqdan ruqiya qilaman."},
   {id:"sp3",section:"spiritual",num:3,ru:"Преграда в лёгкости намаза",uz:"Namoz yengilligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي خُشُوعِ الصَّلَاةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи хушу'и-с-саля.",transRu:"С именем Аллаха, я делаю рукья от преграды в смиренности намаза.",transUz:"Allohning ismi bilan, namoz xushu'idagi to'siqdan ruqiya qilaman."},
@@ -379,8 +729,6 @@ const ruqyaData = [
   {id:"sp8",section:"spiritual",num:8,ru:"Преграда в спокойном сне",uz:"Tinch uyqudagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّوْمِ الْهَادِئِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-науми-ль-хадиъ.",transRu:"С именем Аллаха, я делаю рукья от преграды в спокойном сне.",transUz:"Allohning ismi bilan, tinch uyqudagi to'siqdan ruqiya qilaman."},
   {id:"sp9",section:"spiritual",num:9,ru:"Преграда в твёрдости веры",uz:"Imon mustahkamligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي ثَبَاتِ الْإِيمَانِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сабати-ль-иман.",transRu:"С именем Аллаха, я делаю рукья от преграды в твёрдости веры.",transUz:"Allohning ismi bilan, imon mustahkamligidagi to'siqdan ruqiya qilaman."},
   {id:"sp10",section:"spiritual",num:10,ru:"Преграда в укреплении связи с Аллахом",uz:"Alloh bilan aloqani mustahkamlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي تَقْوِيَةِ الصِّلَةِ بِاللَّهِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи такъвияти-с-сыляти би-Ллях.",transRu:"С именем Аллаха, я делаю рукья от преграды в укреплении связи с Аллахом.",transUz:"Allohning ismi bilan, Alloh bilan aloqani mustahkamlashdagi to'siqdan ruqiya qilaman."},
-
-  // ===== СГЛАЗ (10) — ОРИГИНАЛЬНАЯ ФОРМУЛА =====
   {id:"e1",section:"evilEye",num:1,ru:"Сглаз на здоровье",uz:"Salomatlikka ko'z tegish",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ الْعَيْنِ عَلَى الصِّحَّةِ",tr:"Бисми-Лляхи аркъи мина-ль-'айни 'аля-с-сыхха.",transRu:"С именем Аллаха, я делаю рукья от сглаза на здоровье.",transUz:"Allohning ismi bilan, salomatlikka ko'z tegishdan ruqiya qilaman."},
   {id:"e2",section:"evilEye",num:2,ru:"Сглаз на детей",uz:"Bolalarga ko'z tegish",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ الْعَيْنِ عَلَى الْأَوْلَادِ",tr:"Бисми-Лляхи аркъи мина-ль-'айни 'аля-ль-ауляд.",transRu:"С именем Аллаха, я делаю рукья от сглаза на детей.",transUz:"Allohning ismi bilan, bolalarga ko'z tegishdan ruqiya qilaman."},
   {id:"e3",section:"evilEye",num:3,ru:"Сглаз на красоту",uz:"Go'zallikka ko'z tegish",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ الْعَيْنِ عَلَى الْجَمَالِ",tr:"Бисми-Лляхи аркъи мина-ль-'айни 'аля-ль-джамаль.",transRu:"С именем Аллаха, я делаю рукья от сглаза на красоту.",transUz:"Allohning ismi bilan, go'zallikka ko'z tegishdan ruqiya qilaman."},
@@ -391,8 +739,6 @@ const ruqyaData = [
   {id:"e8",section:"evilEye",num:8,ru:"Завистливый взгляд",uz:"Hasadli nazar",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ النَّظَرِ الْحَاسِدِ",tr:"Бисми-Лляхи аркъи мина-н-назари-ль-хасид.",transRu:"С именем Аллаха, я делаю рукья от завистливого взгляда.",transUz:"Allohning ismi bilan, hasadli nazardan ruqiya qilaman."},
   {id:"e9",section:"evilEye",num:9,ru:"Массовый сглаз",uz:"Ommaviy ko'z tegish",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ الْعَيْنِ الْجَمَاعِيَّةِ",tr:"Бисми-Лляхи аркъи мина-ль-'айни-ль-джама'ийя.",transRu:"С именем Аллаха, я делаю рукья от массового сглаза.",transUz:"Allohning ismi bilan, ommaviy ko'z tegishdan ruqiya qilaman."},
   {id:"e10",section:"evilEye",num:10,ru:"Защита от всякого сглаза",uz:"Barcha ko'z tegishdan himoya",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ كُلِّ عَيْنٍ حَاسِدَةٍ",tr:"Бисми-Лляхи аркъи мин кулли 'айнин хасида.",transRu:"С именем Аллаха, я делаю рукья от всякого завистливого взгляда.",transUz:"Allohning ismi bilan, barcha hasadli ko'z tegishdan ruqiya qilaman."},
-
-  // ===== ПОРЧА (10) — ОРИГИНАЛЬНАЯ ФОРМУЛА =====
   {id:"bm1",section:"blackMagic",num:1,ru:"Порча на разлуку",uz:"Ajratish sehri",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ سِحْرِ التَّفْرِيقِ",tr:"Бисми-Лляхи аркъи мин сихри-т-тафрикъ.",transRu:"С именем Аллаха, я делаю рукья от порчи на разлуку.",transUz:"Allohning ismi bilan, ajratish sehridan ruqiya qilaman."},
   {id:"bm2",section:"blackMagic",num:2,ru:"Порча на болезнь",uz:"Kasallik sehri",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ سِحْرِ الْمَرَضِ",tr:"Бисми-Лляхи аркъи мин сихри-ль-марад.",transRu:"С именем Аллаха, я делаю рукья от порчи на болезнь.",transUz:"Allohning ismi bilan, kasallik sehridan ruqiya qilaman."},
   {id:"bm3",section:"blackMagic",num:3,ru:"Порча на бедность",uz:"Qashshoqlik sehri",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ سِحْرِ الْفَقْرِ",tr:"Бисми-Лляхи аркъи мин сихри-ль-факър.",transRu:"С именем Аллаха, я делаю рукья от порчи на бедность.",transUz:"Allohning ismi bilan, qashshoqlik sehridan ruqiya qilaman."},
@@ -407,9 +753,10 @@ const ruqyaData = [
 
 const TOTAL_ITEMS=ruqyaData.length;
 let currentLang='ru',completedItems=new Set(),counters={};
+const RING_CIRCUMFERENCE=2*Math.PI*31; // r=31 for 70px circle
 const sectionsMeta={howTo:{icon:'📖',ru:'Как применять',uz:"Qanday qo'llash"},general:{icon:'🤲',ru:'Общие',uz:'Umumiy'},sales:{icon:'💰',ru:'Продажи',uz:'Savdo'},success:{icon:'⭐',ru:'Успех',uz:'Muvaffaqiyat'},health:{icon:'🩺',ru:'Здоровье',uz:'Salomatlik'},relationships:{icon:'💕',ru:'Отношения',uz:'Munosabatlar'},finances:{icon:'💵',ru:'Финансы',uz:'Moliya'},studies:{icon:'📚',ru:'Учёба',uz:"Ta'lim"},spiritual:{icon:'🕌',ru:'Духовное',uz:"Ma'naviyat"},evilEye:{icon:'👁️',ru:'Сглаз',uz:"Ko'z tegish"},blackMagic:{icon:'🛡️',ru:'Порча',uz:'Sehr'}};
 
-function renderAll(){const c=document.getElementById('sectionsContainer');c.innerHTML='';for(let s in sectionsMeta){const m=sectionsMeta[s],d=document.createElement('div');d.className='section';d.id=`section-${s}`;if(s==='howTo')d.classList.add('active');d.innerHTML=`<div class="section-header"><div class="section-icon">${m.icon}</div><h2 class="section-title" data-ru="${m.ru}" data-uz="${m.uz}">${m.ru}</h2></div>`;if(s==='howTo'){d.innerHTML+=`<div class="gradient-block"><div class="gradient-block-title" data-ru="Как применять рукья от преград (та'тыль)" data-uz="Ta'tildan ruqiyani qanday qo'llash">Как применять рукья от преград (та'тыль)</div></div><div class="info-card"><h3 data-ru="Формула заклинания" data-uz="Duo formulasi">Формула заклинания</h3><p data-ru="Основная формула: «Бисми-Лляхи аркъи мина-т-та'тыли фи...» — С именем Аллаха, я делаю рукья от преграды в [конкретном месте]. Слово «та'тыль» уже означает преграду, поэтому после него сразу указывается место преграды через «фи» (в). Разделы «Сглаз» и «Порча» используют собственные прямые формулы." data-uz="Asosiy formula: «Bismi-Llohi arqiy mina-t-ta'tili fi...» — Allohning ismi bilan, [aniq joydagi] to'siqdan ruqiya qilaman. «Ta'til» so'zi o'zi to'siqni anglatadi, shuning uchun undan keyin «fi» (da) orqali to'siq joyi ko'rsatiladi. «Ko'z tegish» va «Sehr» bo'limlari o'z formulalarini ishlatadi.">Основная формула: «Бисми-Лляхи аркъи мина-т-та'тыли фи...» — С именем Аллаха, я делаю рукья от преграды в [конкретном месте]. Слово «та'тыль» уже означает преграду, поэтому после него сразу указывается место преграды через «фи» (в). Разделы «Сглаз» и «Порча» используют собственные прямые формулы.</p></div><div class="steps-container"><div class="step-item"><div class="step-number">1</div><div class="step-content"><h4 data-ru="Совершите вуду" data-uz="Vuzu qiling">Совершите вуду</h4><p data-ru="Будьте в ритуальной чистоте." data-uz="Ritual poklikda bo'ling.">Будьте в ритуальной чистоте.</p></div></div><div class="step-item"><div class="step-number">2</div><div class="step-content"><h4 data-ru="Сделайте искренний ният" data-uz="Chin niyat qiling">Сделайте искренний ният</h4><p data-ru="Намерение — снять преграду с помощью Аллаха." data-uz="Niyat — Alloh yordamida to'siqni olib tashlash.">Намерение — снять преграду с помощью Аллаха.</p></div></div><div class="step-item"><div class="step-number">3</div><div class="step-content"><h4 data-ru="Читайте с уверенностью" data-uz="Ishonch bilan o'qing">Читайте с уверенностью</h4><p data-ru="Исцеление только от Аллаха." data-uz="Shifo faqat Allohdan.">Исцеление только от Аллаха.</p></div></div><div class="step-item"><div class="step-number">4</div><div class="step-content"><h4 data-ru="Повторяйте 3, 7 или 11 раз" data-uz="3, 7 yoki 11 marta takrorlang">Повторяйте 3, 7 или 11 раз</h4><p data-ru="Нечётное число — сунна." data-uz="Toq son — sunna.">Нечётное число — сунна.</p></div></div><div class="step-item"><div class="step-number">5</div><div class="step-content"><h4 data-ru="Дуйте на воду или на себя" data-uz="Suvga yoki o'zingizga puflang">Дуйте на воду или на себя</h4><p data-ru="После чтения подуйте на воду и выпейте." data-uz="O'qib suvga puflab iching.">После чтения подуйте на воду и выпейте.</p></div></div></div><div class="important-notice"><p data-ru="⚠️ Рукья — дополнение к усилиям, а не замена. Прилагайте мирские средства, уповая на Аллаха." data-uz="⚠️ Ruqiya — sa'y-harakatga qo'shimcha. Allohga tavakkal qilib, dunyoviy sabablarni qo'llang.">⚠️ Рукья — дополнение к усилиям, а не замена. Прилагайте мирские средства, уповая на Аллаха.</p></div>`;}else{ruqyaData.filter(r=>r.section===s).forEach(r=>{const cd=document.createElement('div');cd.className='ruqya-card';cd.id=`ruqya-${r.id}`;cd.innerHTML=`<div class="ruqya-card-header" onclick="toggleCard('ruqya-${r.id}')"><div class="ruqya-number">${r.num}</div><div class="ruqya-card-title" data-ru="${r.ru}" data-uz="${r.uz}">${r.ru}</div><div class="ruqya-toggle">▼</div></div><div class="ruqya-card-body"><div class="ruqya-card-content"><div class="arabic-block"><div class="arabic-text">${r.ar}</div></div><div class="translation" data-ru="${r.transRu}" data-uz="${r.transUz}">${r.transRu}</div><div class="transcription">${r.tr}</div><div class="counter-section"><div class="counter-label-top" data-ru="повторений" data-uz="takrorlash">повторений</div><div class="counter-display"><button class="counter-btn" onclick="event.stopPropagation();changeCount('${r.id}',-1)">−</button><div class="counter-circle"><svg viewBox="0 0 80 80"><circle class="counter-ring-bg" cx="40" cy="40" r="36"/><circle class="counter-ring-fill" id="ring-${r.id}" cx="40" cy="40" r="36"/></svg><div class="counter-value" id="count-${r.id}">0</div></div><button class="counter-btn" onclick="event.stopPropagation();changeCount('${r.id}',1)">+</button></div></div><button class="complete-btn" id="btn-${r.id}" onclick="event.stopPropagation();toggleComplete('${r.id}')"><span class="btn-icon">☐</span><span data-ru="Отметить как прочитанное" data-uz="O'qilgan deb belgilash">Отметить как прочитанное</span></button></div></div>`;d.appendChild(cd);});}c.appendChild(d);}}
+function renderAll(){const c=document.getElementById('sectionsContainer');c.innerHTML='';for(let s in sectionsMeta){const m=sectionsMeta[s],d=document.createElement('div');d.className='section';d.id=`section-${s}`;if(s==='howTo')d.classList.add('active');d.innerHTML=`<div class="section-header"><div class="section-icon">${m.icon}</div><h2 class="section-title" data-ru="${m.ru}" data-uz="${m.uz}">${m.ru}</h2></div>`;if(s==='howTo'){d.innerHTML+=`<div class="gradient-block"><div class="gradient-block-title" data-ru="Как применять рукья от преград (та'тыль)" data-uz="Ta'tildan ruqiyani qanday qo'llash">Как применять рукья от преград (та'тыль)</div></div><div class="info-card"><h3 data-ru="Формула заклинания" data-uz="Duo formulasi">Формула заклинания</h3><p data-ru="Основная формула: «Бисми-Лляхи аркъи мина-т-та'тыли фи...» — С именем Аллаха, я делаю рукья от преграды в [конкретном месте]. Слово «та'тыль» уже означает преграду, поэтому после него сразу указывается место преграды через «фи» (в). Разделы «Сглаз» и «Порча» используют собственные прямые формулы." data-uz="Asosiy formula: «Bismi-Llohi arqiy mina-t-ta'tili fi...» — Allohning ismi bilan, [aniq joydagi] to'siqdan ruqiya qilaman. «Ta'til» so'zi o'zi to'siqni anglatadi, shuning uchun undan keyin «fi» (da) orqali to'siq joyi ko'rsatiladi. «Ko'z tegish» va «Sehr» bo'limlari o'z formulalarini ishlatadi.">Основная формула: «Бисми-Лляхи аркъи мина-т-та'тыли фи...» — С именем Аллаха, я делаю рукья от преграды в [конкретном месте]. Слово «та'тыль» уже означает преграду, поэтому после него сразу указывается место преграды через «фи» (в). Разделы «Сглаз» и «Порча» используют собственные прямые формулы.</p></div><div class="steps-container"><div class="step-item"><div class="step-number">1</div><div class="step-content"><h4 data-ru="Совершите вуду" data-uz="Vuzu qiling">Совершите вуду</h4><p data-ru="Будьте в ритуальной чистоте." data-uz="Ritual poklikda bo'ling.">Будьте в ритуальной чистоте.</p></div></div><div class="step-item"><div class="step-number">2</div><div class="step-content"><h4 data-ru="Сделайте искренний ният" data-uz="Chin niyat qiling">Сделайте искренний ният</h4><p data-ru="Намерение — снять преграду с помощью Аллаха." data-uz="Niyat — Alloh yordamida to'siqni olib tashlash.">Намерение — снять преграду с помощью Аллаха.</p></div></div><div class="step-item"><div class="step-number">3</div><div class="step-content"><h4 data-ru="Читайте с уверенностью" data-uz="Ishonch bilan o'qing">Читайте с уверенностью</h4><p data-ru="Исцеление только от Аллаха." data-uz="Shifo faqat Allohdan.">Исцеление только от Аллаха.</p></div></div><div class="step-item"><div class="step-number">4</div><div class="step-content"><h4 data-ru="Повторяйте 3, 7 или 11 раз" data-uz="3, 7 yoki 11 marta takrorlang">Повторяйте 3, 7 или 11 раз</h4><p data-ru="Нечётное число — сунна." data-uz="Toq son — sunna.">Нечётное число — сунна.</p></div></div><div class="step-item"><div class="step-number">5</div><div class="step-content"><h4 data-ru="Дуйте на воду или на себя" data-uz="Suvga yoki o'zingizga puflang">Дуйте на воду или на себя</h4><p data-ru="После чтения подуйте на воду и выпейте." data-uz="O'qib suvga puflab iching.">После чтения подуйте на воду и выпейте.</p></div></div></div><div class="important-notice"><p data-ru="⚠️ Рукья — дополнение к усилиям, а не замена. Прилагайте мирские средства, уповая на Аллаха." data-uz="⚠️ Ruqiya — sa'y-harakatga qo'shimcha. Allohga tavakkal qilib, dunyoviy sabablarni qo'llang.">⚠️ Рукья — дополнение к усилиям, а не замена. Прилагайте мирские средства, уповая на Аллаха.</p></div>`;}else{ruqyaData.filter(r=>r.section===s).forEach(r=>{const cd=document.createElement('div');cd.className='ruqya-card';cd.id=`ruqya-${r.id}`;cd.innerHTML=`<div class="ruqya-card-header" onclick="toggleCard('ruqya-${r.id}')"><div class="ruqya-number">${r.num}</div><div class="ruqya-card-title" data-ru="${r.ru}" data-uz="${r.uz}">${r.ru}</div><div class="ruqya-toggle">▼</div></div><div class="ruqya-card-body"><div class="ruqya-card-content"><div class="arabic-block"><div class="arabic-text">${r.ar}</div></div><div class="translation" data-ru="${r.transRu}" data-uz="${r.transUz}">${r.transRu}</div><div class="transcription">${r.tr}</div><div class="counter-section"><div class="counter-label-top" data-ru="повторений" data-uz="takrorlash">повторений</div><div class="counter-display"><button class="counter-btn" onclick="event.stopPropagation();changeCount('${r.id}',-1)">−</button><div class="counter-circle"><svg viewBox="0 0 70 70"><circle class="counter-ring-bg" cx="35" cy="35" r="31"/><circle class="counter-ring-fill" id="ring-${r.id}" cx="35" cy="35" r="31"/></svg><div class="counter-value" id="count-${r.id}">0</div></div><button class="counter-btn" onclick="event.stopPropagation();changeCount('${r.id}',1)">+</button></div></div><button class="complete-btn" id="btn-${r.id}" onclick="event.stopPropagation();toggleComplete('${r.id}')"><span class="btn-icon">☐</span><span data-ru="Отметить как прочитанное" data-uz="O'qilgan deb belgilash">Отметить как прочитанное</span></button></div></div>`;d.appendChild(cd);});}c.appendChild(d);}}
 function initTabs(){const n=document.getElementById('navTabs');n.innerHTML='';Object.keys(sectionsMeta).forEach((k,i)=>{const m=sectionsMeta[k],b=document.createElement('button');b.className='nav-tab';if(i===0)b.classList.add('active');b.setAttribute('data-ru',`${m.icon} ${m.ru}`);b.setAttribute('data-uz',`${m.icon} ${m.uz}`);b.innerText=`${m.icon} ${m.ru}`;b.onclick=()=>{document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));document.getElementById(`section-${k}`).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});};n.appendChild(b);});}
 function initLang(){document.getElementById('btnRu').onclick=()=>setLang('ru');document.getElementById('btnUz').onclick=()=>setLang('uz');}
 function setLang(l){currentLang=l;document.getElementById('btnRu').classList.toggle('active',l==='ru');document.getElementById('btnUz').classList.toggle('active',l==='uz');document.querySelectorAll('[data-ru][data-uz]').forEach(e=>{const t=e.getAttribute(`data-${l}`);if(t)e.innerText=t;});completedItems.forEach(id=>{const b=document.getElementById(`btn-${id}`);if(b){const s=b.querySelector('span:last-child');if(s)s.innerText=l==='ru'?'Прочитано ✓':"O'qildi ✓";}});saveState();}
@@ -418,25 +765,12 @@ function initTheme(){const sv=localStorage.getItem('ruqya_theme');if(sv)setTheme
 function setTheme(t){document.body.setAttribute('data-theme',t);document.querySelectorAll('.theme-dot').forEach(d=>d.classList.toggle('active',d.dataset.theme===t));localStorage.setItem('ruqya_theme',t);}
 function updateProgress(){const c=completedItems.size;document.getElementById('progressCount').innerText=`${c} / ${TOTAL_ITEMS}`;document.getElementById('progressFill').style.width=`${(c/TOTAL_ITEMS)*100}%`;}
 function toggleComplete(id){const b=document.getElementById(`btn-${id}`);if(!b)return;if(completedItems.has(id)){completedItems.delete(id);b.classList.remove('completed');b.querySelector('.btn-icon').innerText='☐';b.querySelector('span:last-child').innerText=currentLang==='ru'?'Отметить как прочитанное':"O'qilgan deb belgilash";}else{completedItems.add(id);b.classList.add('completed');b.querySelector('.btn-icon').innerText='✓';b.querySelector('span:last-child').innerText=currentLang==='ru'?'Прочитано ✓':"O'qildi ✓";showToast(currentLang==='ru'?'✓ Отмечено':"✓ Belgilandi");}updateProgress();saveState();}
-function changeCount(id,d){if(!counters[id])counters[id]=0;counters[id]=Math.max(0,counters[id]+d);const e=document.getElementById('count-'+id);if(e)e.innerText=counters[id];const r=document.getElementById('ring-'+id);if(r){const p=Math.min(counters[id]/11,1);r.style.strokeDashoffset=226*(1-p);}saveState();}
+function changeCount(id,d){if(!counters[id])counters[id]=0;counters[id]=Math.max(0,counters[id]+d);const e=document.getElementById('count-'+id);if(e)e.innerText=counters[id];const r=document.getElementById('ring-'+id);if(r){const p=Math.min(counters[id]/11,1);r.style.strokeDashoffset=RING_CIRCUMFERENCE*(1-p);}saveState();}
 function toggleCard(id){document.getElementById(id)?.classList.toggle('open');}
 function showToast(m){const t=document.getElementById('toast');t.innerText=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
 function saveState(){try{localStorage.setItem('ruqya_completed',JSON.stringify([...completedItems]));localStorage.setItem('ruqya_counters',JSON.stringify(counters));localStorage.setItem('ruqya_lang',currentLang);}catch(e){}}
-function loadState(){try{const c=localStorage.getItem('ruqya_completed'),ct=localStorage.getItem('ruqya_counters'),l=localStorage.getItem('ruqya_lang');if(l)setLang(l);if(c){completedItems=new Set(JSON.parse(c));completedItems.forEach(id=>{const b=document.getElementById(`btn-${id}`);if(b){b.classList.add('completed');b.querySelector('.btn-icon').innerText='✓';b.querySelector('span:last-child').innerText=currentLang==='ru'?'Прочитано ✓':"O'qildi ✓";}});}if(ct){counters=JSON.parse(ct);for(let id in counters){const e=document.getElementById('count-'+id);if(e)e.innerText=counters[id];const r=document.getElementById('ring-'+id);if(r)r.style.strokeDashoffset=226*(1-Math.min(counters[id]/11,1));}}updateProgress();}catch(e){}}
+function loadState(){try{const c=localStorage.getItem('ruqya_completed'),ct=localStorage.getItem('ruqya_counters'),l=localStorage.getItem('ruqya_lang');if(l)setLang(l);if(c){completedItems=new Set(JSON.parse(c));completedItems.forEach(id=>{const b=document.getElementById(`btn-${id}`);if(b){b.classList.add('completed');b.querySelector('.btn-icon').innerText='✓';b.querySelector('span:last-child').innerText=currentLang==='ru'?'Прочитано ✓':"O'qildi ✓";}});}if(ct){counters=JSON.parse(ct);for(let id in counters){const e=document.getElementById('count-'+id);if(e)e.innerText=counters[id];const r=document.getElementById('ring-'+id);if(r)r.style.strokeDashoffset=RING_CIRCUMFERENCE*(1-Math.min(counters[id]/11,1));}}updateProgress();}catch(e){}}
 
-let cdInterval;
-function enterApp(){clearInterval(cdInterval);document.getElementById('splashScreen').classList.add('hidden');setTimeout(()=>{document.getElementById('splashScreen').style.display='none';document.getElementById('mainApp').classList.add('visible');},1800);}
-document.getElementById('enterBtn').onclick=enterApp;
-setTimeout(()=>document.getElementById('splashScreen').classList.add('cinema-ready'),300);
-setTimeout(()=>document.getElementById('phase1').classList.add('fade-out'),4000);
-setTimeout(()=>document.getElementById('phase2').classList.add('active'),4500);
-setTimeout(()=>{document.getElementById('cineFlash').classList.add('fire');},4400);
-setTimeout(()=>document.getElementById('phase2').classList.add('fade-out'),7000);
-setTimeout(()=>{document.getElementById('phase3').classList.add('active');document.getElementById('cineFlash').className='cine-flash';setTimeout(()=>document.getElementById('cineFlash').classList.add('fire'),100);},7500);
-let cdVal=12;
-cdInterval=setInterval(()=>{cdVal--;const e=document.getElementById('cdNum');if(e)e.innerText=cdVal;if(cdVal<=0){clearInterval(cdInterval);enterApp();}},1000);
-for(let i=0;i<80;i++){const s=document.createElement('div');s.className='star';const sz=1+Math.random()*2;s.style.width=sz+'px';s.style.height=sz+'px';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDuration=(1+Math.random()*3)+'s';s.style.animationDelay=Math.random()*3+'s';document.getElementById('splashStars').appendChild(s);}
-for(let i=0;i<50;i++){const p=document.createElement('div');p.className='dust';const sz=1+Math.random()*4;p.style.width=sz+'px';p.style.height=sz+'px';p.style.left=Math.random()*100+'%';p.style.top=Math.random()*100+'%';p.style.setProperty('--dx',(Math.random()-0.5)*200+'px');p.style.setProperty('--dy',(Math.random()-0.5)*200+'px');p.style.animationDuration=(6+Math.random()*10)+'s';p.style.animationDelay=Math.random()*6+'s';document.getElementById('splashDust').appendChild(p);}
 window.addEventListener('scroll',()=>{const b=document.getElementById('scrollTopBtn'),h=document.getElementById('mainHeader');if(window.scrollY>400)b.classList.add('visible');else b.classList.remove('visible');if(window.scrollY>50)h.classList.add('scrolled');else h.classList.remove('scrolled');});
 document.getElementById('scrollTopBtn').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
 window.onload=()=>{renderAll();initTabs();initLang();initFont();initTheme();loadState();};
