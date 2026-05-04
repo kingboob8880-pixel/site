@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Школа Лекаря Абу Мухаммад - Главная</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --teal-primary: #0f766e;
+            --teal-secondary: #14b8a6;
+            --sand-light: #fef3c7;
+            --sand-medium: #f5f5dc;
+            --sand-dark: #d4cbb3;
+            --text-dark: #1f2937;
+            --text-light: #f9fafb;
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0fdfa;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--teal-primary), #0d9488);
+            color: var(--text-light);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            color: var(--sand-light);
+        }
+
+        .header-content h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--teal-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--teal-secondary);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Course Card */
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .cover-placeholder {
+            height: 180px;
+            background: linear-gradient(135deg, var(--sand-light), var(--sand-medium));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal-primary);
+            font-size: 3rem;
+        }
+
+        .course-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--teal-primary);
+        }
+
+        .course-description {
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .btn-start {
+            display: inline-block;
+            background: var(--teal-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid var(--teal-primary);
+        }
+
+        .btn-start:hover {
+            background: transparent;
+            color: var(--teal-primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--teal-primary);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--sand-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header-content p {
+                font-size: 1rem;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+
+        /* Animation for cards */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .course-card {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .course-card:nth-child(1) { animation-delay: 0.1s; }
+        .course-card:nth-child(2) { animation-delay: 0.2s; }
+        .course-card:nth-child(3) { animation-delay: 0.3s; }
+        .course-card:nth-child(4) { animation-delay: 0.4s; }
+        .course-card:nth-child(5) { animation-delay: 0.5s; }
+        .course-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <i class="fas fa-pray logo"></i>
+                <h1>Школа Лекаря Абу Мухаммад</h1>
+            </div>
+            <p>Изучайте искусство рукия - исламских заклинаний и духовного исцеления</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h2 class="section-title">Уроки рукия</h2>
+        
+        <div class="courses-grid">
+            <!-- Course Card 1 -->
+            <div class="course-card">
+                <div class="cover-placeholder">
+                    <i class="fas fa-quran"></i>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Основы рукия</h3>
+                    <p class="course-description">Изучение основ исламского духовного исцеления через аяты Корана и молитвы.</p>
+                    <a href="#" class="btn-start">Начать обучение</a>
+                </div>
+            </div>
+
+            <!-- Course Card 2 -->
+            <div class="course-card">
+                <div class="cover-placeholder">
+                    <i class="fas fa-star-and-crescent"></i>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Аят аль-Курси</h3>
+                    <p class="course-description">Мастерство применения самого могущественного аята Корана для защиты и исцеления.</p>
+                    <a href="#" class="btn-start">Начать обучение</a>
+                </div>
+            </div>
+
+            <!-- Course Card 3 -->
+            <div class="course-card">
+                <div class="cover-placeholder">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Суры для исцеления</h3>
+                    <p class="course-description">Изучение суры аль-Фатиха, аль-Ихлас, аль-Фалак и ан-Нас для духовного исцеления.</p>
+                    <a href="#" class="btn-start">Начать обучение</a>
+                </div>
+            </div>
+
+            <!-- Course Card 4 -->
+            <div class="course-card">
+                <div class="cover-placeholder">
+                    <i class="fas fa-hands-praying"></i>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Дуа аль-Маса</h3>
+                    <p class="course-description">Молитвы и благословения Пророка Мухаммада ﷺ для защиты от сглаза и порчи.</p>
+                    <a href="#" class="btn-start">Начать обучение</a>
+                </div>
+            </div>
+
+            <!-- Course Card 5 -->
+            <div class="course-card">
+                <div class="cover-placeholder">
+                    <i class="fas fa-eye-slash"></i>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Защита от сглаза</h3>
+                    <p class="course-description">Техники исламской защиты от зависти, сглаза и негативной энергии окружающих.</p>
+                    <a href="#" class="btn-start">Начать обучение</a>
+                </div>
+            </div>
+
+            <!-- Course Card 6 -->
+            <div class="course-card">
+                <div class="cover-placeholder">
+                    <i class="fas fa-book-quran"></i>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Рукия от джиннов</h3>
+                    <p class="course-description">Исцеление от одержимости джиннами через правильные аяты и молитвы по Сунне.</p>
+                    <a href="#" class="btn-start">Начать обучение</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="#"><i class="fas fa-envelope"></i> Email</a>
+                <a href="#"><i class="fas fa-question-circle"></i> Помощь</a>
+            </div>
+            <p class="copyright">© 2023 Школа Лекаря Абу Мухаммад. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for card interaction
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.course-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
