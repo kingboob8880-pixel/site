@@ -1,652 +1,380 @@
 <!DOCTYPE html>
-<html lang="ru" dir="ltr">
+<html lang="ru" dir="ltr" data-theme="gold">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#D4A843">
 <title>Лекарь Абу Мухаммад — Курс Рукья</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
 
-:root {
-  --primary-light:#FFF8E7;--primary:#D4A843;--primary-dark:#B8860B;--primary-deeper:#8B6914;
-  --primary-shimmer:#F5E6A3;--bg-main:#FFFDF5;--bg-card:#FFFFFF;
-  --text-dark:#3B2F1A;--text-medium:#6B5B3E;--text-light:#9B8B6E;
-  --shadow-primary:rgba(212,168,67,0.3);--border-primary:rgba(212,168,67,0.4);
-  --green:#2E7D32;--green-light:#4CAF50;--font-size-base:14px;
+:root{
+  --primary:#D4A843;
+  --primary-strong:#B8860B;
+  --primary-soft:#F5E6A3;
+  --bg:#FFFDF6;
+  --bg-soft:#FFF6E4;
+  --card:#FFFFFF;
+  --card-2:#FFFBF1;
+  --text:#2F2718;
+  --muted:#6C5C3A;
+  --muted-2:#9A8861;
+  --line:#E8D8A8;
+  --line-strong:#D9BC67;
+  --shadow:rgba(212,168,67,.22);
+  --success:#2E7D32;
+  --success-2:#4CAF50;
+  --danger:#E53935;
+  --glass:rgba(255,255,255,.7);
+  --hero-grad:linear-gradient(180deg,#FFF6DE 0%,#FFFDF6 100%);
+  --theme-rgb:212,168,67;
+  --font-size-base:14px;
+  --radius-lg:22px;
+  --radius-md:16px;
+  --radius-sm:12px;
 }
 
-[data-theme="gold"]{--primary-light:#FFF8E7;--primary:#D4A843;--primary-dark:#B8860B;--primary-deeper:#8B6914;--primary-shimmer:#F5E6A3;--bg-main:#FFFDF5;--bg-card:#FFFFFF;--text-dark:#3B2F1A;--text-medium:#6B5B3E;--text-light:#9B8B6E;--shadow-primary:rgba(212,168,67,0.3);--border-primary:rgba(212,168,67,0.4)}
-[data-theme="emerald"]{--primary-light:#E8F5E9;--primary:#43A047;--primary-dark:#2E7D32;--primary-deeper:#1B5E20;--primary-shimmer:#A5D6A7;--bg-main:#F1F8F2;--bg-card:#FFFFFF;--text-dark:#1B3A1D;--text-medium:#3E6B42;--text-light:#6E9B72;--shadow-primary:rgba(67,160,71,0.3);--border-primary:rgba(67,160,71,0.4)}
-[data-theme="sapphire"]{--primary-light:#E3F2FD;--primary:#1E88E5;--primary-dark:#1565C0;--primary-deeper:#0D47A1;--primary-shimmer:#90CAF9;--bg-main:#F5F9FF;--bg-card:#FFFFFF;--text-dark:#1A2F3B;--text-medium:#3E5B6B;--text-light:#6E8B9B;--shadow-primary:rgba(30,136,229,0.3);--border-primary:rgba(30,136,229,0.4)}
-[data-theme="amethyst"]{--primary-light:#F3E5F5;--primary:#8E24AA;--primary-dark:#6A1B9A;--primary-deeper:#4A148C;--primary-shimmer:#CE93D8;--bg-main:#FBF5FC;--bg-card:#FFFFFF;--text-dark:#2D1A3B;--text-medium:#5B3E6B;--text-light:#8B6E9B;--shadow-primary:rgba(142,36,170,0.3);--border-primary:rgba(142,36,170,0.4)}
-[data-theme="ruby"]{--primary-light:#FFEBEE;--primary:#E53935;--primary-dark:#C62828;--primary-deeper:#B71C1C;--primary-shimmer:#EF9A9A;--bg-main:#FFF5F5;--bg-card:#FFFFFF;--text-dark:#3B1A1A;--text-medium:#6B3E3E;--text-light:#9B6E6E;--shadow-primary:rgba(229,57,53,0.3);--border-primary:rgba(229,57,53,0.4)}
-[data-theme="darkgold"]{--primary-light:#2A2210;--primary:#D4A843;--primary-dark:#B8860B;--primary-deeper:#8B6914;--primary-shimmer:#F5E6A3;--bg-main:#1A1408;--bg-card:#2A2210;--text-dark:#F5E6A3;--text-medium:#D4A843;--text-light:#9B8B6E;--shadow-primary:rgba(212,168,67,0.3);--border-primary:rgba(212,168,67,0.3)}
+html[data-theme="gold"]{
+  --primary:#D4A843;--primary-strong:#B8860B;--primary-soft:#F5E6A3;--bg:#FFFDF6;--bg-soft:#FFF6E4;--card:#FFFFFF;--card-2:#FFFBF1;--text:#2F2718;--muted:#6C5C3A;--muted-2:#9A8861;--line:#E8D8A8;--line-strong:#D9BC67;--shadow:rgba(212,168,67,.22);--glass:rgba(255,255,255,.72);--hero-grad:linear-gradient(180deg,#FFF6DE 0%,#FFFDF6 100%);--theme-rgb:212,168,67;
+}
+html[data-theme="emerald"]{
+  --primary:#43A047;--primary-strong:#2E7D32;--primary-soft:#B9E2BC;--bg:#F6FCF6;--bg-soft:#ECF8EE;--card:#FFFFFF;--card-2:#F5FCF6;--text:#18311A;--muted:#446A49;--muted-2:#6E9373;--line:#B8DAB9;--line-strong:#7DC481;--shadow:rgba(67,160,71,.2);--glass:rgba(255,255,255,.74);--hero-grad:linear-gradient(180deg,#ECF8EE 0%,#F6FCF6 100%);--theme-rgb:67,160,71;
+}
+html[data-theme="sapphire"]{
+  --primary:#1E88E5;--primary-strong:#1565C0;--primary-soft:#A9D4FB;--bg:#F7FBFF;--bg-soft:#ECF5FF;--card:#FFFFFF;--card-2:#F5FAFF;--text:#182A38;--muted:#466376;--muted-2:#6F8EA3;--line:#B8D8F2;--line-strong:#78B4ED;--shadow:rgba(30,136,229,.2);--glass:rgba(255,255,255,.76);--hero-grad:linear-gradient(180deg,#ECF5FF 0%,#F7FBFF 100%);--theme-rgb:30,136,229;
+}
+html[data-theme="amethyst"]{
+  --primary:#8E24AA;--primary-strong:#6A1B9A;--primary-soft:#D9B1E6;--bg:#FCF8FF;--bg-soft:#F6EEFA;--card:#FFFFFF;--card-2:#FBF7FD;--text:#2A1833;--muted:#664B73;--muted-2:#8C73A0;--line:#DFC1EB;--line-strong:#B877CA;--shadow:rgba(142,36,170,.18);--glass:rgba(255,255,255,.75);--hero-grad:linear-gradient(180deg,#F6EEFA 0%,#FCF8FF 100%);--theme-rgb:142,36,170;
+}
+html[data-theme="ruby"]{
+  --primary:#E53935;--primary-strong:#C62828;--primary-soft:#F4B5B3;--bg:#FFF8F8;--bg-soft:#FFF0F0;--card:#FFFFFF;--card-2:#FFF8F8;--text:#351A1A;--muted:#7A4C4C;--muted-2:#A27777;--line:#F0C2C2;--line-strong:#EA8C8A;--shadow:rgba(229,57,53,.18);--glass:rgba(255,255,255,.75);--hero-grad:linear-gradient(180deg,#FFF0F0 0%,#FFF8F8 100%);--theme-rgb:229,57,53;
+}
+html[data-theme="darkgold"]{
+  --primary:#D4A843;--primary-strong:#F5E6A3;--primary-soft:#7C6330;--bg:#120E07;--bg-soft:#1A140A;--card:#1D170C;--card-2:#251E11;--text:#F5E6A3;--muted:#D2B66B;--muted-2:#A89367;--line:#4C3C19;--line-strong:#765B1D;--shadow:rgba(0,0,0,.34);--glass:rgba(26,20,10,.78);--hero-grad:linear-gradient(180deg,#1B150B 0%,#120E07 100%);--theme-rgb:212,168,67;
+}
 
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{font-family:'Noto Sans',sans-serif;background:var(--bg-main);color:var(--text-dark);min-height:100vh;overflow-x:hidden;font-size:var(--font-size-base);transition:background .5s ease,color .5s ease,font-size .3s ease}
-
-/* ===== PREMIUM CINEMATIC SPLASH ===== */
-#splashScreen{position:fixed;top:0;left:0;width:100%;height:100%;z-index:10000;background:#050208;overflow:hidden}
-#splashScreen.exit-active{animation:splashExit 2s cubic-bezier(.4,0,.2,1) forwards}
-@keyframes splashExit{
-  0%{opacity:1;filter:brightness(1)}
-  40%{opacity:1;filter:brightness(1.8)}
-  100%{opacity:0;filter:brightness(3);transform:scale(1.05)}
+body{
+  font-family:'Noto Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  font-size:var(--font-size-base);
+  transition:background .35s ease,color .35s ease,font-size .25s ease;
 }
+button,input{font:inherit}
+button{cursor:pointer}
 
-/* Nebula Background */
-.splash-nebula{position:absolute;inset:0;background:
-  radial-gradient(ellipse 80% 60% at 20% 80%,rgba(90,50,180,.15) 0%,transparent 50%),
-  radial-gradient(ellipse 60% 80% at 80% 20%,rgba(180,120,50,.1) 0%,transparent 50%),
-  radial-gradient(ellipse 120% 120% at 50% 50%,rgba(15,8,30,1) 0%,rgba(5,2,8,1) 100%);
-  animation:nebulaShift 20s ease-in-out infinite alternate}
-@keyframes nebulaShift{
-  0%{filter:hue-rotate(0deg)}
-  100%{filter:hue-rotate(15deg)}
+/* splash */
+#splashScreen{
+  position:fixed;inset:0;z-index:10000;overflow:hidden;
+  background:radial-gradient(circle at top left,rgba(255,214,110,.12),transparent 34%),radial-gradient(circle at top right,rgba(90,120,255,.1),transparent 34%),linear-gradient(135deg,#05060d 0%,#0b0c15 46%,#120d08 100%);
+  display:grid;place-items:center;
 }
-
-/* Starfield */
-.splash-starfield{position:absolute;inset:0;overflow:hidden}
-.splash-starfield canvas{position:absolute;inset:0;width:100%;height:100%}
-
-/* Geometric Sacred Pattern */
-.splash-sacred{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(500px,90vw);height:min(500px,90vw);opacity:0;transition:opacity 3s ease}
-#splashScreen.phase-geo .splash-sacred{opacity:1}
-.sacred-ring{position:absolute;top:50%;left:50%;border:1px solid rgba(212,168,67,.1);border-radius:50%;transform:translate(-50%,-50%)}
-.sacred-ring:nth-child(1){width:100%;height:100%;animation:sacredSpin 60s linear infinite}
-.sacred-ring:nth-child(2){width:75%;height:75%;animation:sacredSpin 45s linear infinite reverse;border-style:dashed}
-.sacred-ring:nth-child(3){width:50%;height:50%;animation:sacredSpin 30s linear infinite;border-color:rgba(212,168,67,.15)}
-.sacred-ring:nth-child(4){width:25%;height:25%;animation:sacredPulse 4s ease-in-out infinite alternate}
-@keyframes sacredSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-@keyframes sacredPulse{
-  0%{transform:translate(-50%,-50%) scale(.9);border-color:rgba(212,168,67,.08)}
-  100%{transform:translate(-50%,-50%) scale(1.1);border-color:rgba(212,168,67,.25)}
+#splashScreen.exit{animation:splashOut .9s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes splashOut{to{opacity:0;transform:scale(1.04);filter:blur(18px)}}
+.splash-orb,.splash-orb::before,.splash-orb::after{position:absolute;border-radius:50%;filter:blur(24px)}
+.splash-orb{width:280px;height:280px;background:rgba(212,168,67,.12);top:8%;left:8%;animation:float1 10s ease-in-out infinite alternate}
+.splash-orb::before{content:'';width:180px;height:180px;background:rgba(86,120,255,.14);right:-130px;top:80px}
+.splash-orb::after{content:'';width:200px;height:200px;background:rgba(255,255,255,.06);left:40px;bottom:-90px}
+.splash-orb-2{position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(212,168,67,.12);right:6%;bottom:6%;filter:blur(30px);animation:float2 12s ease-in-out infinite alternate}
+@keyframes float1{to{transform:translate(30px,20px) scale(1.08)}}
+@keyframes float2{to{transform:translate(-20px,-24px) scale(1.12)}}
+.splash-grid{position:absolute;inset:0;opacity:.14;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:38px 38px;mask-image:radial-gradient(circle at center,black 22%,transparent 78%)}
+.splash-card{
+  position:relative;z-index:2;
+  width:min(92vw,560px);
+  padding:30px 24px 24px;
+  border-radius:30px;
+  border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 28px 90px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
+  text-align:center;
+  color:#fff;
+  overflow:hidden;
 }
+.splash-card::before{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.1) 22%,transparent 40%);transform:translateX(-120%);animation:sweep 6s ease-in-out infinite}
+@keyframes sweep{0%,100%{transform:translateX(-120%)}55%{transform:translateX(140%)}}
+.splash-ring{width:120px;height:120px;margin:0 auto 18px;border-radius:50%;position:relative;display:grid;place-items:center;background:radial-gradient(circle,rgba(245,230,163,.16),rgba(212,168,67,.05) 55%,transparent 70%)}
+.splash-ring::before,.splash-ring::after{content:'';position:absolute;inset:0;border-radius:50%;border:1px solid rgba(245,230,163,.22)}
+.splash-ring::before{animation:spin 18s linear infinite}
+.splash-ring::after{inset:12px;border-style:dashed;animation:spinRev 12s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinRev{to{transform:rotate(-360deg)}}
+.splash-mark{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,rgba(212,168,67,.95),rgba(245,230,163,.9));color:#2a1f0e;font-family:'Amiri',serif;font-size:34px;font-weight:700;box-shadow:0 12px 28px rgba(212,168,67,.25)}
+.splash-phase{display:none;animation:fadeUp .7s cubic-bezier(.22,1,.36,1)}
+.splash-phase.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);filter:blur(8px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+.splash-kicker{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border-radius:999px;border:1px solid rgba(245,230,163,.18);background:rgba(255,255,255,.05);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:16px}
+.splash-ar{font-family:'Noto Naskh Arabic',serif;font-size:clamp(28px,6vw,44px);line-height:1.8;color:rgba(245,230,163,.98);text-shadow:0 0 30px rgba(212,168,67,.24)}
+.splash-title{font-family:'Amiri',serif;font-size:clamp(30px,7vw,56px);line-height:1.15;margin-top:6px;background:linear-gradient(135deg,#fff0b8 0%,#f5e6a3 20%,#d4a843 55%,#fff5cf 80%,#c6922f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.splash-sub{margin-top:10px;color:rgba(255,255,255,.76);font-size:14px;line-height:1.7}
+.splash-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.splash-btn,.splash-skip{border:none;border-radius:16px;padding:14px 20px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;transition:.25s ease}
+.splash-btn{background:linear-gradient(135deg,rgba(212,168,67,.98),rgba(245,230,163,.92));color:#2a1f0e;box-shadow:0 18px 40px rgba(212,168,67,.24)}
+.splash-btn:hover{transform:translateY(-2px)}
+.splash-skip{background:rgba(255,255,255,.06);color:rgba(255,255,255,.86);border:1px solid rgba(255,255,255,.08)}
+.splash-auto{margin-top:18px;color:rgba(255,255,255,.56);font-size:12px}
+.splash-auto strong{color:#fff}
 
-/* Light Rays */
-.splash-lightrays{position:absolute;inset:0;opacity:0;transition:opacity 4s ease 1s}
-#splashScreen.phase-geo .splash-lightrays{opacity:1}
-.lightray{position:absolute;top:50%;left:50%;width:2px;transform-origin:bottom center;background:linear-gradient(to top,transparent,rgba(212,168,67,.06),transparent);opacity:0;animation:rayGlow 6s ease-in-out infinite alternate}
-@keyframes rayGlow{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
-
-/* Central Glow */
-.splash-core-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.15) 0%,rgba(212,168,67,.05) 30%,transparent 70%);opacity:0;animation:coreBreath 5s ease-in-out infinite alternate;transition:opacity 2s ease}
-#splashScreen.phase-geo .splash-core-glow{opacity:1}
-@keyframes coreBreath{0%{transform:translate(-50%,-50%) scale(.6)}100%{transform:translate(-50%,-50%) scale(1.3)}}
-
-/* Floating Particles */
-.splash-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.particle{position:absolute;border-radius:50%;pointer-events:none}
-.particle-gold{background:radial-gradient(circle,rgba(212,168,67,.9) 0%,rgba(212,168,67,0) 70%)}
-.particle-white{background:radial-gradient(circle,rgba(255,255,255,.8) 0%,rgba(255,255,255,0) 70%)}
-
-/* Vignette */
-.splash-vignette{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,transparent 0%,rgba(5,2,8,.8) 100%);pointer-events:none}
-
-/* Content Phases */
-.splash-content{position:relative;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:20px}
-
-/* Phase 1: Opening */
-.sp-phase{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;width:100%;padding:0 24px}
-
-.sp-phase.visible{opacity:1;pointer-events:auto}
-
-.sp-phase-enter{animation:phaseEnter 2s cubic-bezier(.16,1,.3,1) forwards}
-.sp-phase-exit{animation:phaseExit 1.5s cubic-bezier(.7,0,.84,0) forwards}
-
-@keyframes phaseEnter{
-  0%{opacity:0;transform:translateY(30px) scale(.95);filter:blur(8px)}
-  100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
-}
-@keyframes phaseExit{
-  0%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
-  100%{opacity:0;transform:translateY(-40px) scale(1.02);filter:blur(12px)}
-}
-
-/* Phase 1 Elements */
-.sp-opening-line{width:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,.5),transparent);margin-bottom:30px;transition:width 2s cubic-bezier(.4,0,.2,1)}
-.sp-phase.visible .sp-opening-line{width:min(120px,40vw)}
-
-.sp-opening-text{font-family:'Noto Sans',sans-serif;font-size:clamp(10px,2.2vw,13px);color:rgba(212,168,67,.45);letter-spacing:clamp(3px,1vw,6px);text-transform:uppercase;text-align:center;line-height:2.2;opacity:0;animation-fill-mode:forwards}
-.sp-phase.visible .sp-opening-text{animation:textReveal 2s ease .5s forwards}
-
-.sp-opening-line-bottom{width:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,.3),transparent);margin-top:30px;transition:width 2s cubic-bezier(.4,0,.2,1) .3s}
-.sp-phase.visible .sp-opening-line-bottom{width:min(80px,25vw)}
-
-/* Phase 2 Elements */
-.sp-bismillah-glow{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.08) 0%,transparent 70%);animation:bismillahGlow 3s ease-in-out infinite alternate}
-@keyframes bismillahGlow{0%{transform:scale(.8);opacity:.5}100%{transform:scale(1.2);opacity:1}}
-
-.sp-bismillah{font-family:'Noto Naskh Arabic',serif;font-size:clamp(22px,6vw,42px);color:rgba(212,168,67,.8);direction:rtl;text-shadow:0 0 80px rgba(212,168,67,.4),0 0 160px rgba(212,168,67,.15);opacity:0;animation-fill-mode:forwards;line-height:1.8}
-.sp-phase.visible .sp-bismillah{animation:bismillahReveal 2.5s cubic-bezier(.16,1,.3,1) .3s forwards}
-@keyframes bismillahReveal{
-  0%{opacity:0;transform:scale(.9);filter:blur(6px);letter-spacing:8px}
-  60%{letter-spacing:2px}
-  100%{opacity:1;transform:scale(1);filter:blur(0);letter-spacing:1px}
-}
-
-.sp-bismillah-sub{font-family:'Noto Sans',sans-serif;font-size:clamp(9px,2vw,12px);color:rgba(212,168,67,.3);letter-spacing:3px;text-transform:uppercase;margin-top:20px;opacity:0;animation-fill-mode:forwards}
-.sp-phase.visible .sp-bismillah-sub{animation:textReveal 1.5s ease 1.5s forwards}
-
-/* Phase 3 Elements */
-.sp-ornament{display:flex;align-items:center;gap:12px;margin-bottom:20px;opacity:0;animation-fill-mode:forwards}
-.sp-phase.visible .sp-ornament{animation:textReveal 1s ease .2s forwards}
-.sp-ornament-line{width:clamp(30px,8vw,60px);height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,.4))}
-.sp-ornament-line:last-child{background:linear-gradient(90deg,rgba(212,168,67,.4),transparent)}
-.sp-ornament-diamond{width:6px;height:6px;background:var(--primary);transform:rotate(45deg);opacity:.6}
-
-.sp-title-container{overflow:hidden;margin-bottom:12px}
-.sp-title{font-family:'Amiri',serif;font-size:clamp(28px,8vw,56px);color:transparent;background:linear-gradient(135deg,#C49A3C,#F5E6A3,#D4A843,#B8860B,#F5E6A3);background-size:300% 300%;-webkit-background-clip:text;background-clip:text;letter-spacing:clamp(2px,0.5vw,5px);text-align:center;opacity:0;transform:translateY(100%);animation-fill-mode:forwards;line-height:1.3}
-.sp-phase.visible .sp-title{animation:titleCinematic 2s cubic-bezier(.16,1,.3,1) .6s forwards,titleShimmer 4s ease 2.6s infinite}
-@keyframes titleCinematic{
-  0%{opacity:0;transform:translateY(100%);filter:blur(4px)}
-  100%{opacity:1;transform:translateY(0);filter:blur(0)}
-}
-@keyframes titleShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-
-.sp-subtitle-container{overflow:hidden;margin-bottom:8px}
-.sp-subtitle{font-family:'Noto Sans',sans-serif;font-size:clamp(9px,2.2vw,13px);color:rgba(245,230,163,.5);letter-spacing:clamp(4px,1.5vw,10px);text-transform:uppercase;text-align:center;opacity:0;transform:translateY(100%);animation-fill-mode:forwards}
-.sp-phase.visible .sp-subtitle{animation:titleCinematic 1.5s cubic-bezier(.16,1,.3,1) 1.3s forwards}
-
-.sp-tagline{font-family:'Noto Sans',sans-serif;font-size:clamp(9px,1.8vw,11px);color:rgba(212,168,67,.25);letter-spacing:1px;text-align:center;max-width:400px;line-height:2;margin-top:16px;opacity:0;animation-fill-mode:forwards}
-.sp-phase.visible .sp-tagline{animation:textReveal 2s ease 2s forwards}
-
-.sp-divider-fancy{display:flex;align-items:center;gap:8px;margin-top:20px;opacity:0;animation-fill-mode:forwards}
-.sp-phase.visible .sp-divider-fancy{animation:textReveal 1.5s ease 2.5s forwards}
-.sp-divider-dot{width:3px;height:3px;border-radius:50%;background:rgba(212,168,67,.4)}
-.sp-divider-line{width:clamp(20px,6vw,40px);height:1px;background:rgba(212,168,67,.2)}
-
-.sp-enter-btn{margin-top:36px;padding:14px clamp(32px,10vw,56px);background:transparent;color:rgba(212,168,67,.7);border:1px solid rgba(212,168,67,.2);font-family:'Noto Sans',sans-serif;font-size:clamp(9px,2vw,12px);font-weight:400;cursor:pointer;letter-spacing:clamp(3px,1vw,7px);text-transform:uppercase;opacity:0;transition:all .6s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;animation-fill-mode:forwards}
-.sp-phase.visible .sp-enter-btn{animation:textReveal 1.5s ease 3s forwards}
-.sp-enter-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,168,67,.12),rgba(212,168,67,.03));transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.4,0,.2,1)}
-.sp-enter-btn::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(212,168,67,.1),transparent);transition:left .6s ease}
-.sp-enter-btn:hover{border-color:rgba(212,168,67,.5);color:rgba(245,230,163,.9)}
-.sp-enter-btn:hover::before{transform:scaleX(1)}
-.sp-enter-btn:hover::after{left:100%}
-.sp-enter-btn:active{transform:scale(.97)}
-
-/* Auto-enter counter */
-.sp-auto-enter{position:absolute;bottom:max(12vh,40px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;opacity:0;animation:textReveal 1s ease 4s forwards;animation-fill-mode:forwards}
-.sp-auto-ring{width:28px;height:28px;position:relative}
-.sp-auto-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
-.sp-auto-ring-bg{fill:none;stroke:rgba(212,168,67,.1);stroke-width:2}
-.sp-auto-ring-fill{fill:none;stroke:rgba(212,168,67,.4);stroke-width:2;stroke-linecap:round;stroke-dasharray:75.4;stroke-dashoffset:75.4;transition:stroke-dashoffset 1s linear}
-.sp-auto-text{font-size:9px;color:rgba(212,168,67,.25);letter-spacing:3px;text-transform:uppercase}
-
-/* Flash overlay */
-.sp-flash{position:absolute;inset:0;z-index:25;background:radial-gradient(circle at 50% 50%,rgba(212,168,67,.15),rgba(255,255,255,.05));opacity:0;pointer-events:none}
-.sp-flash.fire{animation:flashBurst .6s ease forwards}
-@keyframes flashBurst{0%{opacity:0}20%{opacity:1}100%{opacity:0}}
-
-@keyframes textReveal{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
-
-/* ===== MAIN APP ===== */
-#mainApp{display:none;opacity:0;transition:opacity 1s cubic-bezier(.4,0,.2,1)}
+/* main app */
+#mainApp{display:none;opacity:0;transition:opacity .5s ease}
 #mainApp.visible{display:block;opacity:1}
-.header{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--bg-main) 88%,transparent);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);border-bottom:1px solid color-mix(in srgb,var(--primary) 15%,transparent);padding:10px 12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;transition:all .3s ease}
-.header.scrolled{padding:6px 12px;box-shadow:0 4px 30px var(--shadow-primary)}
-.header-brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.header-logo{width:36px;height:36px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-family:'Amiri',serif;font-size:18px;box-shadow:0 4px 15px var(--shadow-primary);transition:transform .3s ease,background .5s ease;position:relative;overflow:hidden;flex-shrink:0}
-.header-logo::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.2) 50%,transparent 60%);background-size:200% 200%;animation:logoShine 3s ease-in-out infinite}
-@keyframes logoShine{0%{background-position:200% 200%}100%{background-position:-200% -200%}}
-.header-logo:hover{transform:rotate(-5deg) scale(1.1)}
-.header-title{font-family:'Amiri',serif;font-size:clamp(13px,3.5vw,18px);color:var(--primary-dark);font-weight:700;transition:color .5s ease;line-height:1.2}
-.header-controls{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
-.theme-switcher{display:flex;gap:3px;align-items:center;padding:2px;background:color-mix(in srgb,var(--primary-light) 50%,transparent);border-radius:25px;border:1px solid var(--border-primary);transition:all .5s ease}
-.theme-dot{width:24px;height:24px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .3s ease;display:flex;align-items:center;justify-content:center;position:relative}
-.theme-dot:hover{transform:scale(1.15)}
-.theme-dot.active{border-color:var(--text-dark);transform:scale(1.1)}
-.theme-dot.active::after{content:'✓';position:absolute;font-size:9px;font-weight:700;color:white;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+.container{max-width:1080px;margin:0 auto}
+.header{
+  position:sticky;top:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  padding:10px 12px;
+  background:var(--glass);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 10px 30px rgba(0,0,0,.03);
+}
+.header.scrolled{box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.header-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.header-logo{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary-strong),var(--primary));color:#fff;font-family:'Amiri',serif;font-size:22px;box-shadow:0 12px 24px var(--shadow)}
+.header-title{font-family:'Amiri',serif;font-size:clamp(15px,3vw,20px);color:var(--primary-strong);font-weight:700;line-height:1.15}
+.header-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.header-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.control-group{display:flex;align-items:center;gap:6px;padding:5px;border:1px solid var(--line);background:var(--card-2);border-radius:999px}
+.theme-dot{width:28px;height:28px;border:none;border-radius:50%;position:relative;transition:.25s ease;box-shadow:inset 0 0 0 2px transparent}
+.theme-dot:hover{transform:translateY(-1px) scale(1.06)}
+.theme-dot.active{box-shadow:inset 0 0 0 2px var(--text),0 0 0 4px rgba(var(--theme-rgb),.12)}
 .theme-dot[data-theme="gold"]{background:linear-gradient(135deg,#B8860B,#D4A843)}
 .theme-dot[data-theme="emerald"]{background:linear-gradient(135deg,#2E7D32,#43A047)}
 .theme-dot[data-theme="sapphire"]{background:linear-gradient(135deg,#1565C0,#1E88E5)}
 .theme-dot[data-theme="amethyst"]{background:linear-gradient(135deg,#6A1B9A,#8E24AA)}
 .theme-dot[data-theme="ruby"]{background:linear-gradient(135deg,#C62828,#E53935)}
-.theme-dot[data-theme="darkgold"]{background:linear-gradient(135deg,#1A1408,#3A2E10);border:1px solid #D4A843}
-.lang-switcher{display:flex;background:color-mix(in srgb,var(--primary-light) 60%,transparent);border-radius:25px;padding:2px;border:1px solid var(--border-primary);transition:all .5s ease}
-.lang-btn{padding:5px 10px;border:none;background:transparent;border-radius:22px;font-size:11px;font-weight:600;cursor:pointer;color:var(--text-medium);transition:all .3s ease}
-.lang-btn.active{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:white;box-shadow:0 2px 10px var(--shadow-primary)}
-.font-controls{display:flex;align-items:center;gap:1px;background:color-mix(in srgb,var(--primary-light) 60%,transparent);border-radius:25px;padding:2px;border:1px solid var(--border-primary);transition:all .5s ease}
-.font-btn{width:28px;height:28px;border:none;background:transparent;border-radius:50%;font-size:11px;font-weight:700;cursor:pointer;color:var(--primary-dark);display:flex;align-items:center;justify-content:center;transition:all .2s ease}
-.font-btn:hover{background:var(--primary-light)}
-.font-btn:active{transform:scale(.9)}
-.font-size-display{font-size:9px;font-weight:600;color:var(--primary-dark);min-width:28px;text-align:center;transition:color .5s ease}
-.hero{padding:36px 16px 30px;text-align:center;background:linear-gradient(180deg,var(--primary-light) 0%,var(--bg-main) 100%);position:relative;overflow:hidden;transition:background .5s ease}
-.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at center,color-mix(in srgb,var(--primary) 8%,transparent) 0%,transparent 70%);animation:heroGlow 8s ease-in-out infinite alternate}
-@keyframes heroGlow{0%{transform:scale(1)}100%{transform:scale(1.2)}}
-.hero-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,color-mix(in srgb,var(--primary) 6%,transparent) 1px,transparent 1px),radial-gradient(circle at 80% 70%,color-mix(in srgb,var(--primary) 6%,transparent) 1px,transparent 1px);background-size:60px 60px;animation:patternMove 30s linear infinite}
-@keyframes patternMove{to{background-position:60px 60px}}
-.hero-icon{width:72px;height:72px;margin:0 auto 18px;background:linear-gradient(135deg,var(--primary-dark),var(--primary),var(--primary-shimmer));background-size:200% 200%;animation:gradientShift 4s ease infinite;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 12px 40px var(--shadow-primary);position:relative;transition:all .6s cubic-bezier(.34,1.56,.64,1)}
-.hero-icon:hover{transform:rotate(10deg) scale(1.05)}
-.hero-icon::after{content:'';position:absolute;inset:-8px;border-radius:24px;border:2px solid var(--primary);opacity:0;animation:iconPulse 3s ease infinite}
-@keyframes iconPulse{0%{transform:scale(1);opacity:.4}100%{transform:scale(1.2);opacity:0}}
-@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.hero-title{font-family:'Amiri',serif;font-size:clamp(20px,5.5vw,36px);color:var(--primary-dark);margin-bottom:10px;animation:fadeInUp .8s ease .2s both;transition:color .5s ease}
-.hero-desc{font-size:clamp(12px,3vw,15px);color:var(--text-medium);max-width:520px;margin:0 auto;line-height:1.7;animation:fadeInUp .8s ease .4s both;transition:color .5s ease}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.progress-section{padding:16px;background:var(--bg-card);border-bottom:1px solid color-mix(in srgb,var(--primary) 15%,transparent);animation:fadeInUp .8s ease .5s both;transition:background .5s ease}
-.progress-header{display:flex;justify-content:space-between;margin-bottom:10px;align-items:baseline}
-.progress-label{font-size:12px;font-weight:600;color:var(--text-medium);transition:color .5s ease}
-.progress-count{font-size:13px;font-weight:700;color:var(--primary-dark);transition:color .5s ease}
-.progress-bar{width:100%;height:8px;background:linear-gradient(90deg,var(--primary-light),color-mix(in srgb,var(--primary) 10%,transparent));border-radius:10px;overflow:hidden;transition:background .5s ease}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--primary-dark),var(--primary),var(--primary-shimmer));background-size:300% 100%;animation:progressShine 2s linear infinite;border-radius:10px;width:0%;transition:width .8s cubic-bezier(.4,0,.2,1);position:relative}
-.progress-fill::after{content:'';position:absolute;right:0;top:0;width:20px;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6));border-radius:10px;filter:blur(2px)}
-@keyframes progressShine{0%{background-position:0% 50%}100%{background-position:300% 50%}}
-.nav-tabs{display:flex;overflow-x:auto;gap:6px;padding:12px 12px;background:var(--bg-card);border-bottom:1px solid color-mix(in srgb,var(--primary) 15%,transparent);-webkit-overflow-scrolling:touch;scrollbar-width:none;animation:fadeInUp .8s ease .6s both;transition:background .5s ease}
+.theme-dot[data-theme="darkgold"]{background:linear-gradient(135deg,#100d07,#3a2d11)}
+.lang-btn,.font-btn,.mini-action{
+  border:none;background:transparent;color:var(--muted);border-radius:999px;padding:8px 12px;font-weight:700;font-size:12px;transition:.2s ease;
+}
+.lang-btn.active,.mini-action.active{background:linear-gradient(135deg,var(--primary-strong),var(--primary));color:#fff;box-shadow:0 10px 22px var(--shadow)}
+.font-btn{padding:8px 10px;color:var(--primary-strong)}
+.font-size-display{min-width:36px;text-align:center;font-size:12px;color:var(--primary-strong);font-weight:700}
+.theme-caption{font-size:11px;color:var(--muted);padding:0 6px}
+
+.hero{padding:32px 14px 26px;background:var(--hero-grad);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:360px;height:360px;border-radius:50%;background:rgba(var(--theme-rgb),.08);filter:blur(18px);top:-160px;left:-80px}
+.hero::after{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(var(--theme-rgb),.06);filter:blur(18px);right:-120px;bottom:-180px}
+.hero-inner{position:relative;z-index:1;text-align:center}
+.hero-icon{width:78px;height:78px;margin:0 auto 18px;border-radius:24px;display:grid;place-items:center;font-size:34px;background:linear-gradient(135deg,var(--primary-strong),var(--primary),var(--primary-soft));box-shadow:0 18px 42px var(--shadow)}
+.hero-title{font-family:'Amiri',serif;font-size:clamp(26px,5vw,42px);line-height:1.15;color:var(--primary-strong)}
+.hero-desc{margin:10px auto 0;max-width:760px;color:var(--muted);font-size:14px;line-height:1.75}
+
+.progress-wrap{padding:14px 12px;background:var(--card);border-bottom:1px solid var(--line)}
+.progress-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}
+.progress-label{font-size:13px;color:var(--muted);font-weight:700}
+.progress-count{font-size:13px;color:var(--primary-strong);font-weight:800}
+.progress-bar{height:10px;border-radius:999px;background:var(--bg-soft);overflow:hidden;border:1px solid var(--line)}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--primary-strong),var(--primary),var(--primary-soft));transition:width .4s ease}
+
+.tools-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:12px;background:var(--card);border-bottom:1px solid var(--line)}
+.search-box{flex:1 1 260px;display:flex;align-items:center;gap:10px;padding:0 14px;height:46px;border-radius:16px;background:var(--card-2);border:1px solid var(--line)}
+.search-box input{flex:1;border:none;background:transparent;outline:none;color:var(--text);font-size:14px}
+.search-box input::placeholder{color:var(--muted-2)}
+.tool-btn{height:46px;padding:0 16px;border:none;border-radius:16px;background:var(--card-2);border:1px solid var(--line);color:var(--text);font-weight:700;transition:.2s ease}
+.tool-btn:hover{transform:translateY(-1px);border-color:var(--line-strong)}
+.tool-btn.active{background:linear-gradient(135deg,var(--primary-strong),var(--primary));color:#fff;border-color:transparent;box-shadow:0 12px 24px var(--shadow)}
+.stats-pill{height:46px;padding:0 16px;border-radius:16px;display:flex;align-items:center;background:rgba(var(--theme-rgb),.08);color:var(--primary-strong);font-weight:800;white-space:nowrap}
+
+.nav-tabs{display:flex;gap:8px;overflow:auto;padding:12px;background:var(--card);border-bottom:1px solid var(--line);scrollbar-width:none}
 .nav-tabs::-webkit-scrollbar{display:none}
-.nav-tab{flex-shrink:0;padding:8px 14px;border:1.5px solid var(--border-primary);border-radius:30px;background:var(--bg-card);font-size:11px;font-weight:600;color:var(--text-medium);cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
-.nav-tab::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--primary-dark),var(--primary));opacity:0;transition:opacity .3s ease;z-index:-1}
-.nav-tab:hover{border-color:var(--primary);transform:translateY(-2px)}
-.nav-tab.active{color:white;border-color:var(--primary-dark);transform:translateY(-2px);box-shadow:0 4px 20px var(--shadow-primary)}
-.nav-tab.active::before{opacity:1}
-.section{display:none;padding:20px 12px 50px;animation:sectionReveal .6s cubic-bezier(.4,0,.2,1)}
+.nav-tab{white-space:nowrap;border:none;background:var(--card-2);border:1px solid var(--line);border-radius:999px;padding:10px 14px;font-size:12px;font-weight:700;color:var(--muted);transition:.2s ease}
+.nav-tab.active{background:linear-gradient(135deg,var(--primary-strong),var(--primary));color:#fff;border-color:transparent;box-shadow:0 12px 24px var(--shadow)}
+
+.section{display:none;padding:16px 12px 48px}
 .section.active{display:block}
-@keyframes sectionReveal{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.section-header{text-align:center;margin-bottom:24px;padding:24px 16px;background:linear-gradient(135deg,var(--primary-light),var(--bg-card),var(--primary-light));border-radius:16px;border:1px solid var(--border-primary);position:relative;overflow:hidden;transition:all .5s ease}
-.section-icon{font-size:32px;margin-bottom:6px;display:inline-block;animation:iconBounce 2s ease-in-out infinite}
-@keyframes iconBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.section-title{font-family:'Amiri',serif;font-size:clamp(18px,5vw,26px);color:var(--primary-dark);transition:color .5s ease}
-.info-card{background:var(--bg-card);border-radius:16px;padding:20px;margin-bottom:14px;border:1px solid color-mix(in srgb,var(--primary) 20%,transparent);position:relative;overflow:hidden;transition:all .3s ease}
-.info-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px color-mix(in srgb,var(--primary) 12%,transparent)}
-.info-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--primary-dark),var(--primary),var(--primary-shimmer),var(--primary),var(--primary-dark));background-size:300% 100%;animation:gradientSlide 4s linear infinite}
-@keyframes gradientSlide{0%{background-position:0% 50%}100%{background-position:300% 50%}}
-.info-card h3{font-family:'Amiri',serif;color:var(--primary-dark);font-size:clamp(15px,4vw,20px);margin-bottom:10px;transition:color .5s ease}
-.info-card p{color:var(--text-medium);line-height:1.7;font-size:clamp(12px,3vw,14px);transition:color .5s ease}
-.ruqya-card{background:var(--bg-card);border-radius:16px;margin-bottom:12px;border:1px solid color-mix(in srgb,var(--primary) 20%,transparent);overflow:hidden;transition:all .4s cubic-bezier(.4,0,.2,1);opacity:0;transform:translateY(20px);animation:cardAppear .5s ease forwards}
-.ruqya-card:nth-child(2){animation-delay:.05s}.ruqya-card:nth-child(3){animation-delay:.1s}.ruqya-card:nth-child(4){animation-delay:.15s}.ruqya-card:nth-child(5){animation-delay:.2s}.ruqya-card:nth-child(6){animation-delay:.25s}.ruqya-card:nth-child(7){animation-delay:.3s}.ruqya-card:nth-child(8){animation-delay:.35s}.ruqya-card:nth-child(9){animation-delay:.4s}.ruqya-card:nth-child(10){animation-delay:.45s}.ruqya-card:nth-child(11){animation-delay:.5s}.ruqya-card:nth-child(12){animation-delay:.55s}.ruqya-card:nth-child(13){animation-delay:.6s}
-@keyframes cardAppear{to{opacity:1;transform:translateY(0)}}
-.ruqya-card:hover{box-shadow:0 8px 30px color-mix(in srgb,var(--primary) 15%,transparent);border-color:var(--primary)}
-.ruqya-card-header{padding:14px 14px;background:linear-gradient(135deg,color-mix(in srgb,var(--primary-light) 50%,transparent),var(--bg-card));border-bottom:1px solid color-mix(in srgb,var(--primary) 10%,transparent);display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .3s ease;user-select:none}
-.ruqya-card-header:hover{background:linear-gradient(135deg,color-mix(in srgb,var(--primary-light) 80%,transparent),var(--bg-card))}
-.ruqya-number{width:34px;height:34px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0;box-shadow:0 3px 10px var(--shadow-primary);transition:transform .3s ease}
-.ruqya-card.open .ruqya-number{transform:rotate(-5deg) scale(1.05)}
-.ruqya-card-title{flex:1;font-size:13px;font-weight:600;color:var(--text-dark);line-height:1.4;transition:color .5s ease}
-.ruqya-toggle{transition:transform .4s cubic-bezier(.4,0,.2,1);color:var(--primary);font-size:14px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--primary-light);flex-shrink:0}
-.ruqya-card.open .ruqya-toggle{transform:rotate(180deg);background:var(--primary);color:white}
-.ruqya-card-body{max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(.4,0,.2,1)}
-.ruqya-card.open .ruqya-card-body{max-height:2000px}
-.ruqya-card-content{padding:20px 14px}
-.arabic-block{background:linear-gradient(135deg,var(--primary-light),color-mix(in srgb,var(--primary-light) 70%,var(--bg-card)));border-radius:14px;padding:20px 16px;margin:14px 0;text-align:center;border:1px solid color-mix(in srgb,var(--primary) 30%,transparent);direction:rtl;position:relative;overflow:hidden;transition:all .5s ease}
-.arabic-text{font-family:'Noto Naskh Arabic',serif;font-size:clamp(18px,5vw,26px);color:var(--primary-deeper);line-height:2.2;position:relative;transition:color .5s ease}
-.translation{font-size:inherit;color:var(--text-dark);margin-top:10px;line-height:1.7;padding:10px 14px;background:color-mix(in srgb,var(--primary-light) 50%,transparent);border-radius:10px;border-left:3px solid var(--primary);transition:all .5s ease}
-.transcription{font-size:inherit;color:var(--text-medium);font-style:italic;margin-top:8px;padding:8px 14px;background:color-mix(in srgb,var(--primary) 5%,transparent);border-radius:10px;transition:all .5s ease}
-.counter-section{margin:16px 0;text-align:center}
-.counter-label-top{font-size:10px;font-weight:600;color:var(--text-light);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;transition:color .5s ease}
+.section-header{padding:22px 16px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(180deg,var(--card) 0%,var(--card-2) 100%);text-align:center;margin-bottom:18px;box-shadow:0 10px 24px rgba(0,0,0,.03)}
+.section-icon{font-size:34px;margin-bottom:6px}
+.section-title{font-family:'Amiri',serif;font-size:clamp(22px,4.5vw,30px);color:var(--primary-strong)}
+.section-sub{margin-top:8px;color:var(--muted);font-size:13px}
+.zero-state{display:none;padding:24px;border-radius:18px;border:1px dashed var(--line-strong);background:var(--card-2);color:var(--muted);text-align:center;margin-top:10px}
+.zero-state.show{display:block}
+
+.info-card,.gradient-block,.important-notice,.tip-card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.04)}
+.gradient-block{padding:22px 18px;background:linear-gradient(135deg,var(--bg-soft),var(--card));margin-bottom:14px;text-align:center}
+.gradient-block-title{font-family:'Amiri',serif;font-size:clamp(18px,4vw,24px);color:var(--primary-strong)}
+.info-card{padding:18px 16px;margin-bottom:14px}
+.info-card h3{font-family:'Amiri',serif;font-size:20px;color:var(--primary-strong);margin-bottom:8px}
+.info-card p{font-size:14px;color:var(--muted);line-height:1.8}
+.steps-container{display:grid;gap:12px;margin-bottom:14px}
+.step-item{display:flex;gap:12px;padding:16px;border-radius:18px;border:1px solid var(--line);background:var(--card)}
+.step-number{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary-strong),var(--primary));color:#fff;font-weight:800;flex-shrink:0}
+.step-content h4{font-size:14px;color:var(--text);margin-bottom:4px}
+.step-content p{font-size:13px;color:var(--muted);line-height:1.65}
+.important-notice{padding:16px 18px;background:linear-gradient(135deg,var(--bg-soft),var(--card));border-left:4px solid var(--primary-strong)}
+.important-notice p{font-size:14px;line-height:1.7;color:var(--muted)}
+
+.ruqya-card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.04);margin-bottom:12px;transition:.25s ease}
+.ruqya-card.hidden{display:none}
+.ruqya-card.open{border-color:var(--line-strong);box-shadow:0 18px 34px rgba(var(--theme-rgb),.1)}
+.ruqya-head{display:flex;align-items:center;gap:12px;padding:14px;background:linear-gradient(180deg,var(--card-2),var(--card));cursor:pointer;user-select:none}
+.ruqya-number{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary-strong),var(--primary));color:#fff;font-weight:800;box-shadow:0 12px 24px var(--shadow);flex-shrink:0}
+.ruqya-title{flex:1;color:var(--text);font-weight:700;font-size:14px;line-height:1.45}
+.ruqya-chevron{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bg-soft);color:var(--primary-strong);font-weight:900;transition:transform .25s ease,background .25s ease}
+.ruqya-card.open .ruqya-chevron{transform:rotate(180deg);background:var(--primary);color:#fff}
+.ruqya-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.ruqya-content{padding:16px}
+.arabic-block{padding:18px 14px;border-radius:18px;background:linear-gradient(135deg,var(--bg-soft),var(--card-2));border:1px solid var(--line);text-align:center;direction:rtl}
+.arabic-text{font-family:'Noto Naskh Arabic',serif;font-size:clamp(22px,4.8vw,30px);line-height:2;color:var(--primary-strong)}
+.translation,.transcription{margin-top:10px;padding:12px 14px;border-radius:14px}
+.translation{background:var(--card-2);border-left:4px solid var(--primary);color:var(--text);line-height:1.75}
+.transcription{background:var(--bg-soft);color:var(--muted);font-style:italic;line-height:1.7}
+.counter-section{margin-top:16px;padding:16px;border-radius:18px;background:var(--card-2);border:1px solid var(--line)}
+.counter-label{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted-2);text-align:center;margin-bottom:12px;font-weight:700}
 .counter-display{display:flex;align-items:center;justify-content:center;gap:16px}
-.counter-btn{width:40px;height:40px;border-radius:50%;border:2px solid var(--primary);background:var(--bg-card);color:var(--primary-dark);font-size:18px;font-weight:700;cursor:pointer;transition:all .2s ease;display:flex;align-items:center;justify-content:center}
-.counter-btn:hover{background:var(--primary-light);transform:scale(1.1)}
-.counter-btn:active{transform:scale(.95);background:var(--primary);color:white}
-.counter-circle{width:70px;height:70px;position:relative;display:flex;align-items:center;justify-content:center}
+.counter-btn{width:42px;height:42px;border-radius:50%;border:2px solid var(--primary);background:var(--card);color:var(--primary-strong);font-size:20px;font-weight:800}
+.counter-circle{width:72px;height:72px;position:relative;display:grid;place-items:center}
 .counter-circle svg{position:absolute;inset:0;transform:rotate(-90deg)}
-.counter-ring-bg{fill:none;stroke:var(--primary-light);stroke-width:3}
-.counter-ring-fill{fill:none;stroke:var(--primary);stroke-width:3;stroke-linecap:round;stroke-dasharray:196;stroke-dashoffset:196;transition:stroke-dashoffset .4s ease}
-.counter-value{font-size:24px;font-weight:700;color:var(--primary-dark);position:relative;z-index:1;transition:color .5s ease}
-.complete-btn{width:100%;padding:14px;margin-top:16px;background:linear-gradient(135deg,var(--primary-light),var(--bg-card));border:2px solid var(--border-primary);border-radius:12px;font-size:13px;font-weight:600;color:var(--primary-dark);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
-.complete-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--green),var(--green-light));opacity:0;transition:opacity .4s ease;z-index:0}
-.complete-btn span{position:relative;z-index:1}
-.complete-btn:hover{transform:translateY(-2px)}
-.complete-btn:active{transform:scale(.98)}
-.complete-btn.completed{border-color:var(--green-light);color:white}
-.complete-btn.completed::before{opacity:1}
-.gradient-block{padding:24px 20px;margin:16px 0;border-radius:16px;background:linear-gradient(135deg,var(--primary-light),color-mix(in srgb,var(--primary-light) 80%,var(--bg-card)),var(--primary-light));background-size:300% 300%;animation:gradientFlow 8s ease infinite;border:1px solid var(--border-primary);text-align:center;position:relative;overflow:hidden;transition:all .5s ease}
-.gradient-block::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shinePass 5s ease-in-out infinite}
-@keyframes shinePass{0%{left:-100%}50%{left:100%}100%{left:100%}}
-@keyframes gradientFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.gradient-block-title{font-family:'Amiri',serif;font-size:clamp(16px,4.5vw,22px);color:var(--primary-dark);transition:color .5s ease}
-.steps-container{display:flex;flex-direction:column;gap:12px;margin:16px 0}
-.step-item{display:flex;gap:12px;padding:14px;background:var(--bg-card);border-radius:14px;border:1px solid color-mix(in srgb,var(--primary) 20%,transparent);transition:all .3s ease;opacity:0;transform:translateX(-20px);animation:stepSlideIn .5s ease forwards}
-.step-item:nth-child(1){animation-delay:.1s}.step-item:nth-child(2){animation-delay:.2s}.step-item:nth-child(3){animation-delay:.3s}.step-item:nth-child(4){animation-delay:.4s}.step-item:nth-child(5){animation-delay:.5s}
-@keyframes stepSlideIn{to{opacity:1;transform:translateX(0)}}
-.step-item:hover{transform:translateX(5px)}
-.step-number{width:32px;height:32px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0}
-.step-content h4{font-size:13px;color:var(--text-dark);margin-bottom:4px;transition:color .5s ease}
-.step-content p{font-size:12px;color:var(--text-light);line-height:1.6;transition:color .5s ease}
-.important-notice{background:linear-gradient(135deg,var(--primary-light),color-mix(in srgb,var(--primary-light) 80%,var(--bg-card)));border-left:4px solid var(--primary-dark);border-radius:0 14px 14px 0;padding:16px 20px;margin:16px 0;transition:all .5s ease}
-.important-notice p{padding-top:4px;line-height:1.7;font-size:clamp(12px,3vw,14px)}
-.footer{text-align:center;padding:32px 16px;background:linear-gradient(180deg,var(--bg-main) 0%,var(--primary-light) 100%);border-top:1px solid color-mix(in srgb,var(--primary) 20%,transparent);transition:all .5s ease}
-.footer-arabic{font-family:'Noto Naskh Arabic',serif;font-size:18px;color:var(--primary-dark);direction:rtl;transition:color .5s ease}
-.footer-text{font-size:11px;color:var(--text-light);margin-top:10px;transition:color .5s ease}
-.footer-ornament{margin:12px auto;width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent)}
-.scroll-top{position:fixed;bottom:20px;right:16px;width:46px;height:46px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border:none;border-radius:14px;color:white;font-size:18px;cursor:pointer;box-shadow:0 8px 30px var(--shadow-primary);opacity:0;transform:translateY(20px) scale(.8);transition:all .4s cubic-bezier(.4,0,.2,1);z-index:999;display:flex;align-items:center;justify-content:center}
-.scroll-top.visible{opacity:1;transform:translateY(0) scale(1)}
-.scroll-top:hover{transform:translateY(-3px) scale(1.05)}
-.scroll-top:active{transform:scale(.95)}
-.toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,#2E7D32,#4CAF50);color:white;padding:12px 24px;border-radius:50px;font-size:13px;font-weight:600;box-shadow:0 8px 30px rgba(46,125,50,.3);opacity:0;transition:all .5s cubic-bezier(.4,0,.2,1);z-index:9999;pointer-events:none;white-space:nowrap}
+.counter-ring-bg{fill:none;stroke:var(--line);stroke-width:4}
+.counter-ring-fill{fill:none;stroke:var(--primary);stroke-width:4;stroke-linecap:round;stroke-dasharray:196;stroke-dashoffset:196;transition:stroke-dashoffset .25s ease}
+.counter-value{position:relative;z-index:1;font-size:24px;font-weight:800;color:var(--primary-strong)}
+.complete-btn{margin-top:14px;width:100%;border:none;border-radius:16px;padding:14px 16px;background:linear-gradient(135deg,var(--bg-soft),var(--card));border:1px solid var(--line);font-weight:800;color:var(--primary-strong);display:flex;align-items:center;justify-content:center;gap:10px;transition:.2s ease}
+.complete-btn.completed{background:linear-gradient(135deg,var(--success),var(--success-2));border-color:transparent;color:#fff;box-shadow:0 16px 30px rgba(76,175,80,.22)}
+.complete-btn .btn-icon{font-size:16px}
+
+.footer{padding:28px 16px 40px;text-align:center;border-top:1px solid var(--line);background:linear-gradient(180deg,var(--bg) 0%,var(--bg-soft) 100%)}
+.footer-arabic{font-family:'Noto Naskh Arabic',serif;font-size:22px;color:var(--primary-strong)}
+.footer-line{width:70px;height:2px;border-radius:999px;background:linear-gradient(90deg,transparent,var(--primary),transparent);margin:12px auto}
+.footer-text{color:var(--muted);font-size:12px}
+
+.scroll-top{position:fixed;right:16px;bottom:18px;z-index:999;width:46px;height:46px;border:none;border-radius:16px;background:linear-gradient(135deg,var(--primary-strong),var(--primary));color:#fff;box-shadow:0 18px 32px var(--shadow);opacity:0;transform:translateY(10px);transition:.25s ease}
+.scroll-top.show{opacity:1;transform:translateY(0)}
+.toast{position:fixed;left:50%;bottom:76px;transform:translateX(-50%) translateY(14px);padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,var(--success),var(--success-2));color:#fff;font-weight:800;box-shadow:0 18px 34px rgba(76,175,80,.24);opacity:0;pointer-events:none;transition:.25s ease;z-index:9999}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* ===== RESPONSIVE MOBILE FIXES ===== */
-@media(max-width:480px){
-  .header{padding:8px 8px;gap:4px}
-  .header-brand{gap:8px}
-  .header-logo{width:32px;height:32px;font-size:16px;border-radius:8px}
-  .header-title{font-size:13px}
-  .header-controls{gap:3px}
-  .theme-switcher{gap:2px;padding:2px}
-  .theme-dot{width:20px;height:20px}
-  .theme-dot.active::after{font-size:7px}
-  .lang-btn{padding:4px 8px;font-size:10px}
-  .font-controls{padding:2px}
-  .font-btn{width:24px;height:24px;font-size:10px}
-  .font-size-display{font-size:8px;min-width:24px}
-  .hero{padding:28px 12px 24px}
-  .hero-icon{width:60px;height:60px;font-size:28px;border-radius:16px}
-  .hero-title{font-size:clamp(18px,5vw,28px);margin-bottom:8px}
-  .hero-desc{font-size:12px;line-height:1.6}
-  .progress-section{padding:12px}
-  .progress-label{font-size:11px}
-  .progress-count{font-size:12px}
-  .progress-bar{height:6px}
-  .nav-tabs{padding:10px 8px;gap:5px}
-  .nav-tab{padding:7px 10px;font-size:10px}
-  .section{padding:14px 8px 40px}
-  .section-header{padding:18px 12px;margin-bottom:18px;border-radius:12px}
-  .section-icon{font-size:28px}
-  .section-title{font-size:clamp(16px,4.5vw,22px)}
-  .info-card{padding:16px 12px;border-radius:12px;margin-bottom:10px}
-  .info-card h3{font-size:14px;margin-bottom:8px}
-  .info-card p{font-size:12px;line-height:1.6}
-  .ruqya-card{margin-bottom:10px;border-radius:12px}
-  .ruqya-card-header{padding:12px 10px;gap:8px}
-  .ruqya-number{width:30px;height:30px;font-size:12px;border-radius:8px}
-  .ruqya-card-title{font-size:12px}
-  .ruqya-toggle{width:24px;height:24px;font-size:12px}
-  .ruqya-card-content{padding:14px 10px}
-  .arabic-block{padding:16px 12px;margin:10px 0;border-radius:10px}
-  .arabic-text{font-size:clamp(16px,4.5vw,22px);line-height:2}
-  .translation{padding:8px 10px;margin-top:8px;font-size:12px;border-radius:8px}
-  .transcription{padding:6px 10px;margin-top:6px;font-size:11px;border-radius:8px}
-  .counter-section{margin:14px 0}
-  .counter-display{gap:12px}
-  .counter-btn{width:36px;height:36px;font-size:16px}
-  .counter-circle{width:60px;height:60px}
-  .counter-circle svg circle{r:28}
-  .counter-value{font-size:20px}
-  .complete-btn{padding:12px;font-size:12px;border-radius:10px;margin-top:12px}
-  .gradient-block{padding:18px 14px;margin:12px 0;border-radius:12px}
-  .gradient-block-title{font-size:clamp(14px,4vw,18px)}
-  .steps-container{gap:8px;margin:12px 0}
-  .step-item{padding:12px;gap:10px;border-radius:10px}
-  .step-number{width:28px;height:28px;font-size:12px}
-  .step-content h4{font-size:12px}
-  .step-content p{font-size:11px}
-  .important-notice{padding:14px 16px;margin:12px 0;border-radius:0 10px 10px 0}
-  .important-notice p{font-size:12px}
-  .footer{padding:24px 12px}
-  .footer-arabic{font-size:16px}
-  .footer-text{font-size:10px}
-  .scroll-top{width:40px;height:40px;bottom:16px;right:12px;border-radius:12px;font-size:16px}
-  .toast{font-size:12px;padding:10px 20px;bottom:60px}
+@media (max-width:768px){
+  .header{padding:10px 10px}
+  .header-controls{justify-content:flex-start}
+  .hero{padding:26px 12px 22px}
+  .hero-icon{width:68px;height:68px;border-radius:20px;font-size:30px}
+  .tools-bar{padding:10px}
+  .tool-btn{flex:1 1 calc(50% - 10px)}
+  .stats-pill{width:100%;justify-content:center}
 }
-
-@media(max-width:360px){
-  .header{padding:6px 6px}
-  .header-logo{width:28px;height:28px;font-size:14px;border-radius:7px}
-  .header-title{font-size:12px}
-  .theme-dot{width:18px;height:18px}
-  .theme-dot.active::after{font-size:6px}
-  .lang-btn{padding:3px 6px;font-size:9px}
-  .font-btn{width:22px;height:22px;font-size:9px}
-  .font-size-display{font-size:7px;min-width:20px}
-  .nav-tab{padding:6px 8px;font-size:9px}
-  .ruqya-card-header{padding:10px 8px}
-  .ruqya-number{width:26px;height:26px;font-size:11px}
-  .ruqya-card-title{font-size:11px}
-  .arabic-text{font-size:clamp(15px,4vw,20px)}
-  .section{padding:10px 6px 36px}
+@media (max-width:520px){
+  .theme-caption{display:none}
+  .control-group{padding:4px}
+  .theme-dot{width:24px;height:24px}
+  .lang-btn,.font-btn,.mini-action{padding:7px 9px;font-size:11px}
+  .font-size-display{min-width:30px;font-size:11px}
+  .ruqya-head{padding:12px}
+  .ruqya-title{font-size:13px}
+  .counter-btn{width:38px;height:38px}
+  .counter-circle{width:64px;height:64px}
+  .counter-value{font-size:22px}
+  .section{padding:14px 10px 42px}
+  .splash-card{padding:24px 16px 20px}
 }
-
-@media(min-width:768px){
-  .section{padding:32px 24px 60px;max-width:700px;margin:0 auto}
-  .hero{padding:60px 40px 50px}
-  .header{padding:12px 20px}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
 }
 </style>
 </head>
-<body data-theme="gold">
-
-<!-- ===== PREMIUM SPLASH SCREEN ===== -->
+<body>
 <div id="splashScreen">
-<div class="splash-nebula"></div>
-<div class="splash-starfield"><canvas id="starCanvas"></canvas></div>
-<div class="splash-sacred">
-  <div class="sacred-ring"></div><div class="sacred-ring"></div>
-  <div class="sacred-ring"></div><div class="sacred-ring"></div>
-</div>
-<div class="splash-lightrays" id="lightRays"></div>
-<div class="splash-core-glow"></div>
-<div class="splash-particles" id="splashParticles"></div>
-<div class="splash-vignette"></div>
-<div class="sp-flash" id="spFlash"></div>
-
-<div class="splash-content">
-  <!-- Phase 1: Opening -->
-  <div class="sp-phase" id="spPhase1">
-    <div class="sp-opening-line"></div>
-    <div class="sp-opening-text">С именем Аллаха<br>Милостивого Милосердного</div>
-    <div class="sp-opening-line-bottom"></div>
-  </div>
-
-  <!-- Phase 2: Bismillah -->
-  <div class="sp-phase" id="spPhase2">
-    <div class="sp-bismillah-glow"></div>
-    <div class="sp-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-    <div class="sp-bismillah-sub">Во имя Аллаха Милостивого Милосердного</div>
-  </div>
-
-  <!-- Phase 3: Main -->
-  <div class="sp-phase" id="spPhase3">
-    <div class="sp-ornament">
-      <div class="sp-ornament-line"></div>
-      <div class="sp-ornament-diamond"></div>
-      <div class="sp-ornament-line" style="transform:scaleX(-1)"></div>
+  <div class="splash-orb"></div>
+  <div class="splash-orb-2"></div>
+  <div class="splash-grid"></div>
+  <div class="splash-card">
+    <div class="splash-ring"><div class="splash-mark">أ</div></div>
+    <div class="splash-phase active" id="phaseA">
+      <div class="splash-kicker">Начало курса</div>
+      <div class="splash-ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+      <div class="splash-sub">Во имя Аллаха Милостивого Милосердного</div>
     </div>
-    <div class="sp-title-container">
-      <div class="sp-title">Лекарь Абу Мухаммад</div>
+    <div class="splash-phase" id="phaseB">
+      <div class="splash-kicker">Курс лечения рукья</div>
+      <div class="splash-title">Лекарь Абу Мухаммад</div>
+      <div class="splash-sub">Устранение преград во всех сферах жизни с помощью Всевышнего Аллаха</div>
     </div>
-    <div class="sp-subtitle-container">
-      <div class="sp-subtitle">Курс лечения рукья</div>
+    <div class="splash-actions">
+      <button class="splash-btn" id="enterAppBtn" type="button">Войти в курс</button>
+      <button class="splash-skip" id="skipSplashBtn" type="button">Пропустить</button>
     </div>
-    <div class="sp-tagline">Устранение преград во всех сферах жизни<br>с помощью Всевышнего Аллаха</div>
-    <div class="sp-divider-fancy">
-      <div class="sp-divider-line"></div>
-      <div class="sp-divider-dot"></div>
-      <div class="sp-divider-dot" style="width:5px;height:5px;background:rgba(212,168,67,.6)"></div>
-      <div class="sp-divider-dot"></div>
-      <div class="sp-divider-line"></div>
-    </div>
-    <button class="sp-enter-btn" id="enterBtn">Войти в курс</button>
-  </div>
-
-  <!-- Auto-enter indicator -->
-  <div class="sp-auto-enter">
-    <div class="sp-auto-ring">
-      <svg viewBox="0 0 28 28">
-        <circle class="sp-auto-ring-bg" cx="14" cy="14" r="12"/>
-        <circle class="sp-auto-ring-fill" id="autoRing" cx="14" cy="14" r="12"/>
-      </svg>
-    </div>
-    <div class="sp-auto-text">авто-вход</div>
+    <div class="splash-auto">Авто-вход через <strong id="splashCount">6</strong> сек.</div>
   </div>
 </div>
+
+<div id="mainApp">
+  <div class="container">
+    <header class="header" id="mainHeader">
+      <div class="header-brand">
+        <div class="header-logo">أ</div>
+        <div>
+          <div class="header-title" data-ru="Лекарь Абу Мухаммад" data-uz="Tabib Abu Muhammad">Лекарь Абу Мухаммад</div>
+          <div class="header-sub" data-ru="Современный курс рукья" data-uz="Zamonaviy ruqiya kursi">Современный курс рукья</div>
+        </div>
+      </div>
+      <div class="header-controls">
+        <div class="control-group" id="themeGroup">
+          <button class="theme-dot active" data-theme="gold" aria-label="Золото" title="Золото"></button>
+          <button class="theme-dot" data-theme="emerald" aria-label="Изумруд" title="Изумруд"></button>
+          <button class="theme-dot" data-theme="sapphire" aria-label="Сапфир" title="Сапфир"></button>
+          <button class="theme-dot" data-theme="amethyst" aria-label="Аметист" title="Аметист"></button>
+          <button class="theme-dot" data-theme="ruby" aria-label="Рубин" title="Рубин"></button>
+          <button class="theme-dot" data-theme="darkgold" aria-label="Тёмное золото" title="Тёмное золото"></button>
+          <span class="theme-caption" id="themeCaption">Золото</span>
+        </div>
+        <div class="control-group">
+          <button class="font-btn" id="fontMinus" type="button">A−</button>
+          <span class="font-size-display" id="fontSizeDisplay">100%</span>
+          <button class="font-btn" id="fontPlus" type="button">A+</button>
+        </div>
+        <div class="control-group">
+          <button class="lang-btn active" id="btnRu" type="button">RU</button>
+          <button class="lang-btn" id="btnUz" type="button">UZ</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-icon">🌿</div>
+        <h1 class="hero-title" data-ru="Курс лечения рукья" data-uz="Ruqiya bilan davolash kursi">Курс лечения рукья</h1>
+        <p class="hero-desc" data-ru="Устранение преград (та'тыль) в продажах, успехе, здоровье, отношениях, финансах, учёбе, духовности, защита от сглаза и порчи" data-uz="Savdo, muvaffaqiyat, salomatlik, munosabatlar, moliya, ta'lim, ma'naviyatdagi to'siqlarni (ta'til) bartaraf etish, ko'z tegish va sehrga qarshi himoya">Устранение преград (та'тыль) в продажах, успехе, здоровье, отношениях, финансах, учёбе, духовности, защита от сглаза и порчи</p>
+      </div>
+    </section>
+
+    <section class="progress-wrap">
+      <div class="progress-head">
+        <div class="progress-label" data-ru="Ваш прогресс" data-uz="Sizning jarayoningiz">Ваш прогресс</div>
+        <div class="progress-count" id="progressCount">0 / 98</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    </section>
+
+    <section class="tools-bar">
+      <label class="search-box">
+        <span>🔎</span>
+        <input id="searchInput" type="text" placeholder="Поиск в текущем разделе">
+      </label>
+      <button class="tool-btn" id="unreadToggle" type="button">Только непрочитанные</button>
+      <button class="tool-btn" id="expandToggle" type="button">Развернуть раздел</button>
+      <div class="stats-pill" id="sectionStats">0 / 0</div>
+    </section>
+
+    <nav class="nav-tabs" id="navTabs"></nav>
+    <main id="sectionsContainer"></main>
+
+    <footer class="footer">
+      <div class="footer-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+      <div class="footer-line"></div>
+      <div class="footer-text" data-ru="© Лекарь Абу Мухаммад. Курс лечения рукья." data-uz="© Tabib Abu Muhammad. Ruqiya bilan davolash kursi.">© Лекарь Абу Мухаммад. Курс лечения рукья.</div>
+    </footer>
+  </div>
 </div>
 
-<!-- ===== MAIN APP ===== -->
-<div id="mainApp"><div class="container">
-<header class="header" id="mainHeader">
-<div class="header-brand"><div class="header-logo">أ</div><div class="header-title" data-ru="Лекарь Абу Мухаммад" data-uz="Tabib Abu Muhammad">Лекарь Абу Мухаммад</div></div>
-<div class="header-controls">
-<div class="theme-switcher">
-<div class="theme-dot active" data-theme="gold" title="Золото"></div>
-<div class="theme-dot" data-theme="emerald" title="Изумруд"></div>
-<div class="theme-dot" data-theme="sapphire" title="Сапфир"></div>
-<div class="theme-dot" data-theme="amethyst" title="Аметист"></div>
-<div class="theme-dot" data-theme="ruby" title="Рубин"></div>
-<div class="theme-dot" data-theme="darkgold" title="Тёмное золото"></div>
-</div>
-<div class="font-controls"><button class="font-btn" id="fontMinus">A−</button><span class="font-size-display" id="fontSizeDisplay">100%</span><button class="font-btn" id="fontPlus">A+</button></div>
-<div class="lang-switcher"><button class="lang-btn active" id="btnRu">RU</button><button class="lang-btn" id="btnUz">UZ</button></div>
-</div>
-</header>
-<div class="hero"><div class="hero-pattern"></div><div class="hero-icon">🌿</div>
-<h1 class="hero-title" data-ru="Курс лечения рукья" data-uz="Ruqiya bilan davolash kursi">Курс лечения рукья</h1>
-<p class="hero-desc" data-ru="Устранение преград (та'тыль) в продажах, успехе, здоровье, отношениях, финансах, учёбе, духовности, защита от сглаза и порчи" data-uz="Savdo, muvaffaqiyat, salomatlik, munosabatlar, moliya, ta'lim, ma'naviyatdagi to'siqlarni (ta'til) bartaraf etish, ko'z tegish va sehrga qarshi himoya">Устранение преград (та'тыль) в продажах, успехе, здоровье, отношениях, финансах, учёбе, духовности, защита от сглаза и порчи</p>
-</div>
-<div class="progress-section"><div class="progress-header"><span class="progress-label" data-ru="Ваш прогресс" data-uz="Sizning jarayoningiz">Ваш прогресс</span><span class="progress-count" id="progressCount">0 / 98</span></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
-<div class="nav-tabs" id="navTabs"></div>
-<div id="sectionsContainer"></div>
-<div class="footer"><div class="footer-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div><div class="footer-ornament"></div><p class="footer-text" data-ru="© Лекарь Абу Мухаммад. Курс лечения рукья." data-uz="© Tabib Abu Muhammad. Ruqiya bilan davolash kursi.">© Лекарь Абу Мухаммад. Курс лечения рукья.</p></div>
-</div></div>
 <div class="toast" id="toast"></div>
-<button class="scroll-top" id="scrollTopBtn">↑</button>
+<button class="scroll-top" id="scrollTopBtn" type="button">↑</button>
 
 <script>
-// ===== SPLASH SCREEN ENGINE =====
-(function(){
-  const splash=document.getElementById('splashScreen');
-  const canvas=document.getElementById('starCanvas');
-  const ctx=canvas.getContext('2d');
-  let animFrame,stars=[];
-
-  function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
-  window.addEventListener('resize',resizeCanvas);
-  resizeCanvas();
-
-  // Create stars
-  for(let i=0;i<200;i++){
-    stars.push({
-      x:Math.random()*canvas.width,
-      y:Math.random()*canvas.height,
-      r:Math.random()*1.5+.3,
-      speed:Math.random()*.02+.005,
-      phase:Math.random()*Math.PI*2,
-      brightness:.1+Math.random()*.7
-    });
-  }
-
-  function drawStars(time){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    stars.forEach(s=>{
-      const twinkle=Math.sin(time*s.speed+s.phase)*.5+.5;
-      const alpha=s.brightness*twinkle;
-      ctx.beginPath();
-      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(255,248,220,${alpha})`;
-      ctx.fill();
-      if(s.r>1.2&&twinkle>.8){
-        ctx.beginPath();ctx.arc(s.x,s.y,s.r*3,0,Math.PI*2);
-        ctx.fillStyle=`rgba(212,168,67,${alpha*.15})`;ctx.fill();
-      }
-    });
-    animFrame=requestAnimationFrame(()=>drawStars(time+16));
-  }
-  drawStars(0);
-
-  // Light rays
-  const raysC=document.getElementById('lightRays');
-  for(let i=0;i<24;i++){
-    const ray=document.createElement('div');ray.className='lightray';
-    const angle=i*(360/24);
-    const len=150+Math.random()*250;
-    ray.style.cssText=`height:${len}px;transform:translate(-50%,-100%) rotate(${angle}deg);animation-delay:${Math.random()*6}s;animation-duration:${4+Math.random()*4}s`;
-    raysC.appendChild(ray);
-  }
-
-  // Particles
-  const partC=document.getElementById('splashParticles');
-  function spawnParticle(){
-    if(!splash.parentElement)return;
-    const p=document.createElement('div');
-    p.className='particle '+(Math.random()>.3?'particle-gold':'particle-white');
-    const size=2+Math.random()*4;
-    const startX=Math.random()*100;
-    const startY=Math.random()*100;
-    const dur=8+Math.random()*12;
-    p.style.cssText=`width:${size}px;height:${size}px;left:${startX}%;top:${startY}%;opacity:0;`;
-    partC.appendChild(p);
-    const dx=(Math.random()-.5)*100;const dy=(Math.random()-.5)*100;
-    p.animate([
-      {opacity:0,transform:'translate(0,0) scale(.3)'},
-      {opacity:.7,offset:.15},
-      {opacity:.4,offset:.7},
-      {opacity:0,transform:`translate(${dx}px,${dy}px) scale(1.5)`}
-    ],{duration:dur*1000,easing:'ease-in-out'});
-    setTimeout(()=>p.remove(),dur*1000);
-  }
-  const partInterval=setInterval(spawnParticle,300);
-  for(let i=0;i<15;i++)setTimeout(spawnParticle,i*200);
-
-  // Phase orchestration
-  const phases=[
-    document.getElementById('spPhase1'),
-    document.getElementById('spPhase2'),
-    document.getElementById('spPhase3')
-  ];
-  let currentPhase=-1;
-
-  function showPhase(idx){
-    if(currentPhase>=0&&currentPhase<phases.length){
-      const prev=phases[currentPhase];
-      prev.classList.remove('sp-phase-enter');
-      prev.classList.add('sp-phase-exit');
-      setTimeout(()=>{prev.classList.remove('visible','sp-phase-exit');},1500);
-    }
-    if(idx<phases.length){
-      setTimeout(()=>{
-        const cur=phases[idx];
-        cur.classList.add('visible','sp-phase-enter');
-        // Flash
-        const fl=document.getElementById('spFlash');
-        fl.classList.remove('fire');void fl.offsetWidth;fl.classList.add('fire');
-      },currentPhase>=0?1200:200);
-    }
-    currentPhase=idx;
-  }
-
-  // Activate geometry
-  setTimeout(()=>splash.classList.add('phase-geo'),500);
-
-  // Phase timeline
-  setTimeout(()=>showPhase(0),800);
-  setTimeout(()=>showPhase(1),4500);
-  setTimeout(()=>showPhase(2),8500);
-
-  // Auto-enter countdown
-  let autoTime=14;
-  const autoRing=document.getElementById('autoRing');
-  const circumference=2*Math.PI*12; // r=12
-  autoRing.style.strokeDasharray=circumference;
-  autoRing.style.strokeDashoffset=circumference;
-
-  const cdTimer=setInterval(()=>{
-    autoTime--;
-    if(autoTime<=0){clearInterval(cdTimer);enterApp();}
-    const progress=(14-autoTime)/14;
-    autoRing.style.strokeDashoffset=circumference*(1-progress);
-  },1000);
-
-  function enterApp(){
-    clearInterval(cdTimer);clearInterval(partInterval);
-    cancelAnimationFrame(animFrame);
-    splash.classList.add('exit-active');
-    setTimeout(()=>{
-      splash.style.display='none';
-      const app=document.getElementById('mainApp');
-      app.style.display='block';
-      requestAnimationFrame(()=>{app.classList.add('visible');});
-    },2000);
-  }
-
-  document.getElementById('enterBtn').addEventListener('click',enterApp);
-
-  // Skip on touch/click anywhere (after phase 3 starts)
-  splash.addEventListener('click',e=>{
-    if(e.target.id==='enterBtn')return;
-    if(currentPhase>=2)enterApp();
-  });
-})();
-
-// ====================== ДАННЫЕ ======================
 const ruqyaData = [
   {id:"g1",section:"general",num:1,ru:"Преграда в уделе (ризк)",uz:"Rizqdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الرِّزْقِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-р-ризкъ.",transRu:"С именем Аллаха, я делаю рукья от преграды в уделе.",transUz:"Allohning ismi bilan, rizqdagi to'siqdan ruqiya qilaman."},
   {id:"g2",section:"general",num:2,ru:"Преграда в успехе",uz:"Muvaffaqiyatdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّجَاحِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-наджах.",transRu:"С именем Аллаха, я делаю рукья от преграды в успехе.",transUz:"Allohning ismi bilan, muvaffaqiyatdagi to'siqdan ruqiya qilaman."},
@@ -748,29 +476,416 @@ const ruqyaData = [
   {id:"bm10",section:"blackMagic",num:10,ru:"Полное снятие всех видов порчи",uz:"Barcha sehr turlarini olib tashlash",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ جَمِيعِ أَنْوَاعِ السِّحْرِ",tr:"Бисми-Лляхи аркъи мин джами'и анва'и-с-сихр.",transRu:"С именем Аллаха, я делаю рукья от всех видов порчи.",transUz:"Allohning ismi bilan, barcha sehr turlaridan ruqiya qilaman."}
 ];
 
-const TOTAL_ITEMS=ruqyaData.length;
-let currentLang='ru',completedItems=new Set(),counters={};
-const RING_CIRCUMFERENCE=2*Math.PI*31; // r=31 for 70px circle
-const sectionsMeta={howTo:{icon:'📖',ru:'Как применять',uz:"Qanday qo'llash"},general:{icon:'🤲',ru:'Общие',uz:'Umumiy'},sales:{icon:'💰',ru:'Продажи',uz:'Savdo'},success:{icon:'⭐',ru:'Успех',uz:'Muvaffaqiyat'},health:{icon:'🩺',ru:'Здоровье',uz:'Salomatlik'},relationships:{icon:'💕',ru:'Отношения',uz:'Munosabatlar'},finances:{icon:'💵',ru:'Финансы',uz:'Moliya'},studies:{icon:'📚',ru:'Учёба',uz:"Ta'lim"},spiritual:{icon:'🕌',ru:'Духовное',uz:"Ma'naviyat"},evilEye:{icon:'👁️',ru:'Сглаз',uz:"Ko'z tegish"},blackMagic:{icon:'🛡️',ru:'Порча',uz:'Sehr'}};
+const sectionsMeta = {
+  howTo:{icon:'📖',ru:'Как применять',uz:"Qanday qo'llash"},
+  general:{icon:'🤲',ru:'Общие',uz:'Umumiy'},
+  sales:{icon:'💰',ru:'Продажи',uz:'Savdo'},
+  success:{icon:'⭐',ru:'Успех',uz:'Muvaffaqiyat'},
+  health:{icon:'🩺',ru:'Здоровье',uz:'Salomatlik'},
+  relationships:{icon:'💕',ru:'Отношения',uz:'Munosabatlar'},
+  finances:{icon:'💵',ru:'Финансы',uz:'Moliya'},
+  studies:{icon:'📚',ru:'Учёба',uz:"Ta'lim"},
+  spiritual:{icon:'🕌',ru:'Духовное',uz:"Ma'naviyat"},
+  evilEye:{icon:'👁️',ru:'Сглаз',uz:"Ko'z tegish"},
+  blackMagic:{icon:'🛡️',ru:'Порча',uz:'Sehr'}
+};
 
-function renderAll(){const c=document.getElementById('sectionsContainer');c.innerHTML='';for(let s in sectionsMeta){const m=sectionsMeta[s],d=document.createElement('div');d.className='section';d.id=`section-${s}`;if(s==='howTo')d.classList.add('active');d.innerHTML=`<div class="section-header"><div class="section-icon">${m.icon}</div><h2 class="section-title" data-ru="${m.ru}" data-uz="${m.uz}">${m.ru}</h2></div>`;if(s==='howTo'){d.innerHTML+=`<div class="gradient-block"><div class="gradient-block-title" data-ru="Как применять рукья от преград (та'тыль)" data-uz="Ta'tildan ruqiyani qanday qo'llash">Как применять рукья от преград (та'тыль)</div></div><div class="info-card"><h3 data-ru="Формула заклинания" data-uz="Duo formulasi">Формула заклинания</h3><p data-ru="Основная формула: «Бисми-Лляхи аркъи мина-т-та'тыли фи...» — С именем Аллаха, я делаю рукья от преграды в [конкретном месте]. Слово «та'тыль» уже означает преграду, поэтому после него сразу указывается место преграды через «фи» (в). Разделы «Сглаз» и «Порча» используют собственные прямые формулы." data-uz="Asosiy formula: «Bismi-Llohi arqiy mina-t-ta'tili fi...» — Allohning ismi bilan, [aniq joydagi] to'siqdan ruqiya qilaman. «Ta'til» so'zi o'zi to'siqni anglatadi, shuning uchun undan keyin «fi» (da) orqali to'siq joyi ko'rsatiladi. «Ko'z tegish» va «Sehr» bo'limlari o'z formulalarini ishlatadi.">Основная формула: «Бисми-Лляхи аркъи мина-т-та'тыли фи...» — С именем Аллаха, я делаю рукья от преграды в [конкретном месте]. Слово «та'тыль» уже означает преграду, поэтому после него сразу указывается место преграды через «фи» (в). Разделы «Сглаз» и «Порча» используют собственные прямые формулы.</p></div><div class="steps-container"><div class="step-item"><div class="step-number">1</div><div class="step-content"><h4 data-ru="Совершите вуду" data-uz="Vuzu qiling">Совершите вуду</h4><p data-ru="Будьте в ритуальной чистоте." data-uz="Ritual poklikda bo'ling.">Будьте в ритуальной чистоте.</p></div></div><div class="step-item"><div class="step-number">2</div><div class="step-content"><h4 data-ru="Сделайте искренний ният" data-uz="Chin niyat qiling">Сделайте искренний ният</h4><p data-ru="Намерение — снять преграду с помощью Аллаха." data-uz="Niyat — Alloh yordamida to'siqni olib tashlash.">Намерение — снять преграду с помощью Аллаха.</p></div></div><div class="step-item"><div class="step-number">3</div><div class="step-content"><h4 data-ru="Читайте с уверенностью" data-uz="Ishonch bilan o'qing">Читайте с уверенностью</h4><p data-ru="Исцеление только от Аллаха." data-uz="Shifo faqat Allohdan.">Исцеление только от Аллаха.</p></div></div><div class="step-item"><div class="step-number">4</div><div class="step-content"><h4 data-ru="Повторяйте 3, 7 или 11 раз" data-uz="3, 7 yoki 11 marta takrorlang">Повторяйте 3, 7 или 11 раз</h4><p data-ru="Нечётное число — сунна." data-uz="Toq son — sunna.">Нечётное число — сунна.</p></div></div><div class="step-item"><div class="step-number">5</div><div class="step-content"><h4 data-ru="Дуйте на воду или на себя" data-uz="Suvga yoki o'zingizga puflang">Дуйте на воду или на себя</h4><p data-ru="После чтения подуйте на воду и выпейте." data-uz="O'qib suvga puflab iching.">После чтения подуйте на воду и выпейте.</p></div></div></div><div class="important-notice"><p data-ru="⚠️ Рукья — дополнение к усилиям, а не замена. Прилагайте мирские средства, уповая на Аллаха." data-uz="⚠️ Ruqiya — sa'y-harakatga qo'shimcha. Allohga tavakkal qilib, dunyoviy sabablarni qo'llang.">⚠️ Рукья — дополнение к усилиям, а не замена. Прилагайте мирские средства, уповая на Аллаха.</p></div>`;}else{ruqyaData.filter(r=>r.section===s).forEach(r=>{const cd=document.createElement('div');cd.className='ruqya-card';cd.id=`ruqya-${r.id}`;cd.innerHTML=`<div class="ruqya-card-header" onclick="toggleCard('ruqya-${r.id}')"><div class="ruqya-number">${r.num}</div><div class="ruqya-card-title" data-ru="${r.ru}" data-uz="${r.uz}">${r.ru}</div><div class="ruqya-toggle">▼</div></div><div class="ruqya-card-body"><div class="ruqya-card-content"><div class="arabic-block"><div class="arabic-text">${r.ar}</div></div><div class="translation" data-ru="${r.transRu}" data-uz="${r.transUz}">${r.transRu}</div><div class="transcription">${r.tr}</div><div class="counter-section"><div class="counter-label-top" data-ru="повторений" data-uz="takrorlash">повторений</div><div class="counter-display"><button class="counter-btn" onclick="event.stopPropagation();changeCount('${r.id}',-1)">−</button><div class="counter-circle"><svg viewBox="0 0 70 70"><circle class="counter-ring-bg" cx="35" cy="35" r="31"/><circle class="counter-ring-fill" id="ring-${r.id}" cx="35" cy="35" r="31"/></svg><div class="counter-value" id="count-${r.id}">0</div></div><button class="counter-btn" onclick="event.stopPropagation();changeCount('${r.id}',1)">+</button></div></div><button class="complete-btn" id="btn-${r.id}" onclick="event.stopPropagation();toggleComplete('${r.id}')"><span class="btn-icon">☐</span><span data-ru="Отметить как прочитанное" data-uz="O'qilgan deb belgilash">Отметить как прочитанное</span></button></div></div>`;d.appendChild(cd);});}c.appendChild(d);}}
-function initTabs(){const n=document.getElementById('navTabs');n.innerHTML='';Object.keys(sectionsMeta).forEach((k,i)=>{const m=sectionsMeta[k],b=document.createElement('button');b.className='nav-tab';if(i===0)b.classList.add('active');b.setAttribute('data-ru',`${m.icon} ${m.ru}`);b.setAttribute('data-uz',`${m.icon} ${m.uz}`);b.innerText=`${m.icon} ${m.ru}`;b.onclick=()=>{document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));document.getElementById(`section-${k}`).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});};n.appendChild(b);});}
-function initLang(){document.getElementById('btnRu').onclick=()=>setLang('ru');document.getElementById('btnUz').onclick=()=>setLang('uz');}
-function setLang(l){currentLang=l;document.getElementById('btnRu').classList.toggle('active',l==='ru');document.getElementById('btnUz').classList.toggle('active',l==='uz');document.querySelectorAll('[data-ru][data-uz]').forEach(e=>{const t=e.getAttribute(`data-${l}`);if(t)e.innerText=t;});completedItems.forEach(id=>{const b=document.getElementById(`btn-${id}`);if(b){const s=b.querySelector('span:last-child');if(s)s.innerText=l==='ru'?'Прочитано ✓':"O'qildi ✓";}});saveState();}
-function initFont(){let s=100;const set=v=>{s=Math.min(150,Math.max(80,v));document.documentElement.style.setProperty('--font-size-base',(14*s/100)+'px');document.getElementById('fontSizeDisplay').innerText=s+'%';};document.getElementById('fontPlus').onclick=()=>set(s+10);document.getElementById('fontMinus').onclick=()=>set(s-10);}
-function initTheme(){const sv=localStorage.getItem('ruqya_theme');if(sv)setTheme(sv);document.querySelectorAll('.theme-dot').forEach(d=>{d.onclick=()=>setTheme(d.dataset.theme);});}
-function setTheme(t){document.body.setAttribute('data-theme',t);document.querySelectorAll('.theme-dot').forEach(d=>d.classList.toggle('active',d.dataset.theme===t));localStorage.setItem('ruqya_theme',t);}
-function updateProgress(){const c=completedItems.size;document.getElementById('progressCount').innerText=`${c} / ${TOTAL_ITEMS}`;document.getElementById('progressFill').style.width=`${(c/TOTAL_ITEMS)*100}%`;}
-function toggleComplete(id){const b=document.getElementById(`btn-${id}`);if(!b)return;if(completedItems.has(id)){completedItems.delete(id);b.classList.remove('completed');b.querySelector('.btn-icon').innerText='☐';b.querySelector('span:last-child').innerText=currentLang==='ru'?'Отметить как прочитанное':"O'qilgan deb belgilash";}else{completedItems.add(id);b.classList.add('completed');b.querySelector('.btn-icon').innerText='✓';b.querySelector('span:last-child').innerText=currentLang==='ru'?'Прочитано ✓':"O'qildi ✓";showToast(currentLang==='ru'?'✓ Отмечено':"✓ Belgilandi");}updateProgress();saveState();}
-function changeCount(id,d){if(!counters[id])counters[id]=0;counters[id]=Math.max(0,counters[id]+d);const e=document.getElementById('count-'+id);if(e)e.innerText=counters[id];const r=document.getElementById('ring-'+id);if(r){const p=Math.min(counters[id]/11,1);r.style.strokeDashoffset=RING_CIRCUMFERENCE*(1-p);}saveState();}
-function toggleCard(id){document.getElementById(id)?.classList.toggle('open');}
-function showToast(m){const t=document.getElementById('toast');t.innerText=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
-function saveState(){try{localStorage.setItem('ruqya_completed',JSON.stringify([...completedItems]));localStorage.setItem('ruqya_counters',JSON.stringify(counters));localStorage.setItem('ruqya_lang',currentLang);}catch(e){}}
-function loadState(){try{const c=localStorage.getItem('ruqya_completed'),ct=localStorage.getItem('ruqya_counters'),l=localStorage.getItem('ruqya_lang');if(l)setLang(l);if(c){completedItems=new Set(JSON.parse(c));completedItems.forEach(id=>{const b=document.getElementById(`btn-${id}`);if(b){b.classList.add('completed');b.querySelector('.btn-icon').innerText='✓';b.querySelector('span:last-child').innerText=currentLang==='ru'?'Прочитано ✓':"O'qildi ✓";}});}if(ct){counters=JSON.parse(ct);for(let id in counters){const e=document.getElementById('count-'+id);if(e)e.innerText=counters[id];const r=document.getElementById('ring-'+id);if(r)r.style.strokeDashoffset=RING_CIRCUMFERENCE*(1-Math.min(counters[id]/11,1));}}updateProgress();}catch(e){}}
+const themeLabels = {
+  gold:{ru:'Золото',uz:'Oltin',color:'#D4A843'},
+  emerald:{ru:'Изумруд',uz:'Zumrad',color:'#43A047'},
+  sapphire:{ru:'Сапфир',uz:'Safir',color:'#1E88E5'},
+  amethyst:{ru:'Аметист',uz:'Ametist',color:'#8E24AA'},
+  ruby:{ru:'Рубин',uz:'Yoqut',color:'#E53935'},
+  darkgold:{ru:'Тёмное золото',uz:'To‘q oltin',color:'#D4A843'}
+};
 
-window.addEventListener('scroll',()=>{const b=document.getElementById('scrollTopBtn'),h=document.getElementById('mainHeader');if(window.scrollY>400)b.classList.add('visible');else b.classList.remove('visible');if(window.scrollY>50)h.classList.add('scrolled');else h.classList.remove('scrolled');});
-document.getElementById('scrollTopBtn').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
-window.onload=()=>{renderAll();initTabs();initLang();initFont();initTheme();loadState();};
+const TOTAL_ITEMS = ruqyaData.length;
+const RING_CIRCUMFERENCE = 2 * Math.PI * 31;
+let currentLang = 'ru';
+let completedItems = new Set();
+let counters = {};
+let fontScale = 100;
+let currentSection = 'howTo';
+let unreadOnly = false;
+let currentQuery = '';
+let sectionExpanded = false;
+
+function t(ru, uz){return currentLang === 'ru' ? ru : uz;}
+function setTextByLang(el){
+  if(!el) return;
+  const value = el.getAttribute(`data-${currentLang}`);
+  if(value != null) el.textContent = value;
+}
+function showToast(message){
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(showToast._timer);
+  showToast._timer = setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+function renderHowTo(){
+  return `
+    <div class="gradient-block"><div class="gradient-block-title" data-ru="Как применять рукья от преград (та'тыль)" data-uz="Ta'tildan ruqiyani qanday qo'llash">Как применять рукья от преград (та'тыль)</div></div>
+    <div class="info-card">
+      <h3 data-ru="Формула заклинания" data-uz="Duo formulasi">Формула заклинания</h3>
+      <p data-ru="Основная формула: «Бисми-Лляхи аркъи мина-т-та'тыли фи...» — С именем Аллаха, я делаю рукья от преграды в [конкретном месте]. Слово «та'тыль» уже означает преграду, поэтому после него сразу указывается место преграды через «фи» (в). Разделы «Сглаз» и «Порча» используют собственные прямые формулы." data-uz="Asosiy formula: «Bismi-Llohi arqiy mina-t-ta'tili fi...» — Allohning ismi bilan, [aniq joydagi] to'siqdan ruqiya qilaman. «Ta'til» so'zi o'zi to'siqni anglatadi, shuning uchun undan keyin «fi» (da) orqali to'siq joyi ko'rsatiladi. «Ko'z tegish» va «Sehr» bo'limlari o'z formulalarini ishlatadi.">Основная формула: «Бисми-Лляхи аркъи мина-т-та'тыли фи...» — С именем Аллаха, я делаю рукья от преграды в [конкретном месте]. Слово «та'тыль» уже означает преграду, поэтому после него сразу указывается место преграды через «фи» (в). Разделы «Сглаз» и «Порча» используют собственные прямые формулы.</p>
+    </div>
+    <div class="steps-container">
+      <div class="step-item"><div class="step-number">1</div><div class="step-content"><h4 data-ru="Совершите вуду" data-uz="Vuzu qiling">Совершите вуду</h4><p data-ru="Будьте в ритуальной чистоте." data-uz="Ritual poklikda bo'ling.">Будьте в ритуальной чистоте.</p></div></div>
+      <div class="step-item"><div class="step-number">2</div><div class="step-content"><h4 data-ru="Сделайте искренний ният" data-uz="Chin niyat qiling">Сделайте искренний ният</h4><p data-ru="Намерение — снять преграду с помощью Аллаха." data-uz="Niyat — Alloh yordamida to'siqni olib tashlash.">Намерение — снять преграду с помощью Аллаха.</p></div></div>
+      <div class="step-item"><div class="step-number">3</div><div class="step-content"><h4 data-ru="Читайте с уверенностью" data-uz="Ishonch bilan o'qing">Читайте с уверенностью</h4><p data-ru="Исцеление только от Аллаха." data-uz="Shifo faqat Allohdan.">Исцеление только от Аллаха.</p></div></div>
+      <div class="step-item"><div class="step-number">4</div><div class="step-content"><h4 data-ru="Повторяйте 3, 7 или 11 раз" data-uz="3, 7 yoki 11 marta takrorlang">Повторяйте 3, 7 или 11 раз</h4><p data-ru="Нечётное число — сунна." data-uz="Toq son — sunna.">Нечётное число — сунна.</p></div></div>
+      <div class="step-item"><div class="step-number">5</div><div class="step-content"><h4 data-ru="Дуйте на воду или на себя" data-uz="Suvga yoki o'zingizga puflang">Дуйте на воду или на себя</h4><p data-ru="После чтения подуйте на воду и выпейте." data-uz="O'qib suvga puflab iching.">После чтения подуйте на воду и выпейте.</p></div></div>
+    </div>
+    <div class="important-notice"><p data-ru="⚠️ Рукья — дополнение к усилиям, а не замена. Прилагайте мирские средства, уповая на Аллаха." data-uz="⚠️ Ruqiya — sa'y-harakatga qo'shimcha. Allohga tavakkal qilib, dunyoviy sabablarni qo'llang.">⚠️ Рукья — дополнение к усилиям, а не замена. Прилагайте мирские средства, уповая на Аллаха.</p></div>
+  `;
+}
+
+function cardTemplate(r){
+  const searchBlob = `${r.ru} ${r.uz} ${r.ar} ${r.tr} ${r.transRu} ${r.transUz}`.toLowerCase();
+  return `
+    <article class="ruqya-card" id="ruqya-${r.id}" data-section="${r.section}" data-search="${searchBlob}">
+      <div class="ruqya-head" onclick="toggleCard('ruqya-${r.id}')">
+        <div class="ruqya-number">${r.num}</div>
+        <div class="ruqya-title" data-ru="${r.ru}" data-uz="${r.uz}">${r.ru}</div>
+        <div class="ruqya-chevron">⌄</div>
+      </div>
+      <div class="ruqya-body">
+        <div class="ruqya-content">
+          <div class="arabic-block"><div class="arabic-text">${r.ar}</div></div>
+          <div class="translation" data-ru="${r.transRu}" data-uz="${r.transUz}">${r.transRu}</div>
+          <div class="transcription">${r.tr}</div>
+          <div class="counter-section">
+            <div class="counter-label" data-ru="повторений" data-uz="takrorlash">повторений</div>
+            <div class="counter-display">
+              <button class="counter-btn" type="button" onclick="event.stopPropagation();changeCount('${r.id}',-1)">−</button>
+              <div class="counter-circle">
+                <svg viewBox="0 0 70 70">
+                  <circle class="counter-ring-bg" cx="35" cy="35" r="31"></circle>
+                  <circle class="counter-ring-fill" id="ring-${r.id}" cx="35" cy="35" r="31"></circle>
+                </svg>
+                <div class="counter-value" id="count-${r.id}">0</div>
+              </div>
+              <button class="counter-btn" type="button" onclick="event.stopPropagation();changeCount('${r.id}',1)">+</button>
+            </div>
+          </div>
+          <button class="complete-btn" id="btn-${r.id}" type="button" onclick="event.stopPropagation();toggleComplete('${r.id}')">
+            <span class="btn-icon">☐</span>
+            <span data-ru="Отметить как прочитанное" data-uz="O'qilgan deb belgilash">Отметить как прочитанное</span>
+          </button>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderAll(){
+  const container = document.getElementById('sectionsContainer');
+  container.innerHTML = '';
+  Object.entries(sectionsMeta).forEach(([key, meta]) => {
+    const section = document.createElement('section');
+    section.className = 'section' + (key === currentSection ? ' active' : '');
+    section.id = `section-${key}`;
+    const count = key === 'howTo' ? null : ruqyaData.filter(r => r.section === key).length;
+    section.innerHTML = `
+      <div class="section-header">
+        <div class="section-icon">${meta.icon}</div>
+        <div class="section-title" data-ru="${meta.ru}" data-uz="${meta.uz}">${meta.ru}</div>
+        <div class="section-sub">${count ? `${count} ${t('заклинаний','duo')}` : t('Инструкция по применению','Qo‘llash bo‘yicha yo‘riqnoma')}</div>
+      </div>
+      ${key === 'howTo' ? renderHowTo() : ruqyaData.filter(r => r.section === key).map(cardTemplate).join('')}
+      <div class="zero-state" id="zero-${key}" data-ru="Ничего не найдено в этом разделе" data-uz="Bu bo‘limda hech narsa topilmadi">Ничего не найдено в этом разделе</div>
+    `;
+    container.appendChild(section);
+  });
+}
+
+function initTabs(){
+  const nav = document.getElementById('navTabs');
+  nav.innerHTML = '';
+  Object.entries(sectionsMeta).forEach(([key, meta]) => {
+    const btn = document.createElement('button');
+    btn.className = 'nav-tab' + (key === currentSection ? ' active' : '');
+    btn.type = 'button';
+    btn.dataset.section = key;
+    btn.setAttribute('data-ru', `${meta.icon} ${meta.ru}`);
+    btn.setAttribute('data-uz', `${meta.icon} ${meta.uz}`);
+    btn.textContent = `${meta.icon} ${currentLang === 'ru' ? meta.ru : meta.uz}`;
+    btn.addEventListener('click', () => setActiveSection(key));
+    nav.appendChild(btn);
+  });
+}
+
+function setActiveSection(sectionKey){
+  currentSection = sectionKey;
+  document.querySelectorAll('.nav-tab').forEach(btn => btn.classList.toggle('active', btn.dataset.section === sectionKey));
+  document.querySelectorAll('.section').forEach(sec => sec.classList.toggle('active', sec.id === `section-${sectionKey}`));
+  sectionExpanded = false;
+  updateExpandButton();
+  applyFilters();
+  saveState();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function setLang(lang){
+  currentLang = lang;
+  document.getElementById('btnRu').classList.toggle('active', lang === 'ru');
+  document.getElementById('btnUz').classList.toggle('active', lang === 'uz');
+  document.querySelectorAll('[data-ru][data-uz]').forEach(setTextByLang);
+  document.getElementById('searchInput').placeholder = t('Поиск в текущем разделе', 'Joriy bo‘limda qidirish');
+  document.getElementById('unreadToggle').textContent = unreadOnly ? t('Показаны непрочитанные', 'Faqat o‘qilmaganlar') : t('Только непрочитанные', 'Faqat o‘qilmaganlar');
+  updateThemeCaption();
+  completedItems.forEach(id => syncCompleteButton(id));
+  updateSectionStats();
+  saveState();
+}
+
+function updateThemeCaption(){
+  const theme = document.documentElement.getAttribute('data-theme') || 'gold';
+  const label = themeLabels[theme] || themeLabels.gold;
+  document.getElementById('themeCaption').textContent = currentLang === 'ru' ? label.ru : label.uz;
+}
+
+function setTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  document.body.setAttribute('data-theme', theme);
+  document.querySelectorAll('.theme-dot').forEach(dot => dot.classList.toggle('active', dot.dataset.theme === theme));
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if(meta) meta.setAttribute('content', (themeLabels[theme] || themeLabels.gold).color);
+  updateThemeCaption();
+  try{ localStorage.setItem('ruqya_theme', theme); }catch(e){}
+}
+
+function initTheme(){
+  const saved = (() => { try{return localStorage.getItem('ruqya_theme');}catch(e){return null;} })();
+  setTheme(saved || 'gold');
+  document.querySelectorAll('.theme-dot').forEach(dot => {
+    dot.addEventListener('click', () => setTheme(dot.dataset.theme));
+  });
+}
+
+function initFont(){
+  const display = document.getElementById('fontSizeDisplay');
+  const apply = value => {
+    fontScale = Math.max(80, Math.min(150, value));
+    document.documentElement.style.setProperty('--font-size-base', `${14 * fontScale / 100}px`);
+    display.textContent = `${fontScale}%`;
+    saveState();
+  };
+  document.getElementById('fontPlus').addEventListener('click', () => apply(fontScale + 10));
+  document.getElementById('fontMinus').addEventListener('click', () => apply(fontScale - 10));
+  return apply;
+}
+
+function updateProgress(){
+  const count = completedItems.size;
+  document.getElementById('progressCount').textContent = `${count} / ${TOTAL_ITEMS}`;
+  document.getElementById('progressFill').style.width = `${(count / TOTAL_ITEMS) * 100}%`;
+}
+
+function syncCompleteButton(id){
+  const btn = document.getElementById(`btn-${id}`);
+  if(!btn) return;
+  const isDone = completedItems.has(id);
+  btn.classList.toggle('completed', isDone);
+  btn.querySelector('.btn-icon').textContent = isDone ? '✓' : '☐';
+  const text = btn.querySelector('span:last-child');
+  if(text) text.textContent = isDone ? t('Прочитано ✓', "O'qildi ✓") : t('Отметить как прочитанное', "O'qilgan deb belgilash");
+}
+
+function toggleComplete(id){
+  if(completedItems.has(id)) completedItems.delete(id); else completedItems.add(id);
+  syncCompleteButton(id);
+  updateProgress();
+  applyFilters();
+  saveState();
+  showToast(completedItems.has(id) ? t('✓ Отмечено', '✓ Belgilandi') : t('✕ Снято', '✕ Bekor qilindi'));
+}
+
+function changeCount(id, delta){
+  counters[id] = Math.max(0, (counters[id] || 0) + delta);
+  const countEl = document.getElementById(`count-${id}`);
+  const ringEl = document.getElementById(`ring-${id}`);
+  if(countEl) countEl.textContent = counters[id];
+  if(ringEl){
+    const progress = Math.min(counters[id] / 11, 1);
+    ringEl.style.strokeDashoffset = RING_CIRCUMFERENCE * (1 - progress);
+  }
+  saveState();
+}
+
+function toggleCard(id, force){
+  const card = document.getElementById(id);
+  if(!card) return;
+  const shouldOpen = force != null ? force : !card.classList.contains('open');
+  card.classList.toggle('open', shouldOpen);
+  const body = card.querySelector('.ruqya-body');
+  if(body) body.style.maxHeight = shouldOpen ? `${body.scrollHeight + 24}px` : '0px';
+}
+
+function updateExpandButton(){
+  document.getElementById('expandToggle').textContent = sectionExpanded ? t('Свернуть раздел', 'Bo‘limni yig‘ish') : t('Развернуть раздел', 'Bo‘limni ochish');
+}
+
+function toggleExpandCurrent(){
+  const activeSection = document.getElementById(`section-${currentSection}`);
+  if(!activeSection) return;
+  const visibleCards = [...activeSection.querySelectorAll('.ruqya-card:not(.hidden)')];
+  sectionExpanded = !sectionExpanded;
+  visibleCards.forEach(card => toggleCard(card.id, sectionExpanded));
+  updateExpandButton();
+}
+
+function updateSectionStats(){
+  const section = document.getElementById(`section-${currentSection}`);
+  const stats = document.getElementById('sectionStats');
+  if(!section || currentSection === 'howTo'){
+    stats.textContent = t('Инструкция', 'Yo‘riqnoma');
+    return;
+  }
+  const allCards = [...section.querySelectorAll('.ruqya-card')];
+  const visibleCards = allCards.filter(card => !card.classList.contains('hidden'));
+  stats.textContent = `${visibleCards.length} / ${allCards.length}`;
+  const zero = document.getElementById(`zero-${currentSection}`);
+  if(zero) zero.classList.toggle('show', visibleCards.length === 0);
+}
+
+function applyFilters(){
+  document.querySelectorAll('.section').forEach(section => {
+    const isActive = section.id === `section-${currentSection}`;
+    if(!isActive) return;
+    const cards = [...section.querySelectorAll('.ruqya-card')];
+    cards.forEach(card => {
+      const matchQuery = !currentQuery || card.dataset.search.includes(currentQuery);
+      const id = card.id.replace('ruqya-','');
+      const matchUnread = !unreadOnly || !completedItems.has(id);
+      const visible = matchQuery && matchUnread;
+      card.classList.toggle('hidden', !visible);
+      if(!visible) toggleCard(card.id, false);
+    });
+  });
+  sectionExpanded = false;
+  updateExpandButton();
+  updateSectionStats();
+}
+
+function initTools(){
+  const search = document.getElementById('searchInput');
+  search.addEventListener('input', () => {
+    currentQuery = search.value.trim().toLowerCase();
+    applyFilters();
+  });
+  document.getElementById('unreadToggle').addEventListener('click', e => {
+    unreadOnly = !unreadOnly;
+    e.currentTarget.classList.toggle('active', unreadOnly);
+    e.currentTarget.textContent = unreadOnly ? t('Показаны непрочитанные', 'Faqat o‘qilmaganlar') : t('Только непрочитанные', 'Faqat o‘qilmaganlar');
+    applyFilters();
+    saveState();
+  });
+  document.getElementById('expandToggle').addEventListener('click', toggleExpandCurrent);
+  updateExpandButton();
+}
+
+function saveState(){
+  try{
+    localStorage.setItem('ruqya_completed', JSON.stringify([...completedItems]));
+    localStorage.setItem('ruqya_counters', JSON.stringify(counters));
+    localStorage.setItem('ruqya_lang', currentLang);
+    localStorage.setItem('ruqya_font', String(fontScale));
+    localStorage.setItem('ruqya_section', currentSection);
+    localStorage.setItem('ruqya_unread', unreadOnly ? '1' : '0');
+  }catch(e){}
+}
+
+function loadState(fontApply){
+  try{
+    const completed = JSON.parse(localStorage.getItem('ruqya_completed') || '[]');
+    const savedCounters = JSON.parse(localStorage.getItem('ruqya_counters') || '{}');
+    const lang = localStorage.getItem('ruqya_lang');
+    const font = parseInt(localStorage.getItem('ruqya_font') || '100', 10);
+    const section = localStorage.getItem('ruqya_section');
+    unreadOnly = localStorage.getItem('ruqya_unread') === '1';
+    completedItems = new Set(completed);
+    counters = savedCounters || {};
+    if(lang) currentLang = lang;
+    if(section && sectionsMeta[section]) currentSection = section;
+    if(fontApply) fontApply(isNaN(font) ? 100 : font);
+  }catch(e){}
+}
+
+function syncRenderedState(){
+  document.querySelectorAll('.nav-tab').forEach(btn => btn.classList.toggle('active', btn.dataset.section === currentSection));
+  document.querySelectorAll('.section').forEach(sec => sec.classList.toggle('active', sec.id === `section-${currentSection}`));
+  Object.keys(counters).forEach(id => changeCount(id, 0));
+  completedItems.forEach(syncCompleteButton);
+  updateProgress();
+  setLang(currentLang);
+  const unreadBtn = document.getElementById('unreadToggle');
+  unreadBtn.classList.toggle('active', unreadOnly);
+  unreadBtn.textContent = unreadOnly ? t('Показаны непрочитанные', 'Faqat o‘qilmaganlar') : t('Только непрочитанные', 'Faqat o‘qilmaganlar');
+  applyFilters();
+}
+
+function initSplash(){
+  const splash = document.getElementById('splashScreen');
+  const phaseA = document.getElementById('phaseA');
+  const phaseB = document.getElementById('phaseB');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let count = reduce ? 3 : 6;
+  const countEl = document.getElementById('splashCount');
+  const enter = () => {
+    if(splash.classList.contains('exit')) return;
+    splash.classList.add('exit');
+    setTimeout(() => {
+      splash.style.display = 'none';
+      const app = document.getElementById('mainApp');
+      app.style.display = 'block';
+      requestAnimationFrame(() => app.classList.add('visible'));
+    }, 900);
+  };
+  setTimeout(() => { phaseA.classList.remove('active'); phaseB.classList.add('active'); }, reduce ? 0 : 1300);
+  const timer = setInterval(() => {
+    count -= 1;
+    countEl.textContent = count;
+    if(count <= 0){ clearInterval(timer); enter(); }
+  }, 1000);
+  document.getElementById('enterAppBtn').addEventListener('click', () => { clearInterval(timer); enter(); });
+  document.getElementById('skipSplashBtn').addEventListener('click', () => { clearInterval(timer); enter(); });
+  splash.addEventListener('click', e => {
+    if(e.target.closest('.splash-btn,.splash-skip')) return;
+    clearInterval(timer); enter();
+  });
+  document.addEventListener('keydown', e => {
+    if(['Enter','Escape',' '].includes(e.key)) { clearInterval(timer); enter(); }
+  }, { once:true });
+}
+
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('scrollTopBtn');
+  const header = document.getElementById('mainHeader');
+  btn.classList.toggle('show', window.scrollY > 320);
+  header.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+document.getElementById('scrollTopBtn').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+window.toggleCard = toggleCard;
+window.changeCount = changeCount;
+window.toggleComplete = toggleComplete;
+
+window.addEventListener('DOMContentLoaded', () => {
+  initSplash();
+  const fontApply = initFont();
+  loadState(fontApply);
+  renderAll();
+  initTabs();
+  initTheme();
+  initTools();
+  syncRenderedState();
+  document.getElementById('btnRu').addEventListener('click', () => setLang('ru'));
+  document.getElementById('btnUz').addEventListener('click', () => setLang('uz'));
+});
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f6e09a78cab5149',t:'MTc3Nzk2NjIwNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
