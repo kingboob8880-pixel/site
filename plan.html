@@ -45,6 +45,13 @@ h1{font-size:clamp(24px,5.2vw,44px);margin:6px 0 10px;font-weight:800;letter-spa
 /* PROGRESS */
 .progress{height:3px;background:linear-gradient(90deg,var(--gold),var(--green));width:0;position:fixed;top:0;left:0;z-index:100;transition:width .1s linear}
 
+/* LANGUAGE SWITCHER */
+.lang-switch{position:fixed;top:clamp(12px,3vw,16px);right:clamp(12px,3vw,16px);z-index:70;background:var(--paper);border:2px solid var(--green);border-radius:999px;padding:4px;display:flex;gap:2px;box-shadow:0 4px 14px rgba(15,118,110,.25);min-height:44px}
+.lang-switch button{background:transparent;border:none;padding:8px 14px;border-radius:999px;font-weight:700;font-size:clamp(12px,2.4vw,14px);cursor:pointer;color:var(--muted);transition:all .2s;min-width:44px;display:flex;align-items:center;justify-content:center}
+.lang-switch button.active{background:var(--green);color:#fff;box-shadow:0 2px 8px rgba(15,118,110,.3)}
+.lang-switch button:hover:not(.active){background:#f1f5f9;color:var(--green-dark)}
+.lang-switch button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
 /* CONTENT */
 main{padding:clamp(24px,5vw,34px) 0}
 section{background:var(--paper);border:1px solid var(--line);border-radius:clamp(14px,3vw,18px);padding:clamp(20px,4vw,30px);margin:clamp(16px,3vw,22px) 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
@@ -113,7 +120,7 @@ blockquote strong{color:#431407}
 
 /* PRINT */
 @media print{
-  .topnav,.totop,.progress,.toc-grid{display:none!important}
+  .topnav,.totop,.progress,.toc-grid,.lang-switch{display:none!important}
   body{background:#fff;font-size:14pt}
   section{break-inside:avoid;box-shadow:none;border-color:#ddd}
   a{text-decoration:none;color:#000}
@@ -130,54 +137,61 @@ blockquote strong{color:#431407}
   .topnav a{padding:10px 12px;min-height:44px}
   .btn{min-height:48px;padding:12px 14px}
   section{margin:18px 0}
+  .lang-switch{top:8px;right:8px}
 }
 </style>
 </head>
 <body>
 <div class="progress" id="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Прогресс чтения"></div>
 
+<!-- Language Switcher -->
+<div class="lang-switch" role="group" aria-label="Переключатель языка">
+  <button type="button" id="lang-ru" class="active" aria-pressed="true">РУС</button>
+  <button type="button" id="lang-uz" aria-pressed="false">UZB</button>
+</div>
+
 <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" onfocus="this.style.left='16px';this.style.top='16px';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';this.style.zIndex='1000';this.style.background='var(--green)';this.style.color='#fff';this.style.padding='12px 20px';this.style.borderRadius='8px'">Перейти к содержанию</a>
 
 <header class="hero" id="top">
   <div class="container wrap">
     <div class="bismillah" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
-    <h1>Бизнес-план для Абу Мухаммада</h1>
-    <p class="tagline">рукья, распространение знания, соцсети и малая команда</p>
+    <h1 data-i18n="title">Бизнес-план для Абу Мухаммада</h1>
+    <p class="tagline" data-i18n="tagline">рукья, распространение знания, соцсети и малая команда</p>
     <div class="badges">
-      <span class="badge">Таухид прежде всего</span>
-      <span class="badge">Этичный доход</span>
-      <span class="badge">Система и документы</span>
+      <span class="badge" data-i18n="badge1">Таухид прежде всего</span>
+      <span class="badge" data-i18n="badge2">Этичный доход</span>
+      <span class="badge" data-i18n="badge3">Система и документы</span>
     </div>
-    <div class="goal"><strong>Цель:</strong> лечить людей дозволенной рукьей, распространять знания, выстроить доверие в соцсетях и получать стабильный доход без нарушения таухида, этики, конфиденциальности и медицинской безопасности.</div>
+    <div class="goal"><strong data-i18n="goalTitle">Цель:</strong> <span data-i18n="goalText">лечить людей дозволенной рукьей, распространять знания, выстроить доверие в соцсетях и получать стабильный доход без нарушения таухида, этики, конфиденциальности и медицинской безопасности.</span></div>
   </div>
 </header>
 
 <nav class="topnav" aria-label="Основная навигация">
   <div class="container">
     <div class="bar" id="nav" role="tablist">
-      <a href="#s1" role="tab">1. Принцип</a>
-      <a href="#s2" role="tab">2. Что продавать</a>
-      <a href="#s3" role="tab">3. Направления</a>
-      <a href="#s4" role="tab">4. Аудитория</a>
-      <a href="#s5" role="tab">5. Позиционирование</a>
-      <a href="#s6" role="tab">6. Контент</a>
-      <a href="#s7" role="tab">7. Воронка</a>
-      <a href="#s8" role="tab">8. Услуги</a>
-      <a href="#s9" role="tab">9. Команда</a>
-      <a href="#s10" role="tab">10. Задание</a>
-      <a href="#s11" role="tab">11. Обязанности</a>
-      <a href="#s12" role="tab">12. Роли</a>
-      <a href="#s13" role="tab">13. Заявки</a>
-      <a href="#s14" role="tab">14. План-неделя</a>
-      <a href="#s15" role="tab">15. 30 дней</a>
-      <a href="#s16" role="tab">16. 90 дней</a>
-      <a href="#s17" role="tab">17. Продажи</a>
-      <a href="#s18" role="tab">18. Документы</a>
-      <a href="#s19" role="tab">19. Репутация</a>
-      <a href="#s20" role="tab">20. Старт</a>
-      <a href="#s21" role="tab">21. Помощница</a>
-      <a href="#s22" role="tab">22. Модель</a>
-      <a href="#s23" role="tab">23. Напоминание</a>
+      <a href="#s1" role="tab" data-i18n="nav1">1. Принцип</a>
+      <a href="#s2" role="tab" data-i18n="nav2">2. Что продавать</a>
+      <a href="#s3" role="tab" data-i18n="nav3">3. Направления</a>
+      <a href="#s4" role="tab" data-i18n="nav4">4. Аудитория</a>
+      <a href="#s5" role="tab" data-i18n="nav5">5. Позиционирование</a>
+      <a href="#s6" role="tab" data-i18n="nav6">6. Контент</a>
+      <a href="#s7" role="tab" data-i18n="nav7">7. Воронка</a>
+      <a href="#s8" role="tab" data-i18n="nav8">8. Услуги</a>
+      <a href="#s9" role="tab" data-i18n="nav9">9. Команда</a>
+      <a href="#s10" role="tab" data-i18n="nav10">10. Задание</a>
+      <a href="#s11" role="tab" data-i18n="nav11">11. Обязанности</a>
+      <a href="#s12" role="tab" data-i18n="nav12">12. Роли</a>
+      <a href="#s13" role="tab" data-i18n="nav13">13. Заявки</a>
+      <a href="#s14" role="tab" data-i18n="nav14">14. План-неделя</a>
+      <a href="#s15" role="tab" data-i18n="nav15">15. 30 дней</a>
+      <a href="#s16" role="tab" data-i18n="nav16">16. 90 дней</a>
+      <a href="#s17" role="tab" data-i18n="nav17">17. Продажи</a>
+      <a href="#s18" role="tab" data-i18n="nav18">18. Документы</a>
+      <a href="#s19" role="tab" data-i18n="nav19">19. Репутация</a>
+      <a href="#s20" role="tab" data-i18n="nav20">20. Старт</a>
+      <a href="#s21" role="tab" data-i18n="nav21">21. Помощница</a>
+      <a href="#s22" role="tab" data-i18n="nav22">22. Модель</a>
+      <a href="#s23" role="tab" data-i18n="nav23">23. Напоминание</a>
     </div>
   </div>
 </nav>
@@ -185,285 +199,285 @@ blockquote strong{color:#431407}
 <main class="container" id="main-content">
 
 <section id="contents" aria-labelledby="contents-title">
-  <h2 id="contents-title">Содержание — все разделы</h2>
+  <h2 id="contents-title" data-i18n="contentsTitle">Содержание — все разделы</h2>
   <div class="toc-grid">
-    <a class="btn" href="#s1"><span class="n">1</span> Главный принцип</a>
-    <a class="btn" href="#s2"><span class="n">2</span> Что можно/нельзя</a>
-    <a class="btn" href="#s3"><span class="n">3</span> Направления</a>
-    <a class="btn" href="#s4"><span class="n">4</span> Аудитория</a>
-    <a class="btn" href="#s5"><span class="n">5</span> Позиционирование</a>
-    <a class="btn" href="#s6"><span class="n">6</span> Контент-стратегия</a>
-    <a class="btn" href="#s7"><span class="n">7</span> Воронка</a>
-    <a class="btn" href="#s8"><span class="n">8</span> Линейка услуг</a>
-    <a class="btn" href="#s9"><span class="n">9</span> Малая команда</a>
-    <a class="btn" href="#s10"><span class="n">10</span> Задание помощнице</a>
-    <a class="btn" href="#s11"><span class="n">11</span> Обязанности</a>
-    <a class="btn" href="#s12"><span class="n">12</span> Остальные роли</a>
-    <a class="btn" href="#s13"><span class="n">13</span> Заявки</a>
-    <a class="btn" href="#s14"><span class="n">14</span> Контент-план</a>
-    <a class="btn" href="#s15"><span class="n">15</span> 30 дней</a>
-    <a class="btn" href="#s16"><span class="n">16</span> 90 дней</a>
-    <a class="btn" href="#s17"><span class="n">17</span> Продажи</a>
-    <a class="btn" href="#s18"><span class="n">18</span> Документы</a>
-    <a class="btn" href="#s19"><span class="n">19</span> Репутация</a>
-    <a class="btn" href="#s20"><span class="n">20</span> Первые шаги</a>
-    <a class="btn" href="#s21"><span class="n">21</span> План помощницы</a>
-    <a class="btn" href="#s22"><span class="n">22</span> Модель</a>
-    <a class="btn" href="#s23"><span class="n">23</span> Напоминание</a>
+    <a class="btn" href="#s1"><span class="n">1</span> <span data-i18n="toc1">Главный принцип</span></a>
+    <a class="btn" href="#s2"><span class="n">2</span> <span data-i18n="toc2">Что можно/нельзя</span></a>
+    <a class="btn" href="#s3"><span class="n">3</span> <span data-i18n="toc3">Направления</span></a>
+    <a class="btn" href="#s4"><span class="n">4</span> <span data-i18n="toc4">Аудитория</span></a>
+    <a class="btn" href="#s5"><span class="n">5</span> <span data-i18n="toc5">Позиционирование</span></a>
+    <a class="btn" href="#s6"><span class="n">6</span> <span data-i18n="toc6">Контент-стратегия</span></a>
+    <a class="btn" href="#s7"><span class="n">7</span> <span data-i18n="toc7">Воронка</span></a>
+    <a class="btn" href="#s8"><span class="n">8</span> <span data-i18n="toc8">Линейка услуг</span></a>
+    <a class="btn" href="#s9"><span class="n">9</span> <span data-i18n="toc9">Малая команда</span></a>
+    <a class="btn" href="#s10"><span class="n">10</span> <span data-i18n="toc10">Задание помощнице</span></a>
+    <a class="btn" href="#s11"><span class="n">11</span> <span data-i18n="toc11">Обязанности</span></a>
+    <a class="btn" href="#s12"><span class="n">12</span> <span data-i18n="toc12">Остальные роли</span></a>
+    <a class="btn" href="#s13"><span class="n">13</span> <span data-i18n="toc13">Заявки</span></a>
+    <a class="btn" href="#s14"><span class="n">14</span> <span data-i18n="toc14">Контент-план</span></a>
+    <a class="btn" href="#s15"><span class="n">15</span> <span data-i18n="toc15">30 дней</span></a>
+    <a class="btn" href="#s16"><span class="n">16</span> <span data-i18n="toc16">90 дней</span></a>
+    <a class="btn" href="#s17"><span class="n">17</span> <span data-i18n="toc17">Продажи</span></a>
+    <a class="btn" href="#s18"><span class="n">18</span> <span data-i18n="toc18">Документы</span></a>
+    <a class="btn" href="#s19"><span class="n">19</span> <span data-i18n="toc19">Репутация</span></a>
+    <a class="btn" href="#s20"><span class="n">20</span> <span data-i18n="toc20">Первые шаги</span></a>
+    <a class="btn" href="#s21"><span class="n">21</span> <span data-i18n="toc21">План помощницы</span></a>
+    <a class="btn" href="#s22"><span class="n">22</span> <span data-i18n="toc22">Модель</span></a>
+    <a class="btn" href="#s23"><span class="n">23</span> <span data-i18n="toc23">Напоминание</span></a>
   </div>
 </section>
 
 <section id="s1" aria-labelledby="s1-title">
-  <h2 id="s1-title">1. Главный принцип проекта</h2>
-  <p>Проект стоит на 4 основах:</p>
+  <h2 id="s1-title" data-i18n="s1Title">1. Главный принцип проекта</h2>
+  <p data-i18n="s1Intro">Проект стоит на 4 основах:</p>
   <ol class="steps">
-    <li><strong>Таухид</strong> — исцеление только от Аллаха, рукья — лишь причина.</li>
-    <li><strong>Польза людям</strong> — обучение защите, азкарам, правильной саморукье, очищению дома.</li>
-    <li><strong>Профессиональность</strong> — анкеты, диагностика, программы, мониторинг, документы.</li>
-    <li><strong>Этичный доход</strong> — оплата за время, консультацию, программу, сопровождение, обучение; не продажа «гарантированного исцеления».</li>
+    <li><strong data-i18n="s1p1Title">Таухид</strong> — <span data-i18n="s1p1Text">исцеление только от Аллаха, рукья — лишь причина.</span></li>
+    <li><strong data-i18n="s1p2Title">Польза людям</strong> — <span data-i18n="s1p2Text">обучение защите, азкарам, правильной саморукье, очищению дома.</span></li>
+    <li><strong data-i18n="s1p3Title">Профессиональность</strong> — <span data-i18n="s1p3Text">анкеты, диагностика, программы, мониторинг, документы.</span></li>
+    <li><strong data-i18n="s1p4Title">Этичный доход</strong> — <span data-i18n="s1p4Text">оплата за время, консультацию, программу, сопровождение, обучение; не продажа «гарантированного исцеления».</span></li>
   </ol>
-  <blockquote>«Я помогаю мусульманам разобраться с духовными поражениями через дозволенную рукью по Корану и Сунне, составляю индивидуальные программы, веду сопровождение и обучаю правильной защите. Исцеление только от Аллаха».</blockquote>
+  <blockquote data-i18n="s1Quote">«Я помогаю мусульманам разобраться с духовными поражениями через дозволенную рукью по Корану и Сунне, составляю индивидуальные программы, веду сопровождение и обучаю правильной защите. Исцеление только от Аллаха».</blockquote>
 </section>
 
 <section id="s2" aria-labelledby="s2-title">
-  <h2 id="s2-title">2. Что можно продавать, а что нельзя подавать неправильно</h2>
+  <h2 id="s2-title" data-i18n="s2Title">2. Что можно продавать, а что нельзя подавать неправильно</h2>
   <div class="grid-2">
     <div class="card ok">
-      <h4>✅ Можно монетизировать</h4>
+      <h4 data-i18n="s2CanTitle">✅ Можно монетизировать</h4>
       <ol>
-        <li>Индивидуальные консультации.</li>
-        <li>Сеансы рукьи.</li>
-        <li>Составление индивидуальной программы домашней рукьи.</li>
-        <li>Сопровождение 7/21/40 дней.</li>
-        <li>Обучение саморукье.</li>
-        <li>Курсы по защите дома, семьи, сна, детей.</li>
-        <li>Закрытый Telegram-клуб с уроками и ответами.</li>
-        <li>Шаблоны документов, анкет, дневников мониторинга.</li>
-        <li>Обучение других практиков организационной стороне: анкеты, CRM, документы, этика.</li>
-        <li>Продажа доступа к вашей системе/CRM.</li>
+        <li data-i18n="s2c1">Индивидуальные консультации.</li>
+        <li data-i18n="s2c2">Сеансы рукьи.</li>
+        <li data-i18n="s2c3">Составление индивидуальной программы домашней рукьи.</li>
+        <li data-i18n="s2c4">Сопровождение 7/21/40 дней.</li>
+        <li data-i18n="s2c5">Обучение саморукье.</li>
+        <li data-i18n="s2c6">Курсы по защите дома, семьи, сна, детей.</li>
+        <li data-i18n="s2c7">Закрытый Telegram-клуб с уроками и ответами.</li>
+        <li data-i18n="s2c8">Шаблоны документов, анкет, дневников мониторинга.</li>
+        <li data-i18n="s2c9">Обучение других практиков организационной стороне: анкеты, CRM, документы, этика.</li>
+        <li data-i18n="s2c10">Продажа доступа к вашей системе/CRM.</li>
       </ol>
     </div>
     <div class="card bad">
-      <h4>❌ Нельзя или опасно продавать как обещание</h4>
+      <h4 data-i18n="s2CantTitle">❌ Нельзя или опасно продавать как обещание</h4>
       <ol>
-        <li>«Гарантированное исцеление».</li>
-        <li>«100% снятие сихра за 1 сеанс».</li>
-        <li>«Я точно знаю, кто сделал колдовство».</li>
-        <li>«Не ходите к врачам, это только джинны».</li>
-        <li>«Покупайте воду/масло — оно точно вылечит».</li>
-        <li>«Секретные заклинания» с непонятными словами.</li>
-        <li>Любые талисманы, амулеты, символы, обращения к джиннам.</li>
+        <li data-i18n="s2n1">«Гарантированное исцеление».</li>
+        <li data-i18n="s2n2">«100% снятие сихра за 1 сеанс».</li>
+        <li data-i18n="s2n3">«Я точно знаю, кто сделал колдовство».</li>
+        <li data-i18n="s2n4">«Не ходите к врачам, это только джинны».</li>
+        <li data-i18n="s2n5">«Покупайте воду/масло — оно точно вылечит».</li>
+        <li data-i18n="s2n6">«Секретные заклинания» с непонятными словами.</li>
+        <li data-i18n="s2n7">Любые талисманы, амулеты, символы, обращения к джиннам.</li>
       </ol>
     </div>
   </div>
-  <blockquote>«Оплата берётся за консультацию, время, диагностику духовных признаков, составление программы и сопровождение. Результат — с дозволения Аллаха».</blockquote>
+  <blockquote data-i18n="s2Quote">«Оплата берётся за консультацию, время, диагностику духовных признаков, составление программы и сопровождение. Результат — с дозволения Аллаха».</blockquote>
 </section>
 
 <section id="s3" aria-labelledby="s3-title">
-  <h2 id="s3-title">3. Основные направления бизнеса</h2>
-  <h3>Направление 1. Личные приёмы и сеансы</h3>
-  <p><strong>Продукты:</strong></p>
+  <h2 id="s3-title" data-i18n="s3Title">3. Основные направления бизнеса</h2>
+  <h3 data-i18n="s3d1Title">Направление 1. Личные приёмы и сеансы</h3>
+  <p><strong data-i18n="s3Products">Продукты:</strong></p>
   <ol>
-    <li><strong>Первичная консультация + диагностика</strong> — опрос жалоб, анкета симптомов, предварительная духовная оценка, первый план действий.</li>
-    <li><strong>Сеанс рукьи</strong> — чтение аятов и дуа, наблюдение реакций, фиксация симптомов, рекомендации после сеанса.</li>
-    <li><strong>Индивидуальная программа лечения</strong> — аяты, дуа, формулы, домашнее чтение, вода/масло если используется, защита, мониторинг.</li>
-    <li><strong>Курс сопровождения 7/21/40 дней</strong> — несколько сеансов, контроль динамики, коррекция программы, заключение по итогам.</li>
+    <li><strong data-i18n="s3p1Title">Первичная консультация + диагностика</strong> — <span data-i18n="s3p1Text">опрос жалоб, анкета симптомов, предварительная духовная оценка, первый план действий.</span></li>
+    <li><strong data-i18n="s3p2Title">Сеанс рукьи</strong> — <span data-i18n="s3p2Text">чтение аятов и дуа, наблюдение реакций, фиксация симптомов, рекомендации после сеанса.</span></li>
+    <li><strong data-i18n="s3p3Title">Индивидуальная программа лечения</strong> — <span data-i18n="s3p3Text">аяты, дуа, формулы, домашнее чтение, вода/масло если используется, защита, мониторинг.</span></li>
+    <li><strong data-i18n="s3p4Title">Курс сопровождения 7/21/40 дней</strong> — <span data-i18n="s3p4Text">несколько сеансов, контроль динамики, коррекция программы, заключение по итогам.</span></li>
   </ol>
-  <div class="callout warn"><strong>Важно:</strong> В каждом документе указывать: «Это духовная оценка и программа рукьи. Документ не является медицинским диагнозом. При опасных симптомах необходимо обращаться к врачу».</div>
+  <div class="callout warn"><strong data-i18n="important">Важно:</strong> <span data-i18n="s3Warning">В каждом документе указывать: «Это духовная оценка и программа рукьи. Документ не является медицинским диагнозом. При опасных симптомах необходимо обращаться к врачу».</span></div>
 
-  <h3>Направление 2. Онлайн-консультации</h3>
-  <p>Подходит для Instagram, Telegram, YouTube.</p>
+  <h3 data-i18n="s3d2Title">Направление 2. Онлайн-консультации</h3>
+  <p data-i18n="s3d2Intro">Подходит для Instagram, Telegram, YouTube.</p>
   <ul>
-    <li>Онлайн-разбор симптомов.</li>
-    <li>Составление домашней программы.</li>
-    <li>Объяснение, как читать рукью самостоятельно.</li>
-    <li>Контроль через Telegram.</li>
-    <li>Повторная встреча через 7 дней.</li>
+    <li data-i18n="s3d2l1">Онлайн-разбор симптомов.</li>
+    <li data-i18n="s3d2l2">Составление домашней программы.</li>
+    <li data-i18n="s3d2l3">Объяснение, как читать рукью самостоятельно.</li>
+    <li data-i18n="s3d2l4">Контроль через Telegram.</li>
+    <li data-i18n="s3d2l5">Повторная встреча через 7 дней.</li>
   </ul>
-  <div class="callout info">Онлайн нельзя подавать как полноценную замену очному сеансу при тяжёлом состоянии. «Онлайн-консультация помогает определить направление духовной работы и составить домашнюю программу. При тяжёлых состояниях может потребоваться очный приём и медицинская помощь».</div>
+  <div class="callout info" data-i18n="s3d2Note">Онлайн нельзя подавать как полноценную замену очному сеансу при тяжёлом состоянии. «Онлайн-консультация помогает определить направление духовной работы и составить домашнюю программу. При тяжёлых состояниях может потребоваться очный приём и медицинская помощь».</div>
 
-  <h3>Направление 3. Обучение людей саморукье</h3>
-  <p>Это самый чистый и масштабируемый путь распространения знания.</p>
+  <h3 data-i18n="s3d3Title">Направление 3. Обучение людей саморукье</h3>
+  <p data-i18n="s3d3Intro">Это самый чистый и масштабируемый путь распространения знания.</p>
   <div class="tags">
-    <span class="chip">Мини-курс «Основы дозволенной рукьи»</span>
-    <span class="chip">«Саморукья на 7 дней»</span>
-    <span class="chip">«Защита дома по Корану и Сунне»</span>
-    <span class="chip">«Азкары утра и вечера»</span>
-    <span class="chip">«Васваса vs поражение»</span>
-    <span class="chip">Женский поток</span>
+    <span class="chip" data-i18n="chip1">Мини-курс «Основы дозволенной рукьи»</span>
+    <span class="chip" data-i18n="chip2">«Саморукья на 7 дней»</span>
+    <span class="chip" data-i18n="chip3">«Защита дома по Корану и Сунне»</span>
+    <span class="chip" data-i18n="chip4">«Азкары утра и вечера»</span>
+    <span class="chip" data-i18n="chip5">«Васваса vs поражение»</span>
+    <span class="chip" data-i18n="chip6">Женский поток</span>
   </div>
-  <p><strong>Что входит:</strong> видео, PDF-конспект, аяты с арабским текстом и переводом, дневник симптомов, инструкция по чтению на воду, частые ошибки, безопасность и границы.</p>
+  <p><strong data-i18n="s3Includes">Что входит:</strong> <span data-i18n="s3IncludesText">видео, PDF-конспект, аяты с арабским текстом и переводом, дневник симптомов, инструкция по чтению на воду, частые ошибки, безопасность и границы.</span></p>
 
-  <h3>Направление 4. Закрытый Telegram-клуб</h3>
-  <p>Ежемесячная подписка для регулярного укрепления.</p>
+  <h3 data-i18n="s3d4Title">Направление 4. Закрытый Telegram-клуб</h3>
+  <p data-i18n="s3d4Intro">Ежемесячная подписка для регулярного укрепления.</p>
   <ul>
-    <li>Еженедельный урок по рукье.</li>
-    <li>Разбор вопросов.</li>
-    <li>Напоминания об азкарах.</li>
-    <li>Чек-листы защиты, программы на неделю.</li>
-    <li>Эфиры «вопрос-ответ», дневник улучшений.</li>
+    <li data-i18n="s3d4l1">Еженедельный урок по рукье.</li>
+    <li data-i18n="s3d4l2">Разбор вопросов.</li>
+    <li data-i18n="s3d4l3">Напоминания об азкарах.</li>
+    <li data-i18n="s3d4l4">Чек-листы защиты, программы на неделю.</li>
+    <li data-i18n="s3d4l5">Эфиры «вопрос-ответ», дневник улучшений.</li>
   </ul>
-  <p><em>Клуб — не место для тяжёлой диагностики каждого участника. Для личных случаев — отдельная консультация.</em></p>
+  <p><em data-i18n="s3d4Note">Клуб — не место для тяжёлой диагностики каждого участника. Для личных случаев — отдельная консультация.</em></p>
 
-  <h3>Направление 5. Методология и система</h3>
-  <p>Если CRM будет готова — монетизируйте отдельно.</p>
+  <h3 data-i18n="s3d5Title">Направление 5. Методология и система</h3>
+  <p data-i18n="s3d5Intro">Если CRM будет готова — монетизируйте отдельно.</p>
   <ul>
-    <li>Шаблоны анкет для раки.</li>
-    <li>Шаблоны программ лечения.</li>
-    <li>Шаблоны заключений.</li>
-    <li>Дневники мониторинга.</li>
-    <li>CRM для ведения пациентов.</li>
-    <li>Обучение организации работы раки.</li>
+    <li data-i18n="s3d5l1">Шаблоны анкет для раки.</li>
+    <li data-i18n="s3d5l2">Шаблоны программ лечения.</li>
+    <li data-i18n="s3d5l3">Шаблоны заключений.</li>
+    <li data-i18n="s3d5l4">Дневники мониторинга.</li>
+    <li data-i18n="s3d5l5">CRM для ведения пациентов.</li>
+    <li data-i18n="s3d5l6">Обучение организации работы раки.</li>
   </ul>
-  <blockquote>Позиционировать как: «Организационная система для раки: пациенты, сеансы, мониторинг, документы, библиотека аятов и программ».</blockquote>
+  <blockquote data-i18n="s3d5Quote">Позиционировать как: «Организационная система для раки: пациенты, сеансы, мониторинг, документы, библиотека аятов и программ».</blockquote>
 </section>
 
 <section id="s4" aria-labelledby="s4-title">
-  <h2 id="s4-title">4. Целевая аудитория</h2>
-  <h4>Основные группы</h4>
+  <h2 id="s4-title" data-i18n="s4Title">4. Целевая аудитория</h2>
+  <h4 data-i18n="s4Groups">Основные группы</h4>
   <ol>
-    <li>Люди с тревогой, страхами, кошмарами.</li>
-    <li>Подозревающие сглаз, зависть, сихр.</li>
-    <li>Семьи с частыми конфликтами.</li>
-    <li>Люди с блокировкой дел, брака, ризка.</li>
-    <li>Женщины, нужен деликатный подход.</li>
-    <li>Родители, переживающие за детей.</li>
-    <li>Практикующие мусульмане, желающие научиться саморукье.</li>
-    <li>Начинающие раки, которым нужна система работы.</li>
+    <li data-i18n="s4g1">Люди с тревогой, страхами, кошмарами.</li>
+    <li data-i18n="s4g2">Подозревающие сглаз, зависть, сихр.</li>
+    <li data-i18n="s4g3">Семьи с частыми конфликтами.</li>
+    <li data-i18n="s4g4">Люди с блокировкой дел, брака, ризка.</li>
+    <li data-i18n="s4g5">Женщины, нужен деликатный подход.</li>
+    <li data-i18n="s4g6">Родители, переживающие за детей.</li>
+    <li data-i18n="s4g7">Практикующие мусульмане, желающие научиться саморукье.</li>
+    <li data-i18n="s4g8">Начинающие раки, которым нужна система работы.</li>
   </ol>
-  <h4>Боли аудитории</h4>
+  <h4 data-i18n="s4Pains">Боли аудитории</h4>
   <ul class="check">
-    <li>«Не понимаю, что со мной».</li>
-    <li>«Мне страшно ночью».</li>
-    <li>«Не могу читать намаз спокойно».</li>
-    <li>«В доме тяжесть и ссоры».</li>
-    <li>«Дела закрыты, всё ломается».</li>
-    <li>«Боюсь попасть к шарлатану».</li>
-    <li>«Хочу лечиться по Корану и Сунне».</li>
-    <li>«Хочу научиться защищать себя и семью».</li>
+    <li data-i18n="s4p1">«Не понимаю, что со мной».</li>
+    <li data-i18n="s4p2">«Мне страшно ночью».</li>
+    <li data-i18n="s4p3">«Не могу читать намаз спокойно».</li>
+    <li data-i18n="s4p4">«В доме тяжесть и ссоры».</li>
+    <li data-i18n="s4p5">«Дела закрыты, всё ломается».</li>
+    <li data-i18n="s4p6">«Боюсь попасть к шарлатану».</li>
+    <li data-i18n="s4p7">«Хочу лечиться по Корану и Сунне».</li>
+    <li data-i18n="s4p8">«Хочу научиться защищать себя и семью».</li>
   </ul>
 </section>
 
 <section id="s5" aria-labelledby="s5-title">
-  <h2 id="s5-title">5. Позиционирование в соцсетях</h2>
-  <blockquote>«Специалист по прицельной рукье, который системно диагностирует духовные признаки, составляет индивидуальные программы и обучает людей самозащите по Корану и Сунне».</blockquote>
+  <h2 id="s5-title" data-i18n="s5Title">5. Позиционирование в соцсетях</h2>
+  <blockquote data-i18n="s5Quote">«Специалист по прицельной рукье, который системно диагностирует духовные признаки, составляет индивидуальные программы и обучает людей самозащите по Корану и Сунне».</blockquote>
   <ul>
-    <li>Не пугаете людей.</li>
-    <li>Не обещаете чудо за деньги.</li>
-    <li>Не обвиняете без доказательств.</li>
-    <li>Работаете по системе: анкета → диагностика → программа → мониторинг → заключение.</li>
-    <li>Уважаете медицину в её области.</li>
-    <li>Даёте людям знания, а не зависимость от раки.</li>
+    <li data-i18n="s5l1">Не пугаете людей.</li>
+    <li data-i18n="s5l2">Не обещаете чудо за деньги.</li>
+    <li data-i18n="s5l3">Не обвиняете без доказательств.</li>
+    <li data-i18n="s5l4">Работаете по системе: анкета → диагностика → программа → мониторинг → заключение.</li>
+    <li data-i18n="s5l5">Уважаете медицину в её области.</li>
+    <li data-i18n="s5l6">Даёте людям знания, а не зависимость от раки.</li>
   </ul>
 </section>
 
 <section id="s6" aria-labelledby="s6-title">
-  <h2 id="s6-title">6. Контент-стратегия для Instagram, Telegram, YouTube</h2>
-  <h3>Instagram</h3>
-  <p><strong>Цель:</strong> доверие, охват, быстрые заявки. <strong>Форматы:</strong> Reels 30–60 сек, карусели, Stories, отзывы без личности, разборы симптомов, прямые эфиры.</p>
-  <p><strong>Темы Reels:</strong></p>
+  <h2 id="s6-title" data-i18n="s6Title">6. Контент-стратегия для Instagram, Telegram, YouTube</h2>
+  <h3 data-i18n="s6ig">Instagram</h3>
+  <p><strong data-i18n="s6igGoal">Цель:</strong> <span data-i18n="s6igGoalText">доверие, охват, быстрые заявки.</span> <strong data-i18n="s6igFormats">Форматы:</strong> <span data-i18n="s6igFormatsText">Reels 30–60 сек, карусели, Stories, отзывы без личности, разборы симптомов, прямые эфиры.</span></p>
+  <p><strong data-i18n="s6igReels">Темы Reels:</strong></p>
   <ol>
-    <li>«5 признаков, что человеку нужна рукья».</li>
-    <li>«Чем рукья отличается от магии?»</li>
-    <li>«Почему нельзя обвинять людей в сихре без доказательств».</li>
-    <li>«Что делать, если страшно читать Коран?»</li>
-    <li>«3 ошибки при саморукье».</li>
-    <li>«Как защитить дом сурой Аль-Бакара».</li>
-    <li>«Что такое айн и хасад простыми словами».</li>
-    <li>«Почему рукья не заменяет врача».</li>
-    <li>«Как вести дневник симптомов после рукьи».</li>
-    <li>«Что делать после сеанса рукьи».</li>
+    <li data-i18n="s6igR1">«5 признаков, что человеку нужна рукья».</li>
+    <li data-i18n="s6igR2">«Чем рукья отличается от магии?»</li>
+    <li data-i18n="s6igR3">«Почему нельзя обвинять людей в сихре без доказательств».</li>
+    <li data-i18n="s6igR4">«Что делать, если страшно читать Коран?»</li>
+    <li data-i18n="s6igR5">«3 ошибки при саморукье».</li>
+    <li data-i18n="s6igR6">«Как защитить дом сурой Аль-Бакара».</li>
+    <li data-i18n="s6igR7">«Что такое айн и хасад простыми словами».</li>
+    <li data-i18n="s6igR8">«Почему рукья не заменяет врача».</li>
+    <li data-i18n="s6igR9">«Как вести дневник симптомов после рукьи».</li>
+    <li data-i18n="s6igR10">«Что делать после сеанса рукьи».</li>
   </ol>
-  <p><strong>Stories каждый день:</strong> утреннее напоминание об азкарах, 1 совет, опрос, ответ на вопрос, ссылка на запись.</p>
+  <p><strong data-i18n="s6igStories">Stories каждый день:</strong> <span data-i18n="s6igStoriesText">утреннее напоминание об азкарах, 1 совет, опрос, ответ на вопрос, ссылка на запись.</span></p>
 
-  <h3>Telegram</h3>
-  <p><strong>Цель:</strong> глубокое доверие, прогрев, заявки, клуб.</p>
-  <p>Подробные посты, аудио-напоминания, чек-листы, PDF-инструкции, разборы случаев без личных данных, расписание.</p>
-  <p><strong>Рубрики:</strong> «Аят дня для защиты», «Ошибка недели в рукье», «Вопрос-ответ», «Дневник симптомов», «Защита дома», «Истории улучшения», «Напоминание: исцеление от Аллаха».</p>
+  <h3 data-i18n="s6tg">Telegram</h3>
+  <p><strong data-i18n="s6tgGoal">Цель:</strong> <span data-i18n="s6tgGoalText">глубокое доверие, прогрев, заявки, клуб.</span></p>
+  <p data-i18n="s6tgContent">Подробные посты, аудио-напоминания, чек-листы, PDF-инструкции, разборы случаев без личных данных, расписание.</p>
+  <p><strong data-i18n="s6tgRubrics">Рубрики:</strong> <span data-i18n="s6tgRubricsText">«Аят дня для защиты», «Ошибка недели в рукье», «Вопрос-ответ», «Дневник симптомов», «Защита дома», «Истории улучшения», «Напоминание: исцеление от Аллаха».</span></p>
 
-  <h3>YouTube</h3>
-  <p><strong>Цель:</strong> авторитет, длинное обучение, поиск.</p>
+  <h3 data-i18n="s6yt">YouTube</h3>
+  <p><strong data-i18n="s6ytGoal">Цель:</strong> <span data-i18n="s6ytGoalText">авторитет, длинное обучение, поиск.</span></p>
   <ol>
-    <li>«Что такое рукья по Корану и Сунне?»</li>
-    <li>«Сихр, айн, хасад, масс: в чём разница?»</li>
-    <li>«Как правильно делать саморукью дома».</li>
-    <li>«Сура Аль-Бакара для защиты дома».</li>
-    <li>«Васваса: духовная сторона и осторожность».</li>
-    <li>«Как понять реакцию на Коран?»</li>
-    <li>«Почему нельзя ходить к колдунам и гадателям».</li>
-    <li>«Как проходит консультация у раки».</li>
-    <li>«Как вести дневник после рукьи».</li>
-    <li>«Что делать, если симптомы усилились после чтения?»</li>
+    <li data-i18n="s6ytV1">«Что такое рукья по Корану и Сунне?»</li>
+    <li data-i18n="s6ytV2">«Сихр, айн, хасад, масс: в чём разница?»</li>
+    <li data-i18n="s6ytV3">«Как правильно делать саморукью дома».</li>
+    <li data-i18n="s6ytV4">«Сура Аль-Бакара для защиты дома».</li>
+    <li data-i18n="s6ytV5">«Васваса: духовная сторона и осторожность».</li>
+    <li data-i18n="s6ytV6">«Как понять реакцию на Коран?»</li>
+    <li data-i18n="s6ytV7">«Почему нельзя ходить к колдунам и гадателям».</li>
+    <li data-i18n="s6ytV8">«Как проходит консультация у раки».</li>
+    <li data-i18n="s6ytV9">«Как вести дневник после рукьи».</li>
+    <li data-i18n="s6ytV10">«Что делать, если симптомы усилились после чтения?»</li>
   </ol>
 </section>
 
 <section id="s7" aria-labelledby="s7-title">
-  <h2 id="s7-title">7. Воронка продаж</h2>
+  <h2 id="s7-title" data-i18n="s7Title">7. Воронка продаж</h2>
   <div class="funnel">
-    Бесплатный контент (IG/TG/YT)<br>↓<br>
-    Лид-магнит PDF («7-дневный дневник», «Чек-лист признаков», «Защита дома»)<br>↓<br>
-    Недорогой продукт (мини-курс, вебинар, разбор анкеты)<br>↓<br>
-    Основной продукт (консультация / сеанс / программа)<br>↓<br>
-    Сопровождение 7/21/40 дней<br>↓<br>
-    Клуб / обучение саморукьи / повторное сопровождение
+    <span data-i18n="funnel1">Бесплатный контент (IG/TG/YT)</span><br>↓<br>
+    <span data-i18n="funnel2">Лид-магнит PDF («7-дневный дневник», «Чек-лист признаков», «Защита дома»)</span><br>↓<br>
+    <span data-i18n="funnel3">Недорогой продукт (мини-курс, вебинар, разбор анкеты)</span><br>↓<br>
+    <span data-i18n="funnel4">Основной продукт (консультация / сеанс / программа)</span><br>↓<br>
+    <span data-i18n="funnel5">Сопровождение 7/21/40 дней</span><br>↓<br>
+    <span data-i18n="funnel6">Клуб / обучение саморукьи / повторное сопровождение</span>
   </div>
 </section>
 
 <section id="s8" aria-labelledby="s8-title">
-  <h2 id="s8-title">8. Линейка услуг</h2>
+  <h2 id="s8-title" data-i18n="s8Title">8. Линейка услуг</h2>
   <div style="overflow-x:auto">
   <table class="table">
-    <thead><tr><th>Услуга</th><th>Состав</th></tr></thead>
+    <thead><tr><th data-i18n="s8Th1">Услуга</th><th data-i18n="s8Th2">Состав</th></tr></thead>
     <tbody>
-      <tr><td>1. Первичная консультация</td><td>Анкета, разбор жалоб, предварительная духовная оценка, рекомендация что делать дальше.</td></tr>
-      <tr><td>2. Консультация + программа</td><td>Всё из п.1 + индивидуальная программа на 7 дней (PDF/HTML).</td></tr>
-      <tr><td>3. Сеанс рукьи</td><td>Очный или онлайн, фиксация реакций, краткие рекомендации.</td></tr>
-      <tr><td>4. Курс 21 день</td><td>Первичная диагностика, 3–5 сеансов, домашняя программа, мониторинг 15 знаков, коррекция, заключение.</td></tr>
-      <tr><td>5. Курс 40 дней</td><td>Для сложных случаев: регулярное сопровождение, программа защиты, финальное заключение.</td></tr>
-      <tr><td>6. Обучение саморукье</td><td>Видео/уроки, PDF, практические задания, групповой чат.</td></tr>
-      <tr><td>7. Закрытый клуб</td><td>Подписка: уроки, напоминания, ответы на вопросы.</td></tr>
+      <tr><td data-i18n="s8r1">1. Первичная консультация</td><td data-i18n="s8r1d">Анкета, разбор жалоб, предварительная духовная оценка, рекомендация что делать дальше.</td></tr>
+      <tr><td data-i18n="s8r2">2. Консультация + программа</td><td data-i18n="s8r2d">Всё из п.1 + индивидуальная программа на 7 дней (PDF/HTML).</td></tr>
+      <tr><td data-i18n="s8r3">3. Сеанс рукьи</td><td data-i18n="s8r3d">Очный или онлайн, фиксация реакций, краткие рекомендации.</td></tr>
+      <tr><td data-i18n="s8r4">4. Курс 21 день</td><td data-i18n="s8r4d">Первичная диагностика, 3–5 сеансов, домашняя программа, мониторинг 15 знаков, коррекция, заключение.</td></tr>
+      <tr><td data-i18n="s8r5">5. Курс 40 дней</td><td data-i18n="s8r5d">Для сложных случаев: регулярное сопровождение, программа защиты, финальное заключение.</td></tr>
+      <tr><td data-i18n="s8r6">6. Обучение саморукье</td><td data-i18n="s8r6d">Видео/уроки, PDF, практические задания, групповой чат.</td></tr>
+      <tr><td data-i18n="s8r7">7. Закрытый клуб</td><td data-i18n="s8r7d">Подписка: уроки, напоминания, ответы на вопросы.</td></tr>
     </tbody>
   </table>
   </div>
 </section>
 
 <section id="s9" aria-labelledby="s9-title">
-  <h2 id="s9-title">9. Малая команда</h2>
-  <h3>Роль 1. Абу Мухаммад — главный специалист</h3>
-  <p><strong>Делает:</strong> приём пациентов, диагностика, составление программ, проведение сеансов, запись ключевых уроков, контроль исламской корректности, финальные решения.</p>
-  <p><strong>Не тратит время на:</strong> монтаж видео, оформление постов, переписку с каждым, таблицы, ручные публикации, напоминания.</p>
-  <h3>Роль 2. Женщина-помощница / координатор сестёр</h3>
-  <p><strong>Может делать:</strong></p>
+  <h2 id="s9-title" data-i18n="s9Title">9. Малая команда</h2>
+  <h3 data-i18n="s9r1Title">Роль 1. Абу Мухаммад — главный специалист</h3>
+  <p><strong data-i18n="s9r1Does">Делает:</strong> <span data-i18n="s9r1DoesText">приём пациентов, диагностика, составление программ, проведение сеансов, запись ключевых уроков, контроль исламской корректности, финальные решения.</span></p>
+  <p><strong data-i18n="s9r1Not">Не тратит время на:</strong> <span data-i18n="s9r1NotText">монтаж видео, оформление постов, переписку с каждым, таблицы, ручные публикации, напоминания.</span></p>
+  <h3 data-i18n="s9r2Title">Роль 2. Женщина-помощница / координатор сестёр</h3>
+  <p><strong data-i18n="s9r2Can">Может делать:</strong></p>
   <ol>
-    <li>Принимать первичные заявки от женщин.</li>
-    <li>Отправлять анкету симптомов.</li>
-    <li>Проверять заполнение анкеты.</li>
-    <li>Собирать жалобы в аккуратный документ.</li>
-    <li>Напоминать о визите.</li>
-    <li>Вести женский Telegram-чат по правилам.</li>
-    <li>Отвечать на организационные вопросы.</li>
-    <li>Подготавливать посты из ваших голосовых.</li>
-    <li>Делать конспекты уроков.</li>
-    <li>Собирать отзывы без личных данных.</li>
-    <li>Помогать вести дневник симптомов.</li>
-    <li>Следить за конфиденциальностью в чате.</li>
-    <li>Готовить список вопросов для эфира.</li>
-    <li>Готовить материалы для курса саморукьи.</li>
-    <li>Быть мостом с женской аудиторией с соблюдением адаба.</li>
+    <li data-i18n="s9r2c1">Принимать первичные заявки от женщин.</li>
+    <li data-i18n="s9r2c2">Отправлять анкету симптомов.</li>
+    <li data-i18n="s9r2c3">Проверять заполнение анкеты.</li>
+    <li data-i18n="s9r2c4">Собирать жалобы в аккуратный документ.</li>
+    <li data-i18n="s9r2c5">Напоминать о визите.</li>
+    <li data-i18n="s9r2c6">Вести женский Telegram-чат по правилам.</li>
+    <li data-i18n="s9r2c7">Отвечать на организационные вопросы.</li>
+    <li data-i18n="s9r2c8">Подготавливать посты из ваших голосовых.</li>
+    <li data-i18n="s9r2c9">Делать конспекты уроков.</li>
+    <li data-i18n="s9r2c10">Собирать отзывы без личных данных.</li>
+    <li data-i18n="s9r2c11">Помогать вести дневник симптомов.</li>
+    <li data-i18n="s9r2c12">Следить за конфиденциальностью в чате.</li>
+    <li data-i18n="s9r2c13">Готовить список вопросов для эфира.</li>
+    <li data-i18n="s9r2c14">Готовить материалы для курса саморукьи.</li>
+    <li data-i18n="s9r2c15">Быть мостом с женской аудиторией с соблюдением адаба.</li>
   </ol>
-  <div class="callout warn"><strong>Нельзя без подготовки и разрешения:</strong> ставить диагноз, обещать исцеление, назначать сложные программы, давать медицинские советы, вести тяжёлые случаи без контроля, писать мужчинам без необходимости, разглашать личные данные.</div>
+  <div class="callout warn"><strong data-i18n="s9Warning">Нельзя без подготовки и разрешения:</strong> <span data-i18n="s9WarningText">ставить диагноз, обещать исцеление, назначать сложные программы, давать медицинские советы, вести тяжёлые случаи без контроля, писать мужчинам без необходимости, разглашать личные данные.</span></div>
 </section>
 
 <section id="s10" aria-labelledby="s10-title">
-  <h2 id="s10-title">10. Первое задание для женщины-помощницы</h2>
+  <h2 id="s10-title" data-i18n="s10Title">10. Первое задание для женщины-помощницы</h2>
   <ol>
-    <li><strong>Изучить методологию</strong> — конспект: кто вы, что такое рукья, что лечите, что не обещаете, как проходит приём, запреты, конфиденциальность.</li>
-    <li><strong>Карта пути пациента</strong> — 9 шагов от поста до заключения.</li>
-    <li><strong>30 тем для постов</strong> — по рубрикам: симптомы, защита, саморукья, ошибки, дом, семья, васваса, истории, Q&A.</li>
-    <li><strong>Шаблон ответа на заявку</strong></li>
-    <li><strong>Таблица заявок</strong> — дата, имя, пол, город, контакт, жалоба, анкета, статус, дата приёма, комментарий, согласие.</li>
-    <li><strong>5 постов</strong> — что такое рукья, отличие от колдовства, 5 ошибок, кошмары, исцеление от Аллаха.</li>
-    <li><strong>Правила женского чата</strong> — без личных данных, без обвинений, без фетв, без замены врачей, адаб.</li>
+    <li><strong data-i18n="s10t1">Изучить методологию</strong> — <span data-i18n="s10t1Text">конспект: кто вы, что такое рукья, что лечите, что не обещаете, как проходит приём, запреты, конфиденциальность.</span></li>
+    <li><strong data-i18n="s10t2">Карта пути пациента</strong> — <span data-i18n="s10t2Text">9 шагов от поста до заключения.</span></li>
+    <li><strong data-i18n="s10t3">30 тем для постов</strong> — <span data-i18n="s10t3Text">по рубрикам: симптомы, защита, саморукья, ошибки, дом, семья, васваса, истории, Q&A.</span></li>
+    <li><strong data-i18n="s10t4">Шаблон ответа на заявку</strong></li>
+    <li><strong data-i18n="s10t5">Таблица заявок</strong> — <span data-i18n="s10t5Text">дата, имя, пол, город, контакт, жалоба, анкета, статус, дата приёма, комментарий, согласие.</span></li>
+    <li><strong data-i18n="s10t6">5 постов</strong> — <span data-i18n="s10t6Text">что такое рукья, отличие от колдовства, 5 ошибок, кошмары, исцеление от Аллаха.</span></li>
+    <li><strong data-i18n="s10t7">Правила женского чата</strong> — <span data-i18n="s10t7Text">без личных данных, без обвинений, без фетв, без замены врачей, адаб.</span></li>
   </ol>
   <div class="code">Ассаляму алейкум. Вы обратились к Абу Мухаммаду по вопросу рукьи.
 Для первичного разбора заполните, пожалуйста, анкету симптомов.
@@ -472,145 +486,153 @@ blockquote strong{color:#431407}
 </section>
 
 <section id="s11" aria-labelledby="s11-title">
-  <h2 id="s11-title">11. Её постоянные обязанности после теста</h2>
-  <h4>Ежедневно</h4>
+  <h2 id="s11-title" data-i18n="s11Title">11. Её постоянные обязанности после теста</h2>
+  <h4 data-i18n="s11Daily">Ежедневно</h4>
   <ul>
-    <li>Проверить новые заявки, отправить анкету, напомнить о приёмах.</li>
-    <li>Собрать вопросы подписчиков, опубликовать stories/пост по плану, передать срочные случаи.</li>
+    <li data-i18n="s11d1">Проверить новые заявки, отправить анкету, напомнить о приёмах.</li>
+    <li data-i18n="s11d2">Собрать вопросы подписчиков, опубликовать stories/пост по плану, передать срочные случаи.</li>
   </ul>
-  <h4>Еженедельно</h4>
-  <ul><li>Контент-план, статистика, отзывы, список пациентов на контроль, отчёт: заявки, консультации, оплаты, проблемы.</li></ul>
-  <h4>Ежемесячно</h4>
-  <ul><li>Отчёт по росту аудитории, идеи новых продуктов, обновить FAQ, анализ тем-лидеров.</li></ul>
+  <h4 data-i18n="s11Weekly">Еженедельно</h4>
+  <ul><li data-i18n="s11w">Контент-план, статистика, отзывы, список пациентов на контроль, отчёт: заявки, консультации, оплаты, проблемы.</li></ul>
+  <h4 data-i18n="s11Monthly">Ежемесячно</h4>
+  <ul><li data-i18n="s11m">Отчёт по росту аудитории, идеи новых продуктов, обновить FAQ, анализ тем-лидеров.</li></ul>
 </section>
 
 <section id="s12" aria-labelledby="s12-title">
-  <h2 id="s12-title">12. Остальные роли в команде</h2>
-  <p><strong>Контент-монтажёр / дизайнер:</strong> Reels, обложки, карусели, PDF, нарезки для Shorts.</p>
-  <p><strong>Технический помощник:</strong> сайт/лендинг, формы заявок, Telegram-бот, CRM, бэкапы, публикации.</p>
-  <p><strong>Бухгалтер/администратор оплат:</strong> позже, при регулярных оплатах.</p>
+  <h2 id="s12-title" data-i18n="s12Title">12. Остальные роли в команде</h2>
+  <p><strong data-i18n="s12r1">Контент-монтажёр / дизайнер:</strong> <span data-i18n="s12r1Text">Reels, обложки, карусели, PDF, нарезки для Shorts.</span></p>
+  <p><strong data-i18n="s12r2">Технический помощник:</strong> <span data-i18n="s12r2Text">сайт/лендинг, формы заявок, Telegram-бот, CRM, бэкапы, публикации.</span></p>
+  <p><strong data-i18n="s12r3">Бухгалтер/администратор оплат:</strong> <span data-i18n="s12r3Text">позже, при регулярных оплатах.</span></p>
 </section>
 
 <section id="s13" aria-labelledby="s13-title">
-  <h2 id="s13-title">13. Система работы с заявками</h2>
-  <p><strong>Статусы:</strong> Новая → Анкета отправлена → Заполнена → Ожидает консультацию → Проведена → Назначен сеанс → В сопровождении → Завершён → Архив → Срочно к врачу</p>
-  <div class="callout warn"><strong>Красные флаги:</strong> суицидальные мысли, психоз, потеря сознания, судороги, сильная боль, кровотечение, тяжёлая депрессия, опасность для себя/других. Ответ: «Рукья может быть дополнительной духовной поддержкой, но необходимо срочно обратиться к врачу/скорой».</div>
+  <h2 id="s13-title" data-i18n="s13Title">13. Система работы с заявками</h2>
+  <p><strong data-i18n="s13Statuses">Статусы:</strong> <span data-i18n="s13StatusesText">Новая → Анкета отправлена → Заполнена → Ожидает консультацию → Проведена → Назначен сеанс → В сопровождении → Завершён → Архив → Срочно к врачу</span></p>
+  <div class="callout warn"><strong data-i18n="s13Flags">Красные флаги:</strong> <span data-i18n="s13FlagsText">суицидальные мысли, психоз, потеря сознания, судороги, сильная боль, кровотечение, тяжёлая депрессия, опасность для себя/других. Ответ: «Рукья может быть дополнительной духовной поддержкой, но необходимо срочно обратиться к врачу/скорой».</span></div>
 </section>
 
 <section id="s14" aria-labelledby="s14-title">
-  <h2 id="s14-title">14. Контент-план на неделю</h2>
+  <h2 id="s14-title" data-i18n="s14Title">14. Контент-план на неделю</h2>
   <ul>
-    <li><strong>Понедельник:</strong> Reels симптом/ошибка, TG подробный пост, Stories опрос.</li>
-    <li><strong>Вторник:</strong> короткое видео аят/дуа, TG чек-лист, Stories ответы.</li>
-    <li><strong>Среда:</strong> YouTube/Shorts, IG карусель, TG разбор случая без данных.</li>
-    <li><strong>Четверг:</strong> Reels миф о рукье, TG напоминание об азкарах, Stories запись на консультации.</li>
-    <li><strong>Пятница:</strong> напоминание о Коране, дуа, защите — без агрессивных продаж.</li>
-    <li><strong>Суббота:</strong> прямой эфир/вопрос-ответ, сбор заявок.</li>
-    <li><strong>Воскресенье:</strong> итоги недели, отзывы без личных данных, анонс расписания.</li>
+    <li><strong data-i18n="s14Mon">Понедельник:</strong> <span data-i18n="s14MonText">Reels симптом/ошибка, TG подробный пост, Stories опрос.</span></li>
+    <li><strong data-i18n="s14Tue">Вторник:</strong> <span data-i18n="s14TueText">короткое видео аят/дуа, TG чек-лист, Stories ответы.</span></li>
+    <li><strong data-i18n="s14Wed">Среда:</strong> <span data-i18n="s14WedText">YouTube/Shorts, IG карусель, TG разбор случая без данных.</span></li>
+    <li><strong data-i18n="s14Thu">Четверг:</strong> <span data-i18n="s14ThuText">Reels миф о рукье, TG напоминание об азкарах, Stories запись на консультации.</span></li>
+    <li><strong data-i18n="s14Fri">Пятница:</strong> <span data-i18n="s14FriText">напоминание о Коране, дуа, защите — без агрессивных продаж.</span></li>
+    <li><strong data-i18n="s14Sat">Суббота:</strong> <span data-i18n="s14SatText">прямой эфир/вопрос-ответ, сбор заявок.</span></li>
+    <li><strong data-i18n="s14Sun">Воскресенье:</strong> <span data-i18n="s14SunText">итоги недели, отзывы без личных данных, анонс расписания.</span></li>
   </ul>
 </section>
 
 <section id="s15" aria-labelledby="s15-title">
-  <h2 id="s15-title">15. 30-дневный план запуска</h2>
-  <h4>Неделя 1. Основа</h4>
-  <ol><li>Название проекта</li><li>Описание профиля</li><li>Telegram-канал</li><li>Instagram</li><li>YouTube</li><li>Анкета симптомов</li><li>Таблица заявок</li><li>Правила консультации</li><li>Дисклеймер</li><li>Первый PDF-лид-магнит</li></ol>
-  <h4>Неделя 2. Контент и доверие</h4>
-  <ol><li>10 коротких видео</li><li>10 постов</li><li>Публикации</li><li>Stories ежедневно</li><li>Сбор вопросов</li><li>FAQ</li></ol>
-  <h4>Неделя 3. Первая продажа</h4>
-  <ol><li>Набор на консультации</li><li>Описать услуги</li><li>5–10 мест на первичный разбор</li><li>Провести консультации</li><li>Обратная связь</li><li>Улучшить анкету</li></ol>
-  <h4>Неделя 4. Система</h4>
-  <ol><li>Мини-курс/вебинар</li><li>Шаблон программы</li><li>Шаблон заключения</li><li>Расписание публикаций</li><li>План на месяц</li><li>Делегирование помощнице</li></ol>
+  <h2 id="s15-title" data-i18n="s15Title">15. 30-дневный план запуска</h2>
+  <h4 data-i18n="s15w1">Неделя 1. Основа</h4>
+  <ol>
+    <li data-i18n="s15w1l1">Название проекта</li><li data-i18n="s15w1l2">Описание профиля</li><li data-i18n="s15w1l3">Telegram-канал</li><li data-i18n="s15w1l4">Instagram</li><li data-i18n="s15w1l5">YouTube</li><li data-i18n="s15w1l6">Анкета симптомов</li><li data-i18n="s15w1l7">Таблица заявок</li><li data-i18n="s15w1l8">Правила консультации</li><li data-i18n="s15w1l9">Дисклеймер</li><li data-i18n="s15w1l10">Первый PDF-лид-магнит</li>
+  </ol>
+  <h4 data-i18n="s15w2">Неделя 2. Контент и доверие</h4>
+  <ol>
+    <li data-i18n="s15w2l1">10 коротких видео</li><li data-i18n="s15w2l2">10 постов</li><li data-i18n="s15w2l3">Публикации</li><li data-i18n="s15w2l4">Stories ежедневно</li><li data-i18n="s15w2l5">Сбор вопросов</li><li data-i18n="s15w2l6">FAQ</li>
+  </ol>
+  <h4 data-i18n="s15w3">Неделя 3. Первая продажа</h4>
+  <ol>
+    <li data-i18n="s15w3l1">Набор на консультации</li><li data-i18n="s15w3l2">Описать услуги</li><li data-i18n="s15w3l3">5–10 мест на первичный разбор</li><li data-i18n="s15w3l4">Провести консультации</li><li data-i18n="s15w3l5">Обратная связь</li><li data-i18n="s15w3l6">Улучшить анкету</li>
+  </ol>
+  <h4 data-i18n="s15w4">Неделя 4. Система</h4>
+  <ol>
+    <li data-i18n="s15w4l1">Мини-курс/вебинар</li><li data-i18n="s15w4l2">Шаблон программы</li><li data-i18n="s15w4l3">Шаблон заключения</li><li data-i18n="s15w4l4">Расписание публикаций</li><li data-i18n="s15w4l5">План на месяц</li><li data-i18n="s15w4l6">Делегирование помощнице</li>
+  </ol>
 </section>
 
 <section id="s16" aria-labelledby="s16-title">
-  <h2 id="s16-title">16. 90-дневный план развития</h2>
+  <h2 id="s16-title" data-i18n="s16Title">16. 90-дневный план развития</h2>
   <div class="kpi">
-    <div class="k"><b>Месяц 1 — Доверие</b><br>30 публикаций, 10 видео, 20–50 заявок, 5–15 консультаций, 3–5 отзывов.</div>
-    <div class="k"><b>Месяц 2 — Продукты</b><br>1 мини-курс, 1 вебинар, 20 консультаций, 5 клиентов на сопровождении, помощница стабильно.</div>
-    <div class="k"><b>Месяц 3 — Масштаб</b><br>500–2000 подписчиков, 10–30 платных клиентов, 20–100 в бесплатном чате, 10–50 в клубе, контент 5–7/нед.</div>
+    <div class="k"><b data-i18n="s16m1">Месяц 1 — Доверие</b><br><span data-i18n="s16m1Text">30 публикаций, 10 видео, 20–50 заявок, 5–15 консультаций, 3–5 отзывов.</span></div>
+    <div class="k"><b data-i18n="s16m2">Месяц 2 — Продукты</b><br><span data-i18n="s16m2Text">1 мини-курс, 1 вебинар, 20 консультаций, 5 клиентов на сопровождении, помощница стабильно.</span></div>
+    <div class="k"><b data-i18n="s16m3">Месяц 3 — Масштаб</b><br><span data-i18n="s16m3Text">500–2000 подписчиков, 10–30 платных клиентов, 20–100 в бесплатном чате, 10–50 в клубе, контент 5–7/нед.</span></div>
   </div>
 </section>
 
 <section id="s17" aria-labelledby="s17-title">
-  <h2 id="s17-title">17. Продажи без давления</h2>
-  <blockquote>«Если вы хотите разобрать своё состояние и получить индивидуальную программу рукьи, заполните анкету — ссылка в описании».</blockquote>
-  <blockquote>«На консультации мы разберём жалобы, определим духовное направление работы и составим план. Исцеление только от Аллаха».</blockquote>
-  <blockquote>«Курс подойдёт тем, кто хочет научиться делать саморукью правильно и безопасно, без страха и сомнительных методов».</blockquote>
-  <blockquote>«Сопровождение нужно тем, кому важно пройти путь с контролем динамики и корректировками».</blockquote>
+  <h2 id="s17-title" data-i18n="s17Title">17. Продажи без давления</h2>
+  <blockquote data-i18n="s17q1">«Если вы хотите разобрать своё состояние и получить индивидуальную программу рукьи, заполните анкету — ссылка в описании».</blockquote>
+  <blockquote data-i18n="s17q2">«На консультации мы разберём жалобы, определим духовное направление работы и составим план. Исцеление только от Аллаха».</blockquote>
+  <blockquote data-i18n="s17q3">«Курс подойдёт тем, кто хочет научиться делать саморукью правильно и безопасно, без страха и сомнительных методов».</blockquote>
+  <blockquote data-i18n="s17q4">«Сопровождение нужно тем, кому важно пройти путь с контролем динамики и корректировками».</blockquote>
 </section>
 
 <section id="s18" aria-labelledby="s18-title">
-  <h2 id="s18-title">18. Документы, которые нужны проекту</h2>
+  <h2 id="s18-title" data-i18n="s18Title">18. Документы, которые нужны проекту</h2>
   <ol>
-    <li>Анкета пациента.</li><li>Согласие на обработку данных.</li><li>Предупреждение: не медицинский диагноз.</li><li>Шаблон индивидуальной программы.</li><li>Шаблон домашнего задания.</li><li>Дневник 15 признаков.</li><li>Шаблон заключения.</li><li>Правила Telegram-чата.</li><li>Скрипт ответа на заявку.</li><li>FAQ.</li><li>Контент-план.</li><li>Таблица заявок.</li><li>Таблица оплат.</li><li>Правила конфиденциальности.</li>
+    <li data-i18n="s18l1">Анкета пациента.</li><li data-i18n="s18l2">Согласие на обработку данных.</li><li data-i18n="s18l3">Предупреждение: не медицинский диагноз.</li><li data-i18n="s18l4">Шаблон индивидуальной программы.</li><li data-i18n="s18l5">Шаблон домашнего задания.</li><li data-i18n="s18l6">Дневник 15 признаков.</li><li data-i18n="s18l7">Шаблон заключения.</li><li data-i18n="s18l8">Правила Telegram-чата.</li><li data-i18n="s18l9">Скрипт ответа на заявку.</li><li data-i18n="s18l10">FAQ.</li><li data-i18n="s18l11">Контент-план.</li><li data-i18n="s18l12">Таблица заявок.</li><li data-i18n="s18l13">Таблица оплат.</li><li data-i18n="s18l14">Правила конфиденциальности.</li>
   </ol>
 </section>
 
 <section id="s19" aria-labelledby="s19-title">
-  <h2 id="s19-title">19. Репутационные правила</h2>
+  <h2 id="s19-title" data-i18n="s19Title">19. Репутационные правила</h2>
   <ol>
-    <li>Не пугать людей джиннами ради продаж.</li>
-    <li>Не обещать гарантированный результат.</li>
-    <li>Не обвинять родственников, соседей, бывших супругов.</li>
-    <li>Не выкладывать истории пациентов без разрешения.</li>
-    <li>Не показывать лица и личные данные.</li>
-    <li>Не спорить грубо в комментариях.</li>
-    <li>Не превращать Коран в маркетинговый трюк.</li>
-    <li>Не использовать фальшивые отзывы.</li>
-    <li>Всегда говорить: «Аллах знает лучше».</li>
-    <li>При сомнении — выбирать осторожность.</li>
+    <li data-i18n="s19l1">Не пугать людей джиннами ради продаж.</li>
+    <li data-i18n="s19l2">Не обещать гарантированный результат.</li>
+    <li data-i18n="s19l3">Не обвинять родственников, соседей, бывших супругов.</li>
+    <li data-i18n="s19l4">Не выкладывать истории пациентов без разрешения.</li>
+    <li data-i18n="s19l5">Не показывать лица и личные данные.</li>
+    <li data-i18n="s19l6">Не спорить грубо в комментариях.</li>
+    <li data-i18n="s19l7">Не превращать Коран в маркетинговый трюк.</li>
+    <li data-i18n="s19l8">Не использовать фальшивые отзывы.</li>
+    <li data-i18n="s19l9">Всегда говорить: «Аллах знает лучше».</li>
+    <li data-i18n="s19l10">При сомнении — выбирать осторожность.</li>
   </ol>
 </section>
 
 <section id="s20" aria-labelledby="s20-title">
-  <h2 id="s20-title">20. Что делать прямо сейчас</h2>
+  <h2 id="s20-title" data-i18n="s20Title">20. Что делать прямо сейчас</h2>
   <ul class="check">
-    <li>Выбрать название проекта.</li>
-    <li>Написать описание для Instagram/Telegram.</li>
-    <li>Создать анкету заявки.</li>
-    <li>Создать таблицу заявок.</li>
-    <li>Дать женщине тестовое задание на 7 дней.</li>
-    <li>Записать 5 коротких видео.</li>
-    <li>Написать 5 постов.</li>
-    <li>Сделать PDF «Чек-лист признаков духовного поражения».</li>
-    <li>Открыть запись на 5 первичных консультаций.</li>
-    <li>После первых консультаций собрать обратную связь и улучшить систему.</li>
+    <li data-i18n="s20l1">Выбрать название проекта.</li>
+    <li data-i18n="s20l2">Написать описание для Instagram/Telegram.</li>
+    <li data-i18n="s20l3">Создать анкету заявки.</li>
+    <li data-i18n="s20l4">Создать таблицу заявок.</li>
+    <li data-i18n="s20l5">Дать женщине тестовое задание на 7 дней.</li>
+    <li data-i18n="s20l6">Записать 5 коротких видео.</li>
+    <li data-i18n="s20l7">Написать 5 постов.</li>
+    <li data-i18n="s20l8">Сделать PDF «Чек-лист признаков духовного поражения».</li>
+    <li data-i18n="s20l9">Открыть запись на 5 первичных консультаций.</li>
+    <li data-i18n="s20l10">После первых консультаций собрать обратную связь и улучшить систему.</li>
   </ul>
 </section>
 
 <section id="s21" aria-labelledby="s21-title">
-  <h2 id="s21-title">21. Краткий план для помощницы на первую неделю</h2>
-  <p><strong>День 1</strong> — изучить метод, написать конспект.<br>
-  <strong>День 2</strong> — путь пациента, таблица заявок.<br>
-  <strong>День 3</strong> — 30 тем контента.<br>
-  <strong>День 4</strong> — 5 постов.<br>
-  <strong>День 5</strong> — шаблоны ответов.<br>
-  <strong>День 6</strong> — правила женского чата.<br>
-  <strong>День 7</strong> — отчёт: что поняла, вопросы, функции, время, предпочтения.</p>
+  <h2 id="s21-title" data-i18n="s21Title">21. Краткий план для помощницы на первую неделю</h2>
+  <p><strong data-i18n="s21d1">День 1</strong> — <span data-i18n="s21d1Text">изучить метод, написать конспект.</span><br>
+  <strong data-i18n="s21d2">День 2</strong> — <span data-i18n="s21d2Text">путь пациента, таблица заявок.</span><br>
+  <strong data-i18n="s21d3">День 3</strong> — <span data-i18n="s21d3Text">30 тем контента.</span><br>
+  <strong data-i18n="s21d4">День 4</strong> — <span data-i18n="s21d4Text">5 постов.</span><br>
+  <strong data-i18n="s21d5">День 5</strong> — <span data-i18n="s21d5Text">шаблоны ответов.</span><br>
+  <strong data-i18n="s21d6">День 6</strong> — <span data-i18n="s21d6Text">правила женского чата.</span><br>
+  <strong data-i18n="s21d7">День 7</strong> — <span data-i18n="s21d7Text">отчёт: что поняла, вопросы, функции, время, предпочтения.</span></p>
 </section>
 
 <section id="s22" aria-labelledby="s22-title">
-  <h2 id="s22-title">22. Итоговая модель бизнеса</h2>
+  <h2 id="s22-title" data-i18n="s22Title">22. Итоговая модель бизнеса</h2>
   <div class="funnel">
-    Бесплатный контент<br>↓<br>
-    Telegram / YouTube / Instagram<br>↓<br>
-    Анкета симптомов<br>↓<br>
-    Первичная консультация<br>↓<br>
-    Индивидуальная программа / сеанс<br>↓<br>
-    Сопровождение 7/21/40 дней<br>↓<br>
-    Заключение и рекомендации<br>↓<br>
-    Клуб / курс саморукьи / повторное сопровождение
+    <span data-i18n="s22f1">Бесплатный контент</span><br>↓<br>
+    <span data-i18n="s22f2">Telegram / YouTube / Instagram</span><br>↓<br>
+    <span data-i18n="s22f3">Анкета симптомов</span><br>↓<br>
+    <span data-i18n="s22f4">Первичная консультация</span><br>↓<br>
+    <span data-i18n="s22f5">Индивидуальная программа / сеанс</span><br>↓<br>
+    <span data-i18n="s22f6">Сопровождение 7/21/40 дней</span><br>↓<br>
+    <span data-i18n="s22f7">Заключение и рекомендации</span><br>↓<br>
+    <span data-i18n="s22f8">Клуб / курс саморукьи / повторное сопровождение</span>
   </div>
-  <p style="text-align:center;margin-top:10px"><em>Главная идея: создать систему — знания → доверие → диагностика → программа → сопровождение → документы → обучение → сообщество.</em></p>
+  <p style="text-align:center;margin-top:10px"><em data-i18n="s22Idea">Главная идея: создать систему — знания → доверие → диагностика → программа → сопровождение → документы → обучение → сообщество.</em></p>
 </section>
 
 <section id="s23" aria-labelledby="s23-title">
-  <h2 id="s23-title">23. Главное напоминание</h2>
-  <p>Ваш доход должен строиться не на страхе людей, а на пользе, порядке, знании и доверии.</p>
-  <blockquote><strong>Правильная позиция:</strong> «Я беру оплату за своё время, знания, диагностику, программу и сопровождение. Исцеление — только от Аллаха».</blockquote>
+  <h2 id="s23-title" data-i18n="s23Title">23. Главное напоминание</h2>
+  <p data-i18n="s23Text">Ваш доход должен строиться не на страхе людей, а на пользе, порядке, знании и доверии.</p>
+  <blockquote><strong data-i18n="s23Strong">Правильная позиция:</strong> <span data-i18n="s23Quote">«Я беру оплату за своё время, знания, диагностику, программу и сопровождение. Исцеление — только от Аллаха».</span></blockquote>
   <p style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-    <a class="btn" href="#top" aria-label="Наверх"><span class="n">↑</span> Наверх</a> 
-    <a class="btn" href="#contents" aria-label="К содержанию"><span class="n">≡</span> К содержанию</a>
+    <a class="btn" href="#top" aria-label="Наверх"><span class="n">↑</span> <span data-i18n="btnUp">Наверх</span></a> 
+    <a class="btn" href="#contents" aria-label="К содержанию"><span class="n">≡</span> <span data-i18n="btnContents">К содержанию</span></a>
   </p>
 </section>
 
@@ -619,11 +641,541 @@ blockquote strong{color:#431407}
 <button class="totop" id="totop" aria-label="Прокрутить наверх">↑</button>
 
 <footer style="text-align:center;color:#64748b;padding:clamp(28px,6vw,36px) 0 clamp(48px,10vw,60px);font-size:clamp(14px,2.8vw,15px)">
-  © Бизнес-план Абу Мухаммада — рукья по Корану и Сунне
+  © <span data-i18n="footer">Бизнес-план Абу Мухаммада — рукья по Корану и Сунне</span>
 </footer>
 
 <script>
+// ===== TRANSLATIONS =====
+const translations = {
+  ru: {
+    // Hero
+    title: "Бизнес-план для Абу Мухаммада",
+    tagline: "рукья, распространение знания, соцсети и малая команда",
+    badge1: "Таухид прежде всего",
+    badge2: "Этичный доход",
+    badge3: "Система и документы",
+    goalTitle: "Цель:",
+    goalText: "лечить людей дозволенной рукьей, распространять знания, выстроить доверие в соцсетях и получать стабильный доход без нарушения таухида, этики, конфиденциальности и медицинской безопасности.",
+    
+    // Nav
+    nav1: "1. Принцип", nav2: "2. Что продавать", nav3: "3. Направления", nav4: "4. Аудитория",
+    nav5: "5. Позиционирование", nav6: "6. Контент", nav7: "7. Воронка", nav8: "8. Услуги",
+    nav9: "9. Команда", nav10: "10. Задание", nav11: "11. Обязанности", nav12: "12. Роли",
+    nav13: "13. Заявки", nav14: "14. План-неделя", nav15: "15. 30 дней", nav16: "16. 90 дней",
+    nav17: "17. Продажи", nav18: "18. Документы", nav19: "19. Репутация", nav20: "20. Старт",
+    nav21: "21. Помощница", nav22: "22. Модель", nav23: "23. Напоминание",
+    
+    // TOC
+    contentsTitle: "Содержание — все разделы",
+    toc1: "Главный принцип", toc2: "Что можно/нельзя", toc3: "Направления", toc4: "Аудитория",
+    toc5: "Позиционирование", toc6: "Контент-стратегия", toc7: "Воронка", toc8: "Линейка услуг",
+    toc9: "Малая команда", toc10: "Задание помощнице", toc11: "Обязанности", toc12: "Остальные роли",
+    toc13: "Заявки", toc14: "Контент-план", toc15: "30 дней", toc16: "90 дней",
+    toc17: "Продажи", toc18: "Документы", toc19: "Репутация", toc20: "Первые шаги",
+    toc21: "План помощницы", toc22: "Модель", toc23: "Напоминание",
+    
+    // Sections
+    s1Title: "1. Главный принцип проекта",
+    s1Intro: "Проект стоит на 4 основах:",
+    s1p1Title: "Таухид", s1p1Text: "исцеление только от Аллаха, рукья — лишь причина.",
+    s1p2Title: "Польза людям", s1p2Text: "обучение защите, азкарам, правильной саморукье, очищению дома.",
+    s1p3Title: "Профессиональность", s1p3Text: "анкеты, диагностика, программы, мониторинг, документы.",
+    s1p4Title: "Этичный доход", s1p4Text: "оплата за время, консультацию, программу, сопровождение, обучение; не продажа «гарантированного исцеления».",
+    s1Quote: "«Я помогаю мусульманам разобраться с духовными поражениями через дозволенную рукью по Корану и Сунне, составляю индивидуальные программы, веду сопровождение и обучаю правильной защите. Исцеление только от Аллаха».",
+    
+    s2Title: "2. Что можно продавать, а что нельзя подавать неправильно",
+    s2CanTitle: "✅ Можно монетизировать",
+    s2c1: "Индивидуальные консультации.", s2c2: "Сеансы рукьи.", s2c3: "Составление индивидуальной программы домашней рукьи.",
+    s2c4: "Сопровождение 7/21/40 дней.", s2c5: "Обучение саморукье.", s2c6: "Курсы по защите дома, семьи, сна, детей.",
+    s2c7: "Закрытый Telegram-клуб с уроками и ответами.", s2c8: "Шаблоны документов, анкет, дневников мониторинга.",
+    s2c9: "Обучение других практиков организационной стороне: анкеты, CRM, документы, этика.",
+    s2c10: "Продажа доступа к вашей системе/CRM.",
+    s2CantTitle: "❌ Нельзя или опасно продавать как обещание",
+    s2n1: "«Гарантированное исцеление».", s2n2: "«100% снятие сихра за 1 сеанс».", s2n3: "«Я точно знаю, кто сделал колдовство».",
+    s2n4: "«Не ходите к врачам, это только джинны».", s2n5: "«Покупайте воду/масло — оно точно вылечит».",
+    s2n6: "«Секретные заклинания» с непонятными словами.", s2n7: "Любые талисманы, амулеты, символы, обращения к джиннам.",
+    s2Quote: "«Оплата берётся за консультацию, время, диагностику духовных признаков, составление программы и сопровождение. Результат — с дозволения Аллаха».",
+    
+    s3Title: "3. Основные направления бизнеса",
+    s3d1Title: "Направление 1. Личные приёмы и сеансы",
+    s3Products: "Продукты:",
+    s3p1Title: "Первичная консультация + диагностика", s3p1Text: "опрос жалоб, анкета симптомов, предварительная духовная оценка, первый план действий.",
+    s3p2Title: "Сеанс рукьи", s3p2Text: "чтение аятов и дуа, наблюдение реакций, фиксация симптомов, рекомендации после сеанса.",
+    s3p3Title: "Индивидуальная программа лечения", s3p3Text: "аяты, дуа, формулы, домашнее чтение, вода/масло если используется, защита, мониторинг.",
+    s3p4Title: "Курс сопровождения 7/21/40 дней", s3p4Text: "несколько сеансов, контроль динамики, коррекция программы, заключение по итогам.",
+    important: "Важно:",
+    s3Warning: "В каждом документе указывать: «Это духовная оценка и программа рукьи. Документ не является медицинским диагнозом. При опасных симптомах необходимо обращаться к врачу».",
+    s3d2Title: "Направление 2. Онлайн-консультации",
+    s3d2Intro: "Подходит для Instagram, Telegram, YouTube.",
+    s3d2l1: "Онлайн-разбор симптомов.", s3d2l2: "Составление домашней программы.", s3d2l3: "Объяснение, как читать рукью самостоятельно.",
+    s3d2l4: "Контроль через Telegram.", s3d2l5: "Повторная встреча через 7 дней.",
+    s3d2Note: "Онлайн нельзя подавать как полноценную замену очному сеансу при тяжёлом состоянии. «Онлайн-консультация помогает определить направление духовной работы и составить домашнюю программу. При тяжёлых состояниях может потребоваться очный приём и медицинская помощь».",
+    s3d3Title: "Направление 3. Обучение людей саморукье",
+    s3d3Intro: "Это самый чистый и масштабируемый путь распространения знания.",
+    chip1: "Мини-курс «Основы дозволенной рукьи»", chip2: "«Саморукья на 7 дней»", chip3: "«Защита дома по Корану и Сунне»",
+    chip4: "«Азкары утра и вечера»", chip5: "«Васваса vs поражение»", chip6: "Женский поток",
+    s3Includes: "Что входит:", s3IncludesText: "видео, PDF-конспект, аяты с арабским текстом и переводом, дневник симптомов, инструкция по чтению на воду, частые ошибки, безопасность и границы.",
+    s3d4Title: "Направление 4. Закрытый Telegram-клуб",
+    s3d4Intro: "Ежемесячная подписка для регулярного укрепления.",
+    s3d4l1: "Еженедельный урок по рукье.", s3d4l2: "Разбор вопросов.", s3d4l3: "Напоминания об азкарах.",
+    s3d4l4: "Чек-листы защиты, программы на неделю.", s3d4l5: "Эфиры «вопрос-ответ», дневник улучшений.",
+    s3d4Note: "Клуб — не место для тяжёлой диагностики каждого участника. Для личных случаев — отдельная консультация.",
+    s3d5Title: "Направление 5. Методология и система",
+    s3d5Intro: "Если CRM будет готова — монетизируйте отдельно.",
+    s3d5l1: "Шаблоны анкет для раки.", s3d5l2: "Шаблоны программ лечения.", s3d5l3: "Шаблоны заключений.",
+    s3d5l4: "Дневники мониторинга.", s3d5l5: "CRM для ведения пациентов.", s3d5l6: "Обучение организации работы раки.",
+    s3d5Quote: "Позиционировать как: «Организационная система для раки: пациенты, сеансы, мониторинг, документы, библиотека аятов и программ».",
+    
+    s4Title: "4. Целевая аудитория",
+    s4Groups: "Основные группы",
+    s4g1: "Люди с тревогой, страхами, кошмарами.", s4g2: "Подозревающие сглаз, зависть, сихр.",
+    s4g3: "Семьи с частыми конфликтами.", s4g4: "Люди с блокировкой дел, брака, ризка.",
+    s4g5: "Женщины, нужен деликатный подход.", s4g6: "Родители, переживающие за детей.",
+    s4g7: "Практикующие мусульмане, желающие научиться саморукье.", s4g8: "Начинающие раки, которым нужна система работы.",
+    s4Pains: "Боли аудитории",
+    s4p1: "«Не понимаю, что со мной».", s4p2: "«Мне страшно ночью».", s4p3: "«Не могу читать намаз спокойно».",
+    s4p4: "«В доме тяжесть и ссоры».", s4p5: "«Дела закрыты, всё ломается».", s4p6: "«Боюсь попасть к шарлатану».",
+    s4p7: "«Хочу лечиться по Корану и Сунне».", s4p8: "«Хочу научиться защищать себя и семью».",
+    
+    s5Title: "5. Позиционирование в соцсетях",
+    s5Quote: "«Специалист по прицельной рукье, который системно диагностирует духовные признаки, составляет индивидуальные программы и обучает людей самозащите по Корану и Сунне».",
+    s5l1: "Не пугаете людей.", s5l2: "Не обещаете чудо за деньги.", s5l3: "Не обвиняете без доказательств.",
+    s5l4: "Работаете по системе: анкета → диагностика → программа → мониторинг → заключение.",
+    s5l5: "Уважаете медицину в её области.", s5l6: "Даёте людям знания, а не зависимость от раки.",
+    
+    s6Title: "6. Контент-стратегия для Instagram, Telegram, YouTube",
+    s6ig: "Instagram", s6igGoal: "Цель:", s6igGoalText: "доверие, охват, быстрые заявки.",
+    s6igFormats: "Форматы:", s6igFormatsText: "Reels 30–60 сек, карусели, Stories, отзывы без личности, разборы симптомов, прямые эфиры.",
+    s6igReels: "Темы Reels:",
+    s6igR1: "«5 признаков, что человеку нужна рукья».", s6igR2: "«Чем рукья отличается от магии?»",
+    s6igR3: "«Почему нельзя обвинять людей в сихре без доказательств».", s6igR4: "«Что делать, если страшно читать Коран?»",
+    s6igR5: "«3 ошибки при саморукье».", s6igR6: "«Как защитить дом сурой Аль-Бакара».",
+    s6igR7: "«Что такое айн и хасад простыми словами».", s6igR8: "«Почему рукья не заменяет врача».",
+    s6igR9: "«Как вести дневник симптомов после рукьи».", s6igR10: "«Что делать после сеанса рукьи».",
+    s6igStories: "Stories каждый день:", s6igStoriesText: "утреннее напоминание об азкарах, 1 совет, опрос, ответ на вопрос, ссылка на запись.",
+    s6tg: "Telegram", s6tgGoal: "Цель:", s6tgGoalText: "глубокое доверие, прогрев, заявки, клуб.",
+    s6tgContent: "Подробные посты, аудио-напоминания, чек-листы, PDF-инструкции, разборы случаев без личных данных, расписание.",
+    s6tgRubrics: "Рубрики:", s6tgRubricsText: "«Аят дня для защиты», «Ошибка недели в рукье», «Вопрос-ответ», «Дневник симптомов», «Защита дома», «Истории улучшения», «Напоминание: исцеление от Аллаха».",
+    s6yt: "YouTube", s6ytGoal: "Цель:", s6ytGoalText: "авторитет, длинное обучение, поиск.",
+    s6ytV1: "«Что такое рукья по Корану и Сунне?»", s6ytV2: "«Сихр, айн, хасад, масс: в чём разница?»",
+    s6ytV3: "«Как правильно делать саморукью дома».", s6ytV4: "«Сура Аль-Бакара для защиты дома».",
+    s6ytV5: "«Васваса: духовная сторона и осторожность».", s6ytV6: "«Как понять реакцию на Коран?»",
+    s6ytV7: "«Почему нельзя ходить к колдунам и гадателям».", s6ytV8: "«Как проходит консультация у раки».",
+    s6ytV9: "«Как вести дневник после рукьи».", s6ytV10: "«Что делать, если симптомы усилились после чтения?»",
+    
+    s7Title: "7. Воронка продаж",
+    funnel1: "Бесплатный контент (IG/TG/YT)", funnel2: "Лид-магнит PDF («7-дневный дневник», «Чек-лист признаков», «Защита дома»)",
+    funnel3: "Недорогой продукт (мини-курс, вебинар, разбор анкеты)", funnel4: "Основной продукт (консультация / сеанс / программа)",
+    funnel5: "Сопровождение 7/21/40 дней", funnel6: "Клуб / обучение саморукьи / повторное сопровождение",
+    
+    s8Title: "8. Линейка услуг",
+    s8Th1: "Услуга", s8Th2: "Состав",
+    s8r1: "1. Первичная консультация", s8r1d: "Анкета, разбор жалоб, предварительная духовная оценка, рекомендация что делать дальше.",
+    s8r2: "2. Консультация + программа", s8r2d: "Всё из п.1 + индивидуальная программа на 7 дней (PDF/HTML).",
+    s8r3: "3. Сеанс рукьи", s8r3d: "Очный или онлайн, фиксация реакций, краткие рекомендации.",
+    s8r4: "4. Курс 21 день", s8r4d: "Первичная диагностика, 3–5 сеансов, домашняя программа, мониторинг 15 знаков, коррекция, заключение.",
+    s8r5: "5. Курс 40 дней", s8r5d: "Для сложных случаев: регулярное сопровождение, программа защиты, финальное заключение.",
+    s8r6: "6. Обучение саморукье", s8r6d: "Видео/уроки, PDF, практические задания, групповой чат.",
+    s8r7: "7. Закрытый клуб", s8r7d: "Подписка: уроки, напоминания, ответы на вопросы.",
+    
+    s9Title: "9. Малая команда",
+    s9r1Title: "Роль 1. Абу Мухаммад — главный специалист",
+    s9r1Does: "Делает:", s9r1DoesText: "приём пациентов, диагностика, составление программ, проведение сеансов, запись ключевых уроков, контроль исламской корректности, финальные решения.",
+    s9r1Not: "Не тратит время на:", s9r1NotText: "монтаж видео, оформление постов, переписку с каждым, таблицы, ручные публикации, напоминания.",
+    s9r2Title: "Роль 2. Женщина-помощница / координатор сестёр",
+    s9r2Can: "Может делать:",
+    s9r2c1: "Принимать первичные заявки от женщин.", s9r2c2: "Отправлять анкету симптомов.", s9r2c3: "Проверять заполнение анкеты.",
+    s9r2c4: "Собирать жалобы в аккуратный документ.", s9r2c5: "Напоминать о визите.", s9r2c6: "Вести женский Telegram-чат по правилам.",
+    s9r2c7: "Отвечать на организационные вопросы.", s9r2c8: "Подготавливать посты из ваших голосовых.", s9r2c9: "Делать конспекты уроков.",
+    s9r2c10: "Собирать отзывы без личных данных.", s9r2c11: "Помогать вести дневник симптомов.", s9r2c12: "Следить за конфиденциальностью в чате.",
+    s9r2c13: "Готовить список вопросов для эфира.", s9r2c14: "Готовить материалы для курса саморукьи.", s9r2c15: "Быть мостом с женской аудиторией с соблюдением адаба.",
+    s9Warning: "Нельзя без подготовки и разрешения:", s9WarningText: "ставить диагноз, обещать исцеление, назначать сложные программы, давать медицинские советы, вести тяжёлые случаи без контроля, писать мужчинам без необходимости, разглашать личные данные.",
+    
+    s10Title: "10. Первое задание для женщины-помощницы",
+    s10t1: "Изучить методологию", s10t1Text: "конспект: кто вы, что такое рукья, что лечите, что не обещаете, как проходит приём, запреты, конфиденциальность.",
+    s10t2: "Карта пути пациента", s10t2Text: "9 шагов от поста до заключения.",
+    s10t3: "30 тем для постов", s10t3Text: "по рубрикам: симптомы, защита, саморукья, ошибки, дом, семья, васваса, истории, Q&A.",
+    s10t4: "Шаблон ответа на заявку",
+    s10t5: "Таблица заявок", s10t5Text: "дата, имя, пол, город, контакт, жалоба, анкета, статус, дата приёма, комментарий, согласие.",
+    s10t6: "5 постов", s10t6Text: "что такое рукья, отличие от колдовства, 5 ошибок, кошмары, исцеление от Аллаха.",
+    s10t7: "Правила женского чата", s10t7Text: "без личных данных, без обвинений, без фетв, без замены врачей, адаб.",
+    
+    s11Title: "11. Её постоянные обязанности после теста",
+    s11Daily: "Ежедневно", s11d1: "Проверить новые заявки, отправить анкету, напомнить о приёмах.",
+    s11d2: "Собрать вопросы подписчиков, опубликовать stories/пост по плану, передать срочные случаи.",
+    s11Weekly: "Еженедельно", s11w: "Контент-план, статистика, отзывы, список пациентов на контроль, отчёт: заявки, консультации, оплаты, проблемы.",
+    s11Monthly: "Ежемесячно", s11m: "Отчёт по росту аудитории, идеи новых продуктов, обновить FAQ, анализ тем-лидеров.",
+    
+    s12Title: "12. Остальные роли в команде",
+    s12r1: "Контент-монтажёр / дизайнер:", s12r1Text: "Reels, обложки, карусели, PDF, нарезки для Shorts.",
+    s12r2: "Технический помощник:", s12r2Text: "сайт/лендинг, формы заявок, Telegram-бот, CRM, бэкапы, публикации.",
+    s12r3: "Бухгалтер/администратор оплат:", s12r3Text: "позже, при регулярных оплатах.",
+    
+    s13Title: "13. Система работы с заявками",
+    s13Statuses: "Статусы:", s13StatusesText: "Новая → Анкета отправлена → Заполнена → Ожидает консультацию → Проведена → Назначен сеанс → В сопровождении → Завершён → Архив → Срочно к врачу",
+    s13Flags: "Красные флаги:", s13FlagsText: "суицидальные мысли, психоз, потеря сознания, судороги, сильная боль, кровотечение, тяжёлая депрессия, опасность для себя/других. Ответ: «Рукья может быть дополнительной духовной поддержкой, но необходимо срочно обратиться к врачу/скорой».",
+    
+    s14Title: "14. Контент-план на неделю",
+    s14Mon: "Понедельник:", s14MonText: "Reels симптом/ошибка, TG подробный пост, Stories опрос.",
+    s14Tue: "Вторник:", s14TueText: "короткое видео аят/дуа, TG чек-лист, Stories ответы.",
+    s14Wed: "Среда:", s14WedText: "YouTube/Shorts, IG карусель, TG разбор случая без данных.",
+    s14Thu: "Четверг:", s14ThuText: "Reels миф о рукье, TG напоминание об азкарах, Stories запись на консультации.",
+    s14Fri: "Пятница:", s14FriText: "напоминание о Коране, дуа, защите — без агрессивных продаж.",
+    s14Sat: "Суббота:", s14SatText: "прямой эфир/вопрос-ответ, сбор заявок.",
+    s14Sun: "Воскресенье:", s14SunText: "итоги недели, отзывы без личных данных, анонс расписания.",
+    
+    s15Title: "15. 30-дневный план запуска",
+    s15w1: "Неделя 1. Основа",
+    s15w1l1: "Название проекта", s15w1l2: "Описание профиля", s15w1l3: "Telegram-канал", s15w1l4: "Instagram", s15w1l5: "YouTube",
+    s15w1l6: "Анкета симптомов", s15w1l7: "Таблица заявок", s15w1l8: "Правила консультации", s15w1l9: "Дисклеймер", s15w1l10: "Первый PDF-лид-магнит",
+    s15w2: "Неделя 2. Контент и доверие",
+    s15w2l1: "10 коротких видео", s15w2l2: "10 постов", s15w2l3: "Публикации", s15w2l4: "Stories ежедневно", s15w2l5: "Сбор вопросов", s15w2l6: "FAQ",
+    s15w3: "Неделя 3. Первая продажа",
+    s15w3l1: "Набор на консультации", s15w3l2: "Описать услуги", s15w3l3: "5–10 мест на первичный разбор", s15w3l4: "Провести консультации", s15w3l5: "Обратная связь", s15w3l6: "Улучшить анкету",
+    s15w4: "Неделя 4. Система",
+    s15w4l1: "Мини-курс/вебинар", s15w4l2: "Шаблон программы", s15w4l3: "Шаблон заключения", s15w4l4: "Расписание публикаций", s15w4l5: "План на месяц", s15w4l6: "Делегирование помощнице",
+    
+    s16Title: "16. 90-дневный план развития",
+    s16m1: "Месяц 1 — Доверие", s16m1Text: "30 публикаций, 10 видео, 20–50 заявок, 5–15 консультаций, 3–5 отзывов.",
+    s16m2: "Месяц 2 — Продукты", s16m2Text: "1 мини-курс, 1 вебинар, 20 консультаций, 5 клиентов на сопровождении, помощница стабильно.",
+    s16m3: "Месяц 3 — Масштаб", s16m3Text: "500–2000 подписчиков, 10–30 платных клиентов, 20–100 в бесплатном чате, 10–50 в клубе, контент 5–7/нед.",
+    
+    s17Title: "17. Продажи без давления",
+    s17q1: "«Если вы хотите разобрать своё состояние и получить индивидуальную программу рукьи, заполните анкету — ссылка в описании».",
+    s17q2: "«На консультации мы разберём жалобы, определим духовное направление работы и составим план. Исцеление только от Аллаха».",
+    s17q3: "«Курс подойдёт тем, кто хочет научиться делать саморукью правильно и безопасно, без страха и сомнительных методов».",
+    s17q4: "«Сопровождение нужно тем, кому важно пройти путь с контролем динамики и корректировками».",
+    
+    s18Title: "18. Документы, которые нужны проекту",
+    s18l1: "Анкета пациента.", s18l2: "Согласие на обработку данных.", s18l3: "Предупреждение: не медицинский диагноз.",
+    s18l4: "Шаблон индивидуальной программы.", s18l5: "Шаблон домашнего задания.", s18l6: "Дневник 15 признаков.",
+    s18l7: "Шаблон заключения.", s18l8: "Правила Telegram-чата.", s18l9: "Скрипт ответа на заявку.",
+    s18l10: "FAQ.", s18l11: "Контент-план.", s18l12: "Таблица заявок.", s18l13: "Таблица оплат.", s18l14: "Правила конфиденциальности.",
+    
+    s19Title: "19. Репутационные правила",
+    s19l1: "Не пугать людей джиннами ради продаж.", s19l2: "Не обещать гарантированный результат.",
+    s19l3: "Не обвинять родственников, соседей, бывших супругов.", s19l4: "Не выкладывать истории пациентов без разрешения.",
+    s19l5: "Не показывать лица и личные данные.", s19l6: "Не спорить грубо в комментариях.",
+    s19l7: "Не превращать Коран в маркетинговый трюк.", s19l8: "Не использовать фальшивые отзывы.",
+    s19l9: "Всегда говорить: «Аллах знает лучше».", s19l10: "При сомнении — выбирать осторожность.",
+    
+    s20Title: "20. Что делать прямо сейчас",
+    s20l1: "Выбрать название проекта.", s20l2: "Написать описание для Instagram/Telegram.", s20l3: "Создать анкету заявки.",
+    s20l4: "Создать таблицу заявок.", s20l5: "Дать женщине тестовое задание на 7 дней.", s20l6: "Записать 5 коротких видео.",
+    s20l7: "Написать 5 постов.", s20l8: "Сделать PDF «Чек-лист признаков духовного поражения».",
+    s20l9: "Открыть запись на 5 первичных консультаций.",
+    s20l10: "После первых консультаций собрать обратную связь и улучшить систему.",
+    
+    s21Title: "21. Краткий план для помощницы на первую неделю",
+    s21d1: "День 1", s21d1Text: "изучить метод, написать конспект.",
+    s21d2: "День 2", s21d2Text: "путь пациента, таблица заявок.",
+    s21d3: "День 3", s21d3Text: "30 тем контента.",
+    s21d4: "День 4", s21d4Text: "5 постов.",
+    s21d5: "День 5", s21d5Text: "шаблоны ответов.",
+    s21d6: "День 6", s21d6Text: "правила женского чата.",
+    s21d7: "День 7", s21d7Text: "отчёт: что поняла, вопросы, функции, время, предпочтения.",
+    
+    s22Title: "22. Итоговая модель бизнеса",
+    s22f1: "Бесплатный контент", s22f2: "Telegram / YouTube / Instagram", s22f3: "Анкета симптомов",
+    s22f4: "Первичная консультация", s22f5: "Индивидуальная программа / сеанс", s22f6: "Сопровождение 7/21/40 дней",
+    s22f7: "Заключение и рекомендации", s22f8: "Клуб / курс саморукьи / повторное сопровождение",
+    s22Idea: "Главная идея: создать систему — знания → доверие → диагностика → программа → сопровождение → документы → обучение → сообщество.",
+    
+    s23Title: "23. Главное напоминание",
+    s23Text: "Ваш доход должен строиться не на страхе людей, а на пользе, порядке, знании и доверии.",
+    s23Strong: "Правильная позиция:", s23Quote: "«Я беру оплату за своё время, знания, диагностику, программу и сопровождение. Исцеление — только от Аллаха».",
+    btnUp: "Наверх", btnContents: "К содержанию",
+    footer: "Бизнес-план Абу Мухаммада — рукья по Корану и Сунне"
+  },
+  uz: {
+    // Hero
+    title: "Abu Muhammad uchun biznes-reja",
+    tagline: "ruqya, ilm tarqatish, ijtimoiy tarmoqlar va kichik jamoa",
+    badge1: "Avvalo Tavhid",
+    badge2: "Halol daromad",
+    badge3: "Tizim va hujjatlar",
+    goalTitle: "Maqsad:",
+    goalText: "odamlarga ruxsat berilgan ruqya bilan davolash, bilmlarni tarqatish, ijtimoiy tarmoqlarda ishonch hosil qilish va tavhid, axloq, maxfiylik va tibbiy xavfsizlikni buzmasdan barqaror daromad olish.",
+    
+    // Nav
+    nav1: "1. Tamoyil", nav2: "2. Nima sotish mumkin", nav3: "3. Yo'nalishlar", nav4: "4. Auditoriya",
+    nav5: "5. Pozitsiyalash", nav6: "6. Kontent", nav7: "7. Voronka", nav8: "8. Xizmatlar",
+    nav9: "9. Jamoa", nav10: "10. Topshiriq", nav11: "11. Vazifalar", nav12: "12. Rollar",
+    nav13: "13. Arizalar", nav14: "14. Haftalik reja", nav15: "15. 30 kun", nav16: "16. 90 kun",
+    nav17: "17. Savdo", nav18: "18. Hujjatlar", nav19: "19. Obro'", nav20: "20. Boshlash",
+    nav21: "21. Yordamchi", nav22: "22. Model", nav23: "23. Eslatma",
+    
+    // TOC
+    contentsTitle: "Mundarija — barcha bo'limlar",
+    toc1: "Asosiy tamoyil", toc2: "Nima mumkin/mumkin emas", toc3: "Yo'nalishlar", toc4: "Auditoriya",
+    toc5: "Pozitsiyalash", toc6: "Kontent strategiyasi", toc7: "Voronka", toc8: "Xizmatlar ro'yxati",
+    toc9: "Kichik jamoa", toc10: "Yordamchiga topshiriq", toc11: "Vazifalar", toc12: "Boshqa rollar",
+    toc13: "Arizalar", toc14: "Kontent rejasi", toc15: "30 kun", toc16: "90 kun",
+    toc17: "Savdo", toc18: "Hujjatlar", toc19: "Obro'", toc20: "Birinchi qadamlar",
+    toc21: "Yordamchi rejasi", toc22: "Model", toc23: "Eslatma",
+    
+    // Sections
+    s1Title: "1. Loyihaning asosiy tamoyili",
+    s1Intro: "Loyiha 4 asosga tayanadi:",
+    s1p1Title: "Tavhid", s1p1Text: "shifo faqat Allohdan, ruqya — faqat sabab.",
+    s1p2Title: "Odamlarga foyda", s1p2Text: "himoya, azkorlar, to'g'ri o'z-o'zini ruqya qilish, uyni tozalashni o'rgatish.",
+    s1p3Title: "Professionalizm", s1p3Text: "anketalar, diagnostika, dasturlar, monitoring, hujjatlar.",
+    s1p4Title: "Axloqiy daromad", s1p4Text: "vaqt, maslahat, dastur, hamrohlik, o'qitish uchun to'lov; «kafolatlangan shifo» sotilmaydi.",
+    s1Quote: "«Men musulmonlarga Qur'on va Sunnatga muvofiq ruxsat berilgan ruqya orqali ruhiy muammolarni hal qilishda yordam beraman, individual dasturlar tuzaman, hamrohlik qilaman va to'g'ri himoyani o'rgataman. Shifo faqat Allohdan».",
+    
+    s2Title: "2. Nima sotish mumkin, nima noto'g'ri taqdim etilmasligi kerak",
+    s2CanTitle: "✅ Monetizatsiya qilish mumkin",
+    s2c1: "Individual maslahatlar.", s2c2: "Ruqya seanslari.", s2c3: "Uyda ruqya uchun individual dastur tuzish.",
+    s2c4: "7/21/40 kunlik hamrohlik.", s2c5: "O'z-o'zini ruqya qilishni o'rgatish.", s2c6: "Uy, oila, uyqu, bolalarni himoya qilish kurslari.",
+    s2c7: "Darslar va javoblar bilan yopiq Telegram-klub.", s2c8: "Hujjatlar, anketalar, monitoring kundaliklari shablonlari.",
+    s2c9: "Boshqa amaliyotchilarni tashkiliy tomonlarga o'qitish: anketalar, CRM, hujjatlar, axloq.",
+    s2c10: "Tizimingiz/CRMingizga kirishni sotish.",
+    s2CantTitle: "❌ Va'da sifatida sotish mumkin emas yoki xavfli",
+    s2n1: "«Kafolatlangan shifo».", s2n2: "«1 seansda 100% sehrni yo'qotish».", s2n3: "«Men sehrni kim qilganini aniq bilaman».",
+    s2n4: "«Shifokorga bormang, bu faqat jinnilar».", s2n5: "«Suv/yog' sotib oling — u aniq davolaydi».",
+    s2n6: "«Noma'lum so'zlar bilan maxfiy duolar».", s2n7: "Har qanday tumorlar, veryovkalar, ramzlar, jinnilarga murojaat qilish.",
+    s2Quote: "«To'lov maslahat, vaqt, ruhiy belgilarni diagnostika qilish, dastur tuzish va hamrohlik uchun olinadi. Natija — Allohning izni bilan».",
+    
+    s3Title: "3. Biznesning asosiy yo'nalishlari",
+    s3d1Title: "Yo'nalish 1. Shaxsiy qabul va seanslar",
+    s3Products: "Mahsulotlar:",
+    s3p1Title: "Birlamchi maslahat + diagnostika", s3p1Text: "shikoyatlarni so'rov, simptomlar anketasi, dastlabki ruhiy baholash, birinchi harakat rejasi.",
+    s3p2Title: "Ruqya seansi", s3p2Text: "oyatlar va dualarni o'qish, reaktsiyalarni kuzatish, simptomlarni qayd etish, seansdan keyin tavsiyalar.",
+    s3p3Title: "Individual davolash dasturi", s3p3Text: "oyatlar, dualar, formulalar, uyda o'qish, suv/yog' (agar ishlatilsa), himoya, monitoring.",
+    s3p4Title: "7/21/40 kunlik hamrohlik kursi", s3p4Text: "bir nechta seanslar, dinamika nazorati, dasturni tuzatish, yakuniy xulosa.",
+    important: "Muhim:",
+    s3Warning: "Har bir hujjatda ko'rsatish: «Bu ruhiy baholash va ruqya dasturi. Hujjat tibbiy tashxis emas. Xavfli simptomlar bo'lsa, shifokorga murojaat qilish zarur».",
+    s3d2Title: "Yo'nalish 2. Onlayn maslahatlar",
+    s3d2Intro: "Instagram, Telegram, YouTube uchun mos.",
+    s3d2l1: "Onlayn simptomlarni tahlil qilish.", s2d2l2: "Uy dasturini tuzish.", s3d2l3: "Ruqyani mustaqil qanday o'qishni tushuntirish.",
+    s3d2l4: "Telegram orqali nazorat.", s3d2l5: "7 kundan keyin takroriy uchrashuv.",
+    s3d2Note: "Onlaynni og'ir holatlarda to'liq shaxsiy seans o'rniga taqdim etish mumkin emas. «Onlayn maslahat ruhiy ish yo'nalishini aniqlash va uy dasturini tuzishga yordam beradi. Og'ir holatlarda shaxsiy qabul va tibbiy yordam talab qilinishi mumkin».",
+    s3d3Title: "Yo'nalish 3. Odamlarni o'z-o'zini ruqya qilishga o'qitish",
+    s3d3Intro: "Bu bilmlarni tarqatishning eng pok va masshtabli yo'li.",
+    chip1: "Mini-kurs «Ruxsat berilgan ruqya asoslari»", chip2: "«7 kunlik o'z-o'zini ruqya»", chip3: "«Qur'on va Sunnat bo'yicha uyni himoya qilish»",
+    chip4: "«Ertalab va kechki azkorlar»", chip5: "«Vasvasa vs ruhiy ta'sir»", chip6: "Ayollar uchun oqim",
+    s3Includes: "Nimalar kiradi:", s3IncludesText: "video, PDF-konspekt, arabcha matn va tarjima bilan oyatlar, simptomlar kundaligi, suvga o'qish bo'yicha ko'rsatma, keng tarqalgan xatolar, xavfsizlik va chegaralar.",
+    s3d4Title: "Yo'nalish 4. Yopiq Telegram-klub",
+    s3d4Intro: "Muntazam mustahkamlash uchun oylik obuna.",
+    s3d4l1: "Haftalik ruqya darsi.", s3d4l2: "Savollarni tahlil qilish.", s3d4l3: "Azkorlar bo'yicha eslatmalar.",
+    s3d4l4: "Himoya chek-listlari, haftalik dasturlar.", s3d4l5: "«Savol-javob» efirlari, yaxshilanish kundaligi.",
+    s3d4Note: "Klub — har bir ishtirokchining og'ir diagnostikasi uchun joy emas. Shaxsiy holatlar uchun — alohida maslahat.",
+    s3d5Title: "Yo'nalish 5. Metodologiya va tizim",
+    s3d5Intro: "Agar CRM tayyor bo'lsa — alohida monetizatsiya qiling.",
+    s3d5l1: "Roqiylar uchun anketa shablonlari.", s3d5l2: "Davolash dasturlari shablonlari.", s3d5l3: "Xulosalar shablonlari.",
+    s3d5l4: "Monitoring kundaliklari.", s3d5l5: "Bemorlarni yuritish uchun CRM.", s3d5l6: "Roqiy ishini tashkil etishni o'qitish.",
+    s3d5Quote: "Shunday pozitsiyalash: «Roqiy uchun tashkiliy tizim: bemorlar, seanslar, monitoring, hujjatlar, oyatlar va dasturlar kutubxonasi».",
+    
+    s4Title: "4. Maqsadli auditoriya",
+    s4Groups: "Asosiy guruhlar",
+    s4g1: "Tashvish, qo'rquv, qo'rqinchli tushlari bo'lgan odamlar.", s4g2: "Ko'z tegish, hasad, sehrdan shubhalanuvchilar.",
+    s4g3: "Tez-tez janjallashadigan oilalar.", s4g4: "Ishlar, nikoh, rizq bloklanishidan aziyat chekuvchilar.",
+    s4g5: "Ayollar, nozik yondashuv kerak.", s4g6: "Bolalari uchun xavotirlanayotgan ota-onalar.",
+    s4g7: "O'z-o'zini ruqya qilishni o'rganmoqchi bo'lgan amaliyotchi musulmonlar.", s4g8: "Ish tizimiga muhtoj bo'lgan boshlanuvchi roqiylar.",
+    s4Pains: "Auditoriya muammolari",
+    s4p1: "«Menga nima bo'layotganini tushunmayapman».", s4p2: "«Tunlari qo'rqaman».", s4p3: "«Namozni tinch o'qiy olmayapman».",
+    s4p4: "«Uyda og'irlik va janjallar».", s4p5: "«Ishlar yopiq, hamma narsa buziladi».", s4p6: "«Soxtakorlarga tushib qolishdan qo'rqaman».",
+    s4p7: "«Qur'on va Sunnat bo'yicha davolanmoqchiman».", s4p8: "«O'zimni va oilamni himoya qilishni o'rganmoqchiman».",
+    
+    s5Title: "5. Ijtimoiy tarmoqlarda pozitsiyalash",
+    s5Quote: "«Ruhiy belgilarni tizimli diagnostika qiluvchi, individual dasturlar tuzuvchi va odamlarga Qur'on va Sunnat bo'yicha o'z-o'zini himoya qilishni o'rgatuvchi mo'ljallangan ruqya bo'yicha mutaxassis».",
+    s5l1: "Odamlarni qo'rqitmaysiz.", s5l2: "Pul evaziga mo'jiza va'da qilmaysiz.", s5l3: "Dalilsiz ayblamaysiz.",
+    s5l4: "Tizim bo'yicha ishlaysiz: anketa → diagnostika → dastur → monitoring → xulosa.",
+    s5l5: "Tibbiyotni o'z sohasida hurmat qilasiz.", s5l6: "Odamlarga bilmlar berasiz, roqiyga qaramlik emas.",
+    
+    s6Title: "6. Instagram, Telegram, YouTube uchun kontent strategiyasi",
+    s6ig: "Instagram", s6igGoal: "Maqsad:", s6igGoalText: "ishonch, qamrov, tez arizalar.",
+    s6igFormats: "Formatlar:", s6igFormatsText: "30–60 soniyali Reels, karusellar, Stories, shaxsiy ma'lumotlarsiz fikrlar, simptomlarni tahlil qilish, to'g'ridan-to'g'ri efirlar.",
+    s6igReels: "Reels mavzulari:",
+    s6igR1: "«Odammga ruqya kerakligining 5 belgisi».", s6igR2: "«Ruqya sehrdan qanday farq qiladi?»",
+    s6igR3: "«Nima uchun odamlarni sehrsiz dalilsiz ayblash mumkin emas».", s6igR4: "«Qur'on o'qishdan qo'rqsangiz nima qilish kerak?»",
+    s6igR5: "«O'z-o'zini ruqya qilishdagi 3 xato».", s6igR6: "«Al-Baqara surasi bilan uyni qanday himoya qilish».",
+    s6igR7: "«Ayn va hasad nima oddiy tilda».", s6igR8: "«Nima uchun ruqya shifokorni almashtirmaydi».",
+    s6igR9: "«Ruqyadan keyin simptomlar kundaligini qanday yuritish».", s6igR10: "«Ruqya seansidan keyin nima qilish kerak».",
+    s6igStories: "Har kuni Stories:", s6igStoriesText: "ertalab azkorlar eslatmasi, 1 maslahat, so'rov, savolga javob, yozilish havolasi.",
+    s6tg: "Telegram", s6tgGoal: "Maqsad:", s6tgGoalText: "chuqur ishonch, isitish, arizalar, klub.",
+    s6tgContent: "Batafsil postlar, audio-eslatmalar, chek-listlar, PDF-ko'rsatmalar, shaxsiy ma'lumotlarsiz holatlarni tahlil qilish, jadval.",
+    s6tgRubrics: "Rubrikalar:", s6tgRubricsText: "«Himoya uchun kun oyati», «Ruqyadagi haftalik xato», «Savol-javob», «Simptomlar kundaligi», «Uyni himoya qilish», «Yaxshilanish hikoyalari», «Eslatma: shifo Allohdan».",
+    s6yt: "YouTube", s6ytGoal: "Maqsad:", s6ytGoalText: "nufuz, uzun o'qitish, qidiruv.",
+    s6ytV1: "«Qur'on va Sunnat bo'yicha ruqya nima?»", s6ytV2: "«Sihr, ayn, hasad, mass: farqi nima?»",
+    s6ytV3: "«Uyda o'z-o'zini ruqya qilishni qanday to'g'ri bajarish».", s6ytV4: "«Uyni himoya qilish uchun Al-Baqara surasi».",
+    s6ytV5: "«Vasvasa: ruhiy tomoni va ehtiyotkorlik».", s6ytV6: "«Qur'onga reaktsiyani qanday tushunish kerak?»",
+    s6ytV7: "«Nima uchun sehrbozlar va folbinga borish mumkin emas».", s6ytV8: "«Roqiyda maslahat qanday o'tadi».",
+    s6ytV9: "«Ruqyadan keyin kundalikni qanday yuritish».", s6ytV10: "«O'qishdan keyin simptomlar kuchaysa nima qilish kerak?»",
+    
+    s7Title: "7. Savdo voronkasi",
+    funnel1: "Bepul kontent (IG/TG/YT)", funnel2: "Lid-magnit PDF («7 kunlik kundalik», «Belgilar chek-listi», «Uyni himoya qilish»)",
+    funnel3: "Arzon mahsulot (mini-kurs, vebinar, anketani tahlil qilish)", funnel4: "Asosiy mahsulot (maslahat / seans / dastur)",
+    funnel5: "7/21/40 kunlik hamrohlik", funnel6: "Klub / o'z-o'zini ruqya qilishni o'qitish / takroriy hamrohlik",
+    
+    s8Title: "8. Xizmatlar ro'yxati",
+    s8Th1: "Xizmat", s8Th2: "Tarkibi",
+    s8r1: "1. Birlamchi maslahat", s8r1d: "Anketa, shikoyatlarni tahlil qilish, dastlabki ruhiy baholash, keyin nima qilish bo'yicha tavsiya.",
+    s8r2: "2. Maslahat + dastur", s8r2d: "1-banddagi hamma narsa + 7 kunlik individual dastur (PDF/HTML).",
+    s8r3: "3. Ruqya seansi", s8r3d: "Shaxsiy yoki onlayn, reaktsiyalarni qayd etish, qisqa tavsiyalar.",
+    s8r4: "4. 21 kunlik kurs", s8r4d: "Birlamchi diagnostika, 3–5 seans, uy dasturi, 15 belgi monitoringi, tuzatish, xulosa.",
+    s8r5: "5. 40 kunlik kurs", s8r5d: "Murakkab holatlar uchun: muntazam hamrohlik, himoya dasturi, yakuniy xulosa.",
+    s8r6: "6. O'z-o'zini ruqya qilishni o'qitish", s8r6d: "Video/darslar, PDF, amaliy topshiriqlar, guruh chati.",
+    s8r7: "7. Yopiq klub", s8r7d: "Obuna: darslar, eslatmalar, savollarga javoblar.",
+    
+    s9Title: "9. Kichik jamoa",
+    s9r1Title: "Rol 1. Abu Muhammad — bosh mutaxassis",
+    s9r1Does: "Qiladi:", s9r1DoesText: "bemorlarni qabul qilish, diagnostika, dasturlar tuzish, seanslar o'tkazish, asosiy darslarni yozish, islomiy to'g'rilikni nazorat qilish, yakuniy qarorlar.",
+    s9r1Not: "Vaqt sarflamaydi:", s9r1NotText: "video montaji, postlarni bezash, har biri bilan yozishma, jadvallar, qo'lda nashr qilish, eslatmalar.",
+    s9r2Title: "Rol 2. Ayol-yordamchi / opa-singillar koordinatori",
+    s9r2Can: "Qila oladi:",
+    s9r2c1: "Ayollardan birlamchi arizalarni qabul qilish.", s9r2c2: "Simptomlar anketasini yuborish.", s9r2c3: "Anketa to'ldirilishini tekshirish.",
+    s9r2c4: "Shikoyatlarni tartibli hujjatga yig'ish.", s9r2c5: "Tashrif haqida eslatish.", s9r2c6: "Ayollar Telegram-chatini qoidalar bo'yicha yuritish.",
+    s9r2c7: "Tashkiliy savollarga javob berish.", s9r2c8: "Ovozli xabarlaringizdan postlar tayyorlash.", s9r2c9: "Darslarning konspektini qilish.",
+    s9r2c10: "Shaxsiy ma'lumotlarsiz fikrlarni yig'ish.", s9r2c11: "Simptomlar kundaligini yuritishda yordam berish.", s9r2c12: "Chatda maxfiylikni kuzatish.",
+    s9r2c13: "Efir uchun savollar ro'yxatini tayyorlash.", s9r2c14: "O'z-o'zini ruqya qilish kursi uchun materiallar tayyorlash.", s9r2c15: "Adab bilan ayol auditoriyasi bilan ko'prik bo'lish.",
+    s9Warning: "Tayyorgarlik va ruxsatsiz mumkin emas:", s9WarningText: "tashxis qo'yish, shifo va'da qilish, murakkab dasturlar belgilash, tibbiy maslahat berish, nazoratsiz og'ir holatlarni yuritish, zaruratsiz erkaklarga yozish, shaxsiy ma'lumotlarni oshkor qilish.",
+    
+    s10Title: "10. Ayol-yordamchi uchun birinchi topshiriq",
+    s10t1: "Metodologiyani o'rganish", s10t1Text: "konspekt: siz kimsiz, ruqya nima, nima davolaysiz, nima va'da qilmaysiz, qabul qanday o'tadi, taqiqlar, maxfiylik.",
+    s10t2: "Bemorning yo'li xaritasi", s10t2Text: "postdan xulosagacha 9 qadam.",
+    s10t3: "Postlar uchun 30 mavzu", s10t3Text: "rubrikalar bo'yicha: simptomlar, himoya, o'z-o'zini ruqya, xatolar, uy, oila, vasvasa, hikoyalar, S&J.",
+    s10t4: "Arizaga javob shabloni",
+    s10t5: "Arizalar jadvali", s10t5Text: "sana, ism, jins, shahar, aloqa, shikoyat, anketa, holat, qabul sanasi, izoh, rozilik.",
+    s10t6: "5 ta post", s10t6Text: "ruqya nima, sehrdan farqi, 5 xato, qo'rqinchli tushlar, shifo Allohdan.",
+    s10t7: "Ayollar chati qoidalari", s10t7Text: "shaxsiy ma'lumotlarsiz, ayblovlarsiz, fatvolarsiz, shifokorlarni almashtirmasdan, adab.",
+    
+    s11Title: "11. Sinovdan keyin uning doimiy vazifalari",
+    s11Daily: "Kunlik", s11d1: "Yangi arizalarni tekshirish, anketa yuborish, qabullar haqida eslatish.",
+    s11d2: "Obunachilarning savollarini yig'ish, reja bo'yicha stories/post nashr qilish, shoshilinch holatlarni uzatish.",
+    s11Weekly: "Haftalik", s11w: "Kontent rejasi, statistika, fikrlar, nazoratdagi bemorlar ro'yxati, hisobot: arizalar, maslahatlar, to'lovlar, muammolar.",
+    s11Monthly: "Oylik", s11m: "Auditoriya o'sishi bo'yicha hisobot, yangi mahsulotlar g'oyalari, FAQni yangilash, yetakchi mavzular tahlili.",
+    
+    s12Title: "12. Jamoadagi boshqa rollar",
+    s12r1: "Kontent-montajchi / dizayner:", s12r1Text: "Reels, muqovalar, karusellar, PDF, Shorts uchun kesmalar.",
+    s12r2: "Texnik yordamchi:", s12r2Text: "sayt/lending, ariza shakllari, Telegram-bot, CRM, zaxira nusxalar, nashrlar.",
+    s12r3: "Buxgalter/to'lov administratori:", s12r3Text: "keyinroq, muntazam to'lovlar bo'lganda.",
+    
+    s13Title: "13. Arizalar bilan ishlash tizimi",
+    s13Statuses: "Holatlar:", s13StatusesText: "Yangi → Anketa yuborildi → To'ldirildi → Maslahat kutmoqda → O'tkazildi → Seans belgilandi → Hamrohlikda → Yakunlandi → Arxiv → Shifokorga shoshilinch",
+    s13Flags: "Qizil bayroqlar:", s13FlagsText: "o'z joniga qasd qilish fikrlari, psixoz, hushdan ketish, tortishishlar, kuchli og'riq, qon ketish, og'ir depressiya, o'zi/boshqalar uchun xavf. Javob: «Ruqya qo'shimcha ruhiy yordam bo'lishi mumkin, lekin shifokor/tez yordamga shoshilinch murojaat qilish zarur».",
+    
+    s14Title: "14. Haftalik kontent rejasi",
+    s14Mon: "Dushanba:", s14MonText: "Reels simptom/xato, TG batafsil post, Stories so'rov.",
+    s14Tue: "Seshanba:", s14TueText: "qisqa video oyat/dua, TG chek-list, Stories javoblar.",
+    s14Wed: "Chorshanba:", s14WedText: "YouTube/Shorts, IG karusel, TG holatni shaxsiy ma'lumotlarsiz tahlil qilish.",
+    s14Thu: "Payshanba:", s14ThuText: "Reels ruqya haqida afsona, TG azkorlar eslatmasi, Stories maslahatlarga yozilish.",
+    s14Fri: "Juma:", s14FriText: "Qur'on, dualar, himoya haqida eslatma — agressiv savdosiz.",
+    s14Sat: "Shanba:", s14SatText: "to'g'ridan-to'g'ri efir/savol-javob, arizalarni yig'ish.",
+    s14Sun: "Yakshanba:", s14SunText: "hafta yakunlari, shaxsiy ma'lumotlarsiz fikrlar, jadval e'loni.",
+    
+    s15Title: "15. 30 kunlik ishga tushirish rejasi",
+    s15w1: "1-hafta. Asos",
+    s15w1l1: "Loyiha nomi", s15w1l2: "Profil tavsifi", s15w1l3: "Telegram-kanal", s15w1l4: "Instagram", s15w1l5: "YouTube",
+    s15w1l6: "Simptomlar anketasi", s15w1l7: "Arizalar jadvali", s15w1l8: "Maslahat qoidalari", s15w1l9: "Diskleymer", s15w1l10: "Birinchi PDF-lid-magnit",
+    s15w2: "2-hafta. Kontent va ishonch",
+    s15w2l1: "10 ta qisqa video", s15w2l2: "10 ta post", s15w2l3: "Nashrlar", s15w2l4: "Har kuni Stories", s15w2l5: "Savollarni yig'ish", s15w2l6: "FAQ",
+    s15w3: "3-hafta. Birinchi savdo",
+    s15w3l1: "Maslahatlarga yig'ish", s15w3l2: "Xizmatlarni tavsiflash", s15w3l3: "Birlamchi tahlil uchun 5–10 ta joy", s15w3l4: "Maslahatlarni o'tkazish", s15w3l5: "Fikr-mulohaza", s15w3l6: "Anketani yaxshilash",
+    s15w4: "4-hafta. Tizim",
+    s15w4l1: "Mini-kurs/vebinar", s15w4l2: "Dastur shabloni", s15w4l3: "Xulosa shabloni", s15w4l4: "Nashrlar jadvali", s15w4l5: "Oylik reja", s15w4l6: "Yordamchiga topshirish",
+    
+    s16Title: "16. 90 kunlik rivojlanish rejasi",
+    s16m1: "1-oy — Ishonch", s16m1Text: "30 ta nashr, 10 ta video, 20–50 ta ariza, 5–15 ta maslahat, 3–5 ta fikr.",
+    s16m2: "2-oy — Mahsulotlar", s16m2Text: "1 mini-kurs, 1 vebinar, 20 ta maslahat, 5 ta mijoz hamrohlikda, yordamchi barqaror.",
+    s16m3: "3-oy — Masshtab", s16m3Text: "500–2000 obunachi, 10–30 ta pullik mijoz, 20–100 bepul chatda, 10–50 klubda, kontent haftasiga 5–7.",
+    
+    s17Title: "17. Bosimsiz savdo",
+    s17q1: "«Agar holatingizni tahlil qilish va individual ruqya dasturini olishni istasangiz, anketani to'ldiring — havola tavsifda».",
+    s17q2: "«Maslahatda shikoyatlarni tahlil qilamiz, ruhiy ish yo'nalishini aniqlaymiz va reja tuzamiz. Shifo faqat Allohdan».",
+    s17q3: "«Kurs o'z-o'zini ruqya qilishni to'g'ri va xavfsiz, qo'rquv va shubhali usullarsiz o'rganmoqchi bo'lganlarga mos».",
+    s17q4: "«Hamrohlik dinamika nazorati va tuzatishlar bilan yo'lni o'tish muhim bo'lganlarga kerak».",
+    
+    s18Title: "18. Loyihaga kerakli hujjatlar",
+    s18l1: "Bemor anketasi.", s18l2: "Ma'lumotlarni qayta ishlashga rozilik.", s18l3: "Ogohlantirish: tibbiy tashxis emas.",
+    s18l4: "Individual dastur shabloni.", s18l5: "Uy topshirig'i shabloni.", s18l6: "15 belgi kundaligi.",
+    s18l7: "Xulosa shabloni.", s18l8: "Telegram-chat qoidalari.", s18l9: "Arizaga javob skripti.",
+    s18l10: "FAQ.", s18l11: "Kontent rejasi.", s18l12: "Arizalar jadvali.", s18l13: "To'lovlar jadvali.", s18l14: "Maxfiylik qoidalari.",
+    
+    s19Title: "19. Obro' qoidalari",
+    s19l1: "Savdo uchun odamlarni jinnilar bilan qo'rqitmaslik.", s19l2: "Kafolatlangan natija va'da qilmaslik.",
+    s19l3: "Qarindoshlar, qo'shnilar, sobiq turmush o'rtoqlarni ayblamaslik.", s19l4: "Bemorlar hikoyalarini ruxsatsiz joylashtirmaslik.",
+    s19l5: "Yuzlar va shaxsiy ma'lumotlarni ko'rsatmaslik.", s19l6: "Sharhlarda qo'pol bahslashmaslik.",
+    s19l7: "Qur'onni marketing triuki sifatida ishlatmaslik.", s19l8: "Soxta fikrlardan foydalanmaslik.",
+    s19l9: "Har doim: «Alloh yaxshiroq biladi» deyish.", s19l10: "Shubha bo'lsa — ehtiyotkorlikni tanlash.",
+    
+    s20Title: "20. Hozir nima qilish kerak",
+    s20l1: "Loyiha nomini tanlash.", s20l2: "Instagram/Telegram uchun tavsif yozish.", s20l3: "Ariza anketasini yaratish.",
+    s20l4: "Arizalar jadvalini yaratish.", s20l5: "Ayolga 7 kunlik sinov topshirig'i berish.", s20l6: "5 ta qisqa video yozish.",
+    s20l7: "5 ta post yozish.", s20l8: "«Ruhiy ta'sir belgilari chek-listi» PDFni tayyorlash.",
+    s20l9: "5 ta birlamchi maslahatga yozilishni ochish.",
+    s20l10: "Birinchi maslahatlardan keyin fikr-mulohaza yig'ish va tizimni yaxshilash.",
+    
+    s21Title: "21. Yordamchi uchun birinchi haftaning qisqa rejasi",
+    s21d1: "1-kun", s21d1Text: "metodni o'rganish, konspekt yozish.",
+    s21d2: "2-kun", s21d2Text: "bemorning yo'li, arizalar jadvali.",
+    s21d3: "3-kun", s21d3Text: "30 ta kontent mavzusi.",
+    s21d4: "4-kun", s21d4Text: "5 ta post.",
+    s21d5: "5-kun", s21d5Text: "javob shablonlari.",
+    s21d6: "6-kun", s21d6Text: "ayollar chati qoidalari.",
+    s21d7: "7-kun", s21d7Text: "hisobot: nima tushundi, savollar, funktsiyalar, vaqt, afzalliklar.",
+    
+    s22Title: "22. Biznesning yakuniy modeli",
+    s22f1: "Bepul kontent", s22f2: "Telegram / YouTube / Instagram", s22f3: "Simptomlar anketasi",
+    s22f4: "Birlamchi maslahat", s22f5: "Individual dastur / seans", s22f6: "7/21/40 kunlik hamrohlik",
+    s22f7: "Xulosa va tavsiyalar", s22f8: "Klub / o'z-o'zini ruqya kursi / takroriy hamrohlik",
+    s22Idea: "Asosiy g'oya: tizim yaratish — bilmlar → ishonch → diagnostika → dastur → hamrohlik → hujjatlar → o'qitish → hamjamiyat.",
+    
+    s23Title: "23. Asosiy eslatma",
+    s23Text: "Daromadingiz odamlar qo'rquvi emas, balki foyda, tartib, bilim va ishonchga asoslanishi kerak.",
+    s23Strong: "To'g'ri pozitsiya:", s23Quote: "«Men vaqtim, bilimlarim, diagnostika, dastur va hamrohlik uchun to'lov olaman. Shifo — faqat Allohdan».",
+    btnUp: "Yuqoriga", btnContents: "Mundarijaga",
+    footer: "Abu Muhammad biznes-rejasi — Qur'on va Sunnat bo'yicha ruqya"
+  }
+};
+
+// ===== LANGUAGE SWITCHER LOGIC =====
+let currentLang = localStorage.getItem('ruqya_lang') || 'ru';
+
+function applyLanguage(lang) {
+  // Update all translatable elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+  
+  // Update HTML lang attribute
+  document.documentElement.lang = lang;
+  
+  // Update button states
+  document.getElementById('lang-ru').classList.toggle('active', lang === 'ru');
+  document.getElementById('lang-ru').setAttribute('aria-pressed', lang === 'ru');
+  document.getElementById('lang-uz').classList.toggle('active', lang === 'uz');
+  document.getElementById('lang-uz').setAttribute('aria-pressed', lang === 'uz');
+  
+  // Update meta description
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) {
+    metaDesc.setAttribute('content', lang === 'ru' 
+      ? 'Бизнес-план для специалиста по исламской рукье: система, этика, монетизация'
+      : 'Islomiy ruqya mutaxassisi uchun biznes-reja: tizim, axloq, monetizatsiya');
+  }
+  
+  // Update title
+  document.title = lang === 'ru'
+    ? 'Бизнес-план Абу Мухаммада — Полная версия'
+    : 'Abu Muhammad biznes-rejasi — To\'liq versiya';
+  
+  // Save preference
+  localStorage.setItem('ruqya_lang', lang);
+  currentLang = lang;
+}
+
+// Initialize language switcher
+document.getElementById('lang-ru').addEventListener('click', () => applyLanguage('ru'));
+document.getElementById('lang-uz').addEventListener('click', () => applyLanguage('uz'));
+
+// Apply saved language on load
 document.addEventListener('DOMContentLoaded', function() {
+  applyLanguage(currentLang);
+  
   // Прогресс-бар чтения
   const progress = document.getElementById('progress');
   function updateProgress() {
@@ -678,7 +1230,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.scrollTo({top: 0, behavior: 'smooth'});
   });
 
-  // Плавная прокрутка для якорных ссылок (резерв для старых браузеров)
+  // Плавная прокрутка для якорных ссылок
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -691,16 +1243,14 @@ document.addEventListener('DOMContentLoaded', function() {
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
           
           window.scrollTo({top: offsetPosition, behavior: 'smooth'});
-          
-          // Закрыть мобильное меню если есть
           this.blur();
         }
       }
     });
   });
 
-  // Улучшение UX для мобильных: предотвращение "прыжков" при нажатии
-  document.querySelectorAll('.btn, .topnav a').forEach(el => {
+  // Улучшение для мобильных
+  document.querySelectorAll('.btn, .topnav a, .lang-switch button').forEach(el => {
     el.addEventListener('touchstart', function() {}, {passive: true});
   });
 });
