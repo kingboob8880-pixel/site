@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<meta name="description" content="Бизнес-план для Абу Мухаммада: рукья, команда из 3 человек, реализация">
+<title>Бизнес-план: Команда из 3 человек — Абу Мухаммад</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#0f766e;--green2:#064e3b;--gold:#d4af37;--gold-dark:#b8921f;
+  --bg:#f8fafc;--paper:#fff;--ink:#0f172a;--muted:#64748b;--line:#e5e7eb;
+  --ok:#059669;--bad:#dc2626;--info:#eff6ff;--warn:#fff7ed;
+  --header-height: 64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--header-height)}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:clamp(16px,1.8vw,17px);-webkit-text-size-adjust:100%}
+.container{width:100%;max-width:1080px;margin:0 auto;padding:0 clamp(16px,4vw,20px)}
+a{color:var(--green);text-decoration:none;transition:color .2s}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+h1,h2,h3{line-height:1.25;margin:0 0 .6em}
+
+/* PROGRESS BAR */
+.progress{height:3px;background:linear-gradient(90deg,var(--gold),var(--green));width:0;position:fixed;top:0;left:0;z-index:100;transition:width .1s linear}
+
+/* TOP BAR */
+.topbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:clamp(8px,2vw,10px) 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:#0b3d39;font-size:clamp(14px,2.8vw,16px)}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.25);flex-shrink:0}
+.actions{display:flex;gap:clamp(6px,1.5vw,8px);align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.btn{appearance:none;border:1px solid var(--line);background:#fff;padding:clamp(8px,2vw,10px) clamp(12px,3vw,14px);border-radius:10px;font-weight:700;cursor:pointer;transition:all .2s;font-size:clamp(13px,2.6vw,14px);min-height:40px;display:inline-flex;align-items:center;justify-content:center}
+.btn:hover{background:#f8fafc;transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn.primary{background:var(--green);color:#fff;border-color:transparent}
+.btn.primary:hover{background:var(--green2)}
+.lang-switch{display:flex;gap:4px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:3px}
+.lang-btn{padding:clamp(6px,1.5vw,8px) clamp(10px,2.5vw,12px);border-radius:8px;border:none;background:transparent;font-weight:700;cursor:pointer;transition:all .2s;font-size:clamp(12px,2.4vw,13px);min-width:40px}
+.lang-btn:hover{background:#f1f5f9}
+.lang-btn.active{background:var(--green);color:#fff}
+.lang-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:clamp(40px,8vw,56px) 0 clamp(24px,5vw,30px);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 200px at 20% -10%,rgba(212,175,55,.2),transparent);pointer-events:none}
+.hero h1{text-align:center;font-size:clamp(22px,4.8vw,42px);font-weight:800;margin:0 0 8px}
+.hero .sub{text-align:center;opacity:.95;max-width:900px;margin:0 auto;font-size:clamp(14px,2.8vw,16px)}
+
+/* NAV */
+.nav{border-top:1px solid rgba(255,255,255,.15);margin-top:clamp(14px,3vw,18px)}
+.nav .scroll{display:flex;gap:6px;overflow-x:auto;overflow-y:hidden;padding:clamp(8px,2vw,10px) 0;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+.nav .scroll::-webkit-scrollbar{height:4px}
+.nav .scroll::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+.nav a{white-space:nowrap;padding:clamp(8px,2vw,10px) clamp(10px,2.5vw,12px);border:1px solid rgba(255,255,255,.25);border-radius:10px;color:#e6fffb;background:rgba(255,255,255,.08);font-weight:600;font-size:clamp(12px,2.4vw,14px);transition:all .2s;min-height:36px;display:flex;align-items:center}
+.nav a:hover{background:rgba(255,255,255,.16);text-decoration:none;color:#fff}
+.nav a.active{background:rgba(255,255,255,.25);border-color:var(--gold);font-weight:700}
+
+/* SECTIONS */
+main{padding:clamp(20px,4vw,26px) 0}
+section{background:var(--paper);border:1px solid var(--line);border-radius:clamp(14px,3vw,18px);padding:clamp(20px,4vw,26px);margin:clamp(14px,3vw,16px) 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+section h2{font-size:clamp(20px,4.2vw,24px);color:#073c36;padding-bottom:8px;border-bottom:3px solid var(--gold);display:inline-block;margin-bottom:16px}
+section h3{font-size:clamp(18px,3.6vw,20px);margin:clamp(16px,3vw,18px) 0 clamp(8px,2vw,10px);color:var(--green)}
+section h4{font-size:clamp(16px,3.2vw,17px);margin:clamp(12px,3vw,14px) 0 clamp(6px,1.5vw,8px);color:#1f2937}
+.note{padding:clamp(10px,2.5vw,12px);border-radius:10px;border:1px solid;margin:clamp(12px,3vw,14px) 0;font-size:clamp(14px,2.8vw,15px)}
+.note.info{background:var(--info);border-color:#bfdbfe;color:#1e3a8a}
+.note.warn{background:var(--warn);border-color:#fed7aa;color:#7c2d12}
+.table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:clamp(14px,2.8vw,15px)}
+.table th,.table td{padding:clamp(10px,2.5vw,12px);border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.table th{background:#f1f5f9;font-weight:700}
+.table tr:last-child td{border-bottom:none}
+@media(max-width:480px){.table{display:block;overflow-x:auto}}
+.grid-2{display:grid;grid-template-columns:1fr;gap:clamp(14px,3vw,18px)}
+@media(min-width:768px){.grid-2{grid-template-columns:1fr 1fr}}
+.grid-3{display:grid;grid-template-columns:1fr;gap:clamp(14px,3vw,18px)}
+@media(min-width:960px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+.funnel{background:linear-gradient(#ecfdf5,#f0fdfa);border:2px dashed #6ee7b7;border-radius:14px;padding:clamp(14px,3vw,16px);text-align:center;font-family:ui-monospace,monospace;color:#065f46;font-size:clamp(14px,2.8vw,15px);line-height:1.8}
+.kpi{display:grid;grid-template-columns:1fr;gap:clamp(10px,2.5vw,12px)}
+@media(min-width:768px){.kpi{grid-template-columns:repeat(3,1fr)}}
+.kpi .k{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:clamp(12px,3vw,14px);font-size:clamp(14px,2.8vw,15px)}
+.kpi .k strong{color:var(--green-dark);display:block;margin-bottom:4px}
+.code{background:#0f172a;color:#e2e8f0;padding:clamp(12px,3vw,14px);border-radius:10px;font-family:ui-monospace,monospace;white-space:pre-wrap;font-size:clamp(13px,2.6vw,14px);overflow-x:auto}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;position:relative;padding:clamp(10px,2.5vw,12px) clamp(10px,2.5vw,12px) clamp(10px,2.5vw,12px) clamp(44px,8vw,48px);margin:clamp(8px,2vw,10px) 0;background:#f8fafc;border:1px solid var(--line);border-radius:10px;font-size:clamp(14px,2.8vw,15px)}
+.steps li::before{content:counter(s);position:absolute;left:clamp(10px,2.5vw,12px);top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.check{list-style:none;padding:0}
+.check li{position:relative;padding-left:28px;margin:clamp(6px,1.5vw,8px) 0;font-size:clamp(14px,2.8vw,15px)}
+.check li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
+.priority-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:clamp(13px,2.6vw,14px)}
+.priority-table th,.priority-table td{padding:clamp(8px,2vw,10px);border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.priority-table th{background:#f1f5f9;font-weight:700}
+.priority-table tr:last-child td{border-bottom:none}
+.priority-badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.priority-badge.critical{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.priority-badge.medium{background:#fff7ed;color:#ea580c;border:1px solid #fed7aa}
+.priority-badge.low{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+
+/* LANG TOGGLE */
+.lang{display:none;animation:fadeIn .2s ease}
+.lang.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* BACK TO TOP */
+.totop{position:fixed;right:clamp(12px,3vw,16px);bottom:clamp(12px,3vw,16px);z-index:999;background:var(--green);color:#fff;border:none;border-radius:999px;padding:12px 14px;box-shadow:0 8px 22px rgba(15,118,110,.35);cursor:pointer;display:none;font-size:18px;transition:all .2s;min-width:48px;min-height:48px;display:flex;align-items:center;justify-content:center}
+.totop.show{display:flex}
+.totop:hover{background:var(--green2);transform:translateY(-2px)}
+.totop:active{transform:translateY(0)}
+
+/* PRINT */
+@media print{
+  .topbar,.totop,.progress,.nav,.lang-switch{display:none!important}
+  body{background:#fff;font-size:14pt}
+  section{break-inside:avoid;box-shadow:none;border-color:#ddd}
+  a{text-decoration:none;color:#000}
+  .hero{background:#0f766e;color:#fff}
+}
+
+/* ACCESSIBILITY: Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+/* Mobile: Better tap targets */
+@media(max-width:480px){
+  .btn{min-height:44px;padding:10px 14px}
+  .lang-btn{min-height:36px}
+  .nav a{min-height:40px;padding:10px 12px}
+  section{margin:14px 0;padding:18px}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Прогресс чтения"></div>
+
+<!-- Skip link for accessibility -->
+<a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" onfocus="this.style.left='16px';this.style.top='16px';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';this.style.zIndex='1000';this.style.background='var(--green)';this.style.color='#fff';this.style.padding='12px 20px';this.style.borderRadius='8px'">Перейти к содержанию</a>
+
+<!-- TOP BAR WITH LANGUAGE SWITCH -->
+<div class="topbar">
+  <div class="container wrap">
+    <div class="brand"><span class="dot" aria-hidden="true"></span> Ruqyah Team Plan</div>
+    <div class="actions">
+      <button class="btn" id="printBtn" aria-label="Печать страницы / Sahifani chop etish">🖨️ <span class="hide-mobile">Печать</span></button>
+      <div class="lang-switch" role="group" aria-label="Переключатель языка / Tilni almashtirish">
+        <button class="lang-btn active" data-lang="ru" aria-pressed="true">RU</button>
+        <button class="lang-btn" data-lang="uz" aria-pressed="false">UZ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="container">
+    <!-- RU HERO -->
+    <div class="lang active" data-lang="ru">
+      <h1>Бизнес-план и план реализации для Абу Мухаммада с малой командой</h1>
+      <p class="sub">Команда из 3 человек: главный раки, брат-помощник (раки) и женщина-координатор. Системный проект для пользы, порядка и дозволенного дохода.</p>
+    </div>
+    <!-- UZ HERO -->
+    <div class="lang" data-lang="uz">
+      <h1>Abu Muhammad uchun biznes-reja va amalga oshirish rejasi kichik jamoa bilan</h1>
+      <p class="sub">3 kishilik jamoa: bosh roqi, aka-yordamchi (roqi) va ayol-koordinator. Foyda, tartib va halol daromad uchun tizimli loyiha.</p>
+    </div>
+
+    <nav class="nav" aria-label="Основная навигация">
+      <div class="container">
+        <div class="scroll" id="nav" role="tablist">
+          <!-- RU NAV -->
+          <span class="lang active" data-lang="ru" style="display:contents">
+            <a href="#s1" role="tab">1. Принцип</a><a href="#s2" role="tab">2. Роли</a><a href="#s3" role="tab">3. Модель</a>
+            <a href="#s4" role="tab">4. Приоритеты</a><a href="#s5" role="tab">5. Критично</a><a href="#s6" role="tab">6. Средне</a>
+            <a href="#s7" role="tab">7. Мало важно</a><a href="#s8" role="tab">8. 7 дней</a><a href="#s9" role="tab">9. 30 дней</a>
+            <a href="#s10" role="tab">10. Еженедельно</a><a href="#s11" role="tab">11. Таблица</a><a href="#s12" role="tab">12. С малого</a>
+            <a href="#s13" role="tab">13. Итог</a>
+          </span>
+          <!-- UZ NAV -->
+          <span class="lang" data-lang="uz" style="display:contents">
+            <a href="#s1" role="tab">1. Tamoyil</a><a href="#s2" role="tab">2. Rollar</a><a href="#s3" role="tab">3. Model</a>
+            <a href="#s4" role="tab">4. Prioritetlar</a><a href="#s5" role="tab">5. Muhim</a><a href="#s6" role="tab">6. O'rta</a>
+            <a href="#s7" role="tab">7. Kam muhim</a><a href="#s8" role="tab">8. 7 kun</a><a href="#s9" role="tab">9. 30 kun</a>
+            <a href="#s10" role="tab">10. Haftalik</a><a href="#s11" role="tab">11. Jadval</a><a href="#s12" role="tab">12. Kichikdan</a>
+            <a href="#s13" role="tab">13. Xulosa</a>
+          </span>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container" id="main-content">
+
+<!-- SECTION 1 -->
+<section id="s1">
+  <div class="lang active" data-lang="ru">
+    <h2>1. Главный принцип проекта</h2>
+    <p>Проект не должен продавать «исцеление». Исцеление только от Аллаха.</p>
+    <div class="note info">
+      <strong>Продавать можно:</strong>
+      <ul class="check" style="margin-top:8px">
+        <li>консультацию;</li><li>время специалиста;</li><li>сеанс рукьи;</li><li>индивидуальную программу;</li>
+        <li>сопровождение;</li><li>обучение саморукье;</li><li>документы и дневники;</li><li>организационную систему;</li>
+        <li>закрытое сообщество;</li><li>методологию работы.</li>
+      </ul>
+    </div>
+    <div class="note warn">
+      <strong>Правильная формулировка:</strong><br>
+      «Мы помогаем через дозволенную рукью, Коран, дуа, диагностику духовных признаков, индивидуальные программы и сопровождение. Исцеление только от Аллаха. Мы не ставим медицинские диагнозы и не заменяем врача».
+    </div>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>1. Loyihaning asosiy tamoyili</h2>
+    <p>Loyiha «shifo» sotmasligi kerak. Shifo faqat Allohdan.</p>
+    <div class="note info">
+      <strong>Sotish mumkin:</strong>
+      <ul class="check" style="margin-top:8px">
+        <li>maslahat;</li><li>mutaxassis vaqti;</li><li>ruqya seansi;</li><li>individual dastur;</li>
+        <li>hamrohlik;</li><li>o'z-o'zini ruqya qilishni o'qitish;</li><li>hujjatlar va kundaliklar;</li><li>tashkiliy tizim;</li>
+        <li>yopiq hamjamiyat;</li><li>ish metodologiyasi.</li>
+      </ul>
+    </div>
+    <div class="note warn">
+      <strong>To'g'ri formulirovka:</strong><br>
+      «Biz ruxsat berilgan ruqya, Qur'on, dualar, ruhiy belgilarni diagnostika qilish, individual dasturlar va hamrohlik orqali yordam beramiz. Shifo faqat Allohdan. Biz tibbiy tashxis qo'ymaymiz va shifokorni almashtirmaymiz».
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section id="s2">
+  <div class="lang active" data-lang="ru">
+    <h2>2. Роли в команде</h2>
+    
+    <h3>2.1. Абу Мухаммад — главный специалист</h3>
+    <h4>🎯 Главные обязанности</h4>
+    <ol class="steps">
+      <li>Вести сложные случаи.</li><li>Проводить первичную диагностику.</li><li>Утверждать диагнозы духовного характера.</li>
+      <li>Составлять или утверждать программы лечения.</li><li>Проводить ключевые сеансы рукьи.</li><li>Контролировать работу брата-помощника.</li>
+      <li>Проверять исламскую корректность материалов.</li><li>Записывать основные уроки для соцсетей.</li>
+      <li>Принимать решения по ценам, продуктам и направлению проекта.</li><li>Утверждать заключения по курсам.</li>
+    </ol>
+    <h4>📤 Что лучше делегировать</h4>
+    <ul class="check">
+      <li>первичную переписку;</li><li>напоминания;</li><li>заполнение таблиц;</li><li>монтаж видео;</li>
+      <li>оформление постов;</li><li>сбор анкет;</li><li>техническую подготовку документов;</li><li>публикацию контента.</li>
+    </ul>
+
+    <h3 style="margin-top:24px">2.2. Брат-помощник — ассистент раки</h3>
+    <p>Он тоже читает рукью, поэтому его роль сильнее, чем обычный администратор.</p>
+    <h4>✅ Что он может делать</h4>
+    <ul class="check">
+      <li>Проводить простые и средние сеансы рукьи под вашей методологией.</li>
+      <li>Помогать вам во время сложных сеансов.</li><li>Читать аяты и дуа по утверждённой программе.</li>
+      <li>Заполнять карточку пациента после сеанса.</li><li>Фиксировать реакции пациента: зевота, слёзы, дрожь, боль, пот, сонливость и т.д.</li>
+      <li>Заполнять мониторинг 15 признаков.</li><li>Готовить черновик программы по шаблону.</li><li>Готовить черновик заключения.</li>
+      <li>Проверять выполнение домашнего задания пациентом.</li><li>Вести мужские заявки и мужских пациентов, если вы разрешите.</li>
+      <li>Напоминать пациентам о повторном визите.</li><li>Помогать вести прямые эфиры и ответы на вопросы.</li>
+      <li>Записывать короткие видео вместе с вами.</li><li>Отвечать на простые организационные вопросы мужчин.</li><li>Вести таблицу пациентов и расписание.</li>
+    </ul>
+    <h4>❌ Что он не должен делать без вашего разрешения</h4>
+    <ul class="check">
+      <li>Самостоятельно менять вашу методологию.</li><li>Обещать исцеление.</li><li>Делать окончательные выводы в сложных случаях.</li>
+      <li>Обвинять конкретных людей в сихре или сглазе.</li><li>Давать медицинские советы.</li><li>Отменять лечение, назначенное врачом.</li>
+      <li>Проводить опасные физические воздействия.</li><li>Публиковать истории пациентов без разрешения.</li>
+      <li>Работать с женщинами без соблюдения адаба и правил.</li><li>Самостоятельно назначать тяжёлые программы без вашего утверждения.</li>
+    </ul>
+    <div class="code">Его зона ответственности:<br>Сеансы + мониторинг + мужские заявки + помощь в программах + черновики заключений + расписание</div>
+
+    <h3 style="margin-top:24px">2.3. Женщина-помощница — координатор</h3>
+    <p>Она <strong>не читает рукью</strong>, не диагностирует и не лечит. Её роль — организация, коммуникация, контент и женская аудитория.</p>
+    <h4>✅ Что она должна делать</h4>
+    <ul class="check">
+      <li>Принимать первичные заявки от женщин.</li><li>Отправлять анкету симптомов.</li><li>Проверять, заполнена ли анкета.</li>
+      <li>Аккуратно собирать жалобы в структурированный вид.</li><li>Передавать вам или брату-помощнику готовую анкету.</li>
+      <li>Записывать женщин на консультацию.</li><li>Напоминать о времени консультации или сеанса.</li>
+      <li>Вести женский Telegram-чат по правилам.</li><li>Следить, чтобы в чате не раскрывали личные данные.</li>
+      <li>Собирать вопросы женщин для эфиров.</li><li>Делать конспекты ваших уроков.</li><li>Подготавливать посты из ваших голосовых сообщений.</li>
+      <li>Собирать отзывы без имени, лица и личных деталей.</li><li>Помогать оформлять PDF, чек-листы, инструкции.</li>
+      <li>Вести контент-план.</li><li>Публиковать stories, посты, анонсы.</li>
+      <li>Отправлять пациенткам домашние инструкции, утверждённые вами.</li>
+      <li>Напоминать о дневнике симптомов.</li><li>Собирать обратную связь после курса.</li><li>Вести таблицу заявок женщин.</li>
+    </ul>
+    <h4>❌ Что ей нельзя делать</h4>
+    <ul class="check">
+      <li>Не ставить духовный диагноз.</li><li>Не говорить: «у вас точно сихр/джинн/сглаз».</li><li>Не назначать рукью от себя.</li>
+      <li>Не менять программу лечения.</li><li>Не обещать исцеление.</li><li>Не пугать пациенток.</li>
+      <li>Не обвинять родственников, соседей или других людей.</li><li>Не давать медицинские советы.</li>
+      <li>Не вести тяжёлые психологические или кризисные случаи самостоятельно.</li>
+      <li>Не публиковать личные истории без разрешения.</li>
+      <li>Не общаться с мужчинами в личке без необходимости и правил.</li>
+      <li>Не отвечать на богословские вопросы без проверки.</li>
+    </ul>
+    <div class="code">Её зона ответственности:<br>Женские заявки + анкеты + чат + контент + напоминания + отзывы + документы</div>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>2. Jamoadagi rollar</h2>
+    
+    <h3>2.1. Abu Muhammad — bosh mutaxassis</h3>
+    <h4>🎯 Asosiy vazifalar</h4>
+    <ol class="steps">
+      <li>Murakkab holatlarni olib borish.</li><li>Birlamchi diagnostika o'tkazish.</li><li>Ruhiy tashxislarni tasdiqlash.</li>
+      <li>Davolash dasturlarini tuzish yoki tasdiqlash.</li><li>Asosiy ruqya seanslarini o'tkazish.</li><li>Aka-yordamchi ishini nazorat qilish.</li>
+      <li>Materiallarning islomiy to'g'riligini tekshirish.</li><li>Ijtimoiy tarmoqlar uchun asosiy darslarni yozish.</li>
+      <li>Narxlar, mahsulotlar va loyiha yo'nalishi bo'yicha qarorlar qabul qilish.</li><li>Kurslar bo'yicha xulosalarni tasdiqlash.</li>
+    </ol>
+    <h4>📤 Nima delegatsiya qilish yaxshiroq</h4>
+    <ul class="check">
+      <li>birlamchi yozishma;</li><li>eslatmalar;</li><li>jadvallarni to'ldirish;</li><li>video montaji;</li>
+      <li>postlarni bezash;</li><li>anketalarni yig'ish;</li><li>hujjatlarni texnik tayyorlash;</li><li>kontent nashr qilish.</li>
+    </ul>
+
+    <h3 style="margin-top:24px">2.2. Aka-yordamchi — roqi assistenti</h3>
+    <p>U ham ruqya o'qiydi, shuning uchun uning roli oddiy administratorga qaraganda kuchliroq.</p>
+    <h4>✅ Nima qila oladi</h4>
+    <ul class="check">
+      <li>Sizning metodologiyangiz bo'yicha oddiy va o'rta ruqya seanslarini o'tkazish.</li>
+      <li>Murakkab seanslar paytida sizga yordam berish.</li><li>Tasdiqlangan dastur bo'yicha oyatlar va dualarni o'qish.</li>
+      <li>Seansdan keyin bemor kartasini to'ldirish.</li><li>Bemorning reaktsiyalarini qayd etish: esnash, yig'lash, titrash, og'riq, ter, uyquchanlik va h.k.</li>
+      <li>15 belgi monitoringini to'ldirish.</li><li>Shablon bo'yicha dastur qoralamasini tayyorlash.</li><li>Xulosa qoralamasini tayyorlash.</li>
+      <li>Bemorning uy topshirig'ini bajarilishini tekshirish.</li><li>Aka arizalari va aka-bemorlarni olib borish, agar ruxsat bersangiz.</li>
+      <li>Bemorlarga takroriy tashrif haqida eslatish.</li><li>To'g'ridan-to'g'ri efirlar va savol-javoblarda yordam berish.</li>
+      <li>Siz bilan birga qisqa videolar yozish.</li><li>Akalarning oddiy tashkiliy savollariga javob berish.</li><li>Bemorlar jadvali va jadvalni yuritish.</li>
+    </ul>
+    <h4>❌ Ruxsatingizsiz nima qilmasligi kerak</h4>
+    <ul class="check">
+      <li>Metodologiyangizni mustaqil o'zgartirish.</li><li>Shifo va'da qilish.</li><li>Murakkab holatlarda yakuniy xulosalar chiqarish.</li>
+      <li>Muayyan shaxslarni sehr yoki ko'z tegishida ayblash.</li><li>Tibbiy maslahat berish.</li><li>Shifokor tayinlagan davolashni bekor qilish.</li>
+      <li>Xavfli jismoniy ta'sirlarni o'tkazish.</li><li>Bemorlar hikoyalarini ruxsatsiz nashr qilish.</li>
+      <li>Adab va qoidalarga rioya qilmasdan ayollar bilan ishlash.</li><li>Sizning tasdiqingizsiz og'ir dasturlarni mustaqil belgilash.</li>
+    </ul>
+    <div class="code">Uning javobgarlik zonasi:<br>Seanslar + monitoring + aka arizalari + dasturlarda yordam + xulosa qoralamalari + jadval</div>
+
+    <h3 style="margin-top:24px">2.3. Ayol-yordamchi — koordinator</h3>
+    <p>U <strong>ruqya o'qimaydi</strong>, diagnostika qo'ymaydi va davolamaydi. Uning roli — tashkil etish, muloqot, kontent va ayol auditoriyasi.</p>
+    <h4>✅ Nima qilishi kerak</h4>
+    <ul class="check">
+      <li>Ayollardan birlamchi arizalarni qabul qilish.</li><li>Simptomlar anketasini yuborish.</li><li>Anketa to'ldirilganligini tekshirish.</li>
+      <li>Shikoyatlarni ehtiyotkorlik bilan tartibli shaklda yig'ish.</li><li>Tayyor anketani sizga yoki aka-yordamchiga uzatish.</li>
+      <li>Ayollarni maslahatga yozish.</li><li>Maslahat yoki seans vaqti haqida eslatish.</li>
+      <li>Ayollar Telegram-chatini qoidalar bo'yicha yuritish.</li><li>Chatda shaxsiy ma'lumotlarni oshkor qilmaslikni kuzatish.</li>
+      <li>Ayollarning savollarini efirlar uchun yig'ish.</li><li>Darslaringizning konspektini qilish.</li><li>Ovozli xabarlaringizdan postlar tayyorlash.</li>
+      <li>Ism, yuz va shaxsiy tafsilotlarsiz fikrlarni yig'ish.</li><li>PDF, chek-listlar, ko'rsatmalarni bezashda yordam berish.</li>
+      <li>Kontent rejasini yuritish.</li><li>Stories, postlar, e'lonlarni nashr qilish.</li>
+      <li>Pasientlarga siz tasdiqlagan uy ko'rsatmalarini yuborish.</li><li>Simptomlar kundaligi haqida eslatish.</li><li>Kursdan keyin fikr-mulohazalarni yig'ish.</li><li>Ayol arizalari jadvalini yuritish.</li>
+    </ul>
+    <h4>❌ Nima qilish mumkin emas</h4>
+    <ul class="check">
+      <li>Ruhiy tashxis qo'ymaslik.</li><li>«Sizda aniq sehr/jinn/ko'z tegishi» demaslik.</li><li>O'zidan ruqya belgilamaslik.</li>
+      <li>Davolash dasturini o'zgartirmaslik.</li><li>Shifo va'da qilmaslik.</li><li>Pasientlarni qo'rqitmaslik.</li>
+      <li>Qarindoshlar, qo'shnilar yoki boshqa shaxslarni ayblamaslik.</li><li>Tibbiy maslahat bermaslik.</li>
+      <li>Og'ir psixologik yoki inqiroz holatlarini mustaqil olib bormaslik.</li>
+      <li>Shaxsiy hikoyalarni ruxsatsiz nashr qilmaslik.</li>
+      <li>Keraksiz va qoidalarsiz erkaklar bilan shaxsiy yozishmaslik.</li><li>Tekshiruvsiz ilohiyot savollariga javob bermaslik.</li>
+    </ul>
+    <div class="code">Uning javobgarlik zonasi:<br>Ayol arizalari + anketalar + chat + kontent + eslatmalar + fikrlar + hujjatlar</div>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<section id="s3">
+  <div class="lang active" data-lang="ru">
+    <h2>3. Основная бизнес-модель</h2>
+    <h3>3.1. Простая схема</h3>
+    <div class="funnel">Контент в Instagram / Telegram / YouTube → Бесплатный PDF или чек-лист → Анкета симптомов → Первичная консультация → Сеанс / программа / сопровождение → Мониторинг → Заключение → Клуб / курс / повторное сопровождение</div>
+    
+    <h3>3.2. Главные продукты</h3>
+    <div class="grid-2">
+      <div class="kpi .k">
+        <h4>1. Первичная консультация</h4>
+        <ul class="check">
+          <li>разбор жалоб;</li><li>анкета;</li><li>духовная оценка;</li><li>рекомендации;</li><li>выбор формата: сеанс, домашняя программа, сопровождение.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>2. Сеанс рукьи</h4>
+        <ul class="check">
+          <li>чтение Корана и дуа;</li><li>фиксация реакций;</li><li>рекомендации после сеанса;</li><li>назначение домашнего чтения.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>3. Индивидуальная программа</h4>
+        <ul class="check">
+          <li>аяты;</li><li>дуа;</li><li>формулы;</li><li>домашнее задание;</li><li>вода/масло, если используется;</li><li>защита;</li><li>мониторинг.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>4. Сопровождение 7/21/40 дней</h4>
+        <ul class="check">
+          <li>программа;</li><li>сеансы;</li><li>контроль симптомов;</li><li>корректировка;</li><li>заключение.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>5. Обучение саморукье</h4>
+        <ul class="check">
+          <li>мини-курс;</li><li>PDF;</li><li>видео;</li><li>дневник симптомов;</li><li>инструкции.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>6. Закрытый Telegram-клуб</h4>
+        <ul class="check">
+          <li>уроки;</li><li>напоминания;</li><li>вопросы-ответы;</li><li>чек-листы;</li><li>поддержка.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>3. Asosiy biznes modeli</h2>
+    <h3>3.1. Oddiy sxema</h3>
+    <div class="funnel">Instagram / Telegram / YouTube kontenti → Bepul PDF yoki chek-list → Simptomlar anketasi → Birlamchi maslahat → Seans / dastur / hamrohlik → Monitoring → Xulosa → Klub / kurs / takroriy hamrohlik</div>
+    
+    <h3>3.2. Asosiy mahsulotlar</h3>
+    <div class="grid-2">
+      <div class="kpi .k">
+        <h4>1. Birlamchi maslahat</h4>
+        <ul class="check">
+          <li>shikoyatlarni tahlil qilish;</li><li>anketa;</li><li>ruhiy baholash;</li><li>tavsiyalar;</li><li>format tanlash: seans, uy dasturi, hamrohlik.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>2. Ruqya seansi</h4>
+        <ul class="check">
+          <li>Qur'on va dualarni o'qish;</li><li>reaktsiyalarni qayd etish;</li><li>seansdan keyin tavsiyalar;</li><li>uyda o'qishni belgilash.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>3. Individual dastur</h4>
+        <ul class="check">
+          <li>oyatlar;</li><li>dualar;</li><li>formulalar;</li><li>uy topshirig'i;</li><li>suv/yog', agar ishlatilsa;</li><li>himoya;</li><li>monitoring.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>4. 7/21/40 kunlik hamrohlik</h4>
+        <ul class="check">
+          <li>dastur;</li><li>seanslar;</li><li>simptomlarni nazorat qilish;</li><li>tuzatish;</li><li>xulosa.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>5. O'z-o'zini ruqya qilishni o'qitish</h4>
+        <ul class="check">
+          <li>mini-kurs;</li><li>PDF;</li><li>video;</li><li>simptomlar kundaligi;</li><li>ko'rsatmalar.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>6. Yopiq Telegram-klub</h4>
+        <ul class="check">
+          <li>darslar;</li><li>eslatmalar;</li><li>savol-javoblar;</li><li>chek-listlar;</li><li>qo'llab-quvvatlash.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 -->
+<section id="s4">
+  <div class="lang active" data-lang="ru">
+    <h2>4. Приоритеты реализации</h2>
+    <p>План разделён на три уровня:</p>
+    <div class="grid-3">
+      <div class="kpi .k">
+        <span class="priority-badge critical">🔴 Критически важное</span>
+        <p style="margin-top:8px">Без этого бизнес не заработает нормально.</p>
+      </div>
+      <div class="kpi .k">
+        <span class="priority-badge medium">🟡 Средне важное</span>
+        <p style="margin-top:8px">Усиливает систему, повышает доход и доверие.</p>
+      </div>
+      <div class="kpi .k">
+        <span class="priority-badge low">🟢 Мало важное на старте</span>
+        <p style="margin-top:8px">Полезно позже, но не нужно делать первым.</p>
+      </div>
+    </div>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>4. Amalga oshirish prioritetlari</h2>
+    <p>Reja uch darajaga bo'lingan:</p>
+    <div class="grid-3">
+      <div class="kpi .k">
+        <span class="priority-badge critical">🔴 Juda muhim</span>
+        <p style="margin-top:8px">Buning siz biznes normal ishlamaydi.</p>
+      </div>
+      <div class="kpi .k">
+        <span class="priority-badge medium">🟡 O'rtacha muhim</span>
+        <p style="margin-top:8px">Tizimni kuchaytiradi, daromad va ishonchni oshiradi.</p>
+      </div>
+      <div class="kpi .k">
+        <span class="priority-badge low">🟢 Boshlang'ichda kam muhim</span>
+        <p style="margin-top:8px">Keyinchalik foydali, lekin birinchi qilish shart emas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 -->
+<section id="s5">
+  <div class="lang active" data-lang="ru">
+    <h2>5. Критически важные задачи</h2>
+    <p>Это нужно сделать в первую очередь. Без этого не будет порядка, заявок, доверия и денег.</p>
+    
+    <h3>5.1. Упаковка и позиционирование</h3>
+    <ul class="check">
+      <li>Написать короткое описание проекта.</li><li>Написать, кто вы и чем помогаете.</li><li>Указать, что рукья — по Корану и Сунне.</li>
+      <li>Указать, что исцеление только от Аллаха.</li><li>Указать, что вы не ставите медицинские диагнозы.</li><li>Указать, что при опасных симптомах нужен врач.</li>
+    </ul>
+    <p><strong>Кто делает:</strong> Абу Мухаммад — смысл и утверждение. Женщина-помощница — оформление текста. Брат-помощник — проверка понятности.</p>
+    
+    <h3>5.2. Таблица заявок / простая CRM</h3>
+    <p><strong>Поля:</strong> дата заявки, имя, пол, город, контакт, жалоба кратко, анкета отправлена, анкета заполнена, статус, назначенная дата, кто ведёт, комментарий, оплата, следующий шаг.</p>
+    <p><strong>Кто делает:</strong> Женщина-помощница — женские заявки. Брат-помощник — мужские заявки и общая таблица. Абу Мухаммад — контроль.</p>
+    
+    <h3>5.3. Анкета симптомов</h3>
+    <p><strong>Минимальная анкета должна включать:</strong> 1) Основные жалобы. 2) Сон и кошмары. 3) Тело и боли. 4) Намаз, Коран, азкары. 5) Семья и отношения. 6) Дом. 7) Ризк и дела. 8) Реакции на Коран. 9) Медицинские красные флаги. 10) Согласие на хранение данных.</p>
+    
+    <h3>5.4. Пакеты услуг и цены</h3>
+    <div class="grid-2">
+      <div class="note info"><strong>Пакет 1. Первичный разбор</strong><br>анкета; консультация; краткие рекомендации.</div>
+      <div class="note info"><strong>Пакет 2. Консультация + программа</strong><br>анкета; консультация; индивидуальная программа на 7 дней; PDF-инструкция.</div>
+      <div class="note info"><strong>Пакет 3. Сеанс + домашнее задание</strong><br>сеанс рукьи; фиксация реакции; домашнее чтение; контроль.</div>
+      <div class="note info"><strong>Пакет 4. Сопровождение 21 день</strong><br>диагностика; 2–4 сеанса; программа; мониторинг; коррекция; заключение.</div>
+    </div>
+    
+    <h3>5.5. Шаблон ответа на заявку</h3>
+    <div class="code">Ассаляму алейкум. Вы обратились к Абу Мухаммаду по вопросу рукьи.
+
+Для первичного разбора заполните, пожалуйста, анкету симптомов. После этого мы предложим подходящий формат: консультация, сеанс, домашняя программа или сопровождение.
+
+Важно: рукья не является медицинским диагнозом и не заменяет врача. Исцеление только от Аллаха.</div>
+    
+    <h3>5.6. Минимальный контент каждый день</h3>
+    <p><strong>Каждый день минимум:</strong> 1 stories; 1 короткий пост или короткое видео 3–5 раз в неделю; 1 полезный пост в Telegram 3 раза в неделю.</p>
+    
+    <h3>5.7. Шаблон индивидуальной программы</h3>
+    <p><strong>Что должно быть:</strong> Имя пациента, дата, духовная тема лечения, жалобы, аяты, дуа, формулы, повторы, домашнее задание, вода/масло, защита, что отслеживать, напоминание: исцеление от Аллаха, не медицинский диагноз.</p>
+    
+    <h3>5.8. Шаблон мониторинга 15 признаков</h3>
+    <p><strong>Таблица 0–10:</strong> кошмары, тревога, боль, тяжесть в груди, головная боль, живот, сон, васваса, слабость, страх, злость, реакция на Коран, семейные ссоры, блокировка дел, общее состояние.</p>
+    
+    <h3>5.9. Правила безопасности и красные флаги</h3>
+    <div class="note warn"><strong>⚠️ Тревожные симптомы:</strong> суицидальные мысли, психоз, судороги, потеря сознания, сильная боль, кровотечение, травмы, опасность для себя или других, тяжёлая депрессия, резкое ухудшение состояния.</div>
+    
+    <h3>5.10. Распределение заявок</h3>
+    <ul class="check">
+      <li>Мужские заявки — брат-помощник или Абу Мухаммад.</li>
+      <li>Женские заявки — женщина-помощница принимает организационно, но диагноз и лечение утверждает Абу Мухаммад.</li>
+      <li>Сложные случаи — только Абу Мухаммад.</li>
+      <li>Простые повторные сеансы — может вести брат по утверждённой программе.</li>
+    </ul>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>5. Juda muhim vazifalar</h2>
+    <p>Buni birinchi navbatda qilish kerak. Buning siz tartib, arizalar, ishonch va pul bo'lmaydi.</p>
+    
+    <h3>5.1. Qadoqlash va pozitsiyalash</h3>
+    <ul class="check">
+      <li>Loyihaning qisqa tavsifini yozish.</li><li>Kimligingiz va qanday yordam berishingizni yozish.</li><li>Ruqya — Qur'on va Sunnatga muvofiq ekanligini ko'rsatish.</li>
+      <li>Shifo faqat Allohdan ekanligini ko'rsatish.</li><li>Tibbiy tashxis qo'ymasligingizni ko'rsatish.</li><li>Xavfli simptomlarda shifokor kerakligini ko'rsatish.</li>
+    </ul>
+    <p><strong>Kim bajaradi:</strong> Abu Muhammad — mazmun va tasdiqlash. Ayol-yordamchi — matnni bezash. Aka-yordamchi — tushunarliligini tekshirish.</p>
+    
+    <h3>5.2. Arizalar jadvali / oddiy CRM</h3>
+    <p><strong>Maydonlar:</strong> ariza sanasi, ism, jins, shahar, aloqa, shikoyat qisqacha, anketa yuborilgan, anketa to'ldirilgan, holat, belgilangan sana, kim olib boradi, izoh, to'lov, keyingi qadam.</p>
+    <p><strong>Kim bajaradi:</strong> Ayol-yordamchi — ayol arizalari. Aka-yordamchi — aka arizalari va umumiy jadval. Abu Muhammad — nazorat.</p>
+    
+    <h3>5.3. Simptomlar anketasi</h3>
+    <p><strong>Minimal anketa quyidagilarni o'z ichiga olishi kerak:</strong> 1) Asosiy shikoyatlar. 2) Uyqu va qo'rqinchli tushlar. 3) Tana va og'riqlar. 4) Namoz, Qur'on, azkorlar. 5) Oila va munosabatlar. 6) Uy. 7) Rizq va ishlar. 8) Qur'onga reaktsiyalar. 9) Tibbiy qizil bayroqlar. 10) Ma'lumotlarni saqlashga rozilik.</p>
+    
+    <h3>5.4. Xizmatlar paketlari va narxlar</h3>
+    <div class="grid-2">
+      <div class="note info"><strong>Paket 1. Birlamchi tahlil</strong><br>anketa; maslahat; qisqa tavsiyalar.</div>
+      <div class="note info"><strong>Paket 2. Maslahat + dastur</strong><br>anketa; maslahat; 7 kunlik individual dastur; PDF-ko'rsatma.</div>
+      <div class="note info"><strong>Paket 3. Seans + uy topshirig'i</strong><br>ruqya seansi; reaktsiyani qayd etish; uyda o'qish; nazorat.</div>
+      <div class="note info"><strong>Paket 4. 21 kunlik hamrohlik</strong><br>diagnostika; 2–4 seans; dastur; monitoring; tuzatish; xulosa.</div>
+    </div>
+    
+    <h3>5.5. Arizaga javob shabloni</h3>
+    <div class="code">Assalomu alaykum. Siz Abu Muhammadga ruqya masalasida murojaat qildingiz.
+
+Birlamchi tahlil uchun simptomlar anketasini to'ldiring. Shundan so'ng biz mos formatni taklif qilamiz: maslahat, seans, uy dasturi yoki hamrohlik.
+
+Muhim: ruqya tibbiy tashxis emas va shifokorni almashtirmaydi. Shifo faqat Allohdan.</div>
+    
+    <h3>5.6. Har kuni minimal kontent</h3>
+    <p><strong>Har kuni minimal:</strong> 1 stories; 1 qisqa post yoki qisqa video haftasiga 3–5 marta; 1 foydali post Telegramda haftasiga 3 marta.</p>
+    
+    <h3>5.7. Individual dastur shabloni</h3>
+    <p><strong>Nima bo'lishi kerak:</strong> Bemor ismi, sana, davolashning ruhiy mavzusi, shikoyatlar, oyatlar, dualar, formulalar, takrorlar, uy topshirig'i, suv/yog', himoya, nima kuzatish kerak, eslatma: shifo Allohdan, tibbiy tashxis emas.</p>
+    
+    <h3>5.8. 15 belgi monitoring shabloni</h3>
+    <p><strong>Jadval 0–10:</strong> qo'rqinchli tushlar, tashvish, og'riq, ko'krakda og'irlik, bosh og'rig'i, qorin, uyqu, vasvasa, zaiflik, qo'rquv, g'azab, Qur'onga reaktsiya, oilaviy janjallar, ishlar bloklanishi, umumiy holat.</p>
+    
+    <h3>5.9. Xavfsizlik qoidalari va qizil bayroqlar</h3>
+    <div class="note warn"><strong>⚠️ Tashvishli simptomlar:</strong> o'z joniga qasd qilish fikrlari, psixoz, tortishishlar, hushdan ketish, kuchli og'riq, qon ketish, jarohatlar, o'zi yoki boshqalar uchun xavf, og'ir depressiya, holatning keskin yomonlashishi.</div>
+    
+    <h3>5.10. Arizalarni taqsimlash</h3>
+    <ul class="check">
+      <li>Aka arizalari — aka-yordamchi yoki Abu Muhammad.</li>
+      <li>Ayol arizalari — ayol-yordamchi tashkiliy qabul qiladi, lekin tashxis va davolashni Abu Muhammad tasdiqlaydi.</li>
+      <li>Murakkab holatlar — faqat Abu Muhammad.</li>
+      <li>Oddiy takroriy seanslar — tasdiqlangan dastur bo'yicha aka olib borishi mumkin.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 6 -->
+<section id="s6">
+  <div class="lang active" data-lang="ru">
+    <h2>6. Средне важные задачи</h2>
+    <p>Это нужно делать после запуска основы. Они повышают доход, доверие и масштаб.</p>
+    
+    <h3>6.1. Контент-план на 30 дней</h3>
+    <p><strong>Подготовить 30 тем:</strong> симптомы, ошибки, защита, саморукья, дом, семья, васваса, вопросы-ответы, истории без личных данных, напоминания об азкарах.</p>
+    
+    <h3>6.2. Бесплатный PDF-лид-магнит</h3>
+    <p><strong>Варианты:</strong> 1) «Чек-лист признаков духовного поражения». 2) «7 дней саморукьи». 3) «Как защитить дом». 4) «Дневник симптомов после рукьи».</p>
+    
+    <h3>6.3. Telegram-канал и женский чат</h3>
+    <ul class="check">
+      <li>Telegram-канал для всех.</li><li>Отдельный женский чат, если есть необходимость.</li><li>Правила чата.</li><li>Закреплённый пост.</li><li>Ссылка на анкету.</li>
+    </ul>
+    
+    <h3>6.4. Шаблон заключения</h3>
+    <p><strong>Что должно быть:</strong> Данные пациента, даты курса, количество сеансов, первичные жалобы, проведённая программа, динамика, итог, рекомендации, защита, напоминание об Аллахе, не медицинский диагноз.</p>
+    
+    <h3>6.5. Мини-курс по саморукье</h3>
+    <p><strong>Структура:</strong> 1) Что такое рукья. 2) Что запрещено. 3) Базовые аяты. 4) Как читать на себя. 5) Как читать на воду. 6) Как защищать дом. 7) Как вести дневник симптомов. 8) Что делать при ухудшении.</p>
+    
+    <h3>6.6. Отзывы без раскрытия личности</h3>
+    <p><strong>Что собирать:</strong> что было до; что делали; что изменилось с дозволения Аллаха; без имени, лица, адреса и обвинений.</p>
+    
+    <h3>6.7. Простая финансовая таблица</h3>
+    <p><strong>Поля:</strong> дата, услуга, пациент, сумма, способ оплаты, кто провёл, расход, прибыль, комментарий.</p>
+    
+    <h3>6.8. Расписание и календарь</h3>
+    <p><strong>Что сделать:</strong> дни консультаций, дни сеансов, дни контента, дни эфиров, день отчёта команды.</p>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>6. O'rtacha muhim vazifalar</h2>
+    <p>Buni asosni ishga tushirgandan keyin qilish kerak. Ular daromad, ishonch va masshtabni oshiradi.</p>
+    
+    <h3>6.1. 30 kunlik kontent rejasi</h3>
+    <p><strong>30 ta mavzu tayyorlash:</strong> simptomlar, xatolar, himoya, o'z-o'zini ruqya qilish, uy, oila, vasvasa, savol-javoblar, shaxsiy ma'lumotlarsiz hikoyalar, azkorlar eslatmalari.</p>
+    
+    <h3>6.2. Bepul PDF-lid-magnit</h3>
+    <p><strong>Variantlar:</strong> 1) «Ruhiy ta'sir belgilari chek-listi». 2) «7 kunlik o'z-o'zini ruqya». 3) «Uyni qanday himoya qilish». 4) «Ruqyadan keyin simptomlar kundaligi».</p>
+    
+    <h3>6.3. Telegram-kanal va ayollar chati</h3>
+    <ul class="check">
+      <li>Barcha uchun Telegram-kanal.</li><li>Kerak bo'lsa alohida ayollar chati.</li><li>Chat qoidalari.</li><li>Qotib qolgan post.</li><li>Anketa havolasi.</li>
+    </ul>
+    
+    <h3>6.4. Xulosa shabloni</h3>
+    <p><strong>Nima bo'lishi kerak:</strong> Bemor ma'lumotlari, kurs sanalari, seanslar soni, birlamchi shikoyatlar, o'tkazilgan dastur, dinamika, yakun, tavsiyalar, himoya, Alloh haqida eslatma, tibbiy tashxis emas.</p>
+    
+    <h3>6.5. O'z-o'zini ruqya qilish mini-kursi</h3>
+    <p><strong>Tuzilishi:</strong> 1) Ruqya nima. 2) Nima taqiqlangan. 3) Asosiy oyatlar. 4) O'ziga qanday o'qish kerak. 5) Suvga qanday o'qish kerak. 6) Uyni qanday himoya qilish kerak. 7) Simptomlar kundaligini qanday yuritish kerak. 8) Yomonlashganda nima qilish kerak.</p>
+    
+    <h3>6.6. Shaxsiy ma'lumotlarsiz fikrlar</h3>
+    <p><strong>Nima yig'ish kerak:</strong> oldin nima edi; nima qildik; Allohning izni bilan nima o'zgardi; ism, yuz, manzil va ayblovlarsiz.</p>
+    
+    <h3>6.7. Oddiy moliyaviy jadval</h3>
+    <p><strong>Maydonlar:</strong> sana, xizmat, bemor, summa, to'lov usuli, kim o'tkazdi, xarajat, foyda, izoh.</p>
+    
+    <h3>6.8. Jadval va kalendar</h3>
+    <p><strong>Nima qilish kerak:</strong> maslahat kunlari, seans kunlari, kontent kunlari, efir kunlari, jamoa hisoboti kuni.</p>
+  </div>
+</section>
+
+<!-- SECTION 7 -->
+<section id="s7">
+  <div class="lang active" data-lang="ru">
+    <h2>7. Мало важные на старте задачи</h2>
+    <p>Это полезно, но не нужно делать в самом начале. Иначе вы утонете в деталях.</p>
+    
+    <ul class="check">
+      <li><strong>Сложный сайт</strong> — На старте достаточно: Instagram, Telegram, Google Form / простая анкета, таблица заявок.</li>
+      <li><strong>Сложная CRM</strong> — Сначала хватит таблицы. Сложную систему внедрять после стабильного потока пациентов.</li>
+      <li><strong>Профессиональная студия для видео</strong> — На старте достаточно телефона, хорошего света и чистого звука.</li>
+      <li><strong>Большой платный курс</strong> — Сначала проверьте спрос через мини-курс или вебинар.</li>
+      <li><strong>Массовая реклама</strong> — Не запускать большую рекламу, пока нет: понятной анкеты, пакетов услуг, обработчика заявок, контента, отзывов, таблицы оплат.</li>
+      <li><strong>Сложный брендбук и логотип</strong> — Красиво — хорошо, но сначала важнее заявки, доверие и система.</li>
+      <li><strong>GitHub Pages / публичные документы</strong> — Можно позже. На старте лучше не публиковать персональные документы по ссылкам, чтобы не рисковать конфиденциальностью.</li>
+    </ul>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>7. Boshlang'ichda kam muhim vazifalar</h2>
+    <p>Bu foydali, lekin eng boshida qilish shart emas. Aks holda tafsilotlarda cho'kib ketasiz.</p>
+    
+    <ul class="check">
+      <li><strong>Murakkab sayt</strong> — Boshlang'ichda yetarli: Instagram, Telegram, Google Form / oddiy anketa, arizalar jadvali.</li>
+      <li><strong>Murakkab CRM</strong> — Avval jadval yetarli. Murakkab tizimni bemorlarning barqaror oqimi paydo bo'lgandan keyin joriy qilish.</li>
+      <li><strong>Video uchun professional studiya</strong> — Boshlang'ichda telefon, yaxshi yorug'lik va toza ovoz yetarli.</li>
+      <li><strong>Katta pullik kurs</strong> — Avval talabni mini-kurs yoki vebinar orqali tekshiring.</li>
+      <li><strong>Ommaviy reklama</strong> — Katta reklamani ishga tushirmang, quyidagilar bo'lmaguncha: tushunarli anketa, xizmatlar paketlari, arizalarni qayta ishlashchi, kontent, fikrlar, to'lovlar jadvali.</li>
+      <li><strong>Murakkab brendbuk va logotip</strong> — Chiroyli — yaxshi, lekin avval arizalar, ishonch va tizim muhimroq.</li>
+      <li><strong>GitHub Pages / ochiq hujjatlar</strong> — Keyinroq mumkin. Boshlang'ichda shaxsiy hujjatlarni havolalar orqali nashr qilmaslik yaxshiroq, maxfiylikka xavf solmaslik uchun.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 8 -->
+<section id="s8">
+  <div class="lang active" data-lang="ru">
+    <h2>8. План запуска с малого на 7 дней</h2>
+    
+    <div class="grid-2">
+      <div class="kpi .k">
+        <h4>🗓️ День 1. Распределить роли</h4>
+        <ul class="check">
+          <li>Абу Мухаммад — утверждает роли команды; объясняет границы работы.</li>
+          <li>Брат — принимает роль ассистента раки; готовит список задач.</li>
+          <li>Женщина — принимает роль координатора; изучает правила общения.</li>
+        </ul>
+        <p><strong>Результат:</strong> У каждого есть чёткая зона ответственности.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ День 2. Создать таблицу заявок</h4>
+        <ul class="check">
+          <li>Брат — создаёт общую таблицу.</li>
+          <li>Женщина — добавляет поля для женских заявок.</li>
+          <li>Абу Мухаммад — утверждает статусы заявок.</li>
+        </ul>
+        <p><strong>Результат:</strong> Есть место, куда попадает каждая заявка.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ День 3. Сделать анкету симптомов</h4>
+        <ul class="check">
+          <li>Абу Мухаммад — даёт вопросы.</li>
+          <li>Брат — помогает структурировать.</li>
+          <li>Женщина — оформляет в удобную форму.</li>
+        </ul>
+        <p><strong>Результат:</strong> Каждый новый человек получает одну анкету.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ День 4. Оформить профили</h4>
+        <ul class="check">
+          <li>Женщина — готовит описание Instagram и Telegram.</li>
+          <li>Брат — проверяет понятность.</li>
+          <li>Абу Мухаммад — утверждает.</li>
+        </ul>
+        <p><strong>Результат:</strong> Профили выглядят понятно и профессионально.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ День 5. Подготовить пакеты услуг</h4>
+        <ul class="check">
+          <li>Абу Мухаммад — решает, какие услуги будут первыми.</li>
+          <li>Брат — считает время на каждую услугу.</li>
+          <li>Женщина — оформляет описание пакетов.</li>
+        </ul>
+        <p><strong>Результат:</strong> Есть 3–4 услуги, которые можно предлагать людям.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ День 6. Подготовить контент</h4>
+        <ul class="check">
+          <li>Абу Мухаммад — записывает голосовые или короткие видео.</li>
+          <li>Женщина — делает тексты постов.</li>
+          <li>Брат — помогает с видео.</li>
+        </ul>
+        <p><strong>Результат:</strong> Есть первый контент на неделю.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ День 7. Открыть первые места</h4>
+        <p><strong>Объявить:</strong> «Открыта запись на первичный разбор. Для записи заполните анкету. Количество мест на этой неделе ограничено».</p>
+        <p><strong>Результат:</strong> Начинается сбор первых системных заявок.</p>
+      </div>
+    </div>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>8. Kichikdan boshlash uchun 7 kunlik reja</h2>
+    
+    <div class="grid-2">
+      <div class="kpi .k">
+        <h4>🗓️ 1-kun. Rollarni taqsimlash</h4>
+        <ul class="check">
+          <li>Abu Muhammad — jamoa rollarini tasdiqlaydi; ish chegaralarini tushuntiradi.</li>
+          <li>Aka — roqi assistenti rolini qabul qiladi; vazifalar ro'yxatini tayyorlaydi.</li>
+          <li>Ayol — koordinator rolini qabul qiladi; muloqot qoidalarini o'rganadi.</li>
+        </ul>
+        <p><strong>Natija:</strong> Har kimning aniq javobgarlik zonasi bor.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ 2-kun. Arizalar jadvalini yaratish</h4>
+        <ul class="check">
+          <li>Aka — umumiy jadvalni yaratadi.</li>
+          <li>Ayol — ayol arizalari uchun maydonlarni qo'shadi.</li>
+          <li>Abu Muhammad — ariza holatlarini tasdiqlaydi.</li>
+        </ul>
+        <p><strong>Natija:</strong> Har bir ariza tushadigan joy bor.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ 3-kun. Simptomlar anketasini yaratish</h4>
+        <ul class="check">
+          <li>Abu Muhammad — savollarni beradi.</li>
+          <li>Aka — tuzilishda yordam beradi.</li>
+          <li>Ayol — qulay shaklda bezaydi.</li>
+        </ul>
+        <p><strong>Natija:</strong> Har bir yangi inson bitta anketani oladi.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ 4-kun. Profillarni bezash</h4>
+        <ul class="check">
+          <li>Ayol — Instagram va Telegram tavsifini tayyorlaydi.</li>
+          <li>Aka — tushunarliligini tekshiradi.</li>
+          <li>Abu Muhammad — tasdiqlaydi.</li>
+        </ul>
+        <p><strong>Natija:</strong> Profillar tushunarli va professional ko'rinadi.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ 5-kun. Xizmatlar paketlarini tayyorlash</h4>
+        <ul class="check">
+          <li>Abu Muhammad — qaysi xizmatlar birinchi bo'lishini hal qiladi.</li>
+          <li>Aka — har bir xizmatga vaqtni hisoblaydi.</li>
+          <li>Ayol — paketlar tavsifini bezaydi.</li>
+        </ul>
+        <p><strong>Natija:</strong> Odamlarga taklif qilish mumkin bo'lgan 3–4 ta xizmat bor.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ 6-kun. Kontent tayyorlash</h4>
+        <ul class="check">
+          <li>Abu Muhammad — ovozli yoki qisqa videolar yozadi.</li>
+          <li>Ayol — post matnlarini tayyorlaydi.</li>
+          <li>Aka — videolarda yordam beradi.</li>
+        </ul>
+        <p><strong>Natija:</strong> Hafta uchun birinchi kontent bor.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ 7-kun. Birinchi joylarni ochish</h4>
+        <p><strong>E'lon qilish:</strong> «Birlamchi tahlilga yozilish ochildi. Yozilish uchun anketani to'ldiring. Bu haftadagi joylar soni cheklangan».</p>
+        <p><strong>Natija:</strong> Birinchi tizimli arizalarni yig'ish boshlanadi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9 -->
+<section id="s9">
+  <div class="lang active" data-lang="ru">
+    <h2>9. План на 30 дней</h2>
+    <div class="grid-2">
+      <div class="kpi .k">
+        <h4>🗓️ Неделя 1. Основа</h4>
+        <p><strong>Критически важно:</strong> роли команды; таблица заявок; анкета; описание профилей; пакеты услуг; первые посты; первые заявки.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ Неделя 2. Первые консультации</h4>
+        <p><strong>Критически важно:</strong> провести 5–10 первичных разборов; проверить анкету; сделать шаблон программы; собрать первые отзывы; понять, какие жалобы самые частые.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ Неделя 3. Сопровождение и документы</h4>
+        <p><strong>Средне важно:</strong> запустить пакет 7/21 дней; внедрить мониторинг 15 признаков; сделать шаблон заключения; распределить пациентов между вами и братом.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ Неделя 4. Контент и улучшение</h4>
+        <p><strong>Средне важно:</strong> подготовить PDF-лид-магнит; провести эфир вопрос-ответ; подготовить 30-дневный контент-план; улучшить пакеты услуг; посчитать доход и расходы.</p>
+      </div>
+    </div>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>9. 30 kunlik reja</h2>
+    <div class="grid-2">
+      <div class="kpi .k">
+        <h4>🗓️ 1-hafta. Asos</h4>
+        <p><strong>Juda muhim:</strong> jamoa rollari; arizalar jadvali; anketa; profillar tavsifi; xizmatlar paketlari; birinchi postlar; birinchi arizalar.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ 2-hafta. Birinchi maslahatlar</h4>
+        <p><strong>Juda muhim:</strong> 5–10 ta birlamchi tahlil o'tkazish; anketani tekshirish; dastur shablonini yaratish; birinchi fikrlarni yig'ish; eng ko'p uchraydigan shikoyatlarni tushunish.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ 3-hafta. Hamrohlik va hujjatlar</h4>
+        <p><strong>O'rtacha muhim:</strong> 7/21 kunlik paketni ishga tushirish; 15 belgi monitoringini joriy qilish; xulosa shablonini yaratish; bemorlarni siz va aka o'rtasida taqsimlash.</p>
+      </div>
+      <div class="kpi .k">
+        <h4>🗓️ 4-hafta. Kontent va yaxshilash</h4>
+        <p><strong>O'rtacha muhim:</strong> PDF-lid-magnitni tayyorlash; savol-javob efirini o'tkazish; 30 kunlik kontent rejasini tayyorlash; xizmatlar paketlarini yaxshilash; daromad va xarajatlarni hisoblash.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10 -->
+<section id="s10">
+  <div class="lang active" data-lang="ru">
+    <h2>10. Еженедельный порядок работы команды</h2>
+    
+    <h3>📅 Каждый день</h3>
+    <div class="grid-3">
+      <div class="kpi .k">
+        <h4>👩 Женщина</h4>
+        <ul class="check">
+          <li>проверяет женские заявки;</li><li>отправляет анкеты;</li><li>напоминает о консультациях;</li><li>публикует stories/посты;</li><li>собирает вопросы.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>🤝 Брат</h4>
+        <ul class="check">
+          <li>проверяет мужские заявки;</li><li>помогает с расписанием;</li><li>проводит разрешённые сеансы;</li><li>заполняет мониторинг;</li><li>готовит черновики программ.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>👤 Абу Мухаммад</h4>
+        <ul class="check">
+          <li>ведёт ключевые консультации;</li><li>утверждает программы;</li><li>ведёт сложные случаи;</li><li>записывает идеи для контента.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h3 style="margin-top:20px">🔄 Раз в неделю</h3>
+    <p>Командное собрание 30–60 минут:</p>
+    <ol class="steps">
+      <li>Сколько было заявок?</li><li>Сколько анкет заполнено?</li><li>Сколько консультаций проведено?</li>
+      <li>Сколько оплат?</li><li>Какие проблемы?</li><li>Какие темы чаще всего у людей?</li>
+      <li>Что публикуем на следующей неделе?</li><li>Какие пациенты требуют контроля?</li>
+    </ol>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>10. Jamoaning haftalik ishlash tartibi</h2>
+    
+    <h3>📅 Har kuni</h3>
+    <div class="grid-3">
+      <div class="kpi .k">
+        <h4>👩 Ayol</h4>
+        <ul class="check">
+          <li>ayol arizalarini tekshiradi;</li><li>anketalarni yuboradi;</li><li>maslahatlar haqida eslatadi;</li><li>stories/postlarni nashr qiladi;</li><li>savollarni yig'adi.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>🤝 Aka</h4>
+        <ul class="check">
+          <li>aka arizalarini tekshiradi;</li><li>jadvalda yordam beradi;</li><li>ruxsat berilgan seanslarni o'tkazadi;</li><li>monitoringni to'ldiradi;</li><li>dastur qoralamalarini tayyorlaydi.</li>
+        </ul>
+      </div>
+      <div class="kpi .k">
+        <h4>👤 Abu Muhammad</h4>
+        <ul class="check">
+          <li>asosiy maslahatlarni olib boradi;</li><li>dasturlarni tasdiqlaydi;</li><li>murakkab holatlarni olib boradi;</li><li>kontent uchun g'oyalarni yozadi.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h3 style="margin-top:20px">🔄 Haftada bir marta</h3>
+    <p>Jamoa yig'ilishi 30–60 daqiqa:</p>
+    <ol class="steps">
+      <li>Qancha ariza bo'ldi?</li><li>Qancha anketa to'ldirildi?</li><li>Qancha maslahat o'tkazildi?</li>
+      <li>Qancha to'lov?</li><li>Qanday muammolar?</li><li>Odamlarda qaysi mavzular eng ko'p?</li>
+      <li>Keyingi haftada nima nashr qilamiz?</li><li>Qaysi bemorlar nazorat talab qiladi?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- SECTION 11 -->
+<section id="s11">
+  <div class="lang active" data-lang="ru">
+    <h2>11. Приоритетная таблица задач</h2>
+    <div style="overflow-x:auto">
+    <table class="priority-table">
+      <thead><tr><th>Приоритет</th><th>Задача</th><th>Кто отвечает</th><th>Срок</th></tr></thead>
+      <tbody>
+        <tr><td><span class="priority-badge critical">Критично</span></td><td>Роли команды</td><td>Абу Мухаммад</td><td>1 день</td></tr>
+        <tr><td><span class="priority-badge critical">Критично</span></td><td>Таблица заявок</td><td>Брат</td><td>1–2 дня</td></tr>
+        <tr><td><span class="priority-badge critical">Критично</span></td><td>Женская обработка заявок</td><td>Женщина</td><td>1–2 дня</td></tr>
+        <tr><td><span class="priority-badge critical">Критично</span></td><td>Анкета симптомов</td><td>Все</td><td>2–3 дня</td></tr>
+        <tr><td><span class="priority-badge critical">Критично</span></td><td>Пакеты услуг</td><td>Абу Мухаммад</td><td>3–5 дней</td></tr>
+        <tr><td><span class="priority-badge critical">Критично</span></td><td>Шаблон ответа</td><td>Женщина</td><td>1 день</td></tr>
+        <tr><td><span class="priority-badge critical">Критично</span></td><td>Описание профиля</td><td>Женщина + утверждение</td><td>2 дня</td></tr>
+        <tr><td><span class="priority-badge critical">Критично</span></td><td>Шаблон программы</td><td>Абу Мухаммад + брат</td><td>1 неделя</td></tr>
+        <tr><td><span class="priority-badge critical">Критично</span></td><td>Мониторинг 15 признаков</td><td>Брат</td><td>1 неделя</td></tr>
+        <tr><td><span class="priority-badge medium">Средне</span></td><td>Контент-план 30 дней</td><td>Женщина</td><td>2 недели</td></tr>
+        <tr><td><span class="priority-badge medium">Средне</span></td><td>PDF-лид-магнит</td><td>Женщина + вы</td><td>2–3 недели</td></tr>
+        <tr><td><span class="priority-badge medium">Средне</span></td><td>Шаблон заключения</td><td>Брат + женщина</td><td>2–3 недели</td></tr>
+        <tr><td><span class="priority-badge medium">Средне</span></td><td>Финансовая таблица</td><td>Брат</td><td>2 недели</td></tr>
+        <tr><td><span class="priority-badge medium">Средне</span></td><td>Telegram-чат</td><td>Женщина</td><td>2–4 недели</td></tr>
+        <tr><td><span class="priority-badge low">Мало</span></td><td>Сайт</td><td>Позже</td><td>2–3 месяц</td></tr>
+        <tr><td><span class="priority-badge low">Мало</span></td><td>Сложная CRM</td><td>Позже</td><td>после стабильных заявок</td></tr>
+        <tr><td><span class="priority-badge low">Мало</span></td><td>Большой курс</td><td>Позже</td><td>3–6 месяц</td></tr>
+        <tr><td><span class="priority-badge low">Мало</span></td><td>Массовая реклама</td><td>Позже</td><td>после воронки</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>11. Vazifalar prioritet jadvali</h2>
+    <div style="overflow-x:auto">
+    <table class="priority-table">
+      <thead><tr><th>Prioritet</th><th>Vazifa</th><th>Javobgar</th><th>Muddat</th></tr></thead>
+      <tbody>
+        <tr><td><span class="priority-badge critical">Muhim</span></td><td>Jamoa rollari</td><td>Abu Muhammad</td><td>1 kun</td></tr>
+        <tr><td><span class="priority-badge critical">Muhim</span></td><td>Arizalar jadvali</td><td>Aka</td><td>1–2 kun</td></tr>
+        <tr><td><span class="priority-badge critical">Muhim</span></td><td>Ayol arizalarini qayta ishlash</td><td>Ayol</td><td>1–2 kun</td></tr>
+        <tr><td><span class="priority-badge critical">Muhim</span></td><td>Simptomlar anketasi</td><td>Barcha</td><td>2–3 kun</td></tr>
+        <tr><td><span class="priority-badge critical">Muhim</span></td><td>Xizmatlar paketlari</td><td>Abu Muhammad</td><td>3–5 kun</td></tr>
+        <tr><td><span class="priority-badge critical">Muhim</span></td><td>Javob shabloni</td><td>Ayol</td><td>1 kun</td></tr>
+        <tr><td><span class="priority-badge critical">Muhim</span></td><td>Profil tavsifi</td><td>Ayol + tasdiqlash</td><td>2 kun</td></tr>
+        <tr><td><span class="priority-badge critical">Muhim</span></td><td>Dastur shabloni</td><td>Abu Muhammad + aka</td><td>1 hafta</td></tr>
+        <tr><td><span class="priority-badge critical">Muhim</span></td><td>15 belgi monitoringi</td><td>Aka</td><td>1 hafta</td></tr>
+        <tr><td><span class="priority-badge medium">O'rta</span></td><td>30 kunlik kontent rejasi</td><td>Ayol</td><td>2 hafta</td></tr>
+        <tr><td><span class="priority-badge medium">O'rta</span></td><td>PDF-lid-magnit</td><td>Ayol + siz</td><td>2–3 hafta</td></tr>
+        <tr><td><span class="priority-badge medium">O'rta</span></td><td>Xulosa shabloni</td><td>Aka + ayol</td><td>2–3 hafta</td></tr>
+        <tr><td><span class="priority-badge medium">O'rta</span></td><td>Moliyaviy jadval</td><td>Aka</td><td>2 hafta</td></tr>
+        <tr><td><span class="priority-badge medium">O'rta</span></td><td>Telegram-chat</td><td>Ayol</td><td>2–4 hafta</td></tr>
+        <tr><td><span class="priority-badge low">Kam</span></td><td>Sayt</td><td>Keyinroq</td><td>2–3 oy</td></tr>
+        <tr><td><span class="priority-badge low">Kam</span></td><td>Murakkab CRM</td><td>Keyinroq</td><td>barqaror arizalardan keyin</td></tr>
+        <tr><td><span class="priority-badge low">Kam</span></td><td>Katta kurs</td><td>Keyinroq</td><td>3–6 oy</td></tr>
+        <tr><td><span class="priority-badge low">Kam</span></td><td>Ommaviy reklama</td><td>Keyinroq</td><td>voronkadan keyin</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 12 -->
+<section id="s12">
+  <div class="lang active" data-lang="ru">
+    <h2>12. Что делать, если хотите начать совсем с малого</h2>
+    <p>Если у вас нет времени делать всё, начните только с 5 вещей:</p>
+    <ol class="steps">
+      <li><strong>Анкета симптомов</strong>.</li>
+      <li><strong>Таблица заявок</strong>.</li>
+      <li><strong>3 пакета услуг</strong>.</li>
+      <li><strong>Шаблон индивидуальной программы</strong>.</li>
+      <li><strong>Ежедневный короткий контент</strong>.</li>
+    </ol>
+    <div class="note info">
+      <strong>Минимальная рабочая система:</strong><br>
+      Пост → анкета → консультация → программа → сеанс/сопровождение → контроль
+    </div>
+    <p>Этого достаточно, чтобы начать зарабатывать и постепенно улучшать проект.</p>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>12. Agar juda kichikdan boshlamoqchi bo'lsangiz</h2>
+    <p>Agar hamma narsani qilishga vaqtingiz bo'lmasa, faqat 5 ta narsadan boshlang:</p>
+    <ol class="steps">
+      <li><strong>Simptomlar anketasi</strong>.</li>
+      <li><strong>Arizalar jadvali</strong>.</li>
+      <li><strong>3 ta xizmat paketi</strong>.</li>
+      <li><strong>Individual dastur shabloni</strong>.</li>
+      <li><strong>Har kuni qisqa kontent</strong>.</li>
+    </ol>
+    <div class="note info">
+      <strong>Minimal ishchi tizim:</strong><br>
+      Post → anketa → maslahat → dastur → seans/hamrohlik → nazorat
+    </div>
+    <p>Bu daromad olish va loyihani asta-sekin yaxshilash uchun yetarli.</p>
+  </div>
+</section>
+
+<!-- SECTION 13 -->
+<section id="s13">
+  <div class="lang active" data-lang="ru">
+    <h2>13. Главный итог</h2>
+    <p>Вам не нужно сразу строить большую систему. Начните с малого:</p>
+    <ul class="check">
+      <li>один понятный профиль;</li><li>одна анкета;</li><li>одна таблица заявок;</li><li>три пакета услуг;</li>
+      <li>один шаблон программы;</li><li>один шаблон мониторинга;</li><li>регулярный контент;</li><li>чёткие роли команды.</li>
+    </ul>
+    <div class="code">Главное распределение:
+Абу Мухаммад — главный раки, метод, сложные случаи, утверждение.
+Брат — ассистент раки, сеансы, мониторинг, мужские заявки, черновики программ.
+Женщина — заявки женщин, анкеты, чат, контент, напоминания, оформление документов.</div>
+    <p>Если команда будет делать хотя бы эти критические вещи, проект уже начнёт работать системно, даже без сайта, сложной CRM, большого курса и рекламы.</p>
+    <p style="text-align:center;margin-top:20px">
+      <a class="btn primary" href="#top">↑ Наверх / Yuqoriga</a>
+    </p>
+  </div>
+  <div class="lang" data-lang="uz">
+    <h2>13. Asosiy xulosa</h2>
+    <p>Sizga darhol katta tizim qurish shart emas. Kichikdan boshlang:</p>
+    <ul class="check">
+      <li>bitta tushunarli profil;</li><li>bitta anketa;</li><li>bitta arizalar jadvali;</li><li>uchta xizmat paketi;</li>
+      <li>bitta dastur shabloni;</li><li>bitta monitoring shabloni;</li><li>muntazam kontent;</li><li>aniq jamoa rollari.</li>
+    </ul>
+    <div class="code">Asosiy taqsimot:
+Abu Muhammad — bosh roqi, metod, murakkab holatlar, tasdiqlash.
+Aka — roqi assistenti, seanslar, monitoring, aka arizalari, dastur qoralamalari.
+Ayol — ayol arizalari, anketalar, chat, kontent, eslatmalar, hujjatlarni bezash.</div>
+    <p>Agar jamoa ushbu muhim narsalarni qilsa, loyiha allaqachon tizimli ishlay boshlaydi, hatto sayt, murakkab CRM, katta kurs va reklamasiz ham.</p>
+    <p style="text-align:center;margin-top:20px">
+      <a class="btn primary" href="#top">↑ Yuqoriga / Наверх</a>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<button class="totop" id="totop" aria-label="Прокрутить наверх / Yuqoriga">↑</button>
+
+<footer style="text-align:center;color:#64748b;padding:clamp(24px,5vw,32px) 0 clamp(40px,8vw,52px);font-size:clamp(14px,2.8vw,15px)">
+  © Ruqyah Team Plan — <span data-i18n-footer-ru>Бизнес-модель для команды по рукье</span><span data-i18n-footer-uz style="display:none">Ruqya jamoasi uchun biznes modeli</span>
+</footer>
+
+<script>
+// ===== LANGUAGE SWITCHER =====
+const langBtns = document.querySelectorAll('.lang-btn');
+const langBlocks = document.querySelectorAll('.lang');
+const footerRu = document.querySelector('[data-i18n-footer-ru]');
+const footerUz = document.querySelector('[data-i18n-footer-uz]');
+
+function setLang(lang) {
+  // Update button states
+  langBtns.forEach(btn => {
+    const isActive = btn.dataset.lang === lang;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', isActive);
+  });
+  
+  // Show/hide language blocks
+  langBlocks.forEach(block => {
+    block.classList.toggle('active', block.dataset.lang === lang);
+  });
+  
+  // Update footer
+  if (footerRu && footerUz) {
+    footerRu.style.display = lang === 'ru' ? 'inline' : 'none';
+    footerUz.style.display = lang === 'uz' ? 'inline' : 'none';
+  }
+  
+  // Update HTML lang attribute
+  document.documentElement.lang = lang === 'uz' ? 'uz' : 'ru';
+  
+  // Update meta description
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) {
+    metaDesc.setAttribute('content', lang === 'ru'
+      ? 'Бизнес-план для Абу Мухаммада: рукья, команда из 3 человек, реализация'
+      : 'Abu Muhammad uchun biznes-reja: ruqya, 3 kishilik jamoa, amalga oshirish');
+  }
+  
+  // Save preference
+  localStorage.setItem('ruqyah_lang', lang);
+}
+
+// Initialize language switcher
+langBtns.forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
+
+// Apply saved language on load
+document.addEventListener('DOMContentLoaded', function() {
+  setLang(localStorage.getItem('ruqyah_lang') || 'ru');
+  
+  // ===== PROGRESS BAR =====
+  const progress = document.getElementById('progress');
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
+    progress.style.width = percent + '%';
+    progress.setAttribute('aria-valuenow', Math.round(percent));
+  }
+  window.addEventListener('scroll', updateProgress, {passive: true});
+  updateProgress();
+
+  // ===== ACTIVE NAV HIGHLIGHT =====
+  const navLinks = document.querySelectorAll('#nav a');
+  const sections = Array.from(navLinks).map(link => {
+    const id = link.getAttribute('href');
+    return id?.startsWith('#') ? document.querySelector(id) : null;
+  }).filter(Boolean);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = '#' + entry.target.id;
+        navLinks.forEach(link => {
+          const isActive = link.getAttribute('href') === id;
+          link.classList.toggle('active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'location');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      }
+    });
+  }, {rootMargin: '-45% 0px -50% 0px', threshold: 0.01});
+
+  sections.forEach(section => observer.observe(section));
+
+  // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId.length > 1) {
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          const headerOffset = document.querySelector('.topbar')?.offsetHeight || 64;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({top: offsetPosition, behavior: 'smooth'});
+          this.blur();
+        }
+      }
+    });
+  });
+
+  // ===== PRINT BUTTON =====
+  const printBtn = document.getElementById('printBtn');
+  if (printBtn) {
+    printBtn.addEventListener('click', () => {
+      const originalDisplay = {};
+      document.querySelectorAll('.lang-switch, .nav, .progress, .totop').forEach(el => {
+        originalDisplay[el] = el.style.display;
+        el.style.display = 'none';
+      });
+      window.print();
+      Object.entries(originalDisplay).forEach(([el, display]) => {
+        el.style.display = display;
+      });
+    });
+  }
+
+  // ===== BACK TO TOP BUTTON =====
+  const topBtn = document.getElementById('totop');
+  function toggleTopBtn() {
+    if (window.scrollY > 500) {
+      topBtn.classList.add('show');
+    } else {
+      topBtn.classList.remove('show');
+    }
+  }
+  window.addEventListener('scroll', toggleTopBtn, {passive: true});
+  toggleTopBtn();
+  
+  topBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+
+  // ===== MOBILE TOUCH IMPROVEMENTS =====
+  document.querySelectorAll('.btn, .lang-btn, .nav a, #totop').forEach(el => {
+    el.addEventListener('touchstart', function() {}, {passive: true});
+  });
+});
+</script>
+</body>
+</html>
