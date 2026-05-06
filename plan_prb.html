@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<meta name="description" content="Сравнение: с бизнес-системой и без — Модель заработка рукьи">
-<title>Сравнение: с бизнес-системой и без — Модель заработка рукьи</title>
+<meta name="description" content="Модель заработка для проекта рукьи с малой командой: сравнение с системой и без">
+<title>Модель бизнеса рукьи — с системой и малой командой</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --green:#0f766e;--green2:#064e3b;--gold:#d4af37;--gold-dark:#b8921f;
@@ -17,13 +17,13 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:var(--header-height)}
 body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:clamp(16px,1.8vw,17px);-webkit-text-size-adjust:100%}
-.container{width:100%;max-width:1080px;margin:0 auto;padding:0 clamp(16px,4vw,20px)}
+.container{width:100%;max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,20px)}
 a{color:var(--green);text-decoration:none;transition:color .2s}
 a:hover{text-decoration:underline}
 a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
-h1,h2,h3{line-height:1.25;margin:0 0 .6em}
+h1,h2,h3,h4{line-height:1.25;margin:0 0 .5em}
 
-/* PROGRESS BAR */
+/* PROGRESS */
 .progress{height:3px;background:linear-gradient(90deg,var(--gold),var(--green));width:0;position:fixed;top:0;left:0;z-index:100;transition:width .1s linear}
 
 /* TOP BAR */
@@ -46,8 +46,9 @@ h1,h2,h3{line-height:1.25;margin:0 0 .6em}
 /* HERO */
 .hero{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:clamp(40px,8vw,56px) 0 clamp(24px,5vw,30px);position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 200px at 20% -10%,rgba(212,175,55,.2),transparent);pointer-events:none}
-.hero h1{text-align:center;font-size:clamp(22px,4.8vw,42px);font-weight:800;margin:0 0 8px}
-.hero .sub{text-align:center;opacity:.95;max-width:900px;margin:0 auto;font-size:clamp(14px,2.8vw,16px)}
+.hero h1{text-align:center;font-size:clamp(20px,4.5vw,38px);font-weight:800;margin:0 0 8px}
+.hero .sub{text-align:center;opacity:.95;max-width:900px;margin:0 auto;font-size:clamp(14px,2.8vw,16px);line-height:1.6}
+.hero .note{background:rgba(255,255,255,.15);border-left:3px solid var(--gold);padding:clamp(10px,2.5vw,12px) clamp(12px,3vw,14px);border-radius:8px;margin-top:16px;font-size:clamp(13px,2.6vw,14px)}
 
 /* NAV */
 .nav{border-top:1px solid rgba(255,255,255,.15);margin-top:clamp(14px,3vw,18px)}
@@ -63,22 +64,36 @@ main{padding:clamp(20px,4vw,26px) 0}
 section{background:var(--paper);border:1px solid var(--line);border-radius:clamp(14px,3vw,18px);padding:clamp(20px,4vw,26px);margin:clamp(14px,3vw,16px) 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
 section h2{font-size:clamp(20px,4.2vw,24px);color:#073c36;padding-bottom:8px;border-bottom:3px solid var(--gold);display:inline-block;margin-bottom:16px}
 section h3{font-size:clamp(18px,3.6vw,20px);margin:clamp(16px,3vw,18px) 0 clamp(8px,2vw,10px);color:var(--green)}
+section h4{font-size:clamp(16px,3.2vw,17px);margin:clamp(14px,3vw,16px) 0 clamp(6px,1.5vw,8px);color:#1f2937}
+
+/* CONTENT STYLES */
+p{margin:clamp(10px,2vw,12px) 0}
+ul,ol{padding-left:clamp(22px,4vw,26px);margin:clamp(10px,2vw,12px) 0}
+li{margin:clamp(5px,1.2vw,7px) 0}
+blockquote{background:var(--warn);border-left:4px solid var(--gold);padding:clamp(12px,3vw,14px);border-radius:10px;color:#7c2d12;margin:clamp(14px,3vw,16px) 0;font-size:clamp(14px,2.8vw,15px)}
+blockquote strong{color:#431407}
 .note{padding:clamp(10px,2.5vw,12px);border-radius:10px;border:1px solid;margin:clamp(12px,3vw,14px) 0;font-size:clamp(14px,2.8vw,15px)}
 .note.info{background:var(--info);border-color:#bfdbfe;color:#1e3a8a}
 .note.warn{background:var(--warn);border-color:#fed7aa;color:#7c2d12}
-.table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:clamp(14px,2.8vw,15px)}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;margin:clamp(12px,3vw,14px) 0}
+.table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:clamp(14px,2.8vw,15px);min-width:300px}
 .table th,.table td{padding:clamp(10px,2.5vw,12px);border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 .table th{background:#f1f5f9;font-weight:700}
 .table tr:last-child td{border-bottom:none}
-@media(max-width:480px){.table{display:block;overflow-x:auto}}
+
+/* GRIDS */
 .grid-2{display:grid;grid-template-columns:1fr;gap:clamp(14px,3vw,18px)}
 @media(min-width:768px){.grid-2{grid-template-columns:1fr 1fr}}
-.funnel{background:linear-gradient(#ecfdf5,#f0fdfa);border:2px dashed #6ee7b7;border-radius:14px;padding:clamp(14px,3vw,16px);text-align:center;font-family:ui-monospace,monospace;color:#065f46;font-size:clamp(14px,2.8vw,15px);line-height:1.8}
-.kpi{display:grid;grid-template-columns:1fr;gap:clamp(10px,2.5vw,12px)}
-@media(min-width:768px){.kpi{grid-template-columns:repeat(3,1fr)}}
-.kpi .k{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:clamp(12px,3vw,14px);font-size:clamp(14px,2.8vw,15px)}
-.kpi .k strong{color:var(--green-dark);display:block;margin-bottom:4px}
-.code{background:#0f172a;color:#e2e8f0;padding:clamp(12px,3vw,14px);border-radius:10px;font-family:ui-monospace,monospace;white-space:pre-wrap;font-size:clamp(13px,2.6vw,14px);overflow-x:auto}
+.grid-3{display:grid;grid-template-columns:1fr;gap:clamp(12px,3vw,14px)}
+@media(min-width:768px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+
+/* FUNNEL */
+.funnel{background:linear-gradient(#ecfdf5,#f0fdfa);border:2px dashed #6ee7b7;border-radius:14px;padding:clamp(14px,3vw,16px);text-align:center;font-family:ui-monospace,monospace;color:#065f46;font-size:clamp(13px,2.6vw,14px);line-height:2;margin:clamp(12px,3vw,14px) 0}
+
+/* CODE BLOCKS */
+.code{background:#0f172a;color:#e2e8f0;padding:clamp(12px,3vw,14px);border-radius:10px;font-family:ui-monospace,monospace;white-space:pre-wrap;font-size:clamp(13px,2.6vw,14px);overflow-x:auto;margin:clamp(12px,3vw,14px) 0}
 
 /* LANG TOGGLE */
 .lang{display:none;animation:fadeIn .2s ease}
@@ -100,33 +115,33 @@ section h3{font-size:clamp(18px,3.6vw,20px);margin:clamp(16px,3vw,18px) 0 clamp(
   .hero{background:#0f766e;color:#fff}
 }
 
-/* ACCESSIBILITY: Reduced motion */
+/* ACCESSIBILITY */
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
 
-/* Mobile: Better tap targets */
+/* MOBILE TAP TARGETS */
 @media(max-width:480px){
   .btn{min-height:44px;padding:10px 14px}
   .lang-btn{min-height:36px}
   .nav a{min-height:40px;padding:10px 12px}
   section{margin:14px 0;padding:18px}
+  .hero h1{font-size:clamp(18px,5vw,32px)}
 }
 </style>
 </head>
 <body>
 <div class="progress" id="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Прогресс чтения"></div>
 
-<!-- Skip link for accessibility -->
 <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" onfocus="this.style.left='16px';this.style.top='16px';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';this.style.zIndex='1000';this.style.background='var(--green)';this.style.color='#fff';this.style.padding='12px 20px';this.style.borderRadius='8px'">Перейти к содержанию</a>
 
-<!-- TOP BAR WITH LANGUAGE SWITCH -->
+<!-- TOP BAR -->
 <div class="topbar">
   <div class="container wrap">
-    <div class="brand"><span class="dot" aria-hidden="true"></span> Ruqyah Business System</div>
+    <div class="brand"><span class="dot" aria-hidden="true"></span> Ruqyah Team Model</div>
     <div class="actions">
-      <button class="btn" id="printBtn" aria-label="Печать страницы / Sahifani chop etish">🖨️ <span class="hide-mobile">Печать</span></button>
-      <div class="lang-switch" role="group" aria-label="Переключатель языка / Tilni almashtirish">
+      <button class="btn" id="printBtn" aria-label="Печать / Chop etish">🖨️ <span class="hide-mobile">Печать</span></button>
+      <div class="lang-switch" role="group" aria-label="Язык / Til">
         <button class="lang-btn active" data-lang="ru" aria-pressed="true">RU</button>
         <button class="lang-btn" data-lang="uz" aria-pressed="false">UZ</button>
       </div>
@@ -134,37 +149,61 @@ section h3{font-size:clamp(18px,3.6vw,20px);margin:clamp(16px,3vw,18px) 0 clamp(
   </div>
 </div>
 
+<!-- HERO -->
 <header class="hero">
   <div class="container">
-    <!-- RU HERO -->
     <div class="lang active" data-lang="ru">
-      <h1>Сравнение: с бизнес-системой и без неё + модель заработка для проекта рукьи</h1>
-      <p class="sub">Важно: цифры — не гарантия дохода, а ориентиры и формулы. Реальный заработок зависит от доверия, качества работы, цен, репутации, регулярности контента и дозволения Аллаха. Исцеление не продаётся.</p>
+      <h1>Модель бизнеса рукьи с малой командой</h1>
+      <p class="sub">Сравнение: с системой и без неё. Доход, роли, приоритеты.</p>
+      <div class="note"><strong>Важно:</strong> цифры — ориентиры для планирования, не гарантия дохода. Реальный результат зависит от доверия, качества, регулярности и дозволения Аллаха. Исцеление не продаётся.</div>
     </div>
-    <!-- UZ HERO -->
     <div class="lang" data-lang="uz">
-      <h1>Taqqoslash: biznes-tizim bilan va tizimsiz + ruqya loyihasi uchun daromad modeli</h1>
-      <p class="sub">Muhim: raqamlar kafolat emas, balki rejalashtirish uchun formulalar. Haqiqiy daromad ishonch, sifat, narx, reputatsiya, kontent muntazamliligi va Allohning izniga bog'liq. Shifo sotilmaydi.</p>
+      <h1>Kichik jamoa bilan ruqya biznes modeli</h1>
+      <p class="sub">Taqqoslash: tizim bilan va tizimsiz. Daromad, rollar, ustuvorliklar.</p>
+      <div class="note"><strong>Muhim:</strong> raqamlar rejalashtirish uchun, kafolat emas. Haqiqiy natija ishonch, sifat, muntazamlik va Allohning izniga bog'liq. Shifo sotilmaydi.</div>
     </div>
 
-    <nav class="nav" aria-label="Основная навигация">
+    <!-- NAV -->
+    <nav class="nav" aria-label="Навигация">
       <div class="container">
         <div class="scroll" id="nav" role="tablist">
-          <!-- RU NAV -->
           <span class="lang active" data-lang="ru" style="display:contents">
-            <a href="#s1" role="tab">1. Полноценность плана</a><a href="#s2" role="tab">2. Что даст система</a><a href="#s3" role="tab">3. Без системы</a>
-            <a href="#s4" role="tab">4. Сравнение</a><a href="#s5" role="tab">5. Модель заработка</a><a href="#s6" role="tab">6. Сценарии</a>
-            <a href="#s7" role="tab">7. Доход без/с системой</a><a href="#s8" role="tab">8. Почему растёт</a><a href="#s9" role="tab">9. Быстрые деньги</a>
-            <a href="#s10" role="tab">10. Стартовая модель</a><a href="#s11" role="tab">11. Цели 90 дней</a><a href="#s12" role="tab">12. Помехи</a>
-            <a href="#s13" role="tab">13. Рост</a><a href="#s14" role="tab">14. Формула</a><a href="#s15" role="tab">15. Вывод</a><a href="#s16" role="tab">16. Выбор</a>
+            <a href="#s1" role="tab">1. Оценка плана</a>
+            <a href="#s2" role="tab">2. С системой</a>
+            <a href="#s3" role="tab">3. Без системы</a>
+            <a href="#s4" role="tab">4. Сравнение</a>
+            <a href="#s5" role="tab">5. Роли в доходе</a>
+            <a href="#s6" role="tab">6. Источники</a>
+            <a href="#s7" role="tab">7. Доход без системы</a>
+            <a href="#s8" role="tab">8. Доход с системой</a>
+            <a href="#s9" role="tab">9. Сравнение</a>
+            <a href="#s10" role="tab">10. Почему растёт</a>
+            <a href="#s11" role="tab">11. Быстрые деньги</a>
+            <a href="#s12" role="tab">12. Оплата команде</a>
+            <a href="#s13" role="tab">13. Помехи</a>
+            <a href="#s14" role="tab">14. Приоритеты</a>
+            <a href="#s15" role="tab">15. Минимальная модель</a>
+            <a href="#s16" role="tab">16. Вывод</a>
+            <a href="#s17" role="tab">17. Ключевая мысль</a>
           </span>
-          <!-- UZ NAV -->
           <span class="lang" data-lang="uz" style="display:contents">
-            <a href="#s1" role="tab">1. Rejaning to'liqligi</a><a href="#s2" role="tab">2. Tizim nima beradi</a><a href="#s3" role="tab">3. Tizimsiz</a>
-            <a href="#s4" role="tab">4. Taqqoslash</a><a href="#s5" role="tab">5. Daromad modeli</a><a href="#s6" role="tab">6. Ssenariylar</a>
-            <a href="#s7" role="tab">7. Daromad farqi</a><a href="#s8" role="tab">8. Nega o'sadi</a><a href="#s9" role="tab">9. Tezkor pul</a>
-            <a href="#s10" role="tab">10. Start model</a><a href="#s11" role="tab">11. 90 kun maqsad</a><a href="#s12" role="tab">12. To'siqlar</a>
-            <a href="#s13" role="tab">13. O'sish</a><a href="#s14" role="tab">14. Formula</a><a href="#s15" role="tab">15. Xulosa</a><a href="#s16" role="tab">16. Tanlov</a>
+            <a href="#s1" role="tab">1. Reja bahosi</a>
+            <a href="#s2" role="tab">2. Tizim bilan</a>
+            <a href="#s3" role="tab">3. Tizimsiz</a>
+            <a href="#s4" role="tab">4. Taqqoslash</a>
+            <a href="#s5" role="tab">5. Rollar</a>
+            <a href="#s6" role="tab">6. Manbalar</a>
+            <a href="#s7" role="tab">7. Tizimsiz daromad</a>
+            <a href="#s8" role="tab">8. Tizim bilan daromad</a>
+            <a href="#s9" role="tab">9. Farq</a>
+            <a href="#s10" role="tab">10. Nega o'sadi</a>
+            <a href="#s11" role="tab">11. Tezkor daromad</a>
+            <a href="#s12" role="tab">12. To'lov taqsimoti</a>
+            <a href="#s13" role="tab">13. To'siqlar</a>
+            <a href="#s14" role="tab">14. Ustuvorliklar</a>
+            <a href="#s15" role="tab">15. Minimal model</a>
+            <a href="#s16" role="tab">16. Xulosa</a>
+            <a href="#s17" role="tab">17. Asosiy fikr</a>
           </span>
         </div>
       </div>
@@ -175,344 +214,736 @@ section h3{font-size:clamp(18px,3.6vw,20px);margin:clamp(16px,3vw,18px) 0 clamp(
 <main class="container" id="main-content">
 
 <!-- SECTION 1 -->
-<section id="s1" aria-labelledby="s1-title-ru s1-title-uz">
+<section id="s1">
   <div class="lang active" data-lang="ru">
-    <h2 id="s1-title-ru">1. Насколько полноценный текущий бизнес-план</h2>
-    <p>Предыдущий бизнес-план можно считать <strong>достаточно полноценным для старта и первых 3–6 месяцев</strong>.</p>
-    <h3>Что в нём уже есть</h3>
-    <div style="overflow-x:auto">
-    <table class="table">
-      <thead><tr><th>Блок</th><th>Есть/нет</th><th>Комментарий</th></tr></thead>
-      <tbody>
-        <tr><td>Позиционирование</td><td>Да</td><td>Понятно, кто вы и чем отличаетесь</td></tr>
-        <tr><td>Услуги</td><td>Да</td><td>Консультации, сеансы, программы, сопровождение, курсы</td></tr>
-        <tr><td>Соцсети</td><td>Да</td><td>Instagram, Telegram, YouTube</td></tr>
-        <tr><td>Воронка продаж</td><td>Да</td><td>Контент → анкета → консультация → программа → сопровождение</td></tr>
-        <tr><td>Роль помощницы</td><td>Да</td><td>Чётко описано, что она может делать</td></tr>
-        <tr><td>Первые задания помощнице</td><td>Да</td><td>Есть тест на 7 дней</td></tr>
-        <tr><td>30-дневный план</td><td>Да</td><td>Можно начинать сразу</td></tr>
-        <tr><td>90-дневный план</td><td>Да</td><td>Есть направление роста</td></tr>
-        <tr><td>Этические границы</td><td>Да</td><td>Без обещаний исцеления и без запугивания</td></tr>
-        <tr><td>Документы</td><td>Да</td><td>Анкеты, согласие, заключение, правила чата</td></tr>
-        <tr><td>Монетизация</td><td>Да</td><td>Несколько источников дохода</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <h3>Чего ещё не хватает для полной бизнес-системы</h3>
-    <ol>
-      <li>Точные цены на услуги.</li><li>Финансовая таблица: доходы, расходы, прибыль.</li>
-      <li>Регламент работы команды.</li><li>Скрипты продаж.</li><li>CRM или таблица заявок.</li>
-      <li>Контент-календарь на 30 дней.</li><li>Пакеты услуг: базовый, стандарт, премиум.</li>
-      <li>Система учёта оплат.</li><li>Политика конфиденциальности.</li><li>Автоматизация.</li>
-      <li>Метрики.</li><li>Правовая проверка под вашу страну.</li>
-    </ol>
+    <h2>1. Насколько полноценный бизнес-план сейчас</h2>
+    <p>После обновления под вашу команду бизнес-план стал более реалистичным, потому что он учитывает именно вашу текущую структуру: вы, брат-ассистент и женщина-координатор.</p>
+    
     <h3>Оценка полноценности</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Уровень</th><th>Оценка</th></tr></thead>
-      <tbody><tr><td>Для идеи</td><td>95/100</td></tr><tr><td>Для запуска в 30 дней</td><td>80/100</td></tr>
-      <tr><td>Для стабильного бизнеса 6–12 мес</td><td>65/100</td></tr><tr><td>Для масштабирования</td><td>55/100</td></tr></tbody>
-    </table>
-    </div>
-    <div class="note info"><strong>Вывод:</strong> план хороший для старта. Для стабильного дохода добавьте цены, таблицы, скрипты, автоматизацию, контент и учёт.</div>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Уровень</th><th>Оценка</th><th>Комментарий</th></tr></thead>
+      <tbody>
+        <tr><td>Для идеи</td><td>95/100</td><td>Направление ясное</td></tr>
+        <tr><td>Для запуска в 7–30 дней</td><td>85/100</td><td>Есть роли, задачи, услуги, воронка</td></tr>
+        <tr><td>Для работы с малой командой</td><td>80/100</td><td>Роли распределены правильно</td></tr>
+        <tr><td>Для стабильности на 3–6 мес</td><td>70/100</td><td>Нужны цены, учёт, контент-план</td></tr>
+        <tr><td>Для масштабирования 6–12 мес</td><td>60/100</td><td>Позже: CRM, сайт, курс, реклама</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Что уже есть в плане</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Блок</th><th>Статус</th><th>Комментарий</th></tr></thead>
+      <tbody>
+        <tr><td>Позиционирование</td><td>✅</td><td>Рукья по Корану и Сунне</td></tr>
+        <tr><td>Команда</td><td>✅</td><td>Вы, брат, женщина-координатор</td></tr>
+        <tr><td>Услуги</td><td>✅</td><td>Консультации, сеансы, программы</td></tr>
+        <tr><td>Воронка</td><td>✅</td><td>Контент → анкета → консультация → программа</td></tr>
+        <tr><td>Задачи помощников</td><td>✅</td><td>Разные роли для брата и женщины</td></tr>
+        <tr><td>Приоритеты запуска</td><td>✅</td><td>Критическое / среднее / малое</td></tr>
+        <tr><td>Соцсети</td><td>✅</td><td>Instagram, Telegram, YouTube</td></tr>
+        <tr><td>Документы</td><td>⚠️</td><td>Нужны готовые шаблоны</td></tr>
+        <tr><td>Финансовая модель</td><td>⚠️</td><td>Цены нужно адаптировать</td></tr>
+        <tr><td>Риски и границы</td><td>✅</td><td>Без обещаний, без запугивания</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Чего ещё не хватает</h3>
+    <ol>
+      <li>Точные цены по вашей стране/городу.</li>
+      <li>Готовая таблица заявок.</li>
+      <li>Готовая анкета симптомов.</li>
+      <li>Шаблон индивидуальной программы.</li>
+      <li>Шаблон заключения.</li>
+      <li>Контент-план на 30 дней.</li>
+      <li>Скрипты ответов на частые вопросы.</li>
+      <li>Учёт оплат и расходов.</li>
+      <li>График работы команды.</li>
+      <li>Правила конфиденциальности и женского чата.</li>
+      <li>Список «красных флагов» для направления к врачу.</li>
+    </ol>
   </div>
 
   <div class="lang" data-lang="uz">
-    <h2 id="s1-title-uz">1. Hozirgi biznes-rejaning to'liqligi</h2>
-    <p>Oldingi biznes-reja <strong>start va dastlabki 3–6 oy uchun yetarlicha to'liq</strong> hisoblanadi.</p>
-    <h3>Nima bor</h3>
-    <div style="overflow-x:auto">
-    <table class="table">
-      <thead><tr><th>Blok</th><th>Bor/Yo'q</th><th>Izoh</th></tr></thead>
+    <h2>1. Hozirgi biznes-rejaning to'liqligi</h2>
+    <p>Yangilangan reja jamoangizga moslashgani sababli yanada realistik bo'ldi: siz, yordamchi aka va ayol-koordinator.</p>
+    
+    <h3>Baholash</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Daraja</th><th>Baho</th><th>Izoh</th></tr></thead>
       <tbody>
-        <tr><td>Pozitsiyalash</td><td>Ha</td><td>Kimligingiz va farqingiz aniq</td></tr>
-        <tr><td>Xizmatlar</td><td>Ha</td><td>Konsultatsiya, seans, dastur, kuzatuv, kurslar</td></tr>
-        <tr><td>Ijtimoiy tarmoqlar</td><td>Ha</td><td>Instagram, Telegram, YouTube</td></tr>
-        <tr><td>Sotuv voronkasi</td><td>Ha</td><td>Kontent → anketa → konsultatsiya → dastur → kuzatuv</td></tr>
-        <tr><td>Yordamchi roli</td><td>Ha</td><td>Vazifalar aniq</td></tr>
-        <tr><td>7 kunlik test</td><td>Ha</td><td>Mavjud</td></tr>
-        <tr><td>30 kunlik reja</td><td>Ha</td><td>Darhol boshlash mumkin</td></tr>
-        <tr><td>90 kunlik reja</td><td>Ha</td><td>O'sish yo'nalishi bor</td></tr>
-        <tr><td>Axloqiy chegaralar</td><td>Ha</td><td>Shifo va'dasi yo'q, qo'rqitish yo'q</td></tr>
-        <tr><td>Hujjatlar</td><td>Ha</td><td>Anketa, rozilik, xulosa, chat qoidalari</td></tr>
-        <tr><td>Monetizatsiya</td><td>Ha</td><td>Bir nechta daromad manbai</td></tr>
+        <tr><td>G'oya uchun</td><td>95/100</td><td>Yo'nalish aniq</td></tr>
+        <tr><td>7–30 kunda start</td><td>85/100</td><td>Rollar, vazifalar, xizmatlar, voronka bor</td></tr>
+        <tr><td>Kichik jamoa bilan ishlash</td><td>80/100</td><td>Rollar to'g'ri taqsimlangan</td></tr>
+        <tr><td>3–6 oy barqarorlik</td><td>70/100</td><td>Narx, hisob, kontent-reja kerak</td></tr>
+        <tr><td>6–12 oy masshtab</td><td>60/100</td><td>Keyin: CRM, sayt, kurs, reklama</td></tr>
       </tbody>
-    </table>
-    </div>
+    </table></div>
+
+    <h3>Nima bor</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Blok</th><th>Holat</th><th>Izoh</th></tr></thead>
+      <tbody>
+        <tr><td>Pozitsiyalash</td><td>✅</td><td>Qur'on va Sunnat bo'yicha ruqya</td></tr>
+        <tr><td>Jamoa</td><td>✅</td><td>Siz, aka, ayol-koordinator</td></tr>
+        <tr><td>Xizmatlar</td><td>✅</td><td>Konsultatsiya, seans, dasturlar</td></tr>
+        <tr><td>Voronka</td><td>✅</td><td>Kontent → anketa → konsultatsiya → dastur</td></tr>
+        <tr><td>Yordamchilar vazifalari</td><td>✅</td><td>Aka va ayol uchun turli rollar</td></tr>
+        <tr><td>Start ustuvorliklari</td><td>✅</td><td>Muhim / o'rtacha / kam muhim</td></tr>
+        <tr><td>Ijtimoiy tarmoqlar</td><td>✅</td><td>Instagram, Telegram, YouTube</td></tr>
+        <tr><td>Hujjatlar</td><td>⚠️</td><td>Tayyor shablonlar kerak</td></tr>
+        <tr><td>Moliyaviy model</td><td>⚠️</td><td>Narxlarni moslashtirish kerak</td></tr>
+        <tr><td>Xavflar va chegaralar</td><td>✅</td><td>Va'dasiz, qo'rqitmasdan</td></tr>
+      </tbody>
+    </table></div>
+
     <h3>Nima yetishmayapti</h3>
     <ol>
-      <li>Aniq narxlar.</li><li>Moliyaviy jadval.</li><li>Jamoa reglamenti.</li><li>Sotuv skriptlari.</li>
-      <li>CRM/jadval.</li><li>30 kunlik kontent taqvim.</li><li>Paketlar: basic/standard/premium.</li>
-      <li>To'lov hisobi.</li><li>Maxfiylik siyosati.</li><li>Avtomatlashtirish.</li><li>Metrikalar.</li><li>Huquqiy tekshiruv.</li>
+      <li>Mamlakatingiz/shahringiz uchun aniq narxlar.</li>
+      <li>Tayyor arizalar jadvali.</li>
+      <li>Tayyor simptomlar anketasi.</li>
+      <li>Individual dastur shabloni.</li>
+      <li>Xulosa shabloni.</li>
+      <li>30 kunlik kontent-reja.</li>
+      <li>Ko'p so'raladigan savollarga javob skriptlari.</li>
+      <li>To'lov va xarajatlar hisobi.</li>
+      <li>Jamoa ish jadvali.</li>
+      <li>Maxfiylik va ayollar chati qoidalari.</li>
+      <li>«Qizil bayroqlar» ro'yxati — shifokorga yo'naltirish uchun.</li>
     </ol>
-    <h3>Baholash</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Daraja</th><th>Baho</th></tr></thead>
-      <tbody><tr><td>G'oya uchun</td><td>95/100</td></tr><tr><td>30 kunda start</td><td>80/100</td></tr>
-      <tr><td>6–12 oy barqarorlik</td><td>65/100</td></tr><tr><td>Masshtab</td><td>55/100</td></tr></tbody>
-    </table>
-    </div>
-    <div class="note info"><strong>Xulosa:</strong> start uchun yaxshi. Barqaror daromad uchun narx, jadvallar, skriptlar, avtomatlashuv va hisob kerak.</div>
   </div>
 </section>
 
 <!-- SECTION 2 -->
 <section id="s2">
   <div class="lang active" data-lang="ru">
-    <h2>2. Как будет, если всё это реализовать</h2>
-    <div class="funnel">Контент → Telegram/Instagram → Анкета → Помощница сортирует → Консультация → Программа → Сеансы/Сопровождение → Заключение → Клуб/Рекомендации</div>
-    <div class="grid-2">
-      <div><h3>Что изменится</h3><ul><li>Меньше хаоса</li><li>Больше доверия</li><li>Больше заявок</li><li>Выше средний чек</li><li>Повторные продажи</li><li>Меньше ручной работы</li><li>Сильнее репутация</li><li>Масштабирование</li></ul></div>
-      <div><h3>Какие активы появятся</h3><ul><li>Instagram-витрина</li><li>Telegram-база</li><li>YouTube-трафик</li><li>Анкета, CRM</li><li>Шаблоны программ/заключений</li><li>Мини-курс, клуб</li><li>Команда</li></ul></div>
-    </div>
-    <div class="note info"><strong>Главное:</strong> без системы вы продаёте время. С системой — консультации, программы, сопровождение, обучение, клуб, методологию, документы, доверие.</div>
+    <h2>2. Как будет, если всё реализовать</h2>
+    <p>Если реализовать систему хотя бы на 70%, проект перестанет быть просто личной практикой и станет организованной работой малой команды.</p>
+    
+    <h3>Путь пациента</h3>
+    <div class="funnel">Контент → Анкета → Женщина/Брат сортирует → Консультация → Программа → Сеанс/Сопровождение → Мониторинг → Заключение → Клуб/Курс</div>
+    
+    <h3>Что изменится для вас</h3>
+    <ol>
+      <li>Вы перестанете отвечать на все сообщения вручную.</li>
+      <li>Женские заявки будет мягко принимать женщина.</li>
+      <li>Мужские и технические задачи будет брать брат.</li>
+      <li>Брат сможет проводить часть сеансов под вашим контролем.</li>
+      <li>Вы сосредоточитесь на сложных случаях, методе и контенте.</li>
+      <li>Каждый пациент пройдёт через анкету, программу и мониторинг.</li>
+      <li>У пациентов будет ощущение профессионального подхода.</li>
+      <li>Можно будет продавать не только разовые сеансы, но и сопровождение.</li>
+      <li>Появится возможность обучать саморукье.</li>
+      <li>Доход станет более прогнозируемым.</li>
+    </ol>
+
+    <h3>Какие активы появятся</h3>
+    <ul>
+      <li>База заявок и пациентов</li>
+      <li>Анкета симптомов, шаблоны программ и заключений</li>
+      <li>Контент в Instagram, Telegram, YouTube</li>
+      <li>Женское и мужское направление</li>
+      <li>Отзывы без раскрытия личности</li>
+      <li>Мини-курс и закрытый клуб</li>
+      <li>Репутация системного специалиста</li>
+    </ul>
   </div>
+
   <div class="lang" data-lang="uz">
     <h2>2. Hamma narsa qilinsa qanday bo'ladi</h2>
-    <div class="funnel">Kontent → Telegram/Instagram → Anketa → Yordamchi saralaydi → Konsultatsiya → Dastur → Seans/Kuzatuv → Xulosa → Klub/Tavsiya</div>
-    <div class="grid-2">
-      <div><h3>Nima o'zgaradi</h3><ul><li>Xaos kamayadi</li><li>Ishonch ortadi</li><li>Arizalar ko'payadi</li><li>O'rtacha chek o'sadi</li><li>Takroriy sotuv</li><li>Qo'l mehnati kamayadi</li><li>Reputatsiya kuchayadi</li><li>Masshtab</li></ul></div>
-      <div><h3>Qanday aktivlar</h3><ul><li>Instagram vitrina</li><li>Telegram baza</li><li>YouTube trafik</li><li>Anketa, CRM</li><li>Dastur/xulosa shablonlari</li><li>Mini-kurs, klub</li><li>Jamoa</li></ul></div>
-    </div>
-    <div class="note info"><strong>Asosiysi:</strong> tizimsiz — vaqt sotasiz. Tizim bilan — konsultatsiya, dastur, kuzatuv, ta'lim, klub, metodologiya, hujjatlar, ishonch.</div>
+    <p>Tizimni 70% ga amalga oshirsangiz, loyiha shaxsiy amaliyotdan tashkil etilgan kichik jamoa ishiga aylanadi.</p>
+    
+    <h3>Bemorning yo'li</h3>
+    <div class="funnel">Kontent → Anketa → Ayol/Aka saralaydi → Konsultatsiya → Dastur → Seans/Kuzatuv → Monitoring → Xulosa → Klub/Kurs</div>
+    
+    <h3>Siz uchun nima o'zgaradi</h3>
+    <ol>
+      <li>Barcha xabarlarga qo'lda javob bermaysiz.</li>
+      <li>Ayol arizalarni yumshoq qabul qiladi.</li>
+      <li>Erkaklar va texnik vazifalarni aka oladi.</li>
+      <li>Aka nazoratingiz ostida seanslarni o'tkazadi.</li>
+      <li>Siz murakkab holatlar, metod va kontentga e'tibor berasiz.</li>
+      <li>Har bir bemor anketa, dastur va monitoringdan o'tadi.</li>
+      <li>Bemorlar professional yondashuvni his qiladi.</li>
+      <li>Faqat seans emas, balki kuzatuv ham sotiladi.</li>
+      <li>O'z-o'zini ruqya qilishni o'qitish imkoniyati paydo bo'ladi.</li>
+      <li>Daromad bashorat qilinadigan bo'ladi.</li>
+    </ol>
+
+    <h3>Qanday aktivlar paydo bo'ladi</h3>
+    <ul>
+      <li>Arizalar va bemorlar bazasi</li>
+      <li>Simptomlar anketasi, dastur va xulosa shablonlari</li>
+      <li>Instagram, Telegram, YouTube kontenti</li>
+      <li>Ayollar va erkaklar yo'nalishi</li>
+      <li>Shaxsiy ma'lumotlarsiz sharhlar</li>
+      <li>Mini-kurs va yopiq klub</li>
+      <li>Tizimli mutaxassis sifatida obro'</li>
+    </ul>
   </div>
 </section>
 
 <!-- SECTION 3 -->
 <section id="s3">
   <div class="lang active" data-lang="ru">
-    <h2>3. Как будет, если ничего не делать</h2>
-    <div class="funnel">Личка → Долгая переписка → Сеанс → Забыли детали → Нет мониторинга → Пациент пропал → Новых мало</div>
-    <h3>Минусы</h3>
-    <ul><li>Нестабильность</li><li>Нет прогноза дохода</li><li>Много переписки</li><li>Усталость</li><li>Сложно делегировать</li><li>Трудно повышать цену</li><li>Нет базы знаний</li><li>Нет повторных продаж</li><li>Каждый месяц с нуля</li></ul>
+    <h2>3. Как будет, если ничего не реализовывать</h2>
+    <p>Если не делать систему, работа останется зависимой от случайных обращений и вашей личной энергии.</p>
+    
+    <h3>Сценарий без системы</h3>
+    <div class="funnel">Личка → Ручной опрос → Часть пропадает → Сеанс → Нет мониторинга → Нет заключения → Пациент не возвращается → Заявки нестабильны</div>
+    
+    <h3>Главные проблемы</h3>
+    <ol>
+      <li>Заявки теряются.</li>
+      <li>Женская аудитория может стесняться писать напрямую.</li>
+      <li>Брат не сможет полноценно разгрузить вас без регламентов.</li>
+      <li>Женщина-помощница не будет понимать, что делать.</li>
+      <li>Вы тратите время на переписку вместо лечения.</li>
+      <li>Доход зависит почти только от ваших личных сеансов.</li>
+      <li>Трудно повышать цену.</li>
+      <li>Нет повторных продуктов: курсов, клуба, сопровождения.</li>
+      <li>Не накапливается база знаний.</li>
+      <li>Каждый месяц начинается почти с нуля.</li>
+    </ol>
   </div>
+
   <div class="lang" data-lang="uz">
     <h2>3. Hech narsa qilinmasa</h2>
-    <div class="funnel">Lichka → Uzoq yozishma → Seans → Detallar unutiladi → Monitoring yo'q → Mijoz yo'qoladi → Yangilari kam</div>
-    <h3>Kamchiliklar</h3>
-    <ul><li>Barqarorsizlik</li><li>Daromad prognozi yo'q</li><li>Ko'p yozishma</li><li>Charchash</li><li>Delegatsiya qiyin</li><li>Narx oshirish qiyin</li><li>Bilimlar bazasi yo'q</li><li>Takroriy sotuv yo'q</li><li>Har oy noldan</li></ul>
+    <p>Tizim qilmasangiz, ish tasodifiy murojaatlar va shaxsiy energiyangizga bog'liq bo'lib qoladi.</p>
+    
+    <h3>Tizimsiz ssenariy</h3>
+    <div class="funnel">Lichka → Qo'lda so'rov → Qismi yo'qoladi → Seans → Monitoring yo'q → Xulosa yo'q → Bemor qaytmaydi → Arizalar barqarorsiz</div>
+    
+    <h3>Asosiy muammolar</h3>
+    <ol>
+      <li>Arizalar yo'qoladi.</li>
+      <li>Ayollar to'g'ridan-to'g'ri yozishdan tortinadi.</li>
+      <li>Aka reglamentsiz sizni to'liq yengillata olmaydi.</li>
+      <li>Ayol-yordamchi nima qilishni tushunmaydi.</li>
+      <li>Yozishmaga vaqt ketadi, davolashga emas.</li>
+      <li>Daromad deyarli faqat shaxsiy seanslarga bog'liq.</li>
+      <li>Narxni oshirish qiyin.</li>
+      <li>Takroriy mahsulotlar yo'q: kurs, klub, kuzatuv.</li>
+      <li>Bilimlar bazasi to'planmaydi.</li>
+      <li>Har oy deyarli noldan boshlanadi.</li>
+    </ol>
   </div>
 </section>
 
 <!-- SECTION 4 -->
 <section id="s4">
   <div class="lang active" data-lang="ru">
-    <h2>4. Сравнение: с системой и без</h2>
-    <div style="overflow-x:auto">
-    <table class="table">
-      <thead><tr><th>Критерий</th><th>Без системы</th><th>С системой</th></tr></thead>
+    <h2>4. Сравнение: без системы и с системой</h2>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Критерий</th><th>Без системы</th><th>С системой и командой</th></tr></thead>
       <tbody>
-        <tr><td>Заявки</td><td>Случайные</td><td>Регулярные</td></tr>
-        <tr><td>Доверие</td><td>Только сарафан</td><td>Контент, отзывы, документы</td></tr>
-        <tr><td>Доход</td><td>Нестабильный</td><td>Планируемый</td></tr>
-        <tr><td>Время</td><td>Много переписки</td><td>Часть делает помощница</td></tr>
-        <tr><td>Программа</td><td>Устно</td><td>Документ/шаблон</td></tr>
-        <tr><td>Повторные продажи</td><td>Слабые</td><td>Клуб, курсы, сопровождение</td></tr>
-        <tr><td>Масштаб</td><td>Ограничен временем</td><td>Через обучение и контент</td></tr>
+        <tr><td>Заявки</td><td>Случайные, в личке</td><td>Через анкету и таблицу</td></tr>
+        <tr><td>Женские обращения</td><td>Могут теряться</td><td>Женщина принимает и структурирует</td></tr>
+        <tr><td>Мужские обращения</td><td>Всё на вас</td><td>Брат помогает обрабатывать</td></tr>
+        <tr><td>Сеансы</td><td>Только вы</td><td>Вы + брат по утверждённой программе</td></tr>
+        <tr><td>Диагностика</td><td>Вручную и хаотично</td><td>Анкета + ваш разбор</td></tr>
+        <tr><td>Программы</td><td>Устно/вручную</td><td>Шаблон + индивидуализация</td></tr>
+        <tr><td>Мониторинг</td><td>Может отсутствовать</td><td>15 признаков по шкале 0–10</td></tr>
+        <tr><td>Заключение</td><td>Редко или вручную</td><td>Черновик команда, утверждаете вы</td></tr>
+        <tr><td>Контент</td><td>Нерегулярный</td><td>Женщина готовит, вы утверждаете</td></tr>
+        <tr><td>Доход</td><td>Разовые сеансы</td><td>Консультации + сеансы + программы + сопровождение</td></tr>
+        <tr><td>Масштаб</td><td>Ограничен вашим временем</td><td>Нагрузка делится между командой</td></tr>
+        <tr><td>Доверие</td><td>Только личные рекомендации</td><td>Контент, документы, отзывы, порядок</td></tr>
+        <tr><td>Усталость</td><td>Высокая</td><td>Ниже при правильном делегировании</td></tr>
+        <tr><td>Рост</td><td>Медленный</td><td>Быстрее за счёт соцсетей и команды</td></tr>
       </tbody>
-    </table>
-    </div>
+    </table></div>
   </div>
+
   <div class="lang" data-lang="uz">
-    <h2>4. Taqqoslash: tizim bilan va tizimsiz</h2>
-    <div style="overflow-x:auto">
-    <table class="table">
-      <thead><tr><th>Mezon</th><th>Tizimsiz</th><th>Tizim bilan</th></tr></thead>
+    <h2>4. Taqqoslash: tizimsiz va tizim bilan</h2>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Mezon</th><th>Tizimsiz</th><th>Tizim va jamoa bilan</th></tr></thead>
       <tbody>
-        <tr><td>Arizalar</td><td>Tasodifiy</td><td>Muntazam</td></tr>
-        <tr><td>Ishonch</td><td>Faqat og'zaki</td><td>Kontent, sharh, hujjat</td></tr>
-        <tr><td>Daromad</td><td>Barqarorsiz</td><td>Rejalashtirilgan</td></tr>
-        <tr><td>Vaqt</td><td>Ko'p yozishma</td><td>Yordamchi qiladi</td></tr>
-        <tr><td>Dastur</td><td>Og'zaki</td><td>Hujjat/shablon</td></tr>
-        <tr><td>Takroriy sotuv</td><td>Zaif</td><td>Klub, kurs, kuzatuv</td></tr>
-        <tr><td>Masshtab</td><td>Vaqt bilan cheklangan</td><td>Ta'lim va kontent orqali</td></tr>
+        <tr><td>Arizalar</td><td>Tasodifiy, lichkada</td><td>Anketa va jadval orqali</td></tr>
+        <tr><td>Ayol murojaatlari</td><td>Yo'qolishi mumkin</td><td>Ayol qabul qiladi, tartibga soladi</td></tr>
+        <tr><td>Erkak murojaatlari</td><td>Hammasi sizda</td><td>Aka yordam beradi</td></tr>
+        <tr><td>Seanslar</td><td>Faqat siz</td><td>Siz + aka tasdiqlangan dastur bo'yicha</td></tr>
+        <tr><td>Diagnostika</td><td>Qo'lda, tartibsiz</td><td>Anketa + sizning tahlilingiz</td></tr>
+        <tr><td>Dasturlar</td><td>Og'zaki/qo'lda</td><td>Shablon + individuallashtirish</td></tr>
+        <tr><td>Monitoring</td><td>Bo'lmasligi mumkin</td><td>15 belgi, 0–10 shkala</td></tr>
+        <tr><td>Xulosa</td><td>Kam yoki qo'lda</td><td>Qoralama jamoa, siz tasdiqlaysiz</td></tr>
+        <tr><td>Kontent</td><td>Muntazam emas</td><td>Ayol tayyorlaydi, siz tasdiqlaysiz</td></tr>
+        <tr><td>Daromad</td><td>Bir martalik seanslar</td><td>Konsultatsiya+seans+dastur+kuzatuv</td></tr>
+        <tr><td>Masshtab</td><td>Vaqtingiz bilan cheklangan</td><td>Yuk jamoa o'rtasida taqsimlanadi</td></tr>
+        <tr><td>Ishonch</td><td>Faqat shaxsiy tavsiyalar</td><td>Kontent, hujjat, sharh, tartib</td></tr>
+        <tr><td>Charchash</td><td>Yuqori</td><td>To'g'ri delegatsiyada pastroq</td></tr>
+        <tr><td>O'sish</td><td>Sekin</td><td>Ijtimoiy tarmoqlar va jamoa tufayli tezroq</td></tr>
       </tbody>
-    </table>
-    </div>
+    </table></div>
   </div>
 </section>
 
 <!-- SECTION 5 -->
 <section id="s5">
   <div class="lang active" data-lang="ru">
-    <h2>5. Модель заработка</h2>
-    <h3>Источник 1. Консультации</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Консультаций/мес</th><th>Цена</th><th>Доход</th></tr></thead>
-      <tbody><tr><td>10</td><td>30 у.е.</td><td>300</td></tr><tr><td>20</td><td>30</td><td>600</td></tr><tr><td>40</td><td>30</td><td>1200</td></tr></tbody>
-    </table>
-    </div>
-    <h3>Источник 2. Программы</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Программ/мес</th><th>Цена</th><th>Доход</th></tr></thead>
-      <tbody><tr><td>10</td><td>50</td><td>500</td></tr><tr><td>20</td><td>100</td><td>2000</td></tr></tbody>
-    </table>
-    </div>
-    <h3>Источник 3. Сеансы</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Сеансов/мес</th><th>Цена</th><th>Доход</th></tr></thead>
-      <tbody><tr><td>20</td><td>40</td><td>800</td></tr><tr><td>40</td><td>70</td><td>2800</td></tr></tbody>
-    </table>
-    </div>
-    <h3>Источник 4. Сопровождение 21/40 дней</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Пакет</th><th>Что входит</th><th>Цена</th></tr></thead>
-      <tbody><tr><td>7 дней</td><td>программа + 1 контроль</td><td>100–150</td></tr><tr><td>21 день</td><td>программа + 3 контроля + заключение</td><td>250–500</td></tr><tr><td>40 дней</td><td>5–8 контролей + заключение</td><td>500–1000</td></tr></tbody>
-    </table>
-    </div>
-    <h3>Источник 5. Мини-курс</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Учеников</th><th>Цена</th><th>Доход</th></tr></thead>
-      <tbody><tr><td>50</td><td>30</td><td>1500</td></tr><tr><td>100</td><td>50</td><td>5000</td></tr></tbody>
-    </table>
-    </div>
-    <h3>Источник 6. Telegram-клуб</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Участников</th><th>Подписка</th><th>Доход/мес</th></tr></thead>
-      <tbody><tr><td>50</td><td>10</td><td>500</td></tr><tr><td>200</td><td>10</td><td>2000</td></tr></tbody>
-    </table>
-    </div>
+    <h2>5. Роль каждого в заработке</h2>
+    
+    <h3>5.1. Абу Мухаммад</h3>
+    <p>Вы приносите основную ценность: доверие, метод, диагностика, сложные случаи, авторитет, обучение, утверждение программ.</p>
+    <p>Ваш доход растёт не за счёт бесконечных сеансов, а за счёт: высокоценного сопровождения, курсов, методологии, контента, работы команды.</p>
+    
+    <h3>5.2. Брат-помощник</h3>
+    <p>Брат увеличивает пропускную способность проекта. Он помогает заработать больше, потому что может:</p>
+    <ul>
+      <li>Вести часть мужских заявок.</li>
+      <li>Проводить простые и средние сеансы.</li>
+      <li>Заполнять мониторинг.</li>
+      <li>Делать черновики программ и заключений.</li>
+      <li>Освобождать ваше время для сложных случаев.</li>
+    </ul>
+    
+    <h4>Экономический эффект брата</h4>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Сеансов брата/мес</th><th>Цена</th><th>Валовый доход</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>40 у.е.</td><td>400 у.е.</td></tr>
+        <tr><td>20</td><td>40 у.е.</td><td>800 у.е.</td></tr>
+        <tr><td>30</td><td>40 у.е.</td><td>1200 у.е.</td></tr>
+        <tr><td>20</td><td>60 у.е.</td><td>1200 у.е.</td></tr>
+      </tbody>
+    </table></div>
+    
+    <h3>5.3. Женщина-помощница</h3>
+    <p>Женщина не лечит, но может сильно увеличить доход через порядок и доверие у женской аудитории.</p>
+    
+    <h4>Экономический эффект женщины</h4>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Доп. заявки</th><th>Конверсия</th><th>Средний чек</th><th>Доп. доход</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>30% = 3 клиента</td><td>50 у.е.</td><td>150 у.е.</td></tr>
+        <tr><td>20</td><td>30% = 6 клиентов</td><td>80 у.е.</td><td>480 у.е.</td></tr>
+        <tr><td>30</td><td>30% = 9 клиентов</td><td>100 у.е.</td><td>900 у.е.</td></tr>
+      </tbody>
+    </table></div>
   </div>
+
   <div class="lang" data-lang="uz">
-    <h2>5. Daromad modeli</h2>
-    <h3>1-manba. Konsultatsiyalar</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Oyiga</th><th>Narx</th><th>Daromad</th></tr></thead>
-      <tbody><tr><td>10</td><td>30 у.е.</td><td>300</td></tr><tr><td>20</td><td>30</td><td>600</td></tr><tr><td>40</td><td>30</td><td>1200</td></tr></tbody>
-    </table>
-    </div>
-    <h3>2-manba. Dasturlar</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Oyiga</th><th>Narx</th><th>Daromad</th></tr></thead>
-      <tbody><tr><td>10</td><td>50</td><td>500</td></tr><tr><td>20</td><td>100</td><td>2000</td></tr></tbody>
-    </table>
-    </div>
-    <h3>3-manba. Seanslar</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Oyiga</th><th>Narx</th><th>Daromad</th></tr></thead>
-      <tbody><tr><td>20</td><td>40</td><td>800</td></tr><tr><td>40</td><td>70</td><td>2800</td></tr></tbody>
-    </table>
-    </div>
-    <h3>4-manba. 21/40 kun kuzatuv</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Paket</th><th>Nima kiradi</th><th>Narx</th></tr></thead>
-      <tbody><tr><td>7 kun</td><td>dastur + 1 nazorat</td><td>100–150</td></tr><tr><td>21 kun</td><td>dastur + 3 nazorat + xulosa</td><td>250–500</td></tr><tr><td>40 kun</td><td>5–8 nazorat + xulosa</td><td>500–1000</td></tr></tbody>
-    </table>
-    </div>
-    <h3>5-manba. Mini-kurs</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>O'quvchi</th><th>Narx</th><th>Daromad</th></tr></thead>
-      <tbody><tr><td>50</td><td>30</td><td>1500</td></tr><tr><td>100</td><td>50</td><td>5000</td></tr></tbody>
-    </table>
-    </div>
-    <h3>6-manba. Telegram klub</h3>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>A'zolar</th><th>Obuna</th><th>Oylik</th></tr></thead>
-      <tbody><tr><td>50</td><td>10</td><td>500</td></tr><tr><td>200</td><td>10</td><td>2000</td></tr></tbody>
-    </table>
-    </div>
+    <h2>5. Har birining daromaddagi roli</h2>
+    
+    <h3>5.1. Abu Muhammad</h3>
+    <p>Siz asosiy qiymatni keltirasiz: ishonch, metod, diagnostika, murakkab holatlar, obro', ta'lim, dasturlarni tasdiqlash.</p>
+    <p>Daromadingiz cheksiz seanslar emas, balki: qimmatli kuzatuv, kurslar, metodologiya, kontent, jamoa ishi hisobiga o'sadi.</p>
+    
+    <h3>5.2. Yordamchi aka</h3>
+    <p>Aka loyihaning o'tkazuvchanligini oshiradi. U daromadni oshirishga yordam beradi, chunki:</p>
+    <ul>
+      <li>Erkaklar arizalarining bir qismini yuritadi.</li>
+      <li>Oddiy va o'rtacha seanslarni o'tkazadi.</li>
+      <li>Monitoringni to'ldiradi.</li>
+      <li>Dastur va xulosa qoralamalarini tayyorlaydi.</li>
+      <li>Murakkab holatlar uchun vaqtingizni bo'shatadi.</li>
+    </ul>
+    
+    <h4>Akaning iqtisodiy ta'siri</h4>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Aka seanslari/oy</th><th>Narx</th><th>Yalpi daromad</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>40 u.e.</td><td>400 u.e.</td></tr>
+        <tr><td>20</td><td>40 u.e.</td><td>800 u.e.</td></tr>
+        <tr><td>30</td><td>40 u.e.</td><td>1200 u.e.</td></tr>
+        <tr><td>20</td><td>60 u.e.</td><td>1200 u.e.</td></tr>
+      </tbody>
+    </table></div>
+    
+    <h3>5.3. Ayol-yordamchi</h3>
+    <p>Ayol davolamaydi, lekin tartib va ayollar auditoriyasida ishonch orqali daromadni sezilarli oshirishi mumkin.</p>
+    
+    <h4>Ayolning iqtisodiy ta'siri</h4>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Qo'sh. arizalar</th><th>Konversiya</th><th>O'rtacha chek</th><th>Qo'sh. daromad</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>30% = 3 mijoz</td><td>50 u.e.</td><td>150 u.e.</td></tr>
+        <tr><td>20</td><td>30% = 6 mijoz</td><td>80 u.e.</td><td>480 u.e.</td></tr>
+        <tr><td>30</td><td>30% = 9 mijoz</td><td>100 u.e.</td><td>900 u.e.</td></tr>
+      </tbody>
+    </table></div>
   </div>
 </section>
 
 <!-- SECTION 6 -->
 <section id="s6">
   <div class="lang active" data-lang="ru">
-    <h2>6. Три сценария дохода</h2>
-    <div class="kpi">
-      <div class="k"><strong>Старт (1–2 мес)</strong><br>Конс.10×30=300, Сеансы15×40=600, Программы5×50=250, Курс10×30=300 → <b>1450</b>. Расходы 200–450 → прибыль ~1000–1250.</div>
-      <div class="k"><strong>Рост (3–6 мес)</strong><br>Итого ~<b>7200</b>. Расходы 850–2700 → прибыль ~4500–6350.</div>
-      <div class="k"><strong>Сильный (9–18 мес)</strong><br>Итого ~<b>24500</b>. Расходы 3400–11700 → прибыль ~12800–21100.</div>
-    </div>
+    <h2>6. Источники дохода</h2>
+    
+    <h3>Источник 1. Первичные консультации</h3>
+    <div class="code">Доход = количество консультаций × цена консультации</div>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Консультаций/мес</th><th>Цена 30 у.е.</th><th>Цена 50 у.е.</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>300</td><td>500</td></tr>
+        <tr><td>20</td><td>600</td><td>1000</td></tr>
+        <tr><td>40</td><td>1200</td><td>2000</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Источник 2. Сеансы рукьи</h3>
+    <div class="code">Доход = количество сеансов × цена сеанса</div>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Сеансов/мес</th><th>Цена 40 у.е.</th><th>Цена 70 у.е.</th></tr></thead>
+      <tbody>
+        <tr><td>20</td><td>800</td><td>1400</td></tr>
+        <tr><td>40</td><td>1600</td><td>2800</td></tr>
+        <tr><td>60</td><td>2400</td><td>4200</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Источник 3. Индивидуальные программы</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Программ/мес</th><th>Цена 50 у.е.</th><th>Цена 100 у.е.</th></tr></thead>
+      <tbody>
+        <tr><td>5</td><td>250</td><td>500</td></tr>
+        <tr><td>10</td><td>500</td><td>1000</td></tr>
+        <tr><td>20</td><td>1000</td><td>2000</td></tr>
+        <tr><td>30</td><td>1500</td><td>3000</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Источник 4. Сопровождение 7/21/40 дней</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Пакет</th><th>Что входит</th><th>Цена-ориентир</th></tr></thead>
+      <tbody>
+        <tr><td>7 дней</td><td>программа + 1 контроль</td><td>100–150 у.е.</td></tr>
+        <tr><td>21 день</td><td>программа + 2–4 контроля + заключение</td><td>250–500 у.е.</td></tr>
+        <tr><td>40 дней</td><td>программа + 5–8 контролей + заключение</td><td>500–1000 у.е.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Источник 5. Мини-курс по саморукье</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Учеников</th><th>Цена 30 у.е.</th><th>Цена 50 у.е.</th></tr></thead>
+      <tbody>
+        <tr><td>20</td><td>600</td><td>1000</td></tr>
+        <tr><td>50</td><td>1500</td><td>2500</td></tr>
+        <tr><td>100</td><td>3000</td><td>5000</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Источник 6. Закрытый Telegram-клуб</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Участников</th><th>Подписка 10 у.е.</th><th>Подписка 20 у.е.</th></tr></thead>
+      <tbody>
+        <tr><td>30</td><td>300</td><td>600</td></tr>
+        <tr><td>50</td><td>500</td><td>1000</td></tr>
+        <tr><td>100</td><td>1000</td><td>2000</td></tr>
+        <tr><td>200</td><td>2000</td><td>4000</td></tr>
+      </tbody>
+    </table></div>
   </div>
+
   <div class="lang" data-lang="uz">
-    <h2>6. Uchta daromad ssenariysi</h2>
-    <div class="kpi">
-      <div class="k"><strong>Start (1–2 oy)</strong><br>Kons.10×30=300, Seans15×40=600, Dastur5×50=250, Kurs10×30=300 → <b>1450</b>. Xarajat 200–450 → foyda ~1000–1250.</div>
-      <div class="k"><strong>O'sish (3–6 oy)</strong><br>Jami ~<b>7200</b>. Xarajat 850–2700 → foyda ~4500–6350.</div>
-      <div class="k"><strong>Kuchli (9–18 oy)</strong><br>Jami ~<b>24500</b>. Xarajat 3400–11700 → foyda ~12800–21100.</div>
-    </div>
+    <h2>6. Daromad manbalari</h2>
+    
+    <h3>1-manba. Birlamchi konsultatsiyalar</h3>
+    <div class="code">Daromad = konsultatsiyalar soni × narx</div>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Konsultatsiyalar/oy</th><th>Narx 30 u.e.</th><th>Narx 50 u.e.</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>300</td><td>500</td></tr>
+        <tr><td>20</td><td>600</td><td>1000</td></tr>
+        <tr><td>40</td><td>1200</td><td>2000</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>2-manba. Ruqya seanslari</h3>
+    <div class="code">Daromad = seanslar soni × narx</div>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Seanslar/oy</th><th>Narx 40 u.e.</th><th>Narx 70 u.e.</th></tr></thead>
+      <tbody>
+        <tr><td>20</td><td>800</td><td>1400</td></tr>
+        <tr><td>40</td><td>1600</td><td>2800</td></tr>
+        <tr><td>60</td><td>2400</td><td>4200</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>3-manba. Individual dasturlar</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Dasturlar/oy</th><th>Narx 50 u.e.</th><th>Narx 100 u.e.</th></tr></thead>
+      <tbody>
+        <tr><td>5</td><td>250</td><td>500</td></tr>
+        <tr><td>10</td><td>500</td><td>1000</td></tr>
+        <tr><td>20</td><td>1000</td><td>2000</td></tr>
+        <tr><td>30</td><td>1500</td><td>3000</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>4-manba. 7/21/40 kun kuzatuv</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Paket</th><th>Nima kiradi</th><th>Narx-orientir</th></tr></thead>
+      <tbody>
+        <tr><td>7 kun</td><td>dastur + 1 nazorat</td><td>100–150 u.e.</td></tr>
+        <tr><td>21 kun</td><td>dastur + 2–4 nazorat + xulosa</td><td>250–500 u.e.</td></tr>
+        <tr><td>40 kun</td><td>dastur + 5–8 nazorat + xulosa</td><td>500–1000 u.e.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>5-manba. O'z-o'zini ruqya mini-kursi</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>O'quvchilar</th><th>Narx 30 u.e.</th><th>Narx 50 u.e.</th></tr></thead>
+      <tbody>
+        <tr><td>20</td><td>600</td><td>1000</td></tr>
+        <tr><td>50</td><td>1500</td><td>2500</td></tr>
+        <tr><td>100</td><td>3000</td><td>5000</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>6-manba. Yopiq Telegram-klub</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>A'zolar</th><th>Obuna 10 u.e.</th><th>Obuna 20 u.e.</th></tr></thead>
+      <tbody>
+        <tr><td>30</td><td>300</td><td>600</td></tr>
+        <tr><td>50</td><td>500</td><td>1000</td></tr>
+        <tr><td>100</td><td>1000</td><td>2000</td></tr>
+        <tr><td>200</td><td>2000</td><td>4000</td></tr>
+      </tbody>
+    </table></div>
   </div>
 </section>
 
 <!-- SECTION 7 -->
 <section id="s7">
   <div class="lang active" data-lang="ru">
-    <h2>7. Сравнение дохода: без системы и с системой</h2>
-    <div class="grid-2">
-      <div><h3>Без системы</h3><div style="overflow-x:auto"><table class="table"><thead><tr><th>Сеансов/нед</th><th>в мес</th><th>Цена</th><th>Доход</th></tr></thead><tbody><tr><td>5</td><td>20</td><td>40</td><td>800</td></tr><tr><td>10</td><td>40</td><td>40</td><td>1600</td></tr><tr><td>15</td><td>60</td><td>40</td><td>2400</td></tr></tbody></table></div></div>
-      <div><h3>С системой</h3><div style="overflow-x:auto"><table class="table"><thead><tr><th>Источник</th><th>Доход</th></tr></thead><tbody><tr><td>Консультации</td><td>1000</td></tr><tr><td>Сеансы</td><td>1800</td></tr><tr><td>Программы</td><td>1200</td></tr><tr><td>Сопровождение</td><td>1500</td></tr><tr><td>Мини-курс</td><td>1200</td></tr><tr><td>Клуб</td><td>500</td></tr><tr><td><strong>Итого</strong></td><td><strong>7200</strong></td></tr></tbody></table></div></div>
-    </div>
+    <h2>7. Доход без системы</h2>
+    <p>Если работать без системы, обычно доход строится почти только на личных сеансах.</p>
+    
+    <h3>Пример</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Показатель</th><th>Значение</th></tr></thead>
+      <tbody>
+        <tr><td>Сеансов в неделю</td><td>5</td></tr>
+        <tr><td>Сеансов в месяц</td><td>20</td></tr>
+        <tr><td>Цена сеанса</td><td>40 у.е.</td></tr>
+        <tr><td><strong>Доход</strong></td><td><strong>800 у.е.</strong></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Если работать больше</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Сеансов/нед</th><th>в месяц</th><th>Цена</th><th>Доход</th></tr></thead>
+      <tbody>
+        <tr><td>5</td><td>20</td><td>40</td><td>800</td></tr>
+        <tr><td>10</td><td>40</td><td>40</td><td>1600</td></tr>
+        <tr><td>15</td><td>60</td><td>40</td><td>2400</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Потолок без системы</h3>
+    <blockquote>Без команды, воронки, программ и сопровождения потолок обычно ограничен вашим временем.<br><strong>Ориентир: 800–2500 у.е. в месяц</strong></blockquote>
   </div>
+
   <div class="lang" data-lang="uz">
-    <h2>7. Daromad taqqoslash: tizimsiz va tizim bilan</h2>
-    <div class="grid-2">
-      <div><h3>Tizimsiz</h3><div style="overflow-x:auto"><table class="table"><thead><tr><th>Haftasiga</th><th>Oyiga</th><th>Narx</th><th>Daromad</th></tr></thead><tbody><tr><td>5</td><td>20</td><td>40</td><td>800</td></tr><tr><td>10</td><td>40</td><td>40</td><td>1600</td></tr><tr><td>15</td><td>60</td><td>40</td><td>2400</td></tr></tbody></table></div></div>
-      <div><h3>Tizim bilan</h3><div style="overflow-x:auto"><table class="table"><thead><tr><th>Manba</th><th>Daromad</th></tr></thead><tbody><tr><td>Konsultatsiya</td><td>1000</td></tr><tr><td>Seans</td><td>1800</td></tr><tr><td>Dastur</td><td>1200</td></tr><tr><td>Kuzatuv</td><td>1500</td></tr><tr><td>Mini-kurs</td><td>1200</td></tr><tr><td>Klub</td><td>500</td></tr><tr><td><strong>Jami</strong></td><td><strong>7200</strong></td></tr></tbody></table></div></div>
-    </div>
+    <h2>7. Tizimsiz daromad</h2>
+    <p>Tizimsiz ishlasangiz, daromad deyarli faqat shaxsiy seanslardan quriladi.</p>
+    
+    <h3>Misol</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Ko'rsatkich</th><th>Qiymat</th></tr></thead>
+      <tbody>
+        <tr><td>Haftasiga seans</td><td>5</td></tr>
+        <tr><td>Oyiga seans</td><td>20</td></tr>
+        <tr><td>Seans narxi</td><td>40 u.e.</td></tr>
+        <tr><td><strong>Daromad</strong></td><td><strong>800 u.e.</strong></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Ko'proq ishlasa</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Haftasiga</th><th>Oyiga</th><th>Narx</th><th>Daromad</th></tr></thead>
+      <tbody>
+        <tr><td>5</td><td>20</td><td>40</td><td>800</td></tr>
+        <tr><td>10</td><td>40</td><td>40</td><td>1600</td></tr>
+        <tr><td>15</td><td>60</td><td>40</td><td>2400</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Tizimsiz shift</h3>
+    <blockquote>Jamoa, voronka, dastur va kuzatuvsiz shift odatda vaqtingiz bilan cheklanadi.<br><strong>Orientir: 800–2500 u.e. oyiga</strong></blockquote>
   </div>
 </section>
 
 <!-- SECTION 8 -->
 <section id="s8">
   <div class="lang active" data-lang="ru">
-    <h2>8. Почему система увеличивает заработок</h2>
-    <ol><li>Увеличивает доверие (анкета, программа, заключение, контент, отзывы).</li><li>Повышает средний чек (пакеты вместо разовых).</li><li>Создаёт повторные покупки (сопровождение, клуб, курс).</li><li>Освобождает время (помощница).</li><li>Даёт масштаб (курс/YouTube/PDF работают без вас).</li></ol>
+    <h2>8. Доход с системой и вашей малой командой</h2>
+    <p>Система позволяет зарабатывать из нескольких источников, а не только с личных сеансов.</p>
+    
+    <h3>Сценарий 1. Малый старт (1–2 месяца)</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Источник</th><th>Количество</th><th>Цена</th><th>Доход</th></tr></thead>
+      <tbody>
+        <tr><td>Консультации</td><td>10</td><td>30</td><td>300</td></tr>
+        <tr><td>Ваши сеансы</td><td>10</td><td>40</td><td>400</td></tr>
+        <tr><td>Сеансы брата</td><td>5</td><td>40</td><td>200</td></tr>
+        <tr><td>Программы</td><td>5</td><td>50</td><td>250</td></tr>
+        <tr><td>Сопровождение 7 дней</td><td>2</td><td>100</td><td>200</td></tr>
+        <tr><td><strong>Итого</strong></td><td></td><td></td><td><strong>1350 у.е.</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>Расходы:</strong> 230–470 у.е. | <strong>Прибыль:</strong> ~880–1120 у.е.</p>
+
+    <h3>Сценарий 2. Реалистичный рост (3–6 месяцев)</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Источник</th><th>Количество</th><th>Цена</th><th>Доход</th></tr></thead>
+      <tbody>
+        <tr><td>Консультации</td><td>25</td><td>40</td><td>1000</td></tr>
+        <tr><td>Ваши сеансы</td><td>25</td><td>60</td><td>1500</td></tr>
+        <tr><td>Сеансы брата</td><td>20</td><td>50</td><td>1000</td></tr>
+        <tr><td>Программы</td><td>15</td><td>80</td><td>1200</td></tr>
+        <tr><td>Сопровождение 21 день</td><td>5</td><td>300</td><td>1500</td></tr>
+        <tr><td>Мини-курс</td><td>30</td><td>40</td><td>1200</td></tr>
+        <tr><td>Telegram-клуб</td><td>50</td><td>10</td><td>500</td></tr>
+        <tr><td><strong>Итого</strong></td><td></td><td></td><td><strong>7900 у.е.</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>Расходы:</strong> 1250–3500 у.е. | <strong>Прибыль:</strong> ~4400–6650 у.е.</p>
+
+    <h3>Сценарий 3. Сильный проект (9–18 месяцев)</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Источник</th><th>Количество</th><th>Цена</th><th>Доход</th></tr></thead>
+      <tbody>
+        <tr><td>Консультации</td><td>40</td><td>50</td><td>2000</td></tr>
+        <tr><td>Ваши сеансы</td><td>35</td><td>70</td><td>2450</td></tr>
+        <tr><td>Сеансы брата</td><td>40</td><td>60</td><td>2400</td></tr>
+        <tr><td>Программы</td><td>30</td><td>100</td><td>3000</td></tr>
+        <tr><td>Сопровождение</td><td>10</td><td>500</td><td>5000</td></tr>
+        <tr><td>Мини-курс</td><td>100</td><td>50</td><td>5000</td></tr>
+        <tr><td>Telegram-клуб</td><td>200</td><td>15</td><td>3000</td></tr>
+        <tr><td>Обучение методологии</td><td>10</td><td>300</td><td>3000</td></tr>
+        <tr><td><strong>Итого</strong></td><td></td><td></td><td><strong>25850 у.е.</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>Расходы:</strong> 3800–12200 у.е. | <strong>Прибыль:</strong> ~13650–22050 у.е.</p>
+    <div class="note warn">Это не стартовый уровень. Такой сценарий возможен только при сильной репутации, дисциплине, регулярном контенте и доверии аудитории.</div>
   </div>
+
   <div class="lang" data-lang="uz">
-    <h2>8. Nega tizim daromadni oshiradi</h2>
-    <ol><li>Ishonchni oshiradi (anketa, dastur, xulosa, kontent, sharhlar).</li><li>O'rtacha chekni ko'taradi (paketlar).</li><li>Takroriy sotuv yaratadi (kuzatuv, klub, kurs).</li><li>Vaqtni bo'shatadi (yordamchi).</li><li>Masshtab beradi (kurs/YouTube/PDF sizsiz ishlaydi).</li></ol>
+    <h2>8. Tizim va kichik jamoa bilan daromad</h2>
+    <p>Tizim bir nechta manbalardan daromad olish imkonini beradi, nafaqat shaxsiy seanslardan.</p>
+    
+    <h3>1-ssenariy. Kichik start (1–2 oy)</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Manba</th><th>Soni</th><th>Narx</th><th>Daromad</th></tr></thead>
+      <tbody>
+        <tr><td>Konsultatsiyalar</td><td>10</td><td>30</td><td>300</td></tr>
+        <tr><td>Sizning seanslar</td><td>10</td><td>40</td><td>400</td></tr>
+        <tr><td>Aka seanslari</td><td>5</td><td>40</td><td>200</td></tr>
+        <tr><td>Dasturlar</td><td>5</td><td>50</td><td>250</td></tr>
+        <tr><td>7 kun kuzatuv</td><td>2</td><td>100</td><td>200</td></tr>
+        <tr><td><strong>Jami</strong></td><td></td><td></td><td><strong>1350 u.e.</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>Xarajat:</strong> 230–470 u.e. | <strong>Foyda:</strong> ~880–1120 u.e.</p>
+
+    <h3>2-ssenariy. Realistik o'sish (3–6 oy)</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Manba</th><th>Soni</th><th>Narx</th><th>Daromad</th></tr></thead>
+      <tbody>
+        <tr><td>Konsultatsiyalar</td><td>25</td><td>40</td><td>1000</td></tr>
+        <tr><td>Sizning seanslar</td><td>25</td><td>60</td><td>1500</td></tr>
+        <tr><td>Aka seanslari</td><td>20</td><td>50</td><td>1000</td></tr>
+        <tr><td>Dasturlar</td><td>15</td><td>80</td><td>1200</td></tr>
+        <tr><td>21 kun kuzatuv</td><td>5</td><td>300</td><td>1500</td></tr>
+        <tr><td>Mini-kurs</td><td>30</td><td>40</td><td>1200</td></tr>
+        <tr><td>Telegram-klub</td><td>50</td><td>10</td><td>500</td></tr>
+        <tr><td><strong>Jami</strong></td><td></td><td></td><td><strong>7900 u.e.</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>Xarajat:</strong> 1250–3500 u.e. | <strong>Foyda:</strong> ~4400–6650 u.e.</p>
+
+    <h3>3-ssenariy. Kuchli loyiha (9–18 oy)</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Manba</th><th>Soni</th><th>Narx</th><th>Daromad</th></tr></thead>
+      <tbody>
+        <tr><td>Konsultatsiyalar</td><td>40</td><td>50</td><td>2000</td></tr>
+        <tr><td>Sizning seanslar</td><td>35</td><td>70</td><td>2450</td></tr>
+        <tr><td>Aka seanslari</td><td>40</td><td>60</td><td>2400</td></tr>
+        <tr><td>Dasturlar</td><td>30</td><td>100</td><td>3000</td></tr>
+        <tr><td>Kuzatuv</td><td>10</td><td>500</td><td>5000</td></tr>
+        <tr><td>Mini-kurs</td><td>100</td><td>50</td><td>5000</td></tr>
+        <tr><td>Telegram-klub</td><td>200</td><td>15</td><td>3000</td></tr>
+        <tr><td>Metodologiya o'qitish</td><td>10</td><td>300</td><td>3000</td></tr>
+        <tr><td><strong>Jami</strong></td><td></td><td></td><td><strong>25850 u.e.</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>Xarajat:</strong> 3800–12200 u.e. | <strong>Foyda:</strong> ~13650–22050 u.e.</p>
+    <div class="note warn">Bu start darajasi emas. Bunday ssenariy faqat kuchli obro', intizom, muntazam kontent va auditoriya ishonchi bilan mumkin.</div>
   </div>
 </section>
 
 <!-- SECTION 9 -->
 <section id="s9">
   <div class="lang active" data-lang="ru">
-    <h2>9. Где деньги появляются быстрее всего</h2>
-    <p><strong>Быстро:</strong> консультации, сеансы, программы, сопровождение 7/21. <strong>Среднесрочно:</strong> мини-курс, клуб, вебинары. <strong>Долгосрочно:</strong> YouTube, методология, CRM, обучение специалистов.</p>
+    <h2>9. Сравнение дохода: без системы и с системой</h2>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Уровень</th><th>Без системы</th><th>С системой и командой</th></tr></thead>
+      <tbody>
+        <tr><td>Старт</td><td>500–1000 у.е.</td><td>800–1500 у.е.</td></tr>
+        <tr><td>Через 3 месяца</td><td>800–2000 у.е.</td><td>3000–7000 у.е.</td></tr>
+        <tr><td>Через 6 месяцев</td><td>1000–2500 у.е.</td><td>4000–9000 у.е.</td></tr>
+        <tr><td>Через 12 месяцев</td><td>1500–3500 у.е.</td><td>7000–15000+ у.е.</td></tr>
+      </tbody>
+    </table></div>
+    <blockquote><strong>Главная разница:</strong><br>• Без системы: доход растёт только через увеличение ваших личных сеансов.<br>• С системой: доход растёт через команду, программы, сопровождение, курсы, клуб и контент.</blockquote>
   </div>
+
   <div class="lang" data-lang="uz">
-    <h2>9. Pul qayerdan tez keladi</h2>
-    <p><strong>Tez:</strong> konsultatsiya, seans, dastur, 7/21 kuzatuv. <strong>O'rta muddat:</strong> mini-kurs, klub, vebinar. <strong>Uzoq muddat:</strong> YouTube, metodologiya, CRM, mutaxassislarni o'qitish.</p>
+    <h2>9. Daromad taqqoslash: tizimsiz va tizim bilan</h2>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Daraja</th><th>Tizimsiz</th><th>Tizim va jamoa bilan</th></tr></thead>
+      <tbody>
+        <tr><td>Start</td><td>500–1000 u.e.</td><td>800–1500 u.e.</td></tr>
+        <tr><td>3 oydan keyin</td><td>800–2000 u.e.</td><td>3000–7000 u.e.</td></tr>
+        <tr><td>6 oydan keyin</td><td>1000–2500 u.e.</td><td>4000–9000 u.e.</td></tr>
+        <tr><td>12 oydan keyin</td><td>1500–3500 u.e.</td><td>7000–15000+ u.e.</td></tr>
+      </tbody>
+    </table></div>
+    <blockquote><strong>Asosiy farq:</strong><br>• Tizimsiz: daromad faqat shaxsiy seanslarni ko'paytirish orqali o'sadi.<br>• Tizim bilan: daromad jamoa, dasturlar, kuzatuv, kurslar, klub va kontent orqali o'sadi.</blockquote>
   </div>
 </section>
 
 <!-- SECTION 10 -->
 <section id="s10">
   <div class="lang active" data-lang="ru">
-    <h2>10. Какую модель выбрать на старте</h2>
-    <div class="funnel">Контент → Анкета → Консультация → Программа → Сопровождение</div>
-    <p>Сначала деньги из консультаций, сеансов, программ и короткого сопровождения. Потом — мини-курс, клуб, YouTube, методология, CRM.</p>
+    <h2>10. Почему малая команда увеличивает доход</h2>
+    <div class="grid-3">
+      <div class="note info"><strong>👤 Брат</strong><br>Увеличивает лечебную пропускную способность: больше сеансов, лучше мониторинг, вы разгружаетесь.</div>
+      <div class="note info"><strong>👩 Женщина</strong><br>Открывает женскую аудиторию: мягкий приём заявок, анкеты, напоминания, женский чат, доверие.</div>
+      <div class="note info"><strong>📱 Контент</strong><br>Начинает работать регулярно: женщина готовит тексты, брат помогает с видео, ваши знания превращаются в поток пользы.</div>
+    </div>
   </div>
+
   <div class="lang" data-lang="uz">
-    <h2>10. Startda qaysi model</h2>
-    <div class="funnel">Kontent → Anketa → Konsultatsiya → Dastur → Kuzatuv</div>
-    <p>Avval konsultatsiya, seans, dastur va qisqa kuzatuvdan pul. Keyin — mini-kurs, klub, YouTube, metodologiya, CRM.</p>
+    <h2>10. Nega kichik jamoa daromadni oshiradi</h2>
+    <div class="grid-3">
+      <div class="note info"><strong>👤 Aka</strong><br>Davolash o'tkazuvchanligini oshiradi: ko'proq seans, yaxshi monitoring, siz yengillashtirilgan.</div>
+      <div class="note info"><strong>👩 Ayol</strong><br>Ayollar auditoriyasini ochadi: yumshoq qabul, anketalar, eslatmalar, ayollar chati, ishonch.</div>
+      <div class="note info"><strong>📱 Kontent</strong><br>Muntazam ishlay boshlaydi: ayol matnlarni tayyorlaydi, aka videoga yordam beradi, bilimingiz foyda oqimiga aylanadi.</div>
+    </div>
   </div>
 </section>
 
 <!-- SECTION 11 -->
 <section id="s11">
   <div class="lang active" data-lang="ru">
-    <h2>11. Финансовая цель на первые 90 дней</h2>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Месяц</th><th>Цели</th><th>Ориентир дохода</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td>Конс. 5–10, Сеансы 5–15, Программы 3–5</td><td>500–1500</td></tr>
-        <tr><td>2</td><td>Конс. 10–20, Сеансы 15–30, Программы 5–10, Сопровождение 2–3</td><td>1500–3500</td></tr>
-        <tr><td>3</td><td>Конс. 20–30, Сеансы 20–40, Программы 10–15, Сопровождение 3–5, Курс 10–30</td><td>3000–7000</td></tr>
-      </tbody>
-    </table>
+    <h2>11. Что даст деньги быстрее всего</h2>
+    <div class="grid-3">
+      <div><h4>⚡ Быстро</h4><ul><li>Первичные консультации</li><li>Сеансы рукьи</li><li>Индивидуальные программы</li><li>Сопровождение 7/21 дней</li></ul></div>
+      <div><h4>📅 Среднесрочно</h4><ul><li>Мини-курс по саморукье</li><li>Закрытый Telegram-клуб</li><li>Групповые вебинары</li><li>Программа защиты дома</li></ul></div>
+      <div><h4>🌱 Долгосрочно</h4><ul><li>YouTube-канал</li><li>Обучение методологии</li><li>CRM/система для специалистов</li><li>Большое сообщество</li></ul></div>
     </div>
   </div>
+
   <div class="lang" data-lang="uz">
-    <h2>11. Dastlabki 90 kun maqsadi</h2>
-    <div style="overflow-x:auto">
-    <table class="table"><thead><tr><th>Oy</th><th>Maqsadlar</th><th>Daromad mo'ljal</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td>Kons. 5–10, Seans 5–15, Dastur 3–5</td><td>500–1500</td></tr>
-        <tr><td>2</td><td>Kons. 10–20, Seans 15–30, Dastur 5–10, Kuzatuv 2–3</td><td>1500–3500</td></tr>
-        <tr><td>3</td><td>Kons. 20–30, Seans 20–40, Dastur 10–15, Kuzatuv 3–5, Kurs 10–30</td><td>3000–7000</td></tr>
-      </tbody>
-    </table>
+    <h2>11. Pul qayerdan tez keladi</h2>
+    <div class="grid-3">
+      <div><h4>⚡ Tez</h4><ul><li>Birlamchi konsultatsiyalar</li><li>Ruqya seanslari</li><li>Individual dasturlar</li><li>7/21 kun kuzatuv</li></ul></div>
+      <div><h4>📅 O'rta muddat</h4><ul><li>O'z-o'zini ruqya mini-kursi</li><li>Yopiq Telegram-klub</li><li>Guruh vebinarlari</li><li>Uyni himoya qilish dasturi</li></ul></div>
+      <div><h4>🌱 Uzoq muddat</h4><ul><li>YouTube-kanal</li><li>Metodologiyani o'qitish</li><li>CRM/tizim mutaxassislar uchun</li><li>Katta hamjamiyat</li></ul></div>
     </div>
   </div>
 </section>
@@ -520,79 +951,180 @@ section h3{font-size:clamp(18px,3.6vw,20px);margin:clamp(16px,3vw,18px) 0 clamp(
 <!-- SECTION 12 -->
 <section id="s12">
   <div class="lang active" data-lang="ru">
-    <h2>12. Что будет мешать заработать</h2>
-    <ul><li>Нерегулярный контент</li><li>Нет записи и анкеты</li><li>Нет цен и пакетов</li><li>Страшный контент</li><li>Обещания исцеления</li><li>Плохая обработка заявок</li><li>Нет помощницы</li><li>Нет повторных продуктов</li><li>Нет документов и отзывов</li><li>Нет учёта</li></ul>
+    <h2>12. Как распределять оплату внутри команды</h2>
+    <p>Точные проценты вы решаете сами, но важно заранее установить правила.</p>
+    
+    <h3>Вариант 1. Фиксированная оплата женщине</h3>
+    <blockquote>Подходит на старте.<br>Женщина получает фиксированную сумму за заявки, контент и администрирование.<br><strong>Плюсы:</strong> понятно, легко считать. <strong>Минусы:</strong> если заявок мало, расход всё равно есть.</blockquote>
+    
+    <h3>Вариант 2. Фикс + бонус женщине</h3>
+    <blockquote>Лучше после первых заявок.<br>Фиксированная сумма + бонус за обработанные заявки / доведённых до консультации клиентов.<br><strong>Пример:</strong> фикс 100–300 у.е. + бонус за каждого дошедшего до консультации.</blockquote>
+    
+    <h3>Вариант 3. Доля брату за проведённые сеансы</h3>
+    <blockquote>Так как брат читает рукью, справедливо платить ему за проведённые сеансы.<br><strong>Пример:</strong> Сеанс стоит 60 у.е. → Брат получает 30–40 у.е., проект получает 20–30 у.е.<br>Или: Брат получает 50–70% от сеанса, проект получает 30–50% за заявки, систему и методологию.</blockquote>
+    <div class="note warn"><strong>Главное — договориться заранее.</strong></div>
   </div>
+
   <div class="lang" data-lang="uz">
-    <h2>12. Nima to'sqinlik qiladi</h2>
-    <ul><li>Kontent muntazam emas</li><li>Yozilish va anketa yo'q</li><li>Narx va paketlar yo'q</li><li>Qo'rqinchli kontent</li><li>Shifo va'dasi</li><li>Arizalarni yomon ishlash</li><li>Yordamchi yo'q</li><li>Takroriy mahsulot yo'q</li><li>Hujjat va sharhlar yo'q</li><li>Hisob yo'q</li></ul>
+    <h2>12. Jamoa ichida to'lovni qanday taqsimlash</h2>
+    <p>Aniq foizlarni siz hal qilasiz, lekin qoidalarni oldindan belgilash muhim.</p>
+    
+    <h3>1-variant. Ayolga fiksirlangan to'lov</h3>
+    <blockquote>Startda mos.<br>Ayol arizalar, kontent va admin uchun fiksirlangan summa oladi.<br><strong>Pluslar:</strong> tushunarli, hisoblash oson. <strong>Minuslar:</strong> arizalar kam bo'lsa ham xarajat bor.</blockquote>
+    
+    <h3>2-variant. Fiks + bonus ayolga</h3>
+    <blockquote>Birinchi arizalardan keyin yaxshiroq.<br>Fiksirlangan summa + bonus qayta ishlangan arizalar / konsultatsiyagacha yetgan mijozlar uchun.<br><strong>Misol:</strong> fiks 100–300 u.e. + har bir konsultatsiyagacha yetgan mijoz uchun bonus.</blockquote>
+    
+    <h3>3-variant. Akaga seanslar uchun ulush</h3>
+    <blockquote>Aka ruqya o'qigani uchun, o'tkazgan seanslari uchun to'lash adolatli.<br><strong>Misol:</strong> Seans 60 u.e. → Aka 30–40 u.e. oladi, loyiha 20–30 u.e. oladi.<br>Yoki: Aka seansning 50–70% ini oladi, loyiha 30–50% ini arizalar, tizim va metodologiya uchun oladi.</blockquote>
+    <div class="note warn"><strong>Asosiysi — oldindan kelishib olish.</strong></div>
   </div>
 </section>
 
 <!-- SECTION 13 -->
 <section id="s13">
   <div class="lang active" data-lang="ru">
-    <h2>13. Что даст максимальный рост денег</h2>
-    <ol><li>Пакеты вместо разовых.</li><li>Помощница.</li><li>Контент каждый день.</li><li>Бесплатный PDF-лид-магнит.</li><li>Закрытый клуб.</li><li>Мини-курс.</li></ol>
+    <h2>13. Что будет мешать заработать</h2>
+    <div class="grid-2">
+      <ul>
+        <li>Нерегулярный контент</li>
+        <li>Нет анкеты и таблицы заявок</li>
+        <li>Нет ясных цен и пакетов услуг</li>
+        <li>Женщина не понимает свою роль</li>
+        <li>Брат работает без регламента</li>
+        <li>Пациенты не получают документы</li>
+      </ul>
+      <ul>
+        <li>Нет мониторинга и заключений</li>
+        <li>Нет отзывов</li>
+        <li>Слишком много ручной переписки</li>
+        <li>Обещания исцеления</li>
+        <li>Запугивание людей</li>
+        <li>Отсутствие финансового учёта</li>
+      </ul>
+    </div>
   </div>
+
   <div class="lang" data-lang="uz">
-    <h2>13. Maksimal o'sishni nima beradi</h2>
-    <ol><li>Bir martalik o'rniga paketlar.</li><li>Yordamchi.</li><li>Har kuni kontent.</li><li>Bepul PDF lead-magnet.</li><li>Yopiq klub.</li><li>Mini-kurs.</li></ol>
+    <h2>13. Nima to'sqinlik qiladi</h2>
+    <div class="grid-2">
+      <ul>
+        <li>Kontent muntazam emas</li>
+        <li>Anketa va arizalar jadvali yo'q</li>
+        <li>Aniq narx va paketlar yo'q</li>
+        <li>Ayol o'z rolini tushunmaydi</li>
+        <li>Aka reglamentsiz ishlaydi</li>
+        <li>Bemorlar hujjat olmaydi</li>
+      </ul>
+      <ul>
+        <li>Monitoring va xulosalar yo'q</li>
+        <li>Sharhlar yo'q</li>
+        <li>Qo'l yozishmasi juda ko'p</li>
+        <li>Shifo va'dasi</li>
+        <li>Odamlarni qo'rqitish</li>
+        <li>Moliyaviy hisob yo'q</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- SECTION 14 -->
 <section id="s14">
   <div class="lang active" data-lang="ru">
-    <h2>14. Простая финансовая формула проекта</h2>
-    <div class="code">Доход = (консультации×цена) + (сеансы×цена) + (программы×цена) + (сопровождения×цена) + (курсы×цена) + (участники клуба×подписка)
-Прибыль = Доход − команда − реклама − сервисы − налоги/юр.расходы</div>
+    <h2>14. Что делать в первую очередь для роста дохода</h2>
+    <ol>
+      <li><strong>Запустить анкету</strong> — без неё вы теряете время и не можете системно диагностировать.</li>
+      <li><strong>Запустить таблицу заявок</strong> — без неё заявки теряются.</li>
+      <li><strong>Сделать 3–4 пакета услуг</strong> — без пакетов человек не понимает, что купить.</li>
+      <li><strong>Назначить роли брату и женщине</strong> — без ролей команда будет мешать, а не помогать.</li>
+      <li><strong>Начать регулярный контент</strong> — без контента нет доверия и нет потока заявок.</li>
+      <li><strong>Сделать шаблон программы</strong> — без программы ценность услуги ниже.</li>
+      <li><strong>Сделать мониторинг и заключение</strong> — это повышает доверие и позволяет продавать сопровождение.</li>
+    </ol>
   </div>
+
   <div class="lang" data-lang="uz">
-    <h2>14. Oddiy moliyaviy formula</h2>
-    <div class="code">Daromad = (konsultatsiya×narx) + (seans×narx) + (dastur×narx) + (kuzatuv×narx) + (kurs×narx) + (klub a'zolari×obuna)
-Foyda = Daromad − jamoa − reklama − servislar − soliq/yuridik</div>
+    <h2>14. Daromad o'sishi uchun birinchi navbatda nima qilish kerak</h2>
+    <ol>
+      <li><strong>Anketani ishga tushirish</strong> — u bo'lmasa vaqt yo'qotasiz, tizimli diagnostika qila olmaysiz.</li>
+      <li><strong>Arizalar jadvalini ishga tushirish</strong> — u bo'lmasa arizalar yo'qoladi.</li>
+      <li><strong>3–4 ta xizmat paketini tayyorlash</strong> — paketlarsiz odam nima sotib olishni tushunmaydi.</li>
+      <li><strong>Aka va ayolga rollarni belgilash</strong> — rollsiz jamoa yordam bermay, xalaqit beradi.</li>
+      <li><strong>Muntazam kontentni boshlash</strong> — kontentsiz ishonch va arizalar oqimi bo'lmaydi.</li>
+      <li><strong>Dastur shablonini tayyorlash</strong> — dastursiz xizmat qiymati pastroq.</li>
+      <li><strong>Monitoring va xulosani tayyorlash</strong> — bu ishonchni oshiradi va kuzatuv sotish imkonini beradi.</li>
+    </ol>
   </div>
 </section>
 
 <!-- SECTION 15 -->
 <section id="s15">
   <div class="lang active" data-lang="ru">
-    <h2>15. Главный вывод</h2>
-    <p><strong>Без системы:</strong> потолок ~800–2500 у.е./мес, зависит от личных сеансов.</p>
-    <p><strong>С системой:</strong> реалистично 3000–7000 у.е./мес, при сильном бренде 10000+.</p>
-    <div class="note warn">Только при регулярном контенте, доверии, корректности по шариату, качественных услугах, помощнице, продуктах, учёте и без обещаний гарантированного исцеления.</div>
+    <h2>15. Минимальная рабочая модель на старт</h2>
+    <p>Если делать только самое важное, модель должна быть такой:</p>
+    <div class="funnel">Пост/видео → Анкета → Таблица заявок → Консультация → Сеанс/Программа → Мониторинг → Сопровождение/Заключение</div>
+    
+    <h3>Минимальные роли</h3>
+    <div class="grid-3">
+      <div class="card"><strong>Абу Мухаммад</strong><ul><li>Консультации</li><li>Сложные случаи</li><li>Утверждение программ</li><li>Главный контент</li></ul></div>
+      <div class="card"><strong>Брат</strong><ul><li>Мужские заявки</li><li>Часть сеансов</li><li>Мониторинг</li><li>Черновики программ</li><li>Расписание</li></ul></div>
+      <div class="card"><strong>Женщина</strong><ul><li>Женские заявки</li><li>Анкеты</li><li>Напоминания</li><li>Контент</li><li>Отзывы</li><li>Оформление документов</li></ul></div>
+    </div>
   </div>
+
   <div class="lang" data-lang="uz">
-    <h2>15. Asosiy xulosa</h2>
-    <p><strong>Tizimsiz:</strong> shift ~800–2500 u.e./oy, shaxsiy seanslarga bog'liq.</p>
-    <p><strong>Tizim bilan:</strong> real 3000–7000 u.e./oy, kuchli brendda 10000+.</p>
-    <div class="note warn">Faqat muntazam kontent, ishonch, shariatga muvofiqlik, sifatli xizmat, yordamchi, mahsulotlar, hisob va shifo kafolatisiz bo'lganda.</div>
+    <h2>15. Start uchun minimal ishchi model</h2>
+    <p>Faqat eng muhim narsalarni qilsangiz, model shunday bo'lishi kerak:</p>
+    <div class="funnel">Post/video → Anketa → Arizalar jadvali → Konsultatsiya → Seans/Dastur → Monitoring → Kuzatuv/Xulosa</div>
+    
+    <h3>Minimal rollar</h3>
+    <div class="grid-3">
+      <div class="card"><strong>Abu Muhammad</strong><ul><li>Konsultatsiyalar</li><li>Murakkab holatlar</li><li>Dasturlarni tasdiqlash</li><li>Asosiy kontent</li></ul></div>
+      <div class="card"><strong>Aka</strong><ul><li>Erkaklar arizalari</li><li>Seanslarning bir qismi</li><li>Monitoring</li><li>Dastur qoralamalari</li><li>Jadval</li></ul></div>
+      <div class="card"><strong>Ayol</strong><ul><li>Ayollar arizalari</li><li>Anketalar</li><li>Eslatmalar</li><li>Kontent</li><li>Sharhlar</li><li>Hujjatlarni rasmiylashtirish</li></ul></div>
+    </div>
   </div>
 </section>
 
 <!-- SECTION 16 -->
 <section id="s16">
   <div class="lang active" data-lang="ru">
-    <h2>16. Самое важное решение</h2>
-    <p><strong>Просто раки:</strong> пришёл пациент → сеанс → оплата → следующий.</p>
-    <p><strong>Системный проект:</strong> контент → доверие → анкета → диагностика → программа → сопровождение → заключение → клуб/курс → рекомендации → рост.</p>
-    <p>Второй путь сложнее, но даёт больше пользы, доверия, порядка и возможностей для заработка.</p>
+    <h2>16. Главный вывод</h2>
+    <div class="grid-2">
+      <div class="note warn"><strong>❌ Без системы</strong><br>Вы можете зарабатывать, но будете зависеть от случайных заявок и личных сеансов.<br><strong>Ориентир:</strong> 800–2500 у.е. в месяц.<br>При большой нагрузке можно больше, но будет усталость и хаос.</div>
+      <div class="note info"><strong>✅ С системой и командой</strong><br>Вы можете построить проект, где доход идёт из разных источников: консультации, сеансы, программы, сопровождение, мини-курсы, клуб, обучение методологии.<br><strong>Реалистичный ориентир:</strong> 3000–7000 у.е. в месяц.<br><strong>Сильный уровень:</strong> 10000+ у.е. в месяц.</div>
+    </div>
+    <p style="margin-top:16px"><strong>Но для этого нужны:</strong> исламская корректность, отсутствие обещаний гарантированного исцеления, регулярный контент, анкета, таблица заявок, роли команды, программы, мониторинг, заключения, финансовый учёт, терпение и постоянство.</p>
+  </div>
+
+  <div class="lang" data-lang="uz">
+    <h2>16. Asosiy xulosa</h2>
+    <div class="grid-2">
+      <div class="note warn"><strong>❌ Tizimsiz</strong><br>Daromad qilishingiz mumkin, lekin tasodifiy arizalar va shaxsiy seanslarga bog'liq bo'lasiz.<br><strong>Orientir:</strong> 800–2500 u.e. oyiga.<br>Ko'p ishlasangiz ko'proq bo'lishi mumkin, lekin charchash va xaos bo'ladi.</div>
+      <div class="note info"><strong>✅ Tizim va jamoa bilan</strong><br>Daromad turli manbalardan keladigan loyiha qura olasiz: konsultatsiya, seans, dastur, kuzatuv, mini-kurs, klub, metodologiyani o'qitish.<br><strong>Realistik orientir:</strong> 3000–7000 u.e. oyiga.<br><strong>Kuchli daraja:</strong> 10000+ u.e. oyiga.</div>
+    </div>
+    <p style="margin-top:16px"><strong>Lekin buning uchun kerak:</strong> islomiy to'g'rilik, shifo kafolati yo'qligi, muntazam kontent, anketa, arizalar jadvali, jamoa rollari, dasturlar, monitoring, xulosalar, moliyaviy hisob, sabr va doimiylik.</p>
+  </div>
+</section>
+
+<!-- SECTION 17 -->
+<section id="s17">
+  <div class="lang active" data-lang="ru">
+    <h2>17. Ключевая мысль</h2>
+    <blockquote>Вы не просто лечите людей один за другим. Вы строите систему:<br><br><strong>Знание → доверие → заявка → диагностика → программа → сеанс → сопровождение → заключение → обучение → сообщество</strong><br><br>Именно система превращает вашу работу из разрозненных сеансов в полноценный проект, который приносит пользу людям и может давать стабильный дозволенный доход.</blockquote>
   </div>
   <div class="lang" data-lang="uz">
-    <h2>16. Eng muhim qaror</h2>
-    <p><strong>Oddiy roqi:</strong> bemor keldi → seans → to'lov → keyingisi.</p>
-    <p><strong>Tizimli loyiha:</strong> kontent → ishonch → anketa → diagnostika → dastur → kuzatuv → xulosa → klub/kurs → tavsiya → o'sish.</p>
-    <p>Ikkinchi yo'l qiyinroq, lekin foyda, ishonch, tartib va daromad imkoniyatlari ko'proq.</p>
+    <h2>17. Asosiy fikr</h2>
+    <blockquote>Siz shunchaki odamlarni ketma-ket davolamaysiz. Siz tizim qurasiz:<br><br><strong>Bilim → ishonch → ariza → diagnostika → dastur → seans → kuzatuv → xulosa → ta'lim → hamjamiyat</strong><br><br>Aynan tizim ishingizni alohida seanslardan to'liq loyihaga aylantiradi, bu odamlarga foyda keltiradi va barqaror halol daromad berishi mumkin.</blockquote>
   </div>
 </section>
 
 </main>
 
-<button class="totop" id="totop" aria-label="Прокрутить наверх / Yuqoriga">↑</button>
+<button class="totop" id="totop" aria-label="Наверх / Yuqoriga">↑</button>
 
 <footer style="text-align:center;color:#64748b;padding:clamp(24px,5vw,32px) 0 clamp(40px,8vw,52px);font-size:clamp(14px,2.8vw,15px)">
-  © Ruqyah Business System — <span data-i18n-footer-ru>Бизнес-модель для специалиста по рукье</span><span data-i18n-footer-uz style="display:none">Ruqya mutaxassisi uchun biznes modeli</span>
+  © Ruqyah Team Model — <span data-i18n-footer-ru>Бизнес-модель для специалиста по рукье с малой командой</span><span data-i18n-footer-uz style="display:none">Kichik jamoa bilan ruqya mutaxassisi uchun biznes modeli</span>
 </footer>
 
 <script>
@@ -603,49 +1135,33 @@ const footerRu = document.querySelector('[data-i18n-footer-ru]');
 const footerUz = document.querySelector('[data-i18n-footer-uz]');
 
 function setLang(lang) {
-  // Update button states
   langBtns.forEach(btn => {
     const isActive = btn.dataset.lang === lang;
     btn.classList.toggle('active', isActive);
     btn.setAttribute('aria-pressed', isActive);
   });
-  
-  // Show/hide language blocks
   langBlocks.forEach(block => {
     block.classList.toggle('active', block.dataset.lang === lang);
   });
-  
-  // Update footer
   if (footerRu && footerUz) {
     footerRu.style.display = lang === 'ru' ? 'inline' : 'none';
     footerUz.style.display = lang === 'uz' ? 'inline' : 'none';
   }
-  
-  // Update HTML lang attribute
   document.documentElement.lang = lang === 'uz' ? 'uz' : 'ru';
-  
-  // Update meta description
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) {
     metaDesc.setAttribute('content', lang === 'ru'
-      ? 'Сравнение: с бизнес-системой и без — Модель заработка рукьи'
-      : 'Taqqoslash: biznes-tizim bilan va tizimsiz — Ruqya daromad modeli');
+      ? 'Модель заработка для проекта рукьи с малой командой: сравнение с системой и без'
+      : 'Kichik jamoa bilan ruqya loyihasi uchun daromad modeli: tizim bilan va tizimsiz taqqoslash');
   }
-  
-  // Save preference
-  localStorage.setItem('ruqyah_lang', lang);
+  localStorage.setItem('ruqyah_team_lang', lang);
 }
 
-// Initialize language switcher
-langBtns.forEach(btn => {
-  btn.addEventListener('click', () => setLang(btn.dataset.lang));
-});
-
-// Apply saved language on load
-document.addEventListener('DOMContentLoaded', function() {
-  setLang(localStorage.getItem('ruqyah_lang') || 'ru');
+langBtns.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+document.addEventListener('DOMContentLoaded', () => {
+  setLang(localStorage.getItem('ruqyah_team_lang') || 'ru');
   
-  // ===== PROGRESS BAR =====
+  // PROGRESS BAR
   const progress = document.getElementById('progress');
   function updateProgress() {
     const scrollTop = window.scrollY;
@@ -657,13 +1173,12 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('scroll', updateProgress, {passive: true});
   updateProgress();
 
-  // ===== ACTIVE NAV HIGHLIGHT =====
+  // ACTIVE NAV HIGHLIGHT
   const navLinks = document.querySelectorAll('#nav a');
   const sections = Array.from(navLinks).map(link => {
     const id = link.getAttribute('href');
     return id?.startsWith('#') ? document.querySelector(id) : null;
   }).filter(Boolean);
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -671,19 +1186,15 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks.forEach(link => {
           const isActive = link.getAttribute('href') === id;
           link.classList.toggle('active', isActive);
-          if (isActive) {
-            link.setAttribute('aria-current', 'location');
-          } else {
-            link.removeAttribute('aria-current');
-          }
+          if (isActive) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
         });
       }
     });
   }, {rootMargin: '-45% 0px -50% 0px', threshold: 0.01});
-
   sections.forEach(section => observer.observe(section));
 
-  // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+  // SMOOTH SCROLL
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -701,42 +1212,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // ===== PRINT BUTTON =====
+  // PRINT BUTTON
   const printBtn = document.getElementById('printBtn');
   if (printBtn) {
     printBtn.addEventListener('click', () => {
-      // Hide language switcher and nav for cleaner print
-      const originalDisplay = {};
-      document.querySelectorAll('.lang-switch, .nav, .progress, .totop').forEach(el => {
-        originalDisplay[el] = el.style.display;
-        el.style.display = 'none';
-      });
+      const toHide = document.querySelectorAll('.topbar, .nav, .progress, .totop, .lang-switch');
+      const original = [];
+      toHide.forEach(el => { original.push([el, el.style.display]); el.style.display = 'none'; });
       window.print();
-      // Restore
-      Object.entries(originalDisplay).forEach(([el, display]) => {
-        el.style.display = display;
-      });
+      original.forEach(([el, display]) => el.style.display = display);
     });
   }
 
-  // ===== BACK TO TOP BUTTON =====
+  // BACK TO TOP
   const topBtn = document.getElementById('totop');
   function toggleTopBtn() {
-    if (window.scrollY > 500) {
-      topBtn.classList.add('show');
-    } else {
-      topBtn.classList.remove('show');
-    }
+    if (window.scrollY > 500) topBtn.classList.add('show');
+    else topBtn.classList.remove('show');
   }
   window.addEventListener('scroll', toggleTopBtn, {passive: true});
   toggleTopBtn();
-  
-  topBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  });
+  topBtn.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); });
 
-  // ===== MOBILE TOUCH IMPROVEMENTS =====
+  // MOBILE TOUCH
   document.querySelectorAll('.btn, .lang-btn, .nav a, #totop').forEach(el => {
     el.addEventListener('touchstart', function() {}, {passive: true});
   });
