@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#0d4f3c">
+<title>Истигфар — Просьба прощения у Аллаха</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  :root {
+    --green-dark: #0d4f3c;
+    --green: #1a7a5e;
+    --green-light: #2ea886;
+    --gold: #d4af37;
+    --gold-light: #f0d77a;
+    --bg: #f5f1e8;
+    --bg-card: #ffffff;
+    --text: #2c2c2c;
+    --text-muted: #6b6b6b;
+    --shadow: 0 4px 20px rgba(13, 79, 60, 0.08);
+  }
+
+  html, body { width: 100%; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(180deg, #f5f1e8 0%, #ebe4d1 100%);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .arabic {
+    font-family: "Traditional Arabic", "Amiri", "Scheherazade New", "Noto Naskh Arabic", "Times New Roman", serif;
+    direction: rtl;
+    text-align: center;
+    font-size: 1.7rem;
+    line-height: 2.2;
+    color: var(--green-dark);
+    font-weight: 500;
+    word-wrap: break-word;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+    color: #fff;
+    padding: 40px 20px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: var(--shadow);
+  }
+
+  .header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  /* LANGUAGE SWITCHER */
+  .lang-switcher {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: flex;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    z-index: 20;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .lang-btn {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+  }
+
+  .lang-btn.active {
+    background: var(--gold);
+    color: var(--green-dark);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .ornament { font-size: 2rem; color: var(--gold-light); margin-bottom: 10px; letter-spacing: 8px; }
+  .header h1 { font-size: 1.9rem; font-weight: 700; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+  .header .subtitle { font-size: 0.95rem; opacity: 0.9; font-style: italic; margin-bottom: 15px; }
+
+  .bismillah {
+    font-family: "Traditional Arabic", "Amiri", serif;
+    font-size: 1.6rem;
+    color: var(--gold-light);
+    margin-top: 15px;
+    direction: rtl;
+  }
+
+  .container { max-width: 700px; margin: 0 auto; padding: 20px 16px 40px; }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    gap: 6px;
+    background: var(--bg-card);
+    padding: 6px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 8px;
+    z-index: 10;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+
+  .tab {
+    flex: 1;
+    min-width: max-content;
+    padding: 10px 14px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+
+  .tab.active {
+    background: linear-gradient(135deg, var(--green-dark), var(--green));
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(13, 79, 60, 0.3);
+  }
+
+  .tab-content { display: none; animation: fadeIn 0.4s ease; }
+  .tab-content.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  .section-title {
+    text-align: center;
+    color: var(--green-dark);
+    font-size: 1.3rem;
+    margin: 10px 0 20px;
+    font-weight: 700;
+    padding-bottom: 12px;
+  }
+  .section-title::after {
+    content: "❋";
+    display: block;
+    color: var(--gold);
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: 22px 18px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--green-light), var(--gold));
+  }
+
+  .card-label {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--green-dark), var(--green));
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .card-label.hadith { background: linear-gradient(135deg, #8B4513, #b8651f); }
+  .card-label.benefit { background: linear-gradient(135deg, #6a4c93, #8e6bc1); }
+
+  .arabic-block {
+    background: linear-gradient(135deg, #faf6e8 0%, #fff9e6 100%);
+    padding: 18px 14px;
+    border-radius: 12px;
+    margin: 12px 0;
+    border-right: 3px solid var(--gold);
+    border-left: 3px solid var(--gold);
+  }
+
+  .translation {
+    color: var(--text);
+    font-size: 1rem;
+    margin: 12px 0;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  .transliteration {
+    color: var(--green);
+    font-size: 0.95rem;
+    margin: 10px 0;
+    font-weight: 500;
+    text-align: center;
+    background: rgba(46, 168, 134, 0.08);
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .source {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin-top: 10px;
+    text-align: right;
+    font-weight: 600;
+  }
+
+  .reward {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+    border-left: 3px solid var(--gold);
+    padding: 12px 14px;
+    margin: 12px 0;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+
+  .reward strong { color: var(--green-dark); }
+
+  .intro {
+    background: var(--bg-card);
+    padding: 22px 18px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+  .intro p { color: var(--text); margin-bottom: 10px; font-size: 0.95rem; }
+  .intro .highlight { color: var(--green-dark); font-weight: 700; font-size: 1.05rem; }
+
+  /* BENEFITS GRID */
+  .benefits {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 16px 0 20px;
+  }
+
+  .benefit-item {
+    background: var(--bg-card);
+    padding: 14px 10px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    transition: transform 0.2s;
+  }
+
+  .benefit-item:active { transform: scale(0.97); }
+
+  .benefit-icon {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+  }
+
+  .benefit-text {
+    font-size: 0.82rem;
+    color: var(--green-dark);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .builder {
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: 22px 18px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+
+  .builder-info {
+    background: rgba(46, 168, 134, 0.08);
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    font-size: 0.88rem;
+    color: var(--green-dark);
+    text-align: center;
+  }
+
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    color: var(--green-dark);
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+  }
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #e8e2d0;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background: #fafafa;
+    color: var(--text);
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--green-light);
+    background: #fff;
+  }
+  .field textarea { resize: vertical; min-height: 80px; }
+
+  .checkboxes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    background: #faf6e8;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border: 1px solid transparent;
+    user-select: none;
+  }
+  .checkbox-item:active { background: #f0e8d0; }
+  .checkbox-item input { margin-right: 10px; width: 18px; height: 18px; accent-color: var(--green); flex-shrink: 0; }
+  .checkbox-item input:checked + span { color: var(--green-dark); font-weight: 600; }
+  .checkbox-item span { font-size: 0.9rem; color: var(--text); }
+
+  .btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--green-dark), var(--green));
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    box-shadow: 0 4px 15px rgba(13, 79, 60, 0.25);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+  }
+  .btn:active { transform: scale(0.98); box-shadow: 0 2px 8px rgba(13, 79, 60, 0.2); }
+  .btn-secondary { background: linear-gradient(135deg, var(--gold), #b8941f); margin-top: 10px; }
+  .btn-row { display: flex; gap: 8px; }
+  .btn-row .btn { flex: 1; }
+
+  .result {
+    margin-top: 20px;
+    padding: 20px 16px;
+    background: linear-gradient(135deg, #faf6e8, #fff9e6);
+    border-radius: 14px;
+    border: 2px solid var(--gold);
+    display: none;
+    animation: fadeIn 0.5s;
+  }
+  .result.show { display: block; }
+  .result h3 { color: var(--green-dark); text-align: center; margin-bottom: 12px; font-size: 1.1rem; }
+  .result-text { color: var(--text); font-size: 0.98rem; line-height: 1.8; white-space: pre-wrap; word-wrap: break-word; }
+
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--green-dark);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    max-width: 90%;
+    text-align: center;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+  /* COUNTER */
+  .counter-card {
+    background: linear-gradient(135deg, var(--green-dark), var(--green));
+    color: #fff;
+    padding: 28px 18px;
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(13, 79, 60, 0.25);
+    margin-bottom: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .counter-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.25), transparent 60%);
+    pointer-events: none;
+  }
+  .counter-card h3 {
+    font-family: "Traditional Arabic", "Amiri", serif;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    position: relative;
+    color: var(--gold-light);
+    direction: rtl;
+  }
+  .counter-display {
+    font-size: 4rem;
+    font-weight: 800;
+    margin: 16px 0 8px;
+    position: relative;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s, color 0.3s;
+    line-height: 1;
+  }
+
+  .counter-progress {
+    position: relative;
+    background: rgba(255,255,255,0.15);
+    height: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 12px 0;
+  }
+
+  .counter-progress-bar {
+    background: linear-gradient(90deg, var(--gold-light), var(--gold));
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+  }
+
+  .counter-target {
+    position: relative;
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-bottom: 6px;
+  }
+
+  .counter-buttons { display: flex; gap: 10px; margin-top: 14px; position: relative; }
+
+  .counter-btn {
+    flex: 1;
+    padding: 14px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .counter-btn.main {
+    background: var(--gold);
+    color: var(--green-dark);
+    border-color: var(--gold);
+    flex: 2;
+    font-size: 1.05rem;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+  }
+  .counter-btn:active { transform: scale(0.96); }
+
+  .target-selector {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 12px;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .target-btn {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .target-btn.active {
+    background: var(--gold);
+    color: var(--green-dark);
+    border-color: var(--gold);
+  }
+
+  /* WHEN TO MAKE ISTIGHFAR */
+  .timing-card {
+    background: var(--bg-card);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--green-light);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .timing-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .timing-content h4 {
+    color: var(--green-dark);
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .timing-content p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .footer { text-align: center; padding: 30px 20px 20px; color: var(--text-muted); font-size: 0.85rem; }
+  .footer .ornament-end { color: var(--gold); font-size: 1.3rem; letter-spacing: 6px; margin-bottom: 10px; }
+
+  @media (max-width: 380px) {
+    .header h1 { font-size: 1.5rem; padding: 0 70px; }
+    .arabic { font-size: 1.5rem; line-height: 2; }
+    .counter-display { font-size: 3.2rem; }
+    .tab { font-size: 0.78rem; padding: 9px 10px; }
+    .lang-btn { padding: 5px 10px; font-size: 0.72rem; }
+  }
+
+  @media (min-width: 600px) {
+    .checkboxes { grid-template-columns: 1fr 1fr; }
+    .header h1 { font-size: 2.2rem; }
+    .benefits { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="lang-switcher">
+    <button type="button" class="lang-btn active" data-lang="ru">РУС</button>
+    <button type="button" class="lang-btn" data-lang="uz">UZB</button>
+  </div>
+  <div class="ornament">۞ ❋ ۞</div>
+  <h1 data-i18n="title">Истигфар</h1>
+  <div class="subtitle" data-i18n="subtitle">Просьба прощения у Аллаха</div>
+  <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+</header>
+
+<div class="container">
+
+  <div class="intro">
+    <p class="highlight" data-i18n="intro_title">Истигфар (الاستغفار)</p>
+    <p data-i18n="intro_text">— это обращение к Всевышнему Аллаху с просьбой о прощении грехов. Это великое поклонение, открывающее двери милости, удела и спасения.</p>
+  </div>
+
+  <div class="benefits">
+    <div class="benefit-item">
+      <div class="benefit-icon">🌧️</div>
+      <div class="benefit-text" data-i18n="benefit_1">Обильный дождь и ризк</div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">💚</div>
+      <div class="benefit-text" data-i18n="benefit_2">Прощение грехов</div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">🚪</div>
+      <div class="benefit-text" data-i18n="benefit_3">Выход из трудностей</div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">🕊️</div>
+      <div class="benefit-text" data-i18n="benefit_4">Спокойствие в сердце</div>
+    </div>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button type="button" class="tab active" data-tab="quran"><span data-i18n="tab_quran">📖 Аяты</span></button>
+    <button type="button" class="tab" data-tab="hadith"><span data-i18n="tab_hadith">📜 Хадисы</span></button>
+    <button type="button" class="tab" data-tab="duas"><span data-i18n="tab_duas">🤲 Дуа</span></button>
+    <button type="button" class="tab" data-tab="when"><span data-i18n="tab_when">⏰ Когда</span></button>
+    <button type="button" class="tab" data-tab="builder"><span data-i18n="tab_builder">✍️ Мольба</span></button>
+    <button type="button" class="tab" data-tab="counter"><span data-i18n="tab_counter">📿 Счётчик</span></button>
+  </div>
+
+  <!-- АЯТЫ -->
+  <div class="tab-content active" id="quran">
+    <h2 class="section-title" data-i18n="quran_title">Аяты Священного Корана</h2>
+
+    <div class="card">
+      <span class="card-label" data-i18n="ayat">Аят</span> <span class="card-label" style="background:var(--gold);color:var(--green-dark)">1</span>
+      <div class="arabic-block">
+        <p class="arabic">وَمَن يَعْمَلْ سُوءًا أَوْ يَظْلِمْ نَفْسَهُ ثُمَّ يَسْتَغْفِرِ اللَّهَ يَجِدِ اللَّهَ غَفُورًا رَّحِيمًا</p>
+      </div>
+      <p class="transliteration">Ва ман я‘маль су’ан ау язлим нафсаху сумма ястагфириллаха яджидиллаха гафуран рахима</p>
+      <p class="translation" data-i18n="ayat_1">«Если кто-либо совершит злодеяние или будет несправедлив по отношению к себе, а затем попросит у Аллаха прощения, то он найдёт Аллаха Прощающим и Милосердным.»</p>
+      <p class="source" data-i18n="ayat_1_src">— Сура «ан-Ниса», аят 110</p>
+    </div>
+
+    <div class="card">
+      <span class="card-label" data-i18n="ayat">Аят</span> <span class="card-label" style="background:var(--gold);color:var(--green-dark)">2</span>
+      <div class="arabic-block">
+        <p class="arabic">فَقُلْتُ اسْتَغْفِرُوا رَبَّكُمْ إِنَّهُ كَانَ غَفَّارًا ۞ يُرْسِلِ السَّمَاءَ عَلَيْكُم مِّدْرَارًا ۞ وَيُمْدِدْكُم بِأَمْوَالٍ وَبَنِينَ وَيَجْعَل لَّكُمْ جَنَّاتٍ وَيَجْعَل لَّكُمْ أَنْهَارًا</p>
+      </div>
+      <p class="translation" data-i18n="ayat_2">«Просите прощения у вашего Господа, ведь Он — Всепрощающий. Он ниспошлёт вам с неба обильные дожди, поддержит вас имуществом и детьми, взрастит для вас сады и создаст для вас реки.»</p>
+      <p class="source" data-i18n="ayat_2_src">— Сура «Нух», аяты 10–12</p>
+    </div>
+
+    <div class="card">
+      <span class="card-label" data-i18n="ayat">Аят</span> <span class="card-label" style="background:var(--gold);color:var(--green-dark)">3</span>
+      <div class="arabic-block">
+        <p class="arabic">وَمَا كَانَ اللَّهُ لِيُعَذِّبَهُمْ وَأَنتَ فِيهِمْ ۚ وَمَا كَانَ اللَّهُ مُعَذِّبَهُمْ وَهُمْ يَسْتَغْفِرُونَ</p>
+      </div>
+      <p class="translation" data-i18n="ayat_3">«Аллах не стал бы подвергать их мучениям, пока ты находишься среди них, и Аллах не стал бы подвергать их мучениям, пока они просят прощения.»</p>
+      <p class="source" data-i18n="ayat_3_src">— Сура «аль-Анфаль», аят 33</p>
+    </div>
+
+    <div class="card">
+      <span class="card-label" data-i18n="ayat">Аят</span> <span class="card-label" style="background:var(--gold);color:var(--green-dark)">4</span>
+      <div class="arabic-block">
+        <p class="arabic">قُلْ يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا ۚ إِنَّهُ هُوَ الْغَفُورُ الرَّحِيمُ</p>
+      </div>
+      <p class="translation" data-i18n="ayat_4">«Скажи Моим рабам, которые излишествовали во вред самим себе: «Не отчаивайтесь в милости Аллаха. Воистину, Аллах прощает грехи полностью, ибо Он — Прощающий, Милосердный».»</p>
+      <p class="source" data-i18n="ayat_4_src">— Сура «аз-Зумар», аят 53</p>
+    </div>
+
+    <div class="card">
+      <span class="card-label" data-i18n="ayat">Аят</span> <span class="card-label" style="background:var(--gold);color:var(--green-dark)">5</span>
+      <div class="arabic-block">
+        <p class="arabic">وَالَّذِينَ إِذَا فَعَلُوا فَاحِشَةً أَوْ ظَلَمُوا أَنفُسَهُمْ ذَكَرُوا اللَّهَ فَاسْتَغْفَرُوا لِذُنُوبِهِمْ وَمَن يَغْفِرُ الذُّنُوبَ إِلَّا اللَّهُ</p>
+      </div>
+      <p class="translation" data-i18n="ayat_5">«…которые, совершив мерзость или поступив несправедливо по отношению к себе, помянули Аллаха и попросили прощения за свои грехи, — ведь кто прощает грехи, кроме Аллаха?»</p>
+      <p class="source" data-i18n="ayat_5_src">— Сура «Али ‘Имран», аят 135</p>
+    </div>
+
+    <div class="card">
+      <span class="card-label" data-i18n="ayat">Аят</span> <span class="card-label" style="background:var(--gold);color:var(--green-dark)">6</span>
+      <div class="arabic-block">
+        <p class="arabic">وَأَنِ اسْتَغْفِرُوا رَبَّكُمْ ثُمَّ تُوبُوا إِلَيْهِ يُمَتِّعْكُم مَّتَاعًا حَسَنًا إِلَىٰ أَجَلٍ مُّسَمًّى</p>
+      </div>
+      <p class="translation" data-i18n="ayat_6">«Просите прощения у вашего Господа и кайтесь перед Ним, чтобы Он наделил вас прекрасными благами до определённого срока.»</p>
+      <p class="source" data-i18n="ayat_6_src">— Сура «Худ», аят 3</p>
+    </div>
+
+    <div class="card">
+      <span class="card-label" data-i18n="ayat">Аят</span> <span class="card-label" style="background:var(--gold);color:var(--green-dark)">7</span>
+      <div class="arabic-block">
+        <p class="arabic">وَالْمُسْتَغْفِرِينَ بِالْأَسْحَارِ</p>
+      </div>
+      <p class="translation" data-i18n="ayat_7">«…и просящих прощения перед рассветом.» (Описание праведников)</p>
+      <p class="source" data-i18n="ayat_7_src">— Сура «Али ‘Имран», аят 17</p>
+    </div>
+  </div>
+
+  <!-- ХАДИСЫ -->
+  <div class="tab-content" id="hadith">
+    <h2 class="section-title" data-i18n="hadith_title">Достоверные хадисы</h2>
+
+    <div class="card">
+      <span class="card-label hadith" data-i18n="hadith">Хадис</span> <span class="card-label" style="background:var(--gold);color:var(--green-dark)">1</span>
+      <p class="translation" data-i18n="prophet_said">Посланник Аллаха ﷺ сказал:</p>
+      <div class="arabic-block">
+        <p class="arabic">وَاللَّهِ إِنِّي لَأَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ فِي الْيَوْمِ أَكْثَرَ مِنْ سَبْعِينَ مَرَّةً</p>
+      </div>
+      <p class="translation" data-i18n="hadith_1">«Клянусь Аллахом, поистине, я прошу прощения у Аллаха и приношу Ему покаяние более семидесяти раз в день.»</p>
+      <p class="source">— аль-Бухари, 6307</p>
+    </div>
+
+    <div class="card">
+      <span class="card-label hadith" data-i18n="hadith">Хадис</span> <span class="card-label" style="background:var(--gold);color:var(--green-dark)">2</span>
+      <p class="translation" data-i18n="prophet_said">Посланник Аллаха ﷺ сказал:</p>
+      <div class="arabic-block">
+        <p class="arabic">مَنْ لَزِمَ الِاسْتِغْفَارَ، جَعَلَ اللَّهُ لَهُ مِنْ كُلِّ ضِيقٍ مَخْرَجًا، وَمِنْ كُلِّ هَمٍّ فَرَجًا، وَرَزَقَهُ مِنْ حَيْثُ لَا يَحْتَسِبُ</p>
+      </div>
+      <p class="translation" data-i18n="hadith_2">«Кто будет постоянно просить у Аллаха прощения, тому Аллах из каждой тесноты сделает выход, из каждой печали — облегчение, и наделит его уделом оттуда, откуда он не ожидает.»</p>
+      <p class="source">— Абу Дауд, 1518; Ибн Маджа, 3819</p>
+    </div>
+
+    <div class="card">
+      <span class="card-label hadith" data-i18n="sayyid_label">Господин истигфара (Сайид аль-Истигфар)</span>
+      <p class="translation" data-i18n="sayyid_intro">Посланник Аллаха ﷺ сказал: «Лучшая мольба о прощении — это…»</p>
+      <div class="arabic-block">
+        <p class="arabic">اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ</p>
+      </div>
+      <p class="transliteration">Аллахумма Анта Рабби, ля иляха илля Анта, халяктани ва ана ‘абдука, ва ана ‘аля ‘ахдика ва ва‘дика мастата‘ту, а‘узу бика мин шарри ма сана‘ту, абу’у ляка би ни‘матика ‘аляййа, ва абу’у би занби, фагфир ли, фа иннаху ля йагфируз-зунуба илля Анта</p>
+      <p class="translation" data-i18n="sayyid_translation">«О Аллах, Ты — Господь мой, нет божества, кроме Тебя. Ты создал меня, и я — раб Твой, и я буду хранить верность Тебе, пока у меня хватит сил. Прибегаю к Тебе от зла того, что я сотворил, признаю милость, оказанную Тобой, и признаю грех свой. Прости же меня, ибо, поистине, никто не прощает грехов, кроме Тебя.»</p>
+      <div class="reward">
+        <strong data-i18n="reward_label">⭐ Награда:</strong> <span data-i18n="sayyid_reward">Кто скажет это днём с убеждённостью и умрёт в этот день до наступления вечера — войдёт в Рай. И кто скажет ночью с убеждённостью и умрёт до наступления утра — войдёт в Рай.</span>
+      </div>
+      <p class="source">— аль-Бухари, 6306</p>
+    </div>
+
+    <div class="card">
+      <span class="card-label hadith" data-i18n="hadith">Хадис</span> <span class="card-label" style="background:var(--gold);color:var(--green-dark)">4</span>
+      <p class="translation" data-i18n="prophet_said">Посланник Аллаха ﷺ сказал:</p>
+      <div class="arabic-block">
+        <p class="arabic">يَا أَيُّهَا النَّاسُ تُوبُوا إِلَى اللَّهِ، فَإِنِّي أَتُوبُ فِي الْيَوْمِ إِلَيْهِ مِائَةَ مَرَّةٍ</p>
+      </div>
+      <p class="translation" data-i18n="hadith_4">«О люди! Кайтесь перед Аллахом, ибо я каюсь перед Ним сто раз в день.»</p>
+      <p class="source">— Муслим, 2702</p>
+    </div>
+
+    <div class="card">
+      <span class="card-label hadith" data-i18n="hadith_qudsi">Хадис кудси</span>
+      <p class="translation" data-i18n="allah_says">Всевышний Аллах говорит:</p>
+      <div class="arabic-block">
+        <p class="arabic">يَا ابْنَ آدَمَ، إِنَّكَ مَا دَعَوْتَنِي وَرَجَوْتَنِي غَفَرْتُ لَكَ عَلَى مَا كَانَ مِنْكَ وَلَا أُبَالِي</p>
+      </div>
+      <p class="translation" data-i18n="hadith_5">«О сын Адама! Поистине, пока ты взываешь ко Мне и надеешься на Меня, Я буду прощать тебе всё, что от тебя исходит, и не обращу на это внимания…»</p>
+      <p class="source" data-i18n="hadith_5_src">— ат-Тирмизи, 3540 (хороший хадис)</p>
+    </div>
+
+    <div class="card">
+      <span class="card-label hadith" data-i18n="short_form">Краткая форма истигфара</span>
+      <div class="arabic-block">
+        <p class="arabic">أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيَّ الْقَيُّومَ وَأَتُوبُ إِلَيْهِ</p>
+      </div>
+      <p class="transliteration">Астагфируллахаль-‘Азыйм, аллязи ля иляха илля Хува, аль-Хайюль-Каййум, ва атубу иляйх</p>
+      <p class="translation" data-i18n="short_form_translation">«Прошу прощения у Аллаха Великого, кроме Которого нет божества, Живого, Вседержителя, и приношу Ему своё покаяние.»</p>
+      <div class="reward">
+        <strong data-i18n="reward_label">⭐ Награда:</strong> <span data-i18n="short_form_reward">«Кто скажет это — будут прощены ему грехи, даже если он бежал с поля битвы.»</span>
+      </div>
+      <p class="source">— Абу Дауд, 1517; ат-Тирмизи, 3577</p>
+    </div>
+
+    <div class="card">
+      <span class="card-label hadith" data-i18n="hadith">Хадис</span> <span class="card-label" style="background:var(--gold);color:var(--green-dark)">7</span>
+      <p class="translation" data-i18n="prophet_said">Посланник Аллаха ﷺ сказал:</p>
+      <div class="arabic-block">
+        <p class="arabic">طُوبَى لِمَنْ وَجَدَ فِي صَحِيفَتِهِ اسْتِغْفَارًا كَثِيرًا</p>
+      </div>
+      <p class="translation" data-i18n="hadith_7">«Блажен тот, кто найдёт в своей книге деяний много истигфара.»</p>
+      <p class="source">— Ибн Маджа, 3818</p>
+    </div>
+  </div>
+
+  <!-- ДУА -->
+  <div class="tab-content" id="duas">
+    <h2 class="section-title" data-i18n="duas_title">Короткие дуа истигфара</h2>
+
+    <div class="card">
+      <div class="arabic-block">
+        <p class="arabic">أَسْتَغْفِرُ اللَّهَ</p>
+      </div>
+      <p class="transliteration">Астагфируллах</p>
+      <p class="translation" data-i18n="dua_1">«Прошу прощения у Аллаха.»</p>
+    </div>
+
+    <div class="card">
+      <div class="arabic-block">
+        <p class="arabic">رَبِّ اغْفِرْ لِي وَتُبْ عَلَيَّ إِنَّكَ أَنْتَ التَّوَّابُ الرَّحِيمُ</p>
+      </div>
+      <p class="transliteration">Рабби-гфир ли ва туб ‘аляййа, иннака Антат-Таввабур-Рахим</p>
+      <p class="translation" data-i18n="dua_2">«Господь мой, прости меня и прими моё покаяние, поистине, Ты — Принимающий покаяние, Милосердный.»</p>
+      <p class="source" data-i18n="dua_2_src">— Абу Дауд, ат-Тирмизи (достоверный)</p>
+    </div>
+
+    <div class="card">
+      <p class="translation" data-i18n="dua_adam_label">Дуа пророка Адама (мир ему):</p>
+      <div class="arabic-block">
+        <p class="arabic">رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ</p>
+      </div>
+      <p class="transliteration">Раббана залямна анфусана, ва ин лям тагфир ляна ва тархамна, лянакунанна миналь-хасирин</p>
+      <p class="translation" data-i18n="dua_adam">«Господь наш! Мы поступили несправедливо по отношению к себе, и если Ты не простишь нас и не помилуешь, то мы непременно окажемся в числе потерпевших убыток.»</p>
+      <p class="source" data-i18n="dua_adam_src">— Сура «аль-А‘раф», аят 23</p>
+    </div>
+
+    <div class="card">
+      <p class="translation" data-i18n="dua_yunus_label">Дуа пророка Юнуса (мир ему):</p>
+      <div class="arabic-block">
+        <p class="arabic">لَا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ</p>
+      </div>
+      <p class="transliteration">Ля иляха илля Анта, субханака, инни кунту миназ-залимин</p>
+      <p class="translation" data-i18n="dua_yunus">«Нет божества, кроме Тебя! Пречист Ты! Поистине, я был из числа несправедливых.»</p>
+      <p class="source" data-i18n="dua_yunus_src">— Сура «аль-Анбия», аят 87</p>
+    </div>
+
+    <div class="card">
+      <p class="translation" data-i18n="dua_musa_label">Дуа пророка Мусы (мир ему):</p>
+      <div class="arabic-block">
+        <p class="arabic">رَبِّ إِنِّي ظَلَمْتُ نَفْسِي فَاغْفِرْ لِي</p>
+      </div>
+      <p class="transliteration">Рабби, инни залямту нафси фагфир ли</p>
+      <p class="translation" data-i18n="dua_musa">«Господь мой! Я поступил несправедливо по отношению к себе. Прости же меня!»</p>
+      <p class="source" data-i18n="dua_musa_src">— Сура «аль-Касас», аят 16</p>
+    </div>
+
+    <div class="card">
+      <div class="arabic-block">
+        <p class="arabic">رَبَّنَا اغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِي أَمْرِنَا وَثَبِّتْ أَقْدَامَنَا وَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ</p>
+      </div>
+      <p class="transliteration">Раббана-гфир ляна зунубана ва исрафана фи амрина, ва саббит акдамана, вансурна ‘аляль-каумиль-кафирин</p>
+      <p class="translation" data-i18n="dua_3">«Господь наш! Прости нам наши грехи и излишества, которые мы совершили в делах наших, утверди наши стопы и помоги нам одержать верх над неверующими людьми.»</p>
+      <p class="source" data-i18n="dua_3_src">— Сура «Али ‘Имран», аят 147</p>
+    </div>
+
+    <div class="card">
+      <p class="translation" data-i18n="dua_parents_label">Просьба прощения за родителей:</p>
+      <div class="arabic-block">
+        <p class="arabic">رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ</p>
+      </div>
+      <p class="transliteration">Раббана-гфир ли ва ли валидаййа ва лиль-му’минина яума якумуль-хисаб</p>
+      <p class="translation" data-i18n="dua_parents">«Господь наш! Прости меня, моих родителей и верующих в День, когда наступит расчёт!»</p>
+      <p class="source" data-i18n="dua_parents_src">— Сура «Ибрахим», аят 41</p>
+    </div>
+
+    <div class="card">
+      <p class="translation" data-i18n="dua_rabbana_label">Дуа верующих:</p>
+      <div class="arabic-block">
+        <p class="arabic">رَبَّنَا آمَنَّا فَاغْفِرْ لَنَا وَارْحَمْنَا وَأَنتَ خَيْرُ الرَّاحِمِينَ</p>
+      </div>
+      <p class="transliteration">Раббана аманна фагфир ляна вархамна ва Анта хайрур-рахимин</p>
+      <p class="translation" data-i18n="dua_rabbana">«Господь наш! Мы уверовали. Прости же нас и помилуй, ибо Ты — Наилучший из милующих.»</p>
+      <p class="source" data-i18n="dua_rabbana_src">— Сура «аль-Му’минун», аят 109</p>
+    </div>
+  </div>
+
+  <!-- КОГДА ЧИТАТЬ -->
+  <div class="tab-content" id="when">
+    <h2 class="section-title" data-i18n="when_title">Лучшее время для истигфара</h2>
+
+    <div class="timing-card">
+      <div class="timing-icon">🌅</div>
+      <div class="timing-content">
+        <h4 data-i18n="time_1_title">Перед рассветом (последняя треть ночи)</h4>
+        <p data-i18n="time_1_text">Лучшее время для истигфара. Аллах нисходит к ближнему небу и отвечает зовущим.</p>
+      </div>
+    </div>
+
+    <div class="timing-card">
+      <div class="timing-icon">🕌</div>
+      <div class="timing-content">
+        <h4 data-i18n="time_2_title">После каждого фарз-намаза</h4>
+        <p data-i18n="time_2_text">Пророк ﷺ говорил «Астагфируллах» три раза после каждой обязательной молитвы.</p>
+      </div>
+    </div>
+
+    <div class="timing-card">
+      <div class="timing-icon">🌙</div>
+      <div class="timing-content">
+        <h4 data-i18n="time_3_title">Утром и вечером</h4>
+        <p data-i18n="time_3_text">В утренних и вечерних азкарах. Минимум по 100 раз для следования сунне.</p>
+      </div>
+    </div>
+
+    <div class="timing-card">
+      <div class="timing-icon">😔</div>
+      <div class="timing-content">
+        <h4 data-i18n="time_4_title">Сразу после совершения греха</h4>
+        <p data-i18n="time_4_text">Покаяние сразу после греха — путь искренних рабов Аллаха.</p>
+      </div>
+    </div>
+
+    <div class="timing-card">
+      <div class="timing-icon">😢</div>
+      <div class="timing-content">
+        <h4 data-i18n="time_5_title">При трудностях и печали</h4>
+        <p data-i18n="time_5_text">Истигфар — ключ к выходу из любой беды и тесноты.</p>
+      </div>
+    </div>
+
+    <div class="timing-card">
+      <div class="timing-icon">💍</div>
+      <div class="timing-content">
+        <h4 data-i18n="time_6_title">При желании ребёнка или ризка</h4>
+        <p data-i18n="time_6_text">«…поддержит вас имуществом и детьми» (сура «Нух»).</p>
+      </div>
+    </div>
+
+    <div class="timing-card">
+      <div class="timing-icon">📿</div>
+      <div class="timing-content">
+        <h4 data-i18n="time_7_title">В пятницу и Священные месяцы</h4>
+        <p data-i18n="time_7_text">Особенно в Рамадан, в день ‘Арафа и в последние десять ночей Рамадана.</p>
+      </div>
+    </div>
+
+    <div class="timing-card">
+      <div class="timing-icon">😴</div>
+      <div class="timing-content">
+        <h4 data-i18n="time_8_title">Перед сном</h4>
+        <p data-i18n="time_8_text">Завершайте день покаянием, чтобы встретить новый день очищенным.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 16px;">
+      <span class="card-label benefit" data-i18n="conditions">⚡ Условия принятия покаяния</span>
+      <p class="translation" data-i18n="cond_1"><strong>1.</strong> Искренность ради Аллаха.</p>
+      <p class="translation" data-i18n="cond_2"><strong>2.</strong> Сожаление о совершённом грехе.</p>
+      <p class="translation" data-i18n="cond_3"><strong>3.</strong> Прекращение греха немедленно.</p>
+      <p class="translation" data-i18n="cond_4"><strong>4.</strong> Твёрдое намерение не возвращаться к нему.</p>
+      <p class="translation" data-i18n="cond_5"><strong>5.</strong> Возврат прав людям, если грех был связан с ними.</p>
+      <p class="translation" data-i18n="cond_6"><strong>6.</strong> Покаяние до наступления смертной агонии.</p>
+    </div>
+  </div>
+
+  <!-- КОНСТРУКТОР МОЛЬБЫ -->
+  <div class="tab-content" id="builder">
+    <h2 class="section-title" data-i18n="builder_title">Сформировать свою мольбу</h2>
+
+    <div class="builder">
+      <div class="builder-info" data-i18n="builder_info">
+        ✨ Составьте искреннюю мольбу о прощении, обращаясь к Аллаху от своего сердца
+      </div>
+
+      <div class="field">
+        <label for="userName" data-i18n="your_name">Ваше имя (по желанию)</label>
+        <input type="text" id="userName" data-i18n-placeholder="name_placeholder" placeholder="Например: Мухаммад" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label data-i18n="ask_forgiveness">За что вы просите прощения?</label>
+        <div class="checkboxes" id="sinsList">
+          <label class="checkbox-item"><input type="checkbox" data-key="sin_all"><span data-i18n="sin_all_label">За все грехи</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="sin_tongue"><span data-i18n="sin_tongue_label">За грехи языка</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="sin_prayers"><span data-i18n="sin_prayers_label">За пропущенные молитвы</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="sin_parents"><span data-i18n="sin_parents_label">За непочтение к родителям</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="sin_people"><span data-i18n="sin_people_label">За обиды людям</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="sin_pride"><span data-i18n="sin_pride_label">За высокомерие</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="sin_envy"><span data-i18n="sin_envy_label">За зависть и злобу</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="sin_thoughts"><span data-i18n="sin_thoughts_label">За нечистые помыслы</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="ownReason" data-i18n="own_words">Свои слова (от сердца)</label>
+        <textarea id="ownReason" data-i18n-placeholder="own_placeholder" placeholder="Напишите своими словами то, в чём вы каетесь перед Аллахом..."></textarea>
+      </div>
+
+      <div class="field">
+        <label data-i18n="ask_allah">О чём вы просите Аллаха?</label>
+        <div class="checkboxes" id="requestsList">
+          <label class="checkbox-item"><input type="checkbox" data-key="req_accept"><span data-i18n="req_accept_label">Принять покаяние</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="req_clean"><span data-i18n="req_clean_label">Очистить сердце</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="req_guide"><span data-i18n="req_guide_label">Наставить на прямой путь</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="req_ease"><span data-i18n="req_ease_label">Облегчить трудности</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="req_fire"><span data-i18n="req_fire_label">Защитить от Огня</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="req_paradise"><span data-i18n="req_paradise_label">Ввести в Рай</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="req_rizq"><span data-i18n="req_rizq_label">Даровать дозволенный ризк</span></label>
+          <label class="checkbox-item"><input type="checkbox" data-key="req_iman"><span data-i18n="req_iman_label">Укрепить веру</span></label>
+        </div>
+      </div>
+
+      <button type="button" class="btn" id="generateBtn" data-i18n="generate_btn">🤲 Составить мольбу</button>
+      <div class="btn-row">
+        <button type="button" class="btn btn-secondary" id="copyBtn" data-i18n="copy_btn">📋 Копировать</button>
+        <button type="button" class="btn btn-secondary" id="shareBtn" data-i18n="share_btn">📤 Поделиться</button>
+      </div>
+
+      <div class="result" id="result">
+        <h3 data-i18n="your_dua">✨ Ваша мольба ✨</h3>
+        <div class="result-text" id="resultText"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- СЧЁТЧИК -->
+  <div class="tab-content" id="counter">
+    <h2 class="section-title" data-i18n="counter_title">Счётчик истигфара</h2>
+
+    <div class="counter-card">
+      <h3>أَسْتَغْفِرُ اللَّهَ</h3>
+      <p style="opacity:0.9; font-size:0.85rem; position:relative;">Астагфируллах</p>
+      <div class="counter-display" id="counterDisplay">0</div>
+      <div class="counter-target">
+        <span data-i18n="goal">Цель:</span> <span id="counterTarget">100</span>
+      </div>
+      <div class="counter-progress">
+        <div class="counter-progress-bar" id="progressBar"></div>
+      </div>
+      <div class="counter-buttons">
+        <button type="button" class="counter-btn" id="resetBtn" data-i18n="reset">↻ Сброс</button>
+        <button type="button" class="counter-btn main" id="incBtn" data-i18n="istighfar_btn">+ Истигфар</button>
+        <button type="button" class="counter-btn" id="decBtn">−</button>
+      </div>
+      <div class="target-selector">
+        <button type="button" class="target-btn" data-target="33">33</button>
+        <button type="button" class="target-btn active" data-target="100">100</button>
+        <button type="button" class="target-btn" data-target="300">300</button>
+        <button type="button" class="target-btn" data-target="500">500</button>
+        <button type="button" class="target-btn" data-target="1000">1000</button>
+      </div>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <p class="translation" data-i18n="counter_info">💡 Сунна Пророка ﷺ — совершать истигфар <strong>не менее 70 раз в день</strong>, а сам Пророк ﷺ делал это <strong>более 100 раз</strong>.</p>
+      <p class="source" style="text-align:center; margin-top:8px;">— аль-Бухари, Муслим</p>
+    </div>
+
+    <div class="card" style="text-align:center; background: linear-gradient(135deg, #faf6e8, #fff9e6);">
+      <p class="translation" data-i18n="today_count">📊 Сегодня прочитано: <strong id="todayCount">0</strong> раз</p>
+      <p class="translation" data-i18n="total_count">🏆 Всего за всё время: <strong id="totalCount">0</strong> раз</p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="ornament-end">۞ ❋ ۞</div>
+  <p data-i18n="footer_1">Да примет Аллах ваше покаяние</p>
+  <p style="margin-top:6px;">تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ================ ПЕРЕВОДЫ ================ */
+  var translations = {
+    ru: {
+      title: "Истигфар",
+      subtitle: "Просьба прощения у Аллаха",
+      intro_title: "Истигфар (الاستغفار)",
+      intro_text: "— это обращение к Всевышнему Аллаху с просьбой о прощении грехов. Это великое поклонение, открывающее двери милости, удела и спасения.",
+
+      benefit_1: "Обильный дождь и ризк",
+      benefit_2: "Прощение грехов",
+      benefit_3: "Выход из трудностей",
+      benefit_4: "Спокойствие в сердце",
+
+      tab_quran: "📖 Аяты",
+      tab_hadith: "📜 Хадисы",
+      tab_duas: "🤲 Дуа",
+      tab_when: "⏰ Когда",
+      tab_builder: "✍️ Мольба",
+      tab_counter: "📿 Счётчик",
+
+      quran_title: "Аяты Священного Корана",
+      hadith_title: "Достоверные хадисы",
+      duas_title: "Короткие дуа истигфара",
+      when_title: "Лучшее время для истигфара",
+      builder_title: "Сформировать свою мольбу",
+      counter_title: "Счётчик истигфара",
+
+      ayat: "Аят",
+      hadith: "Хадис",
+      hadith_qudsi: "Хадис кудси",
+      prophet_said: "Посланник Аллаха ﷺ сказал:",
+      allah_says: "Всевышний Аллах говорит:",
+      reward_label: "⭐ Награда:",
+      sayyid_label: "Господин истигфара (Сайид аль-Истигфар)",
+      sayyid_intro: "Посланник Аллаха ﷺ сказал: «Лучшая мольба о прощении — это…»",
+      short_form: "Краткая форма истигфара",
+
+      ayat_1: "«Если кто-либо совершит злодеяние или будет несправедлив по отношению к себе, а затем попросит у Аллаха прощения, то он найдёт Аллаха Прощающим и Милосердным.»",
+      ayat_1_src: "— Сура «ан-Ниса», аят 110",
+      ayat_2: "«Просите прощения у вашего Господа, ведь Он — Всепрощающий. Он ниспошлёт вам с неба обильные дожди, поддержит вас имуществом и детьми, взрастит для вас сады и создаст для вас реки.»",
+      ayat_2_src: "— Сура «Нух», аяты 10–12",
+      ayat_3: "«Аллах не стал бы подвергать их мучениям, пока ты находишься среди них, и Аллах не стал бы подвергать их мучениям, пока они просят прощения.»",
+      ayat_3_src: "— Сура «аль-Анфаль», аят 33",
+      ayat_4: "«Скажи Моим рабам, которые излишествовали во вред самим себе: «Не отчаивайтесь в милости Аллаха. Воистину, Аллах прощает грехи полностью, ибо Он — Прощающий, Милосердный».»",
+      ayat_4_src: "— Сура «аз-Зумар», аят 53",
+      ayat_5: "«…которые, совершив мерзость или поступив несправедливо по отношению к себе, помянули Аллаха и попросили прощения за свои грехи, — ведь кто прощает грехи, кроме Аллаха?»",
+      ayat_5_src: "— Сура «Али ‘Имран», аят 135",
+      ayat_6: "«Просите прощения у вашего Господа и кайтесь перед Ним, чтобы Он наделил вас прекрасными благами до определённого срока.»",
+      ayat_6_src: "— Сура «Худ», аят 3",
+      ayat_7: "«…и просящих прощения перед рассветом.» (Описание праведников)",
+      ayat_7_src: "— Сура «Али ‘Имран», аят 17",
+
+      hadith_1: "«Клянусь Аллахом, поистине, я прошу прощения у Аллаха и приношу Ему покаяние более семидесяти раз в день.»",
+      hadith_2: "«Кто будет постоянно просить у Аллаха прощения, тому Аллах из каждой тесноты сделает выход, из каждой печали — облегчение, и наделит его уделом оттуда, откуда он не ожидает.»",
+      sayyid_translation: "«О Аллах, Ты — Господь мой, нет божества, кроме Тебя. Ты создал меня, и я — раб Твой, и я буду хранить верность Тебе, пока у меня хватит сил. Прибегаю к Тебе от зла того, что я сотворил, признаю милость, оказанную Тобой, и признаю грех свой. Прости же меня, ибо, поистине, никто не прощает грехов, кроме Тебя.»",
+      sayyid_reward: "Кто скажет это днём с убеждённостью и умрёт в этот день до наступления вечера — войдёт в Рай. И кто скажет ночью с убеждённостью и умрёт до наступления утра — войдёт в Рай.",
+      hadith_4: "«О люди! Кайтесь перед Аллахом, ибо я каюсь перед Ним сто раз в день.»",
+      hadith_5: "«О сын Адама! Поистине, пока ты взываешь ко Мне и надеешься на Меня, Я буду прощать тебе всё, что от тебя исходит, и не обращу на это внимания…»",
+      hadith_5_src: "— ат-Тирмизи, 3540 (хороший хадис)",
+      short_form_translation: "«Прошу прощения у Аллаха Великого, кроме Которого нет божества, Живого, Вседержителя, и приношу Ему своё покаяние.»",
+      short_form_reward: "«Кто скажет это — будут прощены ему грехи, даже если он бежал с поля битвы.»",
+      hadith_7: "«Блажен тот, кто найдёт в своей книге деяний много истигфара.»",
+
+      dua_1: "«Прошу прощения у Аллаха.»",
+      dua_2: "«Господь мой, прости меня и прими моё покаяние, поистине, Ты — Принимающий покаяние, Милосердный.»",
+      dua_2_src: "— Абу Дауд, ат-Тирмизи (достоверный)",
+      dua_adam_label: "Дуа пророка Адама (мир ему):",
+      dua_adam: "«Господь наш! Мы поступили несправедливо по отношению к себе, и если Ты не простишь нас и не помилуешь, то мы непременно окажемся в числе потерпевших убыток.»",
+      dua_adam_src: "— Сура «аль-А‘раф», аят 23",
+      dua_yunus_label: "Дуа пророка Юнуса (мир ему):",
+      dua_yunus: "«Нет божества, кроме Тебя! Пречист Ты! Поистине, я был из числа несправедливых.»",
+      dua_yunus_src: "— Сура «аль-Анбия», аят 87",
+      dua_musa_label: "Дуа пророка Мусы (мир ему):",
+      dua_musa: "«Господь мой! Я поступил несправедливо по отношению к себе. Прости же меня!»",
+      dua_musa_src: "— Сура «аль-Касас», аят 16",
+      dua_3: "«Господь наш! Прости нам наши грехи и излишества, которые мы совершили в делах наших, утверди наши стопы и помоги нам одержать верх над неверующими людьми.»",
+      dua_3_src: "— Сура «Али ‘Имран», аят 147",
+      dua_parents_label: "Просьба прощения за родителей:",
+      dua_parents: "«Господь наш! Прости меня, моих родителей и верующих в День, когда наступит расчёт!»",
+      dua_parents_src: "— Сура «Ибрахим», аят 41",
+      dua_rabbana_label: "Дуа верующих:",
+      dua_rabbana: "«Господь наш! Мы уверовали. Прости же нас и помилуй, ибо Ты — Наилучший из милующих.»",
+      dua_rabbana_src: "— Сура «аль-Му’минун», аят 109",
+
+      time_1_title: "Перед рассветом (последняя треть ночи)",
+      time_1_text: "Лучшее время для истигфара. Аллах нисходит к ближнему небу и отвечает зовущим.",
+      time_2_title: "После каждого фарз-намаза",
+      time_2_text: "Пророк ﷺ говорил «Астагфируллах» три раза после каждой обязательной молитвы.",
+      time_3_title: "Утром и вечером",
+      time_3_text: "В утренних и вечерних азкарах. Минимум по 100 раз для следования сунне.",
+      time_4_title: "Сразу после совершения греха",
+      time_4_text: "Покаяние сразу после греха — путь искренних рабов Аллаха.",
+      time_5_title: "При трудностях и печали",
+      time_5_text: "Истигфар — ключ к выходу из любой беды и тесноты.",
+      time_6_title: "При желании ребёнка или ризка",
+      time_6_text: "«…поддержит вас имуществом и детьми» (сура «Нух»).",
+      time_7_title: "В пятницу и Священные месяцы",
+      time_7_text: "Особенно в Рамадан, в день ‘Арафа и в последние десять ночей Рамадана.",
+      time_8_title: "Перед сном",
+      time_8_text: "Завершайте день покаянием, чтобы встретить новый день очищенным.",
+
+      conditions: "⚡ Условия принятия покаяния",
+      cond_1: "<strong>1.</strong> Искренность ради Аллаха.",
+      cond_2: "<strong>2.</strong> Сожаление о совершённом грехе.",
+      cond_3: "<strong>3.</strong> Прекращение греха немедленно.",
+      cond_4: "<strong>4.</strong> Твёрдое намерение не возвращаться к нему.",
+      cond_5: "<strong>5.</strong> Возврат прав людям, если грех был связан с ними.",
+      cond_6: "<strong>6.</strong> Покаяние до наступления смертной агонии.",
+
+      builder_info: "✨ Составьте искреннюю мольбу о прощении, обращаясь к Аллаху от своего сердца",
+      your_name: "Ваше имя (по желанию)",
+      name_placeholder: "Например: Мухаммад",
+      ask_forgiveness: "За что вы просите прощения?",
+      sin_all_label: "За все грехи",
+      sin_tongue_label: "За грехи языка",
+      sin_prayers_label: "За пропущенные молитвы",
+      sin_parents_label: "За непочтение к родителям",
+      sin_people_label: "За обиды людям",
+      sin_pride_label: "За высокомерие",
+      sin_envy_label: "За зависть и злобу",
+      sin_thoughts_label: "За нечистые помыслы",
+      own_words: "Свои слова (от сердца)",
+      own_placeholder: "Напишите своими словами то, в чём вы каетесь перед Аллахом...",
+      ask_allah: "О чём вы просите Аллаха?",
+      req_accept_label: "Принять покаяние",
+      req_clean_label: "Очистить сердце",
+      req_guide_label: "Наставить на прямой путь",
+      req_ease_label: "Облегчить трудности",
+      req_fire_label: "Защитить от Огня",
+      req_paradise_label: "Ввести в Рай",
+      req_rizq_label: "Даровать дозволенный ризк",
+      req_iman_label: "Укрепить веру",
+      generate_btn: "🤲 Составить мольбу",
+      copy_btn: "📋 Копировать",
+      share_btn: "📤 Поделиться",
+      your_dua: "✨ Ваша мольба ✨",
+
+      goal: "Цель:",
+      reset: "↻ Сброс",
+      istighfar_btn: "+ Истигфар",
+      counter_info: "💡 Сунна Пророка ﷺ — совершать истигфар <strong>не менее 70 раз в день</strong>, а сам Пророк ﷺ делал это <strong>более 100 раз</strong>.",
+      today_count: "📊 Сегодня прочитано: <strong id=\"todayCount\">0</strong> раз",
+      total_count: "🏆 Всего за всё время: <strong id=\"totalCount\">0</strong> раз",
+
+      footer_1: "Да примет Аллах ваше покаяние",
+
+      // Builder dynamic
+      sin_all: "за все мои грехи, явные и скрытые",
+      sin_tongue: "за грехи моего языка",
+      sin_prayers: "за пропущенные молитвы",
+      sin_parents: "за непочтение к родителям",
+      sin_people: "за обиды, нанесённые людям",
+      sin_pride: "за высокомерие и гордыню",
+      sin_envy: "за зависть и злобу в сердце",
+      sin_thoughts: "за нечистые помыслы и взгляды",
+      req_accept: "принять моё покаяние",
+      req_clean: "очистить моё сердце",
+      req_guide: "наставить меня на прямой путь",
+      req_ease: "облегчить мои трудности",
+      req_fire: "защитить меня от Огня",
+      req_paradise: "ввести меня в Рай",
+      req_rizq: "даровать мне дозволенный (халяль) ризк",
+      req_iman: "укрепить мою веру",
+
+      dua_open: "О Аллах! Ты — Господь мой, нет божества, кроме Тебя. Ты создал меня, и я — раб Твой",
+      dua_intro: "Я прибегаю к Тебе, о Прощающий, о Милосердный, и каюсь перед Тобой ",
+      dua_default_sins: "за все мои грехи, явные и скрытые, малые и великие. ",
+      dua_own: "О Аллах, ",
+      dua_middle: "О Аллах, я признаю Твою милость надо мной и признаю свой грех. Прости же меня, ибо, поистине, никто не прощает грехов, кроме Тебя.",
+      dua_request_intro: "Я прошу Тебя:",
+      dua_close: "О Аллах, прими моё покаяние, омой мои грехи, очисти моё сердце и сделай меня из числа Твоих праведных рабов.",
+      dua_amin: "О Аллах, аминь!",
+
+      toast_dua_ready: "Мольба готова 🤲",
+      toast_copied: "✓ Скопировано",
+      toast_copy_fail: "Не удалось скопировать",
+      toast_make_first: "Сначала составьте мольбу 🤲",
+      toast_reset_done: "Счётчик сброшен",
+      toast_zero: "Счётчик уже на нуле",
+      toast_mashaa: "Машаа Аллах! ",
+      toast_times: " раз 🌿",
+      toast_goal: "🎉 Цель достигнута! Барака Аллаху фик!",
+      confirm_reset: "Сбросить счётчик?"
+    },
+
+    uz: {
+      title: "Istig'for",
+      subtitle: "Allohdan kechirim so'rash",
+      intro_title: "Istig'for (الاستغفار)",
+      intro_text: "— bu Alloh taologa gunohlar uchun kechirim so'rab murojaat qilishdir. Bu rahmat, rizq va najot eshiklarini ochuvchi buyuk ibodatdir.",
+
+      benefit_1: "Mo'l yomg'ir va rizq",
+      benefit_2: "Gunohlar kechirilishi",
+      benefit_3: "Qiyinchiliklardan chiqish",
+      benefit_4: "Qalb xotirjamligi",
+
+      tab_quran: "📖 Oyatlar",
+      tab_hadith: "📜 Hadislar",
+      tab_duas: "🤲 Dualar",
+      tab_when: "⏰ Qachon",
+      tab_builder: "✍️ Munojot",
+      tab_counter: "📿 Sanagich",
+
+      quran_title: "Qur'oni Karim oyatlari",
+      hadith_title: "Sahih hadislar",
+      duas_title: "Qisqa istig'for dualari",
+      when_title: "Istig'for uchun eng yaxshi vaqtlar",
+      builder_title: "O'z munojotingizni tuzing",
+      counter_title: "Istig'for sanagichi",
+
+      ayat: "Oyat",
+      hadith: "Hadis",
+      hadith_qudsi: "Qudsiy hadis",
+      prophet_said: "Allohning Rasuli ﷺ aytdilar:",
+      allah_says: "Alloh taolo aytadi:",
+      reward_label: "⭐ Mukofot:",
+      sayyid_label: "Sayyidul-istig'for (Istig'forlar sayidi)",
+      sayyid_intro: "Allohning Rasuli ﷺ aytdilar: «Eng afzal istig'for shudir…»",
+      short_form: "Istig'forning qisqa shakli",
+
+      ayat_1: "«Kim bir yomonlik qilsa yoki o'ziga zulm qilsa, so'ng Allohdan kechirim so'rasa, Allohni Mag'firatli, Mehribon qilib topadi.»",
+      ayat_1_src: "— «An-Niso» surasi, 110-oyat",
+      ayat_2: "«Robbingizdan kechirim so'rangiz, albatta U Mag'firatlidir. U sizlarga osmondan mo'l yomg'ir yog'diradi, mol-mulk va farzandlar bilan kuchaytiradi, sizlar uchun bog'lar va daryolar yaratadi.»",
+      ayat_2_src: "— «Nuh» surasi, 10–12-oyatlar",
+      ayat_3: "«Sen ularning orasida ekansan, Alloh ularni azoblamaydi. Ular istig'for aytayotganlarida ham Alloh ularni azoblovchi emas.»",
+      ayat_3_src: "— «Al-Anfol» surasi, 33-oyat",
+      ayat_4: "«Ayt: «Ey o'zlariga ziyon qilgan bandalarim! Allohning rahmatidan umidsiz bo'lmangiz. Albatta, Alloh barcha gunohlarni kechiradi. Albatta, U Mag'firatli, Mehribondir.»»",
+      ayat_4_src: "— «Az-Zumar» surasi, 53-oyat",
+      ayat_5: "«…ular yomonlik qilsalar yoki o'zlariga zulm qilsalar, Allohni eslab, gunohlari uchun istig'for so'raydilar — gunohlarni Allohdan boshqa kim kechira oladi?»",
+      ayat_5_src: "— «Oli Imron» surasi, 135-oyat",
+      ayat_6: "«Robbingizdan kechirim so'rang va Unga tavba qiling, U sizlarni belgilangan muddatgacha go'zal ne'matlardan bahramand qiladi.»",
+      ayat_6_src: "— «Hud» surasi, 3-oyat",
+      ayat_7: "«…va saharda istig'for aytuvchilar.» (Solihlarning sifati)",
+      ayat_7_src: "— «Oli Imron» surasi, 17-oyat",
+
+      hadith_1: "«Allohga qasamki, men kuniga yetmish martadan ortiq Allohdan kechirim so'rayman va Unga tavba qilaman.»",
+      hadith_2: "«Kim istig'forni doimiy ravishda aytsa, Alloh unga har bir tor holatdan chiqish yo'lini, har bir g'amdan najot beradi va unga kutmagan tomondan rizq ato etadi.»",
+      sayyid_translation: "«Ey Alloh, Sen mening Robbimsan. Sendan o'zga iloh yo'q. Meni Sen yaratding va men Sening bandangman. Imkonim qadar Sening ahd va va'dangda turaman. Qilgan yomonliklarimning sharridan Senga panoh tilayman. Menga in'om etgan ne'matingni va o'z gunohimni e'tirof etaman. Meni kechirgil, chunki gunohlarni Sendan o'zga hech kim kechira olmaydi.»",
+      sayyid_reward: "Kim buni ishonch bilan kunduzi aytsa va o'sha kuni kechgacha vafot etsa, jannatga kiradi. Va kim buni ishonch bilan kechasi aytsa va tonggacha vafot etsa, jannatga kiradi.",
+      hadith_4: "«Ey insonlar! Allohga tavba qiling, men kuniga Unga yuz marta tavba qilaman.»",
+      hadith_5: "«Ey Odam o'g'li! Sen Menga duo qilib, Mendan umid qilar ekansan, qilgan barcha narsalaringni kechiraman va parvo qilmayman…»",
+      hadith_5_src: "— Termiziy, 3540 (hasan hadis)",
+      short_form_translation: "«Buyuk Alloh — Undan o'zga iloh bo'lmagan, Tirik, Qoyim Zotdan kechirim so'rayman va Unga tavba qilaman.»",
+      short_form_reward: "«Kim buni aytsa, jang maydonidan qochgan bo'lsa ham, gunohlari kechiriladi.»",
+      hadith_7: "«Daftarida ko'p istig'for topgan kishiga xush bashorat bo'lsin.»",
+
+      dua_1: "«Allohdan kechirim so'rayman.»",
+      dua_2: "«Robbim, meni kechir va tavbamni qabul qil. Albatta, Sen tavbalarni qabul qiluvchi, Mehribondirsan.»",
+      dua_2_src: "— Abu Dovud, Termiziy (sahih)",
+      dua_adam_label: "Odam alayhissalomning duosi:",
+      dua_adam: "«Robbimiz! Biz o'zimizga zulm qildik. Agar bizni kechirmasang va rahm qilmasang, albatta zarar ko'rganlardan bo'lamiz.»",
+      dua_adam_src: "— «Al-A'rof» surasi, 23-oyat",
+      dua_yunus_label: "Yunus alayhissalomning duosi:",
+      dua_yunus: "«Sendan o'zga iloh yo'q! Sen poksan! Albatta, men zolimlardan bo'ldim.»",
+      dua_yunus_src: "— «Al-Anbiyo» surasi, 87-oyat",
+      dua_musa_label: "Muso alayhissalomning duosi:",
+      dua_musa: "«Robbim! Men o'zimga zulm qildim. Meni kechirgil!»",
+      dua_musa_src: "— «Al-Qasas» surasi, 16-oyat",
+      dua_3: "«Robbimiz! Bizning gunohlarimizni va ishlarimizdagi haddan oshganliklarimizni kechir, qadamlarimizni mustahkamla va kofirlar ustidan g'alaba ber.»",
+      dua_3_src: "— «Oli Imron» surasi, 147-oyat",
+      dua_parents_label: "Ota-ona uchun istig'for:",
+      dua_parents: "«Robbimiz! Hisob-kitob kuni meni, ota-onamni va mo'minlarni kechirgin!»",
+      dua_parents_src: "— «Ibrohim» surasi, 41-oyat",
+      dua_rabbana_label: "Mo'minlarning duosi:",
+      dua_rabbana: "«Robbimiz! Biz iymon keltirdik. Bizni kechir va rahm qil. Sen rahm qiluvchilarning yaxshisidirsan.»",
+      dua_rabbana_src: "— «Al-Mu'minun» surasi, 109-oyat",
+
+      time_1_title: "Sahar payti (kechaning oxirgi uchdan biri)",
+      time_1_text: "Istig'for uchun eng yaxshi vaqt. Alloh dunyo osmoniga tushib, duo qilganlarga javob beradi.",
+      time_2_title: "Har farz namozdan keyin",
+      time_2_text: "Payg'ambar ﷺ har farz namozdan keyin uch marta «Astag'firulloh» derdilar.",
+      time_3_title: "Ertalab va kechqurun",
+      time_3_text: "Ertalab va kechki azkorlarda. Sunnatga rioya qilish uchun kamida 100 marta.",
+      time_4_title: "Gunoh qilingandan keyin darhol",
+      time_4_text: "Gunohdan so'ng darhol tavba qilish — Allohning ixlosli bandalari yo'lidir.",
+      time_5_title: "Qiyinchilik va g'am vaqtida",
+      time_5_text: "Istig'for — har qanday balodan va torlikdan chiqish kalitidir.",
+      time_6_title: "Farzand yoki rizq xohlaganda",
+      time_6_text: "«…sizlarni mol-mulk va farzandlar bilan kuchaytiradi» («Nuh» surasi).",
+      time_7_title: "Juma kuni va Muqaddas oylarda",
+      time_7_text: "Ayniqsa Ramazonda, Arafa kuni va Ramazonning oxirgi o'n kechasida.",
+      time_8_title: "Uxlashdan oldin",
+      time_8_text: "Yangi kunni pok holda kutib olish uchun kunni tavba bilan tugating.",
+
+      conditions: "⚡ Tavba qabul bo'lish shartlari",
+      cond_1: "<strong>1.</strong> Alloh uchun ixlos.",
+      cond_2: "<strong>2.</strong> Qilingan gunohga afsuslanish.",
+      cond_3: "<strong>3.</strong> Gunohni darhol to'xtatish.",
+      cond_4: "<strong>4.</strong> Unga qaytmaslikka qat'iy niyat.",
+      cond_5: "<strong>5.</strong> Bandalar haqi bo'lsa, ularni qaytarish.",
+      cond_6: "<strong>6.</strong> Jon talvasasi boshlanmasdan oldin tavba qilish.",
+
+      builder_info: "✨ Qalbingizdan Allohga murojaat qilib, samimiy munojot tuzing",
+      your_name: "Ismingiz (xohlasangiz)",
+      name_placeholder: "Masalan: Muhammad",
+      ask_forgiveness: "Nima uchun kechirim so'ramoqchisiz?",
+      sin_all_label: "Barcha gunohlar uchun",
+      sin_tongue_label: "Til gunohlari uchun",
+      sin_prayers_label: "Qazo namozlar uchun",
+      sin_parents_label: "Ota-onaga hurmatsizlik uchun",
+      sin_people_label: "Insonlarni ranjitganim uchun",
+      sin_pride_label: "Kibr uchun",
+      sin_envy_label: "Hasad va g'azab uchun",
+      sin_thoughts_label: "Yomon o'ylar uchun",
+      own_words: "O'z so'zlaringiz (qalbdan)",
+      own_placeholder: "Allohdan kechirim so'ramoqchi bo'lgan narsangizni o'z so'zlaringiz bilan yozing...",
+      ask_allah: "Allohdan nima so'raysiz?",
+      req_accept_label: "Tavbamni qabul qilishini",
+      req_clean_label: "Qalbimni poklashini",
+      req_guide_label: "To'g'ri yo'lga hidoyat berishini",
+      req_ease_label: "Qiyinchiliklarni yengillashtirishini",
+      req_fire_label: "Do'zaxdan asrashini",
+      req_paradise_label: "Jannatga kiritishini",
+      req_rizq_label: "Halol rizq berishini",
+      req_iman_label: "Iymonimni mustahkamlashini",
+      generate_btn: "🤲 Munojot tuzish",
+      copy_btn: "📋 Nusxa olish",
+      share_btn: "📤 Ulashish",
+      your_dua: "✨ Sizning munojotingiz ✨",
+
+      goal: "Maqsad:",
+      reset: "↻ Tozalash",
+      istighfar_btn: "+ Istig'for",
+      counter_info: "💡 Payg'ambar ﷺ sunnati — kuniga <strong>kamida 70 marta</strong> istig'for aytish, Payg'ambarning o'zlari esa <strong>100 martadan ko'p</strong> aytar edilar.",
+      today_count: "📊 Bugun aytilgan: <strong id=\"todayCount\">0</strong> marta",
+      total_count: "🏆 Jami: <strong id=\"totalCount\">0</strong> marta",
+
+      footer_1: "Alloh tavbangizni qabul qilsin",
+
+      sin_all: "barcha gunohlarim, oshkor va yashirin",
+      sin_tongue: "tilim qilgan gunohlar",
+      sin_prayers: "qazoga ketgan namozlarim",
+      sin_parents: "ota-onamga ko'rsatgan hurmatsizligim",
+      sin_people: "insonlarga yetkazgan ozorim",
+      sin_pride: "kibr va manmanligim",
+      sin_envy: "qalbimdagi hasad va g'azab",
+      sin_thoughts: "yomon o'ylarim va nigohlarim",
+      req_accept: "tavbamni qabul qilishingni",
+      req_clean: "qalbimni poklashingni",
+      req_guide: "meni to'g'ri yo'lga hidoyat qilishingni",
+      req_ease: "qiyinchiliklarimni yengillashtirishingni",
+      req_fire: "meni do'zax o'tidan asrashingni",
+      req_paradise: "meni jannatga kiritishingni",
+      req_rizq: "menga halol rizq ato etishingni",
+      req_iman: "iymonimni mustahkamlashingni",
+
+      dua_open: "Ey Alloh! Sen mening Robbimsan, Sendan o'zga iloh yo'q. Sen meni yaratding va men Sening bandangman",
+      dua_intro: "Ey Mag'firatli, ey Mehribon, Senga panoh tilayman va Senga tavba qilaman ",
+      dua_default_sins: "barcha gunohlarim — oshkor va yashirin, kichik va katta uchun. ",
+      dua_own: "Ey Alloh, ",
+      dua_middle: "Ey Alloh, Sening menga in'om etgan ne'matingni va o'z gunohimni e'tirof etaman. Meni kechirgil, chunki gunohlarni Sendan o'zga hech kim kechira olmaydi.",
+      dua_request_intro: "Sendan so'rayman:",
+      dua_close: "Ey Alloh, tavbamni qabul qil, gunohlarimni yuv, qalbimni pokla va meni solih bandalaring qatoriga qo'sh.",
+      dua_amin: "Ey Alloh, omin!",
+
+      toast_dua_ready: "Munojot tayyor 🤲",
+      toast_copied: "✓ Nusxa olindi",
+      toast_copy_fail: "Nusxa olib bo'lmadi",
+      toast_make_first: "Avval munojot tuzing 🤲",
+      toast_reset_done: "Sanagich tozalandi",
+      toast_zero: "Sanagich allaqachon nolda",
+      toast_mashaa: "Mashaalloh! ",
+      toast_times: " marta 🌿",
+      toast_goal: "🎉 Maqsadga erishildi! Barokalloh!",
+      confirm_reset: "Sanagichni tozalaysizmi?"
+    }
+  };
+
+  /* ================ ХРАНИЛИЩЕ ================ */
+  var memoryStore = {};
+  var storage = {
+    get: function (key) {
+      try {
+        if (typeof localStorage !== 'undefined' && localStorage !== null) {
+          var v = localStorage.getItem(key);
+          if (v !== null) return v;
+        }
+      } catch (e) {}
+      return memoryStore[key] != null ? memoryStore[key] : null;
+    },
+    set: function (key, value) {
+      memoryStore[key] = String(value);
+      try {
+        if (typeof localStorage !== 'undefined' && localStorage !== null) {
+          localStorage.setItem(key, String(value));
+        }
+      } catch (e) {}
+    }
+  };
+
+  /* ================ ЯЗЫК ================ */
+  var currentLang = storage.get('istighfarLang') || 'ru';
+
+  function t(key) {
+    return (translations[currentLang] && translations[currentLang][key]) || key;
+  }
+
+  function applyLang(lang) {
+    currentLang = lang;
+    storage.set('istighfarLang', lang);
+    document.documentElement.setAttribute('lang', lang);
+
+    // Кнопки переключателя
+    var btns = document.querySelectorAll('.lang-btn');
+    btns.forEach(function (b) {
+      if (b.getAttribute('data-lang') === lang) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+
+    // Все элементы с data-i18n
+    var els = document.querySelectorAll('[data-i18n]');
+    els.forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      var val = t(key);
+      // Если ключ содержит HTML — используем innerHTML
+      if (val.indexOf('<') !== -1) {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    });
+
+    // Placeholder
+    var phs = document.querySelectorAll('[data-i18n-placeholder]');
+    phs.forEach(function (el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      el.setAttribute('placeholder', t(key));
+    });
+
+    // Обновить динамические значения счётчика
+    refreshCounterStats();
+    document.title = t('title') + ' — ' + t('subtitle');
+  }
+
+  function initLangSwitcher() {
+    var btns = document.querySelectorAll('.lang-btn');
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var lang = b.getAttribute('data-lang');
+        if (lang !== currentLang) {
+          applyLang(lang);
+          showToast(lang === 'ru' ? '🇷🇺 Русский' : '🇺🇿 O\'zbekcha');
+        }
+      });
+    });
+  }
+
+  /* ================ TOAST ================ */
+  var toastEl = document.getElementById('toast');
+  var toastTimer = null;
+  function showToast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toastEl.classList.remove('show');
+    }, 2200);
+  }
+
+  /* ================ ТАБЫ ================ */
+  function initTabs() {
+    var tabs = document.querySelectorAll('.tab');
+    var contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var target = tab.getAttribute('data-tab');
+        tabs.forEach(function (t) { t.classList.remove('active'); });
+        contents.forEach(function (c) { c.classList.remove('active'); });
+        tab.classList.add('active');
+        var el = document.getElementById(target);
+        if (el) el.classList.add('active');
+        try {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (e) {
+          window.scrollTo(0, 0);
+        }
+      });
+    });
+  }
+
+  /* ================ КОНСТРУКТОР МОЛЬБЫ ================ */
+  function generateDua() {
+    var nameEl = document.getElementById('userName');
+    var ownEl = document.getElementById('ownReason');
+    var name = nameEl ? nameEl.value.trim() : '';
+    var ownReason = ownEl ? ownEl.value.trim() : '';
+
+    var sinsBoxes = document.querySelectorAll('#sinsList input[type="checkbox"]:checked');
+    var reqBoxes = document.querySelectorAll('#requestsList input[type="checkbox"]:checked');
+
+    var sins = [];
+    sinsBoxes.forEach(function (cb) { sins.push(t(cb.getAttribute('data-key'))); });
+    var requests = [];
+    reqBoxes.forEach(function (cb) { requests.push(t(cb.getAttribute('data-key'))); });
+
+    var dua = 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ\n\n';
+    dua += t('dua_open');
+    if (name) dua += ', ' + name;
+    dua += '.\n\n';
+
+    dua += t('dua_intro');
+    if (sins.length > 0) {
+      dua += sins.join(', ') + '. ';
+    } else {
+      dua += t('dua_default_sins');
+    }
+
+    if (ownReason) {
+      var ending = /[.!?]$/.test(ownReason) ? '' : '.';
+      dua += '\n\n' + t('dua_own') + ownReason + ending + ' ';
+    }
+
+    dua += '\n\n' + t('dua_middle') + '\n\n';
+
+    if (requests.length > 0) {
+      dua += t('dua_request_intro') + '\n';
+      requests.forEach(function (r) {
+        dua += '• ' + r.charAt(0).toUpperCase() + r.slice(1) + '.\n';
+      });
+      dua += '\n';
+    }
+
+    dua += t('dua_close') + '\n\n';
+    dua += 'اللَّهُمَّ آمِين\n';
+    dua += t('dua_amin');
+
+    var resText = document.getElementById('resultText');
+    var resBox = document.getElementById('result');
+    if (resText) resText.textContent = dua;
+    if (resBox) {
+      resBox.classList.add('show');
+      setTimeout(function () {
+        try {
+          resBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } catch (e) {
+          resBox.scrollIntoView();
+        }
+      }, 100);
+    }
+    showToast(t('toast_dua_ready'));
+  }
+
+  function fallbackCopy(text) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '0';
+      ta.style.left = '0';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function copyDua() {
+    var resText = document.getElementById('resultText');
+    var text = resText ? resText.textContent : '';
+    if (!text) {
+      showToast(t('toast_make_first'));
+      return;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        showToast(t('toast_copied'));
+      }).catch(function () {
+        if (fallbackCopy(text)) showToast(t('toast_copied'));
+        else showToast(t('toast_copy_fail'));
+      });
+    } else {
+      if (fallbackCopy(text)) showToast(t('toast_copied'));
+      else showToast(t('toast_copy_fail'));
+    }
+  }
+
+  function shareDua() {
+    var resText = document.getElementById('resultText');
+    var text = resText ? resText.textContent : '';
+    if (!text) {
+      showToast(t('toast_make_first'));
+      return;
+    }
+    if (navigator.share) {
+      navigator.share({
+        title: t('your_dua'),
+        text: text
+      }).catch(function () {});
+    } else {
+      copyDua();
+    }
+  }
+
+  /* ================ СЧЁТЧИК ================ */
+  var count = 0;
+  var target = 100;
+  var todayCount = 0;
+  var totalCount = 0;
+  var todayDate = '';
+  var display = null;
+  var progressBar = null;
+  var targetEl = null;
+
+  function getTodayKey() {
+    var d = new Date();
+    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+  }
+
+  function refreshCounterStats() {
+    var todayEl = document.getElementById('todayCount');
+    var totalEl = document.getElementById('totalCount');
+    if (todayEl) todayEl.textContent = todayCount;
+    if (totalEl) totalEl.textContent = totalCount;
+  }
+
+  function updateProgress() {
+    if (!progressBar) return;
+    var pct = Math.min(100, (count / target) * 100);
+    progressBar.style.width = pct + '%';
+  }
+
+  function animateDisplay() {
+    if (!display) return;
+    display.style.transform = 'scale(1.18)';
+    display.style.color = '#f0d77a';
+    setTimeout(function () {
+      display.style.transform = 'scale(1)';
+      display.style.color = '';
+    }, 250);
+  }
+
+  function updateCounter(animate) {
+    if (display) display.textContent = count;
+    storage.set('istighfarCount', count);
+    updateProgress();
+
+    if (animate && count > 0 && count % 33 === 0) {
+      animateDisplay();
+      showToast(t('toast_mashaa') + count + t('toast_times'));
+    }
+    if (animate && count === target) {
+      animateDisplay();
+      showToast(t('toast_goal'));
+    }
+  }
+
+  function incrementCounter() {
+    // Сброс при смене дня
+    var key = getTodayKey();
+    if (todayDate !== key) {
+      todayDate = key;
+      todayCount = 0;
+      storage.set('istighfarTodayDate', key);
+    }
+    count++;
+    todayCount++;
+    totalCount++;
+    storage.set('istighfarToday', todayCount);
+    storage.set('istighfarTotal', totalCount);
+    refreshCounterStats();
+    updateCounter(true);
+    try { if (navigator.vibrate) navigator.vibrate(15); } catch (e) {}
+  }
+
+  function decrementCounter() {
+    if (count > 0) {
+      count--;
+      if (todayCount > 0) todayCount--;
+      if (totalCount > 0) totalCount--;
+      storage.set('istighfarToday', todayCount);
+      storage.set('istighfarTotal', totalCount);
+      refreshCounterStats();
+    }
+    updateCounter(false);
+  }
+
+  function resetCounter() {
+    if (count === 0) {
+      showToast(t('toast_zero'));
+      return;
+    }
+    if (confirm(t('confirm_reset'))) {
+      count = 0;
+      updateCounter(false);
+      showToast(t('toast_reset_done'));
+    }
+  }
+
+  function setTarget(newTarget) {
+    target = newTarget;
+    storage.set('istighfarTarget', target);
+    if (targetEl) targetEl.textContent = target;
+    var btns = document.querySelectorAll('.target-btn');
+    btns.forEach(function (b) {
+      if (parseInt(b.getAttribute('data-target'), 10) === target) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+    updateProgress();
+  }
+
+  function initCounter() {
+    display = document.getElementById('counterDisplay');
+    progressBar = document.getElementById('progressBar');
+    targetEl = document.getElementById('counterTarget');
+
+    var stored = storage.get('istighfarCount');
+    var n = parseInt(stored, 10);
+    count = isNaN(n) || n < 0 ? 0 : n;
+
+    var storedTarget = parseInt(storage.get('istighfarTarget'), 10);
+    target = isNaN(storedTarget) || storedTarget < 1 ? 100 : storedTarget;
+
+    var storedTotal = parseInt(storage.get('istighfarTotal'), 10);
+    totalCount = isNaN(storedTotal) || storedTotal < 0 ? 0 : storedTotal;
+
+    var savedDate = storage.get('istighfarTodayDate');
+    var nowKey = getTodayKey();
+    if (savedDate === nowKey) {
+      var storedToday = parseInt(storage.get('istighfarToday'), 10);
+      todayCount = isNaN(storedToday) || storedToday < 0 ? 0 : storedToday;
+    } else {
+      todayCount = 0;
+      storage.set('istighfarToday', 0);
+      storage.set('istighfarTodayDate', nowKey);
+    }
+    todayDate = nowKey;
+
+    if (display) display.textContent = count;
+    if (targetEl) targetEl.textContent = target;
+    refreshCounterStats();
+    updateProgress();
+    setTarget(target);
+
+    var inc = document.getElementById('incBtn');
+    var dec = document.getElementById('decBtn');
+    var res = document.getElementById('resetBtn');
+    if (inc) inc.addEventListener('click', incrementCounter);
+    if (dec) dec.addEventListener('click', decrementCounter);
+    if (res) res.addEventListener('click', resetCounter);
+
+    var targetBtns = document.querySelectorAll('.target-btn');
+    targetBtns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        setTarget(parseInt(b.getAttribute('data-target'), 10));
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      var counterTab = document.getElementById('counter');
+      if (!counterTab || !counterTab.classList.contains('active')) return;
+      var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+      if (tag === 'input' || tag === 'textarea') return;
+      if (e.code === 'Space' || e.key === 'ArrowUp' || e.key === '+') {
+        e.preventDefault();
+        incrementCounter();
+      } else if (e.key === 'ArrowDown' || e.key === '-') {
+        e.preventDefault();
+        decrementCounter();
+      }
+    });
+  }
+
+  function initBuilder() {
+    var gen = document.getElementById('generateBtn');
+    var cp = document.getElementById('copyBtn');
+    var sh = document.getElementById('shareBtn');
+    if (gen) gen.addEventListener('click', generateDua);
+    if (cp) cp.addEventListener('click', copyDua);
+    if (sh) sh.addEventListener('click', shareDua);
+  }
+
+  function init() {
+    initLangSwitcher();
+    initTabs();
+    initBuilder();
+    initCounter();
+    applyLang(currentLang);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f86ab40dfeec3c4',t:'MTc3ODIyNDQ4MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
