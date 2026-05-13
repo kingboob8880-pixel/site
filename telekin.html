@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Продвинутый Гайд по Телекинезу / Telekinez bo'yicha mukammal qo'llanma</title>
+    <style>
+        :root {
+            --primary: #00f0ff;
+            --secondary: #ff00ea;
+            --tertiary: #00ffaa;
+            --bg-dark: #07080a;
+            --card-bg: rgba(31, 40, 51, 0.7);
+            --text-color: #e0e2e5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(255, 0, 234, 0.05), transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(0, 255, 170, 0.05), transparent 25%);
+            background-attachment: fixed;
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- Language Switcher --- */
+        .lang-switcher-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(11, 12, 16, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 30px;
+            padding: 5px;
+            display: flex;
+            gap: 5px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #7a7a7a;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            color: var(--primary);
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        /* --- Header & Layout --- */
+        header {
+            text-align: center;
+            padding: 6rem 1rem 3rem;
+            background: linear-gradient(180deg, rgba(31,40,51,1) 0%, rgba(7,8,10,0) 100%);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px var(--primary), 0 0 30px var(--primary);
+            margin: 0;
+        }
+
+        .subtitle {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-top: 15px;
+            text-shadow: 0 0 5px var(--secondary);
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            padding-bottom: 0.5rem;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+        
+        h2.new-theme {
+            color: var(--tertiary);
+            border-bottom-color: rgba(0, 255, 170, 0.2);
+        }
+
+        h3 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.15);
+            border-color: rgba(0, 240, 255, 0.3);
+        }
+        
+        .card.new-theme-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 255, 170, 0.15);
+            border-color: rgba(0, 255, 170, 0.3);
+        }
+
+        .highlight {
+            color: var(--secondary);
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 234, 0.5);
+        }
+        
+        .highlight-green {
+            color: var(--tertiary);
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 255, 170, 0.5);
+        }
+
+        .alert {
+            background: linear-gradient(90deg, rgba(255, 0, 234, 0.15) 0%, transparent 100%);
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        ul li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px var(--primary);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* --- Animations --- */
+
+        /* Psi-Wheel */
+        .psi-wheel-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 250px;
+            margin: 2rem 0;
+            perspective: 800px;
+        }
+
+        .psi-wheel {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: spinWheel 3.5s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid rgba(0, 240, 255, 0.7);
+            transform-origin: bottom;
+            box-shadow: 0 0 10px rgba(0,240,255,0.2) inset;
+        }
+
+        .front  { transform: translateZ(50px) rotateX(30deg); border-bottom-color: rgba(0, 240, 255, 0.9); }
+        .back   { transform: translateZ(-50px) rotateX(-30deg); border-bottom-color: rgba(0, 180, 255, 0.7); }
+        .left   { transform: translateX(-50px) rotateY(-90deg) rotateX(30deg); border-bottom-color: rgba(0, 255, 200, 0.8); }
+        .right  { transform: translateX(50px) rotateY(90deg) rotateX(30deg); border-bottom-color: rgba(0, 150, 255, 0.8); }
+
+        @keyframes spinWheel {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(-360deg); }
+        }
+
+        /* Energy Hands */
+        .hands-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 3rem 0;
+            font-size: 4rem;
+        }
+
+        .hand { transform: scaleX(-1); filter: drop-shadow(0 0 10px rgba(0,240,255,0.5)); }
+        .hand.right-hand { transform: scaleX(1); }
+
+        .energy-ball {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #fff 10%, var(--secondary) 50%, transparent 80%);
+            border-radius: 50%;
+            animation: pulseEnergy 1.2s infinite alternate;
+        }
+
+        @keyframes pulseEnergy {
+            0% { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 20px var(--secondary); }
+            100% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 50px var(--secondary), 0 0 80px var(--primary); }
+        }
+
+        /* Chakras */
+        .chakras-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .chakras-container {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 18px;
+        }
+
+        .chakra {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            animation: glowChakra 1.5s infinite alternate;
+            position: relative;
+        }
+        
+        .chakra::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            border: 2px solid white;
+            opacity: 0.4;
+        }
+
+        .c1 { background: #ff0000; box-shadow: 0 0 20px #ff0000; animation-delay: 0.0s; }
+        .c2 { background: #ff7f00; box-shadow: 0 0 20px #ff7f00; animation-delay: 0.2s; }
+        .c3 { background: #ffff00; box-shadow: 0 0 20px #ffff00; animation-delay: 0.4s; }
+        .c4 { background: #00ff00; box-shadow: 0 0 20px #00ff00; animation-delay: 0.6s; }
+        .c5 { background: #0080ff; box-shadow: 0 0 20px #0080ff; animation-delay: 0.8s; }
+        .c6 { background: #4b0082; box-shadow: 0 0 20px #4b0082; animation-delay: 1.0s; }
+        .c7 { background: #9400d3; box-shadow: 0 0 20px #9400d3; animation-delay: 1.2s; }
+
+        @keyframes glowChakra {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        /* Meditation / Aura Animation for New Themes */
+        .aura-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            margin: 2rem 0;
+            position: relative;
+        }
+        .meditator {
+            font-size: 4rem;
+            position: absolute;
+            z-index: 2;
+        }
+        .aura-ring {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--tertiary);
+            animation: expandAura 3s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
+        }
+        .aura-ring:nth-child(2) { animation-delay: 1s; }
+        .aura-ring:nth-child(3) { animation-delay: 2s; }
+
+        @keyframes expandAura {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        .text-center { text-align: center; }
+    </style>
+</head>
+<body>
+
+<!-- Language Switcher -->
+<div class="lang-switcher-container">
+    <button id="btn-ru" class="lang-btn active" onclick="switchLang('ru')">RU</button>
+    <button id="btn-uz" class="lang-btn" onclick="switchLang('uz')">UZ</button>
+</div>
+
+<!-- ==================== RUSSIAN CONTENT ==================== -->
+<div id="content-ru">
+    <header>
+        <h1>Продвинутый Гайд по Телекинезу</h1>
+        <div class="subtitle">Управление энергией, материей и сознанием. Точки над «i».</div>
+    </header>
+
+    <div class="container">
+        <div class="alert">
+            <strong>Важное правило:</strong> Смотрите и читайте материалы от начала и до конца. Не нужно перематывать. Это обучение, а не развлечение. Здесь нужно вникать, пробовать, экспериментировать и записывать результаты.
+        </div>
+
+        <div class="card">
+            <h2>Что такое Телекинез на самом деле?</h2>
+            <p>Многие коллеги по цеху вводят адептов в заблуждение, утверждая, что телекинезом нужно заниматься 20-50 лет, чтобы сдвинуть чашку. Люди думают: <em>«Я же не могу поднять машину, зачем он тогда?»</em></p>
+            <p>Если говорить по-простому, телекинез — это <strong>воздействие человека на материальные объекты</strong>. В разрезе эволюции мага это высший уровень управления собственной энергетикой (Level Up).</p>
+        </div>
+
+        <div class="card">
+            <h2>Применим ли телекинез для жизни?</h2>
+            <p>Суть телекинеза — в <strong>раскачке вашей собственной энергетики</strong>.</p>
+            
+            <div class="grid-2">
+                <div>
+                    <h3>1. Усиление других практик</h3>
+                    <p>Если вы тренируете телекинез и параллельно занимаетесь целительством, результат улучшится <span class="highlight">в 10, а то и в 100 раз</span>. Ваше поле и сила растут автоматически.</p>
+                </div>
+                <div>
+                    <h3>2. Облегчение работы с тонкими планами</h3>
+                    <p>Когда вы учитесь влиять на материю (самую тяжелую энергию), любые более тонкие энергии (ясновидение, психометрия, эгрегоры) осваиваются гораздо легче.</p>
+                </div>
+                <div>
+                    <h3>3. Мощная защита</h3>
+                    <p>Ваше энергетическое поле уплотняется. Когда вы сталкиваетесь с энергетическими вампирами или тяжелой городской средой — ваша пробиваемость падает.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Инструменты воздействия (Как это работает)</h2>
+            <div class="psi-wheel-container">
+                <div class="psi-wheel">
+                    <div class="face front"></div><div class="face back"></div>
+                    <div class="face left"></div><div class="face right"></div>
+                </div>
+            </div>
+            <ul>
+                <li><strong>1. Руки</strong> — Сбор энергии и направление ее на колесо.</li>
+                <li><strong>2. Глаза</strong> — Классический телекинез. Взгляд собирает и направляет импульс.</li>
+                <li><strong>3. Рот (Голос)</strong> — Голосовая команда задает программу объекту (вибрация намерения).</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Базовая подготовка (7 Шагов)</h2>
+            <div class="grid-2">
+                <div>
+                    <ul>
+                        <li><strong>1. Меридианы (Спорт/Йога):</strong> Энергия должна циркулировать свободно.</li>
+                        <li><strong>2. Набор праны:</strong> Умение вдыхать универсальную энергию.</li>
+                        <li><strong>3. Экстрасенсорика:</strong> Развитие эмпатии к предметам.</li>
+                        <li><strong>4. Чакры:</strong> Понимание, откуда берется и куда направляется энергия.</li>
+                        <li><strong>5. Концентрация:</strong> Фокус без моргания.</li>
+                        <li><strong>6. Визуализация:</strong> Мысленное представление движения.</li>
+                        <li><strong>7. Практика:</strong> 10-20 минут в день на пси-колесо.</li>
+                    </ul>
+                </div>
+                <div class="chakras-wrapper">
+                    <div class="chakras-container">
+                        <div class="chakra c1"></div><div class="chakra c2"></div>
+                        <div class="chakra c3"></div><div class="chakra c4"></div>
+                        <div class="chakra c5"></div><div class="chakra c6"></div>
+                        <div class="chakra c7"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW THEMES START HERE -->
+
+        <div class="card new-theme-card">
+            <h2 class="new-theme">Психологические Барьеры (Почему не получается?)</h2>
+            <p>Телекинез на 80% зависит от вашего разума. Самая частая причина неудач кроется не в отсутствии энергии, а в психологических установках.</p>
+            <ul>
+                <li><strong>Внутренний скептик:</strong> Ваше подсознание с детства запрограммировано, что «это невозможно». Пока мозг логически блокирует реальность происходящего, предмет не сдвинется.</li>
+                <li><strong>Страх успеха:</strong> Иронично, но когда пси-колесо впервые дергается, многие пугаются. Происходит выброс адреналина, частота вибраций падает, и связь рвется.</li>
+                <li><strong>Ожидание мгновенного чуда:</strong> Сильная эмоциональная привязка к результату создает <em>избыточный потенциал</em>. Вы не должны «хотеть» сдвинуть предмет, вы должны «знать», что он сдвинется.</li>
+            </ul>
+        </div>
+
+        <div class="card new-theme-card">
+            <h2 class="new-theme">Энергетическое Питание и Образ Жизни</h2>
+            <p>Тело — это проводник. Если проводник засорен, энергия будет вязкой и слабой.</p>
+            <div class="grid-2">
+                <div>
+                    <h3>1. Голодание и легкость</h3>
+                    <p>На переваривание тяжелой пищи (особенно мяса и фастфуда) уходит колоссальный объем энергии. Лучшие результаты в телекинезе достигаются на пустой желудок или после легкой растительной пищи.</p>
+                </div>
+                <div>
+                    <h3>2. Структурированная вода</h3>
+                    <p>Вода — отличный накопитель энергии. Пейте больше чистой воды перед практикой. Обезвоженное тело плохо проводит электромагнитные и пранические импульсы.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card new-theme-card">
+            <h2 class="new-theme">Продвинутые техники усиления Телекинеза</h2>
+            <p>Если вы застряли на одном уровне (плато) и прогресс остановился, используйте эти методы для форсирования способностей:</p>
+            
+            <div class="aura-container">
+                <div class="aura-ring"></div>
+                <div class="aura-ring"></div>
+                <div class="aura-ring"></div>
+                <div class="meditator">🧘‍♂️</div>
+            </div>
+
+            <ul>
+                <li><span class="highlight-green">Заземление (Сброс статики):</span> Перед практикой встаньте босиком на землю (или представьте корни, уходящие от ног к ядру Земли). Это очистит вас от грязной энергии и даст бесконечный приток энергии снизу.</li>
+                <li><span class="highlight-green">Медитация Пустоты:</span> Остановите внутренний диалог (ОВД). В состоянии полного безмыслия ваша энергия не тратится на обдумывание бытовых проблем, а на 100% направляется в предмет.</li>
+                <li><span class="highlight-green">Слияние со Стихиями:</span> Попробуйте зарядиться от огня (свечи) или ветра перед практикой. Пропустите тепло огня через руки и направьте его в пси-колесо.</li>
+                <li><span class="highlight-green">Микро-отслеживание:</span> Перестаньте смотреть на предмет целиком. Выберите одну молекулярную точку на грани объекта и вложите всё свое намерение только в неё, представляя, как она смещается на миллиметр.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== UZBEK CONTENT ==================== -->
+<div id="content-uz" style="display: none;">
+    <header>
+        <h1>Telekinez Bo'yicha Mukammal Qo'llanma</h1>
+        <div class="subtitle">Energiya, materiya va ongni boshqarish. Barcha savollarga javoblar.</div>
+    </header>
+
+    <div class="container">
+        <div class="alert">
+            <strong>Muhim qoida:</strong> Materiallarni boshidan oxirigacha ko'ring va o'qing. O'tkazib yuborish kerak emas. Bu ta'lim, o'yin-kulgi emas. Bu yerda tushunish, sinab ko'rish, tajriba qilish va natijalarni yozib borish kerak.
+        </div>
+
+        <div class="card">
+            <h2>Telekinez aslida nima?</h2>
+            <p>Ko'pgina hamkasblar o'z izdoshlarini chalg'itib, stakanni siljitish uchun telekinez bilan 20-50 yil shug'ullanish kerak deyishadi. Odamlar: <em>«Mashinani ko'tara olmasam, u nima uchun kerak?»</em> - deb o'ylaydilar.</p>
+            <p>Oddiy qilib aytganda, telekinez - bu <strong>insonning moddiy ob'ektlarga ta'siri</strong>. Magiya evolyutsiyasi nuqtai nazaridan - bu o'z energiyangizni boshqarishning eng yuqori darajasi (Level Up).</p>
+        </div>
+
+        <div class="card">
+            <h2>Hayotda telekinez qo'llaniladimi?</h2>
+            <p>Telekinezning asosiy maqsadi - <strong>o'z energiyangizni kuchaytirishdir</strong>.</p>
+            
+            <div class="grid-2">
+                <div>
+                    <h3>1. Boshqa amaliyotlarni kuchaytirish</h3>
+                    <p>Agar siz telekinezni mashq qilib, parallel ravishda tabiblik qilsangiz, natija <span class="highlight">10, hatto 100 baravar</span> yaxshilanadi. Sizning auraningiz avtomatik ravishda o'sadi.</p>
+                </div>
+                <div>
+                    <h3>2. Nozik rejalar bilan ishlash</h3>
+                    <p>Materiyaga ta'sir qilishni o'rganganingizda, boshqa har qanday nozik energiyalar (aniq ko'rish, egregorlar) ancha oson o'zlashtiriladi.</p>
+                </div>
+                <div>
+                    <h3>3. Kuchli himoya</h3>
+                    <p>Energetik maydoningiz zichlashadi. Siz energetik vampirlar yoki og'ir shahar energiyasi bilan to'qnashganda, sizni yorib o'tish qiyinlashadi.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Ta'sir qilish vositalari (Bu qanday ishlaydi)</h2>
+            <div class="psi-wheel-container">
+                <div class="psi-wheel">
+                    <div class="face front"></div><div class="face back"></div>
+                    <div class="face left"></div><div class="face right"></div>
+                </div>
+            </div>
+            <ul>
+                <li><strong>1. Qo'llar</strong> — Energiyani to'plash va ob'ektga yo'naltirish.</li>
+                <li><strong>2. Ko'zlar</strong> — Klassik telekinez. Nigoh impulsni yig'adi va yo'naltiradi.</li>
+                <li><strong>3. Og'iz (Ovoz)</strong> — Ovozli buyruq va niyat tebranishi ob'ektga dastur beradi.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Boshlang'ich tayyorgarlik (7 Qadam)</h2>
+            <div class="grid-2">
+                <div>
+                    <ul>
+                        <li><strong>1. Meridianlar:</strong> Tana ichida energiya erkin aylanishi (sport, yoga).</li>
+                        <li><strong>2. Prana yig'ish:</strong> Universal energiyani nafas orqali yutish.</li>
+                        <li><strong>3. Ekstrasensorika:</strong> Predmetlarga nisbatan empatiyani rivojlantirish.</li>
+                        <li><strong>4. Chakralar:</strong> Energiya qayerdan olinadi va qayerga borishini tushunish.</li>
+                        <li><strong>5. Konsentratsiya:</strong> Ko'zni pirpiratmasdan diqqatni jamlash.</li>
+                        <li><strong>6. Vizualizatsiya:</strong> Harakatni miyada aniq tasavvur qilish.</li>
+                        <li><strong>7. Amaliyot:</strong> Kuniga 10-20 daqiqa mashq qilish.</li>
+                    </ul>
+                </div>
+                <div class="chakras-wrapper">
+                    <div class="chakras-container">
+                        <div class="chakra c1"></div><div class="chakra c2"></div>
+                        <div class="chakra c3"></div><div class="chakra c4"></div>
+                        <div class="chakra c5"></div><div class="chakra c6"></div>
+                        <div class="chakra c7"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW THEMES START HERE (UZBEK) -->
+
+        <div class="card new-theme-card">
+            <h2 class="new-theme">Psixologik To'siqlar (Nega o'xshamaydi?)</h2>
+            <p>Telekinez 80% ongingizga bog'liq. Muvaffaqiyatsizlikning eng ko'p tarqalgan sababi energiya yetishmasligida emas, balki psixologik o'rnatmalardadir.</p>
+            <ul>
+                <li><strong>Ichki shubha (Skeptik):</strong> Sizning ongingiz yoshlikdan "bu imkonsiz" deb dasturlashtirilgan. Miya sodir bo'layotgan voqea realligini mantiqan bloklar ekan, ob'ekt joyidan jilmaydi.</li>
+                <li><strong>Muvaffaqiyatdan qo'rqish:</strong> Qizig'i shundaki, psi-g'ildirak birinchi marta harakatlanganda ko'pchilik qo'rqib ketadi. Adrenalin ajralib chiqadi, tebranish (vibratsiya) chastotasi pasayadi va aloqa uziladi.</li>
+                <li><strong>Mo'jizani tezroq kutish:</strong> Natijaga kuchli hissiy bog'liqlik <em>ortiqcha potensialni</em> yaratadi. Siz ob'ektni siljitishni "xohlamasligingiz" kerak, siz uning siljishini "bilishingiz" kerak.</li>
+            </ul>
+        </div>
+
+        <div class="card new-theme-card">
+            <h2 class="new-theme">Energetik Ovqatlanish va Hayot Tarzi</h2>
+            <p>Tana — bu o'tkazgich. Agar o'tkazgich ifloslangan bo'lsa, energiya yopishqoq va zaif bo'ladi.</p>
+            <div class="grid-2">
+                <div>
+                    <h3>1. Ro'za va yengillik</h3>
+                    <p>Og'ir ovqatlarni (ayniqsa go'sht va fastfud) hazm qilish uchun juda katta energiya sarflanadi. Telekinezda eng yaxshi natijalarga och qoringa yoki yengil o'simlik ovqatlaridan keyin erishiladi.</p>
+                </div>
+                <div>
+                    <h3>2. Tarkibli suv</h3>
+                    <p>Suv ajoyib energiya akkumulyatoridir. Amaliyotdan oldin ko'proq toza suv iching. Suvsizlangan tana elektromagnit va prana impulslarini yomon o'tkazadi.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card new-theme-card">
+            <h2 class="new-theme">Telekinezni kuchaytirishning ilg'or texnikalari</h2>
+            <p>Agar siz bir darajada (plato) qotib qolgan bo'lsangiz va taraqqiyot to'xtagan bo'lsa, qobiliyatlaringizni oshirish uchun ushbu usullardan foydalaning:</p>
+            
+            <div class="aura-container">
+                <div class="aura-ring"></div>
+                <div class="aura-ring"></div>
+                <div class="aura-ring"></div>
+                <div class="meditator">🧘‍♂️</div>
+            </div>
+
+            <ul>
+                <li><span class="highlight-green">Yerga ulanish (Zazemleniye):</span> Amaliyotdan oldin yerda yalangoyoq turing (yoki oyoqlaringizdan Yerning yadrosigacha ildiz otayotganini tasavvur qiling). Bu sizni iflos energiyadan tozalaydi va pastdan cheksiz energiya oqimini beradi.</li>
+                <li><span class="highlight-green">Bo'shliq Meditatsiyasi:</span> Ichki muloqotni (OVD) to'xtating. To'liq fikrsizlik holatida sizning energiyangiz maishiy muammolarni o'ylashga sarflanmaydi, balki 100% ob'ektga yo'naltiriladi.</li>
+                <li><span class="highlight-green">Stixiyalar bilan birlashish:</span> Amaliyotdan oldin olov (sham) yoki shamoldan energiya olishga harakat qiling. Olovning haroratini qo'llaringiz orqali o'tkazing va uni psi-g'ildirakka yo'naltiring.</li>
+                <li><span class="highlight-green">Mikro-kuzatish:</span> Ob'ektga butunlay qarashni to'xtating. Ob'ekt chetidagi bitta molekulyar nuqtani tanlang va bor niyatni faqat o'sha nuqtaga qarating, uning bir millimetrga siljishini tasavvur qiling.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts for Language Toggle -->
+<script>
+    function switchLang(lang) {
+        const contentRu = document.getElementById('content-ru');
+        const contentUz = document.getElementById('content-uz');
+        const btnRu = document.getElementById('btn-ru');
+        const btnUz = document.getElementById('btn-uz');
+
+        if(lang === 'ru') {
+            contentRu.style.display = 'block';
+            contentUz.style.display = 'none';
+            btnRu.classList.add('active');
+            btnUz.classList.remove('active');
+        } else {
+            contentRu.style.display = 'none';
+            contentUz.style.display = 'block';
+            btnUz.classList.add('active');
+            btnRu.classList.remove('active');
+        }
+    }
+</script>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fb08b4869a6ee4c',t:'MTc3ODY2MzU3Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
