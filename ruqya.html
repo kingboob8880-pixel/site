@@ -256,6 +256,7 @@
             box-shadow: var(--shadow);
             transition: all 0.3s;
             border: 1px solid var(--border);
+            scroll-margin-top: 6rem;
         }
 
         .card:hover {
@@ -594,6 +595,34 @@
         .methodology-box li:last-child {
             margin-bottom: 0;
         }
+
+        .jump-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.65rem;
+            margin-bottom: 1.25rem;
+        }
+        .jump-row label {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+        .jump-row select {
+            flex: 1;
+            min-width: 240px;
+            padding: 0.65rem 0.875rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 0.9375rem;
+            background: var(--card-bg);
+            color: var(--text);
+        }
+        .jump-row select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 86, 49, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -638,6 +667,11 @@
         <button class="category-pill" data-filter="method">По способу</button>
         <button class="category-pill" data-filter="goal">По цели</button>
         <button class="category-pill" data-filter="rare">Редкие</button>
+    </div>
+
+    <div class="jump-row">
+        <label for="jumpSelect" id="jumpLabel"></label>
+        <select id="jumpSelect"><option value=""></option></select>
     </div>
 
     <div class="results-info" id="resultsInfo"></div>
@@ -2966,6 +3000,7 @@ function switchLang(lang) {
     updateMethodology();
     updateCategoryPills();
     updateStats();
+    fillJumpSelect();
     renderCards();
 }
 
@@ -2994,6 +3029,78 @@ function updateStats() {
     document.getElementById('methodCount').textContent = cards.filter(c => c.type === 'method').length;
     document.getElementById('goalCount').textContent = cards.filter(c => c.type === 'goal').length;
     document.getElementById('rareCount').textContent = cards.filter(c => c.type === 'rare').length;
+}
+
+function parseCardIdFromHash() {
+    const m = /^#?card-(\d+)$/i.exec(location.hash || '');
+    return m ? parseInt(m[1], 10) : null;
+}
+
+function cardVisibleUnderCurrentFilters(card) {
+    const matchesFilter = currentFilter === 'all' || card.type === currentFilter;
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const matchesSearch = !searchTerm ||
+        card.title.toLowerCase().includes(searchTerm) ||
+        card.subtitle.toLowerCase().includes(searchTerm) ||
+        card.desc.toLowerCase().includes(searchTerm);
+    return matchesFilter && matchesSearch;
+}
+
+function goToCardId(id, options) {
+    const opts = options || {};
+    const smooth = opts.smooth !== false;
+    const updateHash = opts.updateHash !== false;
+    const card = data[currentLang].cards.find(c => c.id === id);
+    if (!card) return;
+
+    if (!cardVisibleUnderCurrentFilters(card)) {
+        currentFilter = 'all';
+        document.querySelectorAll('.category-pill').forEach(p => {
+            p.classList.toggle('active', p.dataset.filter === 'all');
+        });
+        document.getElementById('searchInput').value = '';
+        renderCards();
+    }
+
+    if (updateHash) {
+        const h = 'card-' + id;
+        if (location.hash.replace(/^#/, '') !== h) {
+            location.hash = h;
+        }
+    }
+
+    requestAnimationFrame(() => {
+        const el = document.getElementById('card-' + id);
+        if (el) {
+            el.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+        }
+    });
+}
+
+function fillJumpSelect() {
+    const sel = document.getElementById('jumpSelect');
+    const lab = document.getElementById('jumpLabel');
+    const lang = currentLang;
+    lab.textContent = lang === 'ru' ? 'Перейти к решению' : "Yechimga o'tish";
+    sel.innerHTML = '';
+    const ph = lang === 'ru' ? 'Выберите решение…' : 'Yechimni tanlang…';
+    const opt0 = document.createElement('option');
+    opt0.value = '';
+    opt0.textContent = ph;
+    sel.appendChild(opt0);
+
+    const categoryNames = {
+        ru: { method: 'По способу', goal: 'По цели', rare: 'Редкие' },
+        uz: { method: 'Usul', goal: 'Maqsad', rare: 'Kam' }
+    };
+    const names = categoryNames[lang];
+
+    [...data[lang].cards].sort((a, b) => a.id - b.id).forEach(card => {
+        const opt = document.createElement('option');
+        opt.value = String(card.id);
+        opt.textContent = '#' + card.id + ' · ' + card.title + ' (' + names[card.type] + ')';
+        sel.appendChild(opt);
+    });
 }
 
 function renderCards() {
@@ -3030,11 +3137,12 @@ function renderCards() {
     filteredCards.forEach((card, index) => {
         const cardEl = document.createElement('div');
         cardEl.className = 'card fade-in';
+        cardEl.id = 'card-' + card.id;
         cardEl.style.animationDelay = `${index * 0.03}s`;
         
         cardEl.innerHTML = `
             <div class="card-header">
-                <span class="card-number">#${index + 1}</span>
+                <span class="card-number">#${card.id}</span>
                 <span class="card-type">${categoryNames[currentLang][card.type]}</span>
                 <div class="card-title">${card.title}</div>
                 <div class="card-arabic arabic">${card.arabic}</div>
@@ -3098,6 +3206,14 @@ function toggleSolution(header) {
 // Event Listeners
 document.getElementById('searchInput').addEventListener('input', renderCards);
 
+document.getElementById('jumpSelect').addEventListener('change', function() {
+    const v = this.value;
+    if (!v) return;
+    const cardId = parseInt(v, 10);
+    goToCardId(cardId, { smooth: true, updateHash: true });
+    this.selectedIndex = 0;
+});
+
 document.querySelectorAll('.category-pill').forEach(pill => {
     pill.addEventListener('click', function() {
         document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
@@ -3121,7 +3237,20 @@ window.addEventListener('scroll', () => {
 updateMethodology();
 updateStats();
 updateCategoryPills();
+fillJumpSelect();
 renderCards();
+
+const hashCardIdInit = parseCardIdFromHash();
+if (hashCardIdInit !== null) {
+    goToCardId(hashCardIdInit, { smooth: false, updateHash: false });
+}
+
+window.addEventListener('hashchange', () => {
+    const cid = parseCardIdFromHash();
+    if (cid !== null) {
+        goToCardId(cid, { smooth: true, updateHash: false });
+    }
+});
 </script>
 
 </body>
