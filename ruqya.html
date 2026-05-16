@@ -96,6 +96,14 @@
             margin-top: 0.25rem;
         }
 
+        .author-byline {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-top: 0.35rem;
+            letter-spacing: 0.02em;
+        }
+
         /* Stats Bar */
         .stats-bar {
             background: rgba(255,255,255,0.1);
@@ -558,6 +566,7 @@
             <div>
                 <h1 id="mainTitle">Руқья - Методы Исцеления</h1>
                 <div class="subtitle" id="mainSubtitle">Пророческий метод лечения</div>
+                <div class="author-byline" id="authorByline">Лекарь Абу Мухаммад</div>
                 <div class="stats-bar" id="statsBar">
                     <span>Всего видов: <strong id="totalCount">0</strong></span>
                     <span>По способу: <strong id="methodCount">0</strong></span>
@@ -2825,8 +2834,10 @@ function switchLang(lang) {
     
     document.getElementById('mainTitle').textContent = lang === 'ru' 
         ? 'Руқья - Методы Исцеления' : 'Ruqya - Shifo Usullari';
-    document.getElementById('mainSubtitle').textContent = lang === 'ru' 
+    document.getElementById('mainSubtitle').textContent = lang === 'ru'
         ? 'Пророческий метод лечения' : "Payg'ambarona davolash usuli";
+    document.getElementById('authorByline').textContent = lang === 'ru'
+        ? 'Лекарь Абу Мухаммад' : 'Tabib Abu Muhammad';
     document.getElementById('searchInput').placeholder = lang === 'ru'
         ? 'Поиск видов порчи...' : 'Jodugarlik turlarini qidirish...';
 
