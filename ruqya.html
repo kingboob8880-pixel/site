@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e5631" id="themeColorMeta">
+    <meta name="color-scheme" content="light dark">
+    <link rel="manifest" href="manifest.webmanifest">
     <title>Руқья - Методы Исцеления | Ruqya - Shifo Usullari</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;600;700&display=swap');
@@ -13,12 +16,68 @@
             --accent: #d4af37;
             --accent-light: #f4d03f;
             --bg: #f8f9fa;
+            --surface: #ffffff;
             --card-bg: #ffffff;
             --text: #2c3e50;
             --text-light: #5d6d7e;
             --border: #e1e8ed;
+            --body-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --solution-bg: #ffffff;
+            --arabic-block-bg: #f0f7f4;
+            --quran-block-bg: #fafdfb;
+            --jump-hover-bg: #fafdfb;
+            --solution-header-hover-bg: #e8f0e9;
+            --application-bg: #fff9e6;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(53, 49, 49, 0.04);
+        }
+
+        html[data-theme="dark"] {
+            color-scheme: dark;
+            --primary: #3d9660;
+            --primary-light: #54b377;
+            --accent: #d4af37;
+            --accent-light: #fde68a;
+            --bg: #0f1712;
+            --surface: #1a2920;
+            --card-bg: #1e3024;
+            --text: #e8eef0;
+            --text-light: #9fb3a8;
+            --border: #2f4d3a;
+            --body-gradient: linear-gradient(135deg, #0f1712 0%, #162820 55%, #0d1812 100%);
+            --solution-bg: #17261c;
+            --arabic-block-bg: #143222;
+            --quran-block-bg: #143222;
+            --jump-hover-bg: #243a2b;
+            --solution-header-hover-bg: #274434;
+            --application-bg: #2e2610;
+            --shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+            --shadow-lg: 0 22px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            html[data-theme="auto"] {
+                color-scheme: dark;
+                --primary: #3d9660;
+                --primary-light: #54b377;
+                --accent: #d4af37;
+                --accent-light: #fde68a;
+                --bg: #0f1712;
+                --surface: #1a2920;
+                --card-bg: #1e3024;
+                --text: #e8eef0;
+                --text-light: #9fb3a8;
+                --border: #2f4d3a;
+                --body-gradient: linear-gradient(135deg, #0f1712 0%, #162820 55%, #0d1812 100%);
+                --solution-bg: #17261c;
+                --arabic-block-bg: #143222;
+                --quran-block-bg: #143222;
+                --jump-hover-bg: #243a2b;
+                --solution-header-hover-bg: #274434;
+                --application-bg: #2e2610;
+                --shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+                --shadow-lg: 0 22px 40px rgba(0, 0, 0, 0.5);
+            }
         }
 
         * {
@@ -29,10 +88,138 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--body-gradient);
             color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
+        }
+
+        mark.search-hit {
+            background: rgba(212, 175, 55, 0.45);
+            padding: 0 0.12em;
+            border-radius: 3px;
+        }
+
+        .header-controls-row {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.75rem;
+        }
+        @media (min-width: 769px) {
+            .header-controls-row {
+                flex-direction: row;
+                align-items: center;
+                gap: 0.85rem;
+            }
+        }
+
+        .theme-cycle-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2.85rem;
+            height: 2.5rem;
+            padding: 0 0.85rem;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1.15rem;
+            cursor: pointer;
+            transition: background 0.25s;
+        }
+        .theme-cycle-btn:hover {
+            background: rgba(255, 255, 255, 0.32);
+        }
+        .theme-cycle-btn:focus-visible {
+            outline: 2px solid var(--accent-light);
+            outline-offset: 2px;
+        }
+
+        /* Toast */
+        #toastHost {
+            position: fixed;
+            bottom: 5.75rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(120%);
+            z-index: 200;
+            max-width: min(94vw, 22rem);
+            padding: 0.65rem 1.1rem;
+            border-radius: 12px;
+            background: var(--card-bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+        #toastHost.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Offline cached banner */
+        #offlineBanner {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto 0.85rem;
+            padding: 0.55rem 1rem;
+            border-radius: 10px;
+            background: rgba(30, 86, 49, 0.12);
+            border: 1px solid rgba(30, 86, 49, 0.28);
+            color: var(--primary);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        html[data-theme="dark"] #offlineBanner {
+            background: rgba(61, 150, 96, 0.15);
+            border-color: rgba(61, 150, 96, 0.35);
+            color: var(--accent-light);
+        }
+        @media (prefers-color-scheme: dark) {
+            html[data-theme="auto"] #offlineBanner {
+                background: rgba(61, 150, 96, 0.15);
+                border-color: rgba(61, 150, 96, 0.35);
+                color: var(--accent-light);
+            }
+        }
+        #offlineBanner.visible {
+            display: block;
+        }
+
+        .search-hint {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.4rem;
+            display: none;
+        }
+        .search-hint.visible {
+            display: block;
+        }
+
+        .filter-context-bar {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: 8px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            display: none;
+        }
+        .filter-context-bar.visible {
+            display: block;
+        }
+
+        .category-pill--fav svg,
+        .category-pill--fav .star-ico {
+            display: inline-block;
+            margin-right: 0.2rem;
         }
 
         .arabic {
@@ -317,6 +504,69 @@
             font-size: 0.9375rem;
         }
 
+        .card-header-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.9rem;
+        }
+
+        .card-header-btn {
+            font-size: 0.73rem;
+            font-weight: 600;
+            padding: 0.38rem 0.65rem;
+            border-radius: 9px;
+            border: none;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.22);
+            color: #fff;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .card-header-btn:hover {
+            background: rgba(255, 255, 255, 0.36);
+        }
+
+        .card-header-btn:focus-visible {
+            outline: 2px solid var(--accent-light);
+            outline-offset: 2px;
+        }
+
+        .card-header-btn.favorite-active {
+            background: rgba(212, 175, 55, 0.45);
+            color: #1a3322;
+        }
+
+        .solution-copy-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .sol-copy-btn {
+            font-family: inherit;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.3rem 0.5rem;
+            border-radius: 7px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--primary);
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .sol-copy-btn:hover {
+            background: var(--bg);
+            border-color: var(--primary-light);
+        }
+
+        .sol-copy-btn:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
         /* Solutions */
         .solutions {
             display: flex;
@@ -343,7 +593,7 @@
         }
 
         .solution-header:hover {
-            background: #e8f0e9;
+            background: var(--solution-header-hover-bg);
         }
 
         .solution-header.active {
@@ -362,7 +612,7 @@
         .solution-content {
             display: none;
             padding: 1rem;
-            background: white;
+            background: var(--solution-bg);
         }
 
         .solution-content.active {
@@ -382,7 +632,7 @@
         }
 
         .arabic-text {
-            background: #f0f7f4;
+            background: var(--arabic-block-bg);
             padding: 1rem;
             border-radius: 8px;
             margin-bottom: 0.75rem;
@@ -402,7 +652,7 @@
             white-space: pre-wrap;
             overflow-wrap: anywhere;
             word-wrap: break-word;
-            background: #fafdfb;
+            background: var(--quran-block-bg);
             padding: 1rem 1.1rem;
             border-radius: 8px;
             margin-bottom: 0.75rem;
@@ -440,7 +690,7 @@
         }
 
         .application {
-            background: #fff9e6;
+            background: var(--application-bg);
             padding: 0.75rem;
             border-radius: 8px;
             font-size: 0.875rem;
@@ -515,8 +765,10 @@
 
         /* Print Styles */
         @media print {
-            header, .controls, .lang-switcher, .fab-stack {
-                display: none;
+            header, .controls, .lang-switcher, .fab-stack, .header-controls-row,
+            #toastHost, #offlineBanner, .search-hint, .filter-context-bar,
+            .theme-cycle-btn, .solution-copy-toolbar, .card-header-actions {
+                display: none !important;
             }
             .card {
                 break-inside: avoid;
@@ -672,7 +924,7 @@
         }
         .jump-open-btn:hover {
             border-color: var(--primary);
-            background: #fafdfb;
+            background: var(--jump-hover-bg);
         }
         .jump-open-btn:focus-visible {
             outline: none;
@@ -824,11 +1076,11 @@
             transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
         }
         .jump-dialog-item:hover {
-            background: #fafdfb;
+            background: var(--jump-hover-bg);
             border-color: rgba(30, 86, 49, 0.25);
         }
         .jump-dialog-item:active {
-            background: #eef5f0;
+            background: var(--solution-header-hover-bg);
         }
         .jump-dialog-item:focus-visible {
             outline: none;
@@ -919,17 +1171,24 @@
                     <span>По способу: <strong id="methodCount">0</strong></span>
                     <span>По цели: <strong id="goalCount">0</strong></span>
                     <span>Редкие: <strong id="rareCount">0</strong></span>
+                    <span id="favoriteStatWrap"><span id="favoriteStatLabel">Избранное</span>: <strong id="favoriteStatCount">0</strong></span>
                 </div>
             </div>
         </div>
-        <div class="lang-switcher">
-            <button class="lang-btn active" onclick="switchLang('ru')">Русский</button>
-            <button class="lang-btn" onclick="switchLang('uz')">O'zbek</button>
+        <div class="header-controls-row">
+            <button type="button" class="theme-cycle-btn" id="themeCycleBtn" aria-label="Тема оформления" title="">A</button>
+            <div class="lang-switcher">
+            <button class="lang-btn active" onclick="switchLang('ru')" type="button">Русский</button>
+            <button class="lang-btn" onclick="switchLang('uz')" type="button">O'zbek</button>
+            </div>
         </div>
     </div>
 </header>
 
+<div id="toastHost" role="status" aria-live="polite"></div>
+
 <div class="container">
+    <div id="offlineBanner" role="status"></div>
     <div class="methodology-box" id="methodologyBox">
         <h2 id="methodologyTitle"></h2>
         <ol id="methodologySteps"></ol>
@@ -937,16 +1196,19 @@
     <div class="controls">
         <div class="search-box">
             <span class="search-icon">🔍</span>
-            <input type="text" id="searchInput" placeholder="Поиск видов порчи...">
+            <input type="text" id="searchInput" placeholder="Поиск видов порчи..." autocomplete="off">
+            <p id="searchHint" class="search-hint" aria-live="polite"></p>
         </div>
     </div>
 
     <div class="categories" id="categories">
-        <button class="category-pill active" data-filter="all">Все</button>
-        <button class="category-pill" data-filter="method">По способу</button>
-        <button class="category-pill" data-filter="goal">По цели</button>
-        <button class="category-pill" data-filter="rare">Редкие</button>
+        <button class="category-pill active" type="button" data-filter="all">Все</button>
+        <button class="category-pill category-pill--fav" type="button" data-filter="favorites">Избранное</button>
+        <button class="category-pill" type="button" data-filter="method">По способу</button>
+        <button class="category-pill" type="button" data-filter="goal">По цели</button>
+        <button class="category-pill" type="button" data-filter="rare">Редкие</button>
     </div>
+    <p id="filterContextBar" class="filter-context-bar" aria-live="polite"></p>
 
     <div class="jump-row">
         <label for="jumpOpenBtn" id="jumpLabel"></label>
@@ -1067,7 +1329,188 @@ function getQuranReadingArabic(sol) {
     return null;
 }
 
+// ---------- UX: storage, clipboard, expanded search ----------
+const LS_LANG_KEY = 'ruqya_lang_v1';
+const LS_THEME_KEY = 'ruqya_theme_v1';
+const LS_FAVORITES_KEY = 'ruqya_favorites_v1';
+const SS_SESSION_KEY = 'ruqya_session_v1';
 
+function debounce(fn, waitMs) {
+    var t;
+    return function () {
+        var ctx = this;
+        var args = arguments;
+        clearTimeout(t);
+        t = setTimeout(function () { fn.apply(ctx, args); }, waitMs);
+    };
+}
+
+function normalizeSearchTerm(raw) {
+    return (raw || '').trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+function escapeHtml(unsafe) {
+    if (unsafe == null) return '';
+    return String(unsafe)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+function escapeRegExp(str) {
+    return String(str).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/** Highlight search hits in escaped HTML (longer tokens first to reduce nesting issues). */
+function wrapSearchHighlight(plainText, termNorm) {
+    var escaped = escapeHtml(plainText);
+    if (!termNorm) return escaped;
+    var words = termNorm.split(/\s+/).filter(Boolean);
+    if (!words.length) return escaped;
+    var uniq = [];
+    words.forEach(function (w) {
+        if (uniq.indexOf(w) === -1) uniq.push(w);
+    });
+    uniq.sort(function (a, b) { return b.length - a.length; });
+    uniq.forEach(function (w) {
+        if (!w.length) return;
+        var re = new RegExp(escapeRegExp(w), 'gi');
+        escaped = escaped.replace(re, function (m) { return '<mark class="search-hit">' + m + '</mark>'; });
+    });
+    return escaped;
+}
+
+function getSolutionSearchBlob(sol) {
+    var chunks = ['', sol.arabic, sol.transcription, sol.translation, sol.application || '', sol.title];
+    var qFull = getQuranReadingArabic(sol);
+    if (qFull) chunks.push(qFull);
+    if (sol.quranParts && sol.quranParts.length) chunks.push(sol.quranParts.join(' '));
+    return normalizeSearchTerm(chunks.join(' '));
+}
+
+function getCardSearchBlob(card) {
+    var parts = [
+        '#' + card.id,
+        card.title,
+        card.subtitle,
+        card.arabic,
+        card.desc
+    ];
+    (card.solutions || []).forEach(function (sol) {
+        parts.push(getSolutionSearchBlob(sol));
+    });
+    return normalizeSearchTerm(parts.join(' '));
+}
+
+function cardMatchesSearch(card, termNorm) {
+    if (!termNorm) return true;
+    return getCardSearchBlob(card).indexOf(termNorm) !== -1;
+}
+
+function loadFavoriteSetFromStorage() {
+    try {
+        var raw = localStorage.getItem(LS_FAVORITES_KEY);
+        var arr = raw ? JSON.parse(raw) : [];
+        if (!Array.isArray(arr)) return new Set();
+        return new Set(arr.filter(function (n) {
+            var x = typeof n === 'number' ? n : parseInt(n, 10);
+            return Number.isFinite(x);
+        }));
+    } catch (e) {
+        return new Set();
+    }
+}
+
+function saveFavoriteSetToStorage(setObj) {
+    try {
+        var arr = Array.from(setObj).sort(function (a, b) { return a - b; });
+        localStorage.setItem(LS_FAVORITES_KEY, JSON.stringify(arr));
+    } catch (e) {}
+}
+
+var favoriteIdSet = loadFavoriteSetFromStorage();
+
+/** Copy + toast ------------------------------------------------------------- */
+function showToast(text) {
+    var el = document.getElementById('toastHost');
+    if (!el) return;
+    el.textContent = text;
+    el.classList.add('visible');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(function () { el.classList.remove('visible'); }, 2600);
+}
+
+function copyPlainTextFallback(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+}
+
+function copyToClipboard(text) {
+    if (!text) return Promise.resolve(false);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text).then(function () { return true; }).catch(function () {
+            copyPlainTextFallback(text);
+            return true;
+        });
+    }
+    copyPlainTextFallback(text);
+    return Promise.resolve(true);
+}
+
+/** Theme -------------------------------------------------------------------- */
+function getStoredThemePreference() {
+    try {
+        var v = localStorage.getItem(LS_THEME_KEY);
+        if (v === 'light' || v === 'dark' || v === 'auto') return v;
+    } catch (e) {}
+    return 'auto';
+}
+
+var themePreference = getStoredThemePreference();
+
+function syncThemePreferenceToDOM() {
+    document.documentElement.setAttribute('data-theme', themePreference);
+    var tm = document.getElementById('themeColorMeta');
+    if (tm) {
+        tm.setAttribute('content', themePreference === 'light' ? '#f8f9fa' : '#1e5631');
+    }
+    refreshThemeCycleUi();
+}
+
+function cycleThemePreference() {
+    var order = ['auto', 'light', 'dark'];
+    var ix = Math.max(0, order.indexOf(themePreference));
+    themePreference = order[(ix + 1) % order.length];
+    try { localStorage.setItem(LS_THEME_KEY, themePreference); } catch (e) {}
+    syncThemePreferenceToDOM();
+}
+
+function refreshThemeCycleUi() {
+    var btn = document.getElementById('themeCycleBtn');
+    if (!btn) return;
+    var lang = typeof currentLang !== 'undefined' ? currentLang : 'ru';
+    if (themePreference === 'auto') {
+        btn.textContent = '🖥';
+        btn.title = lang === 'ru' ? 'Тема: как в системе' : 'Mavzu: tizimdagi';
+        btn.setAttribute('aria-label', btn.title);
+    } else if (themePreference === 'light') {
+        btn.textContent = '☀';
+        btn.title = lang === 'ru' ? 'Тема: светлая' : 'Mavzu: yorqin';
+        btn.setAttribute('aria-label', btn.title);
+    } else {
+        btn.textContent = '🌙';
+        btn.title = lang === 'ru' ? 'Тема: тёмная' : 'Mavzu: qorong\'u';
+        btn.setAttribute('aria-label', btn.title);
+    }
+}
 
 // ===================== FULL DATA =====================
 const data = {
@@ -3266,7 +3709,31 @@ const data = {
 };
 
 let currentLang = 'ru';
+try {
+    const _storedLang = localStorage.getItem(LS_LANG_KEY);
+    if (_storedLang === 'ru' || _storedLang === 'uz') currentLang = _storedLang;
+} catch (eUnused) {}
 let currentFilter = 'all';
+
+var nextAccordionRestoreOverride = undefined;
+(function () {
+    try {
+        const _rawSess = sessionStorage.getItem(SS_SESSION_KEY);
+        if (_rawSess) {
+            const _s = JSON.parse(_rawSess);
+            const _vf = ['all', 'method', 'goal', 'rare', 'favorites'];
+            if (_s && _vf.includes(_s.currentFilter)) currentFilter = _s.currentFilter;
+            nextAccordionRestoreOverride = _s && typeof _s.openAccordionKeys === 'object' ? _s.openAccordionKeys : undefined;
+            if (_s && typeof _s.search === 'string') {
+                const si = document.getElementById('searchInput');
+                if (si) si.value = _s.search;
+            }
+            if (_s && _s.hash && /^card-\d+$/i.test(String(_s.hash).replace(/^#/, ''))) {
+                history.replaceState(null, '', '#' + String(_s.hash).replace(/^#/, ''));
+            }
+        }
+    } catch (_eIgnore) {}
+})();
 
 function updateMethodology() {
     const lang = currentLang;
@@ -3277,20 +3744,18 @@ function updateMethodology() {
     ol.innerHTML = block.methodologySteps.map(step => `<li>${step}</li>`).join('');
 }
 
-function switchLang(lang) {
-    currentLang = lang;
-    
+function applyLangChrome(lang) {
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        if ((lang === 'ru' && btn.textContent.includes('Рус')) || 
+        if ((lang === 'ru' && btn.textContent.includes('Рус')) ||
             (lang === 'uz' && btn.textContent.includes("O'z"))) {
             btn.classList.add('active');
         }
     });
-    
-    document.getElementById('mainTitle').textContent = lang === 'ru' 
+
+    document.getElementById('mainTitle').textContent = lang === 'ru'
         ? 'Руқья - Методы Исцеления' : 'Ruqya - Shifo Usullari';
     document.getElementById('mainSubtitle').textContent = lang === 'ru'
         ? 'Пророческий метод лечения' : "Payg'ambarona davolash usuli";
@@ -3299,11 +3764,120 @@ function switchLang(lang) {
     document.getElementById('searchInput').placeholder = lang === 'ru'
         ? 'Поиск видов порчи...' : 'Jodugarlik turlarini qidirish...';
 
+    refreshThemeCycleUi();
+}
+
+function switchLang(lang) {
+    currentLang = lang;
+    try {
+        localStorage.setItem(LS_LANG_KEY, lang);
+    } catch (eLs) {}
+
+    applyLangChrome(lang);
     updateMethodology();
     updateCategoryPills();
     updateStats();
     buildJumpPicker();
-    renderCards();
+    refreshSearchHint();
+    refreshFilterContextBar();
+    renderCardsNow();
+}
+
+function saveSessionSnapshot() {
+    try {
+        const payload = {
+            currentFilter,
+            search: document.getElementById('searchInput').value,
+            openAccordionKeys: captureOpenAccordionKeys(),
+            hash: location.hash.replace(/^#/, '')
+        };
+        sessionStorage.setItem(SS_SESSION_KEY, JSON.stringify(payload));
+    } catch (eSes) {}
+}
+
+const saveSessionSnapshotDebounced = debounce(saveSessionSnapshot, 400);
+
+function cardMatchesTypeFilter(card) {
+    if (currentFilter === 'all') return true;
+    if (currentFilter === 'favorites') return favoriteIdSet.has(card.id);
+    return card.type === currentFilter;
+}
+
+function captureOpenAccordionKeys() {
+    const grid = document.getElementById('cardsGrid');
+    /** @type {Record<string, number[]>} */
+    const map = {};
+    grid.querySelectorAll('.card').forEach(cardEl => {
+        const m = /^card-(\d+)/.exec(cardEl.id || '');
+        if (!m) return;
+        const id = String(m[1]);
+        /** @type {number[]} */
+        const idxList = [];
+        cardEl.querySelectorAll('.solution-item').forEach((item, ix) => {
+            const hdr = item.querySelector('.solution-header');
+            if (hdr && hdr.classList.contains('active')) idxList.push(ix);
+        });
+        if (idxList.length) map[id] = idxList;
+    });
+    return map;
+}
+
+function restoreOpenAccordionKeys(map) {
+    if (!map) return;
+    const grid = document.getElementById('cardsGrid');
+    Object.keys(map).forEach(cid => {
+        const cardEl = document.getElementById('card-' + cid);
+        if (!cardEl) return;
+        const idxs = map[cid];
+        if (!idxs || !idxs.forEach) return;
+        idxs.forEach(ix => {
+            const items = cardEl.querySelectorAll('.solution-item');
+            const item = items[ix];
+            if (!item) return;
+            const h = item.querySelector('.solution-header');
+            const c = item.querySelector('.solution-content');
+            if (h && c) {
+                h.classList.add('active');
+                c.classList.add('active');
+            }
+        });
+    });
+}
+
+function refreshSearchHint() {
+    const hint = document.getElementById('searchHint');
+    if (!hint) return;
+    const q = normalizeSearchTerm(document.getElementById('searchInput').value);
+    if (!q.length) {
+        hint.classList.remove('visible');
+        hint.textContent = '';
+        return;
+    }
+    hint.classList.add('visible');
+    hint.textContent = currentLang === 'ru'
+        ? 'Ищем также по арабскому, транскрипции, тексту решений и сурам Корана.'
+        : "Arab tilida, transkripsiya, matnlar va Qur'ondagi qismlarga qarab qidiramiz.";
+}
+
+function refreshFilterContextBar() {
+    const bar = document.getElementById('filterContextBar');
+    if (!bar) return;
+    const sq = normalizeSearchTerm(document.getElementById('searchInput').value);
+    const lang = currentLang;
+    /** @type {string} */
+    let filterLbl = '';
+    if (currentFilter === 'all') filterLbl = lang === 'ru' ? 'Все категории' : 'Barcha kategoriyalar';
+    else if (currentFilter === 'method') filterLbl = lang === 'ru' ? 'По способу' : "Usul bo'yicha";
+    else if (currentFilter === 'goal') filterLbl = lang === 'ru' ? 'По цели' : "Maqsad bo'yicha";
+    else if (currentFilter === 'rare') filterLbl = lang === 'ru' ? 'Редкие' : 'Kam uchraydigan';
+    else if (currentFilter === 'favorites') filterLbl = lang === 'ru' ? 'Избранное' : 'Tanlangan';
+
+    const parts = [filterLbl];
+    if (sq) {
+        parts.push(lang === 'ru' ? ('Поиск: «' + escapeHtml(document.getElementById('searchInput').value.trim()) + '»') : ("Qidiruv: «" + escapeHtml(document.getElementById('searchInput').value.trim()) + "»"));
+    }
+    bar.innerHTML = parts.join(' · ');
+    bar.classList.toggle('visible', currentFilter !== 'all' || sq.length > 0);
 }
 
 function updateCategoryPills() {
@@ -3313,15 +3887,18 @@ function updateCategoryPills() {
         const cards = data[lang].cards;
         let count = 0;
         if (f === 'all') count = cards.length;
+        else if (f === 'favorites') count = favoriteIdSet.size;
         else count = cards.filter(c => c.type === f).length;
-        
+
         let label = '';
         if (f === 'all') label = lang === 'ru' ? 'Все' : 'Barchasi';
+        else if (f === 'favorites') label = lang === 'ru' ? 'Избранное' : 'Tanlangan';
         else if (f === 'method') label = lang === 'ru' ? 'По способу' : "Usul bo'yicha";
         else if (f === 'goal') label = lang === 'ru' ? 'По цели' : "Maqsad bo'yicha";
         else if (f === 'rare') label = lang === 'ru' ? 'Редкие' : 'Kam uchraydigan';
-        
+
         pill.innerHTML = `${label} <span class="count">${count}</span>`;
+        pill.classList.toggle('active', f === currentFilter);
     });
 }
 
@@ -3331,6 +3908,260 @@ function updateStats() {
     document.getElementById('methodCount').textContent = cards.filter(c => c.type === 'method').length;
     document.getElementById('goalCount').textContent = cards.filter(c => c.type === 'goal').length;
     document.getElementById('rareCount').textContent = cards.filter(c => c.type === 'rare').length;
+    const fc = document.getElementById('favoriteStatCount');
+    const fl = document.getElementById('favoriteStatLabel');
+    if (fc) fc.textContent = String(favoriteIdSet.size);
+    if (fl) fl.textContent = currentLang === 'ru' ? 'Избранное' : 'Tanlangan';
+}
+
+function stripSolutionHtmlToText(html) {
+    const d = document.createElement('div');
+    d.innerHTML = html || '';
+    return (d.textContent || '').trim();
+}
+
+function composePlainArabicForCopy(sol) {
+    const qHtml = getQuranReadingArabic(sol);
+    if (qHtml) {
+        return stripSolutionHtmlToText(qHtml) + (sol.arabic ? '\n' + sol.arabic : '');
+    }
+    return sol.arabic || '';
+}
+
+function composeFullSolutionPlain(sol) {
+    const applLabel = currentLang === 'ru' ? 'Применение:' : "Qo'llanishi:";
+    const lines = [];
+    lines.push(sol.title || '', '');
+    lines.push(composePlainArabicForCopy(sol), '');
+    lines.push(sol.transcription || '', '');
+    lines.push(sol.translation || '');
+    if (sol.application) lines.push('', applLabel, sol.application);
+    return lines.join('\n');
+}
+
+function toastCopiedFlash() {
+    showToast(currentLang === 'ru' ? 'Скопировано' : 'Nusxalandi');
+}
+
+function copySolutionField(cardId, solIdx, kind) {
+    const card = data[currentLang].cards.find(c => c.id === cardId);
+    const sol = card && card.solutions[solIdx];
+    if (!sol) return;
+    let txt = '';
+    if (kind === 'arabic') txt = composePlainArabicForCopy(sol);
+    else if (kind === 'transcription') txt = sol.transcription || '';
+    else if (kind === 'application') txt = sol.application || '';
+    else txt = composeFullSolutionPlain(sol);
+    copyToClipboard(txt).then(toastCopiedFlash);
+}
+
+function toggleFavoriteByCardId(cardId) {
+    if (favoriteIdSet.has(cardId)) favoriteIdSet.delete(cardId);
+    else favoriteIdSet.add(cardId);
+    saveFavoriteSetToStorage(favoriteIdSet);
+    updateStats();
+    updateCategoryPills();
+    renderCardsNow();
+}
+
+function expandAllSolutionsForCard(cardId) {
+    const cardEl = document.getElementById('card-' + cardId);
+    if (!cardEl) return;
+    cardEl.querySelectorAll('.solution-item').forEach(item => {
+        const hdr = item.querySelector('.solution-header');
+        const c = item.querySelector('.solution-content');
+        if (!hdr || !c) return;
+        hdr.classList.add('active');
+        c.classList.add('active');
+    });
+}
+
+function shareCardById(cardId) {
+    const u = new URL(location.href);
+    u.hash = 'card-' + cardId;
+    const shareUrl = u.toString();
+    if (navigator.share && typeof navigator.share === 'function') {
+        navigator.share({
+            url: shareUrl,
+            title: document.getElementById('mainTitle').textContent || 'Ruqya'
+        }).catch(() => {
+            copyToClipboard(shareUrl).then(toastCopiedFlash);
+        });
+    } else copyToClipboard(shareUrl).then(toastCopiedFlash);
+}
+
+/** Копирование: делегирование клика по решению и карточке */
+document.getElementById('cardsGrid').addEventListener('click', (e) => {
+    const copyBtn = e.target.closest('[data-copy-solution-field]');
+    if (copyBtn) {
+        e.preventDefault();
+        const cid = parseInt(copyBtn.getAttribute('data-card-id'), 10);
+        const idx = parseInt(copyBtn.getAttribute('data-sol-idx'), 10);
+        const kind = copyBtn.getAttribute('data-copy-solution-field');
+        if (Number.isFinite(cid) && Number.isFinite(idx) && kind) copySolutionField(cid, idx, kind);
+        return;
+    }
+    const fav = e.target.closest('[data-action="toggle-favorite"]');
+    if (fav) {
+        const cid = parseInt(fav.getAttribute('data-card-id'), 10);
+        if (Number.isFinite(cid)) toggleFavoriteByCardId(cid);
+        return;
+    }
+    const shr = e.target.closest('[data-action="share-card"]');
+    if (shr) {
+        const cid = parseInt(shr.getAttribute('data-card-id'), 10);
+        if (Number.isFinite(cid)) shareCardById(cid);
+        return;
+    }
+    const expand = e.target.closest('[data-action="expand-all-card"]');
+    if (expand) {
+        const cid = parseInt(expand.getAttribute('data-card-id'), 10);
+        if (Number.isFinite(cid)) expandAllSolutionsForCard(cid);
+        return;
+    }
+    const hdr = e.target.closest('.solution-header');
+    if (hdr && hdr.closest('#cardsGrid')) {
+        toggleSolution(hdr);
+    }
+});
+
+/** Debounced перерисовка сетки при вводе в поиск */
+const scheduleGridRenderFromSearchInput = debounce(() => renderCardsInner(), 220);
+
+function renderCardsNow() {
+    renderCardsInner();
+}
+
+function renderCardsInner() {
+    const grid = document.getElementById('cardsGrid');
+    /** @type {Record<string, number[]>} */
+    let accordionSnap = {};
+    if (nextAccordionRestoreOverride !== undefined) {
+        accordionSnap = nextAccordionRestoreOverride;
+        nextAccordionRestoreOverride = undefined;
+    } else accordionSnap = captureOpenAccordionKeys();
+
+    const termNorm = normalizeSearchTerm(document.getElementById('searchInput').value);
+
+    const filteredCards = data[currentLang].cards.filter(card => {
+        const matchesTF = cardMatchesTypeFilter(card);
+        const ms = cardMatchesSearch(card, termNorm);
+        return matchesTF && ms;
+    });
+
+    const resultsInfo = document.getElementById('resultsInfo');
+    if (!filteredCards.length && currentFilter === 'favorites') {
+        resultsInfo.innerHTML = currentLang === 'ru'
+            ? 'В избранном пока пусто. Нажмите <strong>★</strong> на карточке, чтобы сохранить.'
+            : 'Tanlanganlarda bo‘sh. Saqlash uchun kartochkadagi <strong>★</strong> boshing.';
+    } else if (termNorm) {
+        resultsInfo.innerHTML = currentLang === 'ru'
+            ? `Найдено: <strong>${filteredCards.length}</strong> из ${data[currentLang].cards.length}`
+            : `Topildi: <strong>${filteredCards.length}</strong> / ${data[currentLang].cards.length}`;
+    } else {
+        resultsInfo.innerHTML = currentLang === 'ru'
+            ? `Показано: <strong>${filteredCards.length}</strong> видов`
+            : `Ko‘rsatilmoqda: <strong>${filteredCards.length}</strong> tur`;
+    }
+
+    const categoryNames = {
+        ru: { method: 'По способу', goal: 'По цели', rare: 'Редкие' },
+        uz: { method: 'Usul', goal: 'Maqsad', rare: 'Kam' }
+    };
+
+    grid.innerHTML = '';
+
+    filteredCards.forEach((card, index) => {
+        const cardEl = document.createElement('div');
+        cardEl.className = 'card fade-in';
+        cardEl.id = 'card-' + card.id;
+        cardEl.style.animationDelay = `${index * 0.03}s`;
+
+        const isFav = favoriteIdSet.has(card.id);
+        const hb = categoryNames[currentLang][card.type];
+        const lblShare = currentLang === 'ru' ? 'Поделиться' : 'Ulashish';
+        const lblExpand = currentLang === 'ru' ? 'Все решения' : 'Barchasi';
+        const favAriaAdd = currentLang === 'ru' ? 'Добавить карточку в избранное' : 'Tanlanganlar qo‘sish';
+        const favAriaRem = currentLang === 'ru' ? 'Убрать карточку из избранного' : 'Tanlanganlardan chiqarish';
+        const lblAr = currentLang === 'ru' ? 'Араб.' : 'Arab';
+        const lblTr = currentLang === 'ru' ? 'Транскр.' : 'Trans.';
+        const lblAp = currentLang === 'ru' ? 'Примен.' : 'Qo‘llash';
+        const lblAll = currentLang === 'ru' ? 'Всё решение' : 'To‘liq';
+
+        const titleHtml = wrapSearchHighlight(card.title, termNorm);
+        const subtitleHtml = wrapSearchHighlight(card.subtitle, termNorm);
+
+        cardEl.innerHTML = `
+            <div class="card-header">
+                <span class="card-number">#${card.id}</span>
+                <span class="card-type">${hb}</span>
+                <button type="button" class="card-header-btn favorite-card-btn ${isFav ? 'favorite-active' : ''}"
+                    data-action="toggle-favorite" data-card-id="${card.id}"
+                    aria-pressed="${isFav ? 'true' : 'false'}"
+                    aria-label="${isFav ? favAriaRem : favAriaAdd}">★</button>
+                <div class="card-title">${titleHtml}</div>
+                <div class="card-arabic arabic">${card.arabic}</div>
+                <div style="margin-top: 0.5rem; opacity: 0.9; font-size: 0.9rem;">${subtitleHtml}</div>
+                <div class="card-header-actions" role="group">
+                    <button type="button" class="card-header-btn" data-action="share-card" data-card-id="${card.id}">
+                        🔗 ${lblShare}</button>
+                    <button type="button" class="card-header-btn" data-action="expand-all-card" data-card-id="${card.id}">
+                        ⤵ ${lblExpand}</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-desc">${wrapSearchHighlight(card.desc, termNorm)}</div>
+                <div class="solutions">
+                    ${card.solutions.map((sol, idx) => {
+                        const qFull = getQuranReadingArabic(sol);
+                        const arabicHtml = qFull
+                            ? `<div class="quran-ayah-block arabic">${qFull}</div>
+                                <div class="quran-ref-meta">
+                                    <span class="quran-ref-label">${currentLang === 'ru' ? 'Отсылка:' : 'Ishora:'}</span>
+                                    <div class="arabic-text arabic quran-ref-short">${sol.arabic}</div>
+                                </div>`
+                            : `<div class="arabic-text arabic">${sol.arabic}</div>`;
+                        return `
+                        <div class="solution-item">
+                            <div class="solution-header">
+                                <span>${idx + 1}. ${escapeHtml(sol.title)}</span>
+                                <span class="solution-icon">▼</span>
+                            </div>
+                            <div class="solution-content">
+                                <div class="solution-copy-toolbar" role="toolbar" aria-label="${currentLang === 'ru' ? 'Копировать текст решения' : 'Yechim matnini nusxa olish'}">
+                                    <button type="button" class="sol-copy-btn" data-copy-solution-field="arabic"
+                                        data-card-id="${card.id}" data-sol-idx="${idx}">${lblAr}</button>
+                                    <button type="button" class="sol-copy-btn" data-copy-solution-field="transcription"
+                                        data-card-id="${card.id}" data-sol-idx="${idx}">${lblTr}</button>
+                                    ${sol.application ? `<button type="button" class="sol-copy-btn" data-copy-solution-field="application"
+                                        data-card-id="${card.id}" data-sol-idx="${idx}">${lblAp}</button>` : ''}
+                                    <button type="button" class="sol-copy-btn" data-copy-solution-field="all"
+                                        data-card-id="${card.id}" data-sol-idx="${idx}">${lblAll}</button>
+                                </div>
+                                ${arabicHtml}
+                                <div class="transcription">${escapeHtml(sol.transcription)}</div>
+                                <div class="translation">${escapeHtml(sol.translation)}</div>
+                                ${sol.application ? `
+                                    <div class="application">
+                                        <strong>${currentLang === 'ru' ? 'Применение:' : "Qo'llanishi:"}</strong>
+                                        ${escapeHtml(sol.application)}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `;
+                    }).join('')}
+                </div>
+            </div>
+        `;
+
+        grid.appendChild(cardEl);
+    });
+
+    restoreOpenAccordionKeys(accordionSnap);
+    refreshSearchHint();
+    refreshFilterContextBar();
+    saveSessionSnapshotDebounced();
 }
 
 function parseCardIdFromHash() {
@@ -3339,13 +4170,7 @@ function parseCardIdFromHash() {
 }
 
 function cardVisibleUnderCurrentFilters(card) {
-    const matchesFilter = currentFilter === 'all' || card.type === currentFilter;
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const matchesSearch = !searchTerm ||
-        card.title.toLowerCase().includes(searchTerm) ||
-        card.subtitle.toLowerCase().includes(searchTerm) ||
-        card.desc.toLowerCase().includes(searchTerm);
-    return matchesFilter && matchesSearch;
+    return cardMatchesTypeFilter(card) && cardMatchesSearch(card, normalizeSearchTerm(document.getElementById('searchInput').value));
 }
 
 function goToCardId(id, options) {
@@ -3357,11 +4182,10 @@ function goToCardId(id, options) {
 
     if (!cardVisibleUnderCurrentFilters(card)) {
         currentFilter = 'all';
-        document.querySelectorAll('.category-pill').forEach(p => {
-            p.classList.toggle('active', p.dataset.filter === 'all');
-        });
         document.getElementById('searchInput').value = '';
-        renderCards();
+        updateCategoryPills();
+        refreshFilterContextBar();
+        renderCardsNow();
     }
 
     if (updateHash) {
@@ -3381,8 +4205,7 @@ function goToCardId(id, options) {
 
 function filterJumpDialogList() {
     const inp = document.getElementById('jumpDialogSearch');
-    const raw = inp ? inp.value : '';
-    const q = raw.trim().toLowerCase().replace(/\s+/g, ' ');
+    const q = inp ? normalizeSearchTerm(inp.value) : '';
     const items = document.querySelectorAll('#jumpDialogList .jump-dialog-item');
     let n = 0;
     items.forEach(el => {
@@ -3435,12 +4258,11 @@ function buildJumpPicker() {
 
     [...data[lang].cards].sort((a, b) => a.id - b.id).forEach(card => {
         const catLabel = names[card.type];
-        const searchBlob = '#' + card.id + ' ' + card.title + ' ' + card.subtitle + ' ' + card.arabic + ' ' + catLabel;
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'jump-dialog-item';
         btn.dataset.id = String(card.id);
-        btn.dataset.search = searchBlob.toLowerCase();
+        btn.dataset.search = getCardSearchBlob(card);
 
         btn.innerHTML = `
             <div class="jump-item-top">
@@ -3455,91 +4277,6 @@ function buildJumpPicker() {
     });
 
     filterJumpDialogList();
-}
-
-function renderCards() {
-    const grid = document.getElementById('cardsGrid');
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    
-    grid.innerHTML = '';
-    
-    const filteredCards = data[currentLang].cards.filter(card => {
-        const matchesFilter = currentFilter === 'all' || card.type === currentFilter;
-        const matchesSearch = card.title.toLowerCase().includes(searchTerm) || 
-                             card.subtitle.toLowerCase().includes(searchTerm) ||
-                             card.desc.toLowerCase().includes(searchTerm);
-        return matchesFilter && matchesSearch;
-    });
-    
-    // Results info
-    const resultsInfo = document.getElementById('resultsInfo');
-    if (searchTerm) {
-        resultsInfo.innerHTML = currentLang === 'ru' 
-            ? `Найдено: <strong>${filteredCards.length}</strong> из ${data[currentLang].cards.length}`
-            : `Topildi: <strong>${filteredCards.length}</strong> / ${data[currentLang].cards.length}`;
-    } else {
-        resultsInfo.innerHTML = currentLang === 'ru'
-            ? `Показано: <strong>${filteredCards.length}</strong> видов`
-            : `Ko'rsatilmoqda: <strong>${filteredCards.length}</strong> tur`;
-    }
-    
-    const categoryNames = {
-        ru: { method: 'По способу', goal: 'По цели', rare: 'Редкие' },
-        uz: { method: 'Usul', goal: 'Maqsad', rare: 'Kam' }
-    };
-    
-    filteredCards.forEach((card, index) => {
-        const cardEl = document.createElement('div');
-        cardEl.className = 'card fade-in';
-        cardEl.id = 'card-' + card.id;
-        cardEl.style.animationDelay = `${index * 0.03}s`;
-        
-        cardEl.innerHTML = `
-            <div class="card-header">
-                <span class="card-number">#${card.id}</span>
-                <span class="card-type">${categoryNames[currentLang][card.type]}</span>
-                <div class="card-title">${card.title}</div>
-                <div class="card-arabic arabic">${card.arabic}</div>
-                <div style="margin-top: 0.5rem; opacity: 0.9; font-size: 0.9rem;">${card.subtitle}</div>
-            </div>
-            <div class="card-body">
-                <div class="card-desc">${card.desc}</div>
-                <div class="solutions">
-                    ${card.solutions.map((sol, idx) => {
-                        const qFull = getQuranReadingArabic(sol);
-                        const arabicHtml = qFull
-                            ? `<div class="quran-ayah-block arabic">${qFull}</div>
-                                <div class="quran-ref-meta">
-                                    <span class="quran-ref-label">${currentLang === 'ru' ? 'Отсылка:' : 'Ishora:'}</span>
-                                    <div class="arabic-text arabic quran-ref-short">${sol.arabic}</div>
-                                </div>`
-                            : `<div class="arabic-text arabic">${sol.arabic}</div>`;
-                        return `
-                        <div class="solution-item">
-                            <div class="solution-header" onclick="toggleSolution(this)">
-                                <span>${idx + 1}. ${sol.title}</span>
-                                <span class="solution-icon">▼</span>
-                            </div>
-                            <div class="solution-content">
-                                ${arabicHtml}
-                                <div class="transcription">${sol.transcription}</div>
-                                <div class="translation">${sol.translation}</div>
-                                ${sol.application ? `
-                                    <div class="application">
-                                        <strong>${currentLang === 'ru' ? 'Применение:' : "Qo'llanishi:"}</strong>
-                                        ${sol.application}
-                                    </div>
-                                ` : ''}
-                            </div>
-                        </div>
-                    `;
-                    }).join('')}
-                </div>
-            </div>
-        `;
-        
-        grid.appendChild(cardEl);
-    });
 }
 
 function toggleSolution(header) {
@@ -3558,7 +4295,36 @@ function toggleSolution(header) {
 }
 
 // Event Listeners
-document.getElementById('searchInput').addEventListener('input', renderCards);
+document.getElementById('searchInput').addEventListener('input', () => {
+    scheduleGridRenderFromSearchInput();
+});
+
+function registerServiceWorkerBanner() {
+    if (!('serviceWorker' in navigator)) return;
+    const bannerEl = document.getElementById('offlineBanner');
+    const showBanner = () => {
+        if (!bannerEl || bannerEl.dataset.shown === '1') return;
+        bannerEl.textContent = currentLang === 'ru'
+            ? 'Кэш готов — страницу можно открывать офлайн'
+            : 'Kesh tayyor — sahifani oflayn ochish mumkin';
+        bannerEl.dataset.shown = '1';
+        bannerEl.classList.add('visible');
+        setTimeout(() => bannerEl.classList.remove('visible'), 9000);
+    };
+    navigator.serviceWorker.register(new URL('./sw.js', window.location.href), { scope: './' }).then(reg => {
+        if (navigator.serviceWorker.controller) showBanner();
+        else {
+            navigator.serviceWorker.addEventListener('controllerchange', () => showBanner(), { once: true });
+        }
+        reg.addEventListener('updatefound', () => {
+            const nw = reg.installing;
+            if (!nw) return;
+            nw.addEventListener('statechange', () => {
+                if (nw.state === 'activated') showBanner();
+            });
+        });
+    }).catch(() => {});
+}
 
 const jumpDlg = document.getElementById('jumpDialog');
 const jumpOpenBtnEl = document.getElementById('jumpOpenBtn');
@@ -3600,13 +4366,15 @@ document.getElementById('jumpDialogList').addEventListener('click', (e) => {
     goToCardId(cardId, { smooth: true, updateHash: true });
 });
 
-document.querySelectorAll('.category-pill').forEach(pill => {
-    pill.addEventListener('click', function() {
-        document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
-        this.classList.add('active');
-        currentFilter = this.dataset.filter;
-        renderCards();
-    });
+document.getElementById('categories').addEventListener('click', (e) => {
+    const pill = e.target.closest('.category-pill');
+    if (!pill || !pill.closest('#categories')) return;
+    e.preventDefault();
+    document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    currentFilter = pill.dataset.filter;
+    refreshFilterContextBar();
+    renderCardsNow();
 });
 
 // Floating jump FAB + back to top (same scroll threshold as before)
@@ -3620,11 +4388,21 @@ window.addEventListener('scroll', () => {
 });
 
 // Initialize
+syncThemePreferenceToDOM();
+const themeCycleBtnEl = document.getElementById('themeCycleBtn');
+if (themeCycleBtnEl) {
+    themeCycleBtnEl.addEventListener('click', cycleThemePreference);
+}
+
+applyLangChrome(currentLang);
+
 updateMethodology();
 updateStats();
 updateCategoryPills();
 buildJumpPicker();
-renderCards();
+refreshSearchHint();
+refreshFilterContextBar();
+renderCardsNow();
 
 const hashCardIdInit = parseCardIdFromHash();
 if (hashCardIdInit !== null) {
@@ -3632,11 +4410,18 @@ if (hashCardIdInit !== null) {
 }
 
 window.addEventListener('hashchange', () => {
+    saveSessionSnapshot();
     const cid = parseCardIdFromHash();
     if (cid !== null) {
         goToCardId(cid, { smooth: true, updateHash: false });
     }
 });
+
+window.addEventListener('load', () => {
+    registerServiceWorkerBanner();
+});
+
+saveSessionSnapshot();
 </script>
 
 </body>
