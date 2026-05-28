@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mobile Legends — Полный Гайд | von group | dendiiii</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --bg-primary: #0a0a12;
+  --bg-secondary: #12121f;
+  --bg-card: #1a1a2e;
+  --bg-card-hover: #1f1f35;
+  --accent: #e94560;
+  --accent2: #0f3460;
+  --accent3: #533483;
+  --gold: #f0c040;
+  --gold-dim: #c9a030;
+  --text: #e8e8f0;
+  --text-dim: #9898b0;
+  --text-bright: #ffffff;
+  --border: #2a2a45;
+  --success: #00c853;
+  --warning: #ff9800;
+  --danger: #f44336;
+  --gradient1: linear-gradient(135deg, #e94560, #533483);
+  --gradient2: linear-gradient(135deg, #0f3460, #533483);
+  --gradient3: linear-gradient(135deg, #f0c040, #e94560);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(233,69,96,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(83,52,131,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 0%, rgba(15,52,96,0.2) 0%, transparent 60%);
+  z-index: 0;
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 0.4; }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(233,69,96,0.12);
+  border: 1px solid rgba(233,69,96,0.3);
+  border-radius: 50px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  animation: fadeInDown 0.8s ease;
+}
+
+.hero-badge .dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.hero h1 .highlight {
+  background: var(--gradient1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero .subtitle {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  color: var(--text-dim);
+  margin-bottom: 0.3rem;
+  animation: fadeInUp 0.8s ease 0.35s both;
+}
+
+.hero .author {
+  font-size: 0.95rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease 0.5s both;
+}
+
+.hero .author span {
+  color: var(--accent);
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease 0.65s both;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat .num {
+  font-size: 2rem;
+  font-weight: 900;
+  background: var(--gradient3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-stat .label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  animation: bounce 2s ease infinite;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.scroll-indicator .arrow {
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 0.3rem;
+  color: var(--accent);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,18,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.8rem 1rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav::-webkit-scrollbar { display: none; }
+
+.nav-inner {
+  display: flex;
+  gap: 0.5rem;
+  min-width: max-content;
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.nav a:hover, .nav a.active {
+  color: var(--text-bright);
+  background: rgba(233,69,96,0.15);
+  border-color: rgba(233,69,96,0.3);
+}
+
+.nav a .nav-icon {
+  font-size: 1rem;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem 4rem;
+}
+
+/* ===== SECTION ===== */
+.section {
+  margin-bottom: 3rem;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.section-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.section-icon.red { background: rgba(233,69,96,0.15); }
+.section-icon.blue { background: rgba(15,52,96,0.3); }
+.section-icon.purple { background: rgba(83,52,131,0.3); }
+.section-icon.gold { background: rgba(240,192,64,0.15); }
+.section-icon.green { background: rgba(0,200,83,0.15); }
+
+.section-header h2 {
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.section-header h2 .accent {
+  color: var(--accent);
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(233,69,96,0.2);
+  transform: translateY(-2px);
+}
+
+.card-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--gradient1);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: var(--text-bright);
+}
+
+.card p, .card li {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card ul li {
+  padding: 0.3rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.card ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ===== HIGHLIGHT BOX ===== */
+.highlight-box {
+  background: linear-gradient(135deg, rgba(233,69,96,0.08), rgba(83,52,131,0.08));
+  border: 1px solid rgba(233,69,96,0.2);
+  border-radius: 14px;
+  padding: 1.2rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.highlight-box p {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.highlight-box .tag {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== GOLD BOX ===== */
+.gold-box {
+  background: linear-gradient(135deg, rgba(240,192,64,0.08), rgba(233,69,96,0.05));
+  border: 1px solid rgba(240,192,64,0.2);
+  border-radius: 14px;
+  padding: 1.2rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.gold-box p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.gold-box .tag {
+  display: inline-block;
+  background: var(--gold);
+  color: #111;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== SUBSECTION ===== */
+.subsection {
+  margin: 2rem 0;
+}
+
+.subsection h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.subsection h3 .emoji {
+  font-size: 1.3rem;
+}
+
+/* ===== EXERCISE CARD ===== */
+.exercise-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.3rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--accent);
+}
+
+.exercise-card .exercise-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-bright);
+  margin-bottom: 0.6rem;
+}
+
+.exercise-card p {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.exercise-card .difficulty {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.difficulty.easy { background: rgba(0,200,83,0.15); color: var(--success); }
+.difficulty.medium { background: rgba(255,152,0,0.15); color: var(--warning); }
+.difficulty.hard { background: rgba(244,67,54,0.15); color: var(--danger); }
+
+/* ===== LINK CARD ===== */
+.link-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.link-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(15,52,96,0.4);
+}
+
+.link-card .link-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  background: var(--gradient2);
+}
+
+.link-card .link-content h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 0.3rem;
+}
+
+.link-card .link-content p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.link-card .link-content a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+
+/* ===== SEPARATOR ===== */
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.separator::before, .separator::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ===== MINI GAME SECTION ===== */
+.game-section {
+  margin: 4rem 0 3rem;
+}
+
+.game-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.game-header {
+  background: var(--gradient1);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.game-header h2 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 0.3rem;
+}
+
+.game-header p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.game-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  background: rgba(0,0,0,0.3);
+}
+
+.game-stat {
+  text-align: center;
+}
+
+.game-stat .value {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.game-stat .label {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.game-area {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  background: var(--bg-primary);
+  overflow: hidden;
+  cursor: crosshair;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.game-area .grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(233,69,96,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(233,69,96,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.game-target {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  animation: targetAppear 0.15s ease;
+  box-shadow: 0 0 20px rgba(233,69,96,0.5);
+  z-index: 10;
+}
+
+.game-target:active {
+  transform: scale(0.9);
+}
+
+@keyframes targetAppear {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.game-target.hit {
+  animation: targetHit 0.2s ease forwards;
+}
+
+@keyframes targetHit {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+.game-controls {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.game-btn {
+  width: 100%;
+  max-width: 300px;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Inter', sans-serif;
+}
+
+.game-btn.start {
+  background: var(--gradient1);
+  color: white;
+}
+
+.game-btn.start:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(233,69,96,0.4);
+}
+
+.game-btn.start:active {
+  transform: scale(0.98);
+}
+
+.game-btn.reset {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+}
+
+.game-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.game-rules {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.game-rules h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.game-rules ul {
+  list-style: none;
+  padding: 0;
+}
+
+.game-rules li {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  padding: 0.2rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.game-rules li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.game-result {
+  display: none;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.game-result.show {
+  display: block;
+}
+
+.game-result .result-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.game-result .result-detail {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+.game-result .result-times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.game-result .result-time {
+  background: rgba(233,69,96,0.1);
+  border: 1px solid rgba(233,69,96,0.2);
+  border-radius: 8px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text);
+}
+
+.game-result .result-time.fast {
+  background: rgba(0,200,83,0.1);
+  border-color: rgba(0,200,83,0.2);
+  color: var(--success);
+}
+
+/* ===== REACTION TIMER MINI GAME ===== */
+.reaction-game {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.reaction-header {
+  background: var(--gradient3);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.reaction-header h2 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #111;
+  margin-bottom: 0.3rem;
+}
+
+.reaction-header p {
+  font-size: 0.85rem;
+  color: rgba(0,0,0,0.6);
+}
+
+.reaction-area {
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background 0.3s ease;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.reaction-area.waiting {
+  background: var(--danger);
+  color: white;
+}
+
+.reaction-area.ready {
+  background: var(--bg-primary);
+  color: var(--text);
+}
+
+.reaction-area.go {
+  background: var(--success);
+  color: white;
+}
+
+.reaction-area.result {
+  background: var(--accent2);
+  color: white;
+}
+
+.reaction-area .reaction-text {
+  max-width: 80%;
+}
+
+.reaction-area .reaction-time {
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.reaction-best {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.reaction-best .best-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.reaction-best .best-value {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer .logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  background: var(--gradient1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.footer p {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.footer .divider {
+  width: 60px;
+  height: 3px;
+  background: var(--gradient1);
+  border-radius: 2px;
+  margin: 1rem auto;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .hero { min-height: 90vh; padding: 1.5rem 1rem; }
+  .hero-stats { gap: 1.5rem; }
+  .main { padding: 1.5rem 1rem 3rem; }
+  .card { padding: 1.2rem; }
+  .game-area { height: 300px; }
+  .section-header { gap: 0.8rem; }
+  .section-icon { width: 42px; height: 42px; font-size: 1.2rem; }
+}
+
+/* ===== ANIMATIONS ON SCROLL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== TOC ===== */
+.toc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.toc h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--gold);
+}
+
+.toc ol {
+  list-style: none;
+  counter-reset: toc;
+  padding: 0;
+}
+
+.toc li {
+  counter-increment: toc;
+  padding: 0.4rem 0;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.toc li::before {
+  content: counter(toc);
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(233,69,96,0.15);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0.45rem;
+}
+
+.toc a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.toc a:hover {
+  color: var(--accent);
+}
+
+/* ===== QUOTE ===== */
+.quote {
+  background: linear-gradient(135deg, rgba(240,192,64,0.05), rgba(233,69,96,0.05));
+  border-left: 4px solid var(--gold);
+  border-radius: 0 14px 14px 0;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+
+.quote p {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.quote .author-quote {
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* ===== PROGRESS BAR FOR GAME ===== */
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-primary);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0.8rem 0;
+}
+
+.progress-bar .fill {
+  height: 100%;
+  background: var(--gradient1);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+/* ===== KEYWORD ===== */
+.keyword {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.keyword-gold {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ===== TABLE ===== */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.info-table th, .info-table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.info-table th {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-table td {
+  color: var(--text);
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      von group — гайд
+    </div>
+    <h1>MOBILE LEGENDS<br><span class="highlight">ПОЛНЫЙ ГАЙД</span></h1>
+    <p class="subtitle">Правила эффективной игры. Рефлексы. Периферия. Дисциплина.</p>
+    <p class="author">Составитель: <span>dendiiii</span> | von group</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">5</div>
+        <div class="label">Правил игры</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">10+</div>
+        <div class="label">Упражнений</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">∞</div>
+        <div class="label">Практика</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    ЛИСТАЙ ВНИЗ
+    <span class="arrow">↓</span>
+  </div>
+</section>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#rules"><span class="nav-icon">📜</span> Правила</a>
+    <a href="#peripheral"><span class="nav-icon">👁</span> Периферия</a>
+    <a href="#reaction"><span class="nav-icon">⚡</span> Реакция</a>
+    <a href="#emotions"><span class="nav-icon">🧊</span> Эмоции</a>
+    <a href="#discipline"><span class="nav-icon">📋</span> Дисциплина</a>
+    <a href="#aim"><span class="nav-icon">🎯</span> Прицеливание</a>
+    <a href="#apps"><span class="nav-icon">📱</span> Приложения</a>
+    <a href="#game"><span class="nav-icon">🎮</span> Мини-игра</a>
+  </div>
+</nav>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main">
+
+  <!-- TOC -->
+  <div class="toc reveal">
+    <h3>📑 Содержание</h3>
+    <ol>
+      <li><a href="#rules">Правила эффективной игры</a></li>
+      <li><a href="#peripheral">Упражнения для периферического зрения</a></li>
+      <li><a href="#reaction">Упражнения для реакции</a></li>
+      <li><a href="#emotions">Упражнения для контроля эмоций</a></li>
+      <li><a href="#discipline">Дисциплина и фокус на одном герое</a></li>
+      <li><a href="#apps-external">Сторонние тренажёры</a></li>
+      <li><a href="#aim">Точное прицеливание</a></li>
+      <li><a href="#apps">Сторонние приложения</a></li>
+      <li><a href="#game">Мини-игра на тренировку рефлекса</a></li>
+    </ol>
+  </div>
+
+  <!-- ===== SECTION: RULES ===== -->
+  <section class="section reveal" id="rules">
+    <div class="section-header">
+      <div class="section-icon red">📜</div>
+      <h2>Правила <span class="accent">эффективной</span> игры</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-number">1</div>
+      <h3>Освоение периферического зрения</h3>
+      <p>Научись смотреть на экран «расфокусированно», чтобы видеть <span class="keyword">мини-карту, полоски здоровья, таймеры способностей и приближающегося врага</span> одновременно. Не бегай взглядом по углам — это замедляет реакцию.</p>
+      <div class="highlight-box">
+        <p>Периферия позволяет видеть опасность (например, движение в кустах) <strong>даже без прямого взгляда</strong> на объект. Это ключевой навык, который отличает хорошего игрока от среднего.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">2</div>
+      <h3>Скорость реакции — твоё главное оружие</h3>
+      <table class="info-table">
+        <tr>
+          <th>Тип реакции</th>
+          <th>Время</th>
+          <th>Описание</th>
+        </tr>
+        <tr>
+          <td>Минимум</td>
+          <td><span class="keyword">1 секунда</span></td>
+          <td>На любое действие (увидел — нажал)</td>
+        </tr>
+        <tr>
+          <td>Максимум</td>
+          <td><span class="keyword">0.1 секунды</span></td>
+          <td>На критическую реакцию (даш, щит, мороз, фликер)</td>
+        </tr>
+      </table>
+      <div class="highlight-box">
+        <p><strong>Почему это важно:</strong> Если ты реагируешь быстрее лимита врага, он впадает в панику, начинает «слепнуть» (пропускать детали) и ошибаться. <span class="keyword">Медленный игрок всегда мёртв.</span> Тренируй рефлексы в режиме кастомки или на спаррингах.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">3</div>
+      <h3>Холодный расчёт важнее эмоций</h3>
+      <p>В самом разгаре командной битвы (гуш-битвы) <strong>не давай волю гневу, страху или азарту</strong>. Эмоции сужают восприятие — ты перестаёшь замечать позицию саппорта, тайминг ульты врага или вовремя отходить.</p>
+      <div class="quote">
+        <p>Только спокойный взгляд видит всю картину.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">4</div>
+      <h3>Знание экипировки и фокус на одном герое</h3>
+      <ul>
+        <li>Изучи <span class="keyword">все предметы</span>: какие дают пробив, какие — защиту, какие — перезарядку, какие имеют уникальные пассивки.</li>
+        <li>Изучи <span class="keyword">навыки героя</span>: что усиливается от какого предмета, какие связки работают.</li>
+        <li><strong>Фокусируйся на 1–2 героях</strong>, пока не освоишь их идеально. Прыгая с роли на роль и с героя на героя, ты распыляешь свои реальные жизненные ресурсы (время, внимание, память на тайминги) и никогда не достигнешь уровня «чутья».</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-number">5</div>
+      <h3>Закон позиции и сохранения ресурсов</h3>
+      <p>Всегда знай, где ты находишься относительно:</p>
+      <ul>
+        <li>Вышки, кустов, союзников, вероятной позиции вражеского джанглера.</li>
+      </ul>
+      <div class="gold-box">
+        <p><strong>Не трать ресурсы</strong> (ману, даши, мороз) на добивание крипов, если через 5 секунд начнётся драка. Береги силы для ключевых моментов. Если твой герой не хилер — <span class="keyword-gold">после драки уходи восстанавливаться, не стой с 10% HP в надежде на чудо.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: PERIPHERAL ===== -->
+  <section class="section reveal" id="peripheral">
+    <div class="section-header">
+      <div class="section-icon blue">👁</div>
+      <h2>Упражнения для <span class="accent">периферического</span> зрения</h2>
+    </div>
+
+    <div class="exercise-card">
+      <span class="difficulty medium">Средняя сложность</span>
+      <div class="exercise-name">1. «Мини-карта на отвлекающих действиях»</div>
+      <p>Зайди в обычный матч или кастомку (против ботов).</p>
+      <p>Сфокусируй взгляд <strong>строго по центру экрана</strong> (на своего героя).</p>
+      <p>Не двигая глазами, старайся замечать: когда на миникарте появляется красная точка (враг), когда союзник ставит пинг, когда исчезают вражеские крестики.</p>
+      <div class="highlight-box">
+        <p><strong>Усложнение:</strong> одновременно с этим контролируй свою полоску здоровья только боковым зрением. Каждые 10 секунд мысленно называй: «сколько у меня HP?».</p>
+      </div>
+    </div>
+
+    <div class="exercise-card">
+      <span class="difficulty hard">Высокая сложность</span>
+      <div class="exercise-name">2. «Слежка за кустом» (тренировка на пальцах)</div>
+      <p>В режиме «Обучение» (AI) подойди к кусту с врагом внутри (поставь бота).</p>
+      <p>Смотри строго на центр экрана. Периферией лови момент, когда из куста <strong>чуть высунется рука/хвост</strong> (анимация атаки) или появится искра от скилла.</p>
+      <div class="highlight-box">
+        <p><strong>Задача:</strong> как только периферия зафиксировала шевеление — сразу нажать даш/фликер/щит. Это учит замечать врага <span class="keyword">ДО того, как он полностью выйдет</span>.</p>
+      </div>
+    </div>
+
+    <div class="exercise-card">
+      <span class="difficulty easy">Низкая сложность</span>
+      <div class="exercise-name">3. «Три объекта» (оффлайн-тренажёр)</div>
+      <p>Наклей на монитор/телефон по углам три маленькие цветные точки (например, стикеры). Играя, держи взгляд на центре, но мысленно отмечай: «левый стикер — зелёный, правый — красный, верхний — синий».</p>
+      <div class="gold-box">
+        <p>В бою так же ты будешь «держать в уме» миникарту, время ульты врага и своё положение — <strong>без метаний глазами</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: REACTION ===== -->
+  <section class="section reveal" id="reaction">
+    <div class="section-header">
+      <div class="section-icon purple">⚡</div>
+      <h2>Упражнения для <span class="accent">реакции</span> (0.1 – 1 сек)</h2>
+    </div>
+
+    <div class="exercise-card">
+      <span class="difficulty hard">Высокая сложность</span>
+      <div class="exercise-name">1. «Фликер от ульты» (кастомка с другом или ботом)</div>
+      <p>Поставь противника с мгновенным дальним контролем (Франко, Каджи, Селена). Пусть он внезапно кидает хук/стрелу.</p>
+      <p>Твоя задача: услышав/увидев анимацию (периферией!) — нажать <span class="keyword">фликер в сторону, чтобы уклониться</span>.</p>
+      <table class="info-table">
+        <tr>
+          <th>Параметр</th>
+          <th>Значение</th>
+        </tr>
+        <tr>
+          <td>Норматив</td>
+          <td><span class="keyword">0.3 сек</span></td>
+        </tr>
+        <tr>
+          <td>Критерий готовности</td>
+          <td>5 раз подряд уклоняешься — скорость готова</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="exercise-card">
+      <span class="difficulty medium">Средняя сложность</span>
+      <div class="exercise-name">2. «Клик по появлению»</div>
+      <p>Зайди в режим «Классика – Быстрая битва» (или против 5 ботов).</p>
+      <p>Включи ульту, которая даёт неуязвимость/щит (Ланселот, ВанВан, Ли Чонг).</p>
+      <p>Дождись, когда бот начнёт кастовать мощную абилку (Эсмеральда, Ороч). Нажимай защиту <strong>только после начала анимации</strong>, а не до.</p>
+      <div class="highlight-box">
+        <p><strong>Цель:</strong> Таймер реагирования должен быть таким, чтобы щит вставал за <span class="keyword">0.2–0.4 секунды</span> до урона.</p>
+      </div>
+    </div>
+
+    <div class="exercise-card">
+      <span class="difficulty hard">Высокая сложность</span>
+      <div class="exercise-name">3. «Реакция на звук» (звук быстрее картинки)</div>
+      <p>Выставь громкость способностей врага (особенно ульт: Тигра, Атлас, Джонсон).</p>
+      <p>Не глядя на экран (или краем глаза), при звуке двигателя Джонсона — сразу жми паузу или «очищение» (пурити).</p>
+      <div class="gold-box">
+        <p><strong>Идеально:</strong> <span class="keyword-gold">0.1 сек</span> задержки. Это тренирует безусловный рефлекс: <strong>звук → действие</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: EMOTIONS ===== -->
+  <section class="section reveal" id="emotions">
+    <div class="section-header">
+      <div class="section-icon green">🧊</div>
+      <h2>Упражнения для <span class="accent">контроля</span> эмоций</h2>
+    </div>
+
+    <div class="exercise-card">
+      <span class="difficulty easy">Низкая сложность</span>
+      <div class="exercise-name">1. «Дыхание при лейте»</div>
+      <p>Каждый раз, когда у тебя осталось <span class="keyword">15% HP</span> и ты убегаешь от троих — сделай медленный вдох и выдох (3 секунды). Это блокирует панику.</p>
+      <div class="quote">
+        <p>Если получил лютый ганк — прежде чем жать кнопки, скажи вслух (можно шёпотом): <strong>«Смотрю миникарту, ищу выход»</strong>. Слова возвращают контроль.</p>
+      </div>
+    </div>
+
+    <div class="exercise-card">
+      <span class="difficulty medium">Средняя сложность</span>
+      <div class="exercise-name">2. «Игра с мёртвым тоном»</div>
+      <p>3 матча подряд играй в <strong>полном молчании</strong> (отключи музыку, оставь только звуки абилок). И говори сам себе абсолютно ровным голосом: <em>«Враг справа, отступаю, жду морион»</em>.</p>
+      <div class="highlight-box">
+        <p><strong>Принцип:</strong> Эмоции рождаются из голосовой связи и музыки. <span class="keyword">Тишина закаляет хладнокровие.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: DISCIPLINE ===== -->
+  <section class="section reveal" id="discipline">
+    <div class="section-header">
+      <div class="section-icon gold">📋</div>
+      <h2>Дисциплина: <span class="accent">один герой</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>📒 Дневник героя</h3>
+      <p>Заведи <span class="keyword">дневник героя</span> (блокнот или заметки): после каждого матча записывай 1 ошибку, сделанную из-за незнания предмета или неправильной последовательности навыков.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎯 50 матчей одним героем</h3>
+      <p>Играй <span class="keyword">50 матчей подряд одним героем</span> (разные сборки против разного состава врагов). Только после этого бери второго.</p>
+    </div>
+
+    <div class="card">
+      <h3>⏱ Ресурс-менеджмент</h3>
+      <div class="gold-box">
+        <p>Если проиграл <span class="keyword-gold">2 матча подряд</span> — делай перерыв <strong>20 минут</strong>. Не трать «жизненные ресурсы» на игру в усталом/злом состоянии.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: EXTERNAL TRAINERS ===== -->
+  <section class="section reveal" id="apps-external">
+    <div class="section-header">
+      <div class="section-icon blue">🧠</div>
+      <h2>Сторонние <span class="accent">тренажёры</span></h2>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">👁</span> Для периферического зрения (вне игры)</h3>
+
+      <div class="link-card">
+        <div class="link-icon">🖥</div>
+        <div class="link-content">
+          <h4>Тренажёр «Perya» (сайт / ПК)</h4>
+          <p>На экране быстро вспыхивают точки по краям. Ты должен кликать, не отрывая взгляда от центра. 5 минут перед каждой игровой сессией. Добейся, чтобы замечал вспышки на 90° и более.</p>
+          <a href="https://perya.com" target="_blank">https://perya.com</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">📱</div>
+        <div class="link-content">
+          <h4>Приложение «UltimEyes» (iOS, Android)</h4>
+          <p>Платное, но мощное. Тренирует «мягкий фокус» и расширение полезного поля зрения. Изначально для бейсболистов, но идеально для MLBB. Через 2 недели миникарта станет ощущаться «краем глаза».</p>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">📄</div>
+        <div class="link-content">
+          <h4>Бумажная тренировка (без телефона/ПК)</h4>
+          <p>На стену вешаешь лист А4 с точкой в центре. По углам листа — маленькие цифры (1,2,3,4). Смотришь только в центр и называешь, какая цифра моргнула (её закрывает и открывает помощник). Можно заменить на наклейки на мониторе.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">⚡</span> Для реакции (0.1–1 сек) – сторонние</h3>
+
+      <div class="link-card">
+        <div class="link-icon">🌐</div>
+        <div class="link-content">
+          <h4>Human Benchmark → Reaction Time Test</h4>
+          <p>Показывает твою среднюю реакцию на смену цвета. Цель — стабильно 200 мс и ниже. Когда достигнешь 200 мс на кликах — переноси это в игру: на звук/анимацию ульты.</p>
+          <a href="https://humanbenchmark.com/tests/reactiontime" target="_blank">humanbenchmark.com/tests/reactiontime</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🎮</div>
+        <div class="link-content">
+          <h4>Aim Lab (Steam, бесплатно) — режим Cognition / Detection</h4>
+          <p>Тренировки на зрительное обнаружение и быстрый выбор действия (нажать / не нажать). Это аналог уклонения от хука Франко.</p>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">📏</div>
+        <div class="link-content">
+          <h4>Физический тренажёр «Реакция на падающую линейку»</h4>
+          <p>Берёшь обычную линейку (30 см). Помощник держит её вертикально, ноль внизу. Ты ловишь её пальцами, как только она начинает падать. Отметка, на которой сжал — время реакции в миллисекундах (1 см ≈ 20 мс).</p>
+          <div class="highlight-box">
+            <p><strong>Норма для MLBB:</strong> ловить на <span class="keyword">10–15 см (200–300 мс)</span>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">💡</div>
+        <div class="link-content">
+          <h4>Световой/звуковой раздражитель (Arduino)</h4>
+          <p>Можно сделать самому: Arduino с кнопкой и светодиодом. Зажигается свет → жми кнопку. Звук → жми другую. Тренирует <strong>раздельную реакцию</strong> (в игре: ульт звук → фликер; анимация → щит).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">🧊</span> Для эмоций (стресс-тренировка вне игры)</h3>
+
+      <div class="link-card">
+        <div class="link-icon">🫁</div>
+        <div class="link-content">
+          <h4>Приложение «Breathe» (Apple Watch / Android «Breathe2Relax»)</h4>
+          <p>Учит делать 3-секундный вдох-выдох, который блокирует выброс адреналина. Используй <strong>между смертями</strong> в MLBB.</p>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🎵</div>
+        <div class="link-content">
+          <h4>Osu! (режим без музыки)</h4>
+          <p>Osu! тренирует держать ритм и не дёргаться при ошибке. Аналог «не паниковать в гуше». Играй 10 минут в день, стараясь сохранять пульс ровным.</p>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">❄️</div>
+        <div class="link-content">
+          <h4>Холодная вода на лицо (физический метод)</h4>
+          <p>Перед ответственным матчем умойся ледяной водой на 15 секунд. Это вызывает <span class="keyword">нырятельный рефлекс</span> — пульс падает, мозг переключается в спокойный режим. Работает лучше любых мантр.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">📋</span> Для дисциплины (один герой, экономия ресурсов)</h3>
+
+      <div class="link-card">
+        <div class="link-icon">⏱</div>
+        <div class="link-content">
+          <h4>Таймер Pomodoro</h4>
+          <p>Играешь 25 минут – перерыв 5 минут (встать, выпить воды). Это не даёт «исчерпывать жизненные ресурсы». Подойдёт любое приложение с таймером.</p>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">📓</div>
+        <div class="link-content">
+          <h4>Блокнот для ошибок (физический)</h4>
+          <p>После каждого матча ручкой на бумаге пиши: «3-я минута – не посмотрел на миникарту». <strong>Цифровые заметки не работают так же хорошо, как ручка.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: AIM ===== -->
+  <section class="section reveal" id="aim">
+    <div class="section-header">
+      <div class="section-icon red">🎯</div>
+      <h2>Правило <span class="accent">точного прицеливания</span></h2>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">🏟</span> Внутриигровые тренировки (MLBB)</h3>
+
+      <div class="exercise-card">
+        <span class="difficulty medium">Средняя сложность</span>
+        <div class="exercise-name">Тренировка в режиме «Практика»</div>
+        <p>Заходи в режим практики, выбирай своего героя и включи бесконечные навыки (чтобы не ждать перезарядки). Поставь неподвижного бота.</p>
+        <p>Тренируй один линейный скилл — например, хук Франко или стрелу Селена. Твоя цель: <span class="keyword">попадать с первого касания, без доворота пальца</span>.</p>
+        <p>После того как начнёт получаться, переключи бота на режим случайного перемещения и учись стрелять с упреждением — <strong>не в силуэт, а в точку перед ним</strong>.</p>
+        <div class="gold-box">
+          <p><strong>Выполняй это упражнение каждый день по 5–10 минут.</strong></p>
+        </div>
+      </div>
+
+      <div class="exercise-card">
+        <span class="difficulty hard">Высокая сложность</span>
+        <div class="exercise-name">Тренировка связки «Фликер + скилл»</div>
+        <p>Там же, в режиме практики, выбери героя с рывком или заряженной атакой — подойдут Лесли, Гранжер или Бруно.</p>
+        <p>Задача: <strong>одновременно с нажатием на фликер</strong> ты уже тянешь линию прицела скилла и отпускаешь её в момент окончания фликера.</p>
+        <div class="highlight-box">
+          <p>Добейся, чтобы выстрел происходил <span class="keyword">на пике движения</span>, а не после полной остановки.</p>
+        </div>
+      </div>
+
+      <div class="exercise-card">
+        <span class="difficulty easy">Низкая сложность</span>
+        <div class="exercise-name">Настройки управления</div>
+        <p>Зайди в «Настройки → Управление»:</p>
+        <ul>
+          <li>Отключи <strong>«помощь прицеливанию»</strong> (smart targeting)</li>
+          <li>Включи <strong>«расширенное прицеливание»</strong> (advanced targeting)</li>
+          <li>Поставь чувствительность прицела на <span class="keyword">70–80%</span> — не на 100%, чтобы не перелетать мимо цели</li>
+          <li>Учись вручную выбирать приоритетную цель через иконки героев над кнопкой атаки</li>
+        </ul>
+        <div class="highlight-box">
+          <p>Это отдельная привычка, но она <strong>сильно повышает точность</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: APPS ===== -->
+  <section class="section reveal" id="apps">
+    <div class="section-header">
+      <div class="section-icon green">📱</div>
+      <h2>Сторонние <span class="accent">приложения</span> для телефона</h2>
+    </div>
+
+    <div class="link-card">
+      <div class="link-icon">🎵</div>
+      <div class="link-content">
+        <h4>Osu!stream</h4>
+        <p>Мобильная версия Osu. Скачай её в магазине приложений — она есть и для Android, и для iOS. Играй стандартные карты на точное нажатие кружков. Это прямая тренировка координации «глаз → палец»: чем сложнее карта, тем выше становится твоя скорость прицела в MLBB.</p>
+        <div class="highlight-box">
+          <p><strong>Достаточно уделять этому 10 минут в день.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="link-card">
+      <div class="link-icon">🎯</div>
+      <div class="link-content">
+        <h4>Aimtastic Mobile или любой тренажёр прицеливания</h4>
+        <p>Официальной версии Aim Lab для телефона нет, но есть Aimtastic Mobile — маленькое приложение с тестами на точность. Или просто поищи в магазине по запросу «aim trainer mobile».</p>
+        <div class="highlight-box">
+          <p><strong>Главное условие:</strong> в приложении должен быть режим точного нажатия, а не просто удержание пальца.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== MINI GAME SECTION ===== -->
+  <section class="game-section reveal" id="game">
+    <div class="section-header">
+      <div class="section-icon red">🎮</div>
+      <h2>Мини-игра: <span class="accent">тренировка рефлекса</span></h2>
+    </div>
+
+    <!-- GAME 1: Target Clicker -->
+    <div class="game-container">
+      <div class="game-header">
+        <h2>⚡ ЦЕЛЬ</h2>
+        <p>Нажимай на цели как можно быстрее. 10 целей за раунд.</p>
+      </div>
+      <div class="game-stats">
+        <div class="game-stat">
+          <div class="value" id="targetScore">0</div>
+          <div class="label">Счёт</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="targetAvg">—</div>
+          <div class="label">Среднее (мс)</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="targetBest">—</div>
+          <div class="label">Лучшее (мс)</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="fill" id="targetProgress"></div></div>
+      <div class="game-area" id="targetArea">
+        <div class="grid-bg"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--text-dim);font-size:0.9rem;text-align:center;" id="targetPlaceholder">
+          Нажми «СТАРТ» чтобы начать
+        </div>
+      </div>
+      <div class="game-result" id="targetResult">
+        <div class="result-title" id="resultTitle">🎯 Раунд завершён!</div>
+        <div class="result-detail" id="resultDetail"></div>
+        <div class="result-times" id="resultTimes"></div>
+      </div>
+      <div class="game-controls">
+        <button class="game-btn start" id="targetStartBtn" onclick="startTargetGame()">🚀 СТАРТ</button>
+        <button class="game-btn reset" onclick="resetTargetGame()">↺ Сбросить</button>
+      </div>
+      <div class="game-rules">
+        <h4>📖 Правила</h4>
+        <ul>
+          <li>На экране появляется красная цель</li>
+          <li>Нажми на неё как можно быстрее</li>
+          <li>Цель уменьшается со временем — чем быстрее, тем крупнее</li>
+          <li>Всего 10 целей за раунд</li>
+          <li>Старайся стабильно попадать в 200–300 мс</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GAME 2: Reaction Timer -->
+    <div class="reaction-game">
+      <div class="reaction-header">
+        <h2>⏱ РЕАКЦИЯ</h2>
+        <p>Классический тест реакции: жди зелёного и тапай</p>
+      </div>
+      <div class="reaction-area ready" id="reactionArea" onclick="handleReaction()">
+        <div class="reaction-text">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">⏱</div>
+          Нажми, чтобы начать
+        </div>
+      </div>
+      <div class="reaction-best">
+        <div class="best-label">Лучший результат</div>
+        <div class="best-value" id="reactionBest">— мс</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="logo">von group</div>
+    <p>Полный гайд по Mobile Legends</p>
+    <div class="divider"></div>
+    <p>Составитель: <strong style="color:var(--accent)">dendiiii</strong></p>
+    <p style="margin-top:0.5rem;opacity:0.5;">Тренируйся. Побеждай. Повторяй.</p>
+  </footer>
+
+</main>
+
+<script>
+// ===== PARTICLES =====
+(function() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (5 + Math.random() * 10) + 's';
+    p.style.animationDelay = Math.random() * 5 + 's';
+    p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+    const colors = ['#e94560', '#533483', '#0f3460', '#f0c040'];
+    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+    container.appendChild(p);
+  }
+})();
+
+// ===== SCROLL REVEAL =====
+(function() {
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+})();
+
+// ===== NAV ACTIVE STATE =====
+(function() {
+  const navLinks = document.querySelectorAll('.nav a');
+  const sections = document.querySelectorAll('section[id], .game-section');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 100;
+      if (window.scrollY >= top) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+})();
+
+// ===== TARGET CLICKER GAME =====
+let targetGameActive = false;
+let targetCount = 0;
+let targetMax = 10;
+let targetTimes = [];
+let targetStartTime = 0;
+let targetBestTime = Infinity;
+let targetTimeout = null;
+let targetElement = null;
+
+function startTargetGame() {
+  if (targetGameActive) return;
+  resetTargetGame();
+  targetGameActive = true;
+  targetCount = 0;
+  targetTimes = [];
+  document.getElementById('targetStartBtn').disabled = true;
+  document.getElementById('targetResult').classList.remove('show');
+  document.getElementById('targetPlaceholder').style.display = 'none';
+  spawnTarget();
+}
+
+function spawnTarget() {
+  if (targetCount >= targetMax) {
+    finishTargetGame();
+    return;
+  }
+
+  const area = document.getElementById('targetArea');
+  const rect = area.getBoundingClientRect();
+
+  // Remove old target
+  if (targetElement) targetElement.remove();
+
+  const size = Math.max(40, 60 - targetCount * 2);
+  targetElement = document.createElement('div');
+  targetElement.className = 'game-target';
+  targetElement.style.width = size + 'px';
+  targetElement.style.height = size + 'px';
+  targetElement.style.fontSize = (size * 0.4) + 'px';
+
+  const maxX = rect.width - size;
+  const maxY = rect.height - size;
+  targetElement.style.left = (20 + Math.random() * (maxX - 20)) + 'px';
+  targetElement.style.top = (20 + Math.random() * (maxY - 20)) + 'px';
+  targetElement.textContent = (targetCount + 1);
+
+  // Shrink over time
+  let shrinkTimer = setInterval(() => {
+    if (!targetGameActive) { clearInterval(shrinkTimer); return; }
+    const currentSize = parseInt(targetElement.style.width);
+    if (currentSize > 25) {
+      targetElement.style.width = (currentSize - 1) + 'px';
+      targetElement.style.height = (currentSize - 1) + 'px';
+      targetElement.style.fontSize = (currentSize * 0.4) + 'px';
+    } else {
+      clearInterval(shrinkTimer);
+      // Missed — respawn
+      targetTimes.push(2000); // penalty
+      targetCount++;
+      updateTargetUI();
+      spawnTarget();
+    }
+  }, 50);
+
+  targetElement.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    hitTarget(targetElement, shrinkTimer);
+  });
+  targetElement.addEventListener('mousedown', function(e) {
+    hitTarget(targetElement, shrinkTimer);
+  });
+
+  area.appendChild(targetElement);
+  targetStartTime = performance.now();
+}
+
+function hitTarget(el, timer) {
+  clearInterval(timer);
+  const reactionTime = Math.round(performance.now() - targetStartTime);
+  targetTimes.push(reactionTime);
+  if (reactionTime < targetBestTime) targetBestTime = reactionTime;
+
+  el.classList.add('hit');
+  setTimeout(() => { if (el.parentNode) el.remove(); }, 200);
+
+  targetCount++;
+  updateTargetUI();
+
+  setTimeout(() => {
+    if (targetGameActive) spawnTarget();
+  }, 300);
+}
+
+function updateTargetUI() {
+  document.getElementById('targetScore').textContent = targetCount + '/' + targetMax;
+  const avg = targetTimes.length > 0 ? Math.round(targetTimes.reduce((a,b) => a+b, 0) / targetTimes.length) : 0;
+  document.getElementById('targetAvg').textContent = avg > 0 ? avg + 'мс' : '—';
+  document.getElementById('targetBest').textContent = targetBestTime < Infinity ? targetBestTime + 'мс' : '—';
+  document.getElementById('targetProgress').style.width = (targetCount / targetMax * 100) + '%';
+}
+
+function finishTargetGame() {
+  targetGameActive = false;
+  document.getElementById('targetStartBtn').disabled = false;
+
+  const avg = Math.round(targetTimes.reduce((a,b) => a+b, 0) / targetTimes.length);
+  const min = Math.min(...targetTimes);
+  const max = Math.max(...targetTimes);
+
+  const resultDiv = document.getElementById('targetResult');
+  resultDiv.classList.add('show');
+
+  document.getElementById('resultTitle').textContent = avg < 300 ? '🔥 Отличный результат!' : avg < 500 ? '👍 Неплохо!' : '💪 Продолжай тренироваться!';
+  document.getElementById('resultDetail').textContent = `Среднее: ${avg}мс | Мин: ${min}мс | Макс: ${max}мс`;
+
+  const timesDiv = document.getElementById('resultTimes');
+  timesDiv.innerHTML = '';
+  targetTimes.forEach((t, i) => {
+    const span = document.createElement('span');
+    span.className = 'result-time' + (t < 300 ? ' fast' : '');
+    span.textContent = '#' + (i+1) + ': ' + t + 'мс';
+    timesDiv.appendChild(span);
+  });
+
+  document.getElementById('targetPlaceholder').style.display = 'block';
+  document.getElementById('targetPlaceholder').textContent = 'Раунд завершён! Нажми СТАРТ для нового раунда';
+}
+
+function resetTargetGame() {
+  targetGameActive = false;
+  targetCount = 0;
+  targetTimes = [];
+  targetBestTime = Infinity;
+  if (targetTimeout) clearTimeout(targetTimeout);
+  if (targetElement && targetElement.parentNode) targetElement.remove();
+  document.getElementById('targetScore').textContent = '0';
+  document.getElementById('targetAvg').textContent = '—';
+  document.getElementById('targetBest').textContent = '—';
+  document.getElementById('targetProgress').style.width = '0%';
+  document.getElementById('targetResult').classList.remove('show');
+  document.getElementById('targetStartBtn').disabled = false;
+  document.getElementById('targetPlaceholder').style.display = 'block';
+  document.getElementById('targetPlaceholder').textContent = 'Нажми «СТАРТ» чтобы начать';
+}
+
+// ===== REACTION TIMER GAME =====
+let reactionState = 'idle'; // idle, waiting, ready, result
+let reactionTimeout = null;
+let reactionStartTime = 0;
+let reactionBest = Infinity;
+
+function handleReaction() {
+  const area = document.getElementById('reactionArea');
+
+  if (reactionState === 'idle') {
+    reactionState = 'waiting';
+    area.className = 'reaction-area waiting';
+    area.innerHTML = '<div class="reaction-text">Жди...<br><small style="opacity:0.7">Не нажимай раньше зелёного!</small></div>';
+    const delay = 1500 + Math.random() * 4000;
+    reactionTimeout = setTimeout(() => {
+      reactionState = 'go';
+      area.className = 'reaction-area go';
+      area.innerHTML = '<div class="reaction-text">ЖМИ!</div>';
+      reactionStartTime = performance.now();
+    }, delay);
+  }
+  else if (reactionState === 'waiting') {
+    clearTimeout(reactionTimeout);
+    reactionState = 'result';
+    area.className = 'reaction-area result';
+    area.innerHTML = '<div class="reaction-text">❌ Слишком рано!<br><small>Нажми, чтобы попробовать снова</small></div>';
+    setTimeout(() => { reactionState = 'idle'; }, 100);
+  }
+  else if (reactionState === 'go') {
+    const time = Math.round(performance.now() - reactionStartTime);
+    if (time < reactionBest) reactionBest = time;
+    document.getElementById('reactionBest').textContent = reactionBest + ' мс';
+    reactionState = 'result';
+    area.className = 'reaction-area result';
+
+    let rating = '';
+    if (time < 150) rating = '⚡ НЕВЕРОЯТНО!';
+    else if (time < 200) rating = '🔥 СУПЕР!';
+    else if (time < 300) rating = '👍 Отлично!';
+    else if (time < 400) rating = '🙂 Хорошо';
+    else rating = '💪 Тренируйся ещё!';
+
+    area.innerHTML = '<div class="reaction-text"><div class="reaction-time">' + time + 'мс</div>' + rating + '<br><small style="opacity:0.7;margin-top:0.5rem;display:block">Нажми, чтобы попробовать снова</small></div>';
+
+    setTimeout(() => { reactionState = 'idle'; }, 100);
+  }
+  else if (reactionState === 'result') {
+    reactionState = 'idle';
+    area.className = 'reaction-area ready';
+    area.innerHTML = '<div class="reaction-text"><div style="font-size:2rem;margin-bottom:0.5rem;">⏱</div>Нажми, чтобы начать</div>';
+  }
+}
+</script>
+
+</body>
+</html>
