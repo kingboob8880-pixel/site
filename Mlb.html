@@ -923,6 +923,149 @@ body {
   font-family: 'JetBrains Mono', monospace;
 }
 
+/* ===== PERIPHERAL GAME ===== */
+.game-header.blue { background: var(--gradient2); }
+.game-header.purple { background: linear-gradient(135deg,#533483,#0f3460); }
+.game-header.gold { background: var(--gradient3); }
+.game-header.gold h2 { color:#111; }
+.game-header.gold p { color: rgba(0,0,0,0.6); }
+.game-header.green { background: linear-gradient(135deg,#00c853,#0f3460); }
+
+.peri-area {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  background: var(--bg-primary);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.peri-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: rgba(240,192,64,0.12);
+  border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold);
+  font-size: 1.5rem; font-weight: 900;
+  z-index: 5;
+  box-shadow: 0 0 18px rgba(240,192,64,0.35);
+}
+.peri-center.beat { animation: periBeat 0.4s ease; }
+@keyframes periBeat { 0%{transform:translate(-50%,-50%) scale(1);} 50%{transform:translate(-50%,-50%) scale(1.25);} 100%{transform:translate(-50%,-50%) scale(1);} }
+.peri-dot {
+  position: absolute;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 16px rgba(233,69,96,0.6);
+  cursor: pointer;
+  z-index: 8;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:900; color:#fff; font-size:0.9rem;
+  animation: targetAppear 0.12s ease;
+}
+.peri-dot.miss { background: var(--text-dim); box-shadow:none; }
+.peri-hint {
+  position:absolute; bottom:8px; left:50%; transform:translateX(-50%);
+  font-size:0.7rem; color:var(--text-dim); text-align:center; width:90%;
+}
+
+/* ===== ATTENTION / SPOT GAME ===== */
+.attn-area {
+  padding: 1.2rem;
+  background: var(--bg-primary);
+}
+.attn-grid {
+  display: grid;
+  gap: 6px;
+  margin: 0 auto;
+  max-width: 340px;
+}
+.attn-cell {
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: transform 0.1s ease, background 0.2s ease;
+  user-select: none; -webkit-user-select:none;
+}
+.attn-cell:active { transform: scale(0.92); }
+.attn-cell.correct { background: rgba(0,200,83,0.25); border-color: var(--success); animation: targetAppear 0.2s ease; }
+.attn-cell.wrong { background: rgba(244,67,54,0.25); border-color: var(--danger); }
+.attn-prompt {
+  text-align:center; font-size:0.9rem; color:var(--text);
+  padding: 0.5rem 0 1rem; min-height: 1.4rem;
+}
+.attn-prompt strong { color: var(--gold); }
+
+/* ===== LOADOUT / EQUIPMENT GAME ===== */
+.load-area { padding: 1.2rem; background: var(--bg-primary); }
+.load-task {
+  text-align:center; margin-bottom:1rem;
+}
+.load-task .role-name { font-size:1.2rem; font-weight:900; color:var(--gold); }
+.load-task .role-desc { font-size:0.8rem; color:var(--text-dim); }
+.load-slots {
+  display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:1.2rem; min-height:58px;
+}
+.load-slot {
+  width:54px; height:54px; border-radius:10px;
+  border:2px dashed var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.6rem; background:var(--bg-card);
+}
+.load-slot.filled { border-style:solid; border-color:var(--accent); background:rgba(233,69,96,0.1); }
+.load-options { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.load-item {
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:10px; padding:0.6rem 0.4rem; text-align:center;
+  cursor:pointer; transition:transform 0.1s ease, border-color 0.2s ease;
+  user-select:none; -webkit-user-select:none;
+}
+.load-item:active { transform:scale(0.94); }
+.load-item .ic { font-size:1.5rem; }
+.load-item .nm { font-size:0.65rem; color:var(--text-dim); margin-top:0.2rem; line-height:1.2; }
+.load-item.picked { opacity:0.35; pointer-events:none; }
+.load-item.good { border-color:var(--success); background:rgba(0,200,83,0.12); }
+.load-item.bad { border-color:var(--danger); background:rgba(244,67,54,0.12); }
+
+/* ===== AIM / TRACKING GAME ===== */
+.aim-area {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: var(--bg-primary);
+  overflow: hidden;
+  cursor: crosshair;
+  user-select:none; -webkit-user-select:none;
+}
+.aim-mover {
+  position:absolute;
+  width:48px; height:48px; border-radius:50%;
+  background: var(--accent2);
+  border:2px solid var(--accent);
+  box-shadow:0 0 16px rgba(15,52,96,0.7);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; z-index:6;
+}
+.aim-mover.hit { animation: targetHit 0.25s ease forwards; }
+.aim-crosshair {
+  position:absolute; width:30px; height:30px; pointer-events:none;
+  z-index:9; transform:translate(-50%,-50%);
+}
+.aim-crosshair::before, .aim-crosshair::after {
+  content:''; position:absolute; background:var(--gold);
+}
+.aim-crosshair::before { left:50%; top:0; width:2px; height:100%; transform:translateX(-50%); }
+.aim-crosshair::after { top:50%; left:0; height:2px; width:100%; transform:translateY(-50%); }
+
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
@@ -1616,8 +1759,10 @@ body {
   <section class="game-section reveal" id="game">
     <div class="section-header">
       <div class="section-icon red">🎮</div>
-      <h2>Мини-игра: <span class="accent">тренировка рефлекса</span></h2>
+      <h2>Мини-игры: <span class="accent">тренировка навыков</span></h2>
     </div>
+
+    <p style="text-align:center;color:var(--text-dim);font-size:0.9rem;margin:-1rem 0 1.5rem;">6 тренажёров под каждый навык: рефлекс, реакция, периферия, внимательность, знание экипировки и прицеливание.</p>
 
     <!-- GAME 1: Target Clicker -->
     <div class="game-container">
@@ -1682,6 +1827,189 @@ body {
       <div class="reaction-best">
         <div class="best-label">Лучший результат</div>
         <div class="best-value" id="reactionBest">— мс</div>
+      </div>
+    </div>
+
+    <!-- GAME 3: Peripheral Vision -->
+    <div class="game-container" style="margin-bottom:3rem;">
+      <div class="game-header blue">
+        <h2>👁 ПЕРИФЕРИЯ</h2>
+        <p>Держи взгляд в ЦЕНТРЕ. Лови вспышки по краям, не двигая глазами.</p>
+      </div>
+      <div class="game-stats">
+        <div class="game-stat">
+          <div class="value" id="periScore">0</div>
+          <div class="label">Поймано</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="periMiss">0</div>
+          <div class="label">Пропущено</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="periBest">—</div>
+          <div class="label">Лучшее (%)</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="fill" id="periProgress"></div></div>
+      <div class="peri-area" id="periArea">
+        <div class="peri-center" id="periCenter">+</div>
+        <div class="peri-hint" id="periHint">Нажми «СТАРТ» — затем смотри ТОЛЬКО на центр</div>
+      </div>
+      <div class="game-result" id="periResult">
+        <div class="result-title" id="periResultTitle"></div>
+        <div class="result-detail" id="periResultDetail"></div>
+      </div>
+      <div class="game-controls">
+        <button class="game-btn start" id="periStartBtn" onclick="startPeriGame()">🚀 СТАРТ</button>
+        <button class="game-btn reset" onclick="resetPeriGame()">↺ Сбросить</button>
+      </div>
+      <div class="game-rules">
+        <h4>📖 Правила</h4>
+        <ul>
+          <li>Фиксируй взгляд строго на «+» в центре — не двигай глазами</li>
+          <li>По краям вспыхивают красные точки — лови их периферией</li>
+          <li>Точка живёт ~1 секунду, потом считается пропуском</li>
+          <li>20 точек за раунд. Цель — 80%+ без метаний взглядом</li>
+          <li>Это прямой аналог слежки за миникартой в бою</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GAME 4: Attention / Spot the change -->
+    <div class="game-container" style="margin-bottom:3rem;">
+      <div class="game-header purple">
+        <h2>🔍 ВНИМАТЕЛЬНОСТЬ</h2>
+        <p>Найди нужный символ среди похожих как можно быстрее.</p>
+      </div>
+      <div class="game-stats">
+        <div class="game-stat">
+          <div class="value" id="attnRound">0/10</div>
+          <div class="label">Раунд</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="attnAvg">—</div>
+          <div class="label">Среднее (мс)</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="attnErr">0</div>
+          <div class="label">Ошибки</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="fill" id="attnProgress"></div></div>
+      <div class="attn-area">
+        <div class="attn-prompt" id="attnPrompt">Нажми «СТАРТ» чтобы начать</div>
+        <div class="attn-grid" id="attnGrid"></div>
+      </div>
+      <div class="game-result" id="attnResult">
+        <div class="result-title" id="attnResultTitle"></div>
+        <div class="result-detail" id="attnResultDetail"></div>
+      </div>
+      <div class="game-controls">
+        <button class="game-btn start" id="attnStartBtn" onclick="startAttnGame()">🚀 СТАРТ</button>
+        <button class="game-btn reset" onclick="resetAttnGame()">↺ Сбросить</button>
+      </div>
+      <div class="game-rules">
+        <h4>📖 Правила</h4>
+        <ul>
+          <li>Над сеткой написано, что нужно найти (один «чужой» символ)</li>
+          <li>Найди и нажми его среди отвлекающих похожих символов</li>
+          <li>10 раундов, сетка с каждым разом плотнее</li>
+          <li>Тренирует быстрый поиск врага/иконки среди визуального шума</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GAME 5: Loadout / Equipment -->
+    <div class="game-container" style="margin-bottom:3rem;">
+      <div class="game-header gold">
+        <h2>🛡 ЭКИПИРОВКА</h2>
+        <p>Собери правильную сборку под роль героя в MLBB.</p>
+      </div>
+      <div class="game-stats">
+        <div class="game-stat">
+          <div class="value" id="loadRound">0/5</div>
+          <div class="label">Сборка</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="loadScore">0</div>
+          <div class="label">Очки</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="loadStreak">0</div>
+          <div class="label">Серия</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="fill" id="loadProgress"></div></div>
+      <div class="load-area">
+        <div class="load-task" id="loadTask">
+          <div class="role-name">Нажми «СТАРТ»</div>
+          <div class="role-desc">Соберём правильные предметы под роль</div>
+        </div>
+        <div class="load-slots" id="loadSlots"></div>
+        <div class="load-options" id="loadOptions"></div>
+      </div>
+      <div class="game-result" id="loadResult">
+        <div class="result-title" id="loadResultTitle"></div>
+        <div class="result-detail" id="loadResultDetail"></div>
+      </div>
+      <div class="game-controls">
+        <button class="game-btn start" id="loadStartBtn" onclick="startLoadGame()">🚀 СТАРТ</button>
+        <button class="game-btn reset" onclick="resetLoadGame()">↺ Сбросить</button>
+      </div>
+      <div class="game-rules">
+        <h4>📖 Правила</h4>
+        <ul>
+          <li>Показана роль и описание (танк, маг, стрелок и т.д.)</li>
+          <li>Выбери 3 подходящих предмета из 9 вариантов</li>
+          <li>За каждый верный предмет — очко; лишний/неверный портит сборку</li>
+          <li>5 сборок за раунд. Тренирует знание предметов из правила №4</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GAME 6: Aim / Tracking -->
+    <div class="game-container" style="margin-bottom:1rem;">
+      <div class="game-header green">
+        <h2>🎯 ПРИЦЕЛ</h2>
+        <p>Веди прицел за целью и стреляй с упреждением. Тап = выстрел.</p>
+      </div>
+      <div class="game-stats">
+        <div class="game-stat">
+          <div class="value" id="aimHits">0</div>
+          <div class="label">Попадания</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="aimShots">0</div>
+          <div class="label">Выстрелы</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="aimAcc">—</div>
+          <div class="label">Точность</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="fill" id="aimProgress"></div></div>
+      <div class="aim-area" id="aimArea">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--text-dim);font-size:0.9rem;text-align:center;width:80%;" id="aimPlaceholder">
+          Нажми «СТАРТ». Цель движется — тапни по ней
+        </div>
+      </div>
+      <div class="game-result" id="aimResult">
+        <div class="result-title" id="aimResultTitle"></div>
+        <div class="result-detail" id="aimResultDetail"></div>
+      </div>
+      <div class="game-controls">
+        <button class="game-btn start" id="aimStartBtn" onclick="startAimGame()">🚀 СТАРТ</button>
+        <button class="game-btn reset" onclick="resetAimGame()">↺ Сбросить</button>
+      </div>
+      <div class="game-rules">
+        <h4>📖 Правила</h4>
+        <ul>
+          <li>Цель двигается по экрану, постепенно ускоряясь</li>
+          <li>Тапай прямо по цели — это «выстрел» скилла</li>
+          <li>Промах мимо цели тоже считается выстрелом и снижает точность</li>
+          <li>10 целей за раунд. Цель — точность 80%+</li>
+          <li>Аналог попадания хуком Франко по движущемуся врагу</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -1946,6 +2274,486 @@ function handleReaction() {
     area.className = 'reaction-area ready';
     area.innerHTML = '<div class="reaction-text"><div style="font-size:2rem;margin-bottom:0.5rem;">⏱</div>Нажми, чтобы начать</div>';
   }
+}
+
+// ===== PERIPHERAL VISION GAME =====
+let periActive = false, periHits = 0, periMisses = 0, periSpawned = 0;
+const periMax = 20;
+let periBestPct = 0, periDotEl = null, periDotTimer = null, periNextTimer = null;
+
+function startPeriGame() {
+  if (periActive) return;
+  resetPeriGame();
+  periActive = true;
+  document.getElementById('periStartBtn').disabled = true;
+  document.getElementById('periResult').classList.remove('show');
+  document.getElementById('periHint').textContent = 'Смотри ТОЛЬКО на центр «+»';
+  periNextTimer = setTimeout(spawnPeriDot, 700);
+}
+
+function spawnPeriDot() {
+  if (!periActive) return;
+  if (periSpawned >= periMax) { finishPeriGame(); return; }
+  const area = document.getElementById('periArea');
+  const rect = area.getBoundingClientRect();
+  if (periDotEl) periDotEl.remove();
+
+  periDotEl = document.createElement('div');
+  periDotEl.className = 'peri-dot';
+
+  // Spawn near the edges only (peripheral zone)
+  const margin = 18, dot = 34;
+  const edge = Math.floor(Math.random() * 4);
+  let x, y;
+  if (edge === 0) { y = margin; x = margin + Math.random() * (rect.width - dot - margin*2); }
+  else if (edge === 1) { y = rect.height - dot - margin; x = margin + Math.random() * (rect.width - dot - margin*2); }
+  else if (edge === 2) { x = margin; y = margin + Math.random() * (rect.height - dot - margin*2); }
+  else { x = rect.width - dot - margin; y = margin + Math.random() * (rect.height - dot - margin*2); }
+  periDotEl.style.left = x + 'px';
+  periDotEl.style.top = y + 'px';
+
+  const onHit = (e) => {
+    e.preventDefault();
+    if (!periActive) return;
+    clearTimeout(periDotTimer);
+    periHits++; periSpawned++;
+    const c = document.getElementById('periCenter');
+    c.classList.add('beat'); setTimeout(()=>c.classList.remove('beat'),400);
+    periDotEl.remove(); periDotEl = null;
+    updatePeriUI();
+    periNextTimer = setTimeout(spawnPeriDot, 350 + Math.random()*500);
+  };
+  periDotEl.addEventListener('touchstart', onHit, {passive:false});
+  periDotEl.addEventListener('mousedown', onHit);
+
+  area.appendChild(periDotEl);
+
+  periDotTimer = setTimeout(() => {
+    if (!periActive) return;
+    if (periDotEl) { periDotEl.remove(); periDotEl = null; }
+    periMisses++; periSpawned++;
+    updatePeriUI();
+    periNextTimer = setTimeout(spawnPeriDot, 350 + Math.random()*500);
+  }, 1000);
+}
+
+function updatePeriUI() {
+  document.getElementById('periScore').textContent = periHits;
+  document.getElementById('periMiss').textContent = periMisses;
+  document.getElementById('periProgress').style.width = (periSpawned / periMax * 100) + '%';
+}
+
+function finishPeriGame() {
+  periActive = false;
+  document.getElementById('periStartBtn').disabled = false;
+  const pct = Math.round(periHits / periMax * 100);
+  if (pct > periBestPct) periBestPct = pct;
+  document.getElementById('periBest').textContent = periBestPct + '%';
+  const r = document.getElementById('periResult');
+  r.classList.add('show');
+  document.getElementById('periResultTitle').textContent =
+    pct >= 90 ? '⚡ Орлиный глаз!' : pct >= 80 ? '🔥 Отличная периферия!' : pct >= 60 ? '👍 Неплохо!' : '💪 Тренируйся ещё!';
+  document.getElementById('periResultDetail').textContent = `Поймано ${periHits} из ${periMax} (${pct}%) · Пропущено ${periMisses}`;
+  document.getElementById('periHint').textContent = 'Раунд завершён. Нажми СТАРТ для нового';
+}
+
+function resetPeriGame() {
+  periActive = false;
+  clearTimeout(periDotTimer); clearTimeout(periNextTimer);
+  if (periDotEl) { periDotEl.remove(); periDotEl = null; }
+  periHits = periMisses = periSpawned = 0;
+  document.getElementById('periScore').textContent = '0';
+  document.getElementById('periMiss').textContent = '0';
+  document.getElementById('periProgress').style.width = '0%';
+  document.getElementById('periResult').classList.remove('show');
+  document.getElementById('periStartBtn').disabled = false;
+  document.getElementById('periHint').textContent = 'Нажми «СТАРТ» — затем смотри ТОЛЬКО на центр';
+}
+
+// ===== ATTENTION GAME =====
+let attnActive = false, attnRound = 0, attnErrors = 0, attnTimes = [], attnStart = 0;
+const attnMax = 10;
+const attnSets = [
+  { base: '🟦', target: '🟩' },
+  { base: 'O', target: 'Q' },
+  { base: '🛡', target: '⚔️' },
+  { base: '6', target: '9' },
+  { base: '🔴', target: '🟠' },
+  { base: 'M', target: 'N' },
+  { base: '🐺', target: '🐉' },
+  { base: 'b', target: 'd' },
+];
+
+function startAttnGame() {
+  if (attnActive) return;
+  resetAttnGame();
+  attnActive = true;
+  attnRound = 0; attnErrors = 0; attnTimes = [];
+  document.getElementById('attnStartBtn').disabled = true;
+  document.getElementById('attnResult').classList.remove('show');
+  nextAttnRound();
+}
+
+function nextAttnRound() {
+  if (attnRound >= attnMax) { finishAttnGame(); return; }
+  const grid = document.getElementById('attnGrid');
+  grid.innerHTML = '';
+  const set = attnSets[Math.floor(Math.random() * attnSets.length)];
+  const cols = Math.min(3 + Math.floor(attnRound / 2), 7);
+  grid.style.gridTemplateColumns = `repeat(${cols},1fr)`;
+  const total = cols * cols;
+  const targetIdx = Math.floor(Math.random() * total);
+
+  document.getElementById('attnPrompt').innerHTML = `Найди <strong>${set.target}</strong> среди <strong>${set.base}</strong>`;
+
+  for (let i = 0; i < total; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'attn-cell';
+    cell.textContent = i === targetIdx ? set.target : set.base;
+    cell.addEventListener('click', () => onAttnClick(cell, i === targetIdx));
+    grid.appendChild(cell);
+  }
+  attnStart = performance.now();
+}
+
+function onAttnClick(cell, correct) {
+  if (!attnActive) return;
+  if (correct) {
+    cell.classList.add('correct');
+    attnTimes.push(Math.round(performance.now() - attnStart));
+    attnRound++;
+    updateAttnUI();
+    setTimeout(nextAttnRound, 250);
+  } else {
+    cell.classList.add('wrong');
+    attnErrors++;
+    updateAttnUI();
+    setTimeout(() => cell.classList.remove('wrong'), 300);
+  }
+}
+
+function updateAttnUI() {
+  document.getElementById('attnRound').textContent = attnRound + '/' + attnMax;
+  const avg = attnTimes.length ? Math.round(attnTimes.reduce((a,b)=>a+b,0)/attnTimes.length) : 0;
+  document.getElementById('attnAvg').textContent = avg > 0 ? avg + 'мс' : '—';
+  document.getElementById('attnErr').textContent = attnErrors;
+  document.getElementById('attnProgress').style.width = (attnRound / attnMax * 100) + '%';
+}
+
+function finishAttnGame() {
+  attnActive = false;
+  document.getElementById('attnStartBtn').disabled = false;
+  document.getElementById('attnGrid').innerHTML = '';
+  const avg = attnTimes.length ? Math.round(attnTimes.reduce((a,b)=>a+b,0)/attnTimes.length) : 0;
+  document.getElementById('attnPrompt').textContent = 'Раунд завершён!';
+  const r = document.getElementById('attnResult');
+  r.classList.add('show');
+  document.getElementById('attnResultTitle').textContent =
+    (avg < 900 && attnErrors <= 2) ? '🔥 Острый глаз!' : avg < 1500 ? '👍 Хорошо!' : '💪 Тренируйся ещё!';
+  document.getElementById('attnResultDetail').textContent = `Среднее: ${avg}мс · Ошибок: ${attnErrors}`;
+}
+
+function resetAttnGame() {
+  attnActive = false;
+  attnRound = 0; attnErrors = 0; attnTimes = [];
+  document.getElementById('attnGrid').innerHTML = '';
+  document.getElementById('attnPrompt').textContent = 'Нажми «СТАРТ» чтобы начать';
+  document.getElementById('attnRound').textContent = '0/10';
+  document.getElementById('attnAvg').textContent = '—';
+  document.getElementById('attnErr').textContent = '0';
+  document.getElementById('attnProgress').style.width = '0%';
+  document.getElementById('attnResult').classList.remove('show');
+  document.getElementById('attnStartBtn').disabled = false;
+}
+
+// ===== LOADOUT / EQUIPMENT GAME =====
+const loadItems = {
+  bootsTank:  { ic:'🥾', nm:'Сапоги стойкости', tags:['tank','support'] },
+  antique:    { ic:'💚', nm:'Антик кьюрасс', tags:['tank','fighter'] },
+  immortal:   { ic:'😇', nm:'Бессмертие', tags:['tank','fighter'] },
+  cursed:     { ic:'☠️', nm:'Проклятый шлем', tags:['tank'] },
+  warAxe:     { ic:'🪓', nm:'Боевой топор', tags:['fighter'] },
+  bloodlust:  { ic:'🩸', nm:'Кровавая жажда', tags:['fighter','assassin'] },
+  endless:    { ic:'⚔️', nm:'Бесконечная битва', tags:['fighter','assassin'] },
+  hunter:     { ic:'🗡', nm:'Охотничий нож', tags:['assassin','jungle'] },
+  bladeDesp:  { ic:'🔪', nm:'Клинок отчаяния', tags:['assassin','marksman'] },
+  windTalker: { ic:'🌀', nm:'Говорящий с ветром', tags:['marksman'] },
+  berserker:  { ic:'💢', nm:'Ярость берсерка', tags:['marksman','assassin'] },
+  demonHunter:{ ic:'🏹', nm:'Меч охотника', tags:['marksman'] },
+  lightning:  { ic:'⚡', nm:'Молниевая правда', tags:['mage'] },
+  holyCrystal:{ ic:'🔮', nm:'Святой кристалл', tags:['mage'] },
+  glowingWand:{ ic:'🪄', nm:'Светящийся жезл', tags:['mage'] },
+  bootsMagic: { ic:'👢', nm:'Маг. сапоги', tags:['mage','support'] },
+  oracle:     { ic:'📿', nm:'Оракул', tags:['support','tank'] },
+  fleeting:   { ic:'⏳', nm:'Мимолётное время', tags:['support'] },
+  dominance:  { ic:'🛡', nm:'Меч господства', tags:['tank','support'] },
+};
+const loadRoles = [
+  { name:'🛡 Танк', desc:'Стойкость, защита, инициация', tag:'tank' },
+  { name:'⚔️ Файтер', desc:'Урон + живучесть в ближнем бою', tag:'fighter' },
+  { name:'🗡 Ассасин', desc:'Бурст и проникновение в тыл', tag:'assassin' },
+  { name:'🏹 Стрелок', desc:'Стабильный урон с дистанции', tag:'marksman' },
+  { name:'🔮 Маг', desc:'Магический бурст и контроль', tag:'mage' },
+  { name:'📿 Саппорт', desc:'Поддержка, ауры, защита команды', tag:'support' },
+];
+
+let loadActive = false, loadRound = 0, loadScore = 0, loadStreak = 0;
+let loadCurrentRole = null, loadPicked = [], loadCorrectSet = [];
+const loadMax = 5, loadNeed = 3;
+
+function startLoadGame() {
+  if (loadActive) return;
+  resetLoadGame();
+  loadActive = true;
+  loadRound = 0; loadScore = 0; loadStreak = 0;
+  document.getElementById('loadStartBtn').disabled = true;
+  document.getElementById('loadResult').classList.remove('show');
+  nextLoadRound();
+}
+
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+function nextLoadRound() {
+  if (loadRound >= loadMax) { finishLoadGame(); return; }
+  loadPicked = [];
+  const role = loadRoles[Math.floor(Math.random()*loadRoles.length)];
+  loadCurrentRole = role;
+
+  const keys = Object.keys(loadItems);
+  const matching = shuffle(keys.filter(k => loadItems[k].tags.includes(role.tag)));
+  const nonMatching = shuffle(keys.filter(k => !loadItems[k].tags.includes(role.tag)));
+  loadCorrectSet = matching.slice(0, loadNeed);
+  const fillers = nonMatching.slice(0, 9 - loadCorrectSet.length);
+  const options = shuffle([...loadCorrectSet, ...fillers]);
+
+  document.getElementById('loadTask').innerHTML =
+    `<div class="role-name">${role.name}</div><div class="role-desc">${role.desc} · выбери ${loadNeed} предмета</div>`;
+
+  const slots = document.getElementById('loadSlots');
+  slots.innerHTML = '';
+  for (let i=0;i<loadNeed;i++){ const s=document.createElement('div'); s.className='load-slot'; s.textContent='?'; slots.appendChild(s); }
+
+  const opt = document.getElementById('loadOptions');
+  opt.innerHTML = '';
+  options.forEach(k => {
+    const it = loadItems[k];
+    const el = document.createElement('div');
+    el.className = 'load-item';
+    el.dataset.key = k;
+    el.innerHTML = `<div class="ic">${it.ic}</div><div class="nm">${it.nm}</div>`;
+    el.addEventListener('click', () => pickLoadItem(k, el));
+    opt.appendChild(el);
+  });
+  updateLoadUI();
+}
+
+function pickLoadItem(key, el) {
+  if (!loadActive || loadPicked.length >= loadNeed) return;
+  loadPicked.push(key);
+  el.classList.add('picked');
+  const slots = document.getElementById('loadSlots').children;
+  const slot = slots[loadPicked.length-1];
+  slot.textContent = loadItems[key].ic;
+  slot.classList.add('filled');
+  if (loadPicked.length === loadNeed) setTimeout(evalLoadRound, 350);
+}
+
+function evalLoadRound() {
+  const opts = document.getElementById('loadOptions').children;
+  let correct = 0;
+  loadPicked.forEach(k => {
+    if (loadCorrectSet.includes(k)) correct++;
+    for (const o of opts) {
+      if (o.dataset.key === k) o.classList.add(loadCorrectSet.includes(k) ? 'good' : 'bad');
+    }
+  });
+  // reveal any correct items not picked
+  for (const o of opts) {
+    if (loadCorrectSet.includes(o.dataset.key) && !loadPicked.includes(o.dataset.key)) {
+      o.classList.add('good'); o.style.opacity = '1';
+    }
+  }
+  loadScore += correct;
+  loadStreak = (correct === loadNeed) ? loadStreak + 1 : 0;
+  loadRound++;
+  updateLoadUI();
+  setTimeout(nextLoadRound, 1100);
+}
+
+function updateLoadUI() {
+  document.getElementById('loadRound').textContent = loadRound + '/' + loadMax;
+  document.getElementById('loadScore').textContent = loadScore;
+  document.getElementById('loadStreak').textContent = loadStreak;
+  document.getElementById('loadProgress').style.width = (loadRound / loadMax * 100) + '%';
+}
+
+function finishLoadGame() {
+  loadActive = false;
+  document.getElementById('loadStartBtn').disabled = false;
+  document.getElementById('loadSlots').innerHTML = '';
+  document.getElementById('loadOptions').innerHTML = '';
+  const maxScore = loadMax * loadNeed;
+  document.getElementById('loadTask').innerHTML = `<div class="role-name">Готово!</div><div class="role-desc">Правильных предметов: ${loadScore} из ${maxScore}</div>`;
+  const r = document.getElementById('loadResult');
+  r.classList.add('show');
+  const pct = Math.round(loadScore/maxScore*100);
+  document.getElementById('loadResultTitle').textContent =
+    pct >= 90 ? '🧠 Билд-мастер!' : pct >= 70 ? '🔥 Хорошо знаешь предметы!' : '📚 Подучи экипировку!';
+  document.getElementById('loadResultDetail').textContent = `Точность сборок: ${pct}% · ${loadScore}/${maxScore}`;
+}
+
+function resetLoadGame() {
+  loadActive = false;
+  loadRound = 0; loadScore = 0; loadStreak = 0; loadPicked = [];
+  document.getElementById('loadSlots').innerHTML = '';
+  document.getElementById('loadOptions').innerHTML = '';
+  document.getElementById('loadTask').innerHTML = '<div class="role-name">Нажми «СТАРТ»</div><div class="role-desc">Соберём правильные предметы под роль</div>';
+  document.getElementById('loadRound').textContent = '0/5';
+  document.getElementById('loadScore').textContent = '0';
+  document.getElementById('loadStreak').textContent = '0';
+  document.getElementById('loadProgress').style.width = '0%';
+  document.getElementById('loadResult').classList.remove('show');
+  document.getElementById('loadStartBtn').disabled = false;
+}
+
+// ===== AIM / TRACKING GAME =====
+let aimActive = false, aimHits = 0, aimShots = 0, aimSpawned = 0;
+const aimMax = 10;
+let aimMover = null, aimRAF = null, aimX = 0, aimY = 0, aimVX = 0, aimVY = 0, aimSize = 48, aimCross = null;
+
+function startAimGame() {
+  if (aimActive) return;
+  resetAimGame();
+  aimActive = true;
+  aimHits = 0; aimShots = 0; aimSpawned = 0;
+  document.getElementById('aimStartBtn').disabled = true;
+  document.getElementById('aimResult').classList.remove('show');
+  document.getElementById('aimPlaceholder').style.display = 'none';
+  spawnAimMover();
+  aimLoop();
+}
+
+function spawnAimMover() {
+  if (aimSpawned >= aimMax) { finishAimGame(); return; }
+  const area = document.getElementById('aimArea');
+  const rect = area.getBoundingClientRect();
+  if (aimMover) aimMover.remove();
+  aimSize = Math.max(30, 48 - aimSpawned * 1.5);
+  aimMover = document.createElement('div');
+  aimMover.className = 'aim-mover';
+  aimMover.style.width = aimSize + 'px';
+  aimMover.style.height = aimSize + 'px';
+  aimMover.style.fontSize = (aimSize*0.4) + 'px';
+  aimMover.textContent = (aimSpawned + 1);
+
+  aimX = Math.random() * (rect.width - aimSize);
+  aimY = Math.random() * (rect.height - aimSize);
+  const speed = 1.4 + aimSpawned * 0.45;
+  const ang = Math.random() * Math.PI * 2;
+  aimVX = Math.cos(ang) * speed;
+  aimVY = Math.sin(ang) * speed;
+  aimMover.style.left = aimX + 'px';
+  aimMover.style.top = aimY + 'px';
+
+  const onShot = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!aimActive) return;
+    aimShots++;
+    aimHits++;
+    aimSpawned++;
+    aimMover.classList.add('hit');
+    const dead = aimMover;
+    setTimeout(()=>{ if(dead.parentNode) dead.remove(); }, 250);
+    aimMover = null;
+    updateAimUI();
+    setTimeout(spawnAimMover, 200);
+  };
+  aimMover.addEventListener('touchstart', onShot, {passive:false});
+  aimMover.addEventListener('mousedown', onShot);
+
+  area.appendChild(aimMover);
+}
+
+function aimLoop() {
+  if (!aimActive) return;
+  const area = document.getElementById('aimArea');
+  const rect = area.getBoundingClientRect();
+  if (aimMover) {
+    aimX += aimVX; aimY += aimVY;
+    if (aimX <= 0) { aimX = 0; aimVX *= -1; }
+    if (aimX >= rect.width - aimSize) { aimX = rect.width - aimSize; aimVX *= -1; }
+    if (aimY <= 0) { aimY = 0; aimVY *= -1; }
+    if (aimY >= rect.height - aimSize) { aimY = rect.height - aimSize; aimVY *= -1; }
+    aimMover.style.left = aimX + 'px';
+    aimMover.style.top = aimY + 'px';
+  }
+  aimRAF = requestAnimationFrame(aimLoop);
+}
+
+// miss handler — clicking area but not the mover
+(function(){
+  const area = document.getElementById('aimArea');
+  if (!area) return;
+  const moveCross = (clientX, clientY) => {
+    const rect = area.getBoundingClientRect();
+    if (!aimCross) {
+      aimCross = document.createElement('div');
+      aimCross.className = 'aim-crosshair';
+      area.appendChild(aimCross);
+    }
+    aimCross.style.left = (clientX - rect.left) + 'px';
+    aimCross.style.top = (clientY - rect.top) + 'px';
+  };
+  area.addEventListener('mousemove', (e) => { if (aimActive) moveCross(e.clientX, e.clientY); });
+  area.addEventListener('touchmove', (e) => { if (aimActive && e.touches[0]) moveCross(e.touches[0].clientX, e.touches[0].clientY); }, {passive:true});
+  const onMiss = (e) => {
+    if (!aimActive) return;
+    aimShots++;
+    updateAimUI();
+  };
+  area.addEventListener('mousedown', onMiss);
+  area.addEventListener('touchstart', (e)=>{ if(aimActive){ if(e.touches[0]) moveCross(e.touches[0].clientX,e.touches[0].clientY); onMiss(e);} }, {passive:true});
+})();
+
+function updateAimUI() {
+  document.getElementById('aimHits').textContent = aimHits;
+  document.getElementById('aimShots').textContent = aimShots;
+  const acc = aimShots > 0 ? Math.round(aimHits / aimShots * 100) : 0;
+  document.getElementById('aimAcc').textContent = aimShots > 0 ? acc + '%' : '—';
+  document.getElementById('aimProgress').style.width = (aimSpawned / aimMax * 100) + '%';
+}
+
+function finishAimGame() {
+  aimActive = false;
+  if (aimRAF) cancelAnimationFrame(aimRAF);
+  if (aimMover) { aimMover.remove(); aimMover = null; }
+  if (aimCross) { aimCross.remove(); aimCross = null; }
+  document.getElementById('aimStartBtn').disabled = false;
+  const acc = aimShots > 0 ? Math.round(aimHits / aimShots * 100) : 0;
+  const r = document.getElementById('aimResult');
+  r.classList.add('show');
+  document.getElementById('aimResultTitle').textContent =
+    acc >= 85 ? '🎯 Снайпер!' : acc >= 65 ? '🔥 Хорошее упреждение!' : '💪 Тренируй прицел!';
+  document.getElementById('aimResultDetail').textContent = `Попаданий: ${aimHits}/${aimMax} · Точность: ${acc}%`;
+  document.getElementById('aimPlaceholder').style.display = 'block';
+  document.getElementById('aimPlaceholder').textContent = 'Раунд завершён! Нажми СТАРТ для нового';
+}
+
+function resetAimGame() {
+  aimActive = false;
+  if (aimRAF) cancelAnimationFrame(aimRAF);
+  if (aimMover) { aimMover.remove(); aimMover = null; }
+  if (aimCross) { aimCross.remove(); aimCross = null; }
+  aimHits = aimShots = aimSpawned = 0;
+  document.getElementById('aimHits').textContent = '0';
+  document.getElementById('aimShots').textContent = '0';
+  document.getElementById('aimAcc').textContent = '—';
+  document.getElementById('aimProgress').style.width = '0%';
+  document.getElementById('aimResult').classList.remove('show');
+  document.getElementById('aimStartBtn').disabled = false;
+  document.getElementById('aimPlaceholder').style.display = 'block';
+  document.getElementById('aimPlaceholder').textContent = 'Нажми «СТАРТ». Цель движется — тапни по ней';
 }
 </script>
 
