@@ -134,8 +134,23 @@ button{cursor:pointer}
   -webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--line);
   box-shadow:0 10px 30px rgba(0,0,0,.03);
+  transition:box-shadow .25s ease;
 }
 .header.scrolled{box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.header.unpinned{position:static !important;top:auto !important;border-bottom-style:dashed;border-bottom-color:var(--line-strong)}
+.pin-btn{
+  width:38px;height:38px;border:none;border-radius:50%;
+  background:var(--card-2);border:1.5px dashed var(--line-strong);
+  color:var(--primary-strong);font-size:16px;cursor:pointer;
+  display:inline-grid;place-items:center;transition:.25s ease;
+  position:relative;z-index:2;
+}
+.pin-btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px var(--shadow)}
+.pin-btn:active{transform:translateY(0) scale(.95)}
+.pin-btn.pinned{background:linear-gradient(135deg,var(--primary-strong),var(--primary));color:#fff;border:1.5px solid transparent;box-shadow:0 8px 18px var(--shadow)}
+.pin-btn .pin-icon{display:inline-block;transition:transform .3s ease;font-size:18px;line-height:1}
+.pin-btn.pinned .pin-icon{transform:rotate(0deg)}
+.pin-btn:not(.pinned) .pin-icon{transform:rotate(45deg);filter:grayscale(.4)}
 .header-brand{display:flex;align-items:center;gap:10px;min-width:0}
 .header-logo{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary-strong),var(--primary));color:#fff;font-family:'Amiri',serif;font-size:22px;box-shadow:0 12px 24px var(--shadow)}
 .header-title{font-family:'Amiri',serif;font-size:clamp(15px,3vw,20px);color:var(--primary-strong);font-weight:700;line-height:1.15}
@@ -348,6 +363,9 @@ button{cursor:pointer}
           <button class="lang-btn active" id="btnRu" type="button">RU</button>
           <button class="lang-btn" id="btnUz" type="button">UZ</button>
         </div>
+        <button class="pin-btn pinned" id="pinBtn" type="button" onclick="togglePinHeader()" title="Открепить панель" aria-label="Открепить/закрепить панель">
+          <span class="pin-icon">📌</span>
+        </button>
       </div>
     </header>
 
@@ -511,23 +529,23 @@ const ruqyaData = [
   tatil: { ar: "اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ الْجِنِّ فِي جَسَدِي", tr: "Аллахумма ахридж кулля та'тылин мина-ль-джинни фи джасади", transRu: "О Аллах, выведи всякую преграду, состоящую из джиннов, из моего тела.", transUz: "Yo Alloh, jindan iborat har qanday to'siqni tanadan chiqar." }},
   {id:"bm10",section:"blackMagic",num:10,ru:"Полное снятие всех видов порчи",uz:"Barcha sehr turlarini olib tashlash",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ جَمِيعِ أَنْوَاعِ السِّحْرِ",tr:"Бисми-Лляхи аркъи мин джами'и анва'и-с-сихр.",transRu:"С именем Аллаха, я делаю рукья от всех видов порчи.",transUz:"Allohning ismi bilan, barcha sehr turlaridan ruqiya qilaman.",
   tatil: { ar: "اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي", tr: "Аллахумма даммир кулля та'тылин мина-с-сихри фи джасади", transRu: "О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.", transUz: "Yo Alloh, jodugarlikdan iborat har qanday to'siqni tanamda vayron qil." }},
-  {id:"br1",section:"breakBarriers",num:1,ru:"Дуа: выведи преграду выпитого колдовства (أَخْرِجْ)",uz:"Duo: ichilgan jodugarlikdan iborat to'siqni chiqar (أَخْرِجْ)",ar:"اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي بَطْنِي",tr:"Аллахумма ахридж кулля та'тылин мина-с-сихр фи батни.",transRu:"О Аллах, выведи всякую преграду, состоящую из колдовства, из моего живота.",transUz:"Yo Alloh, qornimdangi jodugarlikdan iborat har qanday to'siqni chiqar."},
-  {id:"br2",section:"breakBarriers",num:2,ru:"Дуа: развяжи преграду съеденного колдовства (حُلَّ)",uz:"Duo: yeyilgan jodugarlikdan iborat to'siqni yech (حُلَّ)",ar:"اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي بَطْنِي",tr:"Аллахумма хулля кулля та'тылин мина-с-сихр фи батни.",transRu:"О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём животе.",transUz:"Yo Alloh, qornimdagi jodugarlikdan iborat har qanday to'siqni yech."},
-  {id:"br3",section:"breakBarriers",num:3,ru:"Дуа: выведи преграду вдыхаемого джинна (أَخْرِجْ)",uz:"Duo: nafas bilan kirgan jindan iborat to'siqni chiqar (أَخْرِجْ)",ar:"اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ الْجِنِّ فِي جَسَدِي",tr:"Аллахумма ахридж кулля та'тылин мина-ль-джинн фи джасади.",transRu:"О Аллах, выведи всякую преграду, состоящую из джиннов, из моего тела.",transUz:"Yo Alloh, tanamdangi jindan iborat har qanday to'siqni chiqar."},
-  {id:"br4",section:"breakBarriers",num:4,ru:"Дуа: уничтожь преграду разбрызганного следа (دَمِّرْ)",uz:"Duo: sepilgan izdan iborat to'siqni vayron qil (دَمِّرْ)",ar:"اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма даммир кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni vayron qil."},
-  {id:"br5",section:"breakBarriers",num:5,ru:"Дуа: уничтожь преграду закопанной порчи (دَمِّرْ)",uz:"Duo: ko'milgan sehrdan iborat to'siqni vayron qil (دَمِّرْ)",ar:"اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма даммир кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni vayron qil."},
-  {id:"br6",section:"breakBarriers",num:6,ru:"Дуа: развяжи преграду подвешенной завесы (حُلَّ)",uz:"Duo: osilgan to'siqdan iborat to'siqni yech (حُلَّ)",ar:"اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма хулля кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni yech."},
-  {id:"br7",section:"breakBarriers",num:7,ru:"Дуа: аннулируй преграду написанного талисмана (أَبْطِلْ)",uz:"Duo: yozilgan tumordan iborat to'siqni bekor qil (أَبْطِلْ)",ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма абтыль кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, аннулируй всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni bekor qil."},
-  {id:"br8",section:"breakBarriers",num:8,ru:"Дуа: аннулируй преграду колдовства разделения (أَبْطِلْ)",uz:"Duo: ajratish jodusidan iborat to'siqni bekor qil (أَبْطِلْ)",ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي قَلْبِي",tr:"Аллахумма абтыль кулля та'тылин мина-с-сихр фи къальби.",transRu:"О Аллах, аннулируй всякую преграду, состоящую из колдовства, в моём сердце.",transUz:"Yo Alloh, qalbimdagi jodugarlikdan iborat har qanday to'siqni bekor qil."},
-  {id:"br9",section:"breakBarriers",num:9,ru:"Дуа: развяжи преграду оков привязки (حُلَّ)",uz:"Duo: bog'lanish kishanidan iborat to'siqni yech (حُلَّ)",ar:"اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي قَلْبِي",tr:"Аллахумма хулля кулля та'тылин мина-с-сихр фи къальби.",transRu:"О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём сердце.",transUz:"Yo Alloh, qalbimdagi jodugarlikdan iborat har qanday to'siqni yech."},
-  {id:"br10",section:"breakBarriers",num:10,ru:"Дуа: развяжи преграду узлов колдунов (حُلَّ)",uz:"Duo: jodugarlar tugunlaridan iborat to'siqni yech (حُلَّ)",ar:"اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма хулля кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni yech."},
-  {id:"br11",section:"breakBarriers",num:11,ru:"Дуа: выведи преграду вселившегося джинна (أَخْرِجْ)",uz:"Duo: kirgan jindan iborat to'siqni chiqar (أَخْرِجْ)",ar:"اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ الْجِنِّ فِي جَسَدِي",tr:"Аллахумма ахридж кулля та'тылин мина-ль-джинн фи джасади.",transRu:"О Аллах, выведи всякую преграду, состоящую из джиннов, из моего тела.",transUz:"Yo Alloh, tanamdangi jindan iborat har qanday to'siqni chiqar."},
-  {id:"br12",section:"breakBarriers",num:12,ru:"Дуа: уничтожь преграду болезни (دَمِّرْ)",uz:"Duo: kasallikdan iborat to'siqni vayron qil (دَمِّرْ)",ar:"اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма даммир кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni vayron qil."},
-  {id:"br13",section:"breakBarriers",num:13,ru:"Дуа: аннулируй преграду сглаза в крови (أَبْطِلْ)",uz:"Duo: qondagi ko'z tegishidan iborat to'siqni bekor qil (أَبْطِلْ)",ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنَ الْعَيْنِ فِي دَمِي",tr:"Аллахумма абтыль кулля та'тылин мина-ль-'айн фи дами.",transRu:"О Аллах, аннулируй всякую преграду, состоящую из сглаза, в моей крови.",transUz:"Yo Alloh, qonimdagi ko'z tegishdan iborat har qanday to'siqni bekor qil."},
-  {id:"br14",section:"breakBarriers",num:14,ru:"Дуа: сломай преграду летящих взглядов (اكْسِرْ)",uz:"Duo: uchar nazarlardan iborat to'siqni sindir (اكْسِرْ)",ar:"اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي",tr:"Аллахумма иксир кулля та'тылин мина-н-назарат фи джасади.",transRu:"О Аллах, сломай всякую преграду, состоящую из (дурных) взглядов, в моём теле.",transUz:"Yo Alloh, tanamdagi yomon nazardan iborat har qanday to'siqni sindir."},
-  {id:"br15",section:"breakBarriers",num:15,ru:"Дуа: сломай преграду заслона над уделом (اكْسِرْ)",uz:"Duo: rizq ustidagi to'siqdan iborat to'siqni sindir (اكْسِرْ)",ar:"اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي رِزْقِي",tr:"Аллахумма иксир кулля та'тылин мина-с-сихр фи ризки.",transRu:"О Аллах, сломай всякую преграду, состоящую из колдовства, в моём уделе.",transUz:"Yo Alloh, rizqimdagi jodugarlikdan iborat har qanday to'siqni sindir."},
-  {id:"br16",section:"breakBarriers",num:16,ru:"Дуа: уничтожь преграду животного фантома (دَمِّرْ)",uz:"Duo: hayvon xayolidan iborat to'siqni vayron qil (دَمِّرْ)",ar:"اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма даммир кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni vayron qil."},
-  {id:"br17",section:"breakBarriers",num:17,ru:"Дуа: выведи преграду шёпота в дыхании (أَخْرِجْ)",uz:"Duo: nafasdagi pichirlashdan iborat to'siqni chiqar (أَخْرِجْ)",ar:"اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма ахридж кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, выведи всякую преграду, состоящую из колдовства, из моего тела.",transUz:"Yo Alloh, tanamdangi jodugarlikdan iborat har qanday to'siqni chiqar."}
+  {id:"br1",section:"breakBarriers",num:1,ru:"Дуа: выведи преграду выпитого колдовства (أَخْرِجْ)",uz:"Duo: ichilgan jodugarlikdan iborat to'siqni chiqar (أَخْرِجْ)",ar:"اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي بَطْنِي",tr:"Аллахумма ахридж кулля та'тылин мина-с-сихр фи батни.",transRu:"О Аллах, выведи всякую преграду, состоящую из колдовства, из моего живота.",transUz:"Yo Alloh, qornimdangi jodugarlikdan iborat har qanday to'siqni chiqar.",methodFormula:{ar:"اللَّهُمَّ أَخْرِجْ كُلَّ مَأْكُولٍ مِنْ سِحْرٍ فِي الْأَمْعَاءِ",tr:"Аллахумма ахридж кулля ма'кулин мин сихрин фи ль-ам'а'и.",transRu:"О Аллах, выведи всякое съеденное от колдовства из кишок.",transUz:"Yo Alloh, ichaklardan har qanday yeyilgan jodusini chiqar."}},
+  {id:"br2",section:"breakBarriers",num:2,ru:"Дуа: развяжи преграду съеденного колдовства (حُلَّ)",uz:"Duo: yeyilgan jodugarlikdan iborat to'siqni yech (حُلَّ)",ar:"اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي بَطْنِي",tr:"Аллахумма хулля кулля та'тылин мина-с-сихр фи батни.",transRu:"О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём животе.",transUz:"Yo Alloh, qornimdagi jodugarlikdan iborat har qanday to'siqni yech.",methodFormula:{ar:"اللَّهُمَّ أَخْرِجْ كُلَّ مَأْكُولٍ مِنْ سِحْرٍ فِي الْمَعِدَةِ",tr:"Аллахумма ахридж кулля ма'кулин мин сихрин фи ль-ма'идати.",transRu:"О Аллах, выведи всякое съеденное от колдовства из желудка.",transUz:"Yo Alloh, oshqozondan har qanday yeyilgan jodusini chiqar."}},
+  {id:"br3",section:"breakBarriers",num:3,ru:"Дуа: выведи преграду вдыхаемого джинна (أَخْرِجْ)",uz:"Duo: nafas bilan kirgan jindan iborat to'siqni chiqar (أَخْرِجْ)",ar:"اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ الْجِنِّ فِي جَسَدِي",tr:"Аллахумма ахридж кулля та'тылин мина-ль-джинн фи джасади.",transRu:"О Аллах, выведи всякую преграду, состоящую из джиннов, из моего тела.",transUz:"Yo Alloh, tanamdangi jindan iborat har qanday to'siqni chiqar.",methodFormula:{ar:"اللَّهُمَّ احْرِقْ كُلَّ مَسٍّ مِنْ جِنٍّ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма ихрик кулля массин мин джиннин фи ль-бадани куллихи.",transRu:"О Аллах, сожги всякое касание от джинна во всём теле.",transUz:"Yo Alloh, butun tanada jindan iborat har qanday tegishni yondir."}},
+  {id:"br4",section:"breakBarriers",num:4,ru:"Дуа: уничтожь преграду разбрызганного следа (دَمِّرْ)",uz:"Duo: sepilgan izdan iborat to'siqni vayron qil (دَمِّرْ)",ar:"اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма даммир кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni vayron qil.",methodFormula:{ar:"اللَّهُمَّ أَزِلْ كُلَّ مَرْشُوشٍ مِنْ سِحْرٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма азиль кулля маршушин мин сихрин фи ль-бадани куллихи.",transRu:"О Аллах, устрани всякое подсыпанное от колдовства во всём теле.",transUz:"Yo Alloh, butun tanada jodugarlikdan iborat har qanday sepilgan jodusini yo'qot."}},
+  {id:"br5",section:"breakBarriers",num:5,ru:"Дуа: уничтожь преграду закопанной порчи (دَمِّرْ)",uz:"Duo: ko'milgan sehrdan iborat to'siqni vayron qil (دَمِّرْ)",ar:"اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма даммир кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni vayron qil.",methodFormula:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ سِحْرٍ مِنْ كَيْدٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма абтыль кулля сихрин мин кайдин фи ль-бадани куллихи.",transRu:"О Аллах, аннулируй всякое колдовство от козней во всём теле.",transUz:"Yo Alloh, butun tanada hiyladan iborat har qanday jodusini bekor qil."}},
+  {id:"br6",section:"breakBarriers",num:6,ru:"Дуа: развяжи преграду подвешенной завесы (حُلَّ)",uz:"Duo: osilgan to'siqdan iborat to'siqni yech (حُلَّ)",ar:"اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма хулля кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni yech.",methodFormula:{ar:"اللَّهُمَّ ارْفَعْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма ирфа' кулля та'тылин мин сихрин фи ль-бадани куллихи.",transRu:"О Аллах, подними всякое блокировку от колдовства во всём теле.",transUz:"Yo Alloh, butun tanada jodugarlikdan iborat har qanday to'siqni ko'tar."}},
+  {id:"br7",section:"breakBarriers",num:7,ru:"Дуа: аннулируй преграду написанного талисмана (أَبْطِلْ)",uz:"Duo: yozilgan tumordan iborat to'siqni bekor qil (أَبْطِلْ)",ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма абтыль кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, аннулируй всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni bekor qil.",methodFormula:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ مَسْحُورٍ مِنْ نَفْثٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма абтыль кулля масхурин мин нафсин фи ль-бадани куллихи.",transRu:"О Аллах, аннулируй всякое заколдованное от наговора во всём теле.",transUz:"Yo Alloh, butun tanada puflashdan iborat har qanday jodulanganni bekor qil."}},
+  {id:"br8",section:"breakBarriers",num:8,ru:"Дуа: аннулируй преграду колдовства разделения (أَبْطِلْ)",uz:"Duo: ajratish jodusidan iborat to'siqni bekor qil (أَبْطِلْ)",ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي قَلْبِي",tr:"Аллахумма абтыль кулля та'тылин мина-с-сихр фи къальби.",transRu:"О Аллах, аннулируй всякую преграду, состоящую из колдовства, в моём сердце.",transUz:"Yo Alloh, qalbimdagi jodugarlikdan iborat har qanday to'siqni bekor qil.",methodFormula:{ar:"اللَّهُمَّ أَزِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي الْقَلْبِ",tr:"Аллахумма азиль кулля тафрикин мин шайтанин фи ль-къальби.",transRu:"О Аллах, устрани всякое разделение от шайтана в сердце.",transUz:"Yo Alloh, qalbda shaytondan iborat har qanday ajratishni yo'qot."}},
+  {id:"br9",section:"breakBarriers",num:9,ru:"Дуа: развяжи преграду оков привязки (حُلَّ)",uz:"Duo: bog'lanish kishanidan iborat to'siqni yech (حُلَّ)",ar:"اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي قَلْبِي",tr:"Аллахумма хулля кулля та'тылин мина-с-сихр фи къальби.",transRu:"О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём сердце.",transUz:"Yo Alloh, qalbimdagi jodugarlikdan iborat har qanday to'siqni yech.",methodFormula:{ar:"اللَّهُمَّ فُكَّ كُلَّ رَبْطٍ مِنْ سِحْرٍ فِي الْقَلْبِ",tr:"Аллахумма фукка кулля рабтин мин сихрин фи ль-къальби.",transRu:"О Аллах, развяжи всякое связывание от колдовства в сердце.",transUz:"Yo Alloh, qalbda jodugarlikdan iborat har qanday bog'lashni yech."}},
+  {id:"br10",section:"breakBarriers",num:10,ru:"Дуа: развяжи преграду узлов колдунов (حُلَّ)",uz:"Duo: jodugarlar tugunlaridan iborat to'siqni yech (حُلَّ)",ar:"اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма хулля кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni yech.",methodFormula:{ar:"اللَّهُمَّ فُكَّ كُلَّ رَبْطٍ مِنْ عُقَدٍ فِي الزَّوَاجِ",tr:"Аллахумма фукка кулля рабтин мин 'укадин фи з-завадж.",transRu:"О Аллах, развяжи всякое связывание от узлов в браке.",transUz:"Yo Alloh, nikohda tugunlardan iborat har qanday bog'lashni yech."}},
+  {id:"br11",section:"breakBarriers",num:11,ru:"Дуа: выведи преграду вселившегося джинна (أَخْرِجْ)",uz:"Duo: kirgan jindan iborat to'siqni chiqar (أَخْرِجْ)",ar:"اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ الْجِنِّ فِي جَسَدِي",tr:"Аллахумма ахридж кулля та'тылин мина-ль-джинн фи джасади.",transRu:"О Аллах, выведи всякую преграду, состоящую из джиннов, из моего тела.",transUz:"Yo Alloh, tanamdangi jindan iborat har qanday to'siqni chiqar.",methodFormula:{ar:"اللَّهُمَّ اشْفِ كُلَّ جُنُونٍ مِنْ مَسٍّ فِي الْعَقْلِ",tr:"Аллахумма ишфи кулля джунунин мин массин фи ль-'акъли.",transRu:"О Аллах, исцели всякое умопомрачение от одержимости в разуме.",transUz:"Yo Alloh, aqlda tegishdan iborat har qanday aqldan ozishni shifo ber."}},
+  {id:"br12",section:"breakBarriers",num:12,ru:"Дуа: уничтожь преграду болезни (دَمِّرْ)",uz:"Duo: kasallikdan iborat to'siqni vayron qil (دَمِّرْ)",ar:"اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма даммир кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni vayron qil.",methodFormula:{ar:"اللَّهُمَّ اشْفِ كُلَّ مَسْحُورٍ مِنْ سِحْرٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма ишфи кулля масхурин мин сихрин фи ль-бадани куллихи.",transRu:"О Аллах, исцели всякое заколдованное от колдовства во всём теле.",transUz:"Yo Alloh, butun tanada jodugarlikdan iborat har qanday jodulanganni shifo ber."}},
+  {id:"br13",section:"breakBarriers",num:13,ru:"Дуа: аннулируй преграду сглаза в крови (أَبْطِلْ)",uz:"Duo: qondagi ko'z tegishidan iborat to'siqni bekor qil (أَبْطِلْ)",ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنَ الْعَيْنِ فِي دَمِي",tr:"Аллахумма абтыль кулля та'тылин мина-ль-'айн фи дами.",transRu:"О Аллах, аннулируй всякую преграду, состоящую из сглаза, в моей крови.",transUz:"Yo Alloh, qonimdagi ko'z tegishdan iborat har qanday to'siqni bekor qil.",methodFormula:{ar:"اللَّهُمَّ اقْطَعْ كُلَّ عَيْنٍ مِنْ حَسَدٍ فِي الرَّحِمِ",tr:"Аллахумма икъта' кулля 'айнин мин хасадин фи р-рахими.",transRu:"О Аллах, отсеки всякое сглаз от зависти в матке.",transUz:"Yo Alloh, bachadonda hasaddan iborat har qanday ko'z tegishni kes."}},
+  {id:"br14",section:"breakBarriers",num:14,ru:"Дуа: сломай преграду летящих взглядов (اكْسِرْ)",uz:"Duo: uchar nazarlardan iborat to'siqni sindir (اكْسِرْ)",ar:"اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي",tr:"Аллахумма иксир кулля та'тылин мина-н-назарат фи джасади.",transRu:"О Аллах, сломай всякую преграду, состоящую из (дурных) взглядов, в моём теле.",transUz:"Yo Alloh, tanamdagi yomon nazardan iborat har qanday to'siqni sindir.",methodFormula:{ar:"اللَّهُمَّ ادْفَعْ كُلَّ عَيْنٍ مِنْ حَسَدٍ فِي الرَّأْسِ",tr:"Аллахумма идфа' кулля 'айнин мин хасадин фи р-ра'си.",transRu:"О Аллах, отведи всякое сглаз от зависти в голове.",transUz:"Yo Alloh, boshda hasaddan iborat har qanday ko'z tegishni qaytar."}},
+  {id:"br15",section:"breakBarriers",num:15,ru:"Дуа: сломай преграду заслона над уделом (اكْسِرْ)",uz:"Duo: rizq ustidagi to'siqdan iborat to'siqni sindir (اكْسِرْ)",ar:"اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي رِزْقِي",tr:"Аллахумма иксир кулля та'тылин мина-с-сихр фи ризки.",transRu:"О Аллах, сломай всякую преграду, состоящую из колдовства, в моём уделе.",transUz:"Yo Alloh, rizqimdagi jodugarlikdan iborat har qanday to'siqni sindir.",methodFormula:{ar:"اللَّهُمَّ فُكَّ كُلَّ رَبْطٍ مِنْ سِحْرٍ فِي الرِّزْقِ",tr:"Аллахумма фукка кулля рабтин мин сихрин фи р-ризки.",transRu:"О Аллах, развяжи всякое связывание от колдовства в уделе.",transUz:"Yo Alloh, rizqda jodugarlikdan iborat har qanday bog'lashni yech."}},
+  {id:"br16",section:"breakBarriers",num:16,ru:"Дуа: уничтожь преграду животного фантома (دَمِّرْ)",uz:"Duo: hayvon xayolidan iborat to'siqni vayron qil (دَمِّرْ)",ar:"اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма даммир кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni vayron qil.",methodFormula:{ar:"اللَّهُمَّ احْرِقْ كُلَّ مَسٍّ مِنْ جِنٍّ فِي الظَّهْرِ",tr:"Аллахумма ихрик кулля массин мин джиннин фи з-захри.",transRu:"О Аллах, сожги всякое касание от джинна в спине.",transUz:"Yo Alloh, orqada jindan iborat har qanday tegishni yondir."}},
+  {id:"br17",section:"breakBarriers",num:17,ru:"Дуа: выведи преграду шёпота в дыхании (أَخْرِجْ)",uz:"Duo: nafasdagi pichirlashdan iborat to'siqni chiqar (أَخْرِجْ)",ar:"اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма ахридж кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, выведи всякую преграду, состоящую из колдовства, из моего тела.",transUz:"Yo Alloh, tanamdangi jodugarlikdan iborat har qanday to'siqni chiqar.",methodFormula:{ar:"اللَّهُمَّ اكْشِفْ كُلَّ سِحْرٍ مِنْ نَفْثٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма икшиф кулля сихрин мин нафсин фи ль-бадани куллихи.",transRu:"О Аллах, раскрой всякое колдовство от наговора во всём теле.",transUz:"Yo Alloh, butun tanada puflashdan iborat har qanday jodusini ochib tashla."}}
 ];
 
 const sectionsMeta = {
@@ -617,6 +635,13 @@ function cardTemplate(r){
             <div class="translation" data-ru="${r.tatil.transRu}" data-uz="${r.tatil.transUz}">${r.tatil.transRu}</div>
             <div class="transcription">${r.tatil.tr}</div>
           </div>` : ''}
+          ${r.methodFormula ? `<div class="tatil-block" style="border-color:var(--primary-strong);background:rgba(var(--theme-rgb),.06);">
+            <div class="tatil-label" data-ru="📐 Дуа по формуле метода" data-uz="📐 Formula bo'yicha duo">📐 Дуа по формуле метода</div>
+            <div class="arabic-block"><div class="arabic-text">${r.methodFormula.ar}</div></div>
+            <div class="translation" data-ru="${r.methodFormula.transRu}" data-uz="${r.methodFormula.transUz}">${r.methodFormula.transRu}</div>
+            <div class="transcription">${r.methodFormula.tr}</div>
+            <div class="transcription" style="margin-top:6px;font-size:11px;opacity:.8;" data-ru="Шаблон: اللَّهُمَّ + глагол + كُلَّ + недуг + مِنْ + источник + فِي + место" data-uz="Shablon: اللَّهُمَّ + fe'l + كُلَّ + dard + مِنْ + manba + فِي + joy">Шаблон: اللَّهُمَّ + глагол + كُلَّ + недуг + مِنْ + источник + فِي + место</div>
+          </div>` : ''}
           <div class="counter-section">
             <div class="counter-label" data-ru="повторений" data-uz="takrorlash">повторений</div>
             <div class="counter-display">
@@ -641,6 +666,33 @@ function cardTemplate(r){
   `;
 }
 
+
+function renderMethodIntro(){
+  return `
+    <div class="gradient-block" style="margin-bottom:14px;">
+      <div class="gradient-block-title" data-ru="📐 Метод построения дуа против духовных и магических недугов" data-uz="📐 Ruhiy va sehrli dardlarga qarshi duo qurish usuli">📐 Метод построения дуа против духовных и магических недугов</div>
+    </div>
+    <div class="info-card" style="margin-bottom:14px;">
+      <h3 data-ru="Общая формула" data-uz="Umumiy formula">Общая формула</h3>
+      <div class="arabic-block" style="margin:10px 0;"><div class="arabic-text" style="font-size:1.15em;">اللَّهُمَّ + [فِعْل أَمْر] + كُلَّ + [مَفْعُول بِهِ] + مِنْ + [مَصْدَر] + فِي + [مَكَان]</div></div>
+      <p data-ru="Каркас неизменен. Подставляются 4 переменные: глагол действия, вид недуга, источник, место поражения. Так из одного шаблона рождается любое точное дуа под конкретный диагноз." data-uz="Asos o'zgarmas. 4 o'zgaruvchi qo'shiladi: fe'l-harakat, dard turi, manba, zararlangan joy. Bitta shablondan har bir aniq tashxis uchun aniq duo tug'iladi.">Каркас неизменен. Подставляются 4 переменные: глагол действия, вид недуга, источник, место поражения. Так из одного шаблона рождается любое точное дуа под конкретный диагноз.</p>
+    </div>
+    <div class="info-card" style="margin-bottom:14px;">
+      <h3 data-ru="10 глаголов действия (فِعْل أَمْر)" data-uz="10 ta harakat fe'li (فِعْل أَمْر)">10 глаголов действия (فِعْل أَمْر)</h3>
+      <p style="line-height:2;" data-ru="<b>أَبْطِلْ</b> — аннулируй · <b>أَزِلْ</b> — устрани · <b>فُكَّ</b> — развяжи · <b>اقْطَعْ</b> — отсеки · <b>ادْفَعْ</b> — отведи · <b>ارْفَعْ</b> — подними · <b>اكْشِفْ</b> — раскрой · <b>اشْفِ</b> — исцели · <b>احْرِقْ</b> — сожги · <b>أَخْرِجْ</b> — выведи" data-uz="<b>أَبْطِلْ</b> — bekor qil · <b>أَزِلْ</b> — yo'qot · <b>فُكَّ</b> — yech · <b>اقْطَعْ</b> — kes · <b>ادْفَعْ</b> — qaytar · <b>ارْفَعْ</b> — ko'tar · <b>اكْشِفْ</b> — ochib tashla · <b>اشْفِ</b> — shifo ber · <b>احْرِقْ</b> — yondir · <b>أَخْرِجْ</b> — chiqar"><b>أَبْطِلْ</b> — аннулируй · <b>أَزِلْ</b> — устрани · <b>فُكَّ</b> — развяжи · <b>اقْطَعْ</b> — отсеки · <b>ادْفَعْ</b> — отведи · <b>ارْفَعْ</b> — подними · <b>اكْشِفْ</b> — раскрой · <b>اشْفِ</b> — исцели · <b>احْرِقْ</b> — сожги · <b>أَخْرِجْ</b> — выведи</p>
+    </div>
+    <div class="info-card" style="margin-bottom:14px;">
+      <h3 data-ru="Виды недугов (المفعول به)" data-uz="Dard turlari (المفعول به)">Виды недугов (المفعول به)</h3>
+      <p style="line-height:2;" data-ru="<b>تَعْطِيلٍ</b> — блокировка · <b>تَفْرِيقٍ</b> — разделение · <b>مَرْشُوشٍ</b> — подсыпанное · <b>مَأْكُولٍ</b> — съеденное · <b>مَسْحُورٍ</b> — заколдованное · <b>جُنُونٍ</b> — умопомрачение · <b>سِحْرٍ</b> — колдовство · <b>عَيْنٍ</b> — сглаз · <b>حَسَدٍ</b> — зависть · <b>مَسٍّ</b> — одержимость · <b>رَبْطٍ</b> — связывание" data-uz="<b>تَعْطِيلٍ</b> — to'siq · <b>تَفْرِيقٍ</b> — ajratish · <b>مَرْشُوشٍ</b> — sepilgan · <b>مَأْكُولٍ</b> — yeyilgan · <b>مَسْحُورٍ</b> — jodulangan · <b>جُنُونٍ</b> — aqldan ozish · <b>سِحْرٍ</b> — sehr · <b>عَيْنٍ</b> — ko'z · <b>حَسَدٍ</b> — hasad · <b>مَسٍّ</b> — tegish · <b>رَبْطٍ</b> — bog'lash"><b>تَعْطِيلٍ</b> — блокировка · <b>تَفْرِيقٍ</b> — разделение · <b>مَرْشُوشٍ</b> — подсыпанное · <b>مَأْكُولٍ</b> — съеденное · <b>مَسْحُورٍ</b> — заколдованное · <b>جُنُونٍ</b> — умопомрачение · <b>سِحْرٍ</b> — колдовство · <b>عَيْنٍ</b> — сглаз · <b>حَسَدٍ</b> — зависть · <b>مَسٍّ</b> — одержимость · <b>رَبْطٍ</b> — связывание</p>
+    </div>
+    <div class="info-card" style="margin-bottom:14px;">
+      <h3 data-ru="Источники (مِنْ) и места (فِي)" data-uz="Manbalar (مِنْ) va joylar (فِي)">Источники (مِنْ) и места (فِي)</h3>
+      <p style="line-height:2;" data-ru="<b>Источники:</b> سِحْرٍ (колдовство), حَسَدٍ (зависть), عَيْنٍ (сглаз), عُقَدٍ (узлы), جِنٍّ (джинны), شَيْطَانٍ (шайтан), كَيْدٍ (козни), نَفْثٍ (наговор).<br><b>Места:</b> الرَّأْسِ (голова), الْقَلْبِ (сердце), الْمَعِدَةِ (желудок), الْأَمْعَاءِ (кишки), الرَّحِمِ (матка), الظَّهْرِ (спина), الْعَقْلِ (разум), الْبَدَنِ كُلِّهِ (всё тело), الزَّوَاجِ (брак), الرِّزْقِ (удел)." data-uz="<b>Manbalar:</b> سِحْرٍ (sehr), حَسَدٍ (hasad), عَيْنٍ (ko'z), عُقَدٍ (tugunlar), جِنٍّ (jinlar), شَيْطَانٍ (shayton), كَيْدٍ (hiyla), نَفْثٍ (puflash).<br><b>Joylar:</b> الرَّأْسِ (bosh), الْقَلْبِ (qalb), الْمَعِدَةِ (oshqozon), الْأَمْعَاءِ (ichaklar), الرَّحِمِ (bachadon), الظَّهْرِ (orqa), الْعَقْلِ (aql), الْبَدَنِ كُلِّهِ (butun tana), الزَّوَاجِ (nikoh), الرِّزْقِ (rizq)."><b>Источники:</b> سِحْرٍ (колдовство), حَسَدٍ (зависть), عَيْنٍ (сглаз), عُقَدٍ (узлы), جِنٍّ (джинны), شَيْطَانٍ (шайтан), كَيْدٍ (козни), نَفْثٍ (наговор).<br><b>Места:</b> الرَّأْسِ (голова), الْقَلْبِ (сердце), الْمَعِدَةِ (желудок), الْأَمْعَاءِ (кишки), الرَّحِمِ (матка), الظَّهْرِ (спина), الْعَقْلِ (разум), الْبَدَنِ كُلِّهِ (всё тело), الزَّوَاجِ (брак), الرِّزْقِ (удел).</p>
+    </div>
+    <div class="important-notice" style="margin-bottom:18px;"><p data-ru="📐 Каждая карточка ниже содержит блок «Дуа по формуле метода» — собранную по этому шаблону альтернативную дуа под конкретный тип недуга." data-uz="📐 Quyidagi har bir kartochka «Formula bo'yicha duo» blokini saqlaydi — aniq dard turiga mos shu shablon bo'yicha yig'ilgan muqobil duo.">📐 Каждая карточка ниже содержит блок «Дуа по формуле метода» — собранную по этому шаблону альтернативную дуа под конкретный тип недуга.</p></div>
+  `;
+}
+
 function renderAll(){
   const container = document.getElementById('sectionsContainer');
   container.innerHTML = '';
@@ -655,7 +707,7 @@ function renderAll(){
         <div class="section-title" data-ru="${meta.ru}" data-uz="${meta.uz}">${meta.ru}</div>
         <div class="section-sub">${count ? `${count} ${t('заклинаний','duo')}` : t('Инструкция по применению','Qo‘llash bo‘yicha yo‘riqnoma')}</div>
       </div>
-      ${key === 'howTo' ? renderHowTo() : ruqyaData.filter(r => r.section === key).map(cardTemplate).join('')}
+      ${key === 'howTo' ? renderHowTo() : (key === 'breakBarriers' ? renderMethodIntro() : '') + ruqyaData.filter(r => r.section === key).map(cardTemplate).join('')}
       <div class="zero-state" id="zero-${key}" data-ru="Ничего не найдено в этом разделе" data-uz="Bu bo‘limda hech narsa topilmadi">Ничего не найдено в этом разделе</div>
     `;
     container.appendChild(section);
@@ -700,6 +752,7 @@ function setLang(lang){
   completedItems.forEach(id => syncCompleteButton(id));
   updateSectionStats();
   saveState();
+  window.dispatchEvent(new Event('langChanged'));
 }
 
 function updateThemeCaption(){
@@ -935,6 +988,44 @@ window.toggleCard = toggleCard;
 window.changeCount = changeCount;
 window.toggleComplete = toggleComplete;
 
+const PIN_KEY = 'ruqya_header_pinned';
+let headerPinned = true;
+
+function applyPinState(){
+  const header = document.getElementById('mainHeader');
+  const btn = document.getElementById('pinBtn');
+  if(!header || !btn) return;
+  if(headerPinned){
+    header.classList.remove('unpinned');
+    btn.classList.add('pinned');
+    btn.title = currentLang === 'ru' ? 'Открепить панель' : "Panelni ajratish";
+  } else {
+    header.classList.add('unpinned');
+    btn.classList.remove('pinned');
+    btn.title = currentLang === 'ru' ? 'Закрепить панель' : "Panelni biriktirish";
+  }
+}
+
+function togglePinHeader(){
+  headerPinned = !headerPinned;
+  try { localStorage.setItem(PIN_KEY, headerPinned ? '1' : '0'); } catch(e){}
+  applyPinState();
+  if(typeof showToast === 'function'){
+    showToast(headerPinned
+      ? (currentLang === 'ru' ? '📌 Панель закреплена сверху' : '📌 Panel tepada biriktirildi')
+      : (currentLang === 'ru' ? '📍 Панель откреплена (прокручивается)' : '📍 Panel ajratildi (siljiydi)'));
+  }
+}
+
+function initHeaderPin(){
+  const stored = localStorage.getItem(PIN_KEY);
+  headerPinned = stored === null ? true : stored === '1';
+  applyPinState();
+  window.addEventListener('langChanged', applyPinState);
+}
+
+window.togglePinHeader = togglePinHeader;
+
 window.addEventListener('DOMContentLoaded', () => {
   initSplash();
   const fontApply = initFont();
@@ -944,6 +1035,7 @@ window.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initTools();
   syncRenderedState();
+  initHeaderPin();
   document.getElementById('btnRu').addEventListener('click', () => setLang('ru'));
   document.getElementById('btnUz').addEventListener('click', () => setLang('uz'));
 });
