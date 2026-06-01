@@ -226,6 +226,57 @@ button{cursor:pointer}
 .important-notice{padding:16px 18px;background:linear-gradient(135deg,var(--bg-soft),var(--card));border-left:4px solid var(--primary-strong)}
 .important-notice p{font-size:14px;line-height:1.7;color:var(--muted)}
 
+/* Method guide */
+.method-formula{padding:22px 18px;text-align:center;background:linear-gradient(135deg,var(--bg-soft),var(--card));border:1px solid var(--line-strong);border-radius:20px;margin-bottom:16px}
+.method-formula-ar{font-family:'Noto Naskh Arabic','Amiri',serif;direction:rtl;font-size:clamp(20px,4vw,30px);line-height:2.2;color:var(--primary-strong);font-weight:700}
+.method-formula-ar .ph{display:inline-block;padding:2px 10px;margin:0 4px;border-radius:12px;background:rgba(var(--theme-rgb),.12);border:1px dashed var(--line-strong);color:var(--primary-strong);font-size:.85em;vertical-align:middle}
+.method-formula-caption{margin-top:10px;color:var(--muted);font-size:13px;line-height:1.6}
+.method-block{margin-bottom:16px}
+.method-block-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:0 4px 10px}
+.method-block-title{font-family:'Amiri',serif;font-size:17px;color:var(--primary-strong);font-weight:700}
+.method-block-hint{font-size:11px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.08em}
+.method-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.method-chip{
+  display:flex;flex-direction:column;gap:4px;
+  padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);
+  cursor:pointer;transition:.22s ease;text-align:right;direction:rtl;
+  user-select:none;-webkit-user-select:none;
+}
+.method-chip:hover{transform:translateY(-2px);border-color:var(--line-strong);box-shadow:0 10px 22px var(--shadow);background:var(--card-2)}
+.method-chip:active{transform:translateY(0) scale(.98)}
+.method-chip.copied{background:linear-gradient(135deg,var(--primary-strong),var(--primary));color:#fff;border-color:transparent}
+.method-chip.copied .chip-ru,.method-chip.copied .chip-tr{color:rgba(255,255,255,.85)}
+.chip-ar{font-family:'Noto Naskh Arabic','Amiri',serif;font-size:20px;line-height:1.4;font-weight:700}
+.chip-ru{font-size:12px;color:var(--muted);direction:ltr;text-align:right;line-height:1.4}
+.chip-tr{font-size:10.5px;color:var(--muted-2);direction:ltr;text-align:right;font-style:italic}
+.method-example{padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--card);margin-bottom:10px;display:grid;gap:6px}
+.method-example .ex-ar{font-family:'Noto Naskh Arabic','Amiri',serif;direction:rtl;font-size:20px;line-height:1.9;color:var(--text);font-weight:600;text-align:right}
+.method-example .ex-ru{font-size:13.5px;color:var(--text);line-height:1.55}
+.method-example .ex-tr{font-size:11.5px;color:var(--muted-2);font-style:italic}
+.method-tip{padding:12px 14px;border-radius:12px;background:rgba(var(--theme-rgb),.08);font-size:12.5px;color:var(--primary-strong);line-height:1.6;margin-bottom:10px}
+
+/* Inline collapsible method block inside ruqya sections */
+.inline-method{border:1px dashed var(--line-strong);border-radius:18px;background:linear-gradient(180deg,var(--card-2),var(--card));margin-bottom:16px;overflow:hidden;transition:.25s ease}
+.inline-method.open{border-style:solid;border-color:var(--line-strong);box-shadow:0 16px 32px rgba(var(--theme-rgb),.08)}
+.inline-method-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;cursor:pointer;user-select:none}
+.inline-method-head:hover{background:rgba(var(--theme-rgb),.04)}
+.inline-method-title{font-family:'Amiri',serif;font-size:15px;color:var(--primary-strong);font-weight:700;display:flex;align-items:center;gap:8px}
+.inline-method-badge{font-size:10.5px;color:var(--muted-2);background:rgba(var(--theme-rgb),.08);padding:3px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.inline-method-chev{font-size:18px;color:var(--primary-strong);transition:transform .25s ease}
+.inline-method.open .inline-method-chev{transform:rotate(180deg)}
+.inline-method-body{display:none;padding:0 16px 16px;border-top:1px dashed var(--line)}
+.inline-method.open .inline-method-body{display:block}
+.inline-method-body .method-formula{padding:14px 12px;margin:14px 0 12px}
+.inline-method-body .method-formula-ar{font-size:clamp(16px,3vw,22px);line-height:1.9}
+.inline-method-body .method-block{margin-bottom:12px}
+.inline-method-body .method-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.inline-method-body .method-chip{padding:9px 11px}
+.inline-method-body .chip-ar{font-size:17px}
+.inline-method-body .chip-ru{font-size:11px}
+.inline-method-body .chip-tr{font-size:10px}
+.inline-method-body .method-example{padding:11px 13px}
+.inline-method-body .method-example .ex-ar{font-size:17px;line-height:1.8}
+
 .ruqya-card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.04);margin-bottom:12px;transition:.25s ease}
 .ruqya-card.hidden{display:none}
 .ruqya-card.open{border-color:var(--line-strong);box-shadow:0 18px 34px rgba(var(--theme-rgb),.1)}
@@ -411,145 +462,130 @@ button{cursor:pointer}
 
 <script>
 const ruqyaData = [
-  {id:"g1",section:"general",num:1,ru:"Преграда в уделе (ризк)",uz:"Rizqdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الرِّزْقِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-р-ризкъ.",transRu:"С именем Аллаха, я делаю рукья от преграды в уделе.",transUz:"Allohning ismi bilan, rizqdagi to'siqdan ruqiya qilaman."},
-  {id:"g2",section:"general",num:2,ru:"Преграда в успехе",uz:"Muvaffaqiyatdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّجَاحِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-наджах.",transRu:"С именем Аллаха, я делаю рукья от преграды в успехе.",transUz:"Allohning ismi bilan, muvaffaqiyatdagi to'siqdan ruqiya qilaman."},
-  {id:"g3",section:"general",num:3,ru:"Преграда в продажах",uz:"Savdodagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْبَيْعِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-бай'.",transRu:"С именем Аллаха, я делаю рукья от преграды в продажах.",transUz:"Allohning ismi bilan, savdodagi to'siqdan ruqiya qilaman."},
-  {id:"s1",section:"sales",num:1,ru:"Преграда в обзвоне клиентов",uz:"Mijozlarga qo'ng'iroqdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الِاتِّصَالِ بِالْعُمَلَاءِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-иттисали би-ль-'умаля.",transRu:"С именем Аллаха, я делаю рукья от преграды в обзвоне клиентов.",transUz:"Allohning ismi bilan, mijozlarga qo'ng'iroq qilishdagi to'siqdan ruqiya qilaman."},
-  {id:"s2",section:"sales",num:2,ru:"Преграда в обработке возражений",uz:"E'tirozlarni ishlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي مُعَالَجَةِ الِاعْتِرَاضَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи му'аляджати-ль-и'тирадат.",transRu:"С именем Аллаха, я делаю рукья от преграды в обработке возражений.",transUz:"Allohning ismi bilan, e'tirozlarni ishlashdagi to'siqdan ruqiya qilaman."},
-  {id:"s3",section:"sales",num:3,ru:"Преграда в завершении сделки",uz:"Bitimni yakunlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي إِتْمَامِ الصَّفْقَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи итмами-с-сафкъа.",transRu:"С именем Аллаха, я делаю рукья от преграды в завершении сделки.",transUz:"Allohning ismi bilan, bitimni yakunlashdagi to'siqdan ruqiya qilaman."},
-  {id:"s4",section:"sales",num:4,ru:"Преграда в согласии клиента",uz:"Mijoz roziligi to'siqligi",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي مُوَافَقَةِ الْعَمِيلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи муафакъати-ль-'амиль.",transRu:"С именем Аллаха, я делаю рукья от преграды в согласии клиента.",transUz:"Allohning ismi bilan, mijoz roziligidagi to'siqdan ruqiya qilaman."},
-  {id:"s5",section:"sales",num:5,ru:"Преграда в конверсии заявок",uz:"So'rovlar konversiyasidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي تَحْوِيلِ الطَّلَبَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи тахвили-т-талабат.",transRu:"С именем Аллаха, я делаю рукья от преграды в конверсии заявок.",transUz:"Allohning ismi bilan, so'rovlar konversiyasidagi to'siqdan ruqiya qilaman."},
-  {id:"s6",section:"sales",num:6,ru:"Преграда в привлечении внимания клиента",uz:"Mijoz e'tiborini jalb qilishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي جَذْبِ اهْتِمَامِ الْعَمِيلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи джазби-хтимами-ль-'амиль.",transRu:"С именем Аллаха, я делаю рукья от преграды в привлечении внимания клиента.",transUz:"Allohning ismi bilan, mijoz e'tiborini jalb qilishdagi to'siqdan ruqiya qilaman."},
-  {id:"s7",section:"sales",num:7,ru:"Преграда в оценке клиента",uz:"Mijozni baholashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي تَأْهِيلِ الْعَمِيلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи таъхили-ль-'амиль.",transRu:"С именем Аллаха, я делаю рукья от преграды в оценке клиента.",transUz:"Allohning ismi bilan, mijozni baholashdagi to'siqdan ruqiya qilaman."},
-  {id:"s8",section:"sales",num:8,ru:"Преграда в ценообразовании",uz:"Narx belgilashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّسْعِيرِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тас'ир.",transRu:"С именем Аллаха, я делаю рукья от преграды в ценообразовании.",transUz:"Allohning ismi bilan, narx belgilashdagi to'siqdan ruqiya qilaman."},
-  {id:"s9",section:"sales",num:9,ru:"Преграда в доверии клиента",uz:"Mijoz ishonchidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي ثِقَةِ الْعَمِيلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сикъати-ль-'амиль.",transRu:"С именем Аллаха, я делаю рукья от преграды в доверии клиента.",transUz:"Allohning ismi bilan, mijoz ishonchidagi to'siqdan ruqiya qilaman."},
-  {id:"s10",section:"sales",num:10,ru:"Преграда в повторных продажах",uz:"Takroriy savdolardagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْبَيْعِ الْمُتَكَرِّرِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-бай'и-ль-мутакаррир.",transRu:"С именем Аллаха, я делаю рукья от преграды в повторных продажах.",transUz:"Allohning ismi bilan, takroriy savdolardagi to'siqdan ruqiya qilaman."},
-  {id:"s11",section:"sales",num:11,ru:"Преграда в воронке продаж",uz:"Savdo hunisidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي مَسَارِ الْبَيْعِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи масари-ль-бай'.",transRu:"С именем Аллаха, я делаю рукья от преграды в воронке продаж.",transUz:"Allohning ismi bilan, savdo hunisidagi to'siqdan ruqiya qilaman."},
-  {id:"s12",section:"sales",num:12,ru:"Преграда в активности действий",uz:"Harakatlar faolligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّشَاطِ فِي الْأَعْمَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-нашати фи-ль-а'маль.",transRu:"С именем Аллаха, я делаю рукья от преграды в активности действий.",transUz:"Allohning ismi bilan, harakatlar faolligidagi to'siqdan ruqiya qilaman."},
-  {id:"s13",section:"sales",num:13,ru:"Преграда в коллективе из-за зависти",uz:"Hasad sababli jamoadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْفَرِيقِ مِنَ الْحَسَدِ وَالْعَيْنِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-фарикъи мина-ль-хасади ва-ль-'айн.",transRu:"С именем Аллаха, я делаю рукья от преграды в коллективе из-за зависти и сглаза.",transUz:"Allohning ismi bilan, hasad va ko'z tegish sababli jamoadagi to'siqdan ruqiya qilaman."},
-  {id:"su1",section:"success",num:1,ru:"Преграда в смелости действовать",uz:"Harakat qilish jasoratidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الشَّجَاعَةِ لِلْعَمَلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ш-шаджа'ати ли-ль-'амаль.",transRu:"С именем Аллаха, я делаю рукья от преграды в смелости действовать.",transUz:"Allohning ismi bilan, harakat qilish jasoratidagi to'siqdan ruqiya qilaman."},
-  {id:"su2",section:"success",num:2,ru:"Преграда в принятии решений",uz:"Qaror qabul qilishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي اتِّخَاذِ الْقَرَارَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ттихази-ль-къарарат.",transRu:"С именем Аллаха, я делаю рукья от преграды в принятии решений.",transUz:"Allohning ismi bilan, qaror qabul qilishdagi to'siqdan ruqiya qilaman."},
-  {id:"su3",section:"success",num:3,ru:"Преграда в уверенности в себе",uz:"O'ziga ishonchdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الثِّقَةِ بِالنَّفْسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-с-сикъати би-н-нафс.",transRu:"С именем Аллаха, я делаю рукья от преграды в уверенности в себе.",transUz:"Allohning ismi bilan, o'ziga ishonchdagi to'siqdan ruqiya qilaman."},
-  {id:"su4",section:"success",num:4,ru:"Преграда в мотивации",uz:"Motivatsiyadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الدَّافِعِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-д-дафи'.",transRu:"С именем Аллаха, я делаю рукья от преграды в мотивации.",transUz:"Allohning ismi bilan, motivatsiyadagi to'siqdan ruqiya qilaman."},
-  {id:"su5",section:"success",num:5,ru:"Преграда в защите от зависти",uz:"Hasaddan himoyadadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّجَاحِ مِنْ حَسَدِ الْمُحِيطِينَ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-наджахи мин хасади-ль-мухитин.",transRu:"С именем Аллаха, я делаю рукья от преграды в успехе из-за зависти окружающих.",transUz:"Allohning ismi bilan, atrofdagilar hasadi sababli muvaffaqiyatdagi to'siqdan ruqiya qilaman."},
-  {id:"su6",section:"success",num:6,ru:"Преграда в карьерном росте",uz:"Karyera o'sishidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّرَقِّي الْوَظِيفِيِّ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-таракъкъи-ль-вазифий.",transRu:"С именем Аллаха, я делаю рукья от преграды в карьерном росте.",transUz:"Allohning ismi bilan, karyera o'sishidagi to'siqdan ruqiya qilaman."},
-  {id:"su7",section:"success",num:7,ru:"Преграда в концентрации и фокусе",uz:"Diqqat va e'tibordagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّرْكِيزِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-таркиз.",transRu:"С именем Аллаха, я делаю рукья от преграды в концентрации.",transUz:"Allohning ismi bilan, diqqat va e'tibordagi to'siqdan ruqiya qilaman."},
-  {id:"su8",section:"success",num:8,ru:"Преграда в принятии перемен",uz:"O'zgarishlarni qabul qilishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قَبُولِ التَّغْيِيرِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къабули-т-тагъйир.",transRu:"С именем Аллаха, я делаю рукья от преграды в принятии перемен.",transUz:"Allohning ismi bilan, o'zgarishlarni qabul qilishdagi to'siqdan ruqiya qilaman."},
-  {id:"su9",section:"success",num:9,ru:"Преграда в позитивном мышлении",uz:"Ijobiy fikrlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّفْكِيرِ الْإِيجَابِيِّ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тафкири-ль-иджабий.",transRu:"С именем Аллаха, я делаю рукья от преграды в позитивном мышлении.",transUz:"Allohning ismi bilan, ijobiy fikrlashdagi to'siqdan ruqiya qilaman."},
-  {id:"su10",section:"success",num:10,ru:"Преграда в достижении целей",uz:"Maqsadlarga erishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي تَحْقِيقِ الْأَهْدَافِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи тахкъикъи-ль-ахдаф.",transRu:"С именем Аллаха, я делаю рукья от преграды в достижении целей.",transUz:"Allohning ismi bilan, maqsadlarga erishdagi to'siqdan ruqiya qilaman."},
-  {id:"su11",section:"success",num:11,ru:"Преграда в силе воли",uz:"Iroda kuchidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قُوَّةِ الْإِرَادَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къуввати-ль-ирада.",transRu:"С именем Аллаха, я делаю рукья от преграды в силе воли.",transUz:"Allohning ismi bilan, iroda kuchidagi to'siqdan ruqiya qilaman."},
-  {id:"su12",section:"success",num:12,ru:"Преграда в развитии и росте",uz:"Rivojlanish va o'sishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّطَوُّرِ وَالنُّمُوِّ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-татаввури ва-н-нумувв.",transRu:"С именем Аллаха, я делаю рукья от преграды в развитии и росте.",transUz:"Allohning ismi bilan, rivojlanish va o'sishdagi to'siqdan ruqiya qilaman."},
-  {id:"h1",section:"health",num:1,ru:"Преграда в исцелении от болей",uz:"Og'riqlardan shifo topdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي شِفَاءِ الْآلَامِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи шифаи-ль-алям.",transRu:"С именем Аллаха, я делаю рукья от преграды в исцелении от болей.",transUz:"Allohning ismi bilan, og'riqlardan shifo topdashdagi to'siqdan ruqiya qilaman."},
-  {id:"h2",section:"health",num:2,ru:"Преграда в здоровом сне",uz:"Sog'lom uyqudagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّوْمِ الصَّحِيحِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-науми-с-сахих.",transRu:"С именем Аллаха, я делаю рукья от преграды в здоровом сне.",transUz:"Allohning ismi bilan, sog'lom uyqudagi to'siqdan ruqiya qilaman."},
-  {id:"h3",section:"health",num:3,ru:"Преграда в спокойствии души",uz:"Ruh xotirjamligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي سَكِينَةِ النَّفْسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сакинати-н-нафс.",transRu:"С именем Аллаха, я делаю рукья от преграды в спокойствии души.",transUz:"Allohning ismi bilan, ruh xotirjamligidagi to'siqdan ruqiya qilaman."},
-  {id:"h4",section:"health",num:4,ru:"Преграда в силе тела",uz:"Tana kuchidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قُوَّةِ الْجَسَدِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къуввати-ль-джасад.",transRu:"С именем Аллаха, я делаю рукья от преграды в силе тела.",transUz:"Allohning ismi bilan, tana kuchidagi to'siqdan ruqiya qilaman."},
-  {id:"h5",section:"health",num:5,ru:"Преграда в ясности ума",uz:"Aql ravshanligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي صَفَاءِ الْعَقْلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сафаи-ль-'акъль.",transRu:"С именем Аллаха, я делаю рукья от преграды в ясности ума.",transUz:"Allohning ismi bilan, aql ravshanligidagi to'siqdan ruqiya qilaman."},
-  {id:"h6",section:"health",num:6,ru:"Преграда в радости и бодрости",uz:"Quvonch va tetiklikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْفَرَحِ وَالنَّشَاطِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-фарахи ва-н-нашат.",transRu:"С именем Аллаха, я делаю рукья от преграды в радости и бодрости.",transUz:"Allohning ismi bilan, quvonch va tetiklikdagi to'siqdan ruqiya qilaman."},
-  {id:"h7",section:"health",num:7,ru:"Преграда в здоровье пищеварения",uz:"Hazm salomatligi to'siqligi",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي صِحَّةِ الْهَضْمِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сыххати-ль-хадм.",transRu:"С именем Аллаха, я делаю рукья от преграды в здоровье пищеварения.",transUz:"Allohning ismi bilan, hazm salomatligidagi to'siqdan ruqiya qilaman."},
-  {id:"h8",section:"health",num:8,ru:"Преграда в крепости иммунитета",uz:"Immunitet mustahkamligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قُوَّةِ الْمَنَاعَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къуввати-ль-мана'а.",transRu:"С именем Аллаха, я делаю рукья от преграды в крепости иммунитета.",transUz:"Allohning ismi bilan, immunitet mustahkamligidagi to'siqdan ruqiya qilaman."},
-  {id:"h9",section:"health",num:9,ru:"Преграда в здоровье спины и суставов",uz:"Bel va bo'g'imlar salomatligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي صِحَّةِ الظَّهْرِ وَالْمَفَاصِلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сыххати-з-захри ва-ль-мафасиль.",transRu:"С именем Аллаха, я делаю рукья от преграды в здоровье спины и суставов.",transUz:"Allohning ismi bilan, bel va bo'g'imlar salomatligidagi to'siqdan ruqiya qilaman."},
-  {id:"h10",section:"health",num:10,ru:"Преграда в общем исцелении тела и духа",uz:"Tana va ruh umumiy shifo to'siqligi",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي شِفَاءِ الْجَسَدِ وَالرُّوحِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи шифаи-ль-джасади ва-р-рух.",transRu:"С именем Аллаха, я делаю рукья от преграды в исцелении тела и духа.",transUz:"Allohning ismi bilan, tana va ruh shifo topishidagi to'siqdan ruqiya qilaman."},
-  {id:"r1",section:"relationships",num:1,ru:"Преграда в согласии между супругами",uz:"Er-xotin kelishuvdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْوِفَاقِ بَيْنَ الزَّوْجَيْنِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-вифакъи байна-з-зауджайн.",transRu:"С именем Аллаха, я делаю рукья от преграды в согласии между супругами.",transUz:"Allohning ismi bilan, er-xotin kelishuvdagi to'siqdan ruqiya qilaman."},
-  {id:"r2",section:"relationships",num:2,ru:"Преграда в доверии в отношениях",uz:"Munosabatlardagi ishonchdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الثِّقَةِ فِي الْعَلَاقَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-с-сикъати фи-ль-'алякъат.",transRu:"С именем Аллаха, я делаю рукья от преграды в доверии в отношениях.",transUz:"Allohning ismi bilan, munosabatlardagi ishonchdagi to'siqdan ruqiya qilaman."},
-  {id:"r3",section:"relationships",num:3,ru:"Преграда в мире и покое в семье",uz:"Oiladagi tinchlik va osoyishtalikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي السَّلَامِ فِي الْأُسْرَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-с-салями фи-ль-усра.",transRu:"С именем Аллаха, я делаю рукья от преграды в мире и покое в семье.",transUz:"Allohning ismi bilan, oiladagi tinchlikdagi to'siqdan ruqiya qilaman."},
-  {id:"r4",section:"relationships",num:4,ru:"Преграда в теплоте семейных отношений",uz:"Oilaviy munosabatlar iliqligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي دِفْءِ الْعَلَاقَاتِ الْأُسَرِيَّةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи диф'и-ль-'алякъати-ль-усарийя.",transRu:"С именем Аллаха, я делаю рукья от преграды в теплоте семейных отношений.",transUz:"Allohning ismi bilan, oilaviy munosabatlar iliqligidagi to'siqdan ruqiya qilaman."},
-  {id:"r5",section:"relationships",num:5,ru:"Преграда в связях с родными",uz:"Qarindoshlar bilan aloqadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي صِلَةِ الرَّحِمِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи силяти-р-рахим.",transRu:"С именем Аллаха, я делаю рукья от преграды в связях с родными.",transUz:"Allohning ismi bilan, qarindoshlar bilan aloqadagi to'siqdan ruqiya qilaman."},
-  {id:"r6",section:"relationships",num:6,ru:"Преграда в воспитании детей",uz:"Bolalar tarbiyasidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي تَرْبِيَةِ الْأَوْلَادِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи тарбияти-ль-ауляд.",transRu:"С именем Аллаха, я делаю рукья от преграды в воспитании детей.",transUz:"Allohning ismi bilan, bolalar tarbiyasidagi to'siqdan ruqiya qilaman."},
-  {id:"r7",section:"relationships",num:7,ru:"Преграда в общении с людьми",uz:"Odamlar bilan muloqotdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّوَاصُلِ مَعَ النَّاسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тавасули ма'а-н-нас.",transRu:"С именем Аллаха, я делаю рукья от преграды в общении с людьми.",transUz:"Allohning ismi bilan, odamlar bilan muloqotdagi to'siqdan ruqiya qilaman."},
-  {id:"r8",section:"relationships",num:8,ru:"Преграда в понимании между поколениями",uz:"Avlodlar o'rtasidagi tushunishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّفَاهُمِ بَيْنَ الْأَجْيَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тафахуми байна-ль-аджйаль.",transRu:"С именем Аллаха, я делаю рукья от преграды в понимании между поколениями.",transUz:"Allohning ismi bilan, avlodlar o'rtasidagi tushunishdagi to'siqdan ruqiya qilaman."},
-  {id:"r9",section:"relationships",num:9,ru:"Преграда в дружбе и товариществе",uz:"Do'stlik va o'rtoqlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الصَّدَاقَةِ وَالْمَوَدَّةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-с-садакъати ва-ль-маваддa.",transRu:"С именем Аллаха, я делаю рукья от преграды в дружбе и любви.",transUz:"Allohning ismi bilan, do'stlik va muhabbatdagi to'siqdan ruqiya qilaman."},
-  {id:"r10",section:"relationships",num:10,ru:"Преграда в любви и милости",uz:"Sevgi va mehribonlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْمَحَبَّةِ وَالرَّحْمَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-махаббати ва-р-рахма.",transRu:"С именем Аллаха, я делаю рукья от преграды в любви и милости.",transUz:"Allohning ismi bilan, sevgi va mehribonlikdagi to'siqdan ruqiya qilaman."},
-  {id:"f1",section:"finances",num:1,ru:"Преграда в избавлении от долгов",uz:"Qarzlardan xalos bo'lishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قَضَاءِ الدُّيُونِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къадаи-д-дуюн.",transRu:"С именем Аллаха, я делаю рукья от преграды в избавлении от долгов.",transUz:"Allohning ismi bilan, qarzlardan xalos bo'lishdagi to'siqdan ruqiya qilaman."},
-  {id:"f2",section:"finances",num:2,ru:"Преграда в разумных тратах",uz:"Oqilona xarajatlardagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْإِنْفَاقِ الرَّشِيدِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-инфакъи-р-рашид.",transRu:"С именем Аллаха, я делаю рукья от преграды в разумных тратах.",transUz:"Allohning ismi bilan, oqilona xarajatlardagi to'siqdan ruqiya qilaman."},
-  {id:"f3",section:"finances",num:3,ru:"Преграда в сохранении денег",uz:"Pulni saqlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي حِفْظِ الْمَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи хифзи-ль-маль.",transRu:"С именем Аллаха, я делаю рукья от преграды в сохранении денег.",transUz:"Allohning ismi bilan, pulni saqlashdagi to'siqdan ruqiya qilaman."},
-  {id:"f4",section:"finances",num:4,ru:"Преграда в спокойствии о пропитании",uz:"Rizq haqidagi xotirjamlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الطُّمَأْنِينَةِ فِي الرِّزْقِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тумаънинати фи-р-ризкъ.",transRu:"С именем Аллаха, я делаю рукья от преграды в спокойствии о пропитании.",transUz:"Allohning ismi bilan, rizq haqidagi xotirjamlikdagi to'siqdan ruqiya qilaman."},
-  {id:"f5",section:"finances",num:5,ru:"Преграда в получении заработка",uz:"Daromad olishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْحُصُولِ عَلَى الرَّاتِبِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-хусули 'аля-р-ратиб.",transRu:"С именем Аллаха, я делаю рукья от преграды в получении заработка.",transUz:"Allohning ismi bilan, daromad olishdagi to'siqdan ruqiya qilaman."},
-  {id:"f6",section:"finances",num:6,ru:"Преграда в удачных вложениях",uz:"Muvaffaqiyatli investitsiyalardagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الِاسْتِثْمَارِ النَّاجِحِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-истисмари-н-наджих.",transRu:"С именем Аллаха, я делаю рукья от преграды в удачных вложениях.",transUz:"Allohning ismi bilan, muvaffaqiyatli investitsiyalardagi to'siqdan ruqiya qilaman."},
-  {id:"f7",section:"finances",num:7,ru:"Преграда в защите от обмана",uz:"Aldashdan himoyadadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْحِمَايَةِ مِنَ الِاحْتِيَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-химаяти мина-ль-ихтияль.",transRu:"С именем Аллаха, я делаю рукья от преграды в защите от обмана.",transUz:"Allohning ismi bilan, aldashdan himoyadadagi to'siqdan ruqiya qilaman."},
-  {id:"f8",section:"finances",num:8,ru:"Преграда в щедрости души",uz:"Ko'ngil saxovatidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي سَخَاءِ النَّفْسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сахаи-н-нафс.",transRu:"С именем Аллаха, я делаю рукья от преграды в щедрости души.",transUz:"Allohning ismi bilan, ko'ngil saxovatidagi to'siqdan ruqiya qilaman."},
-  {id:"f9",section:"finances",num:9,ru:"Преграда в открытии путей заработка",uz:"Daromad yo'llarini ochishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي فَتْحِ أَبْوَابِ الْكَسْبِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи фатхи абвабу-ль-касб.",transRu:"С именем Аллаха, я делаю рукья от преграды в открытии путей заработка.",transUz:"Allohning ismi bilan, daromad yo'llarini ochishdagi to'siqdan ruqiya qilaman."},
-  {id:"f10",section:"finances",num:10,ru:"Преграда в баракате имущества",uz:"Mol-mulk barakatidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي بَرَكَةِ الْمَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи баракати-ль-маль.",transRu:"С именем Аллаха, я делаю рукья от преграды в баракате имущества.",transUz:"Allohning ismi bilan, mol-mulk barakatidagi to'siqdan ruqiya qilaman."},
-  {id:"st1",section:"studies",num:1,ru:"Преграда в запоминании",uz:"Eslab qolishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْحِفْظِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-хифз.",transRu:"С именем Аллаха, я делаю рукья от преграды в запоминании.",transUz:"Allohning ismi bilan, eslab qolishdagi to'siqdan ruqiya qilaman."},
-  {id:"st2",section:"studies",num:2,ru:"Преграда во внимательности на уроках",uz:"Darslarda e'tibordagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الِانْتِبَاهِ فِي الدُّرُوسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-интибахи фи-д-дурус.",transRu:"С именем Аллаха, я делаю рукья от преграды во внимательности на уроках.",transUz:"Allohning ismi bilan, darslarda e'tibordagi to'siqdan ruqiya qilaman."},
-  {id:"st3",section:"studies",num:3,ru:"Преграда в спокойствии на экзаменах",uz:"Imtihonlarda xotirjamlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الطُّمَأْنِينَةِ فِي الِامْتِحَانَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тумаънинати фи-ль-имтиханат.",transRu:"С именем Аллаха, я делаю рукья от преграды в спокойствии на экзаменах.",transUz:"Allohning ismi bilan, imtihonlarda xotirjamlikdagi to'siqdan ruqiya qilaman."},
-  {id:"st4",section:"studies",num:4,ru:"Преграда в усердии в учёбе",uz:"O'qishda tirishqoqlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الِاجْتِهَادِ فِي الدِّرَاسَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-иджтихади фи-д-дираса.",transRu:"С именем Аллаха, я делаю рукья от преграды в усердии в учёбе.",transUz:"Allohning ismi bilan, o'qishda tirishqoqlikdagi to'siqdan ruqiya qilaman."},
-  {id:"st5",section:"studies",num:5,ru:"Преграда в понимании наук",uz:"Ilmlarni tushunishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي فَهْمِ الْعُلُومِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи фахми-ль-'улюм.",transRu:"С именем Аллаха, я делаю рукья от преграды в понимании наук.",transUz:"Allohning ismi bilan, ilmlarni tushunishdagi to'siqdan ruqiya qilaman."},
-  {id:"st6",section:"studies",num:6,ru:"Преграда в хороших оценках",uz:"Yaxshi baholardagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي حُسْنِ الدَّرَجَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи хусни-д-дараджат.",transRu:"С именем Аллаха, я делаю рукья от преграды в хороших оценках.",transUz:"Allohning ismi bilan, yaxshi baholardagi to'siqdan ruqiya qilaman."},
-  {id:"st7",section:"studies",num:7,ru:"Преграда в отношениях с преподавателями",uz:"O'qituvchilar bilan munosabatdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْعَلَاقَةِ مَعَ الْمُعَلِّمِينَ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-'алякъати ма'а-ль-му'аллимин.",transRu:"С именем Аллаха, я делаю рукья от преграды в отношениях с преподавателями.",transUz:"Allohning ismi bilan, o'qituvchilar bilan munosabatdagi to'siqdan ruqiya qilaman."},
-  {id:"st8",section:"studies",num:8,ru:"Преграда в учёбе из-за сглаза",uz:"Ko'z tegish sababli o'qishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الدِّرَاسَةِ مِنَ الْعَيْنِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-д-дирасати мина-ль-'айн.",transRu:"С именем Аллаха, я делаю рукья от преграды в учёбе из-за сглаза.",transUz:"Allohning ismi bilan, ko'z tegish sababli o'qishdagi to'siqdan ruqiya qilaman."},
-  {id:"st9",section:"studies",num:9,ru:"Преграда в памяти перед экзаменом",uz:"Imtihon oldida xotiradagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الذَّاكِرَةِ قَبْلَ الِامْتِحَانِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-з-закирати къабля-ль-имтихан.",transRu:"С именем Аллаха, я делаю рукья от преграды в памяти перед экзаменом.",transUz:"Allohning ismi bilan, imtihon oldida xotiradagi to'siqdan ruqiya qilaman."},
-  {id:"st10",section:"studies",num:10,ru:"Преграда в открытии дверей знания",uz:"Bilim eshiklarini ochishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي فَتْحِ أَبْوَابِ الْعِلْمِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи фатхи абвабу-ль-'ильм.",transRu:"С именем Аллаха, я делаю рукья от преграды в открытии дверей знания.",transUz:"Allohning ismi bilan, bilim eshiklarini ochishdagi to'siqdan ruqiya qilaman."},
-  {id:"sp1",section:"spiritual",num:1,ru:"Преграда в поклонении",uz:"Ibodatdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْعِبَادَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-'ибада.",transRu:"С именем Аллаха, я делаю рукья от преграды в поклонении.",transUz:"Allohning ismi bilan, ibodatdagi to'siqdan ruqiya qilaman."},
-  {id:"sp2",section:"spiritual",num:2,ru:"Преграда в близости к Аллаху",uz:"Allohga yaqinlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْقُرْبِ مِنَ اللَّهِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-къурби мина-Ллях.",transRu:"С именем Аллаха, я делаю рукья от преграды в близости к Аллаху.",transUz:"Allohning ismi bilan, Allohga yaqinlikdagi to'siqdan ruqiya qilaman."},
-  {id:"sp3",section:"spiritual",num:3,ru:"Преграда в лёгкости намаза",uz:"Namoz yengilligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي خُشُوعِ الصَّلَاةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи хушу'и-с-саля.",transRu:"С именем Аллаха, я делаю рукья от преграды в смиренности намаза.",transUz:"Allohning ismi bilan, namoz xushu'idagi to'siqdan ruqiya qilaman."},
-  {id:"sp4",section:"spiritual",num:4,ru:"Преграда в сосредоточенности в дуа",uz:"Duoda diqqatdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْخُشُوعِ فِي الدُّعَاءِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-хушу'и фи-д-ду'а.",transRu:"С именем Аллаха, я делаю рукья от преграды в сосредоточенности в дуа.",transUz:"Allohning ismi bilan, duoda diqqatdagi to'siqdan ruqiya qilaman."},
-  {id:"sp5",section:"spiritual",num:5,ru:"Преграда в защите от наущений",uz:"Vasvosadan himoyadadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْحِمَايَةِ مِنَ الْوَسْوَسَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-химаяти мина-ль-васваса.",transRu:"С именем Аллаха, я делаю рукья от преграды в защите от наущений.",transUz:"Allohning ismi bilan, vasvosadan himoyadadagi to'siqdan ruqiya qilaman."},
-  {id:"sp6",section:"spiritual",num:6,ru:"Преграда в мягкости сердца",uz:"Qalb yumshoqligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي لِينِ الْقَلْبِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи лини-ль-къальб.",transRu:"С именем Аллаха, я делаю рукья от преграды в мягкости сердца.",transUz:"Allohning ismi bilan, qalb yumshoqligidagi to'siqdan ruqiya qilaman."},
-  {id:"sp7",section:"spiritual",num:7,ru:"Преграда в чтении Корана",uz:"Qur'on o'qishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قِرَاءَةِ الْقُرْآنِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къираъати-ль-Къуръан.",transRu:"С именем Аллаха, я делаю рукья от преграды в чтении Корана.",transUz:"Allohning ismi bilan, Qur'on o'qishdagi to'siqdan ruqiya qilaman."},
-  {id:"sp8",section:"spiritual",num:8,ru:"Преграда в спокойном сне",uz:"Tinch uyqudagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّوْمِ الْهَادِئِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-науми-ль-хадиъ.",transRu:"С именем Аллаха, я делаю рукья от преграды в спокойном сне.",transUz:"Allohning ismi bilan, tinch uyqudagi to'siqdan ruqiya qilaman."},
-  {id:"sp9",section:"spiritual",num:9,ru:"Преграда в твёрдости веры",uz:"Imon mustahkamligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي ثَبَاتِ الْإِيمَانِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сабати-ль-иман.",transRu:"С именем Аллаха, я делаю рукья от преграды в твёрдости веры.",transUz:"Allohning ismi bilan, imon mustahkamligidagi to'siqdan ruqiya qilaman."},
-  {id:"sp10",section:"spiritual",num:10,ru:"Преграда в укреплении связи с Аллахом",uz:"Alloh bilan aloqani mustahkamlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي تَقْوِيَةِ الصِّلَةِ بِاللَّهِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи такъвияти-с-сыляти би-Ллях.",transRu:"С именем Аллаха, я делаю рукья от преграды в укреплении связи с Аллахом.",transUz:"Allohning ismi bilan, Alloh bilan aloqani mustahkamlashdagi to'siqdan ruqiya qilaman."},
+  {id:"g1",section:"general",num:1,ru:"Преграда в уделе (ризк)",uz:"Rizqdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الرِّزْقِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-р-ризкъ.",transRu:"С именем Аллаха, я делаю рукья от преграды в уделе.",transUz:"Allohning ismi bilan, rizqdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الرِّزْقِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи р-ризки.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в уделе.",transUz:"Yo Alloh, rizqda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"g2",section:"general",num:2,ru:"Преграда в успехе",uz:"Muvaffaqiyatdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّجَاحِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-наджах.",transRu:"С именем Аллаха, я делаю рукья от преграды в успехе.",transUz:"Allohning ismi bilan, muvaffaqiyatdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي النَّجَاحِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи н-наджахи.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в успехе.",transUz:"Yo Alloh, muvaffaqiyatda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"g3",section:"general",num:3,ru:"Преграда в продажах",uz:"Savdodagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْبَيْعِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-бай'.",transRu:"С именем Аллаха, я делаю рукья от преграды в продажах.",transUz:"Allohning ismi bilan, savdodagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الْبَيْعِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи ль-бай'и.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в продажах.",transUz:"Yo Alloh, savdoda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"s1",section:"sales",num:1,ru:"Преграда в обзвоне клиентов",uz:"Mijozlarga qo'ng'iroqdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الِاتِّصَالِ بِالْعُمَلَاءِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-иттисали би-ль-'умаля.",transRu:"С именем Аллаха, я делаю рукья от преграды в обзвоне клиентов.",transUz:"Allohning ismi bilan, mijozlarga qo'ng'iroq qilishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي الِاتِّصَالِ بِالْعُمَلَاءِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи ль-иттисали би-ль-'умаля.",transRu:"О Аллах, аннулируй всякую преграду от зависти в обзвоне клиентов.",transUz:"Yo Alloh, mijozlar bilan aloqada hasaddan har qanday to'siqni bekor qil."}},
+  {id:"s2",section:"sales",num:2,ru:"Преграда в обработке возражений",uz:"E'tirozlarni ishlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي مُعَالَجَةِ الِاعْتِرَاضَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи му'аляджати-ль-и'тирадат.",transRu:"С именем Аллаха, я делаю рукья от преграды в обработке возражений.",transUz:"Allohning ismi bilan, e'tirozlarni ishlashdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي مُعَالَجَةِ الِاعْتِرَاضَاتِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи му'аляджати-ль-и'тирадат.",transRu:"О Аллах, аннулируй всякую преграду от зависти в обработке возражений.",transUz:"Yo Alloh, e'tirozlarni ishlashda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"s3",section:"sales",num:3,ru:"Преграда в завершении сделки",uz:"Bitimni yakunlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي إِتْمَامِ الصَّفْقَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи итмами-с-сафкъа.",transRu:"С именем Аллаха, я делаю рукья от преграды в завершении сделки.",transUz:"Allohning ismi bilan, bitimni yakunlashdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي إِتْمَامِ الصَّفْقَةِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи итмами-с-сафкъати.",transRu:"О Аллах, аннулируй всякую преграду от зависти в завершении сделки.",transUz:"Yo Alloh, bitimni yakunlashda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"s4",section:"sales",num:4,ru:"Преграда в согласии клиента",uz:"Mijoz roziligi to'siqligi",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي مُوَافَقَةِ الْعَمِيلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи муафакъати-ль-'амиль.",transRu:"С именем Аллаха, я делаю рукья от преграды в согласии клиента.",transUz:"Allohning ismi bilan, mijoz roziligidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي مُوَافَقَةِ الْعَمِيلِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи муафакъати-ль-'амили.",transRu:"О Аллах, аннулируй всякую преграду от зависти в согласии клиента.",transUz:"Yo Alloh, mijoz roziligida hasaddan har qanday to'siqni bekor qil."}},
+  {id:"s5",section:"sales",num:5,ru:"Преграда в конверсии заявок",uz:"So'rovlar konversiyasidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي تَحْوِيلِ الطَّلَبَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи тахвили-т-талабат.",transRu:"С именем Аллаха, я делаю рукья от преграды в конверсии заявок.",transUz:"Allohning ismi bilan, so'rovlar konversiyasidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي تَحْوِيلِ الطَّلَبَاتِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи тахвили-т-талабати.",transRu:"О Аллах, аннулируй всякую преграду от зависти в конверсии заявок.",transUz:"Yo Alloh, so'rovlar konversiyasida hasaddan har qanday to'siqni bekor qil."}},
+  {id:"s6",section:"sales",num:6,ru:"Преграда в привлечении внимания клиента",uz:"Mijoz e'tiborini jalb qilishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي جَذْبِ اهْتِمَامِ الْعَمِيلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи джазби-хтимами-ль-'амиль.",transRu:"С именем Аллаха, я делаю рукья от преграды в привлечении внимания клиента.",transUz:"Allohning ismi bilan, mijoz e'tiborini jalb qilishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي جَذْبِ اهْتِمَامِ الْعَمِيلِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи джазби-хтимами-ль-'амили.",transRu:"О Аллах, аннулируй всякую преграду от зависти в привлечении внимания клиента.",transUz:"Yo Alloh, mijoz e'tiborini jalb qilishda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"s7",section:"sales",num:7,ru:"Преграда в оценке клиента",uz:"Mijozni baholashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي تَأْهِيلِ الْعَمِيلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи таъхили-ль-'амиль.",transRu:"С именем Аллаха, я делаю рукья от преграды в оценке клиента.",transUz:"Allohning ismi bilan, mijozni baholashdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي تَأْهِيلِ الْعَمِيلِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи таъхили-ль-'амили.",transRu:"О Аллах, аннулируй всякую преграду от зависти в оценке клиента.",transUz:"Yo Alloh, mijozni baholashda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"s8",section:"sales",num:8,ru:"Преграда в ценообразовании",uz:"Narx belgilashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّسْعِيرِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тас'ир.",transRu:"С именем Аллаха, я делаю рукья от преграды в ценообразовании.",transUz:"Allohning ismi bilan, narx belgilashdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي التَّسْعِيرِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи т-тас'ири.",transRu:"О Аллах, аннулируй всякую преграду от зависти в ценообразовании.",transUz:"Yo Alloh, narx belgilashda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"s9",section:"sales",num:9,ru:"Преграда в доверии клиента",uz:"Mijoz ishonchidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي ثِقَةِ الْعَمِيلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сикъати-ль-'амиль.",transRu:"С именем Аллаха, я делаю рукья от преграды в доверии клиента.",transUz:"Allohning ismi bilan, mijoz ishonchidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي ثِقَةِ الْعَمِيلِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи сикъати-ль-'амили.",transRu:"О Аллах, аннулируй всякую преграду от зависти в доверии клиента.",transUz:"Yo Alloh, mijoz ishonchida hasaddan har qanday to'siqni bekor qil."}},
+  {id:"s10",section:"sales",num:10,ru:"Преграда в повторных продажах",uz:"Takroriy savdolardagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْبَيْعِ الْمُتَكَرِّرِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-бай'и-ль-мутакаррир.",transRu:"С именем Аллаха, я делаю рукья от преграды в повторных продажах.",transUz:"Allohning ismi bilan, takroriy savdolardagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي الْبَيْعِ الْمُتَكَرِّرِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи ль-бай'и-ль-мутакаррири.",transRu:"О Аллах, аннулируй всякую преграду от зависти в повторных продажах.",transUz:"Yo Alloh, takroriy savdolarda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"s11",section:"sales",num:11,ru:"Преграда в воронке продаж",uz:"Savdo hunisidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي مَسَارِ الْبَيْعِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи масари-ль-бай'.",transRu:"С именем Аллаха, я делаю рукья от преграды в воронке продаж.",transUz:"Allohning ismi bilan, savdo hunisidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي مَسَارِ الْبَيْعِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи масари-ль-бай'и.",transRu:"О Аллах, аннулируй всякую преграду от зависти в воронке продаж.",transUz:"Yo Alloh, savdo hunisida hasaddan har qanday to'siqni bekor qil."}},
+  {id:"s12",section:"sales",num:12,ru:"Преграда в активности действий",uz:"Harakatlar faolligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّشَاطِ فِي الْأَعْمَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-нашати фи-ль-а'маль.",transRu:"С именем Аллаха, я делаю рукья от преграды в активности действий.",transUz:"Allohning ismi bilan, harakatlar faolligidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي النَّشَاطِ فِي الْأَعْمَالِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи н-нашати фи-ль-а'мали.",transRu:"О Аллах, аннулируй всякую преграду от зависти в активности действий.",transUz:"Yo Alloh, harakatlar faolligida hasaddan har qanday to'siqni bekor qil."}},
+  {id:"s13",section:"sales",num:13,ru:"Преграда в коллективе из-за зависти",uz:"Hasad sababli jamoadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْفَرِيقِ مِنَ الْحَسَدِ وَالْعَيْنِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-фарикъи мина-ль-хасади ва-ль-'айн.",transRu:"С именем Аллаха, я делаю рукья от преграды в коллективе из-за зависти и сглаза.",transUz:"Allohning ismi bilan, hasad va ko'z tegish sababli jamoadagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي الْفَرِيقِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи ль-фарикъи.",transRu:"О Аллах, аннулируй всякую преграду от зависти в коллективе.",transUz:"Yo Alloh, jamoada hasaddan har qanday to'siqni bekor qil."}},
+  {id:"su1",section:"success",num:1,ru:"Преграда в смелости действовать",uz:"Harakat qilish jasoratidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الشَّجَاعَةِ لِلْعَمَلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ш-шаджа'ати ли-ль-'амаль.",transRu:"С именем Аллаха, я делаю рукья от преграды в смелости действовать.",transUz:"Allohning ismi bilan, harakat qilish jasoratidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي الشَّجَاعَةِ لِلْعَمَلِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи ш-шаджа'ати ли-ль-'амали.",transRu:"О Аллах, аннулируй всякую преграду от зависти в смелости действовать.",transUz:"Yo Alloh, harakat jasoratida hasaddan har qanday to'siqni bekor qil."}},
+  {id:"su2",section:"success",num:2,ru:"Преграда в принятии решений",uz:"Qaror qabul qilishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي اتِّخَاذِ الْقَرَارَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ттихази-ль-къарарат.",transRu:"С именем Аллаха, я делаю рукья от преграды в принятии решений.",transUz:"Allohning ismi bilan, qaror qabul qilishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي اتِّخَاذِ الْقَرَارَاتِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи иттихази-ль-къарарати.",transRu:"О Аллах, аннулируй всякую преграду от зависти в принятии решений.",transUz:"Yo Alloh, qaror qabul qilishda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"su3",section:"success",num:3,ru:"Преграда в уверенности в себе",uz:"O'ziga ishonchdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الثِّقَةِ بِالنَّفْسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-с-сикъати би-н-нафс.",transRu:"С именем Аллаха, я делаю рукья от преграды в уверенности в себе.",transUz:"Allohning ismi bilan, o'ziga ishonchdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي الثِّقَةِ بِالنَّفْسِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи с-сикъати би-н-нафси.",transRu:"О Аллах, аннулируй всякую преграду от зависти в уверенности в себе.",transUz:"Yo Alloh, o'ziga ishonchda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"su4",section:"success",num:4,ru:"Преграда в мотивации",uz:"Motivatsiyadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الدَّافِعِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-д-дафи'.",transRu:"С именем Аллаха, я делаю рукья от преграды в мотивации.",transUz:"Allohning ismi bilan, motivatsiyadagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي الدَّافِعِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи д-дафи'и.",transRu:"О Аллах, аннулируй всякую преграду от зависти в мотивации.",transUz:"Yo Alloh, motivatsiyada hasaddan har qanday to'siqni bekor qil."}},
+  {id:"su5",section:"success",num:5,ru:"Преграда в защите от зависти",uz:"Hasaddan himoyadadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّجَاحِ مِنْ حَسَدِ الْمُحِيطِينَ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-наджахи мин хасади-ль-мухитин.",transRu:"С именем Аллаха, я делаю рукья от преграды в успехе из-за зависти окружающих.",transUz:"Allohning ismi bilan, atrofdagilar hasadi sababli muvaffaqiyatdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي النَّجَاحِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи н-наджахи.",transRu:"О Аллах, аннулируй всякую преграду от зависти в успехе.",transUz:"Yo Alloh, muvaffaqiyatda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"su6",section:"success",num:6,ru:"Преграда в карьерном росте",uz:"Karyera o'sishidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّرَقِّي الْوَظِيفِيِّ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-таракъкъи-ль-вазифий.",transRu:"С именем Аллаха, я делаю рукья от преграды в карьерном росте.",transUz:"Allohning ismi bilan, karyera o'sishidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي التَّرَقِّي الْوَظِيفِيِّ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи т-таракъкъи-ль-вазифий.",transRu:"О Аллах, аннулируй всякую преграду от зависти в карьерном росте.",transUz:"Yo Alloh, karyera o'sishida hasaddan har qanday to'siqni bekor qil."}},
+  {id:"su7",section:"success",num:7,ru:"Преграда в концентрации и фокусе",uz:"Diqqat va e'tibordagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّرْكِيزِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-таркиз.",transRu:"С именем Аллаха, я делаю рукья от преграды в концентрации.",transUz:"Allohning ismi bilan, diqqat va e'tibordagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي التَّرْكِيزِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи т-таркизи.",transRu:"О Аллах, аннулируй всякую преграду от зависти в концентрации.",transUz:"Yo Alloh, diqqatda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"su8",section:"success",num:8,ru:"Преграда в принятии перемен",uz:"O'zgarishlarni qabul qilishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قَبُولِ التَّغْيِيرِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къабули-т-тагъйир.",transRu:"С именем Аллаха, я делаю рукья от преграды в принятии перемен.",transUz:"Allohning ismi bilan, o'zgarishlarni qabul qilishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي قَبُولِ التَّغْيِيرِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи къабули-т-тагъйири.",transRu:"О Аллах, аннулируй всякую преграду от зависти в принятии перемен.",transUz:"Yo Alloh, o'zgarishlarni qabul qilishda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"su9",section:"success",num:9,ru:"Преграда в позитивном мышлении",uz:"Ijobiy fikrlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّفْكِيرِ الْإِيجَابِيِّ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тафкири-ль-иджабий.",transRu:"С именем Аллаха, я делаю рукья от преграды в позитивном мышлении.",transUz:"Allohning ismi bilan, ijobiy fikrlashdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي التَّفْكِيرِ الْإِيجَابِيِّ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи т-тафкири-ль-иджабий.",transRu:"О Аллах, аннулируй всякую преграду от зависти в позитивном мышлении.",transUz:"Yo Alloh, ijobiy fikrlashda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"su10",section:"success",num:10,ru:"Преграда в достижении целей",uz:"Maqsadlarga erishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي تَحْقِيقِ الْأَهْدَافِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи тахкъикъи-ль-ахдаф.",transRu:"С именем Аллаха, я делаю рукья от преграды в достижении целей.",transUz:"Allohning ismi bilan, maqsadlarga erishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي تَحْقِيقِ الْأَهْدَافِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи тахкъикъи-ль-ахдафи.",transRu:"О Аллах, аннулируй всякую преграду от зависти в достижении целей.",transUz:"Yo Alloh, maqsadlarga erishda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"su11",section:"success",num:11,ru:"Преграда в силе воли",uz:"Iroda kuchidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قُوَّةِ الْإِرَادَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къуввати-ль-ирада.",transRu:"С именем Аллаха, я делаю рукья от преграды в силе воли.",transUz:"Allohning ismi bilan, iroda kuchidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي قُوَّةِ الْإِرَادَةِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи къуввати-ль-ирадати.",transRu:"О Аллах, аннулируй всякую преграду от зависти в силе воли.",transUz:"Yo Alloh, iroda kuchida hasaddan har qanday to'siqni bekor qil."}},
+  {id:"su12",section:"success",num:12,ru:"Преграда в развитии и росте",uz:"Rivojlanish va o'sishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّطَوُّرِ وَالنُّمُوِّ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-татаввури ва-н-нумувв.",transRu:"С именем Аллаха, я делаю рукья от преграды в развитии и росте.",transUz:"Allohning ismi bilan, rivojlanish va o'sishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي التَّطَوُّرِ",tr:"Аллахумма абтыль кулля та'тылин мин хасадин фи т-татаввури.",transRu:"О Аллах, аннулируй всякую преграду от зависти в развитии.",transUz:"Yo Alloh, rivojlanishda hasaddan har qanday to'siqni bekor qil."}},
+  {id:"h1",section:"health",num:1,ru:"Преграда в исцелении от болей",uz:"Og'riqlardan shifo topdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي شِفَاءِ الْآلَامِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи шифаи-ль-алям.",transRu:"С именем Аллаха, я делаю рукья от преграды в исцелении от болей.",transUz:"Allohning ismi bilan, og'riqlardan shifo topdashdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي شِفَاءِ الْآلَامِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи шифаи-ль-алями.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в исцелении от болей.",transUz:"Yo Alloh, og'riqlardan shifoda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"h2",section:"health",num:2,ru:"Преграда в здоровом сне",uz:"Sog'lom uyqudagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّوْمِ الصَّحِيحِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-науми-с-сахих.",transRu:"С именем Аллаха, я делаю рукья от преграды в здоровом сне.",transUz:"Allohning ismi bilan, sog'lom uyqudagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي النَّوْمِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи н-науми.",transRu:"О Аллах, аннулируй всякую преграду от колдовства во сне.",transUz:"Yo Alloh, uyquda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"h3",section:"health",num:3,ru:"Преграда в спокойствии души",uz:"Ruh xotirjamligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي سَكِينَةِ النَّفْسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сакинати-н-нафс.",transRu:"С именем Аллаха, я делаю рукья от преграды в спокойствии души.",transUz:"Allohning ismi bilan, ruh xotirjamligidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي سَكِينَةِ النَّفْسِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи сакинати-н-нафси.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в спокойствии души.",transUz:"Yo Alloh, jon xotirjamligida jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"h4",section:"health",num:4,ru:"Преграда в силе тела",uz:"Tana kuchidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قُوَّةِ الْجَسَدِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къуввати-ль-джасад.",transRu:"С именем Аллаха, я делаю рукья от преграды в силе тела.",transUz:"Allohning ismi bilan, tana kuchidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي قُوَّةِ الْجَسَدِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи къуввати-ль-джасади.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в силе тела.",transUz:"Yo Alloh, tana kuchida jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"h5",section:"health",num:5,ru:"Преграда в ясности ума",uz:"Aql ravshanligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي صَفَاءِ الْعَقْلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сафаи-ль-'акъль.",transRu:"С именем Аллаха, я делаю рукья от преграды в ясности ума.",transUz:"Allohning ismi bilan, aql ravshanligidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي صَفَاءِ الْعَقْلِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи сафаи-ль-'акъли.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в ясности ума.",transUz:"Yo Alloh, aql ravshanligida jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"h6",section:"health",num:6,ru:"Преграда в радости и бодрости",uz:"Quvonch va tetiklikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْفَرَحِ وَالنَّشَاطِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-фарахи ва-н-нашат.",transRu:"С именем Аллаха, я делаю рукья от преграды в радости и бодрости.",transUz:"Allohning ismi bilan, quvonch va tetiklikdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الْفَرَحِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи ль-фарахи.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в радости.",transUz:"Yo Alloh, quvonchda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"h7",section:"health",num:7,ru:"Преграда в здоровье пищеварения",uz:"Hazm salomatligi to'siqligi",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي صِحَّةِ الْهَضْمِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сыххати-ль-хадм.",transRu:"С именем Аллаха, я делаю рукья от преграды в здоровье пищеварения.",transUz:"Allohning ismi bilan, hazm salomatligidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي صِحَّةِ الْهَضْمِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи сыххати-ль-хадми.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в пищеварении.",transUz:"Yo Alloh, hazmda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"h8",section:"health",num:8,ru:"Преграда в крепости иммунитета",uz:"Immunitet mustahkamligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قُوَّةِ الْمَنَاعَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къуввати-ль-мана'а.",transRu:"С именем Аллаха, я делаю рукья от преграды в крепости иммунитета.",transUz:"Allohning ismi bilan, immunitet mustahkamligidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي قُوَّةِ الْمَنَاعَةِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи къуввати-ль-мана'ати.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в иммунитете.",transUz:"Yo Alloh, immunitetda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"h9",section:"health",num:9,ru:"Преграда в здоровье спины и суставов",uz:"Bel va bo'g'imlar salomatligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي صِحَّةِ الظَّهْرِ وَالْمَفَاصِلِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сыххати-з-захри ва-ль-мафасиль.",transRu:"С именем Аллаха, я делаю рукья от преграды в здоровье спины и суставов.",transUz:"Allohning ismi bilan, bel va bo'g'imlar salomatligidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الظَّهْرِ وَالْمَفَاصِلِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи з-захри ва-ль-мафасили.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в спине и суставах.",transUz:"Yo Alloh, bel va bo'g'imlarda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"h10",section:"health",num:10,ru:"Преграда в общем исцелении тела и духа",uz:"Tana va ruh umumiy shifo to'siqligi",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي شِفَاءِ الْجَسَدِ وَالرُّوحِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи шифаи-ль-джасади ва-р-рух.",transRu:"С именем Аллаха, я делаю рукья от преграды в исцелении тела и духа.",transUz:"Allohning ismi bilan, tana va ruh shifo topishidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي شِفَاءِ الْجَسَدِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи шифаи-ль-джасади.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в исцелении тела.",transUz:"Yo Alloh, tana shifosida jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"r1",section:"relationships",num:1,ru:"Преграда в согласии между супругами",uz:"Er-xotin kelishuvdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْوِفَاقِ بَيْنَ الزَّوْجَيْنِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-вифакъи байна-з-зауджайн.",transRu:"С именем Аллаха, я делаю рукья от преграды в согласии между супругами.",transUz:"Allohning ismi bilan, er-xotin kelishuvdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي الْوِفَاقِ بَيْنَ الزَّوْجَيْنِ",tr:"Аллахумма абтыль кулля тафрикин мин шайтанин фи ль-вифакъи байна-з-зауджайни.",transRu:"О Аллах, аннулируй всякое разделение от шайтана в согласии супругов.",transUz:"Yo Alloh, er-xotin kelishuvida shaytondan har qanday ajratishni bekor qil."}},
+  {id:"r2",section:"relationships",num:2,ru:"Преграда в доверии в отношениях",uz:"Munosabatlardagi ishonchdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الثِّقَةِ فِي الْعَلَاقَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-с-сикъати фи-ль-'алякъат.",transRu:"С именем Аллаха, я делаю рукья от преграды в доверии в отношениях.",transUz:"Allohning ismi bilan, munosabatlardagi ishonchdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي الثِّقَةِ فِي الْعَلَاقَاتِ",tr:"Аллахумма абтыль кулля тафрикин мин шайтанин фи с-сикъати фи-ль-'алякъати.",transRu:"О Аллах, аннулируй всякое разделение от шайтана в доверии в отношениях.",transUz:"Yo Alloh, munosabatlardagi ishonchda shaytondan har qanday ajratishni bekor qil."}},
+  {id:"r3",section:"relationships",num:3,ru:"Преграда в мире и покое в семье",uz:"Oiladagi tinchlik va osoyishtalikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي السَّلَامِ فِي الْأُسْرَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-с-салями фи-ль-усра.",transRu:"С именем Аллаха, я делаю рукья от преграды в мире и покое в семье.",transUz:"Allohning ismi bilan, oiladagi tinchlikdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي السَّلَامِ فِي الْأُسْرَةِ",tr:"Аллахумма абтыль кулля тафрикин мин шайтанин фи с-салями фи-ль-усрати.",transRu:"О Аллах, аннулируй всякое разделение от шайтана в мире в семье.",transUz:"Yo Alloh, oiladagi tinchlikda shaytondan har qanday ajratishni bekor qil."}},
+  {id:"r4",section:"relationships",num:4,ru:"Преграда в теплоте семейных отношений",uz:"Oilaviy munosabatlar iliqligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي دِفْءِ الْعَلَاقَاتِ الْأُسَرِيَّةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи диф'и-ль-'алякъати-ль-усарийя.",transRu:"С именем Аллаха, я делаю рукья от преграды в теплоте семейных отношений.",transUz:"Allohning ismi bilan, oilaviy munosabatlar iliqligidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي دِفْءِ الْعَلَاقَاتِ",tr:"Аллахумма абтыль кулля тафрикин мин шайтанин фи диф'и-ль-'алякъати.",transRu:"О Аллах, аннулируй всякое разделение от шайтана в теплоте отношений.",transUz:"Yo Alloh, munosabatlar iliqligida shaytondan har qanday ajratishni bekor qil."}},
+  {id:"r5",section:"relationships",num:5,ru:"Преграда в связях с родными",uz:"Qarindoshlar bilan aloqadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي صِلَةِ الرَّحِمِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи силяти-р-рахим.",transRu:"С именем Аллаха, я делаю рукья от преграды в связях с родными.",transUz:"Allohning ismi bilan, qarindoshlar bilan aloqadagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي صِلَةِ الرَّحِمِ",tr:"Аллахумма абтыль кулля тафрикин мин шайтанин фи силяти-р-рахими.",transRu:"О Аллах, аннулируй всякое разделение от шайтана в связях с роднёй.",transUz:"Yo Alloh, qarindoshlik aloqalarida shaytondan har qanday ajratishni bekor qil."}},
+  {id:"r6",section:"relationships",num:6,ru:"Преграда в воспитании детей",uz:"Bolalar tarbiyasidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي تَرْبِيَةِ الْأَوْلَادِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи тарбияти-ль-ауляд.",transRu:"С именем Аллаха, я делаю рукья от преграды в воспитании детей.",transUz:"Allohning ismi bilan, bolalar tarbiyasidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي تَرْبِيَةِ الْأَوْلَادِ",tr:"Аллахумма абтыль кулля тафрикин мин шайтанин фи тарбияти-ль-ауляди.",transRu:"О Аллах, аннулируй всякое разделение от шайтана в воспитании детей.",transUz:"Yo Alloh, bolalar tarbiyasida shaytondan har qanday ajratishni bekor qil."}},
+  {id:"r7",section:"relationships",num:7,ru:"Преграда в общении с людьми",uz:"Odamlar bilan muloqotdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّوَاصُلِ مَعَ النَّاسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тавасули ма'а-н-нас.",transRu:"С именем Аллаха, я делаю рукья от преграды в общении с людьми.",transUz:"Allohning ismi bilan, odamlar bilan muloqotdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي التَّوَاصُلِ مَعَ النَّاسِ",tr:"Аллахумма абтыль кулля тафрикин мин шайтанин фи т-тавасули ма'а-н-наси.",transRu:"О Аллах, аннулируй всякое разделение от шайтана в общении с людьми.",transUz:"Yo Alloh, odamlar bilan muloqotda shaytondan har qanday ajratishni bekor qil."}},
+  {id:"r8",section:"relationships",num:8,ru:"Преграда в понимании между поколениями",uz:"Avlodlar o'rtasidagi tushunishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي التَّفَاهُمِ بَيْنَ الْأَجْيَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тафахуми байна-ль-аджйаль.",transRu:"С именем Аллаха, я делаю рукья от преграды в понимании между поколениями.",transUz:"Allohning ismi bilan, avlodlar o'rtasidagi tushunishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي التَّفَاهُمِ بَيْنَ الْأَجْيَالِ",tr:"Аллахумма абтыль кулля тафрикин мин шайтанин фи т-тафахуми байна-ль-аджйали.",transRu:"О Аллах, аннулируй всякое разделение от шайтана в понимании поколений.",transUz:"Yo Alloh, avlodlar tushunishida shaytondan har qanday ajratishni bekor qil."}},
+  {id:"r9",section:"relationships",num:9,ru:"Преграда в дружбе и товариществе",uz:"Do'stlik va o'rtoqlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الصَّدَاقَةِ وَالْمَوَدَّةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-с-садакъати ва-ль-маваддa.",transRu:"С именем Аллаха, я делаю рукья от преграды в дружбе и любви.",transUz:"Allohning ismi bilan, do'stlik va muhabbatdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي الصَّدَاقَةِ",tr:"Аллахумма абтыль кулля тафрикин мин шайтанин фи с-садакъати.",transRu:"О Аллах, аннулируй всякое разделение от шайтана в дружбе.",transUz:"Yo Alloh, do'stlikda shaytondan har qanday ajratishni bekor qil."}},
+  {id:"r10",section:"relationships",num:10,ru:"Преграда в любви и милости",uz:"Sevgi va mehribonlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْمَحَبَّةِ وَالرَّحْمَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-махаббати ва-р-рахма.",transRu:"С именем Аллаха, я делаю рукья от преграды в любви и милости.",transUz:"Allohning ismi bilan, sevgi va mehribonlikdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي الْمَحَبَّةِ",tr:"Аллахумма абтыль кулля тафрикин мин шайтанин фи ль-махаббати.",transRu:"О Аллах, аннулируй всякое разделение от шайтана в любви.",transUz:"Yo Alloh, muhabbatda shaytondan har qanday ajratishni bekor qil."}},
+  {id:"f1",section:"finances",num:1,ru:"Преграда в избавлении от долгов",uz:"Qarzlardan xalos bo'lishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قَضَاءِ الدُّيُونِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къадаи-д-дуюн.",transRu:"С именем Аллаха, я делаю рукья от преграды в избавлении от долгов.",transUz:"Allohning ismi bilan, qarzlardan xalos bo'lishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي قَضَاءِ الدُّيُونِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи къадаи-д-дуюни.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в избавлении от долгов.",transUz:"Yo Alloh, qarzlardan xalos bo'lishda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"f2",section:"finances",num:2,ru:"Преграда в разумных тратах",uz:"Oqilona xarajatlardagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْإِنْفَاقِ الرَّشِيدِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-инфакъи-р-рашид.",transRu:"С именем Аллаха, я делаю рукья от преграды в разумных тратах.",transUz:"Allohning ismi bilan, oqilona xarajatlardagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الْإِنْفَاقِ الرَّشِيدِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи ль-инфакъи-р-рашиди.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в разумных тратах.",transUz:"Yo Alloh, oqilona xarajatlarda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"f3",section:"finances",num:3,ru:"Преграда в сохранении денег",uz:"Pulni saqlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي حِفْظِ الْمَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи хифзи-ль-маль.",transRu:"С именем Аллаха, я делаю рукья от преграды в сохранении денег.",transUz:"Allohning ismi bilan, pulni saqlashdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي حِفْظِ الْمَالِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи хифзи-ль-мали.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в сохранении денег.",transUz:"Yo Alloh, pulni saqlashda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"f4",section:"finances",num:4,ru:"Преграда в спокойствии о пропитании",uz:"Rizq haqidagi xotirjamlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الطُّمَأْنِينَةِ فِي الرِّزْقِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тумаънинати фи-р-ризкъ.",transRu:"С именем Аллаха, я делаю рукья от преграды в спокойствии о пропитании.",transUz:"Allohning ismi bilan, rizq haqidagi xotirjamlikdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الطُّمَأْنِينَةِ فِي الرِّزْقِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи т-тумаънинати фи-р-ризкъи.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в спокойствии о пропитании.",transUz:"Yo Alloh, rizq xotirjamligida jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"f5",section:"finances",num:5,ru:"Преграда в получении заработка",uz:"Daromad olishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْحُصُولِ عَلَى الرَّاتِبِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-хусули 'аля-р-ратиб.",transRu:"С именем Аллаха, я делаю рукья от преграды в получении заработка.",transUz:"Allohning ismi bilan, daromad olishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الْحُصُولِ عَلَى الرَّاتِبِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи ль-хусули 'аля-р-ратиби.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в получении заработка.",transUz:"Yo Alloh, daromad olishda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"f6",section:"finances",num:6,ru:"Преграда в удачных вложениях",uz:"Muvaffaqiyatli investitsiyalardagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الِاسْتِثْمَارِ النَّاجِحِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-истисмари-н-наджих.",transRu:"С именем Аллаха, я делаю рукья от преграды в удачных вложениях.",transUz:"Allohning ismi bilan, muvaffaqiyatli investitsiyalardagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الِاسْتِثْمَارِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи ль-истисмари.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в инвестициях.",transUz:"Yo Alloh, investitsiyada jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"f7",section:"finances",num:7,ru:"Преграда в защите от обмана",uz:"Aldashdan himoyadadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْحِمَايَةِ مِنَ الِاحْتِيَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-химаяти мина-ль-ихтияль.",transRu:"С именем Аллаха, я делаю рукья от преграды в защите от обмана.",transUz:"Allohning ismi bilan, aldashdan himoyadadagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الْحِمَايَةِ مِنَ الِاحْتِيَالِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи ль-химаяти мина-ль-ихтияли.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в защите от обмана.",transUz:"Yo Alloh, aldashdan himoyada jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"f8",section:"finances",num:8,ru:"Преграда в щедрости души",uz:"Ko'ngil saxovatidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي سَخَاءِ النَّفْسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сахаи-н-нафс.",transRu:"С именем Аллаха, я делаю рукья от преграды в щедрости души.",transUz:"Allohning ismi bilan, ko'ngil saxovatidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي سَخَاءِ النَّفْسِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи сахаи-н-нафси.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в щедрости.",transUz:"Yo Alloh, saxovatda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"f9",section:"finances",num:9,ru:"Преграда в открытии путей заработка",uz:"Daromad yo'llarini ochishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي فَتْحِ أَبْوَابِ الْكَسْبِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи фатхи абвабу-ль-касб.",transRu:"С именем Аллаха, я делаю рукья от преграды в открытии путей заработка.",transUz:"Allohning ismi bilan, daromad yo'llarini ochishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي فَتْحِ أَبْوَابِ الْكَسْبِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи фатхи абвабу-ль-касби.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в открытии путей заработка.",transUz:"Yo Alloh, daromad yo'llarini ochishda jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"f10",section:"finances",num:10,ru:"Преграда в баракате имущества",uz:"Mol-mulk barakatidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي بَرَكَةِ الْمَالِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи баракати-ль-маль.",transRu:"С именем Аллаха, я делаю рукья от преграды в баракате имущества.",transUz:"Allohning ismi bilan, mol-mulk barakatidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي بَرَكَةِ الْمَالِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи баракати-ль-мали.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в баракате имущества.",transUz:"Yo Alloh, mol-mulk barakatida jodugarlikdan har qanday to'siqni bekor qil."}},
+  {id:"st1",section:"studies",num:1,ru:"Преграда в запоминании",uz:"Eslab qolishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْحِفْظِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-хифз.",transRu:"С именем Аллаха, я делаю рукья от преграды в запоминании.",transUz:"Allohning ismi bilan, eslab qolishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ عَيْنٍ فِي الْحِفْظِ",tr:"Аллахумма абтыль кулля та'тылин мин 'айнин фи ль-хифзи.",transRu:"О Аллах, аннулируй всякую преграду от сглаза в запоминании.",transUz:"Yo Alloh, yodlashda ko'z tegishidan har qanday to'siqni bekor qil."}},
+  {id:"st2",section:"studies",num:2,ru:"Преграда во внимательности на уроках",uz:"Darslarda e'tibordagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الِانْتِبَاهِ فِي الدُّرُوسِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-интибахи фи-д-дурус.",transRu:"С именем Аллаха, я делаю рукья от преграды во внимательности на уроках.",transUz:"Allohning ismi bilan, darslarda e'tibordagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ عَيْنٍ فِي الْفَهْمِ",tr:"Аллахумма абтыль кулля та'тылин мин 'айнин фи ль-фахми.",transRu:"О Аллах, аннулируй всякую преграду от сглаза в понимании.",transUz:"Yo Alloh, tushunishda ko'z tegishidan har qanday to'siqni bekor qil."}},
+  {id:"st3",section:"studies",num:3,ru:"Преграда в спокойствии на экзаменах",uz:"Imtihonlarda xotirjamlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الطُّمَأْنِينَةِ فِي الِامْتِحَانَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-т-тумаънинати фи-ль-имтиханат.",transRu:"С именем Аллаха, я делаю рукья от преграды в спокойствии на экзаменах.",transUz:"Allohning ismi bilan, imtihonlarda xotirjamlikdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ عَيْنٍ فِي التَّرْكِيزِ فِي الدِّرَاسَةِ",tr:"Аллахумма абтыль кулля та'тылин мин 'айнин фи т-таркизи фи-д-дирасати.",transRu:"О Аллах, аннулируй всякую преграду от сглаза в концентрации в учёбе.",transUz:"Yo Alloh, o'qishda diqqatda ko'z tegishidan har qanday to'siqni bekor qil."}},
+  {id:"st4",section:"studies",num:4,ru:"Преграда в усердии в учёбе",uz:"O'qishda tirishqoqlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الِاجْتِهَادِ فِي الدِّرَاسَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-иджтихади фи-д-дираса.",transRu:"С именем Аллаха, я делаю рукья от преграды в усердии в учёбе.",transUz:"Allohning ismi bilan, o'qishda tirishqoqlikdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ عَيْنٍ فِي الِاجْتِهَادِ فِي الدِّرَاسَةِ",tr:"Аллахумма абтыль кулля та'тылин мин 'айнин фи ль-иджтихади фи-д-дирасати.",transRu:"О Аллах, аннулируй всякую преграду от сглаза в усердии в учёбе.",transUz:"Yo Alloh, o'qishda tirishqoqlikda ko'z tegishidan har qanday to'siqni bekor qil."}},
+  {id:"st5",section:"studies",num:5,ru:"Преграда в понимании наук",uz:"Ilmlarni tushunishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي فَهْمِ الْعُلُومِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи фахми-ль-'улюм.",transRu:"С именем Аллаха, я делаю рукья от преграды в понимании наук.",transUz:"Allohning ismi bilan, ilmlarni tushunishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ عَيْنٍ فِي فَهْمِ الْعُلُومِ",tr:"Аллахумма абтыль кулля та'тылин мин 'айнин фи фахми-ль-'улюми.",transRu:"О Аллах, аннулируй всякую преграду от сглаза в понимании наук.",transUz:"Yo Alloh, ilmlarni tushunishda ko'z tegishidan har qanday to'siqni bekor qil."}},
+  {id:"st6",section:"studies",num:6,ru:"Преграда в хороших оценках",uz:"Yaxshi baholardagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي حُسْنِ الدَّرَجَاتِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи хусни-д-дараджат.",transRu:"С именем Аллаха, я делаю рукья от преграды в хороших оценках.",transUz:"Allohning ismi bilan, yaxshi baholardagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ عَيْنٍ فِي حُسْنِ الدَّرَجَاتِ",tr:"Аллахумма абтыль кулля та'тылин мин 'айнин фи хусни-д-дараджати.",transRu:"О Аллах, аннулируй всякую преграду от сглаза в хороших оценках.",transUz:"Yo Alloh, yaxshi baholarda ko'z tegishidan har qanday to'siqni bekor qil."}},
+  {id:"st7",section:"studies",num:7,ru:"Преграда в отношениях с преподавателями",uz:"O'qituvchilar bilan munosabatdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْعَلَاقَةِ مَعَ الْمُعَلِّمِينَ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-'алякъати ма'а-ль-му'аллимин.",transRu:"С именем Аллаха, я делаю рукья от преграды в отношениях с преподавателями.",transUz:"Allohning ismi bilan, o'qituvchilar bilan munosabatdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ عَيْنٍ فِي الْعَلَاقَةِ مَعَ الْمُعَلِّمِينَ",tr:"Аллахумма абтыль кулля та'тылин мин 'айнин фи ль-'алякъати ма'а-ль-му'аллимини.",transRu:"О Аллах, аннулируй всякую преграду от сглаза в отношениях с преподавателями.",transUz:"Yo Alloh, o'qituvchilar munosabatida ko'z tegishidan har qanday to'siqni bekor qil."}},
+  {id:"st8",section:"studies",num:8,ru:"Преграда в учёбе из-за сглаза",uz:"Ko'z tegish sababli o'qishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الدِّرَاسَةِ مِنَ الْعَيْنِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-д-дирасати мина-ль-'айн.",transRu:"С именем Аллаха, я делаю рукья от преграды в учёбе из-за сглаза.",transUz:"Allohning ismi bilan, ko'z tegish sababli o'qishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ عَيْنٍ فِي الدِّرَاسَةِ",tr:"Аллахумма абтыль кулля та'тылин мин 'айнин фи д-дирасати.",transRu:"О Аллах, аннулируй всякую преграду от сглаза в учёбе.",transUz:"Yo Alloh, o'qishda ko'z tegishidan har qanday to'siqni bekor qil."}},
+  {id:"st9",section:"studies",num:9,ru:"Преграда в памяти перед экзаменом",uz:"Imtihon oldida xotiradagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الذَّاكِرَةِ قَبْلَ الِامْتِحَانِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-з-закирати къабля-ль-имтихан.",transRu:"С именем Аллаха, я делаю рукья от преграды в памяти перед экзаменом.",transUz:"Allohning ismi bilan, imtihon oldida xotiradagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ عَيْنٍ فِي الذَّاكِرَةِ قَبْلَ الِامْتِحَانِ",tr:"Аллахумма абтыль кулля та'тылин мин 'айнин фи з-закирати къабля-ль-имтыхани.",transRu:"О Аллах, аннулируй всякую преграду от сглаза в памяти перед экзаменом.",transUz:"Yo Alloh, imtihon oldida xotirada ko'z tegishidan har qanday to'siqni bekor qil."}},
+  {id:"st10",section:"studies",num:10,ru:"Преграда в открытии дверей знания",uz:"Bilim eshiklarini ochishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي فَتْحِ أَبْوَابِ الْعِلْمِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи фатхи абвабу-ль-'ильм.",transRu:"С именем Аллаха, я делаю рукья от преграды в открытии дверей знания.",transUz:"Allohning ismi bilan, bilim eshiklarini ochishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ عَيْنٍ فِي فَتْحِ أَبْوَابِ الْعِلْمِ",tr:"Аллахумма абтыль кулля та'тылин мин 'айнин фи фатхи абвабу-ль-'ильми.",transRu:"О Аллах, аннулируй всякую преграду от сглаза в открытии дверей знания.",transUz:"Yo Alloh, ilm eshiklarini ochishda ko'z tegishidan har qanday to'siqni bekor qil."}},
+  {id:"sp1",section:"spiritual",num:1,ru:"Преграда в поклонении",uz:"Ibodatdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْعِبَادَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-'ибада.",transRu:"С именем Аллаха, я делаю рукья от преграды в поклонении.",transUz:"Allohning ismi bilan, ibodatdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ شَيْطَانٍ فِي الْعِبَادَةِ",tr:"Аллахумма абтыль кулля та'тылин мин шайтанин фи ль-'ибадати.",transRu:"О Аллах, аннулируй всякую преграду от шайтана в поклонении.",transUz:"Yo Alloh, ibodatda shaytondan har qanday to'siqni bekor qil."}},
+  {id:"sp2",section:"spiritual",num:2,ru:"Преграда в близости к Аллаху",uz:"Allohga yaqinlikdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْقُرْبِ مِنَ اللَّهِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-къурби мина-Ллях.",transRu:"С именем Аллаха, я делаю рукья от преграды в близости к Аллаху.",transUz:"Allohning ismi bilan, Allohga yaqinlikdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ شَيْطَانٍ فِي الْقُرْبِ مِنَ اللَّهِ",tr:"Аллахумма абтыль кулля та'тылин мин шайтанин фи ль-къурби мина-ллахи.",transRu:"О Аллах, аннулируй всякую преграду от шайтана в близости к Аллаху.",transUz:"Yo Alloh, Allohga yaqinlikda shaytondan har qanday to'siqni bekor qil."}},
+  {id:"sp3",section:"spiritual",num:3,ru:"Преграда в лёгкости намаза",uz:"Namoz yengilligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي خُشُوعِ الصَّلَاةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи хушу'и-с-саля.",transRu:"С именем Аллаха, я делаю рукья от преграды в смиренности намаза.",transUz:"Allohning ismi bilan, namoz xushu'idagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ شَيْطَانٍ فِي خُشُوعِ الصَّلَاةِ",tr:"Аллахумма абтыль кулля та'тылин мин шайтанин фи хушу'и-с-саляти.",transRu:"О Аллах, аннулируй всякую преграду от шайтана в смирении в намазе.",transUz:"Yo Alloh, namozdagi xushu'da shaytondan har qanday to'siqni bekor qil."}},
+  {id:"sp4",section:"spiritual",num:4,ru:"Преграда в сосредоточенности в дуа",uz:"Duoda diqqatdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْخُشُوعِ فِي الدُّعَاءِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-хушу'и фи-д-ду'а.",transRu:"С именем Аллаха, я делаю рукья от преграды в сосредоточенности в дуа.",transUz:"Allohning ismi bilan, duoda diqqatdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ شَيْطَانٍ فِي الْخُشُوعِ فِي الدُّعَاءِ",tr:"Аллахумма абтыль кулля та'тылин мин шайтанин фи ль-хушу'и фи-д-ду'аи.",transRu:"О Аллах, аннулируй всякую преграду от шайтана в смирении в дуа.",transUz:"Yo Alloh, duodagi xushu'da shaytondan har qanday to'siqni bekor qil."}},
+  {id:"sp5",section:"spiritual",num:5,ru:"Преграда в защите от наущений",uz:"Vasvosadan himoyadadagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي الْحِمَايَةِ مِنَ الْوَسْوَسَةِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-ль-химаяти мина-ль-васваса.",transRu:"С именем Аллаха, я делаю рукья от преграды в защите от наущений.",transUz:"Allohning ismi bilan, vasvosadan himoyadadagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ شَيْطَانٍ فِي الْحِمَايَةِ مِنَ الْوَسْوَسَةِ",tr:"Аллахумма абтыль кулля та'тылин мин шайтанин фи ль-химаяти мина-ль-васвасати.",transRu:"О Аллах, аннулируй всякую преграду от шайтана в защите от наущений.",transUz:"Yo Alloh, vasvosadan himoyada shaytondan har qanday to'siqni bekor qil."}},
+  {id:"sp6",section:"spiritual",num:6,ru:"Преграда в мягкости сердца",uz:"Qalb yumshoqligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي لِينِ الْقَلْبِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи лини-ль-къальб.",transRu:"С именем Аллаха, я делаю рукья от преграды в мягкости сердца.",transUz:"Allohning ismi bilan, qalb yumshoqligidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ شَيْطَانٍ فِي لِينِ الْقَلْبِ",tr:"Аллахумма абтыль кулля та'тылин мин шайтанин фи лини-ль-къальби.",transRu:"О Аллах, аннулируй всякую преграду от шайтана в мягкости сердца.",transUz:"Yo Alloh, qalb yumshoqligida shaytondan har qanday to'siqni bekor qil."}},
+  {id:"sp7",section:"spiritual",num:7,ru:"Преграда в чтении Корана",uz:"Qur'on o'qishdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي قِرَاءَةِ الْقُرْآنِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи къираъати-ль-Къуръан.",transRu:"С именем Аллаха, я делаю рукья от преграды в чтении Корана.",transUz:"Allohning ismi bilan, Qur'on o'qishdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ شَيْطَانٍ فِي قِرَاءَةِ الْقُرْآنِ",tr:"Аллахумма абтыль кулля та'тылин мин шайтанин фи къира'ати-ль-кур'ани.",transRu:"О Аллах, аннулируй всякую преграду от шайтана в чтении Корана.",transUz:"Yo Alloh, Qur'on o'qishda shaytondan har qanday to'siqni bekor qil."}},
+  {id:"sp8",section:"spiritual",num:8,ru:"Преграда в спокойном сне",uz:"Tinch uyqudagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي النَّوْمِ الْهَادِئِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи-н-науми-ль-хадиъ.",transRu:"С именем Аллаха, я делаю рукья от преграды в спокойном сне.",transUz:"Allohning ismi bilan, tinch uyqudagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ شَيْطَانٍ فِي النَّوْمِ الْهَادِئِ",tr:"Аллахумма абтыль кулля та'тылин мин шайтанин фи н-науми-ль-хадиъи.",transRu:"О Аллах, аннулируй всякую преграду от шайтана в спокойном сне.",transUz:"Yo Alloh, tinch uyquda shaytondan har qanday to'siqni bekor qil."}},
+  {id:"sp9",section:"spiritual",num:9,ru:"Преграда в твёрдости веры",uz:"Imon mustahkamligidagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي ثَبَاتِ الْإِيمَانِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи сабати-ль-иман.",transRu:"С именем Аллаха, я делаю рукья от преграды в твёрдости веры.",transUz:"Allohning ismi bilan, imon mustahkamligidagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ شَيْطَانٍ فِي ثَبَاتِ الْإِيمَانِ",tr:"Аллахумма абтыль кулля та'тылин мин шайтанин фи сабати-ль-имани.",transRu:"О Аллах, аннулируй всякую преграду от шайтана в твёрдости веры.",transUz:"Yo Alloh, imon mustahkamligida shaytondan har qanday to'siqni bekor qil."}},
+  {id:"sp10",section:"spiritual",num:10,ru:"Преграда в укреплении связи с Аллахом",uz:"Alloh bilan aloqani mustahkamlashdagi to'siq",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ التَّعْطِيلِ فِي تَقْوِيَةِ الصِّلَةِ بِاللَّهِ",tr:"Бисми-Лляхи аркъи мина-т-та'тыли фи такъвияти-с-сыляти би-Ллях.",transRu:"С именем Аллаха, я делаю рукья от преграды в укреплении связи с Аллахом.",transUz:"Allohning ismi bilan, Alloh bilan aloqani mustahkamlashdagi to'siqdan ruqiya qilaman.",tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ شَيْطَانٍ فِي تَقْوِيَةِ الصِّلَةِ بِاللَّهِ",tr:"Аллахумма абтыль кулля та'тылин мин шайтанин фи такъвияти-с-сыляти би-ллахи.",transRu:"О Аллах, аннулируй всякую преграду от шайтана в укреплении связи с Аллахом.",transUz:"Yo Alloh, Alloh bilan aloqani mustahkamlashda shaytondan har qanday to'siqni bekor qil."}},
   {id:"e1",section:"evilEye",num:1,ru:"Сглаз на здоровье",uz:"Salomatlikka ko'z tegish",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ الْعَيْنِ عَلَى الصِّحَّةِ",tr:"Бисми-Лляхи аркъи мина-ль-'айни 'аля-с-сыхха.",transRu:"С именем Аллаха, я делаю рукья от сглаза на здоровье.",transUz:"Allohning ismi bilan, salomatlikka ko'z tegishdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي", tr: "Аллахумма иксир кулля та'тылин мина-н-назарати фи джасади", transRu: "О Аллах, сломай всякую преграду, вызванную дурными взглядами, в моём теле.", transUz: "Yo Alloh, yomon nazarlardan iborat har qanday to'siqni tanamda sindir." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ فِي الصِّحَّةِ",tr:"Аллахумма абтыль кулля 'айнин мин хасидин фи с-сыххати.",transRu:"О Аллах, аннулируй всякий сглаз от завистника на здоровье.",transUz:"Yo Alloh, sog'liqda hasadgo'ydan har qanday ko'z tegishni bekor qil."}},
   {id:"e2",section:"evilEye",num:2,ru:"Сглаз на детей",uz:"Bolalarga ko'z tegish",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ الْعَيْنِ عَلَى الْأَوْلَادِ",tr:"Бисми-Лляхи аркъи мина-ль-'айни 'аля-ль-ауляд.",transRu:"С именем Аллаха, я делаю рукья от сглаза на детей.",transUz:"Allohning ismi bilan, bolalarga ko'z tegishdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي", tr: "Аллахумма иксир кулля та'тылин мина-н-назарати фи джасади", transRu: "О Аллах, сломай всякую преграду, вызванную дурными взглядами, в моём теле.", transUz: "Yo Alloh, yomon nazarlardan iborat har qanday to'siqni tanamda sindir." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ فِي الْأَوْلَادِ",tr:"Аллахумма абтыль кулля 'айнин мин хасидин фи ль-ауляди.",transRu:"О Аллах, аннулируй всякий сглаз от завистника на детях.",transUz:"Yo Alloh, bolalarda hasadgo'ydan har qanday ko'z tegishni bekor qil."}},
   {id:"e3",section:"evilEye",num:3,ru:"Сглаз на красоту",uz:"Go'zallikka ko'z tegish",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ الْعَيْنِ عَلَى الْجَمَالِ",tr:"Бисми-Лляхи аркъи мина-ль-'айни 'аля-ль-джамаль.",transRu:"С именем Аллаха, я делаю рукья от сглаза на красоту.",transUz:"Allohning ismi bilan, go'zallikka ko'z tegishdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي", tr: "Аллахумма иксир кулля та'тылин мина-н-назарати фи джасади", transRu: "О Аллах, сломай всякую преграду, вызванную дурными взглядами, в моём теле.", transUz: "Yo Alloh, yomon nazarlardan iborat har qanday to'siqni tanamda sindir." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ فِي الْجَمَالِ",tr:"Аллахумма абтыль кулля 'айнин мин хасидин фи ль-джамали.",transRu:"О Аллах, аннулируй всякий сглаз от завистника на красоте.",transUz:"Yo Alloh, go'zallikda hasadgo'ydan har qanday ko'z tegishni bekor qil."}},
   {id:"e4",section:"evilEye",num:4,ru:"Сглаз на имущество",uz:"Mol-mulkka ko'z tegish",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ الْعَيْنِ عَلَى الْمَالِ",tr:"Бисми-Лляхи аркъи мина-ль-'айни 'аля-ль-маль.",transRu:"С именем Аллаха, я делаю рукья от сглаза на имущество.",transUz:"Allohning ismi bilan, mol-mulkka ko'z tegishdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي", tr: "Аллахумма иксир кулля та'тылин мина-н-назарати фи джасади", transRu: "О Аллах, сломай всякую преграду, вызванную дурными взглядами, в моём теле.", transUz: "Yo Alloh, yomon nazarlardan iborat har qanday to'siqni tanamda sindir." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ فِي الْمَالِ",tr:"Аллахумма абтыль кулля 'айнин мин хасидин фи ль-мали.",transRu:"О Аллах, аннулируй всякий сглаз от завистника на имуществе.",transUz:"Yo Alloh, mol-mulkda hasadgo'ydan har qanday ko'z tegishni bekor qil."}},
   {id:"e5",section:"evilEye",num:5,ru:"Сглаз на семью",uz:"Oilaga ko'z tegish",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ الْعَيْنِ عَلَى الْأُسْرَةِ",tr:"Бисми-Лляхи аркъи мина-ль-'айни 'аля-ль-усра.",transRu:"С именем Аллаха, я делаю рукья от сглаза на семью.",transUz:"Allohning ismi bilan, oilaga ko'z tegishdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي", tr: "Аллахумма иксир кулля та'тылин мина-н-назарати фи джасади", transRu: "О Аллах, сломай всякую преграду, вызванную дурными взглядами, в моём теле.", transUz: "Yo Alloh, yomon nazarlardan iborat har qanday to'siqni tanamda sindir." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ فِي الْأُسْرَةِ",tr:"Аллахумма абтыль кулля 'айнин мин хасидин фи ль-усрати.",transRu:"О Аллах, аннулируй всякий сглаз от завистника на семье.",transUz:"Yo Alloh, oilada hasadgo'ydan har qanday ko'z tegishni bekor qil."}},
   {id:"e6",section:"evilEye",num:6,ru:"Сглаз на работу",uz:"Ishga ko'z tegish",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ الْعَيْنِ عَلَى الْعَمَلِ",tr:"Бисми-Лляхи аркъи мина-ль-'айни 'аля-ль-'амаль.",transRu:"С именем Аллаха, я делаю рукья от сглаза на работу.",transUz:"Allohning ismi bilan, ishga ko'z tegishdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي", tr: "Аллахумма иксир кулля та'тылин мина-н-назарати фи джасади", transRu: "О Аллах, сломай всякую преграду, вызванную дурными взглядами, в моём теле.", transUz: "Yo Alloh, yomon nazarlardan iborat har qanday to'siqni tanamda sindir." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ فِي الْعَمَلِ",tr:"Аллахумма абтыль кулля 'айнин мин хасидин фи ль-'амали.",transRu:"О Аллах, аннулируй всякий сглаз от завистника на работе.",transUz:"Yo Alloh, ishda hasadgo'ydan har qanday ko'z tegishni bekor qil."}},
   {id:"e7",section:"evilEye",num:7,ru:"Сглаз на бизнес",uz:"Biznesga ko'z tegish",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ الْعَيْنِ عَلَى التِّجَارَةِ",tr:"Бисми-Лляхи аркъи мина-ль-'айни 'аля-т-тиджара.",transRu:"С именем Аллаха, я делаю рукья от сглаза на бизнес.",transUz:"Allohning ismi bilan, biznesga ko'z tegishdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي", tr: "Аллахумма иксир кулля та'тылин мина-н-назарати фи джасади", transRu: "О Аллах, сломай всякую преграду, вызванную дурными взглядами, в моём теле.", transUz: "Yo Alloh, yomon nazarlardan iborat har qanday to'siqni tanamda sindir." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ فِي التِّجَارَةِ",tr:"Аллахумма абтыль кулля 'айнин мин хасидин фи т-тиджарати.",transRu:"О Аллах, аннулируй всякий сглаз от завистника на бизнесе.",transUz:"Yo Alloh, savdo-sotiqda hasadgo'ydan har qanday ko'z tegishni bekor qil."}},
   {id:"e8",section:"evilEye",num:8,ru:"Завистливый взгляд",uz:"Hasadli nazar",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ النَّظَرِ الْحَاسِدِ",tr:"Бисми-Лляхи аркъи мина-н-назари-ль-хасид.",transRu:"С именем Аллаха, я делаю рукья от завистливого взгляда.",transUz:"Allohning ismi bilan, hasadli nazardan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي", tr: "Аллахумма иксир кулля та'тылин мина-н-назарати фи джасади", transRu: "О Аллах, сломай всякую преграду, вызванную дурными взглядами, в моём теле.", transUz: "Yo Alloh, yomon nazarlardan iborat har qanday to'siqni tanamda sindir." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ فِي النَّفْسِ",tr:"Аллахумма абтыль кулля 'айнин мин хасидин фи н-нафси.",transRu:"О Аллах, аннулируй всякий сглаз от завистника на душе.",transUz:"Yo Alloh, jonda hasadgo'ydan har qanday ko'z tegishni bekor qil."}},
   {id:"e9",section:"evilEye",num:9,ru:"Массовый сглаз",uz:"Ommaviy ko'z tegish",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ الْعَيْنِ الْجَمَاعِيَّةِ",tr:"Бисми-Лляхи аркъи мина-ль-'айни-ль-джама'ийя.",transRu:"С именем Аллаха, я делаю рукья от массового сглаза.",transUz:"Allohning ismi bilan, ommaviy ko'z tegishdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي", tr: "Аллахумма иксир кулля та'тылин мина-н-назарати фи джасади", transRu: "О Аллах, сломай всякую преграду, вызванную дурными взглядами, в моём теле.", transUz: "Yo Alloh, yomon nazarlardan iborat har qanday to'siqni tanamda sindir." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ فِي الْحَيَاةِ",tr:"Аллахумма абтыль кулля 'айнин мин хасидин фи ль-хаяти.",transRu:"О Аллах, аннулируй всякий сглаз от завистника на жизни.",transUz:"Yo Alloh, hayotda hasadgo'ydan har qanday ko'z tegishni bekor qil."}},
   {id:"e10",section:"evilEye",num:10,ru:"Защита от всякого сглаза",uz:"Barcha ko'z tegishdan himoya",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ كُلِّ عَيْنٍ حَاسِدَةٍ",tr:"Бисми-Лляхи аркъи мин кулли 'айнин хасида.",transRu:"С именем Аллаха, я делаю рукья от всякого завистливого взгляда.",transUz:"Allohning ismi bilan, barcha hasadli ko'z tegishdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي", tr: "Аллахумма иксир кулля та'тылин мина-н-назарати фи джасади", transRu: "О Аллах, сломай всякую преграду, вызванную дурными взглядами, в моём теле.", transUz: "Yo Alloh, yomon nazarlardan iborat har qanday to'siqni tanamda sindir." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма абтыль кулля 'айнин мин хасидин фи ль-бадани куллихи.",transRu:"О Аллах, аннулируй всякий сглаз от завистника во всём теле.",transUz:"Yo Alloh, butun tanada hasadgo'ydan har qanday ko'z tegishni bekor qil."}},
   {id:"bm1",section:"blackMagic",num:1,ru:"Порча на разлуку",uz:"Ajratish sehri",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ سِحْرِ التَّفْرِيقِ",tr:"Бисми-Лляхи аркъи мин сихри-т-тафрикъ.",transRu:"С именем Аллаха, я делаю рукья от порчи на разлуку.",transUz:"Allohning ismi bilan, ajratish sehridan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي قَلْبِي", tr: "Аллахумма абтыль кулля та'тылин мина-с-сихри фи кальби", transRu: "О Аллах, аннулируй всякую преграду, состоящую из колдовства, в моём сердце.", transUz: "Yo Alloh, jodugarlikdan iborat har qanday to'siqni qalbimda bekor qil." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَفْرِيقٍ مِنْ سِحْرٍ فِي الْأَهْلِ",tr:"Аллахумма абтыль кулля тафрикин мин сихрин фи ль-ахли.",transRu:"О Аллах, аннулируй всякое разделение от колдовства в семье.",transUz:"Yo Alloh, oilada jodugarlikdan har qanday ajratishni bekor qil."}},
   {id:"bm2",section:"blackMagic",num:2,ru:"Порча на болезнь",uz:"Kasallik sehri",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ سِحْرِ الْمَرَضِ",tr:"Бисми-Лляхи аркъи мин сихри-ль-марад.",transRu:"С именем Аллаха, я делаю рукья от порчи на болезнь.",transUz:"Allohning ismi bilan, kasallik sehridan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي", tr: "Аллахумма даммир кулля та'тылин мина-с-сихри фи джасади", transRu: "О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.", transUz: "Yo Alloh, jodugarlikdan iborat har qanday to'siqni tanamda vayron qil." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ مَرَضٍ مِنْ سِحْرٍ فِي الْجَسَدِ",tr:"Аллахумма абтыль кулля марадин мин сихрин фи ль-джасади.",transRu:"О Аллах, аннулируй всякую болезнь от колдовства в теле.",transUz:"Yo Alloh, tanada jodugarlikdan har qanday kasallikni bekor qil."}},
   {id:"bm3",section:"blackMagic",num:3,ru:"Порча на бедность",uz:"Qashshoqlik sehri",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ سِحْرِ الْفَقْرِ",tr:"Бисми-Лляхи аркъи мин сихри-ль-факър.",transRu:"С именем Аллаха, я делаю рукья от порчи на бедность.",transUz:"Allohning ismi bilan, qashshoqlik sehridan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي رِزْقِي", tr: "Аллахумма иксир кулля та'тылин мина-с-сихри фи ризки", transRu: "О Аллах, сломай всякую преграду, состоящую из колдовства, в моём уделе.", transUz: "Yo Alloh, jodugarlikdan iborat har qanday to'siqni rizqimda sindir." }},
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الرِّزْقِ",tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи р-ризки.",transRu:"О Аллах, аннулируй всякую преграду от колдовства в уделе.",transUz:"Yo Alloh, rizqda jodugarlikdan har qanday to'siqni bekor qil."}},
   {id:"bm4",section:"blackMagic",num:4,ru:"Порча на бесплодие",uz:"Bepushtlik sehri",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ سِحْرِ الْعُقْمِ",tr:"Бисми-Лляхи аркъи мин сихри-ль-'укъм.",transRu:"С именем Аллаха, я делаю рукья от порчи на бесплодие.",transUz:"Allohning ismi bilan, bepushtlik sehridan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي", tr: "Аллахумма хулля кулля та'тылин мина-с-сихри фи джасади", transRu: "О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём теле.", transUz: "Yo Alloh, jodugarlikdan iborat har qanday to'siqni tanamda yech." }},
+  tatil:{ar:"اللَّهُمَّ فُكَّ كُلَّ رَبْطٍ مِنْ سِحْرٍ فِي الرَّحِمِ",tr:"Аллахумма фукка кулля рабтин мин сихрин фи р-рахими.",transRu:"О Аллах, развяжи всякое связывание от колдовства в матке.",transUz:"Yo Alloh, bachadonda jodugarlikdan har qanday bog'lashni yech."}},
   {id:"bm5",section:"blackMagic",num:5,ru:"Порча на безумие",uz:"Jinnilik sehri",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ سِحْرِ الْجُنُونِ",tr:"Бисми-Лляхи аркъи мин сихри-ль-джунун.",transRu:"С именем Аллаха, я делаю рукья от порчи на безумие.",transUz:"Allohning ismi bilan, jinnilik sehridan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ الْجِنِّ فِي جَسَدِي", tr: "Аллахумма ахридж кулля та'тылин мина-ль-джинни фи джасади", transRu: "О Аллах, выведи всякую преграду, состоящую из джиннов, из моего тела.", transUz: "Yo Alloh, jindan iborat har qanday to'siqni tanadan chiqar." }},
+  tatil:{ar:"اللَّهُمَّ أَخْرِجْ كُلَّ جُنُونٍ مِنْ شَيْطَانٍ فِي الْعَقْلِ",tr:"Аллахумма ахридж кулля джунунин мин шайтанин фи ль-'акъли.",transRu:"О Аллах, выведи всякое умопомрачение от шайтана из разума.",transUz:"Yo Alloh, aqldan shaytondan har qanday aqldan ozishni chiqar."}},
   {id:"bm6",section:"blackMagic",num:6,ru:"Закопанная порча",uz:"Ko'milgan sehr",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ السِّحْرِ الْمَدْفُونِ",tr:"Бисми-Лляхи аркъи мина-с-сихри-ль-мадфун.",transRu:"С именем Аллаха, я делаю рукья от закопанной порчи.",transUz:"Allohning ismi bilan, ko'milgan sehrdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي", tr: "Аллахумма даммир кулля та'тылин мина-с-сихри фи джасади", transRu: "О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.", transUz: "Yo Alloh, jodugarlikdan iborat har qanday to'siqni tanamda vayron qil." }},
+  tatil:{ar:"اللَّهُمَّ دَمِّرْ كُلَّ سِحْرٍ مَدْفُونٍ مِنْ خُدَّامِ السِّحْرِ فِي الْبَيْتِ",tr:"Аллахумма даммир кулля сихрин мадфунин мин худдами-с-сихри фи ль-байти.",transRu:"О Аллах, уничтожь всякое закопанное колдовство от служителей колдовства в доме.",transUz:"Yo Alloh, uyda jodu xizmatkorlaridan har qanday ko'milgan jodusini vayron qil."}},
   {id:"bm7",section:"blackMagic",num:7,ru:"Съеденная порча",uz:"Yeyilgan sehr",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ السِّحْرِ الْمَأْكُولِ",tr:"Бисми-Лляхи аркъи мина-с-сихри-ль-маъкуль.",transRu:"С именем Аллаха, я делаю рукья от съеденной порчи.",transUz:"Allohning ismi bilan, yeyilgan sehrdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي بَطْنِي", tr: "Аллахумма ахридж кулля та'тылин мина-с-сихри фи батни", transRu: "О Аллах, выведи всякую преграду, состоящую из колдовства, из моего живота.", transUz: "Yo Alloh, jodugarlikdan iborat har qanday to'siqni qorindan chiqar." }},
+  tatil:{ar:"اللَّهُمَّ أَخْرِجْ كُلَّ مَأْكُولٍ مِنْ سِحْرٍ فِي الْمَعِدَةِ",tr:"Аллахумма ахридж кулля ма'кулин мин сихрин фи ль-ма'идати.",transRu:"О Аллах, выведи всякое съеденное от колдовства из желудка.",transUz:"Yo Alloh, oshqozondan jodugarlikdan har qanday yeyilganni chiqar."}},
   {id:"bm8",section:"blackMagic",num:8,ru:"Выпитая порча",uz:"Ichilgan sehr",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ السِّحْرِ الْمَشْرُوبِ",tr:"Бисми-Лляхи аркъи мина-с-сихри-ль-машруб.",transRu:"С именем Аллаха, я делаю рукья от выпитой порчи.",transUz:"Allohning ismi bilan, ichilgan sehrdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَوْفِي", tr: "Аллахумма ахридж кулля та'тылин мина-с-сихри фи джауфи", transRu: "О Аллах, выведи всякую преграду, состоящую из колдовства, из моего нутра.", transUz: "Yo Alloh, jodugarlikdan iborat har qanday to'siqni ichdan chiqar." }},
+  tatil:{ar:"اللَّهُمَّ أَخْرِجْ كُلَّ مَشْرُوبٍ مِنْ سِحْرٍ فِي الْبَطْنِ",tr:"Аллахумма ахридж кулля машрубин мин сихрин фи ль-батни.",transRu:"О Аллах, выведи всякое выпитое от колдовства из живота.",transUz:"Yo Alloh, qorindan jodugarlikdan har qanday ichilganni chiqar."}},
   {id:"bm9",section:"blackMagic",num:9,ru:"Порча через джиннов",uz:"Jinlar orqali sehr",ar:"بِسْمِ اللَّهِ أَرْقِي مِنَ السِّحْرِ بِالْجِنِّ",tr:"Бисми-Лляхи аркъи мина-с-сихри би-ль-джинн.",transRu:"С именем Аллаха, я делаю рукья от порчи через джиннов.",transUz:"Allohning ismi bilan, jinlar orqali sehrdan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ الْجِنِّ فِي جَسَدِي", tr: "Аллахумма ахридж кулля та'тылин мина-ль-джинни фи джасади", transRu: "О Аллах, выведи всякую преграду, состоящую из джиннов, из моего тела.", transUz: "Yo Alloh, jindan iborat har qanday to'siqni tanadan chiqar." }},
+  tatil:{ar:"اللَّهُمَّ أَخْرِجْ كُلَّ مَسٍّ مِنْ جِنٍّ فِي الْجَسَدِ",tr:"Аллахумма ахридж кулля массин мин джиннин фи ль-джасади.",transRu:"О Аллах, выведи всякое касание от джиннов из тела.",transUz:"Yo Alloh, tanadan jinlardan har qanday tegishni chiqar."}},
   {id:"bm10",section:"blackMagic",num:10,ru:"Полное снятие всех видов порчи",uz:"Barcha sehr turlarini olib tashlash",ar:"بِسْمِ اللَّهِ أَرْقِي مِنْ جَمِيعِ أَنْوَاعِ السِّحْرِ",tr:"Бисми-Лляхи аркъи мин джами'и анва'и-с-сихр.",transRu:"С именем Аллаха, я делаю рукья от всех видов порчи.",transUz:"Allohning ismi bilan, barcha sehr turlaridan ruqiya qilaman.",
-  tatil: { ar: "اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي", tr: "Аллахумма даммир кулля та'тылин мина-с-сихри фи джасади", transRu: "О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.", transUz: "Yo Alloh, jodugarlikdan iborat har qanday to'siqni tanamda vayron qil." }},
-  {id:"br1",section:"breakBarriers",num:1,ru:"Дуа: выведи преграду выпитого колдовства (أَخْرِجْ)",uz:"Duo: ichilgan jodugarlikdan iborat to'siqni chiqar (أَخْرِجْ)",ar:"اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي بَطْنِي",tr:"Аллахумма ахридж кулля та'тылин мина-с-сихр фи батни.",transRu:"О Аллах, выведи всякую преграду, состоящую из колдовства, из моего живота.",transUz:"Yo Alloh, qornimdangi jodugarlikdan iborat har qanday to'siqni chiqar.",methodFormula:{ar:"اللَّهُمَّ أَخْرِجْ كُلَّ مَأْكُولٍ مِنْ سِحْرٍ فِي الْأَمْعَاءِ",tr:"Аллахумма ахридж кулля ма'кулин мин сихрин фи ль-ам'а'и.",transRu:"О Аллах, выведи всякое съеденное от колдовства из кишок.",transUz:"Yo Alloh, ichaklardan har qanday yeyilgan jodusini chiqar."}},
-  {id:"br2",section:"breakBarriers",num:2,ru:"Дуа: развяжи преграду съеденного колдовства (حُلَّ)",uz:"Duo: yeyilgan jodugarlikdan iborat to'siqni yech (حُلَّ)",ar:"اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي بَطْنِي",tr:"Аллахумма хулля кулля та'тылин мина-с-сихр фи батни.",transRu:"О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём животе.",transUz:"Yo Alloh, qornimdagi jodugarlikdan iborat har qanday to'siqni yech.",methodFormula:{ar:"اللَّهُمَّ أَخْرِجْ كُلَّ مَأْكُولٍ مِنْ سِحْرٍ فِي الْمَعِدَةِ",tr:"Аллахумма ахридж кулля ма'кулин мин сихрин фи ль-ма'идати.",transRu:"О Аллах, выведи всякое съеденное от колдовства из желудка.",transUz:"Yo Alloh, oshqozondan har qanday yeyilgan jodusini chiqar."}},
-  {id:"br3",section:"breakBarriers",num:3,ru:"Дуа: выведи преграду вдыхаемого джинна (أَخْرِجْ)",uz:"Duo: nafas bilan kirgan jindan iborat to'siqni chiqar (أَخْرِجْ)",ar:"اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ الْجِنِّ فِي جَسَدِي",tr:"Аллахумма ахридж кулля та'тылин мина-ль-джинн фи джасади.",transRu:"О Аллах, выведи всякую преграду, состоящую из джиннов, из моего тела.",transUz:"Yo Alloh, tanamdangi jindan iborat har qanday to'siqni chiqar.",methodFormula:{ar:"اللَّهُمَّ احْرِقْ كُلَّ مَسٍّ مِنْ جِنٍّ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма ихрик кулля массин мин джиннин фи ль-бадани куллихи.",transRu:"О Аллах, сожги всякое касание от джинна во всём теле.",transUz:"Yo Alloh, butun tanada jindan iborat har qanday tegishni yondir."}},
-  {id:"br4",section:"breakBarriers",num:4,ru:"Дуа: уничтожь преграду разбрызганного следа (دَمِّرْ)",uz:"Duo: sepilgan izdan iborat to'siqni vayron qil (دَمِّرْ)",ar:"اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма даммир кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni vayron qil.",methodFormula:{ar:"اللَّهُمَّ أَزِلْ كُلَّ مَرْشُوشٍ مِنْ سِحْرٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма азиль кулля маршушин мин сихрин фи ль-бадани куллихи.",transRu:"О Аллах, устрани всякое подсыпанное от колдовства во всём теле.",transUz:"Yo Alloh, butun tanada jodugarlikdan iborat har qanday sepilgan jodusini yo'qot."}},
-  {id:"br5",section:"breakBarriers",num:5,ru:"Дуа: уничтожь преграду закопанной порчи (دَمِّرْ)",uz:"Duo: ko'milgan sehrdan iborat to'siqni vayron qil (دَمِّرْ)",ar:"اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма даммир кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni vayron qil.",methodFormula:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ سِحْرٍ مِنْ كَيْدٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма абтыль кулля сихрин мин кайдин фи ль-бадани куллихи.",transRu:"О Аллах, аннулируй всякое колдовство от козней во всём теле.",transUz:"Yo Alloh, butun tanada hiyladan iborat har qanday jodusini bekor qil."}},
-  {id:"br6",section:"breakBarriers",num:6,ru:"Дуа: развяжи преграду подвешенной завесы (حُلَّ)",uz:"Duo: osilgan to'siqdan iborat to'siqni yech (حُلَّ)",ar:"اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма хулля кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni yech.",methodFormula:{ar:"اللَّهُمَّ ارْفَعْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма ирфа' кулля та'тылин мин сихрин фи ль-бадани куллихи.",transRu:"О Аллах, подними всякое блокировку от колдовства во всём теле.",transUz:"Yo Alloh, butun tanada jodugarlikdan iborat har qanday to'siqni ko'tar."}},
-  {id:"br7",section:"breakBarriers",num:7,ru:"Дуа: аннулируй преграду написанного талисмана (أَبْطِلْ)",uz:"Duo: yozilgan tumordan iborat to'siqni bekor qil (أَبْطِلْ)",ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма абтыль кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, аннулируй всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni bekor qil.",methodFormula:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ مَسْحُورٍ مِنْ نَفْثٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма абтыль кулля масхурин мин нафсин фи ль-бадани куллихи.",transRu:"О Аллах, аннулируй всякое заколдованное от наговора во всём теле.",transUz:"Yo Alloh, butun tanada puflashdan iborat har qanday jodulanganni bekor qil."}},
-  {id:"br8",section:"breakBarriers",num:8,ru:"Дуа: аннулируй преграду колдовства разделения (أَبْطِلْ)",uz:"Duo: ajratish jodusidan iborat to'siqni bekor qil (أَبْطِلْ)",ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي قَلْبِي",tr:"Аллахумма абтыль кулля та'тылин мина-с-сихр фи къальби.",transRu:"О Аллах, аннулируй всякую преграду, состоящую из колдовства, в моём сердце.",transUz:"Yo Alloh, qalbimdagi jodugarlikdan iborat har qanday to'siqni bekor qil.",methodFormula:{ar:"اللَّهُمَّ أَزِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي الْقَلْبِ",tr:"Аллахумма азиль кулля тафрикин мин шайтанин фи ль-къальби.",transRu:"О Аллах, устрани всякое разделение от шайтана в сердце.",transUz:"Yo Alloh, qalbda shaytondan iborat har qanday ajratishni yo'qot."}},
-  {id:"br9",section:"breakBarriers",num:9,ru:"Дуа: развяжи преграду оков привязки (حُلَّ)",uz:"Duo: bog'lanish kishanidan iborat to'siqni yech (حُلَّ)",ar:"اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي قَلْبِي",tr:"Аллахумма хулля кулля та'тылин мина-с-сихр фи къальби.",transRu:"О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём сердце.",transUz:"Yo Alloh, qalbimdagi jodugarlikdan iborat har qanday to'siqni yech.",methodFormula:{ar:"اللَّهُمَّ فُكَّ كُلَّ رَبْطٍ مِنْ سِحْرٍ فِي الْقَلْبِ",tr:"Аллахумма фукка кулля рабтин мин сихрин фи ль-къальби.",transRu:"О Аллах, развяжи всякое связывание от колдовства в сердце.",transUz:"Yo Alloh, qalbda jodugarlikdan iborat har qanday bog'lashni yech."}},
-  {id:"br10",section:"breakBarriers",num:10,ru:"Дуа: развяжи преграду узлов колдунов (حُلَّ)",uz:"Duo: jodugarlar tugunlaridan iborat to'siqni yech (حُلَّ)",ar:"اللَّهُمَّ حُلَّ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма хулля кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, развяжи всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni yech.",methodFormula:{ar:"اللَّهُمَّ فُكَّ كُلَّ رَبْطٍ مِنْ عُقَدٍ فِي الزَّوَاجِ",tr:"Аллахумма фукка кулля рабтин мин 'укадин фи з-завадж.",transRu:"О Аллах, развяжи всякое связывание от узлов в браке.",transUz:"Yo Alloh, nikohda tugunlardan iborat har qanday bog'lashni yech."}},
-  {id:"br11",section:"breakBarriers",num:11,ru:"Дуа: выведи преграду вселившегося джинна (أَخْرِجْ)",uz:"Duo: kirgan jindan iborat to'siqni chiqar (أَخْرِجْ)",ar:"اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ الْجِنِّ فِي جَسَدِي",tr:"Аллахумма ахридж кулля та'тылин мина-ль-джинн фи джасади.",transRu:"О Аллах, выведи всякую преграду, состоящую из джиннов, из моего тела.",transUz:"Yo Alloh, tanamdangi jindan iborat har qanday to'siqni chiqar.",methodFormula:{ar:"اللَّهُمَّ اشْفِ كُلَّ جُنُونٍ مِنْ مَسٍّ فِي الْعَقْلِ",tr:"Аллахумма ишфи кулля джунунин мин массин фи ль-'акъли.",transRu:"О Аллах, исцели всякое умопомрачение от одержимости в разуме.",transUz:"Yo Alloh, aqlda tegishdan iborat har qanday aqldan ozishni shifo ber."}},
-  {id:"br12",section:"breakBarriers",num:12,ru:"Дуа: уничтожь преграду болезни (دَمِّرْ)",uz:"Duo: kasallikdan iborat to'siqni vayron qil (دَمِّرْ)",ar:"اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма даммир кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni vayron qil.",methodFormula:{ar:"اللَّهُمَّ اشْفِ كُلَّ مَسْحُورٍ مِنْ سِحْرٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма ишфи кулля масхурин мин сихрин фи ль-бадани куллихи.",transRu:"О Аллах, исцели всякое заколдованное от колдовства во всём теле.",transUz:"Yo Alloh, butun tanada jodugarlikdan iborat har qanday jodulanganni shifo ber."}},
-  {id:"br13",section:"breakBarriers",num:13,ru:"Дуа: аннулируй преграду сглаза в крови (أَبْطِلْ)",uz:"Duo: qondagi ko'z tegishidan iborat to'siqni bekor qil (أَبْطِلْ)",ar:"اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنَ الْعَيْنِ فِي دَمِي",tr:"Аллахумма абтыль кулля та'тылин мина-ль-'айн фи дами.",transRu:"О Аллах, аннулируй всякую преграду, состоящую из сглаза, в моей крови.",transUz:"Yo Alloh, qonimdagi ko'z tegishdan iborat har qanday to'siqni bekor qil.",methodFormula:{ar:"اللَّهُمَّ اقْطَعْ كُلَّ عَيْنٍ مِنْ حَسَدٍ فِي الرَّحِمِ",tr:"Аллахумма икъта' кулля 'айнин мин хасадин фи р-рахими.",transRu:"О Аллах, отсеки всякое сглаз от зависти в матке.",transUz:"Yo Alloh, bachadonda hasaddan iborat har qanday ko'z tegishni kes."}},
-  {id:"br14",section:"breakBarriers",num:14,ru:"Дуа: сломай преграду летящих взглядов (اكْسِرْ)",uz:"Duo: uchar nazarlardan iborat to'siqni sindir (اكْسِرْ)",ar:"اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ النَّظَرَاتِ فِي جَسَدِي",tr:"Аллахумма иксир кулля та'тылин мина-н-назарат фи джасади.",transRu:"О Аллах, сломай всякую преграду, состоящую из (дурных) взглядов, в моём теле.",transUz:"Yo Alloh, tanamdagi yomon nazardan iborat har qanday to'siqni sindir.",methodFormula:{ar:"اللَّهُمَّ ادْفَعْ كُلَّ عَيْنٍ مِنْ حَسَدٍ فِي الرَّأْسِ",tr:"Аллахумма идфа' кулля 'айнин мин хасадин фи р-ра'си.",transRu:"О Аллах, отведи всякое сглаз от зависти в голове.",transUz:"Yo Alloh, boshda hasaddan iborat har qanday ko'z tegishni qaytar."}},
-  {id:"br15",section:"breakBarriers",num:15,ru:"Дуа: сломай преграду заслона над уделом (اكْسِرْ)",uz:"Duo: rizq ustidagi to'siqdan iborat to'siqni sindir (اكْسِرْ)",ar:"اللَّهُمَّ اكْسِرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي رِزْقِي",tr:"Аллахумма иксир кулля та'тылин мина-с-сихр фи ризки.",transRu:"О Аллах, сломай всякую преграду, состоящую из колдовства, в моём уделе.",transUz:"Yo Alloh, rizqimdagi jodugarlikdan iborat har qanday to'siqni sindir.",methodFormula:{ar:"اللَّهُمَّ فُكَّ كُلَّ رَبْطٍ مِنْ سِحْرٍ فِي الرِّزْقِ",tr:"Аллахумма фукка кулля рабтин мин сихрин фи р-ризки.",transRu:"О Аллах, развяжи всякое связывание от колдовства в уделе.",transUz:"Yo Alloh, rizqda jodugarlikdan iborat har qanday bog'lashni yech."}},
-  {id:"br16",section:"breakBarriers",num:16,ru:"Дуа: уничтожь преграду животного фантома (دَمِّرْ)",uz:"Duo: hayvon xayolidan iborat to'siqni vayron qil (دَمِّرْ)",ar:"اللَّهُمَّ دَمِّرْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма даммир кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, уничтожь всякую преграду, состоящую из колдовства, в моём теле.",transUz:"Yo Alloh, tanamdagi jodugarlikdan iborat har qanday to'siqni vayron qil.",methodFormula:{ar:"اللَّهُمَّ احْرِقْ كُلَّ مَسٍّ مِنْ جِنٍّ فِي الظَّهْرِ",tr:"Аллахумма ихрик кулля массин мин джиннин фи з-захри.",transRu:"О Аллах, сожги всякое касание от джинна в спине.",transUz:"Yo Alloh, orqada jindan iborat har qanday tegishni yondir."}},
-  {id:"br17",section:"breakBarriers",num:17,ru:"Дуа: выведи преграду шёпота в дыхании (أَخْرِجْ)",uz:"Duo: nafasdagi pichirlashdan iborat to'siqni chiqar (أَخْرِجْ)",ar:"اللَّهُمَّ أَخْرِجْ كُلَّ تَعْطِيلٍ مِنَ السِّحْرِ فِي جَسَدِي",tr:"Аллахумма ахридж кулля та'тылин мина-с-сихр фи джасади.",transRu:"О Аллах, выведи всякую преграду, состоящую из колдовства, из моего тела.",transUz:"Yo Alloh, tanamdangi jodugarlikdan iborat har qanday to'siqni chiqar.",methodFormula:{ar:"اللَّهُمَّ اكْشِفْ كُلَّ سِحْرٍ مِنْ نَفْثٍ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма икшиф кулля сихрин мин нафсин фи ль-бадани куллихи.",transRu:"О Аллах, раскрой всякое колдовство от наговора во всём теле.",transUz:"Yo Alloh, butun tanada puflashdan iborat har qanday jodusini ochib tashla."}}
+  tatil:{ar:"اللَّهُمَّ أَبْطِلْ كُلَّ سِحْرٍ مِنْ خُدَّامِهِ فِي الْبَدَنِ كُلِّهِ",tr:"Аллахумма абтыль кулля сихрин мин худдамихи фи ль-бадани куллихи.",transRu:"О Аллах, аннулируй всякое колдовство от его служителей во всём теле.",transUz:"Yo Alloh, butun tanada xizmatkorlaridan har qanday jodusini bekor qil."}},
 ];
 
 const sectionsMeta = {
   howTo:{icon:'📖',ru:'Как применять',uz:"Qanday qo'llash"},
+  method:{icon:'📐',ru:'Метод',uz:'Usul'},
+  methodEye:{icon:'🧿',ru:'Метод от сглаза',uz:"Ko'zdan usul"},
   general:{icon:'🤲',ru:'Общие',uz:'Umumiy'},
   sales:{icon:'💰',ru:'Продажи',uz:'Savdo'},
   success:{icon:'⭐',ru:'Успех',uz:'Muvaffaqiyat'},
@@ -559,8 +595,7 @@ const sectionsMeta = {
   studies:{icon:'📚',ru:'Учёба',uz:"Ta'lim"},
   spiritual:{icon:'🕌',ru:'Духовное',uz:"Ma'naviyat"},
   evilEye:{icon:'👁️',ru:'Сглаз',uz:"Ko'z tegish"},
-  blackMagic:{icon:'🛡️',ru:'Порча',uz:'Sehr'},
-  breakBarriers:{icon:'⚔️',ru:'Снятие преград',uz:"To'siqlarni sindirish"}
+  blackMagic:{icon:'🛡️',ru:'Порча',uz:'Sehr'}
 };
 
 const themeLabels = {
@@ -615,6 +650,526 @@ function renderHowTo(){
   `;
 }
 
+const METHOD_DATA = {
+  verbs: [
+    {ar:'أَبْطِلْ', tr:'абтыль', ru:'аннулируй', uz:'bekor qil'},
+    {ar:'أَزِلْ',  tr:'азиль',  ru:'устрани',   uz:"yo'qot"},
+    {ar:'فُكَّ',   tr:'фукка',  ru:'развяжи',   uz:'yech'},
+    {ar:'اقْطَعْ', tr:"икъта'", ru:'отсеки',    uz:'kes'},
+    {ar:'ادْفَعْ', tr:"идфа'",  ru:'отведи',    uz:'qaytar'},
+    {ar:'ارْفَعْ', tr:"ирфа'",  ru:'подними',   uz:"ko'tar"},
+    {ar:'اكْشِفْ', tr:'икшиф',  ru:'раскрой',   uz:'ochib tashla'},
+    {ar:'اشْفِ',   tr:'ишфи',   ru:'исцели',    uz:'shifo ber'},
+    {ar:'احْرِقْ', tr:'ихрик',  ru:'сожги',     uz:'yondir'},
+    {ar:'أَخْرِجْ',tr:'ахридж', ru:'выведи',    uz:'chiqar'}
+  ],
+  ailments: [
+    {ar:'كُلَّ تَعْطِيلٍ', tr:"кулля та'тылин",  ru:'всякую блокировку', uz:"har qanday to'siqni"},
+    {ar:'كُلَّ تَفْرِيقٍ', tr:'кулля тафрикин',  ru:'всякое разделение', uz:'har qanday ajratishni'},
+    {ar:'كُلَّ مَرْشُوشٍ', tr:'кулля маршушин',  ru:'всякое подсыпанное',uz:'har qanday sepilganni'},
+    {ar:'كُلَّ مَأْكُولٍ', tr:"кулля ма'кулин",  ru:'всякое съеденное',  uz:'har qanday yeyilganni'},
+    {ar:'كُلَّ مَسْحُورٍ', tr:'кулля масхурин',  ru:'всякое заколдованное',uz:'har qanday jodulanganni'},
+    {ar:'كُلَّ جُنُونٍ',   tr:'кулля джунунин',  ru:'всякое умопомрачение',uz:'har qanday aqldan ozishni'},
+    {ar:'كُلَّ سِحْرٍ',    tr:'кулля сихрин',    ru:'всякое колдовство', uz:'har qanday jodusini'},
+    {ar:'كُلَّ عَيْنٍ',    tr:"кулля 'айнин",    ru:'всякий сглаз',      uz:"har qanday ko'z tegishni"},
+    {ar:'كُلَّ حَسَدٍ',    tr:'кулля хасадин',   ru:'всякую зависть',    uz:'har qanday hasadni'},
+    {ar:'كُلَّ مَسٍّ',     tr:'кулля массин',    ru:'всякое касание',    uz:'har qanday tegishni'},
+    {ar:'كُلَّ رَبْطٍ',    tr:'кулля рабтин',    ru:'всякое связывание', uz:"har qanday bog'lashni"}
+  ],
+  sources: [
+    {ar:'مِنْ سِحْرٍ',    tr:'мин сихрин',    ru:'от колдовства', uz:'jodugarlikdan'},
+    {ar:'مِنْ حَسَدٍ',    tr:'мин хасадин',   ru:'от зависти',    uz:'hasaddan'},
+    {ar:'مِنْ عَيْنٍ',    tr:"мин 'айнин",    ru:'от сглаза',     uz:"ko'z tegishidan"},
+    {ar:'مِنْ عُقَدٍ',    tr:"мин 'укадин",   ru:'из узлов',      uz:'tugunlardan'},
+    {ar:'مِنْ جِنٍّ',     tr:'мин джиннин',   ru:'от джиннов',    uz:'jinlardan'},
+    {ar:'مِنْ شَيْطَانٍ', tr:'мин шайтанин',  ru:'от шайтана',    uz:'shaytondan'},
+    {ar:'مِنْ كَيْدٍ',    tr:'мин кайдин',    ru:'от козней',     uz:'hiyladan'},
+    {ar:'مِنْ نَفْثٍ',    tr:'мин нафсин',    ru:'от наговора',   uz:'puflashdan'}
+  ],
+  places: [
+    {ar:'فِي الرَّأْسِ',         tr:"фи р-ра'си",          ru:'в голове',       uz:'boshda'},
+    {ar:'فِي الْقَلْبِ',         tr:"фи ль-къальби",       ru:'в сердце',       uz:'qalbda'},
+    {ar:'فِي الْعَقْلِ',         tr:"фи ль-'акъли",        ru:'в разуме',       uz:'aqlda'},
+    {ar:'فِي الْمَعِدَةِ',       tr:"фи ль-ма'идати",      ru:'в желудке',      uz:'oshqozonda'},
+    {ar:'فِي الْأَمْعَاءِ',      tr:"фи ль-ам'а'и",        ru:'в кишках',       uz:'ichaklarda'},
+    {ar:'فِي الظَّهْرِ',         tr:'фи з-захри',          ru:'в спине',        uz:'orqada'},
+    {ar:'فِي الْيَدَيْنِ',       tr:"фи ль-ядайни",        ru:'в руках',        uz:"qo'llarda"},
+    {ar:'فِي الرِّجْلَيْنِ',     tr:"фи р-риджлайни",      ru:'в ногах',        uz:'oyoqlarda'},
+    {ar:'فِي الرَّحِمِ',         tr:'фи р-рахими',         ru:'в матке',        uz:'bachadonda'},
+    {ar:'فِي الْبَدَنِ كُلِّهِ', tr:"фи ль-бадани куллихи",ru:'во всём теле',  uz:'butun tanada'},
+    {ar:'فِي الزَّوَاجِ',        tr:'фи з-завадж',         ru:'в браке',        uz:'nikohda'},
+    {ar:'فِي الرِّزْقِ',         tr:'фи р-ризки',          ru:'в уделе',        uz:'rizqda'}
+  ],
+  examples: [
+    {ar:'اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الرِّجْلَيْنِ', tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи р-риджлайни.", ru:'О Аллах, аннулируй всякую блокировку от колдовства в ногах.', uz:"Yo Alloh, oyoqlardagi jodugarlikdan har qanday to'siqni bekor qil."},
+    {ar:'اللَّهُمَّ فُكَّ كُلَّ رَبْطٍ مِنْ سِحْرٍ فِي الزَّوَاجِ', tr:'Аллахумма фукка кулля рабтин мин сихрин фи з-завадж.', ru:'О Аллах, развяжи всякое связывание от колдовства в браке.', uz:"Yo Alloh, nikohdagi jodugarlikdan har qanday bog'lashni yech."},
+    {ar:'اللَّهُمَّ أَزِلْ كُلَّ تَفْرِيقٍ مِنْ شَيْطَانٍ فِي الْقَلْبِ', tr:"Аллахумма азиль кулля тафрикин мин шайтанин фи ль-къальби.", ru:'О Аллах, устрани всякое разделение от шайтана в сердце.', uz:"Yo Alloh, qalbdagi shaytondan har qanday ajratishni yo'qot."},
+    {ar:'اللَّهُمَّ أَخْرِجْ كُلَّ مَأْكُولٍ مِنْ سِحْرٍ فِي الْمَعِدَةِ', tr:"Аллахумма ахридж кулля ма'кулин мин сихрин фи ль-ма'идати.", ru:'О Аллах, выведи всякое съеденное колдовство из желудка.', uz:'Yo Alloh, oshqozondan jodugarlikdan har qanday yeyilganni chiqar.'},
+    {ar:'اللَّهُمَّ ادْفَعْ كُلَّ عَيْنٍ مِنْ حَسَدٍ فِي الرِّزْقِ', tr:"Аллахумма идфа' кулля 'айнин мин хасадин фи р-ризки.", ru:'О Аллах, отведи всякий сглаз от зависти в уделе.', uz:"Yo Alloh, rizqdagi hasaddan har qanday ko'z tegishni qaytar."},
+    {ar:'اللَّهُمَّ اشْفِ كُلَّ جُنُونٍ مِنْ مَسٍّ فِي الْعَقْلِ', tr:"Аллахумма ишфи кулля джунунин мин массин фи ль-'акъли.", ru:'О Аллах, исцели всякое умопомрачение от одержимости в разуме.', uz:'Yo Alloh, aqldagi tegishdan har qanday aqldan ozishga shifo ber.'}
+  ]
+};
+
+function chip(item){
+  return `<div class="method-chip" onclick="copyFragment('${item.ar.replace(/'/g,"\\\\'")}',event)">
+    <div class="chip-ar arabic">${item.ar}</div>
+    <div class="chip-ru" data-ru="${item.ru}" data-uz="${item.uz}">${item.ru}</div>
+    <div class="chip-tr">${item.tr}</div>
+  </div>`;
+}
+
+function renderMethodGuide(){
+  const m = METHOD_DATA;
+  return `
+    <div class="gradient-block" style="margin-bottom:14px;">
+      <div class="gradient-block-title" data-ru="📐 Метод построения дуа против духовных и магических недугов" data-uz="📐 Ruhiy va sehrli dardlarga qarshi duo qurish usuli">📐 Метод построения дуа против духовных и магических недугов</div>
+    </div>
+
+    <div class="method-formula">
+      <div class="method-formula-ar arabic">
+        اللَّهُمَّ
+        <span class="ph" data-ru="глагол" data-uz="fe'l">глагол</span>
+        <span class="ph" data-ru="недуг" data-uz="dard">недуг</span>
+        مِنْ
+        <span class="ph" data-ru="источник" data-uz="manba">источник</span>
+        فِي
+        <span class="ph" data-ru="место" data-uz="joy">место</span>
+      </div>
+      <div class="method-formula-caption" data-ru="Фиксированный каркас (اللَّهُمَّ … مِنْ … فِي …). Четыре переменные подставляются под конкретный случай." data-uz="Asos o'zgarmas (اللَّهُمَّ … مِنْ … فِي …). To'rt o'zgaruvchi aniq holat uchun qo'shiladi.">
+        Фиксированный каркас (اللَّهُمَّ … مِنْ … فِي …). Четыре переменные подставляются под конкретный случай.
+      </div>
+    </div>
+
+    <div class="method-tip" data-ru="💡 Нажмите на любую плитку — арабский фрагмент скопируется в буфер обмена. Соберите дуа из четырёх плиток сами." data-uz="💡 Istalgan plitkani bosing — arab parchasi vaqtinchalik xotiraga ko'chiriladi. To'rt plitkadan duoni o'zingiz yig'ing.">
+      💡 Нажмите на любую плитку — арабский фрагмент скопируется в буфер обмена. Соберите дуа из четырёх плиток сами.
+    </div>
+
+    <div class="method-block">
+      <div class="method-block-head">
+        <div class="method-block-title" data-ru="1. Глагол (فِعْل أَمْر) — что просим у Аллаха" data-uz="1. Fe'l (فِعْل أَمْر) — Allohdan nimani so'raymiz">1. Глагол (فِعْل أَمْر) — что просим у Аллаха</div>
+        <div class="method-block-hint">${m.verbs.length} ×</div>
+      </div>
+      <div class="method-grid">${m.verbs.map(chip).join('')}</div>
+    </div>
+
+    <div class="method-block">
+      <div class="method-block-head">
+        <div class="method-block-title" data-ru="2. Вид недуга (المفعول به) — что устраняем" data-uz="2. Dard turi (المفعول به) — nimani bartaraf etamiz">2. Вид недуга (المفعول به) — что устраняем</div>
+        <div class="method-block-hint">${m.ailments.length} ×</div>
+      </div>
+      <div class="method-grid">${m.ailments.map(chip).join('')}</div>
+    </div>
+
+    <div class="method-block">
+      <div class="method-block-head">
+        <div class="method-block-title" data-ru="3. Источник (مِنْ) — от чего происходит" data-uz="3. Manba (مِنْ) — qayerdan kelib chiqadi">3. Источник (مِنْ) — от чего происходит</div>
+        <div class="method-block-hint">${m.sources.length} ×</div>
+      </div>
+      <div class="method-grid">${m.sources.map(chip).join('')}</div>
+    </div>
+
+    <div class="method-block">
+      <div class="method-block-head">
+        <div class="method-block-title" data-ru="4. Место (فِي) — где поражение" data-uz="4. Joy (فِي) — qayerdagi zarar">4. Место (فِي) — где поражение</div>
+        <div class="method-block-hint">${m.places.length} ×</div>
+      </div>
+      <div class="method-grid">${m.places.map(chip).join('')}</div>
+    </div>
+
+    <div class="gradient-block" style="margin:18px 0 12px;">
+      <div class="gradient-block-title" data-ru="🌿 Готовые примеры сборки" data-uz="🌿 Tayyor yig'ilgan misollar">🌿 Готовые примеры сборки</div>
+    </div>
+
+    ${m.examples.map(e => `
+      <div class="method-example" onclick="copyFragment('${e.ar.replace(/'/g,"\\\\'")}',event)" title="${currentLang==='ru'?'Нажмите, чтобы скопировать':'Nusxalash uchun bosing'}">
+        <div class="ex-ar arabic">${e.ar}</div>
+        <div class="ex-ru" data-ru="${e.ru}" data-uz="${e.uz}">${e.ru}</div>
+        <div class="ex-tr">${e.tr}</div>
+      </div>
+    `).join('')}
+
+    <div class="important-notice" style="margin-top:18px;">
+      <p data-ru="⚠️ Метод не фиксирует «таътыль» как единственный вариант — вид недуга выбирается строго по диагнозу. Всегда соблюдайте грамматику: после كُلَّ → родительный с танвин кясра (ٍ), после مِنْ и فِي → тоже родительный." data-uz="⚠️ Usul «ta'til»ni yagona variant sifatida belgilamaydi — dard turi tashxis bo'yicha tanlanadi. Grammatikaga rioya qiling: كُلَّ dan keyin → tanvin kasra (ٍ), مِنْ va فِي dan keyin → ham qaratqich kelishik.">⚠️ Метод не фиксирует «таътыль» как единственный вариант — вид недуга выбирается строго по диагнозу. Всегда соблюдайте грамматику: после كُلَّ → родительный с танвин кясра (ٍ), после مِنْ и فِي → тоже родительный.</p>
+    </div>
+  `;
+}
+
+const METHOD_EYE_DATA = {
+  verbs: [
+    {ar:'ادْفَعْ',  tr:"идфа'",  ru:'отведи',          uz:'qaytar'},
+    {ar:'ارْدُدْ',  tr:'урдуд',  ru:'верни обратно',   uz:'qaytarib yubor'},
+    {ar:'اقْطَعْ',  tr:"икъта'", ru:'отсеки',          uz:'kes'},
+    {ar:'أَبْطِلْ', tr:'абтыль', ru:'аннулируй',       uz:'bekor qil'},
+    {ar:'اصْرِفْ',  tr:'исриф',  ru:'отврати',         uz:'burib yubor'},
+    {ar:'أَزِلْ',   tr:'азиль',  ru:'устрани',         uz:"yo'qot"},
+    {ar:'أَخْمِدْ', tr:'ахмид',  ru:'погаси',          uz:"o'chir"},
+    {ar:'ابْعِدْ',  tr:"иб'ид",  ru:'удали',           uz:'uzoqlashtir'},
+    {ar:'اكْشِفْ',  tr:'икшиф',  ru:'сними',           uz:'ko‘tar'},
+    {ar:'اشْفِ',    tr:'ишфи',   ru:'исцели',          uz:'shifo ber'}
+  ],
+  objects: [
+    {ar:'كُلَّ عَيْنٍ',           tr:"кулля 'айнин",            ru:'всякий сглаз',           uz:"har qanday ko'z tegishni"},
+    {ar:'كُلَّ نَظَرٍ',           tr:'кулля назарин',           ru:'всякий взгляд',          uz:'har qanday nazarni'},
+    {ar:'كُلَّ حَسَدٍ',           tr:'кулля хасадин',           ru:'всякую зависть',         uz:'har qanday hasadni'},
+    {ar:'كُلَّ نَفْسٍ حَاسِدَةٍ', tr:'кулля нафсин хасидатин',  ru:'всякую завистливую душу',uz:'har qanday hasadgo‘y nafsni'},
+    {ar:'كُلَّ عَائِنٍ',          tr:"кулля 'аинин",            ru:'всякого сглазившего',    uz:"har qanday ko'z tegishganni"},
+    {ar:'كُلَّ بَاغِضٍ',          tr:'кулля багидин',           ru:'всякого ненавистника',   uz:"har qanday yomon ko'rganni"},
+    {ar:'كُلَّ سُوءٍ',            tr:"кулля су'ин",             ru:'всякое зло',             uz:'har qanday yomonlikni'},
+    {ar:'كُلَّ ضَرَرٍ',           tr:'кулля дарарин',           ru:'всякий вред',            uz:'har qanday zararni'},
+    {ar:'كُلَّ شَرٍّ',            tr:'кулля шаррин',            ru:'всякое худо',            uz:'har qanday yomonlikni'},
+    {ar:'كُلَّ مَكْرٍ',           tr:'кулля макрин',            ru:'всякие козни',           uz:'har qanday hiylani'}
+  ],
+  sources: [
+    {ar:'مِنْ حَاسِدٍ',           tr:'мин хасидин',             ru:'от завистника',          uz:"hasadgo'ydan"},
+    {ar:'مِنْ بَاغِضٍ',           tr:'мин багидин',             ru:'от ненавистника',        uz:"yomon ko'rgan kishidan"},
+    {ar:'مِنْ عَدُوٍّ',           tr:"мин 'адуввин",            ru:'от врага',               uz:'dushmandan'},
+    {ar:'مِنْ قَرِيبٍ',           tr:'мин карибин',             ru:'от близкого',            uz:'yaqindan'},
+    {ar:'مِنْ بَعِيدٍ',           tr:"мин ба'идин",             ru:'от далёкого',            uz:'uzoqdan'},
+    {ar:'مِنَ الْجِنِّ',          tr:'мина ль-джинн',           ru:'от джиннов',             uz:'jinlardan'},
+    {ar:'مِنَ الْإِنْسِ',         tr:"мина ль-инси",            ru:'от людей',               uz:'odamlardan'},
+    {ar:'مِنْ نَفْسٍ خَبِيثَةٍ',  tr:'мин нафсин хабисатин',    ru:'от злой души',           uz:'yomon nafsdan'},
+    {ar:'مِنْ عَيْنٍ بَارِدَةٍ',  tr:"мин 'айнин баридатин",    ru:'от холодного глаза',     uz:"sovuq ko'zdan"},
+    {ar:'مِنْ عَيْنٍ سَاخِنَةٍ',  tr:"мин 'айнин сахинатин",    ru:'от горячего глаза',      uz:"qaynoq ko'zdan"}
+  ],
+  targets: [
+    {ar:'عَلَى صِحَّتِي',         tr:"'аля сыххати",            ru:'на моё здоровье',        uz:'sog‘lig‘imga'},
+    {ar:'عَلَى أَوْلَادِي',       tr:"'аля авлади",             ru:'на моих детей',          uz:'bolalarimga'},
+    {ar:'عَلَى أَهْلِي',          tr:"'аля ахли",               ru:'на мою семью',           uz:'oilamga'},
+    {ar:'عَلَى زَوَاجِي',         tr:"'аля заваджи",            ru:'на мой брак',            uz:'nikohimga'},
+    {ar:'عَلَى مَالِي',           tr:"'аля мали",               ru:'на моё имущество',       uz:'mol-mulkimga'},
+    {ar:'عَلَى رِزْقِي',          tr:"'аля ризки",              ru:'на мой удел',            uz:'rizqimga'},
+    {ar:'عَلَى عَمَلِي',          tr:"'аля 'амали",             ru:'на мою работу',          uz:'ishimga'},
+    {ar:'عَلَى تِجَارَتِي',       tr:"'аля тиджарати",          ru:'на мой бизнес',          uz:'savdo-sotig‘imga'},
+    {ar:'عَلَى جَمَالِي',         tr:"'аля джамали",            ru:'на мою красоту',         uz:'go‘zalligimga'},
+    {ar:'عَلَى عَقْلِي',          tr:"'аля 'акъли",             ru:'на мой разум',           uz:'aqlimga'},
+    {ar:'عَلَى بَيْتِي',          tr:"'аля байти",              ru:'на мой дом',             uz:'uyimga'},
+    {ar:'عَلَى سَعَادَتِي',       tr:"'аля са'адати",           ru:'на моё счастье',         uz:'baxtimga'}
+  ],
+  examples: [
+    {ar:'اللَّهُمَّ ادْفَعْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ عَلَى أَوْلَادِي', tr:"Аллахумма идфа' кулля 'айнин мин хасидин 'аля авлади.", ru:'О Аллах, отведи всякий сглаз от завистника на моих детей.', uz:"Yo Alloh, hasadgo'ydan bolalarimga har qanday ko'z tegishni qaytar."},
+    {ar:'اللَّهُمَّ ارْدُدْ كُلَّ نَظَرٍ مِنْ عَدُوٍّ عَلَى صِحَّتِي', tr:"Аллахумма урдуд кулля назарин мин 'адуввин 'аля сыххати.", ru:'О Аллах, верни обратно всякий взгляд от врага на моё здоровье.', uz:"Yo Alloh, dushmandan sog'ligimga qarshi har qanday nazarni qaytarib yubor."},
+    {ar:'اللَّهُمَّ اقْطَعْ كُلَّ حَسَدٍ مِنَ النَّاسِ عَلَى رِزْقِي', tr:"Аллахумма икъта' кулля хасадин мина-н-наси 'аля ризки.", ru:'О Аллах, отсеки всякую зависть от людей на мой удел.', uz:'Yo Alloh, odamlardan rizqimga qarshi har qanday hasadni kes.'},
+    {ar:'اللَّهُمَّ أَبْطِلْ كُلَّ نَفْسٍ حَاسِدَةٍ مِنْ بَاغِضٍ عَلَى مَالِي', tr:"Аллахумма абтыль кулля нафсин хасидатин мин багидин 'аля мали.", ru:'О Аллах, аннулируй всякую завистливую душу от ненавистника на моё имущество.', uz:"Yo Alloh, yomon ko'rgan kishidan mol-mulkimga qarshi har qanday hasadgo'y nafsni bekor qil."},
+    {ar:'اللَّهُمَّ اصْرِفْ كُلَّ سُوءٍ مِنْ عَائِنٍ عَلَى بَيْتِي', tr:"Аллахумма исриф кулля су'ин мин 'аинин 'аля байти.", ru:'О Аллах, отврати всякое зло от сглазившего на мой дом.', uz:"Yo Alloh, ko'z tegishgandan uyimga qarshi har qanday yomonlikni burib yubor."},
+    {ar:'اللَّهُمَّ أَخْمِدْ كُلَّ حَسَدٍ مِنْ نَفْسٍ خَبِيثَةٍ عَلَى سَعَادَتِي', tr:"Аллахумма ахмид кулля хасадин мин нафсин хабисатин 'аля са'адати.", ru:'О Аллах, погаси всякую зависть от злой души на моё счастье.', uz:"Yo Alloh, yomon nafsdan baxtimga qarshi har qanday hasadni o'chir."}
+  ]
+};
+
+function renderMethodEyeGuide(){
+  const m = METHOD_EYE_DATA;
+  return `
+    <div class="gradient-block" style="margin-bottom:14px;">
+      <div class="gradient-block-title" data-ru="🧿 Метод построения дуа против сглаза и зависти" data-uz="🧿 Ko'z tegishi va hasadga qarshi duo qurish usuli">🧿 Метод построения дуа против сглаза и зависти</div>
+    </div>
+
+    <div class="method-formula">
+      <div class="method-formula-ar arabic">
+        اللَّهُمَّ
+        <span class="ph" data-ru="глагол" data-uz="fe'l">глагол</span>
+        <span class="ph" data-ru="объект" data-uz="ob'ekt">объект</span>
+        مِنْ
+        <span class="ph" data-ru="источник" data-uz="manba">источник</span>
+        عَلَى
+        <span class="ph" data-ru="цель" data-uz="maqsad">цель</span>
+      </div>
+      <div class="method-formula-caption" data-ru="Каркас фиксирован (اللَّهُمَّ … مِنْ … عَلَى …). Особенность: место поражения вводится предлогом عَلَى («на»), потому что сглаз действует на что-то, а не находится внутри." data-uz="Asos o'zgarmas (اللَّهُمَّ … مِنْ … عَلَى …). Xususiyat: zararlangan joy عَلَى («ga/ustiga») predlogi bilan kiritiladi, chunki ko'z tegishi narsa ustiga ta'sir qiladi.">
+        Каркас фиксирован (اللَّهُمَّ … مِنْ … عَلَى …). Особенность: место поражения вводится предлогом عَلَى («на»), потому что сглаз действует <em>на</em> что-то, а не находится <em>внутри</em>.
+      </div>
+    </div>
+
+    <div class="method-tip" data-ru="💡 Нажмите на плитку — арабский фрагмент скопируется. Соберите дуа сами под конкретную ситуацию." data-uz="💡 Plitkani bosing — arab parchasi nusxalanadi. Aniq holatga mos duoni o'zingiz yig'ing.">
+      💡 Нажмите на плитку — арабский фрагмент скопируется. Соберите дуа сами под конкретную ситуацию.
+    </div>
+
+    <div class="method-block">
+      <div class="method-block-head">
+        <div class="method-block-title" data-ru="1. Глагол (فِعْل أَمْر) — что просим у Аллаха" data-uz="1. Fe'l (فِعْل أَمْر) — Allohdan nimani so'raymiz">1. Глагол (فِعْل أَمْر) — что просим у Аллаха</div>
+        <div class="method-block-hint">${m.verbs.length} ×</div>
+      </div>
+      <div class="method-grid">${m.verbs.map(chip).join('')}</div>
+    </div>
+
+    <div class="method-block">
+      <div class="method-block-head">
+        <div class="method-block-title" data-ru="2. Объект (المفعول به) — что устраняем" data-uz="2. Ob'ekt (المفعول به) — nimani bartaraf etamiz">2. Объект (المفعول به) — что устраняем</div>
+        <div class="method-block-hint">${m.objects.length} ×</div>
+      </div>
+      <div class="method-grid">${m.objects.map(chip).join('')}</div>
+    </div>
+
+    <div class="method-block">
+      <div class="method-block-head">
+        <div class="method-block-title" data-ru="3. Источник (مِنْ) — от кого исходит" data-uz="3. Manba (مِنْ) — kimdan keladi">3. Источник (مِنْ) — от кого исходит</div>
+        <div class="method-block-hint">${m.sources.length} ×</div>
+      </div>
+      <div class="method-grid">${m.sources.map(chip).join('')}</div>
+    </div>
+
+    <div class="method-block">
+      <div class="method-block-head">
+        <div class="method-block-title" data-ru="4. Цель (عَلَى) — на что направлено" data-uz="4. Maqsad (عَلَى) — nimaga qaratilgan">4. Цель (عَلَى) — на что направлено</div>
+        <div class="method-block-hint">${m.targets.length} ×</div>
+      </div>
+      <div class="method-grid">${m.targets.map(chip).join('')}</div>
+    </div>
+
+    <div class="gradient-block" style="margin:18px 0 12px;">
+      <div class="gradient-block-title" data-ru="🌿 Готовые примеры сборки" data-uz="🌿 Tayyor yig'ilgan misollar">🌿 Готовые примеры сборки</div>
+    </div>
+
+    ${m.examples.map(e => `
+      <div class="method-example" onclick="copyFragment('${e.ar.replace(/'/g,"\\\\'")}',event)" title="${currentLang==='ru'?'Нажмите, чтобы скопировать':'Nusxalash uchun bosing'}">
+        <div class="ex-ar arabic">${e.ar}</div>
+        <div class="ex-ru" data-ru="${e.ru}" data-uz="${e.uz}">${e.ru}</div>
+        <div class="ex-tr">${e.tr}</div>
+      </div>
+    `).join('')}
+
+    <div class="important-notice" style="margin-top:18px;">
+      <p data-ru="⚠️ Сглаз действует «на» (عَلَى) объект, а не «в» (فِي) орган. Поэтому в этом методе цель вводится через عَلَى. Грамматика: после كُلَّ — танвин кясра (ٍ), после مِنْ и عَلَى — родительный падеж." data-uz="⚠️ Ko'z tegishi ob'ekt «ustiga» (عَلَى) ta'sir qiladi, organ «ichida» (فِي) emas. Shuning uchun bu usulda maqsad عَلَى orqali kiritiladi. Grammatika: كُلَّ dan keyin — tanvin kasra (ٍ), مِنْ va عَلَى dan keyin — qaratqich kelishik.">⚠️ Сглаз действует <b>«на»</b> (عَلَى) объект, а не <b>«в»</b> (فِي) орган. Поэтому в этом методе цель вводится через عَلَى. Грамматика: после كُلَّ — танвин кясра (ٍ), после مِنْ и عَلَى — родительный падеж.</p>
+    </div>
+  `;
+}
+
+/* ===== Inline method blocks per section ===== */
+const SECTION_METHOD = {
+  general: {
+    title_ru:'Метод по формуле — общие нужды', title_uz:"Formula bo'yicha usul — umumiy ehtiyojlar",
+    targets:[
+      {ar:'فِي حَيَاتِي',   tr:'фи хаяти',     ru:'в моей жизни',  uz:'hayotimda'},
+      {ar:'فِي أَمْرِي',    tr:'фи амри',      ru:'в моём деле',   uz:'ishimda'},
+      {ar:'فِي قَلْبِي',    tr:'фи къальби',   ru:'в моём сердце', uz:'qalbimda'},
+      {ar:'فِي نَفْسِي',    tr:'фи нафси',     ru:'в моей душе',   uz:'jonimda'},
+      {ar:'فِي يَوْمِي',    tr:'фи яуми',      ru:'в моём дне',    uz:'kunimda'},
+      {ar:'فِي طَرِيقِي',   tr:'фи тарикъи',   ru:'на моём пути',  uz:"yo'limda"}
+    ],
+    examples:[
+      {ar:'اللَّهُمَّ أَزِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي حَيَاتِي', tr:"Аллахумма азиль кулля та'тылин мин сихрин фи хаяти.", ru:'О Аллах, устрани всякую блокировку от колдовства в моей жизни.', uz:'Yo Alloh, hayotimda jodugarlikdan har qanday to‘siqni yo‘qot.'},
+      {ar:'اللَّهُمَّ أَبْطِلْ كُلَّ مَكْرٍ مِنْ عَدُوٍّ فِي أَمْرِي', tr:"Аллахумма абтыль кулля макрин мин 'адуввин фи амри.", ru:'О Аллах, аннулируй всякие козни от врага в моём деле.', uz:'Yo Alloh, ishimda dushmandan har qanday hiylani bekor qil.'}
+    ]
+  },
+  sales: {
+    title_ru:'Метод по формуле — против преград в продажах', title_uz:"Formula bo'yicha usul — savdo to'siqlariga qarshi",
+    targets:[
+      {ar:'فِي الْبَيْعِ',     tr:"фи ль-бай'и",     ru:'в продаже',     uz:'savdoda'},
+      {ar:'فِي الزَّبَائِنِ',  tr:"фи з-заба'ини",   ru:'в клиентах',    uz:'mijozlarda'},
+      {ar:'فِي الْأَرْبَاحِ',  tr:'фи ль-арбахи',    ru:'в прибыли',     uz:'foydada'},
+      {ar:'فِي السُّوقِ',      tr:'фи с-суки',       ru:'на рынке',      uz:'bozorda'},
+      {ar:'فِي الْعَرْضِ',     tr:"фи ль-'арди",     ru:'в предложении', uz:'taklifimda'},
+      {ar:'فِي الصَّفْقَاتِ',  tr:'фи с-сафкати',    ru:'в сделках',     uz:'shartnomalarda'}
+    ],
+    examples:[
+      {ar:'اللَّهُمَّ أَبْطِلْ كُلَّ تَعْطِيلٍ مِنْ سِحْرٍ فِي الْبَيْعِ', tr:"Аллахумма абтыль кулля та'тылин мин сихрин фи ль-бай'и.", ru:'О Аллах, аннулируй всякую блокировку от колдовства в продаже.', uz:'Yo Alloh, savdoda jodugarlikdan har qanday to‘siqni bekor qil.'},
+      {ar:'اللَّهُمَّ ادْفَعْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ فِي السُّوقِ', tr:"Аллахумма идфа' кулля 'айнин мин хасидин фи с-суки.", ru:'О Аллах, отведи всякий сглаз от завистника на рынке.', uz:"Yo Alloh, bozorda hasadgo'ydan har qanday ko'z tegishni qaytar."}
+    ]
+  },
+  success: {
+    title_ru:'Метод по формуле — против преград в успехе', title_uz:"Formula bo'yicha usul — muvaffaqiyat to'siqlariga qarshi",
+    targets:[
+      {ar:'فِي النَّجَاحِ',     tr:'фи н-наджахи',    ru:'в успехе',         uz:'muvaffaqiyatda'},
+      {ar:'فِي الْعَمَلِ',      tr:"фи ль-'амали",    ru:'в работе',         uz:'ishda'},
+      {ar:'فِي الْقَرَارَاتِ',  tr:'фи ль-карарати',  ru:'в решениях',       uz:'qarorlarda'},
+      {ar:'فِي الْأَهْدَافِ',   tr:'фи ль-ахдафи',    ru:'в целях',          uz:'maqsadlarda'},
+      {ar:'فِي الْفُرَصِ',      tr:'фи ль-фурраси',   ru:'в возможностях',   uz:'imkoniyatlarda'},
+      {ar:'فِي الْمَسِيرَةِ',   tr:'фи ль-масирати',  ru:'в карьере',        uz:'karyerada'}
+    ],
+    examples:[
+      {ar:'اللَّهُمَّ أَزِلْ كُلَّ تَعْطِيلٍ مِنْ حَسَدٍ فِي النَّجَاحِ', tr:"Аллахумма азиль кулля та'тылин мин хасадин фи н-наджахи.", ru:'О Аллах, устрани всякую блокировку от зависти в успехе.', uz:"Yo Alloh, muvaffaqiyatda hasaddan har qanday to'siqni yo'qot."},
+      {ar:'اللَّهُمَّ افْتَحْ كُلَّ بَابٍ مِنْ فَضْلِكَ فِي الْفُرَصِ', tr:'Аллахумма ифтах кулля бабин мин фадлика фи ль-фурраси.', ru:'О Аллах, открой всякую дверь по милости Твоей в возможностях.', uz:'Yo Alloh, fazlingdan imkoniyatlarda har qanday eshikni och.'}
+    ]
+  },
+  health: {
+    title_ru:'Метод по формуле — против преград в здоровье', title_uz:"Formula bo'yicha usul — salomatlik to'siqlariga qarshi",
+    targets:[
+      {ar:'فِي الصِّحَّةِ',     tr:'фи с-сыххати',     ru:'в здоровье',  uz:"sog'liqda"},
+      {ar:'فِي الْجَسَدِ',      tr:'фи ль-джасади',    ru:'в теле',      uz:'tanada'},
+      {ar:'فِي الْقَلْبِ',      tr:'фи ль-къальби',    ru:'в сердце',    uz:'yurakda'},
+      {ar:'فِي الْأَعْصَابِ',   tr:"фи ль-а'саби",     ru:'в нервах',    uz:'asablarda'},
+      {ar:'فِي النَّوْمِ',      tr:'фи н-науми',       ru:'во сне',      uz:'uyquda'},
+      {ar:'فِي الشِّفَاءِ',     tr:'фи ш-шифа'+"'и",   ru:'в исцелении', uz:'shifoda'}
+    ],
+    examples:[
+      {ar:'اللَّهُمَّ اشْفِ كُلَّ مَرَضٍ مِنْ سِحْرٍ فِي الْجَسَدِ', tr:'Аллахумма ишфи кулля марадин мин сихрин фи ль-джасади.', ru:'О Аллах, исцели всякую болезнь от колдовства в теле.', uz:'Yo Alloh, tanada jodugarlikdan har qanday kasallikka shifo ber.'},
+      {ar:'اللَّهُمَّ أَخْرِجْ كُلَّ مَسٍّ مِنْ جِنٍّ فِي الْأَعْصَابِ', tr:"Аллахумма ахридж кулля массин мин джиннин фи ль-а'саби.", ru:'О Аллах, выведи всякое касание джинна из нервов.', uz:'Yo Alloh, asablardan jindan har qanday tegishni chiqar.'}
+    ]
+  },
+  relationships: {
+    title_ru:'Метод по формуле — против преград в отношениях', title_uz:"Formula bo'yicha usul — munosabatlardagi to'siqlarga qarshi",
+    targets:[
+      {ar:'فِي الزَّوَاجِ',      tr:'фи з-завадж',        ru:'в браке',     uz:'nikohda'},
+      {ar:'فِي الْعَائِلَةِ',    tr:"фи ль-'а'илати",     ru:'в семье',     uz:'oilada'},
+      {ar:'فِي الْمَحَبَّةِ',    tr:'фи ль-махаббати',    ru:'в любви',     uz:'muhabbatda'},
+      {ar:'فِي الْأَهْلِ',       tr:'фи ль-ахли',         ru:'в близких',   uz:'yaqinlarimda'},
+      {ar:'فِي الْأَوْلَادِ',    tr:'фи ль-авлади',       ru:'в детях',     uz:'bolalarda'},
+      {ar:'فِي الْعِشْرَةِ',     tr:"фи ль-'ишрати",      ru:'в общении',   uz:'muloqotda'}
+    ],
+    examples:[
+      {ar:'اللَّهُمَّ أَبْطِلْ كُلَّ تَفْرِيقٍ مِنْ سِحْرٍ فِي الزَّوَاجِ', tr:'Аллахумма абтыль кулля тафрикин мин сихрин фи з-завадж.', ru:'О Аллах, аннулируй всякое разделение от колдовства в браке.', uz:'Yo Alloh, nikohda jodugarlikdan har qanday ajratishni bekor qil.'},
+      {ar:'اللَّهُمَّ اجْمَعْ كُلَّ قُلُوبٍ مِنْ مَحَبَّتِكَ فِي الْعَائِلَةِ', tr:"Аллахумма иджма' кулля кулубин мин махаббатика фи ль-'а'илати.", ru:'О Аллах, собери все сердца по любви Твоей в семье.', uz:'Yo Alloh, muhabbating bilan oilada barcha qalblarni birlashtir.'}
+    ]
+  },
+  finances: {
+    title_ru:'Метод по формуле — против преград в финансах', title_uz:"Formula bo'yicha usul — moliyadagi to'siqlarga qarshi",
+    targets:[
+      {ar:'فِي الرِّزْقِ',         tr:'фи р-ризки',         ru:'в уделе',       uz:'rizqda'},
+      {ar:'فِي الْمَالِ',          tr:'фи ль-мали',         ru:'в имуществе',   uz:'mol-mulkda'},
+      {ar:'فِي الْكَسْبِ',         tr:'фи ль-касби',        ru:'в заработке',   uz:'daromadda'},
+      {ar:'فِي الِادِّخَارِ',      tr:'фи ль-иддихари',     ru:'в накоплениях', uz:'jamg‘armada'},
+      {ar:'فِي الِاسْتِثْمَارِ',   tr:'фи ль-истисмари',    ru:'в инвестициях', uz:'investitsiyada'},
+      {ar:'فِي الدَّيْنِ',         tr:'фи д-дайни',         ru:'в долгах',      uz:'qarzlarda'}
+    ],
+    examples:[
+      {ar:'اللَّهُمَّ اكْسِرْ كُلَّ سَدٍّ مِنْ سِحْرٍ فِي الرِّزْقِ', tr:'Аллахумма иксир кулля саддин мин сихрин фи р-ризки.', ru:'О Аллах, сломай всякий заслон от колдовства в уделе.', uz:"Yo Alloh, rizqda jodugarlikdan har qanday to'siqni sindir."},
+      {ar:'اللَّهُمَّ ادْفَعْ كُلَّ عَيْنٍ مِنْ حَاسِدٍ فِي الْمَالِ', tr:"Аллахумма идфа' кулля 'айнин мин хасидин фи ль-мали.", ru:'О Аллах, отведи всякий сглаз от завистника в имуществе.', uz:"Yo Alloh, mol-mulkda hasadgo'ydan har qanday ko'z tegishni qaytar."}
+    ]
+  },
+  studies: {
+    title_ru:'Метод по формуле — против преград в учёбе', title_uz:"Formula bo'yicha usul — ta'lim to'siqlariga qarshi",
+    targets:[
+      {ar:'فِي الدِّرَاسَةِ',     tr:'фи д-дирасати',      ru:'в учёбе',       uz:'o‘qishda'},
+      {ar:'فِي الْحِفْظِ',        tr:'фи ль-хифзи',        ru:'в запоминании', uz:'yodlashda'},
+      {ar:'فِي الْفَهْمِ',        tr:'фи ль-фахми',        ru:'в понимании',   uz:'tushunishda'},
+      {ar:'فِي الِامْتِحَانِ',    tr:'фи ль-имтыхани',     ru:'на экзамене',   uz:'imtihonda'},
+      {ar:'فِي الذَّاكِرَةِ',     tr:'фи з-закирати',      ru:'в памяти',      uz:'xotirada'},
+      {ar:'فِي الْعِلْمِ',        tr:"фи ль-'ильми",       ru:'в знании',      uz:'ilmda'}
+    ],
+    examples:[
+      {ar:'اللَّهُمَّ أَزِلْ كُلَّ تَعْطِيلٍ مِنَ الْعَيْنِ فِي الْفَهْمِ', tr:"Аллахумма азиль кулля та'тылин мина-ль-'айни фи ль-фахми.", ru:'О Аллах, устрани всякую блокировку от сглаза в понимании.', uz:"Yo Alloh, tushunishda ko'z tegishidan har qanday to'siqni yo'qot."},
+      {ar:'اللَّهُمَّ افْتَحْ كُلَّ بَابٍ مِنْ عِلْمِكَ فِي الذَّاكِرَةِ', tr:"Аллахумма ифтах кулля бабин мин 'ильмика фи з-закирати.", ru:'О Аллах, открой всякую дверь от знания Твоего в памяти.', uz:'Yo Alloh, ilmingdan xotirada har qanday eshikni och.'}
+    ]
+  },
+  spiritual: {
+    title_ru:'Метод по формуле — против преград в духовном', title_uz:"Formula bo'yicha usul — ma'naviy to'siqlarga qarshi",
+    targets:[
+      {ar:'فِي الْعِبَادَةِ',          tr:"фи ль-'ибадати",        ru:'в поклонении',          uz:'ibodatda'},
+      {ar:'فِي الصَّلَاةِ',            tr:'фи с-саляти',           ru:'в намазе',              uz:'namozda'},
+      {ar:'فِي الْإِيمَانِ',           tr:'фи ль-имани',           ru:'в вере',                uz:'imonda'},
+      {ar:'فِي قُرْبِكَ',              tr:'фи курбика',            ru:'в близости к Тебе',     uz:'Senga yaqinlikda'},
+      {ar:'فِي قِرَاءَةِ الْقُرْآنِ',  tr:"фи къира'ати ль-кур'ани",ru:'в чтении Корана',       uz:"Qur'on o'qishda"},
+      {ar:'فِي الذِّكْرِ',             tr:'фи з-зикри',            ru:'в зикре',               uz:'zikrda'}
+    ],
+    examples:[
+      {ar:'اللَّهُمَّ أَزِلْ كُلَّ تَعْطِيلٍ مِنْ شَيْطَانٍ فِي الصَّلَاةِ', tr:"Аллахумма азиль кулля та'тылин мин шайтанин фи с-саляти.", ru:'О Аллах, устрани всякую блокировку от шайтана в намазе.', uz:"Yo Alloh, namozda shaytondan har qanday to'siqni yo'qot."},
+      {ar:'اللَّهُمَّ ادْفَعْ كُلَّ وَسْوَسَةٍ مِنْ شَيْطَانٍ فِي الذِّكْرِ', tr:"Аллахумма идфа' кулля васвасатин мин шайтанин фи з-зикри.", ru:'О Аллах, отведи всякую наущающую мысль от шайтана в зикре.', uz:'Yo Alloh, zikrda shaytondan har qanday vasvasani qaytar.'}
+    ]
+  },
+  blackMagic: {
+    title_ru:'Метод по формуле — против порчи и колдовства', title_uz:"Formula bo'yicha usul — sehrga qarshi",
+    targets:[
+      {ar:'فِي الْبَدَنِ',     tr:'фи ль-бадани',     ru:'в теле',         uz:'tanada'},
+      {ar:'فِي الْبَيْتِ',     tr:'фи ль-байти',      ru:'в доме',         uz:'uyda'},
+      {ar:'فِي الْحَيَاةِ',    tr:'фи ль-хаяти',      ru:'в жизни',        uz:'hayotda'},
+      {ar:'فِي السَّعَادَةِ',  tr:"фи с-са'адати",    ru:'в счастье',      uz:'baxtda'},
+      {ar:'فِي الْأَمْنِ',     tr:'фи ль-амни',       ru:'в безопасности', uz:'xavfsizlikda'},
+      {ar:'فِي الْفِكْرِ',     tr:'фи ль-фикри',      ru:'в мыслях',       uz:'fikrlarda'}
+    ],
+    examples:[
+      {ar:'اللَّهُمَّ دَمِّرْ كُلَّ سِحْرٍ مِنْ خُدَّامِهِ فِي الْبَدَنِ', tr:'Аллахумма даммир кулля сихрин мин худдамихи фи ль-бадани.', ru:'О Аллах, уничтожь всякое колдовство от его служителей в теле.', uz:'Yo Alloh, tanada uning xizmatkorlaridan har qanday jodugarlikni vayron qil.'},
+      {ar:'اللَّهُمَّ احْرِقْ كُلَّ مَسٍّ مِنْ جِنٍّ فِي الْبَيْتِ', tr:'Аллахумма ихрик кулля массин мин джиннин фи ль-байти.', ru:'О Аллах, сожги всякое касание джинна в доме.', uz:'Yo Alloh, uyda jindan har qanday tegishni yondir.'}
+    ]
+  }
+};
+
+function renderInlineMethod(sectionKey){
+  const cfg = SECTION_METHOD[sectionKey];
+  if(!cfg) return '';
+  const m = METHOD_DATA;
+  const targets = cfg.targets;
+  return `
+    <div class="inline-method" id="inline-method-${sectionKey}">
+      <div class="inline-method-head" onclick="toggleInlineMethod('${sectionKey}')">
+        <div class="inline-method-title">
+          📐 <span data-ru="${cfg.title_ru}" data-uz="${cfg.title_uz}">${cfg.title_ru}</span>
+          <span class="inline-method-badge" data-ru="конструктор" data-uz="qurish">конструктор</span>
+        </div>
+        <div class="inline-method-chev">⌄</div>
+      </div>
+      <div class="inline-method-body">
+        <div class="method-formula">
+          <div class="method-formula-ar arabic">
+            اللَّهُمَّ
+            <span class="ph" data-ru="глагол" data-uz="fe'l">глагол</span>
+            <span class="ph" data-ru="недуг" data-uz="dard">недуг</span>
+            مِنْ
+            <span class="ph" data-ru="источник" data-uz="manba">источник</span>
+            فِي
+            <span class="ph" data-ru="место" data-uz="joy">место</span>
+          </div>
+        </div>
+        <div class="method-tip" data-ru="💡 Нажмите на плитку — арабский фрагмент скопируется." data-uz="💡 Plitkani bosing — arab parchasi nusxalanadi.">💡 Нажмите на плитку — арабский фрагмент скопируется.</div>
+
+        <div class="method-block">
+          <div class="method-block-head"><div class="method-block-title" data-ru="1. Глагол" data-uz="1. Fe'l">1. Глагол</div><div class="method-block-hint">${m.verbs.length} ×</div></div>
+          <div class="method-grid">${m.verbs.map(chip).join('')}</div>
+        </div>
+        <div class="method-block">
+          <div class="method-block-head"><div class="method-block-title" data-ru="2. Вид недуга" data-uz="2. Dard turi">2. Вид недуга</div><div class="method-block-hint">${m.ailments.length} ×</div></div>
+          <div class="method-grid">${m.ailments.map(chip).join('')}</div>
+        </div>
+        <div class="method-block">
+          <div class="method-block-head"><div class="method-block-title" data-ru="3. Источник" data-uz="3. Manba">3. Источник</div><div class="method-block-hint">${m.sources.length} ×</div></div>
+          <div class="method-grid">${m.sources.map(chip).join('')}</div>
+        </div>
+        <div class="method-block">
+          <div class="method-block-head"><div class="method-block-title" data-ru="4. Место (под раздел)" data-uz="4. Joy (bo'lim bo'yicha)">4. Место (под раздел)</div><div class="method-block-hint">${targets.length} ×</div></div>
+          <div class="method-grid">${targets.map(chip).join('')}</div>
+        </div>
+
+        <div class="gradient-block" style="margin:14px 0 10px;"><div class="gradient-block-title" data-ru="🌿 Примеры под раздел" data-uz="🌿 Bo'lim uchun misollar">🌿 Примеры под раздел</div></div>
+        ${cfg.examples.map(e => `
+          <div class="method-example" onclick="copyFragment('${e.ar.replace(/'/g,"\\\\'")}',event)" title="${currentLang==='ru'?'Нажмите, чтобы скопировать':'Nusxalash uchun bosing'}">
+            <div class="ex-ar arabic">${e.ar}</div>
+            <div class="ex-ru" data-ru="${e.ru}" data-uz="${e.uz}">${e.ru}</div>
+            <div class="ex-tr">${e.tr}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function toggleInlineMethod(key){
+  const el = document.getElementById('inline-method-' + key);
+  if(el) el.classList.toggle('open');
+}
+
+window.toggleInlineMethod = toggleInlineMethod;
+
+function copyFragment(text, ev){
+  if(ev){ ev.stopPropagation(); }
+  const el = ev && ev.currentTarget;
+  const doToast = () => {
+    if(typeof showToast === 'function'){
+      showToast((currentLang === 'ru' ? '✓ Скопировано: ' : '✓ Nusxalandi: ') + text);
+    }
+    if(el){
+      el.classList.add('copied');
+      setTimeout(() => el.classList.remove('copied'), 700);
+    }
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(doToast).catch(() => fallbackCopy(text, doToast));
+  } else {
+    fallbackCopy(text, doToast);
+  }
+}
+
+function fallbackCopy(text, cb){
+  try{
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    cb && cb();
+  }catch(e){}
+}
+
+window.copyFragment = copyFragment;
+
 function cardTemplate(r){
   const searchBlob = `${r.ru} ${r.uz} ${r.ar} ${r.tr} ${r.transRu} ${r.transUz}`.toLowerCase();
   return `
@@ -634,13 +1189,6 @@ function cardTemplate(r){
             <div class="arabic-block"><div class="arabic-text">${r.tatil.ar}</div></div>
             <div class="translation" data-ru="${r.tatil.transRu}" data-uz="${r.tatil.transUz}">${r.tatil.transRu}</div>
             <div class="transcription">${r.tatil.tr}</div>
-          </div>` : ''}
-          ${r.methodFormula ? `<div class="tatil-block" style="border-color:var(--primary-strong);background:rgba(var(--theme-rgb),.06);">
-            <div class="tatil-label" data-ru="📐 Дуа по формуле метода" data-uz="📐 Formula bo'yicha duo">📐 Дуа по формуле метода</div>
-            <div class="arabic-block"><div class="arabic-text">${r.methodFormula.ar}</div></div>
-            <div class="translation" data-ru="${r.methodFormula.transRu}" data-uz="${r.methodFormula.transUz}">${r.methodFormula.transRu}</div>
-            <div class="transcription">${r.methodFormula.tr}</div>
-            <div class="transcription" style="margin-top:6px;font-size:11px;opacity:.8;" data-ru="Шаблон: اللَّهُمَّ + глагол + كُلَّ + недуг + مِنْ + источник + فِي + место" data-uz="Shablon: اللَّهُمَّ + fe'l + كُلَّ + dard + مِنْ + manba + فِي + joy">Шаблон: اللَّهُمَّ + глагол + كُلَّ + недуг + مِنْ + источник + فِي + место</div>
           </div>` : ''}
           <div class="counter-section">
             <div class="counter-label" data-ru="повторений" data-uz="takrorlash">повторений</div>
@@ -667,32 +1215,6 @@ function cardTemplate(r){
 }
 
 
-function renderMethodIntro(){
-  return `
-    <div class="gradient-block" style="margin-bottom:14px;">
-      <div class="gradient-block-title" data-ru="📐 Метод построения дуа против духовных и магических недугов" data-uz="📐 Ruhiy va sehrli dardlarga qarshi duo qurish usuli">📐 Метод построения дуа против духовных и магических недугов</div>
-    </div>
-    <div class="info-card" style="margin-bottom:14px;">
-      <h3 data-ru="Общая формула" data-uz="Umumiy formula">Общая формула</h3>
-      <div class="arabic-block" style="margin:10px 0;"><div class="arabic-text" style="font-size:1.15em;">اللَّهُمَّ + [فِعْل أَمْر] + كُلَّ + [مَفْعُول بِهِ] + مِنْ + [مَصْدَر] + فِي + [مَكَان]</div></div>
-      <p data-ru="Каркас неизменен. Подставляются 4 переменные: глагол действия, вид недуга, источник, место поражения. Так из одного шаблона рождается любое точное дуа под конкретный диагноз." data-uz="Asos o'zgarmas. 4 o'zgaruvchi qo'shiladi: fe'l-harakat, dard turi, manba, zararlangan joy. Bitta shablondan har bir aniq tashxis uchun aniq duo tug'iladi.">Каркас неизменен. Подставляются 4 переменные: глагол действия, вид недуга, источник, место поражения. Так из одного шаблона рождается любое точное дуа под конкретный диагноз.</p>
-    </div>
-    <div class="info-card" style="margin-bottom:14px;">
-      <h3 data-ru="10 глаголов действия (فِعْل أَمْر)" data-uz="10 ta harakat fe'li (فِعْل أَمْر)">10 глаголов действия (فِعْل أَمْر)</h3>
-      <p style="line-height:2;" data-ru="<b>أَبْطِلْ</b> — аннулируй · <b>أَزِلْ</b> — устрани · <b>فُكَّ</b> — развяжи · <b>اقْطَعْ</b> — отсеки · <b>ادْفَعْ</b> — отведи · <b>ارْفَعْ</b> — подними · <b>اكْشِفْ</b> — раскрой · <b>اشْفِ</b> — исцели · <b>احْرِقْ</b> — сожги · <b>أَخْرِجْ</b> — выведи" data-uz="<b>أَبْطِلْ</b> — bekor qil · <b>أَزِلْ</b> — yo'qot · <b>فُكَّ</b> — yech · <b>اقْطَعْ</b> — kes · <b>ادْفَعْ</b> — qaytar · <b>ارْفَعْ</b> — ko'tar · <b>اكْشِفْ</b> — ochib tashla · <b>اشْفِ</b> — shifo ber · <b>احْرِقْ</b> — yondir · <b>أَخْرِجْ</b> — chiqar"><b>أَبْطِلْ</b> — аннулируй · <b>أَزِلْ</b> — устрани · <b>فُكَّ</b> — развяжи · <b>اقْطَعْ</b> — отсеки · <b>ادْفَعْ</b> — отведи · <b>ارْفَعْ</b> — подними · <b>اكْشِفْ</b> — раскрой · <b>اشْفِ</b> — исцели · <b>احْرِقْ</b> — сожги · <b>أَخْرِجْ</b> — выведи</p>
-    </div>
-    <div class="info-card" style="margin-bottom:14px;">
-      <h3 data-ru="Виды недугов (المفعول به)" data-uz="Dard turlari (المفعول به)">Виды недугов (المفعول به)</h3>
-      <p style="line-height:2;" data-ru="<b>تَعْطِيلٍ</b> — блокировка · <b>تَفْرِيقٍ</b> — разделение · <b>مَرْشُوشٍ</b> — подсыпанное · <b>مَأْكُولٍ</b> — съеденное · <b>مَسْحُورٍ</b> — заколдованное · <b>جُنُونٍ</b> — умопомрачение · <b>سِحْرٍ</b> — колдовство · <b>عَيْنٍ</b> — сглаз · <b>حَسَدٍ</b> — зависть · <b>مَسٍّ</b> — одержимость · <b>رَبْطٍ</b> — связывание" data-uz="<b>تَعْطِيلٍ</b> — to'siq · <b>تَفْرِيقٍ</b> — ajratish · <b>مَرْشُوشٍ</b> — sepilgan · <b>مَأْكُولٍ</b> — yeyilgan · <b>مَسْحُورٍ</b> — jodulangan · <b>جُنُونٍ</b> — aqldan ozish · <b>سِحْرٍ</b> — sehr · <b>عَيْنٍ</b> — ko'z · <b>حَسَدٍ</b> — hasad · <b>مَسٍّ</b> — tegish · <b>رَبْطٍ</b> — bog'lash"><b>تَعْطِيلٍ</b> — блокировка · <b>تَفْرِيقٍ</b> — разделение · <b>مَرْشُوشٍ</b> — подсыпанное · <b>مَأْكُولٍ</b> — съеденное · <b>مَسْحُورٍ</b> — заколдованное · <b>جُنُونٍ</b> — умопомрачение · <b>سِحْرٍ</b> — колдовство · <b>عَيْنٍ</b> — сглаз · <b>حَسَدٍ</b> — зависть · <b>مَسٍّ</b> — одержимость · <b>رَبْطٍ</b> — связывание</p>
-    </div>
-    <div class="info-card" style="margin-bottom:14px;">
-      <h3 data-ru="Источники (مِنْ) и места (فِي)" data-uz="Manbalar (مِنْ) va joylar (فِي)">Источники (مِنْ) и места (فِي)</h3>
-      <p style="line-height:2;" data-ru="<b>Источники:</b> سِحْرٍ (колдовство), حَسَدٍ (зависть), عَيْنٍ (сглаз), عُقَدٍ (узлы), جِنٍّ (джинны), شَيْطَانٍ (шайтан), كَيْدٍ (козни), نَفْثٍ (наговор).<br><b>Места:</b> الرَّأْسِ (голова), الْقَلْبِ (сердце), الْمَعِدَةِ (желудок), الْأَمْعَاءِ (кишки), الرَّحِمِ (матка), الظَّهْرِ (спина), الْعَقْلِ (разум), الْبَدَنِ كُلِّهِ (всё тело), الزَّوَاجِ (брак), الرِّزْقِ (удел)." data-uz="<b>Manbalar:</b> سِحْرٍ (sehr), حَسَدٍ (hasad), عَيْنٍ (ko'z), عُقَدٍ (tugunlar), جِنٍّ (jinlar), شَيْطَانٍ (shayton), كَيْدٍ (hiyla), نَفْثٍ (puflash).<br><b>Joylar:</b> الرَّأْسِ (bosh), الْقَلْبِ (qalb), الْمَعِدَةِ (oshqozon), الْأَمْعَاءِ (ichaklar), الرَّحِمِ (bachadon), الظَّهْرِ (orqa), الْعَقْلِ (aql), الْبَدَنِ كُلِّهِ (butun tana), الزَّوَاجِ (nikoh), الرِّزْقِ (rizq)."><b>Источники:</b> سِحْرٍ (колдовство), حَسَدٍ (зависть), عَيْنٍ (сглаз), عُقَدٍ (узлы), جِنٍّ (джинны), شَيْطَانٍ (шайтан), كَيْدٍ (козни), نَفْثٍ (наговор).<br><b>Места:</b> الرَّأْسِ (голова), الْقَلْبِ (сердце), الْمَعِدَةِ (желудок), الْأَمْعَاءِ (кишки), الرَّحِمِ (матка), الظَّهْرِ (спина), الْعَقْلِ (разум), الْبَدَنِ كُلِّهِ (всё тело), الزَّوَاجِ (брак), الرِّزْقِ (удел).</p>
-    </div>
-    <div class="important-notice" style="margin-bottom:18px;"><p data-ru="📐 Каждая карточка ниже содержит блок «Дуа по формуле метода» — собранную по этому шаблону альтернативную дуа под конкретный тип недуга." data-uz="📐 Quyidagi har bir kartochka «Formula bo'yicha duo» blokini saqlaydi — aniq dard turiga mos shu shablon bo'yicha yig'ilgan muqobil duo.">📐 Каждая карточка ниже содержит блок «Дуа по формуле метода» — собранную по этому шаблону альтернативную дуа под конкретный тип недуга.</p></div>
-  `;
-}
-
 function renderAll(){
   const container = document.getElementById('sectionsContainer');
   container.innerHTML = '';
@@ -700,14 +1222,20 @@ function renderAll(){
     const section = document.createElement('section');
     section.className = 'section' + (key === currentSection ? ' active' : '');
     section.id = `section-${key}`;
-    const count = key === 'howTo' ? null : ruqyaData.filter(r => r.section === key).length;
+    const isStatic = key === 'howTo' || key === 'method' || key === 'methodEye';
+    const count = isStatic ? null : ruqyaData.filter(r => r.section === key).length;
+    const subText = key === 'method'
+      ? t('Конструктор дуа по формуле','Formula bo‘yicha duo qurish')
+      : key === 'methodEye'
+      ? t('Конструктор дуа против сглаза','Ko‘zga qarshi duo qurish')
+      : (count ? `${count} ${t('заклинаний','duo')}` : t('Инструкция по применению','Qo‘llash bo‘yicha yo‘riqnoma'));
     section.innerHTML = `
       <div class="section-header">
         <div class="section-icon">${meta.icon}</div>
         <div class="section-title" data-ru="${meta.ru}" data-uz="${meta.uz}">${meta.ru}</div>
-        <div class="section-sub">${count ? `${count} ${t('заклинаний','duo')}` : t('Инструкция по применению','Qo‘llash bo‘yicha yo‘riqnoma')}</div>
+        <div class="section-sub">${subText}</div>
       </div>
-      ${key === 'howTo' ? renderHowTo() : (key === 'breakBarriers' ? renderMethodIntro() : '') + ruqyaData.filter(r => r.section === key).map(cardTemplate).join('')}
+      ${key === 'howTo' ? renderHowTo() : key === 'method' ? renderMethodGuide() : key === 'methodEye' ? renderMethodEyeGuide() : (renderInlineMethod(key) + ruqyaData.filter(r => r.section === key).map(cardTemplate).join(''))}
       <div class="zero-state" id="zero-${key}" data-ru="Ничего не найдено в этом разделе" data-uz="Bu bo‘limda hech narsa topilmadi">Ничего не найдено в этом разделе</div>
     `;
     container.appendChild(section);
@@ -856,6 +1384,14 @@ function updateSectionStats(){
   const stats = document.getElementById('sectionStats');
   if(!section || currentSection === 'howTo'){
     stats.textContent = t('Инструкция', 'Yo‘riqnoma');
+    return;
+  }
+  if(currentSection === 'method'){
+    stats.textContent = t('Метод', 'Usul');
+    return;
+  }
+  if(currentSection === 'methodEye'){
+    stats.textContent = t('Метод от сглаза', "Ko'zdan usul");
     return;
   }
   const allCards = [...section.querySelectorAll('.ruqya-card')];
