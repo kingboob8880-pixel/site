@@ -176,7 +176,7 @@ html[data-theme="darkgold"] .tabs,html[data-theme="midnight"] .tabs{background:r
 
 /* BUILDER */
 .builder{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-bottom:14px}
-.form-grid{display:grid;gap:11px}
+.form-grid{display:grid;gap:10px;grid-template-columns:1fr 1fr}
 .field{display:flex;flex-direction:column;gap:5px}
 .field-label{font-size:11px;color:var(--muted-2);font-weight:700;text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:6px;padding-left:2px}
 .field-label .num{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;border-radius:50%;width:20px;height:20px;display:inline-grid;place-items:center;font-size:11px}
@@ -239,10 +239,12 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
 
 /* CUSTOM SELECT */
 .csel{position:relative}
-.csel-trigger{width:100%;min-height:var(--tap);padding:0 44px 0 14px;border:1.5px solid var(--line);background:var(--card-2);color:var(--text);border-radius:var(--radius-sm);font-size:15px;font-weight:500;font-family:inherit;display:flex;align-items:center;text-align:left;line-height:1.35;gap:0;cursor:pointer;transition:border-color .2s ease}
+.csel-trigger{width:100%;min-height:var(--tap);padding:8px 40px 8px 12px;border:1.5px solid var(--line);background:var(--card-2);color:var(--text);border-radius:var(--radius-sm);font-family:inherit;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;gap:2px;cursor:pointer;transition:border-color .2s ease}
 .csel-trigger:active{border-color:var(--primary);background:var(--primary-soft)}
-.csel-trigger-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:8px 0}
-.csel-arrow{position:absolute;right:14px;top:50%;transform:translateY(-58%);pointer-events:none;color:var(--primary);font-size:20px;font-weight:700}
+.csel-trigger-ar{font-family:'Noto Naskh Arabic',serif;direction:rtl;font-size:16px;font-weight:700;color:var(--primary);line-height:1.4;width:100%;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.csel-trigger-label{font-size:12px;font-weight:500;color:var(--muted);line-height:1.3;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.csel-trigger-text{display:none}
+.csel-arrow{position:absolute;right:10px;top:50%;transform:translateY(-58%);pointer-events:none;color:var(--primary);font-size:18px;font-weight:700}
 
 /* MODAL */
 .csel-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;opacity:0;pointer-events:none;transition:opacity .25s ease}
@@ -257,7 +259,7 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
 .csel-modal-item:last-child{border-bottom:none}
 .csel-modal-item:active{background:var(--primary-soft)}
 .csel-modal-item.selected{background:rgba(var(--theme-rgb),.1)}
-.csel-modal-item-ar{font-family:'Noto Naskh Arabic',serif;direction:rtl;font-size:18px;font-weight:700;color:var(--primary);min-width:80px;text-align:right;flex-shrink:0}
+.csel-modal-item-ar{font-family:'Noto Naskh Arabic',serif;direction:rtl;font-size:18px;font-weight:700;color:var(--primary);min-width:70px;max-width:120px;text-align:right;flex-shrink:0;overflow:hidden;word-break:break-word}
 .csel-modal-item-label{flex:1;min-width:0;font-size:13.5px;color:var(--text);line-height:1.4}
 .csel-modal-item-check{color:var(--primary);font-size:18px;flex-shrink:0;opacity:0}
 .csel-modal-item.selected .csel-modal-item-check{opacity:1}
@@ -265,8 +267,10 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
 @keyframes pulse{0%,100%{box-shadow:0 12px 28px var(--shadow-lg)}50%{box-shadow:0 12px 32px var(--shadow-lg), 0 0 0 6px rgba(var(--theme-rgb),.15)}}
 .cta-btn.pulse{animation:pulse 2.2s ease-in-out infinite}
 
+@media (max-width:360px){
+  .form-grid{grid-template-columns:1fr}
+}
 @media (min-width:600px){
-  .form-grid{grid-template-columns:1fr 1fr}
   .output-ar{font-size:28px}
   .hero-title{font-size:24px}
   .theme-grid{grid-template-columns:repeat(8,1fr)}
@@ -350,11 +354,11 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
       <div class="form-grid">
         <div class="field">
           <label class="field-label"><span class="num">1</span> <span data-i18n="lbl_cause">Виновник</span> <span class="count" id="cnt-m1-cause"></span></label>
-          <div class="csel" id="csel-m1-cause"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
+          <div class="csel" id="csel-m1-cause"><button type="button" class="csel-trigger"><span class="csel-trigger-ar">—</span><span class="csel-trigger-label"></span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">2</span> <span data-i18n="lbl_place">Место</span> <span class="count" id="cnt-m1-place"></span></label>
-          <div class="csel" id="csel-m1-place"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
+          <div class="csel" id="csel-m1-place"><button type="button" class="csel-trigger"><span class="csel-trigger-ar">—</span><span class="csel-trigger-label"></span><span class="csel-arrow">⌄</span></button></div>
         </div>
       </div>
       <div class="row-actions">
@@ -373,19 +377,19 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
       <div class="form-grid">
         <div class="field">
           <label class="field-label"><span class="num">1</span> <span data-i18n="lbl_verb">Глагол</span> <span class="count" id="cnt-m2-verb"></span></label>
-          <div class="csel" id="csel-m2-verb"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
+          <div class="csel" id="csel-m2-verb"><button type="button" class="csel-trigger"><span class="csel-trigger-ar">—</span><span class="csel-trigger-label"></span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">2</span> <span data-i18n="lbl_ailment">Недуг</span> <span class="count" id="cnt-m2-ailment"></span></label>
-          <div class="csel" id="csel-m2-ailment"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
+          <div class="csel" id="csel-m2-ailment"><button type="button" class="csel-trigger"><span class="csel-trigger-ar">—</span><span class="csel-trigger-label"></span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">3</span> <span data-i18n="lbl_source">Источник</span> <span class="count" id="cnt-m2-source"></span></label>
-          <div class="csel" id="csel-m2-source"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
+          <div class="csel" id="csel-m2-source"><button type="button" class="csel-trigger"><span class="csel-trigger-ar">—</span><span class="csel-trigger-label"></span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">4</span> <span data-i18n="lbl_place">Место</span> <span class="count" id="cnt-m2-place"></span></label>
-          <div class="csel" id="csel-m2-place"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
+          <div class="csel" id="csel-m2-place"><button type="button" class="csel-trigger"><span class="csel-trigger-ar">—</span><span class="csel-trigger-label"></span><span class="csel-arrow">⌄</span></button></div>
         </div>
       </div>
       <div class="row-actions">
@@ -404,19 +408,19 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
       <div class="form-grid">
         <div class="field">
           <label class="field-label"><span class="num">1</span> <span data-i18n="lbl_verb">Глагол</span> <span class="count" id="cnt-m3-verb"></span></label>
-          <div class="csel" id="csel-m3-verb"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
+          <div class="csel" id="csel-m3-verb"><button type="button" class="csel-trigger"><span class="csel-trigger-ar">—</span><span class="csel-trigger-label"></span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">2</span> <span data-i18n="lbl_object">Объект</span> <span class="count" id="cnt-m3-object"></span></label>
-          <div class="csel" id="csel-m3-object"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
+          <div class="csel" id="csel-m3-object"><button type="button" class="csel-trigger"><span class="csel-trigger-ar">—</span><span class="csel-trigger-label"></span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">3</span> <span data-i18n="lbl_source">Источник</span> <span class="count" id="cnt-m3-source"></span></label>
-          <div class="csel" id="csel-m3-source"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
+          <div class="csel" id="csel-m3-source"><button type="button" class="csel-trigger"><span class="csel-trigger-ar">—</span><span class="csel-trigger-label"></span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">4</span> <span data-i18n="lbl_target">Цель</span> <span class="count" id="cnt-m3-target"></span></label>
-          <div class="csel" id="csel-m3-target"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
+          <div class="csel" id="csel-m3-target"><button type="button" class="csel-trigger"><span class="csel-trigger-ar">—</span><span class="csel-trigger-label"></span><span class="csel-arrow">⌄</span></button></div>
         </div>
       </div>
       <div class="row-actions">
@@ -847,13 +851,15 @@ function cselSetIdx(id, idx, items){
   const def = CSEL_DEFS.find(d => d.id === id);
   const x = items[idx];
   const lng = currentLang;
-  const label = def && def.verbMode
-    ? `${x.ar} — ${x[lng]} (${x.tr})`
-    : `${x.ar} — ${x[lng]}`;
+  const labelText = def && def.verbMode
+    ? `${x[lng]} (${x.tr})`
+    : x[lng];
   const wrap = document.getElementById('csel-' + id);
   if(wrap){
-    const txt = wrap.querySelector('.csel-trigger-text');
-    if(txt) txt.textContent = label;
+    const arEl = wrap.querySelector('.csel-trigger-ar');
+    const lblEl = wrap.querySelector('.csel-trigger-label');
+    if(arEl) arEl.textContent = x.ar;
+    if(lblEl) lblEl.textContent = labelText;
   }
 }
 
