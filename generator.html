@@ -237,6 +237,31 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
 
 .method-block.hidden{display:none}
 
+/* CUSTOM SELECT */
+.csel{position:relative}
+.csel-trigger{width:100%;min-height:var(--tap);padding:0 44px 0 14px;border:1.5px solid var(--line);background:var(--card-2);color:var(--text);border-radius:var(--radius-sm);font-size:15px;font-weight:500;font-family:inherit;display:flex;align-items:center;text-align:left;line-height:1.35;gap:0;cursor:pointer;transition:border-color .2s ease}
+.csel-trigger:active{border-color:var(--primary);background:var(--primary-soft)}
+.csel-trigger-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:8px 0}
+.csel-arrow{position:absolute;right:14px;top:50%;transform:translateY(-58%);pointer-events:none;color:var(--primary);font-size:20px;font-weight:700}
+
+/* MODAL */
+.csel-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.csel-modal-overlay.open{opacity:1;pointer-events:auto}
+.csel-modal{position:fixed;left:0;right:0;bottom:0;z-index:501;background:var(--card);border-radius:24px 24px 0 0;padding:0 0 calc(16px + var(--safe-bottom));max-height:75vh;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .35s cubic-bezier(.22,1,.36,1);box-shadow:0 -20px 60px rgba(0,0,0,.2)}
+.csel-modal.open{transform:translateY(0)}
+.csel-modal-header{padding:14px 16px 10px;border-bottom:1px solid var(--line);flex-shrink:0}
+.csel-modal-handle{width:42px;height:4px;background:var(--line-strong);border-radius:99px;margin:0 auto 12px;cursor:pointer}
+.csel-modal-title{font-family:'Amiri',serif;color:var(--primary);font-size:17px;font-weight:700;text-align:center}
+.csel-modal-list{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 12px 4px}
+.csel-modal-item{display:flex;align-items:center;gap:12px;padding:12px 10px;border-radius:12px;cursor:pointer;transition:background .15s ease;border-bottom:1px solid var(--line)}
+.csel-modal-item:last-child{border-bottom:none}
+.csel-modal-item:active{background:var(--primary-soft)}
+.csel-modal-item.selected{background:rgba(var(--theme-rgb),.1)}
+.csel-modal-item-ar{font-family:'Noto Naskh Arabic',serif;direction:rtl;font-size:18px;font-weight:700;color:var(--primary);min-width:80px;text-align:right;flex-shrink:0}
+.csel-modal-item-label{flex:1;min-width:0;font-size:13.5px;color:var(--text);line-height:1.4}
+.csel-modal-item-check{color:var(--primary);font-size:18px;flex-shrink:0;opacity:0}
+.csel-modal-item.selected .csel-modal-item-check{opacity:1}
+
 @keyframes pulse{0%,100%{box-shadow:0 12px 28px var(--shadow-lg)}50%{box-shadow:0 12px 32px var(--shadow-lg), 0 0 0 6px rgba(var(--theme-rgb),.15)}}
 .cta-btn.pulse{animation:pulse 2.2s ease-in-out infinite}
 
@@ -325,11 +350,11 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
       <div class="form-grid">
         <div class="field">
           <label class="field-label"><span class="num">1</span> <span data-i18n="lbl_cause">Виновник</span> <span class="count" id="cnt-m1-cause"></span></label>
-          <div class="select"><select id="m1-cause"></select></div>
+          <div class="csel" id="csel-m1-cause"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">2</span> <span data-i18n="lbl_place">Место</span> <span class="count" id="cnt-m1-place"></span></label>
-          <div class="select"><select id="m1-place"></select></div>
+          <div class="csel" id="csel-m1-place"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
         </div>
       </div>
       <div class="row-actions">
@@ -348,19 +373,19 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
       <div class="form-grid">
         <div class="field">
           <label class="field-label"><span class="num">1</span> <span data-i18n="lbl_verb">Глагол</span> <span class="count" id="cnt-m2-verb"></span></label>
-          <div class="select"><select id="m2-verb"></select></div>
+          <div class="csel" id="csel-m2-verb"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">2</span> <span data-i18n="lbl_ailment">Недуг</span> <span class="count" id="cnt-m2-ailment"></span></label>
-          <div class="select"><select id="m2-ailment"></select></div>
+          <div class="csel" id="csel-m2-ailment"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">3</span> <span data-i18n="lbl_source">Источник</span> <span class="count" id="cnt-m2-source"></span></label>
-          <div class="select"><select id="m2-source"></select></div>
+          <div class="csel" id="csel-m2-source"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">4</span> <span data-i18n="lbl_place">Место</span> <span class="count" id="cnt-m2-place"></span></label>
-          <div class="select"><select id="m2-place"></select></div>
+          <div class="csel" id="csel-m2-place"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
         </div>
       </div>
       <div class="row-actions">
@@ -379,19 +404,19 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
       <div class="form-grid">
         <div class="field">
           <label class="field-label"><span class="num">1</span> <span data-i18n="lbl_verb">Глагол</span> <span class="count" id="cnt-m3-verb"></span></label>
-          <div class="select"><select id="m3-verb"></select></div>
+          <div class="csel" id="csel-m3-verb"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">2</span> <span data-i18n="lbl_object">Объект</span> <span class="count" id="cnt-m3-object"></span></label>
-          <div class="select"><select id="m3-object"></select></div>
+          <div class="csel" id="csel-m3-object"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">3</span> <span data-i18n="lbl_source">Источник</span> <span class="count" id="cnt-m3-source"></span></label>
-          <div class="select"><select id="m3-source"></select></div>
+          <div class="csel" id="csel-m3-source"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
         </div>
         <div class="field">
           <label class="field-label"><span class="num">4</span> <span data-i18n="lbl_target">Цель</span> <span class="count" id="cnt-m3-target"></span></label>
-          <div class="select"><select id="m3-target"></select></div>
+          <div class="csel" id="csel-m3-target"><button type="button" class="csel-trigger"><span class="csel-trigger-text">—</span><span class="csel-arrow">⌄</span></button></div>
         </div>
       </div>
       <div class="row-actions">
@@ -438,7 +463,7 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
   <button class="cta-btn pulse" id="ctaBtn" onclick="generateCurrent()" data-i18n="btn_generate">✨ Собрать дуа</button>
 </div>
 
-<div class="toast" id="toast">Скопировано</div>
+<div class="toast" id="toast"></div>
 
 <div class="theme-overlay" id="themeOverlay"></div>
 <div class="theme-sheet" id="themeSheet">
@@ -446,6 +471,16 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
   <div class="theme-sheet-title" data-i18n="theme_title">🎨 Выберите тему</div>
   <div class="theme-grid" id="themeGrid"></div>
   <button class="theme-sheet-close" id="themeSheetClose" data-i18n="theme_done">✓ Готово</button>
+</div>
+
+<!-- CUSTOM SELECT MODAL -->
+<div class="csel-modal-overlay" id="cselOverlay"></div>
+<div class="csel-modal" id="cselModal">
+  <div class="csel-modal-header">
+    <div class="csel-modal-handle" id="cselHandle"></div>
+    <div class="csel-modal-title" id="cselModalTitle"></div>
+  </div>
+  <div class="csel-modal-list" id="cselModalList"></div>
 </div>
 
 </div><!-- /#mainApp -->
@@ -774,6 +809,10 @@ let currentLang = 'ru';
 let fontScale = 100;
 let current = {ar:'', tr:'', ru:''};
 
+// Custom select state
+const CSEL_STATE = {};
+let cselActive = null; // {id, items, titleKey}
+
 function t(key){ return (I18N[currentLang] && I18N[currentLang][key]) || I18N.ru[key] || key; }
 function applyI18n(){
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -788,33 +827,125 @@ function applyI18n(){
   document.documentElement.setAttribute('data-lang', currentLang);
 }
 
-function fillSelect(id, items, fmt, countId){
-  const el = document.getElementById(id);
-  const prevIdx = parseInt(el.value || '0', 10);
-  el.innerHTML = items.map((x,i) => `<option value="${i}">${fmt(x)}</option>`).join('');
-  if(!isNaN(prevIdx) && prevIdx < items.length) el.value = prevIdx;
-  if(countId) document.getElementById(countId).textContent = items.length;
+// ---- CUSTOM SELECT ----
+const CSEL_DEFS = [
+  {id:'m1-cause',  data:()=>DATA.causes,     titleKey:'lbl_cause',   verbMode:false, countId:'cnt-m1-cause'},
+  {id:'m1-place',  data:()=>DATA.places,     titleKey:'lbl_place',   verbMode:false, countId:'cnt-m1-place'},
+  {id:'m2-verb',   data:()=>DATA.verbs,      titleKey:'lbl_verb',    verbMode:true,  countId:'cnt-m2-verb'},
+  {id:'m2-ailment',data:()=>DATA.ailments,   titleKey:'lbl_ailment', verbMode:false, countId:'cnt-m2-ailment'},
+  {id:'m2-source', data:()=>DATA.sources,    titleKey:'lbl_source',  verbMode:false, countId:'cnt-m2-source'},
+  {id:'m2-place',  data:()=>DATA.places,     titleKey:'lbl_place',   verbMode:false, countId:'cnt-m2-place'},
+  {id:'m3-verb',   data:()=>DATA.eyeVerbs,   titleKey:'lbl_verb',    verbMode:true,  countId:'cnt-m3-verb'},
+  {id:'m3-object', data:()=>DATA.eyeObjects, titleKey:'lbl_object',  verbMode:false, countId:'cnt-m3-object'},
+  {id:'m3-source', data:()=>DATA.eyeSources, titleKey:'lbl_source',  verbMode:false, countId:'cnt-m3-source'},
+  {id:'m3-target', data:()=>DATA.eyeTargets, titleKey:'lbl_target',  verbMode:false, countId:'cnt-m3-target'},
+];
+
+function cselGetIdx(id){ return CSEL_STATE[id] !== undefined ? CSEL_STATE[id] : 0; }
+function cselSetIdx(id, idx, items){
+  CSEL_STATE[id] = idx;
+  const def = CSEL_DEFS.find(d => d.id === id);
+  const x = items[idx];
+  const lng = currentLang;
+  const label = def && def.verbMode
+    ? `${x.ar} — ${x[lng]} (${x.tr})`
+    : `${x.ar} — ${x[lng]}`;
+  const wrap = document.getElementById('csel-' + id);
+  if(wrap){
+    const txt = wrap.querySelector('.csel-trigger-text');
+    if(txt) txt.textContent = label;
+  }
+}
+
+function cselRefreshAll(){
+  CSEL_DEFS.forEach(def => {
+    const items = def.data();
+    const idx = Math.min(cselGetIdx(def.id), items.length - 1);
+    CSEL_STATE[def.id] = idx;
+    cselSetIdx(def.id, idx, items);
+    if(def.countId){
+      const ce = document.getElementById(def.countId);
+      if(ce) ce.textContent = items.length;
+    }
+  });
+}
+
+function cselOpenModal(def){
+  const items = def.data();
+  const idx = cselGetIdx(def.id);
+  cselActive = def;
+
+  document.getElementById('cselModalTitle').textContent = t(def.titleKey);
+  const list = document.getElementById('cselModalList');
+  const lng = currentLang;
+  list.innerHTML = items.map((x, i) => {
+    const label = def.verbMode
+      ? `${x[lng]} (${x.tr})${x['desc_'+lng] ? ' — ' + x['desc_'+lng] : ''}`
+      : x[lng];
+    return `<div class="csel-modal-item${i===idx?' selected':''}" data-idx="${i}">
+      <div class="csel-modal-item-ar arabic">${x.ar}</div>
+      <div class="csel-modal-item-label">${label}</div>
+      <div class="csel-modal-item-check">✓</div>
+    </div>`;
+  }).join('');
+
+  list.querySelectorAll('.csel-modal-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const i = parseInt(el.dataset.idx, 10);
+      cselSetIdx(def.id, i, items);
+      CSEL_STATE[def.id] = i;
+      cselCloseModal();
+      if(navigator.vibrate) navigator.vibrate(10);
+    });
+  });
+
+  // Scroll to selected
+  requestAnimationFrame(() => {
+    const sel = list.querySelector('.selected');
+    if(sel) sel.scrollIntoView({block:'center'});
+  });
+
+  document.getElementById('cselOverlay').classList.add('open');
+  document.getElementById('cselModal').classList.add('open');
+}
+
+function cselCloseModal(){
+  document.getElementById('cselOverlay').classList.remove('open');
+  document.getElementById('cselModal').classList.remove('open');
+  cselActive = null;
+}
+
+function initCsel(){
+  CSEL_DEFS.forEach(def => {
+    const wrap = document.getElementById('csel-' + def.id);
+    if(!wrap) return;
+    wrap.querySelector('.csel-trigger').addEventListener('click', () => cselOpenModal(def));
+  });
+  document.getElementById('cselOverlay').addEventListener('click', cselCloseModal);
+  document.getElementById('cselHandle').addEventListener('click', cselCloseModal);
+  // Swipe down to close
+  const modal = document.getElementById('cselModal');
+  let mTouchY = 0;
+  modal.addEventListener('touchstart', e => { if(e.touches[0]) mTouchY = e.touches[0].clientY; }, {passive:true});
+  modal.addEventListener('touchend', e => {
+    if(!e.changedTouches[0]) return;
+    if(e.changedTouches[0].clientY - mTouchY > 60) cselCloseModal();
+  }, {passive:true});
+}
+
+// Legacy compatibility shim — getSel now reads from CSEL_STATE
+function getSel(id, src){
+  return src[cselGetIdx(id)];
 }
 
 function fillAllSelects(){
-  const lng = currentLang;
-  const itemFmt = (x) => `${x.ar} — ${x[lng]}`;
-  const verbFmt = (x) => `${x.ar} — ${x[lng]} (${x.tr})`;
-  fillSelect('m1-cause', DATA.causes, itemFmt, 'cnt-m1-cause');
-  fillSelect('m1-place', DATA.places, itemFmt, 'cnt-m1-place');
-  fillSelect('m2-verb',    DATA.verbs,    verbFmt, 'cnt-m2-verb');
-  fillSelect('m2-ailment', DATA.ailments, itemFmt, 'cnt-m2-ailment');
-  fillSelect('m2-source',  DATA.sources,  itemFmt, 'cnt-m2-source');
-  fillSelect('m2-place',   DATA.places,   itemFmt, 'cnt-m2-place');
-  fillSelect('m3-verb',   DATA.eyeVerbs,   verbFmt, 'cnt-m3-verb');
-  fillSelect('m3-object', DATA.eyeObjects, itemFmt, 'cnt-m3-object');
-  fillSelect('m3-source', DATA.eyeSources, itemFmt, 'cnt-m3-source');
-  fillSelect('m3-target', DATA.eyeTargets, itemFmt, 'cnt-m3-target');
+  cselRefreshAll();
 }
 
 function init(){
   // I18N first
   applyI18n();
+  initCsel();
   fillAllSelects();
 
   // Tabs
@@ -841,7 +972,7 @@ function init(){
   document.getElementById('themeSheetClose').addEventListener('click', closeThemeSheet);
   // ESC key closes the sheet
   document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') closeThemeSheet();
+    if(e.key === 'Escape'){ closeThemeSheet(); cselCloseModal(); }
   });
   // Swipe down on theme sheet to close
   const sheet = document.getElementById('themeSheet');
@@ -901,8 +1032,9 @@ function setLang(lang, save = true){
 function applyFont(scale){
   scale = Math.max(70, Math.min(150, scale));
   fontScale = scale;
-  document.documentElement.style.setProperty('--font-scale', String(scale / 100));
-  document.getElementById('fontDisplay').textContent = scale + '%';
+  document.documentElement.style.setProperty('--font-scale', (scale / 100).toFixed(2));
+  const d = document.getElementById('fontDisplay');
+  if(d) d.textContent = scale + '%';
 }
 
 function changeFont(delta){
@@ -1032,7 +1164,7 @@ function generate(method){
 }
 
 function randomize(method){
-  const r = (id, arr) => { document.getElementById(id).value = Math.floor(Math.random() * arr.length); };
+  const r = (id, arr) => cselSetIdx(id, Math.floor(Math.random() * arr.length), arr);
   if(method === 1){
     r('m1-cause', DATA.causes);
     r('m1-place', DATA.places);
@@ -1160,6 +1292,7 @@ window.closeThemeSheet = closeThemeSheet;
 window.switchMethod = switchMethod;
 window.setLang = setLang;
 window.changeFont = changeFont;
+window.cselCloseModal = cselCloseModal;
 
 window.addEventListener('DOMContentLoaded', initSplash);
 </script>
