@@ -123,6 +123,17 @@ html[data-theme="ocean"] .app-header{background:rgba(244,251,252,.92)}
 .theme-sheet.open{transform:translateY(0)}
 .theme-sheet-handle{width:42px;height:4px;background:var(--line-strong);border-radius:99px;margin:0 auto 14px}
 .theme-sheet-title{font-family:'Amiri',serif;color:var(--primary);font-size:18px;font-weight:700;text-align:center;margin-bottom:14px}
+.theme-sheet-handle{cursor:pointer;transition:background .2s ease}
+.theme-sheet-handle:active{background:var(--primary)}
+.theme-sheet-close{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;margin-top:14px;min-height:48px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;border-radius:14px;font-weight:700;font-size:14px;
+  box-shadow:0 6px 16px var(--shadow);
+  transition:transform .15s ease;
+}
+.theme-sheet-close:active{transform:scale(.97)}
 .theme-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .theme-dot{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border:2px solid transparent;border-radius:14px;background:var(--card-2);transition:.2s ease}
 .theme-dot.active{border-color:var(--primary);background:var(--bg-soft)}
@@ -431,9 +442,10 @@ html[data-theme="darkgold"] .part-place,html[data-theme="midnight"] .part-place{
 
 <div class="theme-overlay" id="themeOverlay"></div>
 <div class="theme-sheet" id="themeSheet">
-  <div class="theme-sheet-handle"></div>
+  <div class="theme-sheet-handle" id="themeSheetHandle"></div>
   <div class="theme-sheet-title" data-i18n="theme_title">🎨 Выберите тему</div>
   <div class="theme-grid" id="themeGrid"></div>
+  <button class="theme-sheet-close" id="themeSheetClose" data-i18n="theme_done">✓ Готово</button>
 </div>
 
 </div><!-- /#mainApp -->
@@ -474,6 +486,7 @@ const I18N = {
     apply_5:"<b>Дуйте</b> — на воду, масло или себя",
     footer:'📿 <b>Генератор Рукья</b> · <b>Лекарь Абу Мухаммад</b><br>💡 Свайп влево/вправо для переключения вкладок · 🎨 Кнопка темы справа',
     theme_title:"🎨 Выберите тему",
+    theme_done:"✓ Готово",
     toast_copied:"✓ Скопировано",
     expl_m1:"Метод 1 — базовая рукья.",
     expl_m2:"Метод 2 — основное обращение.",
@@ -515,6 +528,7 @@ const I18N = {
     apply_5:"<b>Puflang</b> — suvga, moyga yoki o'zingizga",
     footer:'📿 <b>Ruqya Generatori</b> · <b>Tabib Abu Muhammad</b><br>💡 Vkladkalarni almashtirish uchun chap/o\'ng tomonga suring · 🎨 Mavzu tugmasi o\'ngda',
     theme_title:"🎨 Mavzuni tanlang",
+    theme_done:"✓ Tayyor",
     toast_copied:"✓ Nusxalandi",
     expl_m1:"1-usul — asosiy ruqya.",
     expl_m2:"2-usul — asosiy murojaat.",
@@ -823,6 +837,23 @@ function init(){
 
   document.getElementById('themeBtn').addEventListener('click', openThemeSheet);
   document.getElementById('themeOverlay').addEventListener('click', closeThemeSheet);
+  document.getElementById('themeSheetHandle').addEventListener('click', closeThemeSheet);
+  document.getElementById('themeSheetClose').addEventListener('click', closeThemeSheet);
+  // ESC key closes the sheet
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeThemeSheet();
+  });
+  // Swipe down on theme sheet to close
+  const sheet = document.getElementById('themeSheet');
+  let sheetTouchY = 0;
+  sheet.addEventListener('touchstart', (e) => {
+    if(e.touches[0]) sheetTouchY = e.touches[0].clientY;
+  }, {passive:true});
+  sheet.addEventListener('touchend', (e) => {
+    if(!e.changedTouches[0]) return;
+    const dy = e.changedTouches[0].clientY - sheetTouchY;
+    if(dy > 60) closeThemeSheet();
+  }, {passive:true});
 
   // Language buttons
   document.getElementById('langRu').addEventListener('click', () => setLang('ru'));
@@ -899,7 +930,7 @@ function closeThemeSheet(){
 }
 function selectTheme(key){
   applyTheme(key, true);
-  setTimeout(closeThemeSheet, 220);
+  // Panel stays open — user closes it manually (overlay click, handle tap, or close button)
 }
 
 function switchMethod(m){
@@ -998,9 +1029,6 @@ function generate(method){
   document.getElementById('ctaBtn').classList.remove('pulse');
 
   if(navigator.vibrate) navigator.vibrate(20);
-  setTimeout(() => {
-    document.getElementById('outputBox').scrollIntoView({behavior:'smooth', block:'start'});
-  }, 80);
 }
 
 function randomize(method){
