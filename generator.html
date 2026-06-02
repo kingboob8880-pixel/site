@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr" data-theme="gold">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#B8860B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Рукья">
+<title>📿 Генератор Рукья — Лекарь Абу Мухаммад</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#B8860B;
+  --primary-light:#D4A843;
+  --primary-soft:#F5E6A3;
+  --bg:#FFFDF6;
+  --bg-soft:#FFF6E4;
+  --card:#FFFFFF;
+  --card-2:#FFFBF1;
+  --text:#2F2718;
+  --muted:#6C5C3A;
+  --muted-2:#9A8861;
+  --line:#E8D8A8;
+  --line-strong:#D9BC67;
+  --shadow:rgba(184,134,11,.18);
+  --shadow-lg:rgba(184,134,11,.32);
+  --success:#2E7D32;
+  --theme-rgb:184,134,11;
+  --radius:18px;
+  --radius-sm:12px;
+  --tap:48px;
+  --safe-top:env(safe-area-inset-top, 0px);
+  --safe-bottom:env(safe-area-inset-bottom, 0px);
+  --safe-left:env(safe-area-inset-left, 0px);
+  --safe-right:env(safe-area-inset-right, 0px);
+}
+/* ===== THEMES ===== */
+html[data-theme="gold"]{
+  --primary:#B8860B;--primary-light:#D4A843;--primary-soft:#F5E6A3;
+  --bg:#FFFDF6;--bg-soft:#FFF6E4;--card:#FFFFFF;--card-2:#FFFBF1;
+  --text:#2F2718;--muted:#6C5C3A;--muted-2:#9A8861;
+  --line:#E8D8A8;--line-strong:#D9BC67;
+  --shadow:rgba(184,134,11,.18);--shadow-lg:rgba(184,134,11,.32);
+  --theme-rgb:184,134,11;
+}
+html[data-theme="emerald"]{
+  --primary:#2E7D32;--primary-light:#43A047;--primary-soft:#B9E2BC;
+  --bg:#F6FCF6;--bg-soft:#ECF8EE;--card:#FFFFFF;--card-2:#F5FCF6;
+  --text:#18311A;--muted:#446A49;--muted-2:#6E9373;
+  --line:#B8DAB9;--line-strong:#7DC481;
+  --shadow:rgba(46,125,50,.18);--shadow-lg:rgba(46,125,50,.3);
+  --theme-rgb:46,125,50;
+}
+html[data-theme="sapphire"]{
+  --primary:#1565C0;--primary-light:#1E88E5;--primary-soft:#A9D4FB;
+  --bg:#F7FBFF;--bg-soft:#ECF5FF;--card:#FFFFFF;--card-2:#F5FAFF;
+  --text:#182A38;--muted:#466376;--muted-2:#6F8EA3;
+  --line:#B8D8F2;--line-strong:#78B4ED;
+  --shadow:rgba(21,101,192,.18);--shadow-lg:rgba(21,101,192,.3);
+  --theme-rgb:21,101,192;
+}
+html[data-theme="amethyst"]{
+  --primary:#6A1B9A;--primary-light:#8E24AA;--primary-soft:#D9B1E6;
+  --bg:#FCF8FF;--bg-soft:#F6EEFA;--card:#FFFFFF;--card-2:#FBF7FD;
+  --text:#2A1833;--muted:#664B73;--muted-2:#8C73A0;
+  --line:#DFC1EB;--line-strong:#B877CA;
+  --shadow:rgba(106,27,154,.18);--shadow-lg:rgba(106,27,154,.3);
+  --theme-rgb:106,27,154;
+}
+html[data-theme="ruby"]{
+  --primary:#C62828;--primary-light:#E53935;--primary-soft:#F4B5B3;
+  --bg:#FFF8F8;--bg-soft:#FFF0F0;--card:#FFFFFF;--card-2:#FFF8F8;
+  --text:#351A1A;--muted:#7A4C4C;--muted-2:#A27777;
+  --line:#F0C2C2;--line-strong:#EA8C8A;
+  --shadow:rgba(198,40,40,.18);--shadow-lg:rgba(198,40,40,.3);
+  --theme-rgb:198,40,40;
+}
+html[data-theme="ocean"]{
+  --primary:#00838F;--primary-light:#00ACC1;--primary-soft:#B2EBF2;
+  --bg:#F4FBFC;--bg-soft:#E0F7FA;--card:#FFFFFF;--card-2:#F5FCFD;
+  --text:#0D2E32;--muted:#446870;--muted-2:#6F9097;
+  --line:#A6E0E5;--line-strong:#5BC3CB;
+  --shadow:rgba(0,131,143,.18);--shadow-lg:rgba(0,131,143,.3);
+  --theme-rgb:0,131,143;
+}
+html[data-theme="darkgold"]{
+  --primary:#D4A843;--primary-light:#F5E6A3;--primary-soft:#7C6330;
+  --bg:#0E0B05;--bg-soft:#171109;--card:#1A1409;--card-2:#221A0E;
+  --text:#F5E6A3;--muted:#D2B66B;--muted-2:#A89367;
+  --line:#3D3014;--line-strong:#6B5219;
+  --shadow:rgba(0,0,0,.45);--shadow-lg:rgba(0,0,0,.6);
+  --theme-rgb:212,168,67;
+}
+html[data-theme="midnight"]{
+  --primary:#7986CB;--primary-light:#9FA8DA;--primary-soft:#3E4673;
+  --bg:#0A0E1A;--bg-soft:#121826;--card:#161D2E;--card-2:#1C2438;
+  --text:#E1E7F5;--muted:#A8B2CC;--muted-2:#7884A0;
+  --line:#2C3654;--line-strong:#475173;
+  --shadow:rgba(0,0,0,.5);--shadow-lg:rgba(0,0,0,.65);
+  --theme-rgb:121,134,203;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+html,body{overscroll-behavior-y:none}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;height:100%}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;min-height:100dvh;
+  line-height:1.55;font-size:15px;
+  padding-top:var(--safe-top);padding-left:var(--safe-left);padding-right:var(--safe-right);
+  padding-bottom:calc(var(--safe-bottom) + 90px);
+  transition:background .35s ease, color .35s ease;
+  -webkit-font-smoothing:antialiased;
+}
+.arabic{font-family:'Noto Naskh Arabic','Amiri',serif;direction:rtl;text-align:right}
+button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+/* ===== SPLASH SCREEN ===== */
+#splash{
+  position:fixed;inset:0;z-index:9999;overflow:hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(212,168,67,.15), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(90,120,255,.12), transparent 40%),
+    linear-gradient(135deg, #05060d 0%, #0b0c15 50%, #120d08 100%);
+  display:grid;place-items:center;
+  padding:20px;
+}
+#splash.exit{animation:splashOut .85s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes splashOut{to{opacity:0;transform:scale(1.06);filter:blur(20px);visibility:hidden}}
+.splash-orb{
+  position:absolute;border-radius:50%;
+  width:280px;height:280px;
+  background:rgba(212,168,67,.14);
+  filter:blur(40px);
+  top:10%;left:5%;
+  animation:float1 9s ease-in-out infinite alternate;
+}
+.splash-orb-2{
+  position:absolute;width:240px;height:240px;border-radius:50%;
+  background:rgba(86,120,255,.14);filter:blur(45px);
+  right:8%;bottom:10%;
+  animation:float2 11s ease-in-out infinite alternate;
+}
+@keyframes float1{to{transform:translate(40px,30px) scale(1.1)}}
+@keyframes float2{to{transform:translate(-30px,-20px) scale(1.12)}}
+.splash-grid{
+  position:absolute;inset:0;opacity:.1;
+  background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size:36px 36px;
+  mask-image:radial-gradient(circle at center,black 25%,transparent 75%);
+  -webkit-mask-image:radial-gradient(circle at center,black 25%,transparent 75%);
+}
+.splash-card{
+  position:relative;z-index:2;
+  width:min(92vw,500px);
+  padding:36px 24px 24px;
+  border-radius:30px;
+  border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:0 30px 90px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
+  text-align:center;color:#fff;overflow:hidden;
+}
+.splash-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.1) 22%,transparent 40%);
+  transform:translateX(-120%);animation:sweep 5s ease-in-out infinite;
+}
+@keyframes sweep{0%,100%{transform:translateX(-120%)}55%{transform:translateX(140%)}}
+.splash-ring{
+  width:120px;height:120px;margin:0 auto 18px;border-radius:50%;
+  position:relative;display:grid;place-items:center;
+  background:radial-gradient(circle,rgba(245,230,163,.18),rgba(212,168,67,.05) 55%,transparent 70%);
+}
+.splash-ring::before,.splash-ring::after{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  border:1px solid rgba(245,230,163,.24);
+}
+.splash-ring::before{animation:spin 18s linear infinite}
+.splash-ring::after{inset:12px;border-style:dashed;animation:spinRev 12s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinRev{to{transform:rotate(-360deg)}}
+.splash-mark{
+  width:60px;height:60px;border-radius:50%;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(212,168,67,.98),rgba(245,230,163,.95));
+  color:#2a1f0e;font-family:'Amiri',serif;font-size:30px;font-weight:700;
+  box-shadow:0 12px 28px rgba(212,168,67,.3);
+}
+.splash-phase{display:none;animation:fadeUp .7s cubic-bezier(.22,1,.36,1)}
+.splash-phase.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);filter:blur(8px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+.splash-kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 14px;border-radius:999px;
+  border:1px solid rgba(245,230,163,.2);background:rgba(255,255,255,.04);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.78);margin-bottom:14px;
+}
+.splash-ar{
+  font-family:'Noto Naskh Arabic','Amiri',serif;direction:rtl;
+  font-size:clamp(26px,6vw,40px);line-height:1.7;
+  color:rgba(245,230,163,.98);
+  text-shadow:0 0 30px rgba(212,168,67,.3);
+  margin:8px 0;
+}
+.splash-title{
+  font-family:'Amiri',serif;
+  font-size:clamp(28px,7vw,46px);line-height:1.15;margin-top:8px;
+  background:linear-gradient(135deg,#fff0b8 0%,#f5e6a3 25%,#d4a843 55%,#fff5cf 80%,#c6922f 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  font-weight:700;
+}
+.splash-sub{margin-top:10px;color:rgba(255,255,255,.78);font-size:14px;line-height:1.6}
+.splash-author{
+  margin-top:14px;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:999px;
+  background:rgba(245,230,163,.1);
+  border:1px solid rgba(245,230,163,.2);
+  font-family:'Amiri',serif;font-size:13px;
+  color:rgba(245,230,163,.92);
+  letter-spacing:.04em;
+}
+.splash-author::before{content:'✦';color:rgba(245,230,163,.7);font-size:11px}
+.splash-author::after{content:'✦';color:rgba(245,230,163,.7);font-size:11px}
+.splash-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.splash-btn,.splash-skip{
+  border:none;border-radius:14px;padding:13px 22px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;font-size:12px;
+  transition:.25s ease;min-height:46px;
+}
+.splash-btn{
+  background:linear-gradient(135deg,rgba(212,168,67,.98),rgba(245,230,163,.92));
+  color:#2a1f0e;box-shadow:0 16px 36px rgba(212,168,67,.28);
+}
+.splash-btn:active{transform:scale(.97)}
+.splash-skip{
+  background:rgba(255,255,255,.06);color:rgba(255,255,255,.86);
+  border:1px solid rgba(255,255,255,.1);
+}
+.splash-skip:active{background:rgba(255,255,255,.12)}
+.splash-auto{margin-top:16px;color:rgba(255,255,255,.5);font-size:11.5px}
+.splash-auto strong{color:#fff}
+
+/* ===== MAIN APP ===== */
+#mainApp{display:none;opacity:0;transition:opacity .5s ease}
+#mainApp.visible{display:block;opacity:1}
+
+/* HEADER */
+.app-header{
+  position:sticky;top:var(--safe-top);z-index:50;
+  background:rgba(255,253,246,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  padding:10px 14px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+html[data-theme="darkgold"] .app-header,
+html[data-theme="midnight"] .app-header{background:rgba(14,11,5,.9)}
+html[data-theme="emerald"] .app-header{background:rgba(246,252,246,.92)}
+html[data-theme="sapphire"] .app-header{background:rgba(247,251,255,.92)}
+html[data-theme="amethyst"] .app-header{background:rgba(252,248,255,.92)}
+html[data-theme="ruby"] .app-header{background:rgba(255,248,248,.92)}
+html[data-theme="ocean"] .app-header{background:rgba(244,251,252,.92)}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand-icon{
+  width:38px;height:38px;border-radius:11px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  display:grid;place-items:center;color:#fff;
+  font-family:'Amiri',serif;font-size:19px;font-weight:700;
+  box-shadow:0 6px 14px var(--shadow);flex-shrink:0;
+}
+.brand-text{min-width:0;overflow:hidden}
+.brand-title{font-family:'Amiri',serif;font-size:17px;color:var(--primary);font-weight:700;line-height:1.1;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.brand-sub{font-size:10.5px;color:var(--muted);margin-top:1px;line-height:1}
+.theme-btn{
+  width:var(--tap);height:var(--tap);min-width:var(--tap);
+  border:1px solid var(--line);background:var(--card-2);
+  border-radius:50%;display:grid;place-items:center;font-size:20px;
+  transition:transform .2s ease;position:relative;
+}
+.theme-btn:active{transform:scale(.9);background:var(--primary-soft)}
+
+/* THEME SHEET */
+.theme-sheet{
+  position:fixed;left:0;right:0;bottom:0;z-index:300;
+  background:var(--card);
+  border-top:1px solid var(--line);
+  border-radius:20px 20px 0 0;
+  padding:18px 16px calc(20px + var(--safe-bottom));
+  box-shadow:0 -20px 50px rgba(0,0,0,.18);
+  transform:translateY(100%);
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.theme-sheet.open{transform:translateY(0)}
+.theme-sheet-handle{
+  width:42px;height:4px;background:var(--line-strong);
+  border-radius:99px;margin:0 auto 14px;
+}
+.theme-sheet-title{
+  font-family:'Amiri',serif;color:var(--primary);font-size:18px;font-weight:700;
+  text-align:center;margin-bottom:14px;
+}
+.theme-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.theme-dot{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:10px 4px;border:2px solid transparent;border-radius:14px;
+  background:var(--card-2);transition:.2s ease;
+}
+.theme-dot.active{border-color:var(--primary);background:var(--bg-soft)}
+.theme-dot:active{transform:scale(.94)}
+.theme-dot-circle{
+  width:44px;height:44px;border-radius:50%;
+  box-shadow:0 4px 10px rgba(0,0,0,.15);
+  border:2px solid rgba(255,255,255,.4);
+}
+.theme-dot[data-theme="gold"] .theme-dot-circle{background:linear-gradient(135deg,#B8860B,#D4A843)}
+.theme-dot[data-theme="emerald"] .theme-dot-circle{background:linear-gradient(135deg,#2E7D32,#43A047)}
+.theme-dot[data-theme="sapphire"] .theme-dot-circle{background:linear-gradient(135deg,#1565C0,#1E88E5)}
+.theme-dot[data-theme="amethyst"] .theme-dot-circle{background:linear-gradient(135deg,#6A1B9A,#8E24AA)}
+.theme-dot[data-theme="ruby"] .theme-dot-circle{background:linear-gradient(135deg,#C62828,#E53935)}
+.theme-dot[data-theme="ocean"] .theme-dot-circle{background:linear-gradient(135deg,#00838F,#00ACC1)}
+.theme-dot[data-theme="darkgold"] .theme-dot-circle{background:linear-gradient(135deg,#110d07,#3a2d11);border-color:#5a4818}
+.theme-dot[data-theme="midnight"] .theme-dot-circle{background:linear-gradient(135deg,#0A0E1A,#3E4673)}
+.theme-dot-name{font-size:10.5px;color:var(--muted);font-weight:700}
+.theme-dot.active .theme-dot-name{color:var(--primary)}
+.theme-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.45);
+  opacity:0;pointer-events:none;transition:opacity .3s ease;z-index:299;
+}
+.theme-overlay.show{opacity:1;pointer-events:auto}
+
+/* CONTAINER */
+.container{padding:14px 12px 20px;max-width:560px;margin:0 auto}
+
+/* HERO */
+.hero{
+  padding:16px 14px;
+  background:linear-gradient(180deg, var(--bg-soft), var(--card));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  text-align:center;margin-bottom:14px;
+}
+.hero-badge{
+  display:inline-block;margin-bottom:8px;
+  padding:5px 14px;border-radius:999px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;font-family:'Amiri',serif;font-size:12.5px;font-weight:700;
+  letter-spacing:.05em;
+  box-shadow:0 4px 12px var(--shadow);
+}
+.hero-title{font-family:'Amiri',serif;font-size:20px;color:var(--primary);font-weight:700;margin-bottom:4px;line-height:1.2}
+.hero-sub{color:var(--muted);font-size:13px;line-height:1.5}
+
+/* TABS */
+.tabs{
+  display:flex;gap:4px;
+  padding:5px;background:rgba(255,255,255,.95);
+  border:1px solid var(--line);border-radius:14px;
+  margin-bottom:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.03);
+  position:sticky;top:calc(var(--safe-top) + 58px);z-index:40;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+html[data-theme="darkgold"] .tabs,
+html[data-theme="midnight"] .tabs{background:rgba(26,20,9,.95)}
+.tab{
+  flex:1;min-height:var(--tap);
+  background:transparent;color:var(--muted);
+  border-radius:10px;font-weight:700;font-size:12.5px;
+  transition:.2s ease;
+  display:flex;align-items:center;justify-content:center;gap:4px;
+  padding:0 4px;white-space:nowrap;
+}
+.tab:active{transform:scale(.97)}
+.tab.active{
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;box-shadow:0 4px 10px var(--shadow);
+}
+.tab-icon{font-size:14px}
+
+/* METHOD DESCRIPTION */
+.method-desc{
+  background:rgba(var(--theme-rgb),.07);
+  border-left:3px solid var(--primary-light);
+  padding:10px 12px;border-radius:var(--radius-sm);
+  margin-bottom:14px;font-size:12.5px;color:var(--muted);line-height:1.6;
+}
+.method-desc b{color:var(--primary);display:block;margin-bottom:3px;font-size:13px}
+.formula{
+  font-family:'Noto Naskh Arabic',serif;direction:rtl;
+  font-size:14px;color:var(--primary);font-weight:700;
+  display:block;margin-top:6px;padding:7px 10px;
+  background:var(--bg-soft);border-radius:8px;
+  text-align:right;word-spacing:.05em;
+}
+
+/* BUILDER */
+.builder{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px;margin-bottom:14px;
+}
+.form-grid{display:grid;gap:11px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field-label{
+  font-size:11px;color:var(--muted-2);font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;
+  display:flex;align-items:center;gap:6px;padding-left:2px;
+}
+.field-label .num{
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;border-radius:50%;width:20px;height:20px;
+  display:inline-grid;place-items:center;font-size:11px;
+}
+.field-label .count{
+  margin-left:auto;color:var(--muted-2);font-size:10px;
+  background:rgba(var(--theme-rgb),.08);padding:2px 8px;border-radius:99px;
+}
+.select{position:relative}
+.select select{
+  width:100%;appearance:none;-webkit-appearance:none;
+  min-height:var(--tap);
+  padding:0 40px 0 14px;border:1.5px solid var(--line);
+  background:var(--card-2);color:var(--text);
+  border-radius:var(--radius-sm);
+  font-size:16px;font-weight:500;font-family:inherit;
+}
+.select select:focus{outline:none;border-color:var(--primary)}
+.select::after{
+  content:'⌄';position:absolute;right:14px;top:50%;transform:translateY(-58%);
+  pointer-events:none;color:var(--primary);font-size:20px;font-weight:700;
+}
+.select option{background:var(--card);color:var(--text);padding:8px;font-size:15px}
+
+.row-actions{display:flex;gap:8px;margin-top:12px}
+.btn-secondary{
+  flex:1;min-height:var(--tap);
+  background:var(--card-2);color:var(--primary);
+  border:1.5px solid var(--line);border-radius:var(--radius-sm);
+  font-weight:700;font-size:14px;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:transform .15s ease;
+}
+.btn-secondary:active{transform:scale(.97);background:var(--primary-soft)}
+
+/* STICKY CTA */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  padding:10px 12px calc(10px + var(--safe-bottom));
+  background:linear-gradient(180deg, transparent, var(--bg) 30%);
+  pointer-events:none;
+}
+.cta-btn{
+  pointer-events:auto;
+  width:100%;max-width:540px;margin:0 auto;
+  min-height:54px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;border-radius:16px;
+  font-size:16px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 12px 28px var(--shadow-lg);
+  transition:transform .12s ease;
+}
+.cta-btn:active{transform:scale(.98)}
+
+/* OUTPUT */
+.output{
+  background:linear-gradient(180deg, var(--card), var(--card-2));
+  border:2px solid var(--primary-light);
+  border-radius:var(--radius);
+  padding:18px 14px 14px;margin-bottom:14px;
+  box-shadow:0 12px 28px var(--shadow);position:relative;
+}
+.output-label{
+  position:absolute;top:-12px;left:14px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;padding:4px 12px;border-radius:999px;
+  font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  box-shadow:0 4px 10px var(--shadow);
+}
+.output-ar{
+  font-family:'Noto Naskh Arabic',serif;direction:rtl;
+  font-size:24px;line-height:2.1;color:var(--primary);font-weight:700;
+  margin-top:8px;padding:14px;
+  background:var(--bg-soft);border-radius:var(--radius-sm);
+  border-right:4px solid var(--primary-light);
+  text-align:right;word-break:break-word;
+  user-select:text;-webkit-user-select:text;
+}
+.output-ru{
+  font-size:14.5px;color:var(--text);font-weight:500;
+  padding:11px 13px;background:var(--bg-soft);border-radius:var(--radius-sm);
+  margin-top:10px;line-height:1.55;
+  border-left:3px solid var(--primary);
+  user-select:text;-webkit-user-select:text;
+}
+.output-tr{
+  font-size:13px;color:var(--muted);font-style:italic;
+  padding:10px 13px;background:var(--card-2);border-radius:var(--radius-sm);
+  margin-top:8px;line-height:1.55;
+  user-select:text;-webkit-user-select:text;
+}
+.output-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}
+.output-actions .full{grid-column:1 / -1}
+.copy-btn{
+  min-height:42px;
+  border:1.5px solid var(--line);background:var(--card-2);
+  color:var(--primary);border-radius:11px;font-weight:700;font-size:12.5px;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  transition:.15s ease;
+}
+.copy-btn:active{transform:scale(.97)}
+.copy-btn.copied{background:var(--success);color:#fff;border-color:transparent}
+
+/* EXPLAIN */
+.explain{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:12px;margin-bottom:14px;font-size:12.5px;color:var(--muted);line-height:1.6;
+}
+.explain .row{padding:6px 0;border-bottom:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:4px}
+.explain .row:last-child{border-bottom:none}
+.explain .row b{color:var(--primary);min-width:90px;display:inline-block}
+.explain .ar-frag{font-family:'Noto Naskh Arabic',serif;direction:rtl;font-weight:700;color:var(--primary)}
+
+/* APP CARD */
+.app-card{
+  background:linear-gradient(135deg, var(--bg-soft), var(--card));
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px;margin-bottom:14px;
+}
+.app-title{
+  font-family:'Amiri',serif;color:var(--primary);font-size:16px;font-weight:700;
+  margin-bottom:10px;display:flex;align-items:center;gap:8px;
+}
+.app-steps{display:grid;gap:7px}
+.app-step{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:11px;padding:9px 11px;font-size:12.5px;
+  display:flex;align-items:center;gap:9px;line-height:1.4;
+}
+.app-step .step-num{
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;border-radius:50%;width:24px;height:24px;
+  display:inline-grid;place-items:center;font-size:11px;font-weight:700;
+  flex-shrink:0;
+}
+
+.footer{
+  text-align:center;padding:14px 8px;color:var(--muted-2);font-size:11px;line-height:1.5;
+}
+.footer b{color:var(--primary)}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:calc(80px + var(--safe-bottom));left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;padding:11px 20px;border-radius:999px;
+  font-weight:700;font-size:13px;
+  box-shadow:0 12px 26px rgba(0,0,0,.3);
+  transition:transform .3s cubic-bezier(.22,1,.36,1);
+  z-index:400;pointer-events:none;
+  white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* PARTS HIGHLIGHT */
+.part-verb{color:#C62828;font-weight:700}
+.part-ailment{color:#1565C0;font-weight:700}
+.part-source{color:#2E7D32;font-weight:700}
+.part-place{color:#6A1B9A;font-weight:700}
+html[data-theme="darkgold"] .part-verb,
+html[data-theme="midnight"] .part-verb{color:#FF8A80}
+html[data-theme="darkgold"] .part-ailment,
+html[data-theme="midnight"] .part-ailment{color:#82B1FF}
+html[data-theme="darkgold"] .part-source,
+html[data-theme="midnight"] .part-source{color:#B9F6CA}
+html[data-theme="darkgold"] .part-place,
+html[data-theme="midnight"] .part-place{color:#EA80FC}
+
+.method-block.hidden{display:none}
+
+@keyframes pulse{
+  0%,100%{box-shadow:0 12px 28px var(--shadow-lg)}
+  50%{box-shadow:0 12px 32px var(--shadow-lg), 0 0 0 6px rgba(var(--theme-rgb),.15)}
+}
+.cta-btn.pulse{animation:pulse 2.2s ease-in-out infinite}
+
+@media (min-width:600px){
+  .form-grid{grid-template-columns:1fr 1fr}
+  .output-ar{font-size:28px}
+  .hero-title{font-size:24px}
+  .theme-grid{grid-template-columns:repeat(8,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- SPLASH SCREEN -->
+<div id="splash">
+  <div class="splash-grid"></div>
+  <div class="splash-orb"></div>
+  <div class="splash-orb-2"></div>
+
+  <div class="splash-card">
+    <div class="splash-ring"><div class="splash-mark">📿</div></div>
+
+    <div class="splash-phase active" id="phaseA">
+      <div class="splash-kicker">📿 РУКЬЯ · ШИФА ОТ АЛЛАХА</div>
+      <div class="splash-ar arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+      <div class="splash-sub">С именем Аллаха, Милостивого, Милосердного</div>
+    </div>
+
+    <div class="splash-phase" id="phaseB">
+      <div class="splash-kicker">📐 ГЕНЕРАТОР · 3 МЕТОДА</div>
+      <div class="splash-title">Генератор Рукья</div>
+      <div class="splash-author">Лекарь Абу Мухаммад</div>
+      <div class="splash-sub">Собирайте дуа по проверенной формуле под любую ситуацию.</div>
+      <div class="splash-actions">
+        <button class="splash-btn" id="enterAppBtn">✨ Начать</button>
+        <button class="splash-skip" id="skipSplashBtn">Пропустить</button>
+      </div>
+      <div class="splash-auto">Автоматический вход через <strong id="splashCount">5</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="mainApp">
+
+<header class="app-header">
+  <div class="brand">
+    <div class="brand-icon">📿</div>
+    <div class="brand-text">
+      <div class="brand-title">Генератор Рукья</div>
+      <div class="brand-sub">Лекарь Абу Мухаммад</div>
+    </div>
+  </div>
+  <button class="theme-btn" id="themeBtn" aria-label="Тема">🎨</button>
+</header>
+
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-badge">✦ Лекарь Абу Мухаммад ✦</div>
+    <div class="hero-title">Соберите дуа за 4 клика</div>
+    <div class="hero-sub">Выберите параметры — получите арабский с харакатами, перевод и транскрипцию</div>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-method="1"><span class="tab-icon">📖</span> Базовая</button>
+    <button class="tab" data-method="2"><span class="tab-icon">⚔️</span> Основной</button>
+    <button class="tab" data-method="3"><span class="tab-icon">🧿</span> От сглаза</button>
+  </div>
+
+  <div class="method-block" id="method1">
+    <div class="method-desc">
+      <b>📖 Базовая рукья</b>
+      Короткое объявление, от чего совершается рукья.
+      <span class="formula">بِسْمِ اللَّهِ أَرْقِي مِنَ [виновник] فِي [место]</span>
+    </div>
+    <div class="builder">
+      <div class="form-grid">
+        <div class="field">
+          <label class="field-label"><span class="num">1</span> Виновник <span class="count" id="cnt-m1-cause"></span></label>
+          <div class="select"><select id="m1-cause"></select></div>
+        </div>
+        <div class="field">
+          <label class="field-label"><span class="num">2</span> Место <span class="count" id="cnt-m1-place"></span></label>
+          <div class="select"><select id="m1-place"></select></div>
+        </div>
+      </div>
+      <div class="row-actions">
+        <button class="btn-secondary" onclick="randomize(1)">🎲 Случайно</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="method-block hidden" id="method2">
+    <div class="method-desc">
+      <b>⚔️ Основной метод</b>
+      Действенное обращение к Аллаху — против преград, колдовства, джиннов, болезней.
+      <span class="formula">اللَّهُمَّ [глагол] كُلَّ [недуг] مِنْ [источник] فِي [место]</span>
+    </div>
+    <div class="builder">
+      <div class="form-grid">
+        <div class="field">
+          <label class="field-label"><span class="num">1</span> Глагол <span class="count" id="cnt-m2-verb"></span></label>
+          <div class="select"><select id="m2-verb"></select></div>
+        </div>
+        <div class="field">
+          <label class="field-label"><span class="num">2</span> Недуг <span class="count" id="cnt-m2-ailment"></span></label>
+          <div class="select"><select id="m2-ailment"></select></div>
+        </div>
+        <div class="field">
+          <label class="field-label"><span class="num">3</span> Источник <span class="count" id="cnt-m2-source"></span></label>
+          <div class="select"><select id="m2-source"></select></div>
+        </div>
+        <div class="field">
+          <label class="field-label"><span class="num">4</span> Место <span class="count" id="cnt-m2-place"></span></label>
+          <div class="select"><select id="m2-place"></select></div>
+        </div>
+      </div>
+      <div class="row-actions">
+        <button class="btn-secondary" onclick="randomize(2)">🎲 Случайно</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="method-block hidden" id="method3">
+    <div class="method-desc">
+      <b>🧿 Против сглаза</b>
+      Особенность: предлог <b>عَلَى</b> («на») вместо <b>فِي</b>, потому что сглаз действует <em>на</em> объект.
+      <span class="formula">اللَّهُمَّ [глагол] كُلَّ [объект] مِنْ [источник] عَلَى [цель]</span>
+    </div>
+    <div class="builder">
+      <div class="form-grid">
+        <div class="field">
+          <label class="field-label"><span class="num">1</span> Глагол <span class="count" id="cnt-m3-verb"></span></label>
+          <div class="select"><select id="m3-verb"></select></div>
+        </div>
+        <div class="field">
+          <label class="field-label"><span class="num">2</span> Объект <span class="count" id="cnt-m3-object"></span></label>
+          <div class="select"><select id="m3-object"></select></div>
+        </div>
+        <div class="field">
+          <label class="field-label"><span class="num">3</span> Источник <span class="count" id="cnt-m3-source"></span></label>
+          <div class="select"><select id="m3-source"></select></div>
+        </div>
+        <div class="field">
+          <label class="field-label"><span class="num">4</span> Цель <span class="count" id="cnt-m3-target"></span></label>
+          <div class="select"><select id="m3-target"></select></div>
+        </div>
+      </div>
+      <div class="row-actions">
+        <button class="btn-secondary" onclick="randomize(3)">🎲 Случайно</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="outputBox" style="display:none">
+    <div class="output">
+      <div class="output-label">Готовое дуа</div>
+      <div class="output-ar arabic" id="outAr"></div>
+      <div class="output-ru" id="outRu"></div>
+      <div class="output-tr" id="outTr"></div>
+      <div class="output-actions">
+        <button class="copy-btn" onclick="copyText('ar', event)">📋 Арабский</button>
+        <button class="copy-btn" onclick="copyText('tr', event)">📋 Транскрипция</button>
+        <button class="copy-btn" onclick="copyText('ru', event)">📋 Перевод</button>
+        <button class="copy-btn full" onclick="copyText('all', event)">📋 Скопировать всё</button>
+      </div>
+    </div>
+    <div class="explain" id="explainBox"></div>
+  </div>
+
+  <div class="app-card">
+    <div class="app-title">🤲 Как применять</div>
+    <div class="app-steps">
+      <div class="app-step"><span class="step-num">1</span><div><b>Вуду</b> — ритуальная чистота</div></div>
+      <div class="app-step"><span class="step-num">2</span><div><b>Ният</b> — снять преграду с помощью Аллаха</div></div>
+      <div class="app-step"><span class="step-num">3</span><div><b>Уверенность</b> — шифо только от Аллаха</div></div>
+      <div class="app-step"><span class="step-num">4</span><div><b>3 / 7 / 11 раз</b> — нечётное (сунна)</div></div>
+      <div class="app-step"><span class="step-num">5</span><div><b>Дуйте</b> — на воду, масло или себя</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    📿 <b>Генератор Рукья</b> · <b>Лекарь Абу Мухаммад</b><br>
+    После <b>كُلَّ</b> → танвин кясра (ٍ) · После <b>مِنْ / فِي / عَلَى</b> → родительный<br>
+    💡 Свайп влево/вправо для переключения вкладок · 🎨 Кнопка темы справа
+  </div>
+
+</div>
+
+<div class="sticky-cta">
+  <button class="cta-btn pulse" id="ctaBtn" onclick="generateCurrent()">✨ Собрать дуа</button>
+</div>
+
+<div class="toast" id="toast">Скопировано</div>
+
+<!-- THEME SHEET -->
+<div class="theme-overlay" id="themeOverlay" onclick="closeThemeSheet()"></div>
+<div class="theme-sheet" id="themeSheet">
+  <div class="theme-sheet-handle"></div>
+  <div class="theme-sheet-title">🎨 Выберите тему</div>
+  <div class="theme-grid" id="themeGrid"></div>
+</div>
+
+</div><!-- /#mainApp -->
+
+<script>
+// ===== DATA (LIBRARY) =====
+const DATA = {
+  // METHOD 1: causes
+  causes: [
+    {ar:"التَّعْطِيلِ",     tr:"та'тыли",      ru:"преграды"},
+    {ar:"الْعَيْنِ",         tr:"'айни",        ru:"сглаза"},
+    {ar:"السِّحْرِ",         tr:"сихри",        ru:"колдовства"},
+    {ar:"الْحَسَدِ",         tr:"хасади",       ru:"зависти"},
+    {ar:"الْجِنِّ",          tr:"джинни",       ru:"джиннов"},
+    {ar:"الْمَسِّ",          tr:"масси",        ru:"касания (джинна)"},
+    {ar:"الْمَرَضِ",         tr:"маради",       ru:"болезни"},
+    {ar:"الشَّيْطَانِ",      tr:"шайтани",      ru:"шайтана"},
+    {ar:"الرَّبْطِ",         tr:"рабти",        ru:"связывания"},
+    {ar:"النَّظَرَاتِ",      tr:"назарати",     ru:"дурных взглядов"},
+    {ar:"الْكَيْدِ",         tr:"кайди",        ru:"козней"},
+    {ar:"النَّفْثِ",         tr:"нафси",        ru:"наговора"},
+    {ar:"الْخُدَّامِ",       tr:"худдами",      ru:"служителей колдовства"},
+    {ar:"الْوَسْوَسَةِ",     tr:"васвасати",    ru:"наущений"},
+    {ar:"الْفِتْنَةِ",       tr:"фитнати",      ru:"искушения"},
+    {ar:"الْحُزْنِ",         tr:"хузни",        ru:"печали"},
+    {ar:"الْخَوْفِ",         tr:"хауфи",        ru:"страха"},
+    {ar:"الْكَرْبِ",         tr:"карби",        ru:"тревоги"},
+    {ar:"الضَّرَرِ",         tr:"дарари",       ru:"вреда"},
+    {ar:"الشَّرِّ",          tr:"шарри",        ru:"зла"}
+  ],
+
+  // METHOD 2: verbs
+  verbs: [
+    {ar:"أَبْطِلْ",  tr:"абтыль",  ru:"аннулируй", desc:"для формальных привязок, договоров, заклинаний"},
+    {ar:"أَزِلْ",    tr:"азиль",   ru:"устрани",   desc:"общее удаление"},
+    {ar:"فُكَّ",     tr:"фукка",   ru:"развяжи",   desc:"для узлов, связывания, импотенции"},
+    {ar:"اقْطَعْ",   tr:"икъта'",  ru:"отсеки",    desc:"для связей, кровотечений"},
+    {ar:"ادْفَعْ",   tr:"идфа'",   ru:"отведи",    desc:"для атак извне"},
+    {ar:"ارْفَعْ",   tr:"ирфа'",   ru:"подними",   desc:"для завес, подвешенного"},
+    {ar:"اكْشِفْ",   tr:"икшиф",   ru:"раскрой",   desc:"для скрытого, блокированного"},
+    {ar:"اشْفِ",     tr:"ишфи",    ru:"исцели",    desc:"для болезней, безумия"},
+    {ar:"احْرِقْ",   tr:"ихрик",   ru:"сожги",     desc:"для джиннов, нечистоты"},
+    {ar:"أَخْرِجْ",  tr:"ахридж",  ru:"выведи",    desc:"для того, что внутри тела"},
+    {ar:"دَمِّرْ",   tr:"даммир",  ru:"уничтожь",  desc:"для сильных, укоренившихся преград"},
+    {ar:"فَرِّقْ",   tr:"фаррик",  ru:"разъедини", desc:"для соединённых сил зла"},
+    {ar:"اكْسِرْ",   tr:"иксир",   ru:"разбей",    desc:"для твёрдых барьеров, стен"},
+    {ar:"ارْدُدْ",   tr:"урдуд",   ru:"верни",     desc:"вернуть атаку источнику"},
+    {ar:"أَطْفِئْ",  tr:"атфи'",   ru:"погаси",    desc:"для огня зависти, гнева"},
+    {ar:"اقْلِبْ",   tr:"иклиб",   ru:"переверни", desc:"перевернуть колдовство на колдуна"},
+    {ar:"اصْرِفْ",   tr:"исриф",   ru:"отврати",   desc:"отвернуть, направить в сторону"},
+    {ar:"بَدِّدْ",   tr:"баддид",  ru:"рассей",    desc:"для скрытых причин"},
+    {ar:"اِنْزِعْ",  tr:"анзи'",   ru:"выдерни",   desc:"вырвать с корнем"},
+    {ar:"اقْلَعْ",   tr:"укъли'",  ru:"вырви",     desc:"для глубоко укоренённого"}
+  ],
+
+  // METHOD 2: ailments
+  ailments: [
+    {ar:"كُلَّ تَعْطِيلٍ",   tr:"кулля та'тылин",   ru:"всякую блокировку"},
+    {ar:"كُلَّ تَفْرِيقٍ",    tr:"кулля тафрикин",   ru:"всякое разделение"},
+    {ar:"كُلَّ مَأْكُولٍ",    tr:"кулля ма'кулин",   ru:"всякое съеденное"},
+    {ar:"كُلَّ مَشْرُوبٍ",    tr:"кулля машрубин",   ru:"всякое выпитое"},
+    {ar:"كُلَّ مَرْشُوشٍ",    tr:"кулля маршушин",   ru:"всякое подсыпанное"},
+    {ar:"كُلَّ مَسْحُورٍ",    tr:"кулля масхурин",   ru:"всякое заколдованное"},
+    {ar:"كُلَّ جُنُونٍ",      tr:"кулля джунунин",   ru:"всякое умопомрачение"},
+    {ar:"كُلَّ سِحْرٍ",       tr:"кулля сихрин",     ru:"всякое колдовство"},
+    {ar:"كُلَّ عَيْنٍ",       tr:"кулля 'айнин",     ru:"всякий сглаз"},
+    {ar:"كُلَّ حَسَدٍ",       tr:"кулля хасадин",    ru:"всякую зависть"},
+    {ar:"كُلَّ مَسٍّ",        tr:"кулля массин",     ru:"всякое касание джинна"},
+    {ar:"كُلَّ رَبْطٍ",       tr:"кулля рабтин",     ru:"всякое связывание"},
+    {ar:"كُلَّ مَرَضٍ",       tr:"кулля марадин",    ru:"всякую болезнь"},
+    {ar:"كُلَّ ضَرَرٍ",       tr:"кулля дарарин",    ru:"всякий вред"},
+    {ar:"كُلَّ شَرٍّ",        tr:"кулля шаррин",     ru:"всякое зло"},
+    {ar:"كُلَّ كَيْدٍ",       tr:"кулля кайдин",     ru:"всякие козни"},
+    {ar:"كُلَّ نَفْثٍ",       tr:"кулля нафсин",     ru:"всякий наговор"},
+    {ar:"كُلَّ وَسْوَسَةٍ",   tr:"кулля васвасатин", ru:"всякое наущение"},
+    {ar:"كُلَّ مَكْتُوبٍ",    tr:"кулля мактубин",   ru:"всякое написанное (талисман)"},
+    {ar:"كُلَّ مَدْفُونٍ",    tr:"кулля мадфунин",   ru:"всякое закопанное"},
+    {ar:"كُلَّ مُعَلَّقٍ",    tr:"кулля му'аллак",   ru:"всякое подвешенное"},
+    {ar:"كُلَّ مَشْمُومٍ",    tr:"кулля машмумин",   ru:"всякое вдыхаемое"},
+    {ar:"كُلَّ حِجَابٍ",      tr:"кулля хиджабин",   ru:"всякую завесу"},
+    {ar:"كُلَّ سَدٍّ",        tr:"кулля саддин",     ru:"всякий заслон"},
+    {ar:"كُلَّ قَيْدٍ",       tr:"кулля къайдин",    ru:"всякие оковы"},
+    {ar:"كُلَّ ظُلْمَةٍ",     tr:"кулля зульматин",  ru:"всякую тьму"},
+    {ar:"كُلَّ كَرْبٍ",       tr:"кулля карбин",     ru:"всякую тревогу"},
+    {ar:"كُلَّ هَمٍّ",        tr:"кулля хаммин",     ru:"всякую заботу"},
+    {ar:"كُلَّ خَوْفٍ",       tr:"кулля хауфин",     ru:"всякий страх"},
+    {ar:"كُلَّ غَمٍّ",        tr:"кулля гаммин",     ru:"всякую тоску"},
+    {ar:"كُلَّ فِتْنَةٍ",     tr:"кулля фитнатин",   ru:"всякую смуту"}
+  ],
+
+  // METHOD 2: sources
+  sources: [
+    {ar:"مِنْ سِحْرٍ",             tr:"мин сихрин",             ru:"от колдовства"},
+    {ar:"مِنْ حَسَدٍ",             tr:"мин хасадин",            ru:"от зависти"},
+    {ar:"مِنْ عَيْنٍ",             tr:"мин 'айнин",             ru:"от сглаза"},
+    {ar:"مِنْ عُقَدٍ",             tr:"мин 'укадин",            ru:"из узлов"},
+    {ar:"مِنْ جِنٍّ",              tr:"мин джиннин",            ru:"от джиннов"},
+    {ar:"مِنْ شَيْطَانٍ",          tr:"мин шайтанин",           ru:"от шайтана"},
+    {ar:"مِنْ كَيْدٍ",             tr:"мин кайдин",             ru:"от козней"},
+    {ar:"مِنْ نَفْثٍ",             tr:"мин нафсин",             ru:"от наговора"},
+    {ar:"مِنْ خُدَّامِ السِّحْرِ", tr:"мин худдами-с-сихр",     ru:"от служителей колдовства"},
+    {ar:"مِنْ سَاحِرٍ",            tr:"мин сахирин",            ru:"от колдуна"},
+    {ar:"مِنْ نَفْسٍ خَبِيثَةٍ",   tr:"мин нафсин хабисатин",   ru:"от злой души"},
+    {ar:"مِنْ نَفَّاثَاتٍ",        tr:"мин наффасатин",         ru:"от дующих в узлы"},
+    {ar:"مِنْ ظَالِمٍ",            tr:"мин залимин",            ru:"от тирана"},
+    {ar:"مِنْ عَائِنٍ",            tr:"мин 'аинин",             ru:"от сглазившего"},
+    {ar:"مِنْ بَاغِضٍ",            tr:"мин багидин",            ru:"от ненавистника"},
+    {ar:"مِنَ النَّاسِ",           tr:"мина-н-наси",            ru:"от людей"},
+    {ar:"مِنَ الْإِنْسِ",          tr:"мина-ль-инси",           ru:"от людей (рода)"},
+    {ar:"مِنَ الْجِنِّ",           tr:"мина-ль-джинн",          ru:"от джиннов (рода)"},
+    {ar:"مِنَ الشَّيَاطِينِ",      tr:"мина-ш-шайатын",         ru:"от шайтанов"},
+    {ar:"مِنْ كَافِرٍ",            tr:"мин кафирин",            ru:"от неверного"}
+  ],
+
+  // Places (فِي) — for Method 1 & 2
+  places: [
+    {ar:"فِي الرَّأْسِ",          tr:"фи р-ра'си",          ru:"в голове"},
+    {ar:"فِي الْقَلْبِ",          tr:"фи ль-къальби",       ru:"в сердце"},
+    {ar:"فِي الْعَقْلِ",          tr:"фи ль-'акъли",        ru:"в разуме"},
+    {ar:"فِي الْمَعِدَةِ",        tr:"фи ль-ма'идати",      ru:"в желудке"},
+    {ar:"فِي الْأَمْعَاءِ",       tr:"фи ль-ам'а'и",        ru:"в кишках"},
+    {ar:"فِي الْبَطْنِ",          tr:"фи ль-батни",         ru:"в животе"},
+    {ar:"فِي الظَّهْرِ",          tr:"фи з-захри",          ru:"в спине"},
+    {ar:"فِي الْيَدَيْنِ",        tr:"фи ль-ядайни",        ru:"в руках"},
+    {ar:"فِي الرِّجْلَيْنِ",      tr:"фи р-риджлайни",      ru:"в ногах"},
+    {ar:"فِي الرَّحِمِ",          tr:"фи р-рахими",         ru:"в матке"},
+    {ar:"فِي الْبَدَنِ كُلِّهِ",  tr:"фи ль-бадани куллихи",ru:"во всём теле"},
+    {ar:"فِي الزَّوَاجِ",         tr:"фи з-завадж",         ru:"в браке"},
+    {ar:"فِي الرِّزْقِ",          tr:"фи р-ризки",          ru:"в уделе"},
+    {ar:"فِي الْأَهْلِ",          tr:"фи ль-ахли",          ru:"в семье"},
+    {ar:"فِي الْبَيْتِ",          tr:"фи ль-байти",         ru:"в доме"},
+    {ar:"فِي الْعَمَلِ",          tr:"фи ль-'амали",        ru:"в работе"},
+    {ar:"فِي الصَّدْرِ",          tr:"фи с-садри",          ru:"в груди"},
+    {ar:"فِي الرُّوحِ",           tr:"фи р-рухи",           ru:"в духе"},
+    {ar:"فِي النَّفْسِ",          tr:"фи н-нафси",          ru:"в душе"},
+    {ar:"فِي الْعَيْنَيْنِ",      tr:"фи ль-'айнайни",      ru:"в глазах"},
+    {ar:"فِي الْأُذُنَيْنِ",      tr:"фи ль-узунайни",      ru:"в ушах"},
+    {ar:"فِي اللِّسَانِ",         tr:"фи ль-лисани",        ru:"в языке"},
+    {ar:"فِي الْفَمِ",            tr:"фи ль-фами",          ru:"во рту"},
+    {ar:"فِي الرَّقَبَةِ",        tr:"фи р-ракабати",       ru:"в шее"},
+    {ar:"فِي الْكَتِفَيْنِ",      tr:"фи ль-катифайни",     ru:"в плечах"},
+    {ar:"فِي الْكَبِدِ",          tr:"фи ль-кабиди",        ru:"в печени"},
+    {ar:"فِي الْكُلْيَتَيْنِ",    tr:"фи ль-кульятайни",    ru:"в почках"},
+    {ar:"فِي الدَّمِ",            tr:"фи д-дами",           ru:"в крови"},
+    {ar:"فِي الْعِظَامِ",         tr:"фи ль-'изами",        ru:"в костях"},
+    {ar:"فِي الْأَعْصَابِ",       tr:"фи ль-а'саби",        ru:"в нервах"},
+    {ar:"فِي النَّوْمِ",          tr:"фи н-науми",          ru:"во сне"},
+    {ar:"فِي الْفِكْرِ",          tr:"фи ль-фикри",         ru:"в мыслях"},
+    {ar:"فِي الْإِيمَانِ",        tr:"фи ль-имани",         ru:"в вере"},
+    {ar:"فِي الْعِبَادَةِ",       tr:"фи ль-'ибадати",      ru:"в поклонении"},
+    {ar:"فِي الصَّلَاةِ",         tr:"фи с-саляти",         ru:"в намазе"},
+    {ar:"فِي الدِّرَاسَةِ",       tr:"фи д-дирасати",       ru:"в учёбе"},
+    {ar:"فِي السَّفَرِ",          tr:"фи с-сафари",         ru:"в путешествии"},
+    {ar:"فِي الْحَيَاةِ",         tr:"фи ль-хаяти",         ru:"в жизни"},
+    {ar:"فِي الْأَوْلَادِ",       tr:"фи ль-авлади",        ru:"в детях"},
+    {ar:"فِي الْمَالِ",           tr:"фи ль-мали",          ru:"в имуществе"}
+  ],
+
+  // METHOD 3: eyeVerbs
+  eyeVerbs: [
+    {ar:"ادْفَعْ",  tr:"идфа'",  ru:"отведи",        desc:"для атак сглаза"},
+    {ar:"ارْدُدْ",  tr:"урдуд",  ru:"верни обратно", desc:"чтобы сглаз вернулся к источнику"},
+    {ar:"اقْطَعْ",  tr:"икъта'", ru:"отсеки",        desc:"оборвать связь сглаза"},
+    {ar:"أَبْطِلْ", tr:"абтыль", ru:"аннулируй",     desc:"сглаз следует аннулировать"},
+    {ar:"اصْرِفْ",  tr:"исриф",  ru:"отврати",       desc:"отвести взгляд"},
+    {ar:"أَزِلْ",   tr:"азиль",  ru:"устрани",       desc:"общее удаление"},
+    {ar:"أَخْمِدْ", tr:"ахмид",  ru:"погаси",        desc:"для огня зависти"},
+    {ar:"ابْعِدْ",  tr:"иб'ид",  ru:"удали",         desc:"чтобы сглаз отдалился"},
+    {ar:"اكْشِفْ",  tr:"икшиф",  ru:"сними",         desc:"снять с того, на ком сглаз"},
+    {ar:"اشْفِ",    tr:"ишфи",   ru:"исцели",        desc:"от последствий сглаза"},
+    {ar:"دَمِّرْ",  tr:"даммир", ru:"уничтожь",      desc:"полное уничтожение зла"},
+    {ar:"بَدِّدْ",  tr:"баддид", ru:"рассей",        desc:"рассеять скрытое зло"},
+    {ar:"اقْلِبْ",  tr:"иклиб",  ru:"переверни",     desc:"вернуть зло обратно на источник"},
+    {ar:"أَطْفِئْ", tr:"атфи'",  ru:"погаси",        desc:"огонь ненависти"},
+    {ar:"احْفَظْ",  tr:"ихфаз",  ru:"сохрани",       desc:"защитить от сглаза"}
+  ],
+
+  // METHOD 3: eyeObjects
+  eyeObjects: [
+    {ar:"كُلَّ عَيْنٍ",            tr:"кулля 'айнин",            ru:"всякий сглаз"},
+    {ar:"كُلَّ نَظَرٍ",            tr:"кулля назарин",           ru:"всякий взгляд"},
+    {ar:"كُلَّ حَسَدٍ",            tr:"кулля хасадин",           ru:"всякую зависть"},
+    {ar:"كُلَّ نَفْسٍ حَاسِدَةٍ",  tr:"кулля нафсин хасидатин",  ru:"всякую завистливую душу"},
+    {ar:"كُلَّ نَفْسٍ بَاغِضَةٍ",  tr:"кулля нафсин багидатин",  ru:"всякую ненавидящую душу"},
+    {ar:"كُلَّ عَائِنٍ",           tr:"кулля 'аинин",            ru:"всякого сглазившего"},
+    {ar:"كُلَّ سُوءٍ",             tr:"кулля су'ин",             ru:"всякое зло"},
+    {ar:"كُلَّ مَكْرٍ",            tr:"кулля макрин",            ru:"всякие козни"},
+    {ar:"كُلَّ ضَرَرٍ",            tr:"кулля дарарин",           ru:"всякий вред"},
+    {ar:"كُلَّ شَرٍّ",             tr:"кулля шаррин",            ru:"всякое худо"},
+    {ar:"كُلَّ نَفْثٍ",            tr:"кулля нафсин",            ru:"всякий наговор"},
+    {ar:"كُلَّ كَيْدٍ",            tr:"кулля кайдин",            ru:"всякие интриги"}
+  ],
+
+  // METHOD 3: eyeSources
+  eyeSources: [
+    {ar:"مِنْ حَاسِدٍ",           tr:"мин хасидин",           ru:"от завистника"},
+    {ar:"مِنْ بَاغِضٍ",           tr:"мин багидин",           ru:"от ненавистника"},
+    {ar:"مِنْ عَدُوٍّ",           tr:"мин 'адуввин",          ru:"от врага"},
+    {ar:"مِنْ نَفْسٍ خَبِيثَةٍ",  tr:"мин нафсин хабисатин",  ru:"от злой души"},
+    {ar:"مِنْ عَيْنٍ بَارِدَةٍ",  tr:"мин 'айнин баридатин",  ru:"от холодного глаза"},
+    {ar:"مِنْ عَيْنٍ سَاخِنَةٍ",  tr:"мин 'айнин сахинатин",  ru:"от горячего глаза"},
+    {ar:"مِنْ سَاحِرٍ",           tr:"мин сахирин",           ru:"от колдуна"},
+    {ar:"مِنْ شَيْطَانٍ",         tr:"мин шайтанин",          ru:"от шайтана"},
+    {ar:"مِنَ النَّاسِ",          tr:"мина-н-наси",           ru:"от людей"},
+    {ar:"مِنَ الْجِنِّ",          tr:"мина-ль-джинн",         ru:"от джиннов"},
+    {ar:"مِنَ النَّفَّاثَاتِ",    tr:"мина-н-наффасати",      ru:"от дующих в узлы"},
+    {ar:"مِنْ قَرِيبٍ",           tr:"мин карибин",           ru:"от близкого"},
+    {ar:"مِنْ بَعِيدٍ",           tr:"мин ба'идин",           ru:"от далёкого"}
+  ],
+
+  // METHOD 3: eyeTargets (عَلَى)
+  eyeTargets: [
+    {ar:"عَلَى صِحَّتِي",    tr:"'аля сыххати",   ru:"на моё здоровье"},
+    {ar:"عَلَى أَوْلَادِي",  tr:"'аля авлади",    ru:"на моих детей"},
+    {ar:"عَلَى أَهْلِي",     tr:"'аля ахли",      ru:"на мою семью"},
+    {ar:"عَلَى مَالِي",      tr:"'аля мали",      ru:"на моё имущество"},
+    {ar:"عَلَى رِزْقِي",     tr:"'аля ризки",     ru:"на мой удел"},
+    {ar:"عَلَى عَمَلِي",     tr:"'аля 'амали",    ru:"на мою работу"},
+    {ar:"عَلَى بَيْتِي",     tr:"'аля байти",     ru:"на мой дом"},
+    {ar:"عَلَى زَوَاجِي",    tr:"'аля заваджи",   ru:"на мой брак"},
+    {ar:"عَلَى جَمَالِي",    tr:"'аля джамали",   ru:"на мою красоту"},
+    {ar:"عَلَى عَقْلِي",     tr:"'аля 'акъли",    ru:"на мой разум"},
+    {ar:"عَلَى سَعَادَتِي",  tr:"'аля са'адати",  ru:"на моё счастье"},
+    {ar:"عَلَى وَلَدِي",     tr:"'аля валади",    ru:"на моего сына"},
+    {ar:"عَلَى بِنْتِي",     tr:"'аля бинти",     ru:"на мою дочь"},
+    {ar:"عَلَى زَوْجَتِي",   tr:"'аля зауджати",  ru:"на мою жену"},
+    {ar:"عَلَى زَوْجِي",     tr:"'аля зауджи",    ru:"на моего мужа"},
+    {ar:"عَلَى أُمِّي",      tr:"'аля умми",      ru:"на мою мать"},
+    {ar:"عَلَى أَبِي",       tr:"'аля аби",       ru:"на моего отца"},
+    {ar:"عَلَى دِينِي",      tr:"'аля дини",      ru:"на мою религию"},
+    {ar:"عَلَى إِيمَانِي",   tr:"'аля имани",     ru:"на мою веру"},
+    {ar:"عَلَى تِجَارَتِي",  tr:"'аля тиджарати", ru:"на мой бизнес"},
+    {ar:"عَلَى سَيَّارَتِي", tr:"'аля сайярати",  ru:"на мою машину"},
+    {ar:"عَلَى نِعَمِي",     tr:"'аля ни'ами",    ru:"на мои блага"}
+  ]
+};
+
+// ===== THEMES =====
+const THEMES = [
+  {key:'gold',     ru:'Золото'},
+  {key:'emerald',  ru:'Изумруд'},
+  {key:'sapphire', ru:'Сапфир'},
+  {key:'amethyst', ru:'Аметист'},
+  {key:'ruby',     ru:'Рубин'},
+  {key:'ocean',    ru:'Океан'},
+  {key:'darkgold', ru:'Тёмное'},
+  {key:'midnight', ru:'Ночь'}
+];
+const THEME_COLORS = {
+  gold:'#B8860B', emerald:'#2E7D32', sapphire:'#1565C0', amethyst:'#6A1B9A',
+  ruby:'#C62828', ocean:'#00838F', darkgold:'#0E0B05', midnight:'#0A0E1A'
+};
+
+let currentMethod = 1;
+let current = {ar:'', tr:'', ru:''};
+
+// ===== INIT =====
+function fillSelect(id, items, fmt, countId){
+  const el = document.getElementById(id);
+  el.innerHTML = items.map((x,i) => `<option value="${i}">${fmt(x)}</option>`).join('');
+  if(countId) document.getElementById(countId).textContent = items.length;
+}
+
+function init(){
+  // Fill selects
+  fillSelect('m1-cause', DATA.causes, x => `${x.ar} — ${x.ru}`, 'cnt-m1-cause');
+  fillSelect('m1-place', DATA.places, x => `${x.ar} — ${x.ru}`, 'cnt-m1-place');
+  fillSelect('m2-verb',    DATA.verbs,    x => `${x.ar} — ${x.ru} (${x.tr})`, 'cnt-m2-verb');
+  fillSelect('m2-ailment', DATA.ailments, x => `${x.ar} — ${x.ru}`, 'cnt-m2-ailment');
+  fillSelect('m2-source',  DATA.sources,  x => `${x.ar} — ${x.ru}`, 'cnt-m2-source');
+  fillSelect('m2-place',   DATA.places,   x => `${x.ar} — ${x.ru}`, 'cnt-m2-place');
+  fillSelect('m3-verb',   DATA.eyeVerbs,   x => `${x.ar} — ${x.ru} (${x.tr})`, 'cnt-m3-verb');
+  fillSelect('m3-object', DATA.eyeObjects, x => `${x.ar} — ${x.ru}`, 'cnt-m3-object');
+  fillSelect('m3-source', DATA.eyeSources, x => `${x.ar} — ${x.ru}`, 'cnt-m3-source');
+  fillSelect('m3-target', DATA.eyeTargets, x => `${x.ar} — ${x.ru}`, 'cnt-m3-target');
+
+  // Tabs
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => switchMethod(parseInt(btn.dataset.method,10)));
+  });
+
+  // Theme grid
+  const grid = document.getElementById('themeGrid');
+  grid.innerHTML = THEMES.map(t => `
+    <button class="theme-dot" data-theme="${t.key}" onclick="setTheme('${t.key}')">
+      <div class="theme-dot-circle"></div>
+      <div class="theme-dot-name">${t.ru}</div>
+    </button>
+  `).join('');
+
+  // Theme button
+  document.getElementById('themeBtn').addEventListener('click', openThemeSheet);
+
+  // Restore theme
+  const storedTheme = localStorage.getItem('gen_theme_v2') || 'gold';
+  setTheme(storedTheme, false);
+
+  // Restore last method
+  const lastMethod = parseInt(localStorage.getItem('gen_method') || '1', 10);
+  if(lastMethod >= 1 && lastMethod <= 3 && lastMethod !== 1) switchMethod(lastMethod);
+}
+
+function setTheme(key, save = true){
+  document.documentElement.setAttribute('data-theme', key);
+  if(save) localStorage.setItem('gen_theme_v2', key);
+  document.querySelectorAll('.theme-dot').forEach(d => d.classList.toggle('active', d.dataset.theme === key));
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', THEME_COLORS[key] || '#B8860B');
+  if(navigator.vibrate) navigator.vibrate(12);
+}
+
+function openThemeSheet(){
+  document.getElementById('themeSheet').classList.add('open');
+  document.getElementById('themeOverlay').classList.add('show');
+}
+function closeThemeSheet(){
+  document.getElementById('themeSheet').classList.remove('open');
+  document.getElementById('themeOverlay').classList.remove('show');
+}
+window.closeThemeSheet = closeThemeSheet;
+window.setTheme = (key) => { setTheme(key); setTimeout(closeThemeSheet, 250); };
+
+function switchMethod(m){
+  currentMethod = m;
+  localStorage.setItem('gen_method', String(m));
+  document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', parseInt(b.dataset.method,10) === m));
+  for(let i=1; i<=3; i++){
+    document.getElementById('method'+i).classList.toggle('hidden', i !== m);
+  }
+  document.getElementById('outputBox').style.display = 'none';
+  document.getElementById('ctaBtn').classList.add('pulse');
+  if(navigator.vibrate) navigator.vibrate(10);
+}
+
+function getSel(id, src){
+  return src[parseInt(document.getElementById(id).value,10)];
+}
+
+function generateCurrent(){
+  generate(currentMethod);
+}
+
+function generate(method){
+  let ar, tr, ru, explain;
+  if(method === 1){
+    const cause = getSel('m1-cause', DATA.causes);
+    const place = getSel('m1-place', DATA.places);
+    ar = `بِسْمِ اللَّهِ أَرْقِي مِنَ <span class="part-source">${cause.ar}</span> <span class="part-place">${place.ar}</span>`;
+    tr = `Бисми-Лляхи аркъи мина-${cause.tr} ${place.tr}.`;
+    ru = `С именем Аллаха, я делаю рукья от ${cause.ru} ${place.ru}.`;
+    explain = `
+      <div class="row"><b>Метод 1</b> Базовая рукья — короткое введение.</div>
+      <div class="row"><b>Виновник:</b> <span class="ar-frag">${cause.ar}</span> — ${cause.ru}</div>
+      <div class="row"><b>Место (فِي):</b> <span class="ar-frag">${place.ar}</span> — ${place.ru}</div>
+    `;
+  } else if(method === 2){
+    const verb    = getSel('m2-verb',    DATA.verbs);
+    const ailment = getSel('m2-ailment', DATA.ailments);
+    const source  = getSel('m2-source',  DATA.sources);
+    const place   = getSel('m2-place',   DATA.places);
+    ar = `اللَّهُمَّ <span class="part-verb">${verb.ar}</span> <span class="part-ailment">${ailment.ar}</span> <span class="part-source">${source.ar}</span> <span class="part-place">${place.ar}</span>`;
+    tr = `Аллахумма ${verb.tr} ${ailment.tr} ${source.tr} ${place.tr}.`;
+    ru = `О Аллах, ${verb.ru} ${ailment.ru} ${source.ru} ${place.ru}.`;
+    explain = `
+      <div class="row"><b>Метод 2</b> Действенное обращение к Аллаху.</div>
+      <div class="row"><b>Глагол:</b> <span class="ar-frag">${verb.ar}</span> — ${verb.ru} <em>(${verb.desc})</em></div>
+      <div class="row"><b>Недуг:</b> <span class="ar-frag">${ailment.ar}</span> — ${ailment.ru}</div>
+      <div class="row"><b>Источник:</b> <span class="ar-frag">${source.ar}</span> — ${source.ru}</div>
+      <div class="row"><b>Место:</b> <span class="ar-frag">${place.ar}</span> — ${place.ru}</div>
+    `;
+  } else {
+    const verb   = getSel('m3-verb',   DATA.eyeVerbs);
+    const obj    = getSel('m3-object', DATA.eyeObjects);
+    const source = getSel('m3-source', DATA.eyeSources);
+    const target = getSel('m3-target', DATA.eyeTargets);
+    ar = `اللَّهُمَّ <span class="part-verb">${verb.ar}</span> <span class="part-ailment">${obj.ar}</span> <span class="part-source">${source.ar}</span> <span class="part-place">${target.ar}</span>`;
+    tr = `Аллахумма ${verb.tr} ${obj.tr} ${source.tr} ${target.tr}.`;
+    ru = `О Аллах, ${verb.ru} ${obj.ru} ${source.ru} ${target.ru}.`;
+    explain = `
+      <div class="row"><b>Метод 3</b> Против сглаза — особенность: предлог عَلَى вместо فِي.</div>
+      <div class="row"><b>Глагол:</b> <span class="ar-frag">${verb.ar}</span> — ${verb.ru} <em>(${verb.desc})</em></div>
+      <div class="row"><b>Объект:</b> <span class="ar-frag">${obj.ar}</span> — ${obj.ru}</div>
+      <div class="row"><b>Источник:</b> <span class="ar-frag">${source.ar}</span> — ${source.ru}</div>
+      <div class="row"><b>Цель (عَلَى):</b> <span class="ar-frag">${target.ar}</span> — ${target.ru}</div>
+    `;
+  }
+
+  const arPlain = ar.replace(/<[^>]+>/g,'');
+  current = {ar: arPlain, tr, ru};
+
+  document.getElementById('outAr').innerHTML = ar;
+  document.getElementById('outRu').textContent = ru;
+  document.getElementById('outTr').textContent = tr;
+  document.getElementById('explainBox').innerHTML = explain;
+  document.getElementById('outputBox').style.display = '';
+  document.getElementById('ctaBtn').classList.remove('pulse');
+
+  if(navigator.vibrate) navigator.vibrate(20);
+  setTimeout(() => {
+    document.getElementById('outputBox').scrollIntoView({behavior:'smooth', block:'start'});
+  }, 80);
+}
+
+function randomize(method){
+  const r = (id, arr) => { document.getElementById(id).value = Math.floor(Math.random() * arr.length); };
+  if(method === 1){
+    r('m1-cause', DATA.causes);
+    r('m1-place', DATA.places);
+  } else if(method === 2){
+    r('m2-verb',    DATA.verbs);
+    r('m2-ailment', DATA.ailments);
+    r('m2-source',  DATA.sources);
+    r('m2-place',   DATA.places);
+  } else {
+    r('m3-verb',   DATA.eyeVerbs);
+    r('m3-object', DATA.eyeObjects);
+    r('m3-source', DATA.eyeSources);
+    r('m3-target', DATA.eyeTargets);
+  }
+  if(navigator.vibrate) navigator.vibrate(15);
+  generate(method);
+}
+
+function copyText(kind, event){
+  let text = '';
+  if(kind === 'ar') text = current.ar;
+  else if(kind === 'tr') text = current.tr;
+  else if(kind === 'ru') text = current.ru;
+  else text = `${current.ar}\n\nПеревод: ${current.ru}\n\nТранскрипция: ${current.tr}`;
+
+  const btn = event && event.currentTarget;
+  const done = () => {
+    showToast('✓ Скопировано');
+    if(btn){
+      btn.classList.add('copied');
+      setTimeout(() => btn.classList.remove('copied'), 800);
+    }
+    if(navigator.vibrate) navigator.vibrate(20);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done).catch(() => fallback(text, done));
+  } else {
+    fallback(text, done);
+  }
+}
+function fallback(text, cb){
+  try{
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position='fixed';ta.style.opacity='0';ta.style.left='-9999px';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    cb && cb();
+  }catch(e){}
+}
+
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+// Swipe between tabs
+let touchStartX = 0, touchStartY = 0;
+document.addEventListener('touchstart', e => {
+  if(!e.touches[0]) return;
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, {passive:true});
+document.addEventListener('touchend', e => {
+  if(!e.changedTouches[0]) return;
+  const tag = (e.target && e.target.tagName) || '';
+  if(['SELECT','OPTION','INPUT','TEXTAREA','BUTTON'].includes(tag)) return;
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if(Math.abs(dx) > 80 && Math.abs(dy) < 60){
+    if(dx < 0 && currentMethod < 3) switchMethod(currentMethod + 1);
+    else if(dx > 0 && currentMethod > 1) switchMethod(currentMethod - 1);
+  }
+}, {passive:true});
+
+// ===== SPLASH SCREEN =====
+function initSplash(){
+  const splash = document.getElementById('splash');
+  const phaseA = document.getElementById('phaseA');
+  const phaseB = document.getElementById('phaseB');
+  const countEl = document.getElementById('splashCount');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let count = reduce ? 3 : 5;
+
+  // Show phase B after delay
+  setTimeout(() => {
+    phaseA.classList.remove('active');
+    phaseB.classList.add('active');
+  }, reduce ? 200 : 1400);
+
+  const enter = () => {
+    if(splash.classList.contains('exit')) return;
+    splash.classList.add('exit');
+    setTimeout(() => {
+      splash.style.display = 'none';
+      const app = document.getElementById('mainApp');
+      app.style.display = 'block';
+      requestAnimationFrame(() => app.classList.add('visible'));
+      init();
+    }, 850);
+  };
+
+  const timer = setInterval(() => {
+    count -= 1;
+    if(countEl) countEl.textContent = count;
+    if(count <= 0){ clearInterval(timer); enter(); }
+  }, 1000);
+
+  document.getElementById('enterAppBtn').addEventListener('click', () => { clearInterval(timer); enter(); });
+  document.getElementById('skipSplashBtn').addEventListener('click', () => { clearInterval(timer); enter(); });
+}
+
+window.addEventListener('DOMContentLoaded', initSplash);
+</script>
+
+</body>
+</html>
