@@ -785,7 +785,7 @@ html[data-theme="midnight"] .part-place{color:#EA80FC}
 <div class="toast" id="toast">Скопировано</div>
 
 <!-- THEME SHEET -->
-<div class="theme-overlay" id="themeOverlay" onclick="closeThemeSheet()"></div>
+<div class="theme-overlay" id="themeOverlay"></div>
 <div class="theme-sheet" id="themeSheet">
   <div class="theme-sheet-handle"></div>
   <div class="theme-sheet-title">🎨 Выберите тему</div>
@@ -1074,30 +1074,36 @@ function init(){
   // Theme grid
   const grid = document.getElementById('themeGrid');
   grid.innerHTML = THEMES.map(t => `
-    <button class="theme-dot" data-theme="${t.key}" onclick="setTheme('${t.key}')">
+    <button class="theme-dot" data-theme="${t.key}" type="button">
       <div class="theme-dot-circle"></div>
       <div class="theme-dot-name">${t.ru}</div>
     </button>
   `).join('');
+  // Attach listeners (more reliable than inline onclick in dynamic HTML)
+  grid.querySelectorAll('.theme-dot').forEach(btn => {
+    btn.addEventListener('click', () => selectTheme(btn.dataset.theme));
+  });
 
-  // Theme button
+  // Theme button + overlay close
   document.getElementById('themeBtn').addEventListener('click', openThemeSheet);
+  document.getElementById('themeOverlay').addEventListener('click', closeThemeSheet);
 
   // Restore theme
   const storedTheme = localStorage.getItem('gen_theme_v2') || 'gold';
-  setTheme(storedTheme, false);
+  applyTheme(storedTheme, false);
 
   // Restore last method
   const lastMethod = parseInt(localStorage.getItem('gen_method') || '1', 10);
   if(lastMethod >= 1 && lastMethod <= 3 && lastMethod !== 1) switchMethod(lastMethod);
 }
 
-function setTheme(key, save = true){
+function applyTheme(key, save){
   document.documentElement.setAttribute('data-theme', key);
   if(save) localStorage.setItem('gen_theme_v2', key);
   document.querySelectorAll('.theme-dot').forEach(d => d.classList.toggle('active', d.dataset.theme === key));
-  document.querySelector('meta[name="theme-color"]').setAttribute('content', THEME_COLORS[key] || '#B8860B');
-  if(navigator.vibrate) navigator.vibrate(12);
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if(meta) meta.setAttribute('content', THEME_COLORS[key] || '#B8860B');
+  if(save && navigator.vibrate) navigator.vibrate(12);
 }
 
 function openThemeSheet(){
@@ -1108,8 +1114,10 @@ function closeThemeSheet(){
   document.getElementById('themeSheet').classList.remove('open');
   document.getElementById('themeOverlay').classList.remove('show');
 }
-window.closeThemeSheet = closeThemeSheet;
-window.setTheme = (key) => { setTheme(key); setTimeout(closeThemeSheet, 250); };
+function selectTheme(key){
+  applyTheme(key, true);
+  setTimeout(closeThemeSheet, 220);
+}
 
 function switchMethod(m){
   currentMethod = m;
@@ -1310,6 +1318,15 @@ function initSplash(){
   document.getElementById('enterAppBtn').addEventListener('click', () => { clearInterval(timer); enter(); });
   document.getElementById('skipSplashBtn').addEventListener('click', () => { clearInterval(timer); enter(); });
 }
+
+// Expose handlers globally for inline onclick="..."
+window.generateCurrent = generateCurrent;
+window.randomize = randomize;
+window.copyText = copyText;
+window.selectTheme = selectTheme;
+window.openThemeSheet = openThemeSheet;
+window.closeThemeSheet = closeThemeSheet;
+window.switchMethod = switchMethod;
 
 window.addEventListener('DOMContentLoaded', initSplash);
 </script>
