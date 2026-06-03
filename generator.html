@@ -1320,9 +1320,17 @@ function init(){
   window.openGuide = openGuide;
   window.closeGuide = closeGuide;
 
-  // Font buttons
-  document.getElementById('fontMinus').addEventListener('click', () => changeFont(-10));
-  document.getElementById('fontPlus').addEventListener('click', () => changeFont(10));
+  // Font buttons — explicit type=button + prevent any default
+  const fontMinus = document.getElementById('fontMinus');
+  const fontPlus = document.getElementById('fontPlus');
+  if(fontMinus){
+    fontMinus.setAttribute('type','button');
+    fontMinus.addEventListener('click', (e) => { e.preventDefault(); changeFont(-10); });
+  }
+  if(fontPlus){
+    fontPlus.setAttribute('type','button');
+    fontPlus.addEventListener('click', (e) => { e.preventDefault(); changeFont(10); });
+  }
 
   // Restore theme/lang/font
   const storedTheme = localStorage.getItem('gen_theme_v2') || 'gold';
@@ -1362,14 +1370,29 @@ function setLang(lang, save = true){
 function applyFont(scale){
   scale = Math.max(70, Math.min(150, scale));
   fontScale = scale;
-  document.documentElement.style.setProperty('--font-scale', (scale / 100).toFixed(2));
+  const ratio = scale / 100;
+  // 1) Update CSS variable
+  document.documentElement.style.setProperty('--font-scale', ratio.toFixed(2));
+  // 2) Reset any leftover zoom on mainApp (from previous versions)
+  const app = document.getElementById('mainApp');
+  if(app){ app.style.zoom = ''; app.style.webkitTextSizeAdjust = ''; }
+  // 3) Apply 'zoom' ONLY to content & modals — header (.app-header) is excluded so it stays at native size
+  const targets = ['.container', '.sticky-cta', '.theme-sheet', '.csel-modal', '.guide-modal'];
+  targets.forEach(sel => {
+    const el = document.querySelector(sel);
+    if(el){
+      el.style.zoom = ratio;
+      el.style.webkitTextSizeAdjust = (ratio * 100) + '%';
+    }
+  });
+  // 4) Update display
   const d = document.getElementById('fontDisplay');
   if(d) d.textContent = scale + '%';
 }
 
 function changeFont(delta){
   applyFont(fontScale + delta);
-  localStorage.setItem('gen_font', String(fontScale));
+  try { localStorage.setItem('gen_font', String(fontScale)); } catch(e){}
   if(navigator.vibrate) navigator.vibrate(8);
 }
 
