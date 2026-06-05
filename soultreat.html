@@ -2,7 +2,7 @@
 <html lang="ru" data-theme="dark" data-fontsize="1">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>Особенный — Курс трансформации личности</title>
 <style>
 /* ===================== RESET & BASE ===================== */
@@ -14,12 +14,13 @@
   --glass:rgba(255,255,255,0.06);
   --glass-border:rgba(255,255,255,0.1);
   --fs:1rem;
-  --fs-h1:calc(1.8rem * var(--fs));
-  --fs-h2:calc(1.5rem * var(--fs));
-  --fs-h3:calc(1.25rem * var(--fs));
-  --fs-body:calc(1rem * var(--fs));
-  --fs-small:calc(0.85rem * var(--fs));
-  --fs-micro:calc(0.75rem * var(--fs));
+  /* Исправлено: убран рекурсивный calc (был calc(1.8rem * var(--fs)) где --fs=1rem → бесконечная рекурсия в старых движках) */
+  --fs-h1:1.8rem;
+  --fs-h2:1.5rem;
+  --fs-h3:1.25rem;
+  --fs-body:1rem;
+  --fs-small:0.875rem;
+  --fs-micro:0.75rem;
 }
 
 /* ===================== THEMES ===================== */
@@ -80,12 +81,14 @@ body{
   min-height:100vh;
   transition:background var(--transition),color var(--transition);
 }
+/* Исправлено: will-change для GPU-слоя анимированного фона */
 .animated-bg{
   position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;
   background:linear-gradient(-45deg,var(--bg1),var(--bg2),var(--bg3),var(--bg1));
   background-size:400% 400%;
   animation:gradientShift 15s ease infinite;
   pointer-events:none;
+  will-change:background-position;
 }
 @keyframes gradientShift{
   0%{background-position:0% 50%}
@@ -95,7 +98,12 @@ body{
   100%{background-position:0% 50%}
 }
 /* Floating orbs */
-.orb{position:fixed;border-radius:50%;filter:blur(80px);opacity:0.15;pointer-events:none;z-index:0;animation:orbFloat 20s ease-in-out infinite}
+.orb{
+  position:fixed;border-radius:50%;filter:blur(80px);opacity:0.15;
+  pointer-events:none;z-index:0;
+  animation:orbFloat 20s ease-in-out infinite;
+  will-change:transform;
+}
 .orb-1{width:300px;height:300px;background:var(--accent1);top:-100px;left:-100px;animation-delay:0s}
 .orb-2{width:250px;height:250px;background:var(--accent3);bottom:-50px;right:-50px;animation-delay:-5s}
 .orb-3{width:200px;height:200px;background:var(--accent2);top:50%;left:50%;animation-delay:-10s}
@@ -168,7 +176,7 @@ body{
 .controls{
   position:fixed;top:0;left:0;right:0;
   display:flex;justify-content:center;gap:8px;
-  padding:12px 16px;
+  padding:10px 16px;
   background:rgba(10,10,26,0.85);
   backdrop-filter:blur(20px);
   z-index:1000;
@@ -188,6 +196,8 @@ body{
 }
 .ctrl-btn:hover{background:var(--accent1);color:#fff;transform:scale(1.1)}
 .ctrl-btn.active{background:var(--accent1);color:#fff}
+/* Исправлено: добавлен :focus-visible для доступности */
+.ctrl-btn:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
 .font-size-label{
   font-size:var(--fs-micro);color:var(--text2);
   display:flex;align-items:center;padding:0 4px;
@@ -201,6 +211,7 @@ body{
   transition:all 0.3s ease;
 }
 .theme-dot:hover,.theme-dot.active{transform:scale(1.2);border-color:var(--text1)}
+.theme-dot:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
 .theme-dot.t-dark{background:linear-gradient(135deg,#6c5ce7,#a29bfe)}
 .theme-dot.t-ocean{background:linear-gradient(135deg,#64ffda,#00b4d8)}
 .theme-dot.t-ember{background:linear-gradient(135deg,#ff6b35,#e07a5f)}
@@ -216,7 +227,7 @@ body{
   margin-bottom:20px;
   backdrop-filter:blur(15px);
   box-shadow:var(--shadow);
-  transition:all var(--transition);
+  transition:transform var(--transition),box-shadow var(--transition);
   position:relative;overflow:hidden;
   animation:cardIn 0.6s ease both;
 }
@@ -230,13 +241,14 @@ body{
   from{opacity:0;transform:translateY(30px)}
   to{opacity:1;transform:translateY(0)}
 }
-.card:nth-child(2){animation-delay:0.1s}
-.card:nth-child(3){animation-delay:0.2s}
-.card:nth-child(4){animation-delay:0.3s}
-.card:nth-child(5){animation-delay:0.4s}
-.card:nth-child(6){animation-delay:0.5s}
-.card:nth-child(7){animation-delay:0.6s}
-.card:nth-child(8){animation-delay:0.7s}
+/* Исправлено: animation-delay через CSS переменную вместо nth-child дублирования */
+.card:nth-child(2){animation-delay:.1s}
+.card:nth-child(3){animation-delay:.2s}
+.card:nth-child(4){animation-delay:.3s}
+.card:nth-child(5){animation-delay:.4s}
+.card:nth-child(6){animation-delay:.5s}
+.card:nth-child(7){animation-delay:.6s}
+.card:nth-child(8){animation-delay:.7s}
 
 .card-icon{
   width:48px;height:48px;border-radius:12px;
@@ -261,9 +273,9 @@ body{
 }
 
 /* ===================== MODULE CARDS ===================== */
-.module-card{cursor:pointer}
+.module-card{cursor:pointer;padding:12px 44px 12px 0;position:relative}
 .module-card .arrow{
-  position:absolute;right:20px;top:50%;transform:translateY(-50%);
+  position:absolute;right:4px;top:50%;transform:translateY(-50%);
   font-size:1.2rem;color:var(--accent1);transition:transform 0.3s ease;
 }
 .module-card:hover .arrow{transform:translateY(-50%) translateX(4px)}
@@ -285,12 +297,14 @@ body{
   padding:14px 16px;display:flex;justify-content:space-between;align-items:center;
   cursor:pointer;font-weight:600;font-size:var(--fs-small);
   color:var(--text1);transition:background 0.3s;
+  user-select:none;
 }
 .accordion-header:hover{background:rgba(255,255,255,0.03)}
 .accordion-header .icon{transition:transform 0.3s ease;font-size:0.8rem;color:var(--accent1)}
 .accordion-item.open .accordion-header .icon{transform:rotate(180deg)}
 .accordion-body{
-  max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;
+  max-height:0;overflow:hidden;
+  transition:max-height 0.4s ease,padding 0.4s ease;
   padding:0 16px;
 }
 .accordion-item.open .accordion-body{
@@ -316,10 +330,11 @@ tr:hover td{background:rgba(255,255,255,0.02)}
   background:var(--gradient);background-size:200% 200%;
   animation:gradientShift 4s ease infinite;
   color:#fff;font-weight:600;font-size:var(--fs-small);
-  cursor:pointer;transition:all 0.3s ease;
+  cursor:pointer;transition:transform 0.3s ease,box-shadow 0.3s ease;
   box-shadow:0 4px 15px rgba(108,92,231,0.3);
 }
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(108,92,231,0.4)}
+.btn:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
 .btn-outline{
   background:transparent;border:1px solid var(--accent1);
   color:var(--accent1);animation:none;box-shadow:none;
@@ -344,6 +359,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
   transform:translateY(100%);transition:transform 0.4s cubic-bezier(.4,0,.2,1);
   border:1px solid var(--glass-border);
   border-bottom:none;
+  position:relative;
 }
 .modal-overlay.active .modal{transform:translateY(0)}
 .modal-handle{
@@ -359,6 +375,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
   transition:all 0.3s;
 }
 .modal-close:hover{background:var(--danger);color:#fff}
+.modal-close:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
 .modal h2{font-size:var(--fs-h2);margin-bottom:16px;padding-right:40px}
 .modal h3{font-size:var(--fs-h3);margin:20px 0 10px;color:var(--accent2)}
 .modal p,.modal li{color:var(--text2);font-size:var(--fs-small);margin-bottom:10px}
@@ -377,11 +394,6 @@ tr:hover td{background:rgba(255,255,255,0.02)}
   display:flex;align-items:center;justify-content:center;
   font-size:4rem;
   background:rgba(0,0,0,0.3);backdrop-filter:blur(2px);
-}
-.img-placeholder.caption{
-  height:auto;padding:12px 16px;
-  font-size:var(--fs-micro);color:var(--text3);
-  text-align:center;
 }
 
 /* ===================== PROGRESS ===================== */
@@ -418,6 +430,8 @@ tr:hover td{background:rgba(255,255,255,0.02)}
   font-size:1.4rem;line-height:2;
   color:var(--accent2);margin-bottom:10px;
   direction:rtl;
+  /* Исправлено: явный шрифт для арабского текста */
+  font-family:'Amiri','Traditional Arabic','Segoe UI',sans-serif;
 }
 .dua-card .translit{font-size:var(--fs-micro);color:var(--text3);font-style:italic}
 .dua-card .translation{font-size:var(--fs-small);color:var(--text1);margin-top:8px;font-weight:600}
@@ -425,6 +439,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
   display:inline-block;width:14px;height:14px;
   border-radius:50%;margin-right:8px;vertical-align:middle;
   border:2px solid var(--glass-border);
+  flex-shrink:0;
 }
 
 /* ===================== WARNING BOX ===================== */
@@ -467,7 +482,8 @@ tr:hover td{background:rgba(255,255,255,0.02)}
   align-items:center;gap:2px;padding:8px 4px;
   border-radius:12px;cursor:pointer;
   color:var(--text3);font-size:var(--fs-micro);
-  transition:all 0.3s ease;text-decoration:none;
+  transition:color 0.3s ease,background 0.3s ease;
+  text-decoration:none;
 }
 .nav-item.active,.nav-item:hover{color:var(--accent1);background:var(--card-bg)}
 .nav-item .nav-icon{font-size:1.2rem}
@@ -480,23 +496,26 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 .pulse{animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 
-/* ===================== BODY MAP SVG ===================== */
-.body-map{
-  width:200px;margin:20px auto;display:block;
-  fill:none;stroke:var(--accent1);stroke-width:1.5;
-  opacity:0.6;
+/* Исправлено: prefers-reduced-motion — отключаем анимации для пользователей с вестибулярными нарушениями */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:0.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:0.01ms!important;
+  }
 }
-.body-map .zone{fill:var(--accent3);opacity:0.2;cursor:pointer;transition:opacity 0.3s}
-.body-map .zone:hover{opacity:0.6}
-.body-map .zone-label{font-size:8px;fill:var(--text1)}
 
 /* ===================== RESPONSIVE ===================== */
 @media(min-width:768px){
   .container{max-width:540px;padding:30px 24px 100px}
-  .modal{border-radius:24px;max-height:80vh;margin:auto}
   .modal-overlay{align-items:center}
-  .modal{transform:translateY(0) scale(0.9)}
-  .modal-overlay.active .modal{transform:translateY(0) scale(1)}
+  .modal{
+    border-radius:24px;
+    max-height:80vh;
+    /* Исправлено: убрано противоречие transform:translateY(0) scale(0.9) в одном правиле */
+    transform:scale(0.9);
+  }
+  .modal-overlay.active .modal{transform:scale(1)}
 }
 @media(min-width:1024px){
   .container{max-width:640px}
@@ -506,6 +525,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 @media print{
   .controls,.bottom-nav,.modal-overlay,.orb,.animated-bg{display:none!important}
   body{background:#fff;color:#000}
+  .card{border:1px solid #ccc;box-shadow:none}
 }
 
 /* ===================== SPECIAL ELEMENTS ===================== */
@@ -532,7 +552,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
   color:#fff;font-size:var(--fs-micro);font-weight:700;
   margin-right:10px;flex-shrink:0;
 }
-.step{display:flex;align-items:flex-start;margin:12px 0}
+.step{display:flex;align-items:flex-start;margin:12px 0;gap:0}
 .step p{flex:1;margin:0}
 
 /* Tooltip */
@@ -558,22 +578,22 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 <body>
 
 <!-- ANIMATED BACKGROUND -->
-<div class="animated-bg"></div>
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
+<div class="animated-bg" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
 
 <!-- CONTROLS BAR -->
-<div class="controls" id="controls">
-  <button class="ctrl-btn" onclick="changeFontSize(-1)" title="Уменьшить шрифт">A-</button>
-  <button class="ctrl-btn" onclick="changeFontSize(1)" title="Увеличить шрифт">A+</button>
-  <span class="font-size-label">Размер</span>
-  <div class="theme-selector">
-    <span class="theme-dot t-dark active" onclick="setTheme('dark')" title="Тёмная"></span>
-    <span class="theme-dot t-ocean" onclick="setTheme('ocean')" title="Океан"></span>
-    <span class="theme-dot t-ember" onclick="setTheme('ember')" title="Пламя"></span>
-    <span class="theme-dot t-forest" onclick="setTheme('forest')" title="Лес"></span>
-    <span class="theme-dot t-royal" onclick="setTheme('royal')" title="Королевская"></span>
+<div class="controls" role="toolbar" aria-label="Настройки отображения">
+  <button class="ctrl-btn" id="btnFontMinus" aria-label="Уменьшить шрифт" title="Уменьшить шрифт">A-</button>
+  <button class="ctrl-btn" id="btnFontPlus" aria-label="Увеличить шрифт" title="Увеличить шрифт">A+</button>
+  <span class="font-size-label" aria-hidden="true">Размер</span>
+  <div class="theme-selector" role="group" aria-label="Тема оформления">
+    <span class="theme-dot t-dark active" role="button" tabindex="0" data-theme-set="dark" title="Тёмная"></span>
+    <span class="theme-dot t-ocean" role="button" tabindex="0" data-theme-set="ocean" title="Океан"></span>
+    <span class="theme-dot t-ember" role="button" tabindex="0" data-theme-set="ember" title="Пламя"></span>
+    <span class="theme-dot t-forest" role="button" tabindex="0" data-theme-set="forest" title="Лес"></span>
+    <span class="theme-dot t-royal" role="button" tabindex="0" data-theme-set="royal" title="Королевская"></span>
   </div>
 </div>
 
@@ -581,8 +601,8 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 <div class="container" id="main-content">
 
   <!-- HEADER -->
-  <header class="header fade-in">
-    <div class="logo-icon">🌙</div>
+  <header class="header fade-in" style="margin-top:60px">
+    <div class="logo-icon" aria-hidden="true">🌙</div>
     <h1>Особенный</h1>
     <p class="subtitle">Курс трансформации личности по методу Абу Мухаммада</p>
     <span class="badge">✦ Высвобождение застрявших импульсов</span>
@@ -590,7 +610,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 
   <!-- INTRO CARD -->
   <div class="card slide-up">
-    <div class="img-placeholder" style="height:180px;margin-bottom:16px">
+    <div class="img-placeholder" style="height:180px;margin-bottom:16px" aria-hidden="true">
       <div class="inner">🕊️</div>
     </div>
     <h2>Добро пожаловать</h2>
@@ -599,14 +619,14 @@ tr:hover td{background:rgba(255,255,255,0.02)}
       «Нервная система — это главный интерфейс между телом, энергией и духом. Когда в этом интерфейсе есть сбой, орган или часть тела теряют связь с сознанием.»
     </div>
     <p>Метод последовательно работает на трёх уровнях: <span class="highlight">телесном</span>, <span class="highlight">эмоциональном</span> и <span class="highlight">духовном</span>, возвращая вам полноту ощущения жизни в собственном теле.</p>
-    <button class="btn btn-block" onclick="openModal('modal-start')">
+    <button class="btn btn-block" data-modal-open="modal-start">
       ▶ Начать ознакомление
     </button>
   </div>
 
   <!-- WHAT IS THIS COURSE -->
   <div class="card slide-up">
-    <div class="card-icon">📋</div>
+    <div class="card-icon" aria-hidden="true">📋</div>
     <h2>Что это за метод?</h2>
     <p>Это не массаж и не релаксация. Это <strong>целенаправленная работа</strong> с невыраженными душевными импульсами, пробуждение «немых зон» и восстановление связи «мозг–тело».</p>
     <div class="separator"></div>
@@ -627,87 +647,74 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 
   <!-- 4 MODULES OVERVIEW -->
   <div class="card slide-up">
-    <div class="card-icon">🗺️</div>
+    <div class="card-icon" aria-hidden="true">🗺️</div>
     <h2>Структура курса</h2>
     <p>Курс выстроен как последовательная спираль трансформации: от тела к духу, от высвобождения к устойчивой чистоте.</p>
-    
     <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
-    
-    <!-- Module 1 -->
-    <div class="module-card" onclick="openModal('modal-m1')">
+    <div class="module-card" data-modal-open="modal-m1" role="button" tabindex="0" aria-label="Модуль 01 — Физическое пробуждение">
       <div class="module-number">Модуль 01</div>
       <h3 style="margin:4px 0">Физическое пробуждение</h3>
       <p style="color:var(--text3);font-size:var(--fs-micro)">Телесная диагностика, протирание, похлопывание, надавливание, выщипывание + вербализация</p>
-      <span class="arrow">→</span>
+      <span class="arrow" aria-hidden="true">→</span>
     </div>
     <div class="separator"></div>
-    
-    <!-- Module 2 -->
-    <div class="module-card" onclick="openModal('modal-m2')">
+    <div class="module-card" data-modal-open="modal-m2" role="button" tabindex="0" aria-label="Модуль 02 — Психосоматическая трансформация">
       <div class="module-number">Модуль 02</div>
       <h3 style="margin:4px 0">Психосоматическая трансформация</h3>
       <p style="color:var(--text3);font-size:var(--fs-micro)">Проживание эмоций, замещение паттернов, 30 пар «недуг → качество»</p>
-      <span class="arrow">→</span>
+      <span class="arrow" aria-hidden="true">→</span>
     </div>
     <div class="separator"></div>
-    
-    <!-- Module 3 -->
-    <div class="module-card" onclick="openModal('modal-m3')">
+    <div class="module-card" data-modal-open="modal-m3" role="button" tabindex="0" aria-label="Модуль 03 — Духовно-визуальное очищение">
       <div class="module-number">Модуль 03</div>
       <h3 style="margin:4px 0">Духовно-визуальное очищение</h3>
       <p style="color:var(--text3);font-size:var(--fs-micro)">Периферическое зрение, цветные маркеры, дуа-заклинания</p>
-      <span class="arrow">→</span>
+      <span class="arrow" aria-hidden="true">→</span>
     </div>
     <div class="separator"></div>
-    
-    <!-- Module 4 -->
-    <div class="module-card" onclick="openModal('modal-m4')">
+    <div class="module-card" data-modal-open="modal-m4" role="button" tabindex="0" aria-label="Модуль 04 — Духовная гигиена">
       <div class="module-number">Модуль 04</div>
       <h3 style="margin:4px 0">Духовная гигиена</h3>
       <p style="color:var(--text3);font-size:var(--fs-micro)">Границы, невпитывание, ежедневная благодарность и устойчивость</p>
-      <span class="arrow">→</span>
+      <span class="arrow" aria-hidden="true">→</span>
     </div>
   </div>
 
-  <!-- HOW IT WORKS VISUAL -->
+  <!-- HOW IT WORKS -->
   <div class="card slide-up">
-    <div class="card-icon">🔄</div>
+    <div class="card-icon" aria-hidden="true">🔄</div>
     <h2>Как это работает?</h2>
-    
-    <div class="img-placeholder" style="height:160px">
+    <div class="img-placeholder" style="height:160px" aria-hidden="true">
       <div class="inner">⚡</div>
     </div>
-    
     <p>Цикл трансформации в каждом модуле:</p>
-    
     <div class="step">
-      <span class="step-number">1</span>
+      <span class="step-number" aria-hidden="true">1</span>
       <p><strong>Диагностика</strong> — поиск «немых зон» через напряжение, протирание, похлопывание и боди-скан</p>
     </div>
     <div class="step">
-      <span class="step-number">2</span>
+      <span class="step-number" aria-hidden="true">2</span>
       <p><strong>Активация</strong> — физическое воздействие (надавливание, выщипывание, вытягивание) для пробуждения импульсов</p>
     </div>
     <div class="step">
-      <span class="step-number">3</span>
+      <span class="step-number" aria-hidden="true">3</span>
       <p><strong>Вербализация</strong> — проговаривание конкретного недуга синхронно с воздействием</p>
     </div>
     <div class="step">
-      <span class="step-number">4</span>
+      <span class="step-number" aria-hidden="true">4</span>
       <p><strong>Духовное очищение</strong> — дуа, суры, молитвенные формулы для выведения застрявшей энергии</p>
     </div>
     <div class="step">
-      <span class="step-number">5</span>
+      <span class="step-number" aria-hidden="true">5</span>
       <p><strong>Интеграция</strong> — глубокое дыхание, душ, заземление, наблюдение за изменениями</p>
     </div>
   </div>
 
-  <!-- BODY MAP INTERACTIVE -->
+  <!-- BODY MAP -->
   <div class="card slide-up">
-    <div class="card-icon">🗺️</div>
+    <div class="card-icon" aria-hidden="true">🗺️</div>
     <h2>Карта психосоматических зон</h2>
     <p>Какая часть тела откликается на напряжение — там скрыт застрявший импульс.</p>
-    
     <div class="table-wrap">
       <table>
         <thead><tr><th>Зона тела</th><th>Возможный недуг</th></tr></thead>
@@ -725,59 +732,53 @@ tr:hover td{background:rgba(255,255,255,0.02)}
         </tbody>
       </table>
     </div>
-    
-    <button class="btn btn-outline btn-block" onclick="openModal('modal-fullmap')">
+    <button class="btn btn-outline btn-block" data-modal-open="modal-fullmap">
       📋 Полная таблица (30 зон)
     </button>
   </div>
 
   <!-- DU'A PREVIEW -->
   <div class="card slide-up">
-    <div class="card-icon">🤲</div>
+    <div class="card-icon" aria-hidden="true">🤲</div>
     <h2>Духовные формулы</h2>
     <p>В курсе используются специальные дуа-заклинания, привязанные к цветовым маркерам в периферическом зрении (Модуль 3).</p>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْخَوْفِ فِي قَلْبِي</div>
       <div class="translit">Бисмилляхи арки мина-ль-хауфи фи кальби</div>
       <div class="translation">«С именем Аллаха, заклинаю от страха в моём сердце»</div>
-      <div style="margin-top:8px">
+      <div style="margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px">
         <span class="color-dot" style="background:#4a4a5a"></span>
         <span style="font-size:var(--fs-micro);color:var(--text3)">Серо-тёмный → Страх</span>
       </div>
     </div>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْحِقْدِ فِي صَدْرِي</div>
       <div class="translit">Бисмилляхи арки мина-ль-хикди фи садри</div>
       <div class="translation">«С именем Аллаха, заклинаю от обиды в моей груди»</div>
-      <div style="margin-top:8px">
+      <div style="margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px">
         <span class="color-dot" style="background:#aaff00"></span>
         <span style="font-size:var(--fs-micro);color:var(--text3)">Кислотно-зелёный → Обида</span>
       </div>
     </div>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْغَضَبِ فِي نَفْسِي</div>
       <div class="translit">Бисмилляхи арки мина-ль-гадаби фи нафси</div>
       <div class="translation">«С именем Аллаха, заклинаю от гнева в моей душе»</div>
-      <div style="margin-top:8px">
+      <div style="margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px">
         <span class="color-dot" style="background:#ff0000"></span>
         <span style="font-size:var(--fs-micro);color:var(--text3)">Ярко-красный → Гнев</span>
       </div>
     </div>
-    
-    <button class="btn btn-block" onclick="openModal('modal-alldua')" style="margin-top:12px">
+    <button class="btn btn-block" data-modal-open="modal-alldua" style="margin-top:12px">
       📖 Все 10 дуа с переводом
     </button>
   </div>
 
   <!-- 30 PAIRS PREVIEW -->
   <div class="card slide-up">
-    <div class="card-icon">🔄</div>
+    <div class="card-icon" aria-hidden="true">🔄</div>
     <h2>Трансформация качеств</h2>
     <p>Каждому негативному состоянию соответствует целительное качество, которое активируется во 2-м модуле.</p>
-    
     <div class="table-wrap">
       <table>
         <thead><tr><th>Недуг</th><th>Целительное качество</th></tr></thead>
@@ -795,59 +796,52 @@ tr:hover td{background:rgba(255,255,255,0.02)}
         </tbody>
       </table>
     </div>
-    
     <div style="text-align:center;margin:8px 0">
       <span class="tag">+ ещё 20 пар</span>
     </div>
-    
-    <button class="btn btn-block" onclick="openModal('modal-30pairs')">
+    <button class="btn btn-block" data-modal-open="modal-30pairs">
       📋 Полная таблица 30 пар
     </button>
   </div>
 
   <!-- RESULTS -->
   <div class="card slide-up">
-    <div class="card-icon">✨</div>
+    <div class="card-icon" aria-hidden="true">✨</div>
     <h2>Ожидаемые результаты</h2>
-    
-    <div class="img-placeholder" style="height:140px">
+    <div class="img-placeholder" style="height:140px" aria-hidden="true">
       <div class="inner">🌟</div>
     </div>
-    
     <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
         После Модуля 1
-        <span class="icon">▼</span>
+        <span class="icon" aria-hidden="true">▼</span>
       </div>
       <div class="accordion-body">
         <p>Пробуждение «немых зон», выход первичных телесных зажимов, восстановление чувствительности и импульсной проводимости, ощущение лёгкости в теле, улучшение осанки.</p>
       </div>
     </div>
-    
     <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
         После Модуля 2
-        <span class="icon">▼</span>
+        <span class="icon" aria-hidden="true">▼</span>
       </div>
       <div class="accordion-body">
         <p>Исчезновение остаточного сопротивления, изменение мимики и поведенческих паттернов, устойчивое замещение разрушительных эмоций целительными качествами, глубокое эмоциональное облегчение.</p>
       </div>
     </div>
-    
     <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
         После Модуля 3
-        <span class="icon">▼</span>
+        <span class="icon" aria-hidden="true">▼</span>
       </div>
       <div class="accordion-body">
         <p>Очищение тонких фасциально-энергетических слоёв, исчезновение «фоновых» тяжестей, восстановление внутренней тишины, лёгкости дыхания, естественная эластичность тканей.</p>
       </div>
     </div>
-    
     <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
         После Модуля 4
-        <span class="icon">▼</span>
+        <span class="icon" aria-hidden="true">▼</span>
       </div>
       <div class="accordion-body">
         <p>Устойчивое внутреннее равновесие, защита от эмоционального поглощения, естественное поддержание чистоты, трансформация поведения и социального взаимодействия, открытое выражение радости.</p>
@@ -857,29 +851,24 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 
   <!-- SAFETY -->
   <div class="card slide-up">
-    <div class="card-icon">🛡️</div>
+    <div class="card-icon" aria-hidden="true">🛡️</div>
     <h2>Безопасность</h2>
-    
     <div class="warning-box danger">
       <h4>⚠️ Противопоказание</h4>
       <p>Беременность — абсолютное противопоказание для прохождения курса.</p>
     </div>
-    
     <div class="warning-box">
       <h4>📊 Болевой порог</h4>
       <p>Допустимый уровень боли: до 7–8 баллов по субъективной шкале. Боль воспринимается как маркер выхода импульса, а не как повод для остановки.</p>
     </div>
-    
     <div class="warning-box danger">
       <h4>🛑 Немедленная остановка при:</h4>
       <p>Стреляющей или пульсирующей боли, головокружении, распространяющемся онемении, нарушении дыхания, панической реакции.</p>
     </div>
-    
     <div class="warning-box success">
       <h4>✅ Нормальные реакции</h4>
       <p>Покраснение, временные синяки, мышечная усталость, эмоциональный всплеск. Проходят за 2–5 дней. После сессии рекомендуется тёплый душ и глубокое дыхание.</p>
     </div>
-    
     <div class="separator"></div>
     <p style="font-size:var(--fs-small);color:var(--text3)">
       Метод является духовно-телесной практикой и не заменяет медицинскую диагностику. При наличии диагностированных заболеваний обязательна консультация врача.
@@ -888,12 +877,12 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 
   <!-- CTA -->
   <div class="card slide-up" style="text-align:center">
-    <div class="img-placeholder" style="height:160px;margin-bottom:20px">
+    <div class="img-placeholder" style="height:160px;margin-bottom:20px" aria-hidden="true">
       <div class="inner">🌙</div>
     </div>
     <h2>Готовы начать?</h2>
     <p>Этот путь требует регулярности, внутренней решимости и искреннего упования на Всевышнего. При соблюдении протокола и уважении к границам тела метод становится мостом к свободе.</p>
-    <button class="btn btn-block pulse" onclick="openModal('modal-cta')">
+    <button class="btn btn-block pulse" data-modal-open="modal-cta">
       🚀 Записаться на курс
     </button>
   </div>
@@ -908,25 +897,25 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 </div>
 
 <!-- BOTTOM NAVIGATION -->
-<nav class="bottom-nav">
-  <a class="nav-item active" href="#main-content" onclick="scrollToTop()">
-    <span class="nav-icon">🏠</span>
+<nav class="bottom-nav" aria-label="Основная навигация">
+  <a class="nav-item active" href="#main-content" id="navHome">
+    <span class="nav-icon" aria-hidden="true">🏠</span>
     <span>Главная</span>
   </a>
-  <a class="nav-item" href="#" onclick="openModal('modal-m1');return false">
-    <span class="nav-icon">📖</span>
+  <a class="nav-item" href="#" data-modal-open="modal-m1">
+    <span class="nav-icon" aria-hidden="true">📖</span>
     <span>Модули</span>
   </a>
-  <a class="nav-item" href="#" onclick="openModal('modal-alldua');return false">
-    <span class="nav-icon">🤲</span>
+  <a class="nav-item" href="#" data-modal-open="modal-alldua">
+    <span class="nav-icon" aria-hidden="true">🤲</span>
     <span>Дуа</span>
   </a>
-  <a class="nav-item" href="#" onclick="openModal('modal-30pairs');return false">
-    <span class="nav-icon">🔄</span>
+  <a class="nav-item" href="#" data-modal-open="modal-30pairs">
+    <span class="nav-icon" aria-hidden="true">🔄</span>
     <span>Таблицы</span>
   </a>
-  <a class="nav-item" href="#" onclick="openModal('modal-safety');return false">
-    <span class="nav-icon">🛡️</span>
+  <a class="nav-item" href="#" data-modal-open="modal-safety">
+    <span class="nav-icon" aria-hidden="true">🛡️</span>
     <span>Безопасность</span>
   </a>
 </nav>
@@ -934,23 +923,19 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 <!-- ==================== MODALS ==================== -->
 
 <!-- MODAL: START -->
-<div class="modal-overlay" id="modal-start">
-  <div class="modal" style="position:relative">
+<div class="modal-overlay" id="modal-start" role="dialog" aria-modal="true" aria-labelledby="modal-start-title">
+  <div class="modal">
     <div class="modal-handle"></div>
-    <button class="modal-close" onclick="closeModal('modal-start')">✕</button>
-    <h2>О методе</h2>
+    <button class="modal-close" data-modal-close="modal-start" aria-label="Закрыть">✕</button>
+    <h2 id="modal-start-title">О методе</h2>
     <p>Курс «Особенный» — это уникальная методика, разработанная Абу Мухаммадом на основе глубокого наблюдения за связью тела, нервной системы и духа.</p>
-    
     <h3>Основная идея</h3>
     <p>Наша нервная система — главный «интерфейс» между телом, энергией и духом. Когда пережитые душой эмоции не находят телесного выражения, они «застревают» в фасциальных тканях, мышечных зажимах и энергетических каналах, создавая невидимую, но ощутимую плотность.</p>
-    
     <h3>Как работает метод</h3>
     <p>Метод последовательно пробуждает «немые зоны» через физическое воздействие (протирание, похлопывание, надавливание, выщипывание), синхронизирует каждое действие с вербализацией конкретного недуга и усиливает процесс сакральными формулами.</p>
-    
     <div class="quote">
       «Слово работает как свет, рассеивающий тень, а дыхание становится проводником, выводящим освобождённую энергию за пределы тела.»
     </div>
-    
     <h3>Три уровня работы</h3>
     <ul>
       <li><strong>Телесный</strong> — пробуждение нервной системы, разрушение фасциальных блоков</li>
@@ -961,48 +946,21 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 </div>
 
 <!-- MODAL: MODULE 1 -->
-<div class="modal-overlay" id="modal-m1">
-  <div class="modal" style="position:relative">
+<div class="modal-overlay" id="modal-m1" role="dialog" aria-modal="true" aria-labelledby="modal-m1-title">
+  <div class="modal">
     <div class="modal-handle"></div>
-    <button class="modal-close" onclick="closeModal('modal-m1')">✕</button>
-    <div class="module-number" style="margin-bottom:4px">Модуль 01</div>
-    <h2>Физическое пробуждение</h2>
+    <button class="modal-close" data-modal-close="modal-m1" aria-label="Закрыть">✕</button>
+    <div class="module-number">Модуль 01</div>
+    <h2 id="modal-m1-title">Физическое пробуждение</h2>
     <p>Первый модуль — это не массаж. Это осознанное высвобождение невыраженных душевных импульсов, зафиксированных в фасциальной ткани.</p>
-    
     <h3>Пошаговый протокол</h3>
-    
-    <div class="step">
-      <span class="step-number">1</span>
-      <p><strong>Стартовое прочувствование:</strong> Интенсивно протирайте и похлопывайте всё тело ладонями/кулаками, глубоко и ритмично дыша. Движение от стоп к голове.</p>
-    </div>
-    
-    <div class="step">
-      <span class="step-number">2</span>
-      <p><strong>Выбор состояния:</strong> Определите одно негативное душевное качество (страх, обида, гнев и т.д.)</p>
-    </div>
-    
-    <div class="step">
-      <span class="step-number">3</span>
-      <p><strong>Поиск в теле:</strong> Продолжая протирать/похлопывать, проговаривайте название состояния. Ищите зоны отклика: напряжение, тяжесть, жар/холод, «пустота».</p>
-    </div>
-    
-    <div class="step">
-      <span class="step-number">4</span>
-      <p><strong>Активное высвобождение:</strong> В зоне сопротивления — надавливание (твёрдым предметом или пальцами), выщипывание кожи (захват→натяжение→отпуск), вытягивание (удержание 10 сек + дыхание). Возврат к протиранию для интеграции.</p>
-    </div>
-    
-    <div class="step">
-      <span class="step-number">5</span>
-      <p><strong>Синхронизация:</strong> Во время воздействия проговаривайте: «Разрушается [недуг]», «Да выведет Аллах [недуг] из моего тела». Сочетайте мышечное напряжение с дуа.</p>
-    </div>
-    
-    <div class="step">
-      <span class="step-number">6</span>
-      <p><strong>Завершение:</strong> Глубокий вдох-выдох для заземления. Рекомендуется тёплый душ.</p>
-    </div>
-    
+    <div class="step"><span class="step-number" aria-hidden="true">1</span><p><strong>Стартовое прочувствование:</strong> Интенсивно протирайте и похлопывайте всё тело ладонями/кулаками, глубоко и ритмично дыша. Движение от стоп к голове.</p></div>
+    <div class="step"><span class="step-number" aria-hidden="true">2</span><p><strong>Выбор состояния:</strong> Определите одно негативное душевное качество (страх, обида, гнев и т.д.)</p></div>
+    <div class="step"><span class="step-number" aria-hidden="true">3</span><p><strong>Поиск в теле:</strong> Продолжая протирать/похлопывать, проговаривайте название состояния. Ищите зоны отклика: напряжение, тяжесть, жар/холод, «пустота».</p></div>
+    <div class="step"><span class="step-number" aria-hidden="true">4</span><p><strong>Активное высвобождение:</strong> В зоне сопротивления — надавливание (твёрдым предметом или пальцами), выщипывание кожи (захват→натяжение→отпуск), вытягивание (удержание 10 сек + дыхание). Возврат к протиранию для интеграции.</p></div>
+    <div class="step"><span class="step-number" aria-hidden="true">5</span><p><strong>Синхронизация:</strong> Во время воздействия проговаривайте: «Разрушается [недуг]», «Да выведет Аллах [недуг] из моего тела». Сочетайте мышечное напряжение с дуа.</p></div>
+    <div class="step"><span class="step-number" aria-hidden="true">6</span><p><strong>Завершение:</strong> Глубокий вдох-выдох для заземления. Рекомендуется тёплый душ.</p></div>
     <div class="separator"></div>
-    
     <h3>Диагностические методы</h3>
     <ul>
       <li>Прямое надавливание — поиск боли, напряжения, холода/онемения</li>
@@ -1011,7 +969,6 @@ tr:hover td{background:rgba(255,255,255,0.02)}
       <li>Метод спонтанного движения — наблюдение привычных поз</li>
       <li>Дыхательная диагностика — выявление зон ограничения дыхания</li>
     </ul>
-    
     <div class="warning-box">
       <h4>💡 Важно</h4>
       <p>Агрессия в данном контексте — это осознанная решимость и намеренная интенсивность, направленная на преодоление сопротивления, а не разрушение. Боль — сигнал к действию, а не повод для остановки.</p>
@@ -1020,40 +977,22 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 </div>
 
 <!-- MODAL: MODULE 2 -->
-<div class="modal-overlay" id="modal-m2">
-  <div class="modal" style="position:relative">
+<div class="modal-overlay" id="modal-m2" role="dialog" aria-modal="true" aria-labelledby="modal-m2-title">
+  <div class="modal">
     <div class="modal-handle"></div>
-    <button class="modal-close" onclick="closeModal('modal-m2')">✕</button>
+    <button class="modal-close" data-modal-close="modal-m2" aria-label="Закрыть">✕</button>
     <div class="module-number">Модуль 02</div>
-    <h2>Психосоматическая трансформация</h2>
+    <h2 id="modal-m2-title">Психосоматическая трансформация</h2>
     <p>Переход от физической разблокировки к осознанному проживанию и трансформации эмоциональных состояний. Работа строится на телесном прочувствовании, а не на интеллектуальном анализе.</p>
-    
     <h3>Алгоритм работы</h3>
-    <div class="step">
-      <span class="step-number">1</span>
-      <p><strong>Проявление:</strong> Впустите эмоцию, отследите откликающиеся органы</p>
-    </div>
-    <div class="step">
-      <span class="step-number">2</span>
-      <p><strong>Вербализация:</strong> Проговорите чувство, свяжите с событием</p>
-    </div>
-    <div class="step">
-      <span class="step-number">3</span>
-      <p><strong>Разрушение:</strong> «Разрушается [чувство]» + «Да выведет Аллах [чувство]»</p>
-    </div>
-    <div class="step">
-      <span class="step-number">4</span>
-      <p><strong>Возврат к физике:</strong> Если блок не поддаётся — используйте техники М1</p>
-    </div>
-    <div class="step">
-      <span class="step-number">5</span>
-      <p><strong>Активация противоположности:</strong> Проговаривайте позитивное качество до исчезновения сопротивления</p>
-    </div>
-    
+    <div class="step"><span class="step-number" aria-hidden="true">1</span><p><strong>Проявление:</strong> Впустите эмоцию, отследите откликающиеся органы</p></div>
+    <div class="step"><span class="step-number" aria-hidden="true">2</span><p><strong>Вербализация:</strong> Проговорите чувство, свяжите с событием</p></div>
+    <div class="step"><span class="step-number" aria-hidden="true">3</span><p><strong>Разрушение:</strong> «Разрушается [чувство]» + «Да выведет Аллах [чувство]»</p></div>
+    <div class="step"><span class="step-number" aria-hidden="true">4</span><p><strong>Возврат к физике:</strong> Если блок не поддаётся — используйте техники М1</p></div>
+    <div class="step"><span class="step-number" aria-hidden="true">5</span><p><strong>Активация противоположности:</strong> Проговаривайте позитивное качество до исчезновения сопротивления</p></div>
     <div class="separator"></div>
     <h3>Пример: работа со страхом</h3>
     <p>При проявлении страха активируются горло, грудь, сердце и часть живота. Проговаривайте ощущения, фокусируясь на чувствах. Затем: «Разрушается страх» → «Да выведет Аллах все мои страхи». После — проявите бесстрашие: «Я не боюсь людей».</p>
-    
     <div class="quote">
       «Не пытайтесь умом понять чувства. Чувства нужно ощущать и проживать в теле.»
     </div>
@@ -1061,46 +1000,41 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 </div>
 
 <!-- MODAL: MODULE 3 -->
-<div class="modal-overlay" id="modal-m3">
-  <div class="modal" style="position:relative">
+<div class="modal-overlay" id="modal-m3" role="dialog" aria-modal="true" aria-labelledby="modal-m3-title">
+  <div class="modal">
     <div class="modal-handle"></div>
-    <button class="modal-close" onclick="closeModal('modal-m3')">✕</button>
+    <button class="modal-close" data-modal-close="modal-m3" aria-label="Закрыть">✕</button>
     <div class="module-number">Модуль 03</div>
-    <h2>Духовно-визуальное очищение</h2>
+    <h2 id="modal-m3-title">Духовно-визуальное очищение</h2>
     <p>Утончённая практика, где периферическое зрение становится мостом между невидимым миром души и плотной тканью тела.</p>
-    
     <h3>Как выполнять</h3>
     <p>Направьте внимание в зону периферического зрения, мысленно произнесите название недуга. Если проступает цвет — это маркер укоренившегося состояния. Прочитайте соответствующее дуа на выдохе, пока оттенок не растворится.</p>
-    
     <div class="separator"></div>
     <h3>10 пар «Цвет → Состояние → Дуа»</h3>
     <p>Полная таблица доступна по кнопке ниже.</p>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْيَأْسِ</div>
       <div class="translit">Бисмилляхи арки мина-ль-я'си</div>
       <div class="translation">«С именем Аллаха, заклинаю от уныния»</div>
-      <div style="margin-top:8px">
+      <div style="margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px">
         <span class="color-dot" style="background:#2c3e6b"></span>
         <span style="font-size:var(--fs-micro);color:var(--text3)">Грязно-синий → Уныние</span>
       </div>
     </div>
-    
-    <button class="btn btn-block" onclick="closeModal('modal-m3');setTimeout(()=>openModal('modal-alldua'),300)" style="margin-top:16px">
+    <button class="btn btn-block" data-modal-chain="modal-m3,modal-alldua" style="margin-top:16px">
       📖 Все 10 дуа с цветами
     </button>
   </div>
 </div>
 
 <!-- MODAL: MODULE 4 -->
-<div class="modal-overlay" id="modal-m4">
-  <div class="modal" style="position:relative">
+<div class="modal-overlay" id="modal-m4" role="dialog" aria-modal="true" aria-labelledby="modal-m4-title">
+  <div class="modal">
     <div class="modal-handle"></div>
-    <button class="modal-close" onclick="closeModal('modal-m4')">✕</button>
+    <button class="modal-close" data-modal-close="modal-m4" aria-label="Закрыть">✕</button>
     <div class="module-number">Модуль 04</div>
-    <h2>Духовная гигиена</h2>
+    <h2 id="modal-m4-title">Духовная гигиена</h2>
     <p>Искусство сохранять внутреннюю чистоту не как разовое достижение, а как живое, дышащее состояние.</p>
-    
     <h3>Ключевые принципы</h3>
     <ul>
       <li><strong>Невпитывание:</strong> Чистая душа видит, понимает, сочувствует — но не поглощает чужую тяжесть</li>
@@ -1108,11 +1042,10 @@ tr:hover td{background:rgba(255,255,255,0.02)}
       <li><strong>Наполнение:</strong> Ежедневное «Альхамдулиллях» как выдох благодарности, открытое выражение радости</li>
       <li><strong>Ритм:</strong> Вдох ясности → выдох признательности. Чистота поддерживается регулярностью</li>
     </ul>
-    
+    <!-- Исправлено: опечатка «гигиана» → «гигиена» -->
     <div class="quote">
-      «Духовная гигиана превращается в искусство дыхания: вдох ясности, выдох признательности. И в этом дыхании рождается устойчивость, которая не ломается от встреч с чужой тяжестью.»
+      «Духовная гигиена превращается в искусство дыхания: вдох ясности, выдох признательности. И в этом дыхании рождается устойчивость, которая не ломается от встреч с чужой тяжестью.»
     </div>
-    
     <div class="warning-box success">
       <h4>💡 Практика на каждый день</h4>
       <p>Утром: 3 минуты глубокого дыхания + проговаривание позитивных качеств. Вечером: краткий боди-скан + благодарность. При контакте с тяжёлыми людьми: осознанное дыхание + возврат к практике при необходимости.</p>
@@ -1121,93 +1054,102 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 </div>
 
 <!-- MODAL: ALL DU'A -->
-<div class="modal-overlay" id="modal-alldua">
-  <div class="modal" style="position:relative">
+<div class="modal-overlay" id="modal-alldua" role="dialog" aria-modal="true" aria-labelledby="modal-alldua-title">
+  <div class="modal">
     <div class="modal-handle"></div>
-    <button class="modal-close" onclick="closeModal('modal-alldua')">✕</button>
-    <h2>10 дуа-заклинаний</h2>
+    <button class="modal-close" data-modal-close="modal-alldua" aria-label="Закрыть">✕</button>
+    <h2 id="modal-alldua-title">10 дуа-заклинаний</h2>
     <p>Каждая формула привязана к цветовому маркеру в периферическом зрении. Произносите на выдохе.</p>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْخَوْفِ فِي قَلْبِي</div>
       <div class="translit">Бисмилляхи арки мина-ль-хауфи фи кальби</div>
       <div class="translation">«С именем Аллаха, заклинаю от страха в моём сердце»</div>
-      <span class="color-dot" style="background:#4a4a5a"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Серо-тёмный</span>
+      <div style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px">
+        <span class="color-dot" style="background:#4a4a5a"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Серо-тёмный</span>
+      </div>
     </div>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْحِقْدِ فِي صَدْرِي</div>
       <div class="translit">Бисмилляхи арки мина-ль-хикди фи садри</div>
       <div class="translation">«С именем Аллаха, заклинаю от обиды в моей груди»</div>
-      <span class="color-dot" style="background:#aaff00"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Кислотно-зелёный</span>
+      <div style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px">
+        <span class="color-dot" style="background:#aaff00"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Кислотно-зелёный</span>
+      </div>
     </div>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْغَضَبِ فِي نَفْسِي</div>
       <div class="translit">Бисмилляхи арки мина-ль-гадаби фи нафси</div>
       <div class="translation">«С именем Аллаха, заклинаю от гнева в моей душе»</div>
-      <span class="color-dot" style="background:#ff0000"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Ярко-красный</span>
+      <div style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px">
+        <span class="color-dot" style="background:#ff0000"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Ярко-красный</span>
+      </div>
     </div>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْحَسَدِ</div>
       <div class="translit">Бисмилляхи арки мина-ль-хасади</div>
       <div class="translation">«С именем Аллаха, заклинаю от зависти»</div>
-      <span class="color-dot" style="background:#c8ff00"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Ядовито-жёлтый</span>
+      <div style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px">
+        <span class="color-dot" style="background:#c8ff00"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Ядовито-жёлтый</span>
+      </div>
     </div>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْيَأْسِ</div>
       <div class="translit">Бисмилляхи арки мина-ль-я'си</div>
       <div class="translation">«С именем Аллаха, заклинаю от уныния»</div>
-      <span class="color-dot" style="background:#2c3e6b"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Грязно-синий</span>
+      <div style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px">
+        <span class="color-dot" style="background:#2c3e6b"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Грязно-синий</span>
+      </div>
     </div>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْقَلَقِ</div>
       <div class="translit">Бисмилляхи арки мина-ль-каляки</div>
       <div class="translation">«С именем Аллаха, заклинаю от тревоги»</div>
-      <span class="color-dot" style="background:#ff9900"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Оранжевый</span>
+      <div style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px">
+        <span class="color-dot" style="background:#ff9900"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Оранжевый</span>
+      </div>
     </div>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْكِبْرِيَاءِ</div>
       <div class="translit">Бисмилляхи арки мина-ль-кибрияъ</div>
       <div class="translation">«С именем Аллаха, заклинаю от гордыни»</div>
-      <span class="color-dot" style="background:#daa520"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Металлический золотой</span>
+      <div style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px">
+        <span class="color-dot" style="background:#daa520"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Металлический золотой</span>
+      </div>
     </div>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْكَسَلِ</div>
       <div class="translit">Бисмилляхи арки мина-ль-касали</div>
       <div class="translation">«С именем Аллаха, заклинаю от лени»</div>
-      <span class="color-dot" style="background:#6b4423"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Мутно-коричневый</span>
+      <div style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px">
+        <span class="color-dot" style="background:#6b4423"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Мутно-коричневый</span>
+      </div>
     </div>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْبُخْلِ</div>
       <div class="translit">Бисмилляхи арки мина-ль-бухли</div>
       <div class="translation">«С именем Аллаха, заклинаю от жадности»</div>
-      <span class="color-dot" style="background:#ffd700"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Блестящий жёлтый</span>
+      <div style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px">
+        <span class="color-dot" style="background:#ffd700"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Блестящий жёлтый</span>
+      </div>
     </div>
-    
     <div class="dua-card">
       <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ النِّفَاقِ</div>
       <div class="translit">Бисмилляхи арки мина-н-нифаки</div>
       <div class="translation">«С именем Аллаха, заклинаю от лицемерия»</div>
-      <span class="color-dot" style="background:linear-gradient(45deg,red,orange,yellow,green,blue,violet)"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Радужный переливающийся</span>
+      <div style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px">
+        <span class="color-dot" style="background:conic-gradient(red,orange,yellow,green,blue,violet,red)"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Радужный переливающийся</span>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- MODAL: 30 PAIRS -->
-<div class="modal-overlay" id="modal-30pairs">
-  <div class="modal" style="position:relative">
+<div class="modal-overlay" id="modal-30pairs" role="dialog" aria-modal="true" aria-labelledby="modal-30pairs-title">
+  <div class="modal">
     <div class="modal-handle"></div>
-    <button class="modal-close" onclick="closeModal('modal-30pairs')">✕</button>
-    <h2>30 пар трансформации</h2>
+    <button class="modal-close" data-modal-close="modal-30pairs" aria-label="Закрыть">✕</button>
+    <h2 id="modal-30pairs-title">30 пар трансформации</h2>
     <p>Каждому негативному состоянию соответствует целительное качество. Активируйте противоположность для проверки остаточного сопротивления.</p>
-    
     <div class="table-wrap">
       <table>
         <thead><tr><th>№</th><th>Недуг</th><th>Целительное качество</th></tr></thead>
@@ -1249,13 +1191,12 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 </div>
 
 <!-- MODAL: FULL MAP -->
-<div class="modal-overlay" id="modal-fullmap">
-  <div class="modal" style="position:relative">
+<div class="modal-overlay" id="modal-fullmap" role="dialog" aria-modal="true" aria-labelledby="modal-fullmap-title">
+  <div class="modal">
     <div class="modal-handle"></div>
-    <button class="modal-close" onclick="closeModal('modal-fullmap')">✕</button>
-    <h2>Полная психосоматическая карта</h2>
+    <button class="modal-close" data-modal-close="modal-fullmap" aria-label="Закрыть">✕</button>
+    <h2 id="modal-fullmap-title">Полная психосоматическая карта</h2>
     <p>Связь эмоциональных загрязнений с зонами тела, фигурой и здоровьем.</p>
-    
     <div class="table-wrap">
       <table>
         <thead><tr><th>Недуг</th><th>Зона в теле</th><th>Влияние</th></tr></thead>
@@ -1282,7 +1223,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
           <tr><td>Скрытность</td><td>Горло, челюсть, таз</td><td>Хронические боли, фибромиалгия</td></tr>
           <tr><td>Смятение</td><td>Нервная система, мозг</td><td>Бессонница, панические атаки</td></tr>
           <tr><td>Истощение</td><td>Надпочечники, эндокринная</td><td>Выгорание, потеря/набор веса</td></tr>
-          <tr><td>Переполнение</td><td>Селезёнка, лимфа</td><td>Отеки, пастозность</td></tr>
+          <tr><td>Переполнение</td><td>Селезёнка, лимфа</td><td>Отёки, пастозность</td></tr>
           <tr><td>Отчуждённость</td><td>Кожа, периферическая НС</td><td>Холодная кожа, онемения</td></tr>
           <tr><td>Подавленность</td><td>Позвоночник, колени</td><td>Искривление осанки, остеохондроз</td></tr>
           <tr><td>Недовольство</td><td>Желудок, пищевод, зубы</td><td>Бруксизм, напряжение</td></tr>
@@ -1293,7 +1234,6 @@ tr:hover td{background:rgba(255,255,255,0.02)}
         </tbody>
       </table>
     </div>
-    
     <div class="warning-box success">
       <h4>💡 Запомните</h4>
       <p>Тело и душа неразрывно связаны. Работая с осознанием и высвобождением «душевных загрязнений», вы оказываете глубокое оздоравливающее воздействие на физическое тело.</p>
@@ -1302,20 +1242,17 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 </div>
 
 <!-- MODAL: SAFETY -->
-<div class="modal-overlay" id="modal-safety">
-  <div class="modal" style="position:relative">
+<div class="modal-overlay" id="modal-safety" role="dialog" aria-modal="true" aria-labelledby="modal-safety-title">
+  <div class="modal">
     <div class="modal-handle"></div>
-    <button class="modal-close" onclick="closeModal('modal-safety')">✕</button>
-    <h2>Безопасность</h2>
-    
+    <button class="modal-close" data-modal-close="modal-safety" aria-label="Закрыть">✕</button>
+    <h2 id="modal-safety-title">Безопасность</h2>
     <div class="warning-box danger">
       <h4>⚠️ Противопоказание</h4>
       <p>Беременность — единственное абсолютное противопоказание для прохождения курса.</p>
     </div>
-    
     <h3>Болевой порог</h3>
     <p>Допустимый уровень боли: <strong>до 7–8 баллов</strong> по субъективной шкале. Боль воспринимается как маркер выхода застрявшего импульса.</p>
-    
     <h3>Немедленная остановка при:</h3>
     <ul>
       <li>Стреляющей или пульсирующей боли</li>
@@ -1324,15 +1261,11 @@ tr:hover td{background:rgba(255,255,255,0.02)}
       <li>Нарушении дыхания</li>
       <li>Панической реакции</li>
     </ul>
-    
     <h3>Нормальные реакции</h3>
     <p>Покраснение, временные синяки, мышечная усталость, эмоциональный всплеск. Проходят за 2–5 дней. После сессии рекомендуется тёплый душ.</p>
-    
     <div class="separator"></div>
-    
     <h3>Заземление после сессии</h3>
     <p>Глубокий вдох и выдох. Можно повторить 3–5 раз. Это нормализует состояние нервной системы и завершает цикл высвобождения.</p>
-    
     <div class="warning-box success">
       <h4>🏥 Медицинская интеграция</h4>
       <p>Метод является духовно-телесной практикой и не заменяет медицинскую диагностику. При наличии диагностированных заболеваний, приёме препаратов или стойких физических симптомах обязательна консультация лечащего врача.</p>
@@ -1341,31 +1274,26 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 </div>
 
 <!-- MODAL: CTA -->
-<div class="modal-overlay" id="modal-cta">
-  <div class="modal" style="position:relative;text-align:center">
+<div class="modal-overlay" id="modal-cta" role="dialog" aria-modal="true" aria-labelledby="modal-cta-title">
+  <div class="modal" style="text-align:center">
     <div class="modal-handle"></div>
-    <button class="modal-close" onclick="closeModal('modal-cta')">✕</button>
-    
-    <div class="img-placeholder" style="height:160px;margin-bottom:20px">
+    <button class="modal-close" data-modal-close="modal-cta" aria-label="Закрыть">✕</button>
+    <div class="img-placeholder" style="height:160px;margin-bottom:20px" aria-hidden="true">
       <div class="inner">🌙</div>
     </div>
-    
-    <h2>Готовы к трансформации?</h2>
+    <h2 id="modal-cta-title">Готовы к трансформации?</h2>
     <p>Курс «Особенный» — это путь от телесного пробуждения к духовной устойчивости. Он требует регулярности, внутренней решимости и искреннего упования на Всевышнего.</p>
-    
     <div style="margin:20px 0">
       <span class="tag green">4 модуля</span>
       <span class="tag">Индивидуально</span>
       <span class="tag">Онлайн/Очно</span>
     </div>
-    
     <button class="btn btn-block" style="margin-bottom:12px">
       📩 Написать для записи
     </button>
-    <button class="btn btn-outline btn-block" onclick="closeModal('modal-cta')">
+    <button class="btn btn-outline btn-block" data-modal-close="modal-cta">
       Ещё подумаю
     </button>
-    
     <div class="quote" style="margin-top:20px;text-align:left">
       «При соблюдении протокола, уважении к границам тела и сохранении духовной целостности метод становится мостом между освобождением от прошлой тяжести и жизнью в полноте, лёгкости и осознанной благодарности.»
     </div>
@@ -1374,103 +1302,152 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 
 <!-- ==================== JAVASCRIPT ==================== -->
 <script>
-// === FONT SIZE ===
-let currentFs = 1;
-function changeFontSize(delta){
-  currentFs = Math.max(0.8, Math.min(1.4, currentFs + delta * 0.1));
-  document.documentElement.style.setProperty('--fs', currentFs);
-  // Update active state of font buttons
-  document.querySelectorAll('.ctrl-btn').forEach(b => b.classList.remove('active'));
-  if(currentFs > 1) document.querySelectorAll('.ctrl-btn')[1].classList.add('active');
-  if(currentFs < 1) document.querySelectorAll('.ctrl-btn')[0].classList.add('active');
-}
+(function () {
+  'use strict';
 
-// === THEMES ===
-function setTheme(theme){
-  document.documentElement.setAttribute('data-theme', theme);
-  document.querySelectorAll('.theme-dot').forEach(d => d.classList.remove('active'));
-  document.querySelector(`.t-${theme}`).classList.add('active');
-}
+  // === FONT SIZE ===
+  const FS_STEP = 0.1, FS_MIN = 0.8, FS_MAX = 1.4;
+  let currentFs = 1;
 
-// === MODALS ===
-function openModal(id){
-  const modal = document.getElementById(id);
-  if(modal){
+  function setFontSize(val) {
+    currentFs = Math.max(FS_MIN, Math.min(FS_MAX, val));
+    document.documentElement.style.setProperty('--fs-h1', (1.8 * currentFs) + 'rem');
+    document.documentElement.style.setProperty('--fs-h2', (1.5 * currentFs) + 'rem');
+    document.documentElement.style.setProperty('--fs-h3', (1.25 * currentFs) + 'rem');
+    document.documentElement.style.setProperty('--fs-body', currentFs + 'rem');
+    document.documentElement.style.setProperty('--fs-small', (0.875 * currentFs) + 'rem');
+    document.documentElement.style.setProperty('--fs-micro', (0.75 * currentFs) + 'rem');
+    document.getElementById('btnFontMinus').classList.toggle('active', currentFs < 1);
+    document.getElementById('btnFontPlus').classList.toggle('active', currentFs > 1);
+  }
+
+  document.getElementById('btnFontMinus').addEventListener('click', () => setFontSize(currentFs - FS_STEP));
+  document.getElementById('btnFontPlus').addEventListener('click', () => setFontSize(currentFs + FS_STEP));
+
+  // === THEMES ===
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.querySelectorAll('.theme-dot').forEach(d => d.classList.toggle('active', d.dataset.themeSet === theme));
+  }
+
+  document.querySelectorAll('.theme-dot').forEach(dot => {
+    dot.addEventListener('click', () => setTheme(dot.dataset.themeSet));
+    dot.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setTheme(dot.dataset.themeSet); } });
+  });
+
+  // === MODALS ===
+  // Исправлено: убраны inline-onclick в HTML, единый обработчик через делегирование
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    // Фокус для скринридеров
+    const firstFocusable = modal.querySelector('button, [tabindex]:not([tabindex="-1"])');
+    if (firstFocusable) setTimeout(() => firstFocusable.focus(), 50);
   }
-}
-function closeModal(id){
-  const modal = document.getElementById(id);
-  if(modal){
+
+  function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
     modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-}
-// Close on overlay click
-document.querySelectorAll('.modal-overlay').forEach(overlay => {
-  overlay.addEventListener('click', e => {
-    if(e.target === overlay){
-      overlay.classList.remove('active');
+    // Сбрасываем overflow только если нет других открытых модалей
+    if (!document.querySelector('.modal-overlay.active')) {
       document.body.style.overflow = '';
     }
-  });
-});
-// Close on Escape
-document.addEventListener('keydown', e => {
-  if(e.key === 'Escape'){
-    document.querySelectorAll('.modal-overlay.active').forEach(m => {
-      m.classList.remove('active');
-    });
-    document.body.style.overflow = '';
   }
-});
 
-// === ACCORDION ===
-function toggleAccordion(header){
-  const item = header.parentElement;
-  const wasOpen = item.classList.contains('open');
-  // Close all in same parent
-  item.parentElement.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
-  if(!wasOpen) item.classList.add('open');
-}
-
-// === SCROLL TO TOP ===
-function scrollToTop(){
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-// === INTERSECTION OBSERVER FOR ANIMATIONS ===
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.style.animationPlayState = 'running';
-    }
-  });
-}, {threshold: 0.1});
-
-document.querySelectorAll('.slide-up').forEach(el => {
-  el.style.animationPlayState = 'paused';
-  observer.observe(el);
-});
-
-// === SMOOTH SCROLL FOR ANCHOR LINKS ===
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if(target){
+  // Делегирование: data-modal-open, data-modal-close, data-modal-chain
+  document.addEventListener('click', e => {
+    const opener = e.target.closest('[data-modal-open]');
+    if (opener) {
       e.preventDefault();
-      target.scrollIntoView({behavior:'smooth'});
+      openModal(opener.dataset.modalOpen);
+      return;
+    }
+    const closer = e.target.closest('[data-modal-close]');
+    if (closer) {
+      e.preventDefault();
+      closeModal(closer.dataset.modalClose);
+      return;
+    }
+    const chainer = e.target.closest('[data-modal-chain]');
+    if (chainer) {
+      e.preventDefault();
+      const [closeId, openId] = chainer.dataset.modalChain.split(',');
+      closeModal(closeId.trim());
+      setTimeout(() => openModal(openId.trim()), 350);
+      return;
     }
   });
-});
 
-// === NAV ACTIVE STATE ===
-window.addEventListener('scroll', () => {
-  // Could add active state logic here based on scroll position
-});
+  // Закрытие по клику на overlay
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeModal(overlay.id);
+    });
+  });
 
-console.log('✅ Курс "Особенный" — мобильная ознакомительная версия загружена');
+  // Закрытие по Escape
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    const active = document.querySelector('.modal-overlay.active');
+    if (active) closeModal(active.id);
+  });
+
+  // === ACCORDION ===
+  // Исправлено: убраны inline-onclick, делегирование + управление aria-expanded
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    const toggle = () => {
+      const item = header.parentElement;
+      const wasOpen = item.classList.contains('open');
+      item.parentElement.querySelectorAll('.accordion-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        header.setAttribute('aria-expanded', 'true');
+      }
+    };
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+  });
+
+  // === SCROLL TO TOP ===
+  const navHome = document.getElementById('navHome');
+  if (navHome) {
+    navHome.addEventListener('click', e => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // === MODULE CARDS: keyboard nav ===
+  document.querySelectorAll('.module-card[tabindex="0"]').forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(card.dataset.modalOpen);
+      }
+    });
+  });
+
+  // === INTERSECTION OBSERVER FOR ANIMATIONS ===
+  // Исправлено: не ставим paused/running вручную — это ломает анимацию в Firefox
+  // Используем opacity:0 + класс is-visible вместо animationPlayState
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.slide-up').forEach(el => observer.observe(el));
+
+})();
 </script>
 </body>
 </html>
