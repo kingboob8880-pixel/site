@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark" data-fontsize="1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Особенный — Курс трансформации личности</title>
+<style>
+/* ===================== RESET & BASE ===================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --transition:0.4s cubic-bezier(.4,0,.2,1);
+  --radius:16px;
+  --shadow:0 8px 32px rgba(0,0,0,0.3);
+  --glass:rgba(255,255,255,0.06);
+  --glass-border:rgba(255,255,255,0.1);
+  --fs:1rem;
+  --fs-h1:calc(1.8rem * var(--fs));
+  --fs-h2:calc(1.5rem * var(--fs));
+  --fs-h3:calc(1.25rem * var(--fs));
+  --fs-body:calc(1rem * var(--fs));
+  --fs-small:calc(0.85rem * var(--fs));
+  --fs-micro:calc(0.75rem * var(--fs));
+}
+
+/* ===================== THEMES ===================== */
+[data-theme="dark"]{
+  --bg1:#0a0a1a;--bg2:#12122a;--bg3:#1a1a3a;
+  --text1:#f0f0ff;--text2:#b0b0cc;--text3:#8888aa;
+  --accent1:#6c5ce7;--accent2:#a29bfe;--accent3:#fd79a8;
+  --gradient:linear-gradient(135deg,#6c5ce7,#a29bfe,#fd79a8,#6c5ce7);
+  --card-bg:rgba(255,255,255,0.04);
+  --modal-bg:rgba(15,15,35,0.97);
+  --success:#00b894;--warning:#fdcb6e;--danger:#e17055;
+}
+[data-theme="ocean"]{
+  --bg1:#0a192f;--bg2:#112240;--bg3:#1d3557;
+  --text1:#ccd6f6;--text2:#8892b0;--text3:#5a6a8a;
+  --accent1:#64ffda;--accent2:#00b4d8;--accent3:#48bfe3;
+  --gradient:linear-gradient(135deg,#64ffda,#00b4d8,#48bfe3,#64ffda);
+  --card-bg:rgba(255,255,255,0.04);
+  --modal-bg:rgba(10,25,47,0.97);
+  --success:#64ffda;--warning:#ffd166;--danger:#ef476f;
+}
+[data-theme="ember"]{
+  --bg1:#1a0a0a;--bg2:#2d1b1b;--bg3:#4a2c2c;
+  --text1:#ffede0;--text2:#d4a59c;--text3:#a07068;
+  --accent1:#ff6b35;--accent2:#f7c59f;--accent3:#e07a5f;
+  --gradient:linear-gradient(135deg,#ff6b35,#f7c59f,#e07a5f,#ff6b35);
+  --card-bg:rgba(255,255,255,0.04);
+  --modal-bg:rgba(26,10,10,0.97);
+  --success:#2ecc71;--warning:#f1c40f;--danger:#e74c3c;
+}
+[data-theme="forest"]{
+  --bg1:#0a1a0a;--bg2:#1a2e1a;--bg3:#2d4a2d;
+  --text1:#e8f5e9;--text2:#a5d6a7;--text3:#66bb6a;
+  --accent1:#00e676;--accent2:#69f0ae;--accent3:#b9f6ca;
+  --gradient:linear-gradient(135deg,#00e676,#69f0ae,#b9f6ca,#00e676);
+  --card-bg:rgba(255,255,255,0.04);
+  --modal-bg:rgba(10,26,10,0.97);
+  --success:#00e676;--warning:#ffee58;--danger:#ff5252;
+}
+[data-theme="royal"]{
+  --bg1:#1a0a2e;--bg2:#2d1b4e;--bg3:#4a2d7a;
+  --text1:#f3e8ff;--text2:#c9a0dc;--text3:#9a6bb0;
+  --accent1:#b388ff;--accent2:#ea80fc;--accent3:#e040fb;
+  --gradient:linear-gradient(135deg,#b388ff,#ea80fc,#e040fb,#b388ff);
+  --card-bg:rgba(255,255,255,0.04);
+  --modal-bg:rgba(26,10,46,0.97);
+  --success:#69f0ae;--warning:#ffd740;--danger:#ff5252;
+}
+
+/* ===================== ANIMATED GRADIENT BG ===================== */
+body{
+  font-size:var(--fs-body);
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+  background:var(--bg1);
+  color:var(--text1);
+  line-height:1.7;
+  overflow-x:hidden;
+  min-height:100vh;
+  transition:background var(--transition),color var(--transition);
+}
+.animated-bg{
+  position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;
+  background:linear-gradient(-45deg,var(--bg1),var(--bg2),var(--bg3),var(--bg1));
+  background-size:400% 400%;
+  animation:gradientShift 15s ease infinite;
+  pointer-events:none;
+}
+@keyframes gradientShift{
+  0%{background-position:0% 50%}
+  25%{background-position:100% 50%}
+  50%{background-position:100% 0%}
+  75%{background-position:0% 100%}
+  100%{background-position:0% 50%}
+}
+/* Floating orbs */
+.orb{position:fixed;border-radius:50%;filter:blur(80px);opacity:0.15;pointer-events:none;z-index:0;animation:orbFloat 20s ease-in-out infinite}
+.orb-1{width:300px;height:300px;background:var(--accent1);top:-100px;left:-100px;animation-delay:0s}
+.orb-2{width:250px;height:250px;background:var(--accent3);bottom:-50px;right:-50px;animation-delay:-5s}
+.orb-3{width:200px;height:200px;background:var(--accent2);top:50%;left:50%;animation-delay:-10s}
+@keyframes orbFloat{
+  0%,100%{transform:translate(0,0) scale(1)}
+  25%{transform:translate(30px,-40px) scale(1.1)}
+  50%{transform:translate(-20px,60px) scale(0.9)}
+  75%{transform:translate(40px,30px) scale(1.05)}
+}
+
+/* ===================== SCROLLBAR ===================== */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg1)}
+::-webkit-scrollbar-thumb{background:var(--accent1);border-radius:3px}
+
+/* ===================== MAIN CONTAINER ===================== */
+.container{
+  position:relative;z-index:1;
+  max-width:480px;margin:0 auto;padding:20px 16px 100px;
+}
+
+/* ===================== HEADER ===================== */
+.header{
+  text-align:center;
+  padding:40px 0 30px;
+  position:relative;
+}
+.logo-icon{
+  width:80px;height:80px;margin:0 auto 20px;
+  background:var(--gradient);
+  background-size:200% 200%;
+  animation:gradientShift 3s ease infinite;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2rem;
+  box-shadow:0 0 40px rgba(108,92,231,0.3);
+  position:relative;
+}
+.logo-icon::after{
+  content:'';position:absolute;inset:-4px;
+  border-radius:50%;
+  background:var(--gradient);background-size:200% 200%;
+  animation:gradientShift 3s ease infinite;
+  z-index:-1;opacity:0.5;
+  filter:blur(10px);
+}
+.header h1{
+  font-size:var(--fs-h1);
+  background:var(--gradient);
+  background-size:200% 200%;
+  animation:gradientShift 4s ease infinite;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;
+}
+.header .subtitle{
+  font-size:var(--fs-small);color:var(--text2);
+  max-width:300px;margin:0 auto;
+}
+.badge{
+  display:inline-block;
+  padding:4px 14px;border-radius:20px;
+  font-size:var(--fs-micro);font-weight:600;
+  background:var(--card-bg);border:1px solid var(--glass-border);
+  color:var(--accent2);margin-top:12px;
+  backdrop-filter:blur(10px);
+}
+
+/* ===================== CONTROLS BAR ===================== */
+.controls{
+  position:fixed;top:0;left:0;right:0;
+  display:flex;justify-content:center;gap:8px;
+  padding:12px 16px;
+  background:rgba(10,10,26,0.85);
+  backdrop-filter:blur(20px);
+  z-index:1000;
+  border-bottom:1px solid var(--glass-border);
+  flex-wrap:wrap;
+}
+[data-theme="ocean"] .controls{background:rgba(10,25,47,0.85)}
+[data-theme="ember"] .controls{background:rgba(26,10,10,0.85)}
+[data-theme="forest"] .controls{background:rgba(10,26,10,0.85)}
+[data-theme="royal"] .controls{background:rgba(26,10,46,0.85)}
+.ctrl-btn{
+  width:36px;height:36px;border-radius:10px;border:1px solid var(--glass-border);
+  background:var(--card-bg);color:var(--text1);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:1rem;
+  transition:all 0.3s ease;backdrop-filter:blur(10px);
+}
+.ctrl-btn:hover{background:var(--accent1);color:#fff;transform:scale(1.1)}
+.ctrl-btn.active{background:var(--accent1);color:#fff}
+.font-size-label{
+  font-size:var(--fs-micro);color:var(--text2);
+  display:flex;align-items:center;padding:0 4px;
+}
+.theme-selector{
+  display:flex;gap:6px;align-items:center;
+}
+.theme-dot{
+  width:20px;height:20px;border-radius:50%;
+  border:2px solid var(--glass-border);cursor:pointer;
+  transition:all 0.3s ease;
+}
+.theme-dot:hover,.theme-dot.active{transform:scale(1.2);border-color:var(--text1)}
+.theme-dot.t-dark{background:linear-gradient(135deg,#6c5ce7,#a29bfe)}
+.theme-dot.t-ocean{background:linear-gradient(135deg,#64ffda,#00b4d8)}
+.theme-dot.t-ember{background:linear-gradient(135deg,#ff6b35,#e07a5f)}
+.theme-dot.t-forest{background:linear-gradient(135deg,#00e676,#69f0ae)}
+.theme-dot.t-royal{background:linear-gradient(135deg,#b388ff,#e040fb)}
+
+/* ===================== CARDS ===================== */
+.card{
+  background:var(--card-bg);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius);
+  padding:24px 20px;
+  margin-bottom:20px;
+  backdrop-filter:blur(15px);
+  box-shadow:var(--shadow);
+  transition:all var(--transition);
+  position:relative;overflow:hidden;
+  animation:cardIn 0.6s ease both;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--gradient);background-size:200% 200%;
+  animation:gradientShift 4s ease infinite;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.card:nth-child(2){animation-delay:0.1s}
+.card:nth-child(3){animation-delay:0.2s}
+.card:nth-child(4){animation-delay:0.3s}
+.card:nth-child(5){animation-delay:0.4s}
+.card:nth-child(6){animation-delay:0.5s}
+.card:nth-child(7){animation-delay:0.6s}
+.card:nth-child(8){animation-delay:0.7s}
+
+.card-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--gradient);background-size:200% 200%;
+  animation:gradientShift 5s ease infinite;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:16px;
+}
+.card h2{font-size:var(--fs-h2);font-weight:700;margin-bottom:12px;color:var(--text1)}
+.card h3{font-size:var(--fs-h3);font-weight:600;margin:16px 0 8px;color:var(--accent2)}
+.card p{color:var(--text2);margin-bottom:12px}
+.card ul{list-style:none;padding:0}
+.card li{
+  padding:8px 0 8px 24px;position:relative;
+  color:var(--text2);font-size:var(--fs-small);
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.card li:last-child{border-bottom:none}
+.card li::before{
+  content:'◆';position:absolute;left:0;top:8px;
+  color:var(--accent1);font-size:0.6rem;
+}
+
+/* ===================== MODULE CARDS ===================== */
+.module-card{cursor:pointer}
+.module-card .arrow{
+  position:absolute;right:20px;top:50%;transform:translateY(-50%);
+  font-size:1.2rem;color:var(--accent1);transition:transform 0.3s ease;
+}
+.module-card:hover .arrow{transform:translateY(-50%) translateX(4px)}
+.module-number{
+  font-size:var(--fs-micro);color:var(--accent1);
+  font-weight:700;letter-spacing:2px;margin-bottom:8px;
+  text-transform:uppercase;
+}
+
+/* ===================== ACCORDION ===================== */
+.accordion-item{
+  border:1px solid var(--glass-border);
+  border-radius:12px;margin-bottom:8px;
+  overflow:hidden;
+  background:var(--card-bg);
+  backdrop-filter:blur(10px);
+}
+.accordion-header{
+  padding:14px 16px;display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;font-weight:600;font-size:var(--fs-small);
+  color:var(--text1);transition:background 0.3s;
+}
+.accordion-header:hover{background:rgba(255,255,255,0.03)}
+.accordion-header .icon{transition:transform 0.3s ease;font-size:0.8rem;color:var(--accent1)}
+.accordion-item.open .accordion-header .icon{transform:rotate(180deg)}
+.accordion-body{
+  max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;
+  padding:0 16px;
+}
+.accordion-item.open .accordion-body{
+  max-height:800px;padding:0 16px 16px;
+}
+.accordion-body p{color:var(--text2);font-size:var(--fs-small);margin-bottom:8px}
+
+/* ===================== TABLE ===================== */
+.table-wrap{overflow-x:auto;margin:16px 0;border-radius:12px;border:1px solid var(--glass-border)}
+table{width:100%;border-collapse:collapse;font-size:var(--fs-micro)}
+th{
+  background:rgba(108,92,231,0.15);color:var(--accent2);
+  padding:10px 8px;text-align:left;font-weight:600;
+  position:sticky;top:0;
+}
+td{padding:8px;color:var(--text2);border-top:1px solid rgba(255,255,255,0.03)}
+tr:hover td{background:rgba(255,255,255,0.02)}
+
+/* ===================== BUTTONS ===================== */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:12px;border:none;
+  background:var(--gradient);background-size:200% 200%;
+  animation:gradientShift 4s ease infinite;
+  color:#fff;font-weight:600;font-size:var(--fs-small);
+  cursor:pointer;transition:all 0.3s ease;
+  box-shadow:0 4px 15px rgba(108,92,231,0.3);
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(108,92,231,0.4)}
+.btn-outline{
+  background:transparent;border:1px solid var(--accent1);
+  color:var(--accent1);animation:none;box-shadow:none;
+}
+.btn-outline:hover{background:var(--accent1);color:#fff}
+.btn-block{width:100%;justify-content:center}
+
+/* ===================== MODAL ===================== */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);z-index:2000;
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.3s ease;
+}
+.modal-overlay.active{opacity:1;pointer-events:auto}
+.modal{
+  background:var(--modal-bg);
+  border-radius:24px 24px 0 0;
+  width:100%;max-width:480px;
+  max-height:90vh;overflow-y:auto;
+  padding:32px 24px 40px;
+  transform:translateY(100%);transition:transform 0.4s cubic-bezier(.4,0,.2,1);
+  border:1px solid var(--glass-border);
+  border-bottom:none;
+}
+.modal-overlay.active .modal{transform:translateY(0)}
+.modal-handle{
+  width:40px;height:4px;background:var(--text3);
+  border-radius:2px;margin:0 auto 24px;
+}
+.modal-close{
+  position:absolute;top:24px;right:24px;
+  width:32px;height:32px;border-radius:8px;
+  border:1px solid var(--glass-border);background:var(--card-bg);
+  color:var(--text2);cursor:pointer;font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.3s;
+}
+.modal-close:hover{background:var(--danger);color:#fff}
+.modal h2{font-size:var(--fs-h2);margin-bottom:16px;padding-right:40px}
+.modal h3{font-size:var(--fs-h3);margin:20px 0 10px;color:var(--accent2)}
+.modal p,.modal li{color:var(--text2);font-size:var(--fs-small);margin-bottom:10px}
+.modal ul{padding-left:20px}
+.modal li{margin-bottom:6px}
+
+/* ===================== IMAGE PLACEHOLDERS ===================== */
+.img-placeholder{
+  width:100%;height:200px;border-radius:16px;
+  margin:16px 0;overflow:hidden;position:relative;
+  background:var(--gradient);background-size:200% 200%;
+  animation:gradientShift 6s ease infinite;
+}
+.img-placeholder .inner{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:4rem;
+  background:rgba(0,0,0,0.3);backdrop-filter:blur(2px);
+}
+.img-placeholder.caption{
+  height:auto;padding:12px 16px;
+  font-size:var(--fs-micro);color:var(--text3);
+  text-align:center;
+}
+
+/* ===================== PROGRESS ===================== */
+.progress-bar{
+  height:8px;border-radius:4px;
+  background:rgba(255,255,255,0.1);margin:16px 0;overflow:hidden;
+}
+.progress-fill{
+  height:100%;border-radius:4px;
+  background:var(--gradient);background-size:200% 200%;
+  animation:gradientShift 3s ease infinite;
+  transition:width 0.5s ease;
+}
+
+/* ===================== BADGES & TAGS ===================== */
+.tag{
+  display:inline-block;padding:3px 10px;border-radius:6px;
+  font-size:var(--fs-micro);font-weight:600;margin:2px;
+  background:rgba(108,92,231,0.15);color:var(--accent2);
+  border:1px solid rgba(108,92,231,0.2);
+}
+.tag.green{background:rgba(0,184,148,0.15);color:var(--success)}
+.tag.red{background:rgba(225,112,85,0.15);color:var(--danger)}
+.tag.yellow{background:rgba(253,203,110,0.15);color:var(--warning)}
+
+/* ===================== DUA CARDS ===================== */
+.dua-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--glass-border);
+  border-radius:12px;padding:16px;margin:12px 0;
+  text-align:center;
+}
+.dua-card .arabic{
+  font-size:1.4rem;line-height:2;
+  color:var(--accent2);margin-bottom:10px;
+  direction:rtl;
+}
+.dua-card .translit{font-size:var(--fs-micro);color:var(--text3);font-style:italic}
+.dua-card .translation{font-size:var(--fs-small);color:var(--text1);margin-top:8px;font-weight:600}
+.dua-card .color-dot{
+  display:inline-block;width:14px;height:14px;
+  border-radius:50%;margin-right:8px;vertical-align:middle;
+  border:2px solid var(--glass-border);
+}
+
+/* ===================== WARNING BOX ===================== */
+.warning-box{
+  border-radius:12px;padding:16px;margin:16px 0;
+  border-left:4px solid var(--warning);
+  background:rgba(253,203,110,0.08);
+}
+.warning-box.danger{border-left-color:var(--danger);background:rgba(225,112,85,0.08)}
+.warning-box.success{border-left-color:var(--success);background:rgba(0,184,148,0.08)}
+.warning-box h4{font-size:var(--fs-small);color:var(--text1);margin-bottom:6px}
+.warning-box p{font-size:var(--fs-micro);color:var(--text2);margin:0}
+
+/* ===================== FOOTER ===================== */
+.footer{
+  text-align:center;padding:40px 16px 80px;
+  color:var(--text3);font-size:var(--fs-micro);
+}
+.footer .divider{
+  width:60px;height:2px;margin:0 auto 16px;
+  background:var(--gradient);border-radius:1px;
+}
+
+/* ===================== BOTTOM NAV ===================== */
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;
+  display:flex;justify-content:center;
+  padding:8px 16px 12px;
+  background:rgba(10,10,26,0.9);
+  backdrop-filter:blur(20px);
+  border-top:1px solid var(--glass-border);
+  z-index:999;gap:4px;
+}
+[data-theme="ocean"] .bottom-nav{background:rgba(10,25,47,0.9)}
+[data-theme="ember"] .bottom-nav{background:rgba(26,10,10,0.9)}
+[data-theme="forest"] .bottom-nav{background:rgba(10,26,10,0.9)}
+[data-theme="royal"] .bottom-nav{background:rgba(26,10,46,0.9)}
+.nav-item{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;gap:2px;padding:8px 4px;
+  border-radius:12px;cursor:pointer;
+  color:var(--text3);font-size:var(--fs-micro);
+  transition:all 0.3s ease;text-decoration:none;
+}
+.nav-item.active,.nav-item:hover{color:var(--accent1);background:var(--card-bg)}
+.nav-item .nav-icon{font-size:1.2rem}
+
+/* ===================== ANIMATIONS ===================== */
+.fade-in{animation:fadeIn 0.6s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.slide-up{animation:slideUp 0.5s ease both}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+/* ===================== BODY MAP SVG ===================== */
+.body-map{
+  width:200px;margin:20px auto;display:block;
+  fill:none;stroke:var(--accent1);stroke-width:1.5;
+  opacity:0.6;
+}
+.body-map .zone{fill:var(--accent3);opacity:0.2;cursor:pointer;transition:opacity 0.3s}
+.body-map .zone:hover{opacity:0.6}
+.body-map .zone-label{font-size:8px;fill:var(--text1)}
+
+/* ===================== RESPONSIVE ===================== */
+@media(min-width:768px){
+  .container{max-width:540px;padding:30px 24px 100px}
+  .modal{border-radius:24px;max-height:80vh;margin:auto}
+  .modal-overlay{align-items:center}
+  .modal{transform:translateY(0) scale(0.9)}
+  .modal-overlay.active .modal{transform:translateY(0) scale(1)}
+}
+@media(min-width:1024px){
+  .container{max-width:640px}
+}
+
+/* ===================== PRINT HIDE ===================== */
+@media print{
+  .controls,.bottom-nav,.modal-overlay,.orb,.animated-bg{display:none!important}
+  body{background:#fff;color:#000}
+}
+
+/* ===================== SPECIAL ELEMENTS ===================== */
+.highlight{
+  background:var(--gradient);background-size:200% 200%;
+  animation:gradientShift 4s ease infinite;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;font-weight:700;
+}
+.separator{
+  height:1px;background:linear-gradient(90deg,transparent,var(--accent1),transparent);
+  margin:24px 0;
+}
+.quote{
+  border-left:3px solid var(--accent1);padding:12px 16px;margin:16px 0;
+  background:rgba(108,92,231,0.05);border-radius:0 12px 12px 0;
+  font-style:italic;color:var(--text2);font-size:var(--fs-small);
+}
+.step-number{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:8px;
+  background:var(--gradient);background-size:200% 200%;
+  animation:gradientShift 4s ease infinite;
+  color:#fff;font-size:var(--fs-micro);font-weight:700;
+  margin-right:10px;flex-shrink:0;
+}
+.step{display:flex;align-items:flex-start;margin:12px 0}
+.step p{flex:1;margin:0}
+
+/* Tooltip */
+.tooltip{position:relative;cursor:help}
+.tooltip::after{
+  content:attr(data-tip);position:absolute;bottom:100%;left:50%;
+  transform:translateX(-50%);padding:6px 12px;border-radius:8px;
+  background:var(--bg3);color:var(--text1);font-size:var(--fs-micro);
+  white-space:nowrap;opacity:0;pointer-events:none;
+  transition:opacity 0.3s;z-index:100;
+  border:1px solid var(--glass-border);
+}
+.tooltip:hover::after{opacity:1}
+
+/* Loading shimmer */
+.shimmer{
+  background:linear-gradient(90deg,var(--card-bg) 25%,rgba(255,255,255,0.08) 50%,var(--card-bg) 75%);
+  background-size:200% 100%;animation:shimmer 1.5s infinite;
+}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+</style>
+</head>
+<body>
+
+<!-- ANIMATED BACKGROUND -->
+<div class="animated-bg"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- CONTROLS BAR -->
+<div class="controls" id="controls">
+  <button class="ctrl-btn" onclick="changeFontSize(-1)" title="Уменьшить шрифт">A-</button>
+  <button class="ctrl-btn" onclick="changeFontSize(1)" title="Увеличить шрифт">A+</button>
+  <span class="font-size-label">Размер</span>
+  <div class="theme-selector">
+    <span class="theme-dot t-dark active" onclick="setTheme('dark')" title="Тёмная"></span>
+    <span class="theme-dot t-ocean" onclick="setTheme('ocean')" title="Океан"></span>
+    <span class="theme-dot t-ember" onclick="setTheme('ember')" title="Пламя"></span>
+    <span class="theme-dot t-forest" onclick="setTheme('forest')" title="Лес"></span>
+    <span class="theme-dot t-royal" onclick="setTheme('royal')" title="Королевская"></span>
+  </div>
+</div>
+
+<!-- MAIN CONTAINER -->
+<div class="container" id="main-content">
+
+  <!-- HEADER -->
+  <header class="header fade-in">
+    <div class="logo-icon">🌙</div>
+    <h1>Особенный</h1>
+    <p class="subtitle">Курс трансформации личности по методу Абу Мухаммада</p>
+    <span class="badge">✦ Высвобождение застрявших импульсов</span>
+  </header>
+
+  <!-- INTRO CARD -->
+  <div class="card slide-up">
+    <div class="img-placeholder" style="height:180px;margin-bottom:16px">
+      <div class="inner">🕊️</div>
+    </div>
+    <h2>Добро пожаловать</h2>
+    <p>Этот курс — <strong>особенный путь</strong> к освобождению от тех застрявших импульсов, которые были испытаны душой, но не проявлены в теле и остались зафиксированными в фасциальных тканях, мышцах и нервных путях.</p>
+    <div class="quote">
+      «Нервная система — это главный интерфейс между телом, энергией и духом. Когда в этом интерфейсе есть сбой, орган или часть тела теряют связь с сознанием.»
+    </div>
+    <p>Метод последовательно работает на трёх уровнях: <span class="highlight">телесном</span>, <span class="highlight">эмоциональном</span> и <span class="highlight">духовном</span>, возвращая вам полноту ощущения жизни в собственном теле.</p>
+    <button class="btn btn-block" onclick="openModal('modal-start')">
+      ▶ Начать ознакомление
+    </button>
+  </div>
+
+  <!-- WHAT IS THIS COURSE -->
+  <div class="card slide-up">
+    <div class="card-icon">📋</div>
+    <h2>Что это за метод?</h2>
+    <p>Это не массаж и не релаксация. Это <strong>целенаправленная работа</strong> с невыраженными душевными импульсами, пробуждение «немых зон» и восстановление связи «мозг–тело».</p>
+    <div class="separator"></div>
+    <h3>Ключевые принципы</h3>
+    <ul>
+      <li>Непроявленные эмоции фиксируются в фасциях и мышцах</li>
+      <li>Физическое воздействие пробуждает нервные окончания</li>
+      <li>Каждое надавливание синхронизируется с вербализацией недуга</li>
+      <li>Сакральные формулы и дуа усиливают процесс очищения</li>
+      <li>Дыхание — проводник, выводящий освобождённую энергию</li>
+    </ul>
+    <div class="separator"></div>
+    <div class="warning-box success">
+      <h4>✅ Единственное противопоказание</h4>
+      <p>Беременность. Во всех остальных случаях метод доступен при соблюдении протокола интенсивности и самонаблюдения.</p>
+    </div>
+  </div>
+
+  <!-- 4 MODULES OVERVIEW -->
+  <div class="card slide-up">
+    <div class="card-icon">🗺️</div>
+    <h2>Структура курса</h2>
+    <p>Курс выстроен как последовательная спираль трансформации: от тела к духу, от высвобождения к устойчивой чистоте.</p>
+    
+    <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+    
+    <!-- Module 1 -->
+    <div class="module-card" onclick="openModal('modal-m1')">
+      <div class="module-number">Модуль 01</div>
+      <h3 style="margin:4px 0">Физическое пробуждение</h3>
+      <p style="color:var(--text3);font-size:var(--fs-micro)">Телесная диагностика, протирание, похлопывание, надавливание, выщипывание + вербализация</p>
+      <span class="arrow">→</span>
+    </div>
+    <div class="separator"></div>
+    
+    <!-- Module 2 -->
+    <div class="module-card" onclick="openModal('modal-m2')">
+      <div class="module-number">Модуль 02</div>
+      <h3 style="margin:4px 0">Психосоматическая трансформация</h3>
+      <p style="color:var(--text3);font-size:var(--fs-micro)">Проживание эмоций, замещение паттернов, 30 пар «недуг → качество»</p>
+      <span class="arrow">→</span>
+    </div>
+    <div class="separator"></div>
+    
+    <!-- Module 3 -->
+    <div class="module-card" onclick="openModal('modal-m3')">
+      <div class="module-number">Модуль 03</div>
+      <h3 style="margin:4px 0">Духовно-визуальное очищение</h3>
+      <p style="color:var(--text3);font-size:var(--fs-micro)">Периферическое зрение, цветные маркеры, дуа-заклинания</p>
+      <span class="arrow">→</span>
+    </div>
+    <div class="separator"></div>
+    
+    <!-- Module 4 -->
+    <div class="module-card" onclick="openModal('modal-m4')">
+      <div class="module-number">Модуль 04</div>
+      <h3 style="margin:4px 0">Духовная гигиена</h3>
+      <p style="color:var(--text3);font-size:var(--fs-micro)">Границы, невпитывание, ежедневная благодарность и устойчивость</p>
+      <span class="arrow">→</span>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS VISUAL -->
+  <div class="card slide-up">
+    <div class="card-icon">🔄</div>
+    <h2>Как это работает?</h2>
+    
+    <div class="img-placeholder" style="height:160px">
+      <div class="inner">⚡</div>
+    </div>
+    
+    <p>Цикл трансформации в каждом модуле:</p>
+    
+    <div class="step">
+      <span class="step-number">1</span>
+      <p><strong>Диагностика</strong> — поиск «немых зон» через напряжение, протирание, похлопывание и боди-скан</p>
+    </div>
+    <div class="step">
+      <span class="step-number">2</span>
+      <p><strong>Активация</strong> — физическое воздействие (надавливание, выщипывание, вытягивание) для пробуждения импульсов</p>
+    </div>
+    <div class="step">
+      <span class="step-number">3</span>
+      <p><strong>Вербализация</strong> — проговаривание конкретного недуга синхронно с воздействием</p>
+    </div>
+    <div class="step">
+      <span class="step-number">4</span>
+      <p><strong>Духовное очищение</strong> — дуа, суры, молитвенные формулы для выведения застрявшей энергии</p>
+    </div>
+    <div class="step">
+      <span class="step-number">5</span>
+      <p><strong>Интеграция</strong> — глубокое дыхание, душ, заземление, наблюдение за изменениями</p>
+    </div>
+  </div>
+
+  <!-- BODY MAP INTERACTIVE -->
+  <div class="card slide-up">
+    <div class="card-icon">🗺️</div>
+    <h2>Карта психосоматических зон</h2>
+    <p>Какая часть тела откликается на напряжение — там скрыт застрявший импульс.</p>
+    
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Зона тела</th><th>Возможный недуг</th></tr></thead>
+        <tbody>
+          <tr><td>🦶 Стопы</td><td>Страх отпустить, недоверие миру</td></tr>
+          <tr><td>🦵 Колени</td><td>Упрямство, негибкость</td></tr>
+          <tr><td>🫁 Таз</td><td>Подавленная сексуальность, творческие блоки</td></tr>
+          <tr><td>🫀 Живот</td><td>Непринятие себя, непереваренные эмоции</td></tr>
+          <tr><td>💨 Диафрагма</td><td>Подавленный страх, запрет на эмоции</td></tr>
+          <tr><td>🫁 Грудная клетка</td><td>Невыраженная грусть, непрожитое горе</td></tr>
+          <tr><td>💪 Плечи</td><td>Чрезмерная ответственность, бремя</td></tr>
+          <tr><td>🗣️ Шея</td><td>Страх выразить истинные чувства</td></tr>
+          <tr><td>😬 Челюсть</td><td>Подавленный гнев, невысказанные слова</td></tr>
+          <tr><td>🧠 Лоб и виски</td><td>Чрезмерный анализ, страх отпустить контроль</td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <button class="btn btn-outline btn-block" onclick="openModal('modal-fullmap')">
+      📋 Полная таблица (30 зон)
+    </button>
+  </div>
+
+  <!-- DU'A PREVIEW -->
+  <div class="card slide-up">
+    <div class="card-icon">🤲</div>
+    <h2>Духовные формулы</h2>
+    <p>В курсе используются специальные дуа-заклинания, привязанные к цветовым маркерам в периферическом зрении (Модуль 3).</p>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْخَوْفِ فِي قَلْبِي</div>
+      <div class="translit">Бисмилляхи арки мина-ль-хауфи фи кальби</div>
+      <div class="translation">«С именем Аллаха, заклинаю от страха в моём сердце»</div>
+      <div style="margin-top:8px">
+        <span class="color-dot" style="background:#4a4a5a"></span>
+        <span style="font-size:var(--fs-micro);color:var(--text3)">Серо-тёмный → Страх</span>
+      </div>
+    </div>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْحِقْدِ فِي صَدْرِي</div>
+      <div class="translit">Бисмилляхи арки мина-ль-хикди фи садри</div>
+      <div class="translation">«С именем Аллаха, заклинаю от обиды в моей груди»</div>
+      <div style="margin-top:8px">
+        <span class="color-dot" style="background:#aaff00"></span>
+        <span style="font-size:var(--fs-micro);color:var(--text3)">Кислотно-зелёный → Обида</span>
+      </div>
+    </div>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْغَضَبِ فِي نَفْسِي</div>
+      <div class="translit">Бисмилляхи арки мина-ль-гадаби фи нафси</div>
+      <div class="translation">«С именем Аллаха, заклинаю от гнева в моей душе»</div>
+      <div style="margin-top:8px">
+        <span class="color-dot" style="background:#ff0000"></span>
+        <span style="font-size:var(--fs-micro);color:var(--text3)">Ярко-красный → Гнев</span>
+      </div>
+    </div>
+    
+    <button class="btn btn-block" onclick="openModal('modal-alldua')" style="margin-top:12px">
+      📖 Все 10 дуа с переводом
+    </button>
+  </div>
+
+  <!-- 30 PAIRS PREVIEW -->
+  <div class="card slide-up">
+    <div class="card-icon">🔄</div>
+    <h2>Трансформация качеств</h2>
+    <p>Каждому негативному состоянию соответствует целительное качество, которое активируется во 2-м модуле.</p>
+    
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Недуг</th><th>Целительное качество</th></tr></thead>
+        <tbody>
+          <tr><td>😨 Страх</td><td>Бесстрашие, Доверие к Аллаху</td></tr>
+          <tr><td>💔 Разочарование</td><td>Принятие, Гибкость</td></tr>
+          <tr><td>😡 Гнев</td><td>Спокойствие, Терпение</td></tr>
+          <tr><td>👁️ Зависть</td><td>Радость за других, Щедрость</td></tr>
+          <tr><td>😢 Уныние</td><td>Радость, Вдохновение</td></tr>
+          <tr><td>😰 Тревога</td><td>Умиротворение, Вера</td></tr>
+          <tr><td>😞 Печаль</td><td>Принятие утраты, Благодарность</td></tr>
+          <tr><td>😤 Раздражение</td><td>Терпимость, Понимание</td></tr>
+          <tr><td>😔 Отчаяние</td><td>Надежда, Стойкость</td></tr>
+          <tr><td>🚶 Одиночество</td><td>Гармония с собой, Наполненность</td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div style="text-align:center;margin:8px 0">
+      <span class="tag">+ ещё 20 пар</span>
+    </div>
+    
+    <button class="btn btn-block" onclick="openModal('modal-30pairs')">
+      📋 Полная таблица 30 пар
+    </button>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="card slide-up">
+    <div class="card-icon">✨</div>
+    <h2>Ожидаемые результаты</h2>
+    
+    <div class="img-placeholder" style="height:140px">
+      <div class="inner">🌟</div>
+    </div>
+    
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        После Модуля 1
+        <span class="icon">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p>Пробуждение «немых зон», выход первичных телесных зажимов, восстановление чувствительности и импульсной проводимости, ощущение лёгкости в теле, улучшение осанки.</p>
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        После Модуля 2
+        <span class="icon">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p>Исчезновение остаточного сопротивления, изменение мимики и поведенческих паттернов, устойчивое замещение разрушительных эмоций целительными качествами, глубокое эмоциональное облегчение.</p>
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        После Модуля 3
+        <span class="icon">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p>Очищение тонких фасциально-энергетических слоёв, исчезновение «фоновых» тяжестей, восстановление внутренней тишины, лёгкости дыхания, естественная эластичность тканей.</p>
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        После Модуля 4
+        <span class="icon">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p>Устойчивое внутреннее равновесие, защита от эмоционального поглощения, естественное поддержание чистоты, трансформация поведения и социального взаимодействия, открытое выражение радости.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAFETY -->
+  <div class="card slide-up">
+    <div class="card-icon">🛡️</div>
+    <h2>Безопасность</h2>
+    
+    <div class="warning-box danger">
+      <h4>⚠️ Противопоказание</h4>
+      <p>Беременность — абсолютное противопоказание для прохождения курса.</p>
+    </div>
+    
+    <div class="warning-box">
+      <h4>📊 Болевой порог</h4>
+      <p>Допустимый уровень боли: до 7–8 баллов по субъективной шкале. Боль воспринимается как маркер выхода импульса, а не как повод для остановки.</p>
+    </div>
+    
+    <div class="warning-box danger">
+      <h4>🛑 Немедленная остановка при:</h4>
+      <p>Стреляющей или пульсирующей боли, головокружении, распространяющемся онемении, нарушении дыхания, панической реакции.</p>
+    </div>
+    
+    <div class="warning-box success">
+      <h4>✅ Нормальные реакции</h4>
+      <p>Покраснение, временные синяки, мышечная усталость, эмоциональный всплеск. Проходят за 2–5 дней. После сессии рекомендуется тёплый душ и глубокое дыхание.</p>
+    </div>
+    
+    <div class="separator"></div>
+    <p style="font-size:var(--fs-small);color:var(--text3)">
+      Метод является духовно-телесной практикой и не заменяет медицинскую диагностику. При наличии диагностированных заболеваний обязательна консультация врача.
+    </p>
+  </div>
+
+  <!-- CTA -->
+  <div class="card slide-up" style="text-align:center">
+    <div class="img-placeholder" style="height:160px;margin-bottom:20px">
+      <div class="inner">🌙</div>
+    </div>
+    <h2>Готовы начать?</h2>
+    <p>Этот путь требует регулярности, внутренней решимости и искреннего упования на Всевышнего. При соблюдении протокола и уважении к границам тела метод становится мостом к свободе.</p>
+    <button class="btn btn-block pulse" onclick="openModal('modal-cta')">
+      🚀 Записаться на курс
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="divider"></div>
+    <p>Курс «Особенный» по методу Абу Мухаммада</p>
+    <p style="margin-top:4px">Высвобождение застрявших импульсов · Психосоматическая перезагрузка · Духовная гигиена</p>
+    <p style="margin-top:12px;opacity:0.5">© 2025 Все права защищены</p>
+  </footer>
+</div>
+
+<!-- BOTTOM NAVIGATION -->
+<nav class="bottom-nav">
+  <a class="nav-item active" href="#main-content" onclick="scrollToTop()">
+    <span class="nav-icon">🏠</span>
+    <span>Главная</span>
+  </a>
+  <a class="nav-item" href="#" onclick="openModal('modal-m1');return false">
+    <span class="nav-icon">📖</span>
+    <span>Модули</span>
+  </a>
+  <a class="nav-item" href="#" onclick="openModal('modal-alldua');return false">
+    <span class="nav-icon">🤲</span>
+    <span>Дуа</span>
+  </a>
+  <a class="nav-item" href="#" onclick="openModal('modal-30pairs');return false">
+    <span class="nav-icon">🔄</span>
+    <span>Таблицы</span>
+  </a>
+  <a class="nav-item" href="#" onclick="openModal('modal-safety');return false">
+    <span class="nav-icon">🛡️</span>
+    <span>Безопасность</span>
+  </a>
+</nav>
+
+<!-- ==================== MODALS ==================== -->
+
+<!-- MODAL: START -->
+<div class="modal-overlay" id="modal-start">
+  <div class="modal" style="position:relative">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('modal-start')">✕</button>
+    <h2>О методе</h2>
+    <p>Курс «Особенный» — это уникальная методика, разработанная Абу Мухаммадом на основе глубокого наблюдения за связью тела, нервной системы и духа.</p>
+    
+    <h3>Основная идея</h3>
+    <p>Наша нервная система — главный «интерфейс» между телом, энергией и духом. Когда пережитые душой эмоции не находят телесного выражения, они «застревают» в фасциальных тканях, мышечных зажимах и энергетических каналах, создавая невидимую, но ощутимую плотность.</p>
+    
+    <h3>Как работает метод</h3>
+    <p>Метод последовательно пробуждает «немые зоны» через физическое воздействие (протирание, похлопывание, надавливание, выщипывание), синхронизирует каждое действие с вербализацией конкретного недуга и усиливает процесс сакральными формулами.</p>
+    
+    <div class="quote">
+      «Слово работает как свет, рассеивающий тень, а дыхание становится проводником, выводящим освобождённую энергию за пределы тела.»
+    </div>
+    
+    <h3>Три уровня работы</h3>
+    <ul>
+      <li><strong>Телесный</strong> — пробуждение нервной системы, разрушение фасциальных блоков</li>
+      <li><strong>Эмоциональный</strong> — проживание и трансформация чувств, замещение паттернов</li>
+      <li><strong>Духовный</strong> — очищение через дуа, суры и периферическое зрение</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MODAL: MODULE 1 -->
+<div class="modal-overlay" id="modal-m1">
+  <div class="modal" style="position:relative">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('modal-m1')">✕</button>
+    <div class="module-number" style="margin-bottom:4px">Модуль 01</div>
+    <h2>Физическое пробуждение</h2>
+    <p>Первый модуль — это не массаж. Это осознанное высвобождение невыраженных душевных импульсов, зафиксированных в фасциальной ткани.</p>
+    
+    <h3>Пошаговый протокол</h3>
+    
+    <div class="step">
+      <span class="step-number">1</span>
+      <p><strong>Стартовое прочувствование:</strong> Интенсивно протирайте и похлопывайте всё тело ладонями/кулаками, глубоко и ритмично дыша. Движение от стоп к голове.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-number">2</span>
+      <p><strong>Выбор состояния:</strong> Определите одно негативное душевное качество (страх, обида, гнев и т.д.)</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-number">3</span>
+      <p><strong>Поиск в теле:</strong> Продолжая протирать/похлопывать, проговаривайте название состояния. Ищите зоны отклика: напряжение, тяжесть, жар/холод, «пустота».</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-number">4</span>
+      <p><strong>Активное высвобождение:</strong> В зоне сопротивления — надавливание (твёрдым предметом или пальцами), выщипывание кожи (захват→натяжение→отпуск), вытягивание (удержание 10 сек + дыхание). Возврат к протиранию для интеграции.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-number">5</span>
+      <p><strong>Синхронизация:</strong> Во время воздействия проговаривайте: «Разрушается [недуг]», «Да выведет Аллах [недуг] из моего тела». Сочетайте мышечное напряжение с дуа.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-number">6</span>
+      <p><strong>Завершение:</strong> Глубокий вдох-выдох для заземления. Рекомендуется тёплый душ.</p>
+    </div>
+    
+    <div class="separator"></div>
+    
+    <h3>Диагностические методы</h3>
+    <ul>
+      <li>Прямое надавливание — поиск боли, напряжения, холода/онемения</li>
+      <li>Мысленный боди-скан — выявление «слепых пятен»</li>
+      <li>Карта психосоматической проекции — связь зон с эмоциями</li>
+      <li>Метод спонтанного движения — наблюдение привычных поз</li>
+      <li>Дыхательная диагностика — выявление зон ограничения дыхания</li>
+    </ul>
+    
+    <div class="warning-box">
+      <h4>💡 Важно</h4>
+      <p>Агрессия в данном контексте — это осознанная решимость и намеренная интенсивность, направленная на преодоление сопротивления, а не разрушение. Боль — сигнал к действию, а не повод для остановки.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: MODULE 2 -->
+<div class="modal-overlay" id="modal-m2">
+  <div class="modal" style="position:relative">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('modal-m2')">✕</button>
+    <div class="module-number">Модуль 02</div>
+    <h2>Психосоматическая трансформация</h2>
+    <p>Переход от физической разблокировки к осознанному проживанию и трансформации эмоциональных состояний. Работа строится на телесном прочувствовании, а не на интеллектуальном анализе.</p>
+    
+    <h3>Алгоритм работы</h3>
+    <div class="step">
+      <span class="step-number">1</span>
+      <p><strong>Проявление:</strong> Впустите эмоцию, отследите откликающиеся органы</p>
+    </div>
+    <div class="step">
+      <span class="step-number">2</span>
+      <p><strong>Вербализация:</strong> Проговорите чувство, свяжите с событием</p>
+    </div>
+    <div class="step">
+      <span class="step-number">3</span>
+      <p><strong>Разрушение:</strong> «Разрушается [чувство]» + «Да выведет Аллах [чувство]»</p>
+    </div>
+    <div class="step">
+      <span class="step-number">4</span>
+      <p><strong>Возврат к физике:</strong> Если блок не поддаётся — используйте техники М1</p>
+    </div>
+    <div class="step">
+      <span class="step-number">5</span>
+      <p><strong>Активация противоположности:</strong> Проговаривайте позитивное качество до исчезновения сопротивления</p>
+    </div>
+    
+    <div class="separator"></div>
+    <h3>Пример: работа со страхом</h3>
+    <p>При проявлении страха активируются горло, грудь, сердце и часть живота. Проговаривайте ощущения, фокусируясь на чувствах. Затем: «Разрушается страх» → «Да выведет Аллах все мои страхи». После — проявите бесстрашие: «Я не боюсь людей».</p>
+    
+    <div class="quote">
+      «Не пытайтесь умом понять чувства. Чувства нужно ощущать и проживать в теле.»
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: MODULE 3 -->
+<div class="modal-overlay" id="modal-m3">
+  <div class="modal" style="position:relative">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('modal-m3')">✕</button>
+    <div class="module-number">Модуль 03</div>
+    <h2>Духовно-визуальное очищение</h2>
+    <p>Утончённая практика, где периферическое зрение становится мостом между невидимым миром души и плотной тканью тела.</p>
+    
+    <h3>Как выполнять</h3>
+    <p>Направьте внимание в зону периферического зрения, мысленно произнесите название недуга. Если проступает цвет — это маркер укоренившегося состояния. Прочитайте соответствующее дуа на выдохе, пока оттенок не растворится.</p>
+    
+    <div class="separator"></div>
+    <h3>10 пар «Цвет → Состояние → Дуа»</h3>
+    <p>Полная таблица доступна по кнопке ниже.</p>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْيَأْسِ</div>
+      <div class="translit">Бисмилляхи арки мина-ль-я'си</div>
+      <div class="translation">«С именем Аллаха, заклинаю от уныния»</div>
+      <div style="margin-top:8px">
+        <span class="color-dot" style="background:#2c3e6b"></span>
+        <span style="font-size:var(--fs-micro);color:var(--text3)">Грязно-синий → Уныние</span>
+      </div>
+    </div>
+    
+    <button class="btn btn-block" onclick="closeModal('modal-m3');setTimeout(()=>openModal('modal-alldua'),300)" style="margin-top:16px">
+      📖 Все 10 дуа с цветами
+    </button>
+  </div>
+</div>
+
+<!-- MODAL: MODULE 4 -->
+<div class="modal-overlay" id="modal-m4">
+  <div class="modal" style="position:relative">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('modal-m4')">✕</button>
+    <div class="module-number">Модуль 04</div>
+    <h2>Духовная гигиена</h2>
+    <p>Искусство сохранять внутреннюю чистоту не как разовое достижение, а как живое, дышащее состояние.</p>
+    
+    <h3>Ключевые принципы</h3>
+    <ul>
+      <li><strong>Невпитывание:</strong> Чистая душа видит, понимает, сочувствует — но не поглощает чужую тяжесть</li>
+      <li><strong>Границы:</strong> Мягкий уход, твёрдое «нет», изменение формата общения — защита своего пространства</li>
+      <li><strong>Наполнение:</strong> Ежедневное «Альхамдулиллях» как выдох благодарности, открытое выражение радости</li>
+      <li><strong>Ритм:</strong> Вдох ясности → выдох признательности. Чистота поддерживается регулярностью</li>
+    </ul>
+    
+    <div class="quote">
+      «Духовная гигиана превращается в искусство дыхания: вдох ясности, выдох признательности. И в этом дыхании рождается устойчивость, которая не ломается от встреч с чужой тяжестью.»
+    </div>
+    
+    <div class="warning-box success">
+      <h4>💡 Практика на каждый день</h4>
+      <p>Утром: 3 минуты глубокого дыхания + проговаривание позитивных качеств. Вечером: краткий боди-скан + благодарность. При контакте с тяжёлыми людьми: осознанное дыхание + возврат к практике при необходимости.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: ALL DU'A -->
+<div class="modal-overlay" id="modal-alldua">
+  <div class="modal" style="position:relative">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('modal-alldua')">✕</button>
+    <h2>10 дуа-заклинаний</h2>
+    <p>Каждая формула привязана к цветовому маркеру в периферическом зрении. Произносите на выдохе.</p>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْخَوْفِ فِي قَلْبِي</div>
+      <div class="translit">Бисмилляхи арки мина-ль-хауфи фи кальби</div>
+      <div class="translation">«С именем Аллаха, заклинаю от страха в моём сердце»</div>
+      <span class="color-dot" style="background:#4a4a5a"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Серо-тёмный</span>
+    </div>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْحِقْدِ فِي صَدْرِي</div>
+      <div class="translit">Бисмилляхи арки мина-ль-хикди фи садри</div>
+      <div class="translation">«С именем Аллаха, заклинаю от обиды в моей груди»</div>
+      <span class="color-dot" style="background:#aaff00"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Кислотно-зелёный</span>
+    </div>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْغَضَبِ فِي نَفْسِي</div>
+      <div class="translit">Бисмилляхи арки мина-ль-гадаби фи нафси</div>
+      <div class="translation">«С именем Аллаха, заклинаю от гнева в моей душе»</div>
+      <span class="color-dot" style="background:#ff0000"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Ярко-красный</span>
+    </div>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْحَسَدِ</div>
+      <div class="translit">Бисмилляхи арки мина-ль-хасади</div>
+      <div class="translation">«С именем Аллаха, заклинаю от зависти»</div>
+      <span class="color-dot" style="background:#c8ff00"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Ядовито-жёлтый</span>
+    </div>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْيَأْسِ</div>
+      <div class="translit">Бисмилляхи арки мина-ль-я'си</div>
+      <div class="translation">«С именем Аллаха, заклинаю от уныния»</div>
+      <span class="color-dot" style="background:#2c3e6b"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Грязно-синий</span>
+    </div>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْقَلَقِ</div>
+      <div class="translit">Бисмилляхи арки мина-ль-каляки</div>
+      <div class="translation">«С именем Аллаха, заклинаю от тревоги»</div>
+      <span class="color-dot" style="background:#ff9900"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Оранжевый</span>
+    </div>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْكِبْرِيَاءِ</div>
+      <div class="translit">Бисмилляхи арки мина-ль-кибрияъ</div>
+      <div class="translation">«С именем Аллаха, заклинаю от гордыни»</div>
+      <span class="color-dot" style="background:#daa520"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Металлический золотой</span>
+    </div>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْكَسَلِ</div>
+      <div class="translit">Бисмилляхи арки мина-ль-касали</div>
+      <div class="translation">«С именем Аллаха, заклинаю от лени»</div>
+      <span class="color-dot" style="background:#6b4423"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Мутно-коричневый</span>
+    </div>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ الْبُخْلِ</div>
+      <div class="translit">Бисмилляхи арки мина-ль-бухли</div>
+      <div class="translation">«С именем Аллаха, заклинаю от жадности»</div>
+      <span class="color-dot" style="background:#ffd700"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Блестящий жёлтый</span>
+    </div>
+    
+    <div class="dua-card">
+      <div class="arabic">بِسْمِ اللَّهِ أَرْقِي مِنَ النِّفَاقِ</div>
+      <div class="translit">Бисмилляхи арки мина-н-нифаки</div>
+      <div class="translation">«С именем Аллаха, заклинаю от лицемерия»</div>
+      <span class="color-dot" style="background:linear-gradient(45deg,red,orange,yellow,green,blue,violet)"></span><span style="font-size:var(--fs-micro);color:var(--text3)">Радужный переливающийся</span>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: 30 PAIRS -->
+<div class="modal-overlay" id="modal-30pairs">
+  <div class="modal" style="position:relative">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('modal-30pairs')">✕</button>
+    <h2>30 пар трансформации</h2>
+    <p>Каждому негативному состоянию соответствует целительное качество. Активируйте противоположность для проверки остаточного сопротивления.</p>
+    
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>№</th><th>Недуг</th><th>Целительное качество</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Страх</td><td>Бесстрашие, Доверие к Аллаху</td></tr>
+          <tr><td>2</td><td>Разочарование</td><td>Принятие, Гибкость</td></tr>
+          <tr><td>3</td><td>Гнев, злость</td><td>Спокойствие, Терпение, Прощение</td></tr>
+          <tr><td>4</td><td>Зависть, ревность</td><td>Радость за других, Щедрость</td></tr>
+          <tr><td>5</td><td>Уныние, тоска</td><td>Радость, Вдохновение</td></tr>
+          <tr><td>6</td><td>Тревожность</td><td>Умиротворение, Вера</td></tr>
+          <tr><td>7</td><td>Печаль, скорбь</td><td>Принятие утраты, Благодарность</td></tr>
+          <tr><td>8</td><td>Томление, беспокойство</td><td>Уверенность, Внутренний покой</td></tr>
+          <tr><td>9</td><td>Одиночество (покинутость)</td><td>Чувство близости Аллаха</td></tr>
+          <tr><td>10</td><td>Позор, бесчестие</td><td>Самоуважение, Честь</td></tr>
+          <tr><td>11</td><td>Унижение</td><td>Самоценность, Внутренняя сила</td></tr>
+          <tr><td>12</td><td>Неудача, провал</td><td>Упорство, Принятие урока</td></tr>
+          <tr><td>13</td><td>Крушение надежд</td><td>Открытость, Вера без привязки</td></tr>
+          <tr><td>14</td><td>Раздражение</td><td>Терпимость, Понимание</td></tr>
+          <tr><td>15</td><td>Отчаяние</td><td>Надежда, Стойкость</td></tr>
+          <tr><td>16</td><td>Одиночество (состояние)</td><td>Гармония с собой, Наполненность</td></tr>
+          <tr><td>17</td><td>Грусть</td><td>Благодарность, Принятие</td></tr>
+          <tr><td>18</td><td>Обман</td><td>Честность, Прощение</td></tr>
+          <tr><td>19</td><td>Отвращение</td><td>Принятие, Терпимость</td></tr>
+          <tr><td>20</td><td>Скрытность</td><td>Искренность, Экспрессивность</td></tr>
+          <tr><td>21</td><td>Смятение</td><td>Ясность, Внутренний порядок</td></tr>
+          <tr><td>22</td><td>Истощение</td><td>Жизненная сила, Энергичность</td></tr>
+          <tr><td>23</td><td>Переполнение</td><td>Уравновешенность, Умение отпускать</td></tr>
+          <tr><td>24</td><td>Отчуждённость</td><td>Сопричастность, Эмпатия</td></tr>
+          <tr><td>25</td><td>Подавленность</td><td>Целостность, Стойкость</td></tr>
+          <tr><td>26</td><td>Недовольство</td><td>Принятие, Благодарность</td></tr>
+          <tr><td>27</td><td>Изнеможение, усталость</td><td>Бодрость, Радость движения</td></tr>
+          <tr><td>28</td><td>Изоляция</td><td>Открытость, Выход из зоны комфорта</td></tr>
+          <tr><td>29</td><td>Замкнутость</td><td>Открытость, Доверие</td></tr>
+          <tr><td>30</td><td>Задержка, блокировка</td><td>Свобода выражения, Поток</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: FULL MAP -->
+<div class="modal-overlay" id="modal-fullmap">
+  <div class="modal" style="position:relative">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('modal-fullmap')">✕</button>
+    <h2>Полная психосоматическая карта</h2>
+    <p>Связь эмоциональных загрязнений с зонами тела, фигурой и здоровьем.</p>
+    
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Недуг</th><th>Зона в теле</th><th>Влияние</th></tr></thead>
+        <tbody>
+          <tr><td>Страх</td><td>Почки, поясница</td><td>«Спасательный круг», хронический стресс</td></tr>
+          <tr><td>Разочарование</td><td>Желудок, поджелудочная</td><td>Нестабильный вес, «расплывшаяся» талия</td></tr>
+          <tr><td>Гнев</td><td>Печень, виски, челюсти</td><td>Жёсткая фигура, гипертония</td></tr>
+          <tr><td>Зависть</td><td>Жёлчный, кишечник</td><td>Бёдра и ягодицы, вздутие</td></tr>
+          <tr><td>Уныние</td><td>Лёгкие, кожа</td><td>Сутулость, дряблость</td></tr>
+          <tr><td>Тревога</td><td>Сердце, грудная клетка</td><td>Худоба, учащённое сердцебиение</td></tr>
+          <tr><td>Печаль</td><td>Лёгкие, плечи</td><td>Опущенные плечи, астма</td></tr>
+          <tr><td>Томление</td><td>Селезёнка, лимфа</td><td>Отёчность, целлюлит</td></tr>
+          <tr><td>Одиночество</td><td>Сердце, диафрагма</td><td>Боли в груди, ВСД</td></tr>
+          <tr><td>Позор</td><td>Лицо, кожа</td><td>Псориаз, экзема, покраснения</td></tr>
+          <tr><td>Унижение</td><td>Горло, щитовидка</td><td>Проблемы с метаболизмом и весом</td></tr>
+          <tr><td>Неудача</td><td>Надпочечники, позвоночник</td><td>Сутулость, хроническая усталость</td></tr>
+          <tr><td>Крушение надежд</td><td>Диафрагма</td><td>Резкие колебания веса, спазмы</td></tr>
+          <tr><td>Раздражение</td><td>Нервная система, кожа</td><td>Крапивница, нервный тик</td></tr>
+          <tr><td>Отчаяние</td><td>Сердце, грудная клетка</td><td>Тяжёлое тело, боли в сердце</td></tr>
+          <tr><td>Одиночество</td><td>Тазобедренные суставы</td><td>Холодность, артриты</td></tr>
+          <tr><td>Грусть</td><td>Грудная клетка, лёгкие</td><td>Слабое дыхание, респираторные</td></tr>
+          <tr><td>Обман</td><td>Тонкий кишечник</td><td>Вздутие, напряжение в центре</td></tr>
+          <tr><td>Отвращение</td><td>Желудок, горло</td><td>Тошнота, нарушения аппетита</td></tr>
+          <tr><td>Скрытность</td><td>Горло, челюсть, таз</td><td>Хронические боли, фибромиалгия</td></tr>
+          <tr><td>Смятение</td><td>Нервная система, мозг</td><td>Бессонница, панические атаки</td></tr>
+          <tr><td>Истощение</td><td>Надпочечники, эндокринная</td><td>Выгорание, потеря/набор веса</td></tr>
+          <tr><td>Переполнение</td><td>Селезёнка, лимфа</td><td>Отеки, пастозность</td></tr>
+          <tr><td>Отчуждённость</td><td>Кожа, периферическая НС</td><td>Холодная кожа, онемения</td></tr>
+          <tr><td>Подавленность</td><td>Позвоночник, колени</td><td>Искривление осанки, остеохондроз</td></tr>
+          <tr><td>Недовольство</td><td>Желудок, пищевод, зубы</td><td>Бруксизм, напряжение</td></tr>
+          <tr><td>Изнеможение</td><td>Сердце, мышцы</td><td>Дряблость, отсутствие тонуса</td></tr>
+          <tr><td>Изоляция</td><td>Тазобедренные суставы</td><td>«Галифе», холод в ногах</td></tr>
+          <tr><td>Замкнутость</td><td>Плечевой пояс, грудь</td><td>Сутулость, впалая грудь</td></tr>
+          <tr><td>Задержка</td><td>Таз, низ живота</td><td>Холодность, нарушения цикла</td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="warning-box success">
+      <h4>💡 Запомните</h4>
+      <p>Тело и душа неразрывно связаны. Работая с осознанием и высвобождением «душевных загрязнений», вы оказываете глубокое оздоравливающее воздействие на физическое тело.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: SAFETY -->
+<div class="modal-overlay" id="modal-safety">
+  <div class="modal" style="position:relative">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('modal-safety')">✕</button>
+    <h2>Безопасность</h2>
+    
+    <div class="warning-box danger">
+      <h4>⚠️ Противопоказание</h4>
+      <p>Беременность — единственное абсолютное противопоказание для прохождения курса.</p>
+    </div>
+    
+    <h3>Болевой порог</h3>
+    <p>Допустимый уровень боли: <strong>до 7–8 баллов</strong> по субъективной шкале. Боль воспринимается как маркер выхода застрявшего импульса.</p>
+    
+    <h3>Немедленная остановка при:</h3>
+    <ul>
+      <li>Стреляющей или пульсирующей боли</li>
+      <li>Головокружении</li>
+      <li>Распространяющемся онемении</li>
+      <li>Нарушении дыхания</li>
+      <li>Панической реакции</li>
+    </ul>
+    
+    <h3>Нормальные реакции</h3>
+    <p>Покраснение, временные синяки, мышечная усталость, эмоциональный всплеск. Проходят за 2–5 дней. После сессии рекомендуется тёплый душ.</p>
+    
+    <div class="separator"></div>
+    
+    <h3>Заземление после сессии</h3>
+    <p>Глубокий вдох и выдох. Можно повторить 3–5 раз. Это нормализует состояние нервной системы и завершает цикл высвобождения.</p>
+    
+    <div class="warning-box success">
+      <h4>🏥 Медицинская интеграция</h4>
+      <p>Метод является духовно-телесной практикой и не заменяет медицинскую диагностику. При наличии диагностированных заболеваний, приёме препаратов или стойких физических симптомах обязательна консультация лечащего врача.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: CTA -->
+<div class="modal-overlay" id="modal-cta">
+  <div class="modal" style="position:relative;text-align:center">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('modal-cta')">✕</button>
+    
+    <div class="img-placeholder" style="height:160px;margin-bottom:20px">
+      <div class="inner">🌙</div>
+    </div>
+    
+    <h2>Готовы к трансформации?</h2>
+    <p>Курс «Особенный» — это путь от телесного пробуждения к духовной устойчивости. Он требует регулярности, внутренней решимости и искреннего упования на Всевышнего.</p>
+    
+    <div style="margin:20px 0">
+      <span class="tag green">4 модуля</span>
+      <span class="tag">Индивидуально</span>
+      <span class="tag">Онлайн/Очно</span>
+    </div>
+    
+    <button class="btn btn-block" style="margin-bottom:12px">
+      📩 Написать для записи
+    </button>
+    <button class="btn btn-outline btn-block" onclick="closeModal('modal-cta')">
+      Ещё подумаю
+    </button>
+    
+    <div class="quote" style="margin-top:20px;text-align:left">
+      «При соблюдении протокола, уважении к границам тела и сохранении духовной целостности метод становится мостом между освобождением от прошлой тяжести и жизнью в полноте, лёгкости и осознанной благодарности.»
+    </div>
+  </div>
+</div>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+// === FONT SIZE ===
+let currentFs = 1;
+function changeFontSize(delta){
+  currentFs = Math.max(0.8, Math.min(1.4, currentFs + delta * 0.1));
+  document.documentElement.style.setProperty('--fs', currentFs);
+  // Update active state of font buttons
+  document.querySelectorAll('.ctrl-btn').forEach(b => b.classList.remove('active'));
+  if(currentFs > 1) document.querySelectorAll('.ctrl-btn')[1].classList.add('active');
+  if(currentFs < 1) document.querySelectorAll('.ctrl-btn')[0].classList.add('active');
+}
+
+// === THEMES ===
+function setTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  document.querySelectorAll('.theme-dot').forEach(d => d.classList.remove('active'));
+  document.querySelector(`.t-${theme}`).classList.add('active');
+}
+
+// === MODALS ===
+function openModal(id){
+  const modal = document.getElementById(id);
+  if(modal){
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeModal(id){
+  const modal = document.getElementById(id);
+  if(modal){
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+// Close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => {
+    if(e.target === overlay){
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+});
+// Close on Escape
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    document.querySelectorAll('.modal-overlay.active').forEach(m => {
+      m.classList.remove('active');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+// === ACCORDION ===
+function toggleAccordion(header){
+  const item = header.parentElement;
+  const wasOpen = item.classList.contains('open');
+  // Close all in same parent
+  item.parentElement.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+// === SCROLL TO TOP ===
+function scrollToTop(){
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// === INTERSECTION OBSERVER FOR ANIMATIONS ===
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.style.animationPlayState = 'running';
+    }
+  });
+}, {threshold: 0.1});
+
+document.querySelectorAll('.slide-up').forEach(el => {
+  el.style.animationPlayState = 'paused';
+  observer.observe(el);
+});
+
+// === SMOOTH SCROLL FOR ANCHOR LINKS ===
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+
+// === NAV ACTIVE STATE ===
+window.addEventListener('scroll', () => {
+  // Could add active state logic here based on scroll position
+});
+
+console.log('✅ Курс "Особенный" — мобильная ознакомительная версия загружена');
+</script>
+</body>
+</html>
