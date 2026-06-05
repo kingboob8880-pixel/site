@@ -183,6 +183,18 @@ body{
   border-bottom:1px solid var(--glass-border);
   flex-wrap:wrap;
 }
+.brand{
+  position:fixed;top:0;left:0;
+  display:flex;align-items:center;gap:6px;
+  padding:10px 16px;
+  font-weight:700;font-size:var(--fs-body);
+  letter-spacing:0.5px;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  pointer-events:none;z-index:1001;
+}
+@media(max-width:640px){.brand{font-size:var(--fs-small)}}
 [data-theme="ocean"] .controls{background:rgba(10,25,47,0.85)}
 [data-theme="ember"] .controls{background:rgba(26,10,10,0.85)}
 [data-theme="forest"] .controls{background:rgba(10,26,10,0.85)}
@@ -584,6 +596,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 <div class="orb orb-3" aria-hidden="true"></div>
 
 <!-- CONTROLS BAR -->
+<div class="brand" aria-label="Название курса">🌙 Особенный</div>
 <div class="controls" role="toolbar" aria-label="Настройки отображения">
   <button class="ctrl-btn" id="btnFontMinus" aria-label="Уменьшить шрифт" title="Уменьшить шрифт">A-</button>
   <button class="ctrl-btn" id="btnFontPlus" aria-label="Увеличить шрифт" title="Увеличить шрифт">A+</button>
@@ -873,18 +886,6 @@ tr:hover td{background:rgba(255,255,255,0.02)}
     <p style="font-size:var(--fs-small);color:var(--text3)">
       Метод является духовно-телесной практикой и не заменяет медицинскую диагностику. При наличии диагностированных заболеваний обязательна консультация врача.
     </p>
-  </div>
-
-  <!-- CTA -->
-  <div class="card slide-up" style="text-align:center">
-    <div class="img-placeholder" style="height:160px;margin-bottom:20px" aria-hidden="true">
-      <div class="inner">🌙</div>
-    </div>
-    <h2>Готовы начать?</h2>
-    <p>Этот путь требует регулярности, внутренней решимости и искреннего упования на Всевышнего. При соблюдении протокола и уважении к границам тела метод становится мостом к свободе.</p>
-    <button class="btn btn-block pulse" data-modal-open="modal-cta">
-      🚀 Записаться на курс
-    </button>
   </div>
 
   <!-- FOOTER -->
@@ -1269,33 +1270,6 @@ tr:hover td{background:rgba(255,255,255,0.02)}
     <div class="warning-box success">
       <h4>🏥 Медицинская интеграция</h4>
       <p>Метод является духовно-телесной практикой и не заменяет медицинскую диагностику. При наличии диагностированных заболеваний, приёме препаратов или стойких физических симптомах обязательна консультация лечащего врача.</p>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL: CTA -->
-<div class="modal-overlay" id="modal-cta" role="dialog" aria-modal="true" aria-labelledby="modal-cta-title">
-  <div class="modal" style="text-align:center">
-    <div class="modal-handle"></div>
-    <button class="modal-close" data-modal-close="modal-cta" aria-label="Закрыть">✕</button>
-    <div class="img-placeholder" style="height:160px;margin-bottom:20px" aria-hidden="true">
-      <div class="inner">🌙</div>
-    </div>
-    <h2 id="modal-cta-title">Готовы к трансформации?</h2>
-    <p>Курс «Особенный» — это путь от телесного пробуждения к духовной устойчивости. Он требует регулярности, внутренней решимости и искреннего упования на Всевышнего.</p>
-    <div style="margin:20px 0">
-      <span class="tag green">4 модуля</span>
-      <span class="tag">Индивидуально</span>
-      <span class="tag">Онлайн/Очно</span>
-    </div>
-    <button class="btn btn-block" style="margin-bottom:12px">
-      📩 Написать для записи
-    </button>
-    <button class="btn btn-outline btn-block" data-modal-close="modal-cta">
-      Ещё подумаю
-    </button>
-    <div class="quote" style="margin-top:20px;text-align:left">
-      «При соблюдении протокола, уважении к границам тела и сохранении духовной целостности метод становится мостом между освобождением от прошлой тяжести и жизнью в полноте, лёгкости и осознанной благодарности.»
     </div>
   </div>
 </div>
