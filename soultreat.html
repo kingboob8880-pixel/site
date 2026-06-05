@@ -131,24 +131,17 @@ body{
   padding:40px 0 30px;
   position:relative;
 }
-.logo-icon{
-  width:80px;height:80px;margin:0 auto 20px;
+.logo-text{
+  display:inline-block;margin:0 auto 20px;
+  padding:8px 20px;
+  border-radius:999px;
+  font-size:var(--fs-small);font-weight:600;
+  letter-spacing:1px;text-transform:uppercase;
+  color:#fff;
   background:var(--gradient);
   background-size:200% 200%;
-  animation:gradientShift 3s ease infinite;
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:2rem;
-  box-shadow:0 0 40px rgba(108,92,231,0.3);
-  position:relative;
-}
-.logo-icon::after{
-  content:'';position:absolute;inset:-4px;
-  border-radius:50%;
-  background:var(--gradient);background-size:200% 200%;
-  animation:gradientShift 3s ease infinite;
-  z-index:-1;opacity:0.5;
-  filter:blur(10px);
+  animation:gradientShift 4s ease infinite;
+  box-shadow:0 0 30px rgba(108,92,231,0.3);
 }
 .header h1{
   font-size:var(--fs-h1);
@@ -615,7 +608,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 
   <!-- HEADER -->
   <header class="header fade-in" style="margin-top:60px">
-    <div class="logo-icon" aria-hidden="true">🌙</div>
+    <div class="logo-text">Трансформация личности</div>
     <h1>Особенный</h1>
     <p class="subtitle">Курс трансформации личности по методу Абу Мухаммада</p>
     <span class="badge">✦ Высвобождение застрявших импульсов</span>
@@ -624,7 +617,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
   <!-- INTRO CARD -->
   <div class="card slide-up">
     <div class="img-placeholder" style="height:180px;margin-bottom:16px" aria-hidden="true">
-      <div class="inner">🕊️</div>
+      <div class="inner">🌿</div>
     </div>
     <h2>Добро пожаловать</h2>
     <p>Этот курс — <strong>особенный путь</strong> к освобождению от тех застрявших импульсов, которые были испытаны душой, но не проявлены в теле и остались зафиксированными в фасциальных тканях, мышцах и нервных путях.</p>
