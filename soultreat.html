@@ -167,14 +167,17 @@ body{
 
 /* ===================== CONTROLS BAR ===================== */
 .controls{
-  position:fixed;top:0;left:0;right:0;
-  display:flex;justify-content:center;gap:8px;
-  padding:10px 16px;
+  position:fixed;top:0;right:0;left:auto;
+  display:flex;align-items:center;justify-content:flex-end;gap:6px;
+  padding:7px 10px;
   background:rgba(10,10,26,0.85);
   backdrop-filter:blur(20px);
   z-index:1000;
+  border-left:1px solid var(--glass-border);
   border-bottom:1px solid var(--glass-border);
+  border-bottom-left-radius:14px;
   flex-wrap:wrap;
+  max-width:calc(100% - 140px);
 }
 .brand{
   position:fixed;top:0;left:0;
@@ -193,7 +196,7 @@ body{
 [data-theme="forest"] .controls{background:rgba(10,26,10,0.85)}
 [data-theme="royal"] .controls{background:rgba(26,10,46,0.85)}
 .ctrl-btn{
-  width:36px;height:36px;border-radius:10px;border:1px solid var(--glass-border);
+  width:32px;height:32px;border-radius:10px;border:1px solid var(--glass-border);
   background:var(--card-bg);color:var(--text1);
   display:flex;align-items:center;justify-content:center;
   cursor:pointer;font-size:1rem;
@@ -203,10 +206,20 @@ body{
 .ctrl-btn.active{background:var(--accent1);color:#fff}
 /* Исправлено: добавлен :focus-visible для доступности */
 .ctrl-btn:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
-.font-size-label{
-  font-size:var(--fs-micro);color:var(--text2);
-  display:flex;align-items:center;padding:0 4px;
+.font-size-label{display:none}
+.lang-switch{
+  display:flex;align-items:center;
+  border:1px solid var(--glass-border);border-radius:10px;
+  overflow:hidden;background:var(--card-bg);
 }
+.lang-btn{
+  border:none;background:transparent;color:var(--text2);
+  font-size:var(--fs-micro);font-weight:700;letter-spacing:0.5px;
+  padding:6px 9px;cursor:pointer;transition:all 0.3s ease;
+}
+.lang-btn:hover{color:var(--text1)}
+.lang-btn.active{background:var(--accent1);color:#fff}
+.lang-btn:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
 .theme-selector{
   display:flex;gap:6px;align-items:center;
 }
@@ -600,6 +613,10 @@ tr:hover td{background:rgba(255,255,255,0.02)}
     <span class="theme-dot t-ember" role="button" tabindex="0" data-theme-set="ember" title="Пламя"></span>
     <span class="theme-dot t-forest" role="button" tabindex="0" data-theme-set="forest" title="Лес"></span>
     <span class="theme-dot t-royal" role="button" tabindex="0" data-theme-set="royal" title="Королевская"></span>
+  </div>
+  <div class="lang-switch" role="group" aria-label="Язык / Til">
+    <button class="lang-btn active" data-lang="ru" type="button">RU</button>
+    <button class="lang-btn" data-lang="uz" type="button">UZ</button>
   </div>
 </div>
 
@@ -1413,6 +1430,325 @@ tr:hover td{background:rgba(255,255,255,0.02)}
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.slide-up').forEach(el => observer.observe(el));
+
+  // === ЯЗЫК: RU / UZ ===
+  // Перевод по текстовым узлам: ключ — точный (trim) русский текст, значение — узбекский (латиница).
+  // Арабские дуа и транслитерация не переводятся.
+  const UZ = {
+    // — Шапка / навигация —
+    "Размер":"Hajmi",
+    "Трансформация личности":"Shaxs transformatsiyasi",
+    "Курс трансформации личности по методу Абу Мухаммада":"Abu Muhammad metodi bo'yicha shaxs transformatsiyasi kursi",
+    "✦ Высвобождение застрявших импульсов":"✦ Qotib qolgan impulslarni ozod qilish",
+    "Главная":"Bosh sahifa","Модули":"Modullar","Дуа":"Duolar","Таблицы":"Jadvallar",
+    // — Интро —
+    "Добро пожаловать":"Xush kelibsiz",
+    "Этот курс —":"Bu kurs —",
+    "особенный путь":"alohida yo'l",
+    "к освобождению от тех застрявших импульсов, которые были испытаны душой, но не проявлены в теле и остались зафиксированными в фасциальных тканях, мышцах и нервных путях.":"qalb his etgan, biroq tanada namoyon bo'lmay, fastsial to'qimalar, mushaklar va asab yo'llarida qotib qolgan impulslardan ozod bo'lish sari.",
+    "«Нервная система — это главный интерфейс между телом, энергией и духом. Когда в этом интерфейсе есть сбой, орган или часть тела теряют связь с сознанием.»":"«Asab tizimi — bu tana, energiya va ruh o'rtasidagi asosiy interfeys. Bu interfeysda nosozlik bo'lsa, a'zo yoki tana qismi ong bilan aloqasini yo'qotadi.»",
+    "Метод последовательно работает на трёх уровнях:":"Metod izchil ravishda uch darajada ishlaydi:",
+    "телесном":"jismoniy","эмоциональном":"hissiy","и":"va","духовном":"ma'naviy",
+    ", возвращая вам полноту ощущения жизни в собственном теле.":", sizga o'z tanangizda hayotni his etishning to'liqligini qaytaradi.",
+    "▶ Начать ознакомление":"▶ Tanishuvni boshlash",
+    // — Что за метод —
+    "Что это за метод?":"Bu qanday metod?",
+    "Это не массаж и не релаксация. Это":"Bu massaj ham, relaksatsiya ham emas. Bu —",
+    "целенаправленная работа":"maqsadli ish",
+    "с невыраженными душевными импульсами, пробуждение «немых зон» и восстановление связи «мозг–тело».":"ifoda etilmagan ruhiy impulslar bilan, «soqov zonalar»ni uyg'otish va «miya–tana» aloqasini tiklash.",
+    "Ключевые принципы":"Asosiy tamoyillar",
+    "Непроявленные эмоции фиксируются в фасциях и мышцах":"Namoyon bo'lmagan hissiyotlar fastsiya va mushaklarda qotib qoladi",
+    "Физическое воздействие пробуждает нервные окончания":"Jismoniy ta'sir asab uchlarini uyg'otadi",
+    "Каждое надавливание синхронизируется с вербализацией недуга":"Har bir bosish dardni so'z bilan ifodalash bilan sinxronlanadi",
+    "Сакральные формулы и дуа усиливают процесс очищения":"Muqaddas formulalar va duolar tozalanish jarayonini kuchaytiradi",
+    "Дыхание — проводник, выводящий освобождённую энергию":"Nafas — ozod bo'lgan energiyani chiqaruvchi o'tkazgich",
+    "✅ Единственное противопоказание":"✅ Yagona qarshi ko'rsatma",
+    "Беременность. Во всех остальных случаях метод доступен при соблюдении протокола интенсивности и самонаблюдения.":"Homiladorlik. Boshqa barcha hollarda metod intensivlik protokoli va o'z-o'zini kuzatishga rioya qilingan holda qo'llaniladi.",
+    // — Структура —
+    "Структура курса":"Kurs tuzilishi",
+    "Курс выстроен как последовательная спираль трансформации: от тела к духу, от высвобождения к устойчивой чистоте.":"Kurs izchil transformatsiya spirali sifatida qurilgan: tanadan ruhga, ozod bo'lishdan barqaror poklikka.",
+    "Модуль 01":"01-modul","Модуль 02":"02-modul","Модуль 03":"03-modul","Модуль 04":"04-modul",
+    "Физическое пробуждение":"Jismoniy uyg'onish",
+    "Телесная диагностика, протирание, похлопывание, надавливание, выщипывание + вербализация":"Tana diagnostikasi, ishqalash, shapatilash, bosish, chimchilash + so'z bilan ifodalash",
+    "Психосоматическая трансформация":"Psixosomatik transformatsiya",
+    "Проживание эмоций, замещение паттернов, 30 пар «недуг → качество»":"Hissiyotlarni yashash, patternlarni almashtirish, 30 juft «dard → fazilat»",
+    "Духовно-визуальное очищение":"Ma'naviy-vizual tozalanish",
+    "Периферическое зрение, цветные маркеры, дуа-заклинания":"Periferik ko'rish, rangli markerlar, duo-raqyalar",
+    "Духовная гигиена":"Ma'naviy gigiyena",
+    "Границы, невпитывание, ежедневная благодарность и устойчивость":"Chegaralar, o'ziga singdirmaslik, kundalik shukronalik va barqarorlik",
+    // — Как работает —
+    "Как это работает?":"Bu qanday ishlaydi?",
+    "Цикл трансформации в каждом модуле:":"Har bir moduldagi transformatsiya tsikli:",
+    "Диагностика":"Diagnostika",
+    "— поиск «немых зон» через напряжение, протирание, похлопывание и боди-скан":"— taranglik, ishqalash, shapatilash va body-skan orqali «soqov zonalar»ni izlash",
+    "Активация":"Faollashtirish",
+    "— физическое воздействие (надавливание, выщипывание, вытягивание) для пробуждения импульсов":"— impulslarni uyg'otish uchun jismoniy ta'sir (bosish, chimchilash, cho'zish)",
+    "Вербализация":"So'z bilan ifodalash",
+    "— проговаривание конкретного недуга синхронно с воздействием":"— ta'sir bilan bir vaqtda aniq dardni ovoz chiqarib aytish",
+    "Духовное очищение":"Ma'naviy tozalanish",
+    "— дуа, суры, молитвенные формулы для выведения застрявшей энергии":"— qotib qolgan energiyani chiqarish uchun duolar, suralar, ibodat formulalari",
+    "Интеграция":"Integratsiya",
+    "— глубокое дыхание, душ, заземление, наблюдение за изменениями":"— chuqur nafas, dush, yerga ulanish, o'zgarishlarni kuzatish",
+    // — Карта зон (превью) —
+    "Карта психосоматических зон":"Psixosomatik zonalar xaritasi",
+    "Какая часть тела откликается на напряжение — там скрыт застрявший импульс.":"Tananing qaysi qismi taranglikka javob bersa — o'sha yerda qotib qolgan impuls yashiringan.",
+    "Зона тела":"Tana zonasi","Возможный недуг":"Ehtimoliy dard",
+    "🦶 Стопы":"🦶 Tovonlar","Страх отпустить, недоверие миру":"Qo'yib yuborishdan qo'rquv, dunyoga ishonchsizlik",
+    "🦵 Колени":"🦵 Tizzalar","Упрямство, негибкость":"O'jarlik, egiluvchanlik yo'qligi",
+    "🫁 Таз":"🫁 Tos","Подавленная сексуальность, творческие блоки":"Bostirilgan jinsiylik, ijodiy to'siqlar",
+    "🫀 Живот":"🫀 Qorin","Непринятие себя, непереваренные эмоции":"O'zini qabul qilmaslik, hazm bo'lmagan hissiyotlar",
+    "💨 Диафрагма":"💨 Diafragma","Подавленный страх, запрет на эмоции":"Bostirilgan qo'rquv, hissiyotlarga taqiq",
+    "🫁 Грудная клетка":"🫁 Ko'krak qafasi","Невыраженная грусть, непрожитое горе":"Ifoda etilmagan g'am, yashalmagan qayg'u",
+    "💪 Плечи":"💪 Yelkalar","Чрезмерная ответственность, бремя":"Haddan ortiq mas'uliyat, yuk",
+    "🗣️ Шея":"🗣️ Bo'yin","Страх выразить истинные чувства":"Chin tuyg'ularni ifodalashdan qo'rquv",
+    "😬 Челюсть":"😬 Jag'","Подавленный гнев, невысказанные слова":"Bostirilgan g'azab, aytilmagan so'zlar",
+    "🧠 Лоб и виски":"🧠 Peshona va chakkalar","Чрезмерный анализ, страх отпустить контроль":"Haddan ortiq tahlil, nazoratni qo'yib yuborishdan qo'rquv",
+    "📋 Полная таблица (30 зон)":"📋 To'liq jadval (30 zona)",
+    // — Дуа (превью) —
+    "Духовные формулы":"Ma'naviy formulalar",
+    "В курсе используются специальные дуа-заклинания, привязанные к цветовым маркерам в периферическом зрении (Модуль 3).":"Kursda periferik ko'rishdagi rang markerlariga bog'langan maxsus duo-raqyalar qo'llaniladi (3-modul).",
+    "«С именем Аллаха, заклинаю от страха в моём сердце»":"«Alloh nomi bilan, qalbimdagi qo'rquvdan panoh tilayman»",
+    "Серо-тёмный → Страх":"Kulrang-to'q → Qo'rquv",
+    "«С именем Аллаха, заклинаю от обиды в моей груди»":"«Alloh nomi bilan, ko'ksimdagi xafagarchilikdan panoh tilayman»",
+    "Кислотно-зелёный → Обида":"Kislota-yashil → Xafagarchilik",
+    "«С именем Аллаха, заклинаю от гнева в моей душе»":"«Alloh nomi bilan, nafsimdagi g'azabdan panoh tilayman»",
+    "Ярко-красный → Гнев":"Yorqin-qizil → G'azab",
+    "📖 Все 10 дуа с переводом":"📖 Barcha 10 duo tarjimasi bilan",
+    // — Трансформация качеств (превью) —
+    "Трансформация качеств":"Fazilatlar transformatsiyasi",
+    "Каждому негативному состоянию соответствует целительное качество, которое активируется во 2-м модуле.":"Har bir salbiy holatga 2-modulda faollashtiriladigan shifobaxsh fazilat mos keladi.",
+    "Недуг":"Dard","Целительное качество":"Shifobaxsh fazilat",
+    "😨 Страх":"😨 Qo'rquv","Бесстрашие, Доверие к Аллаху":"Qo'rqmaslik, Allohga tavakkul",
+    "💔 Разочарование":"💔 Hafsalasizlik","Принятие, Гибкость":"Qabul qilish, Egiluvchanlik",
+    "😡 Гнев":"😡 G'azab","Спокойствие, Терпение":"Xotirjamlik, Sabr",
+    "👁️ Зависть":"👁️ Hasad","Радость за других, Щедрость":"Boshqalar uchun quvonish, Saxiylik",
+    "😢 Уныние":"😢 Tushkunlik","Радость, Вдохновение":"Quvonch, Ilhom",
+    "😰 Тревога":"😰 Xavotir","Умиротворение, Вера":"Tinchlik, Iymon",
+    "😞 Печаль":"😞 G'amginlik","Принятие утраты, Благодарность":"Yo'qotishni qabul qilish, Shukronalik",
+    "😤 Раздражение":"😤 Asabiylik","Терпимость, Понимание":"Bag'rikenglik, Tushunish",
+    "😔 Отчаяние":"😔 Umidsizlik","Надежда, Стойкость":"Umid, Matonat",
+    "🚶 Одиночество":"🚶 Yolg'izlik","Гармония с собой, Наполненность":"O'zi bilan uyg'unlik, To'liqlik",
+    "+ ещё 20 пар":"+ yana 20 juft","📋 Полная таблица 30 пар":"📋 30 juftlik to'liq jadval",
+    // — Результаты —
+    "Ожидаемые результаты":"Kutilayotgan natijalar",
+    "После Модуля 1":"1-moduldan keyin","После Модуля 2":"2-moduldan keyin",
+    "После Модуля 3":"3-moduldan keyin","После Модуля 4":"4-moduldan keyin",
+    "Пробуждение «немых зон», выход первичных телесных зажимов, восстановление чувствительности и импульсной проводимости, ощущение лёгкости в теле, улучшение осанки.":"«Soqov zonalar»ning uyg'onishi, dastlabki tana qisilishlarining chiqishi, sezuvchanlik va impuls o'tkazuvchanligining tiklanishi, tanada yengillik hissi, qomatning yaxshilanishi.",
+    "Исчезновение остаточного сопротивления, изменение мимики и поведенческих паттернов, устойчивое замещение разрушительных эмоций целительными качествами, глубокое эмоциональное облегчение.":"Qoldiq qarshilikning yo'qolishi, mimika va xulq patternlarining o'zgarishi, buzg'unchi hissiyotlarning shifobaxsh fazilatlar bilan barqaror almashinishi, chuqur hissiy yengillik.",
+    "Очищение тонких фасциально-энергетических слоёв, исчезновение «фоновых» тяжестей, восстановление внутренней тишины, лёгкости дыхания, естественная эластичность тканей.":"Nozik fastsial-energetik qatlamlarning tozalanishi, «fon» og'irliklarning yo'qolishi, ichki sukunatning tiklanishi, nafasning yengilligi, to'qimalarning tabiiy elastikligi.",
+    "Устойчивое внутреннее равновесие, защита от эмоционального поглощения, естественное поддержание чистоты, трансформация поведения и социального взаимодействия, открытое выражение радости.":"Barqaror ichki muvozanat, hissiy yutilishdan himoya, poklikni tabiiy saqlash, xulq va ijtimoiy muloqotning transformatsiyasi, quvonchni ochiq ifodalash.",
+    // — Безопасность (карточка) —
+    "Безопасность":"Xavfsizlik",
+    "⚠️ Противопоказание":"⚠️ Qarshi ko'rsatma",
+    "Беременность — абсолютное противопоказание для прохождения курса.":"Homiladorlik — kursdan o'tish uchun mutlaq qarshi ko'rsatma.",
+    "📊 Болевой порог":"📊 Og'riq chegarasi",
+    "Допустимый уровень боли: до 7–8 баллов по субъективной шкале. Боль воспринимается как маркер выхода импульса, а не как повод для остановки.":"Ruxsat etilgan og'riq darajasi: sub'ektiv shkala bo'yicha 7–8 ballgacha. Og'riq to'xtash sababi emas, impuls chiqishining markeri sifatida qabul qilinadi.",
+    "🛑 Немедленная остановка при:":"🛑 Quyidagi hollarda darhol to'xtang:",
+    "Стреляющей или пульсирующей боли, головокружении, распространяющемся онемении, нарушении дыхания, панической реакции.":"Otib turuvchi yoki lo'qillovchi og'riq, bosh aylanishi, tarqaluvchi uvishish, nafas buzilishi, vahima reaksiyasida.",
+    "✅ Нормальные реакции":"✅ Normal reaksiyalar",
+    "Покраснение, временные синяки, мышечная усталость, эмоциональный всплеск. Проходят за 2–5 дней. После сессии рекомендуется тёплый душ и глубокое дыхание.":"Qizarish, vaqtinchalik ko'karishlar, mushak charchog'i, hissiy portlash. 2–5 kunda o'tib ketadi. Seansdan keyin iliq dush va chuqur nafas tavsiya etiladi.",
+    "Метод является духовно-телесной практикой и не заменяет медицинскую диагностику. При наличии диагностированных заболеваний обязательна консультация врача.":"Metod ma'naviy-jismoniy amaliyot bo'lib, tibbiy tashxisning o'rnini bosmaydi. Tashxis qo'yilgan kasalliklar mavjud bo'lganda shifokor bilan maslahatlashish shart.",
+    // — Футер —
+    "Курс «Особенный» по методу Абу Мухаммада":"Abu Muhammad metodi bo'yicha «Особенный» kursi",
+    "Высвобождение застрявших импульсов · Психосоматическая перезагрузка · Духовная гигиена":"Qotib qolgan impulslarni ozod qilish · Psixosomatik qayta yuklash · Ma'naviy gigiyena",
+    "© 2025 Все права защищены":"© 2025 Barcha huquqlar himoyalangan",
+    // — Модаль: О методе —
+    "О методе":"Metod haqida",
+    "Курс «Особенный» — это уникальная методика, разработанная Абу Мухаммадом на основе глубокого наблюдения за связью тела, нервной системы и духа.":"«Особенный» kursi — Abu Muhammad tomonidan tana, asab tizimi va ruh o'rtasidagi bog'liqlikni chuqur kuzatish asosida ishlab chiqilgan noyob metodika.",
+    "Основная идея":"Asosiy g'oya",
+    "Наша нервная система — главный «интерфейс» между телом, энергией и духом. Когда пережитые душой эмоции не находят телесного выражения, они «застревают» в фасциальных тканях, мышечных зажимах и энергетических каналах, создавая невидимую, но ощутимую плотность.":"Asab tizimimiz — tana, energiya va ruh o'rtasidagi asosiy «interfeys». Qalb kechirgan hissiyotlar tanada ifoda topmasa, ular fastsial to'qimalar, mushak qisilishlari va energetik kanallarda «qotib qoladi», ko'rinmas, ammo seziladigan zichlik hosil qiladi.",
+    "Как работает метод":"Metod qanday ishlaydi",
+    "Метод последовательно пробуждает «немые зоны» через физическое воздействие (протирание, похлопывание, надавливание, выщипывание), синхронизирует каждое действие с вербализацией конкретного недуга и усиливает процесс сакральными формулами.":"Metod jismoniy ta'sir (ishqalash, shapatilash, bosish, chimchilash) orqali «soqov zonalar»ni izchil uyg'otadi, har bir harakatni aniq dardni so'z bilan ifodalash bilan sinxronlaydi va jarayonni muqaddas formulalar bilan kuchaytiradi.",
+    "«Слово работает как свет, рассеивающий тень, а дыхание становится проводником, выводящим освобождённую энергию за пределы тела.»":"«So'z soyani tarqatuvchi nur kabi ishlaydi, nafas esa ozod bo'lgan energiyani tana tashqarisiga chiqaruvchi o'tkazgichga aylanadi.»",
+    "Три уровня работы":"Ishning uch darajasi",
+    "Телесный":"Jismoniy","— пробуждение нервной системы, разрушение фасциальных блоков":"— asab tizimini uyg'otish, fastsial bloklarni buzish",
+    "Эмоциональный":"Hissiy","— проживание и трансформация чувств, замещение паттернов":"— tuyg'ularni yashash va o'zgartirish, patternlarni almashtirish",
+    "Духовный":"Ma'naviy","— очищение через дуа, суры и периферическое зрение":"— duolar, suralar va periferik ko'rish orqali tozalanish",
+    // — Модаль: Модуль 1 —
+    "Первый модуль — это не массаж. Это осознанное высвобождение невыраженных душевных импульсов, зафиксированных в фасциальной ткани.":"Birinchi modul — bu massaj emas. Bu fastsial to'qimada qotib qolgan, ifoda etilmagan ruhiy impulslarni ongli ravishda ozod qilish.",
+    "Пошаговый протокол":"Bosqichma-bosqich protokol",
+    "Стартовое прочувствование:":"Boshlang'ich his etish:",
+    "Интенсивно протирайте и похлопывайте всё тело ладонями/кулаками, глубоко и ритмично дыша. Движение от стоп к голове.":"Butun tanani kaft/musht bilan jadal ishqalang va shapatilang, chuqur va ritmik nafas oling. Harakat tovondan boshga qarab.",
+    "Выбор состояния:":"Holatni tanlash:",
+    "Определите одно негативное душевное качество (страх, обида, гнев и т.д.)":"Bitta salbiy ruhiy fazilatni aniqlang (qo'rquv, xafagarchilik, g'azab va h.k.)",
+    "Поиск в теле:":"Tanada izlash:",
+    "Продолжая протирать/похлопывать, проговаривайте название состояния. Ищите зоны отклика: напряжение, тяжесть, жар/холод, «пустота».":"Ishqalash/shapatilashni davom ettirib, holat nomini ovoz chiqarib ayting. Javob zonalarini qidiring: taranglik, og'irlik, issiq/sovuq, «bo'shliq».",
+    "Активное высвобождение:":"Faol ozod qilish:",
+    "В зоне сопротивления — надавливание (твёрдым предметом или пальцами), выщипывание кожи (захват→натяжение→отпуск), вытягивание (удержание 10 сек + дыхание). Возврат к протиранию для интеграции.":"Qarshilik zonasida — bosish (qattiq buyum yoki barmoqlar bilan), terini chimchilash (ushlash→tortish→qo'yib yuborish), cho'zish (10 soniya ushlab turish + nafas). Integratsiya uchun ishqalashga qaytish.",
+    "Синхронизация:":"Sinxronlash:",
+    "Во время воздействия проговаривайте: «Разрушается [недуг]», «Да выведет Аллах [недуг] из моего тела». Сочетайте мышечное напряжение с дуа.":"Ta'sir vaqtida ayting: «[dard] yemirilmoqda», «Alloh [dard]ni tanamdan chiqarsin». Mushak taranglikni duo bilan birlashtiring.",
+    "Завершение:":"Yakunlash:",
+    "Глубокий вдох-выдох для заземления. Рекомендуется тёплый душ.":"Yerga ulanish uchun chuqur nafas olib-chiqarish. Iliq dush tavsiya etiladi.",
+    "Диагностические методы":"Diagnostika usullari",
+    "Прямое надавливание — поиск боли, напряжения, холода/онемения":"To'g'ridan-to'g'ri bosish — og'riq, taranglik, sovuq/uvishishni izlash",
+    "Мысленный боди-скан — выявление «слепых пятен»":"Aqliy body-skan — «ko'r nuqtalar»ni aniqlash",
+    "Карта психосоматической проекции — связь зон с эмоциями":"Psixosomatik proyeksiya xaritasi — zonalarning hissiyotlar bilan aloqasi",
+    "Метод спонтанного движения — наблюдение привычных поз":"Spontan harakat usuli — odatiy pozalarni kuzatish",
+    "Дыхательная диагностика — выявление зон ограничения дыхания":"Nafas diagnostikasi — nafas cheklangan zonalarni aniqlash",
+    "💡 Важно":"💡 Muhim",
+    "Агрессия в данном контексте — это осознанная решимость и намеренная интенсивность, направленная на преодоление сопротивления, а не разрушение. Боль — сигнал к действию, а не повод для остановки.":"Bu kontekstda agressiya — bu qarshilikni yengishga qaratilgan ongli qat'iyat va atayin intensivlik, buzg'unchilik emas. Og'riq — harakatga signal, to'xtash sababi emas.",
+    // — Модаль: Модуль 2 —
+    "Переход от физической разблокировки к осознанному проживанию и трансформации эмоциональных состояний. Работа строится на телесном прочувствовании, а не на интеллектуальном анализе.":"Jismoniy blokdan chiqishdan hissiy holatlarni ongli yashash va o'zgartirishga o'tish. Ish intellektual tahlilga emas, tana orqali his etishga quriladi.",
+    "Алгоритм работы":"Ish algoritmi",
+    "Проявление:":"Namoyon bo'lish:","Впустите эмоцию, отследите откликающиеся органы":"Hissiyotni ichingizga qo'ying, javob beruvchi a'zolarni kuzating",
+    "Вербализация:":"So'z bilan ifodalash:","Проговорите чувство, свяжите с событием":"Tuyg'uni ayting, voqea bilan bog'lang",
+    "Разрушение:":"Yemirish:","«Разрушается [чувство]» + «Да выведет Аллах [чувство]»":"«[tuyg'u] yemirilmoqda» + «Alloh [tuyg'u]ni chiqarsin»",
+    "Возврат к физике:":"Jismoniyga qaytish:","Если блок не поддаётся — используйте техники М1":"Blok bo'shamasa — M1 texnikalaridan foydalaning",
+    "Активация противоположности:":"Qarama-qarshilikni faollashtirish:","Проговаривайте позитивное качество до исчезновения сопротивления":"Qarshilik yo'qolguncha ijobiy fazilatni ovoz chiqarib ayting",
+    "Пример: работа со страхом":"Misol: qo'rquv bilan ishlash",
+    "При проявлении страха активируются горло, грудь, сердце и часть живота. Проговаривайте ощущения, фокусируясь на чувствах. Затем: «Разрушается страх» → «Да выведет Аллах все мои страхи». После — проявите бесстрашие: «Я не боюсь людей».":"Qo'rquv namoyon bo'lganda tomoq, ko'krak, yurak va qorinning bir qismi faollashadi. Tuyg'ularga e'tibor qaratib, his-tuyg'ularni ayting. So'ngra: «Qo'rquv yemirilmoqda» → «Alloh barcha qo'rquvlarimni chiqarsin». Keyin — qo'rqmaslikni namoyon eting: «Men odamlardan qo'rqmayman».",
+    "«Не пытайтесь умом понять чувства. Чувства нужно ощущать и проживать в теле.»":"«Tuyg'ularni aql bilan tushunishga urinmang. Tuyg'ularni tanada his etish va yashash kerak.»",
+    // — Модаль: Модуль 3 —
+    "Утончённая практика, где периферическое зрение становится мостом между невидимым миром души и плотной тканью тела.":"Periferik ko'rish qalbning ko'rinmas olami bilan tananing zich to'qimasi o'rtasida ko'prikka aylanadigan nozik amaliyot.",
+    "Как выполнять":"Qanday bajariladi",
+    "Направьте внимание в зону периферического зрения, мысленно произнесите название недуга. Если проступает цвет — это маркер укоренившегося состояния. Прочитайте соответствующее дуа на выдохе, пока оттенок не растворится.":"Diqqatni periferik ko'rish zonasiga qarating, dardning nomini ichingizda ayting. Agar rang ko'rinsa — bu ildiz otgan holatning markeri. Tus tarqab ketguncha nafas chiqarganda tegishli duoni o'qing.",
+    "10 пар «Цвет → Состояние → Дуа»":"10 juft «Rang → Holat → Duo»",
+    "Полная таблица доступна по кнопке ниже.":"To'liq jadval quyidagi tugma orqali mavjud.",
+    "«С именем Аллаха, заклинаю от уныния»":"«Alloh nomi bilan, tushkunlikdan panoh tilayman»",
+    "Грязно-синий → Уныние":"Iflos-ko'k → Tushkunlik",
+    "📖 Все 10 дуа с цветами":"📖 Barcha 10 duo ranglar bilan",
+    // — Модаль: Модуль 4 —
+    "Искусство сохранять внутреннюю чистоту не как разовое достижение, а как живое, дышащее состояние.":"Ichki poklikni bir martalik yutuq sifatida emas, balki tirik, nafas oluvchi holat sifatida saqlash san'ati.",
+    "Невпитывание:":"O'ziga singdirmaslik:","Чистая душа видит, понимает, сочувствует — но не поглощает чужую тяжесть":"Pok qalb ko'radi, tushunadi, hamdard bo'ladi — biroq o'zganing og'irligini o'ziga yutmaydi",
+    "Границы:":"Chegaralar:","Мягкий уход, твёрдое «нет», изменение формата общения — защита своего пространства":"Yumshoq chekinish, qat'iy «yo'q», muloqot formatini o'zgartirish — o'z makonini himoya qilish",
+    "Наполнение:":"To'ldirish:","Ежедневное «Альхамдулиллях» как выдох благодарности, открытое выражение радости":"Kundalik «Alhamdulillah» shukronalik nafasi sifatida, quvonchni ochiq ifodalash",
+    "Ритм:":"Ritm:","Вдох ясности → выдох признательности. Чистота поддерживается регулярностью":"Tiniqlik nafasi → minnatdorchilik nafasi. Poklik muntazamlik bilan saqlanadi",
+    "«Духовная гигиена превращается в искусство дыхания: вдох ясности, выдох признательности. И в этом дыхании рождается устойчивость, которая не ломается от встреч с чужой тяжестью.»":"«Ma'naviy gigiyena nafas san'atiga aylanadi: tiniqlik nafasi, minnatdorchilik nafasi. Va shu nafasda o'zganing og'irligi bilan uchrashuvdan sinmaydigan barqarorlik tug'iladi.»",
+    "💡 Практика на каждый день":"💡 Har kungi amaliyot",
+    "Утром: 3 минуты глубокого дыхания + проговаривание позитивных качеств. Вечером: краткий боди-скан + благодарность. При контакте с тяжёлыми людьми: осознанное дыхание + возврат к практике при необходимости.":"Ertalab: 3 daqiqa chuqur nafas + ijobiy fazilatlarni aytish. Kechqurun: qisqa body-skan + shukronalik. Og'ir odamlar bilan muloqotda: ongli nafas + zarur bo'lganda amaliyotga qaytish.",
+    // — Модаль: 10 дуа —
+    "10 дуа-заклинаний":"10 duo-raqya",
+    "Каждая формула привязана к цветовому маркеру в периферическом зрении. Произносите на выдохе.":"Har bir formula periferik ko'rishdagi rang markeriga bog'langan. Nafas chiqarganda ayting.",
+    "Серо-тёмный":"Kulrang-to'q","Кислотно-зелёный":"Kislota-yashil","Ярко-красный":"Yorqin-qizil",
+    "«С именем Аллаха, заклинаю от зависти»":"«Alloh nomi bilan, hasaddan panoh tilayman»","Ядовито-жёлтый":"Zaharli-sariq",
+    "Грязно-синий":"Iflos-ko'k",
+    "«С именем Аллаха, заклинаю от тревоги»":"«Alloh nomi bilan, xavotirdan panoh tilayman»","Оранжевый":"To'q sariq",
+    "«С именем Аллаха, заклинаю от гордыни»":"«Alloh nomi bilan, kibrdan panoh tilayman»","Металлический золотой":"Metall-oltin",
+    "«С именем Аллаха, заклинаю от лени»":"«Alloh nomi bilan, dangasalikdan panoh tilayman»","Мутно-коричневый":"Loyqa-jigarrang",
+    "«С именем Аллаха, заклинаю от жадности»":"«Alloh nomi bilan, ochko'zlikdan panoh tilayman»","Блестящий жёлтый":"Yaltiroq-sariq",
+    "«С именем Аллаха, заклинаю от лицемерия»":"«Alloh nomi bilan, ikkiyuzlamachilikdan panoh tilayman»","Радужный переливающийся":"Kamalak-tovlanuvchi",
+    // — Модаль: 30 пар —
+    "30 пар трансформации":"30 juftlik transformatsiya",
+    "Каждому негативному состоянию соответствует целительное качество. Активируйте противоположность для проверки остаточного сопротивления.":"Har bir salbiy holatga shifobaxsh fazilat mos keladi. Qoldiq qarshilikni tekshirish uchun qarama-qarshilikni faollashtiring.",
+    "Страх":"Qo'rquv","Разочарование":"Hafsalasizlik","Принятие, Гибкость":"Qabul qilish, Egiluvchanlik",
+    "Гнев, злость":"G'azab, jahl","Спокойствие, Терпение, Прощение":"Xotirjamlik, Sabr, Kechirim",
+    "Зависть, ревность":"Hasad, rashk","Уныние, тоска":"Tushkunlik, hasrat",
+    "Тревожность":"Xavotirlik","Печаль, скорбь":"G'amginlik, qayg'u",
+    "Томление, беспокойство":"Entikish, bezovtalik","Уверенность, Внутренний покой":"Ishonch, Ichki osoyishtalik",
+    "Одиночество (покинутость)":"Yolg'izlik (tashlab ketilganlik)","Чувство близости Аллаха":"Allohning yaqinligini his etish",
+    "Позор, бесчестие":"Sharmandalik, nomussizlik","Самоуважение, Честь":"O'zini hurmat qilish, Or-nomus",
+    "Унижение":"Xo'rlanish","Самоценность, Внутренняя сила":"O'z qadrini bilish, Ichki kuch",
+    "Неудача, провал":"Omadsizlik, mag'lubiyat","Упорство, Принятие урока":"Qat'iyat, Saboqni qabul qilish",
+    "Крушение надежд":"Umidlarning sinishi","Открытость, Вера без привязки":"Ochiqlik, Bog'lanishsiz iymon",
+    "Раздражение":"Asabiylik","Отчаяние":"Umidsizlik",
+    "Одиночество (состояние)":"Yolg'izlik (holat)",
+    "Грусть":"Mahzunlik","Благодарность, Принятие":"Shukronalik, Qabul qilish",
+    "Обман":"Aldov","Честность, Прощение":"Halollik, Kechirim",
+    "Отвращение":"Nafrat","Принятие, Терпимость":"Qabul qilish, Bag'rikenglik",
+    "Скрытность":"Yashirinlik","Искренность, Экспрессивность":"Samimiylik, Ekspressivlik",
+    "Смятение":"Sarosima","Ясность, Внутренний порядок":"Tiniqlik, Ichki tartib",
+    "Истощение":"Holdan toyish","Жизненная сила, Энергичность":"Hayotiy kuch, Quvvatlilik",
+    "Переполнение":"To'lib-toshish","Уравновешенность, Умение отпускать":"Muvozanat, Qo'yib yubora olish",
+    "Отчуждённость":"Begonalashish","Сопричастность, Эмпатия":"Hamdardlik, Empatiya",
+    "Подавленность":"Ezilganlik","Целостность, Стойкость":"Yaxlitlik, Matonat",
+    "Недовольство":"Norozilik","Принятие, Благодарность":"Qabul qilish, Shukronalik",
+    "Изнеможение, усталость":"Charchoq, holsizlik","Бодрость, Радость движения":"Tetiklik, Harakat quvonchi",
+    "Изоляция":"Izolyatsiya","Открытость, Выход из зоны комфорта":"Ochiqlik, Komfort zonasidan chiqish",
+    "Замкнутость":"Tortinchoqlik","Открытость, Доверие":"Ochiqlik, Ishonch",
+    "Задержка, блокировка":"Kechikish, bloklanish","Свобода выражения, Поток":"Ifoda erkinligi, Oqim",
+    // — Модаль: Полная карта —
+    "Полная психосоматическая карта":"To'liq psixosomatik xarita",
+    "Связь эмоциональных загрязнений с зонами тела, фигурой и здоровьем.":"Hissiy ifloslanishlarning tana zonalari, qomat va salomatlik bilan aloqasi.",
+    "Зона в теле":"Tanadagi zona","Влияние":"Ta'siri",
+    "Почки, поясница":"Buyraklar, bel","«Спасательный круг», хронический стресс":"«Qutqaruv halqasi», surunkali stress",
+    "Желудок, поджелудочная":"Oshqozon, oshqozon osti bezi","Нестабильный вес, «расплывшаяся» талия":"Beqaror vazn, «yoyilgan» bel",
+    "Гнев":"G'azab","Печень, виски, челюсти":"Jigar, chakkalar, jag'lar","Жёсткая фигура, гипертония":"Qattiq qomat, gipertoniya",
+    "Зависть":"Hasad","Жёлчный, кишечник":"O't pufagi, ichak","Бёдра и ягодицы, вздутие":"Sonlar va dumba, shishish",
+    "Уныние":"Tushkunlik","Лёгкие, кожа":"O'pka, teri","Сутулость, дряблость":"Bukchayganlik, bo'shashganlik",
+    "Тревога":"Xavotir","Сердце, грудная клетка":"Yurak, ko'krak qafasi","Худоба, учащённое сердцебиение":"Ozg'inlik, yurak urishining tezlashishi",
+    "Печаль":"G'amginlik","Лёгкие, плечи":"O'pka, yelkalar","Опущенные плечи, астма":"Tushgan yelkalar, astma",
+    "Томление":"Entikish","Селезёнка, лимфа":"Taloq, limfa","Отёчность, целлюлит":"Shishish, sellyulit",
+    "Одиночество":"Yolg'izlik","Сердце, диафрагма":"Yurak, diafragma","Боли в груди, ВСД":"Ko'krakdagi og'riq, VTD",
+    "Тазобедренные суставы":"Son-chanoq bo'g'imlari","Холодность, артриты":"Sovuqlik, artritlar",
+    "Позор":"Sharmandalik","Лицо, кожа":"Yuz, teri","Псориаз, экзема, покраснения":"Psoriaz, ekzema, qizarishlar",
+    "Горло, щитовидка":"Tomoq, qalqonsimon bez","Проблемы с метаболизмом и весом":"Metabolizm va vazn muammolari",
+    "Неудача":"Omadsizlik","Надпочечники, позвоночник":"Buyrak usti bezlari, umurtqa pog'onasi","Сутулость, хроническая усталость":"Bukchayganlik, surunkali charchoq",
+    "Диафрагма":"Diafragma","Резкие колебания веса, спазмы":"Vaznning keskin o'zgarishi, spazmlar",
+    "Нервная система, кожа":"Asab tizimi, teri","Крапивница, нервный тик":"Eshakyem, asabiy tik",
+    "Тяжёлое тело, боли в сердце":"Og'ir tana, yurak og'rig'i",
+    "Грудная клетка, лёгкие":"Ko'krak qafasi, o'pka","Слабое дыхание, респираторные":"Zaif nafas, respirator kasalliklar",
+    "Тонкий кишечник":"Ingichka ichak","Вздутие, напряжение в центре":"Shishish, markazdagi taranglik",
+    "Желудок, горло":"Oshqozon, tomoq","Тошнота, нарушения аппетита":"Ko'ngil aynishi, ishtaha buzilishi",
+    "Горло, челюсть, таз":"Tomoq, jag', tos","Хронические боли, фибромиалгия":"Surunkali og'riqlar, fibromialgiya",
+    "Нервная система, мозг":"Asab tizimi, miya","Бессонница, панические атаки":"Uyqusizlik, vahima xurujlari",
+    "Надпочечники, эндокринная":"Buyrak usti bezlari, endokrin tizim","Выгорание, потеря/набор веса":"Charchab-tolish, vazn yo'qotish/ortish",
+    "Селезёнка, лимфа":"Taloq, limfa","Отёки, пастозность":"Shishlar, pastozlik",
+    "Кожа, периферическая НС":"Teri, periferik asab tizimi","Холодная кожа, онемения":"Sovuq teri, uvishishlar",
+    "Позвоночник, колени":"Umurtqa pog'onasi, tizzalar","Искривление осанки, остеохондроз":"Qomatning egilishi, osteoxondroz",
+    "Желудок, пищевод, зубы":"Oshqozon, qizilo'ngach, tishlar","Бруксизм, напряжение":"Bruksizm, taranglik",
+    "Изнеможение":"Holsizlik","Сердце, мышцы":"Yurak, mushaklar","Дряблость, отсутствие тонуса":"Bo'shashganlik, tonus yo'qligi",
+    "«Галифе», холод в ногах":"«Galife», oyoqlardagi sovuqlik",
+    "Плечевой пояс, грудь":"Yelka kamari, ko'krak","Сутулость, впалая грудь":"Bukchayganlik, botiq ko'krak",
+    "Задержка":"Kechikish","Таз, низ живота":"Tos, qorinning pastki qismi","Холодность, нарушения цикла":"Sovuqlik, tsikl buzilishi",
+    "💡 Запомните":"💡 Yodda tuting",
+    "Тело и душа неразрывно связаны. Работая с осознанием и высвобождением «душевных загрязнений», вы оказываете глубокое оздоравливающее воздействие на физическое тело.":"Tana va ruh uzviy bog'liq. «Ruhiy ifloslanishlar»ni anglash va ozod qilish bilan ishlab, siz jismoniy tanaga chuqur sog'lomlashtiruvchi ta'sir ko'rsatasiz.",
+    // — Модаль: Безопасность —
+    "Беременность — единственное абсолютное противопоказание для прохождения курса.":"Homiladorlik — kursdan o'tish uchun yagona mutlaq qarshi ko'rsatma.",
+    "Болевой порог":"Og'riq chegarasi",
+    "Допустимый уровень боли:":"Ruxsat etilgan og'riq darajasi:","до 7–8 баллов":"7–8 ballgacha",
+    "по субъективной шкале. Боль воспринимается как маркер выхода застрявшего импульса.":"sub'ektiv shkala bo'yicha. Og'riq qotib qolgan impuls chiqishining markeri sifatida qabul qilinadi.",
+    "Немедленная остановка при:":"Quyidagi hollarda darhol to'xtang:",
+    "Стреляющей или пульсирующей боли":"Otib turuvchi yoki lo'qillovchi og'riq",
+    "Головокружении":"Bosh aylanishi","Распространяющемся онемении":"Tarqaluvchi uvishish",
+    "Нарушении дыхания":"Nafas buzilishi","Панической реакции":"Vahima reaksiyasi",
+    "Нормальные реакции":"Normal reaksiyalar",
+    "Покраснение, временные синяки, мышечная усталость, эмоциональный всплеск. Проходят за 2–5 дней. После сессии рекомендуется тёплый душ.":"Qizarish, vaqtinchalik ko'karishlar, mushak charchog'i, hissiy portlash. 2–5 kunda o'tib ketadi. Seansdan keyin iliq dush tavsiya etiladi.",
+    "Заземление после сессии":"Seansdan keyin yerga ulanish",
+    "Глубокий вдох и выдох. Можно повторить 3–5 раз. Это нормализует состояние нервной системы и завершает цикл высвобождения.":"Chuqur nafas olish va chiqarish. 3–5 marta takrorlash mumkin. Bu asab tizimi holatini me'yorlashtiradi va ozod bo'lish tsiklini yakunlaydi.",
+    "🏥 Медицинская интеграция":"🏥 Tibbiy integratsiya",
+    "Метод является духовно-телесной практикой и не заменяет медицинскую диагностику. При наличии диагностированных заболеваний, приёме препаратов или стойких физических симптомах обязательна консультация лечащего врача.":"Metod ma'naviy-jismoniy amaliyot bo'lib, tibbiy tashxisning o'rnini bosmaydi. Tashxis qo'yilgan kasalliklar, dori qabul qilish yoki turg'un jismoniy simptomlar mavjud bo'lganda davolovchi shifokor bilan maslahatlashish shart."
+  };
+
+  let langNodes = null;
+  function collectLangNodes() {
+    const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(n) {
+        const p = n.parentNode;
+        if (p && (p.nodeName === 'SCRIPT' || p.nodeName === 'STYLE')) return NodeFilter.FILTER_REJECT;
+        const t = n.nodeValue.trim();
+        return (t && Object.prototype.hasOwnProperty.call(UZ, t)) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const arr = [];
+    let cur;
+    while ((cur = tw.nextNode())) arr.push({ node: cur, ru: cur.nodeValue });
+    return arr;
+  }
+
+  function setLang(lang) {
+    if (!langNodes) langNodes = collectLangNodes();
+    langNodes.forEach(({ node, ru }) => {
+      if (lang === 'uz') {
+        const key = ru.trim();
+        const uz = UZ[key];
+        node.nodeValue = (uz !== undefined) ? ru.replace(key, uz) : ru;
+      } else {
+        node.nodeValue = ru;
+      }
+    });
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.dataset.lang));
+  });
+
+  // Восстановление выбранного языка
+  let savedLang = 'ru';
+  try { savedLang = localStorage.getItem('lang') || 'ru'; } catch (e) {}
+  if (savedLang === 'uz') setLang('uz');
 
 })();
 </script>
