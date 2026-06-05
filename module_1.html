@@ -89,6 +89,13 @@
        ========================================= */
     .container { max-width: 480px; margin: 0 auto; padding: 84px 16px 100px; position: relative; z-index: 2; }
     section { scroll-margin-top: 76px; }
+    .module-label {
+      display: inline-block; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px;
+      background: var(--accent-gradient); background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
     
     /* Glass Card */
     .card {
@@ -252,8 +259,17 @@
       transition: opacity 0.8s ease, visibility 0.8s;
     }
     #splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .splash-logo { font-size: 1.8rem; font-weight: 600; color: var(--text-1); margin-bottom: 8px; text-align: center; }
-    .splash-sub { font-size: 0.9rem; color: var(--text-3); margin-bottom: 24px; }
+    .splash-logo { font-size: 1.8rem; font-weight: 600; color: var(--text-1); margin-bottom: 12px; text-align: center; }
+    .splash-module {
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 10px; text-align: center;
+      background: var(--accent-gradient); background-size: 200% 200%; animation: gradientShift 8s ease infinite;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .splash-title {
+      font-size: 1.05rem; font-weight: 500; color: var(--text-2); text-align: center;
+      max-width: 340px; line-height: 1.5; margin: 0 auto 28px; padding: 0 24px;
+    }
     .loader { width: 120px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
     .loader-bar { width: 40%; height: 100%; background: var(--accent-gradient); background-size: 200% 200%; animation: gradientShift 2s ease infinite, loaderMove 1.5s ease infinite; border-radius: 4px; }
 
@@ -299,7 +315,8 @@
   <!-- SPLASH SCREEN -->
   <div id="splash" role="dialog" aria-label="Загрузка приложения">
     <div class="splash-logo">🌿 Курс «Особенный»</div>
-    <div class="splash-sub">Модуль 1: Физическое пробуждение</div>
+    <div class="splash-module">Модуль 1</div>
+    <div class="splash-title">Физическое пробуждение и высвобождение застрявших импульсов</div>
     <div class="loader"><div class="loader-bar"></div></div>
   </div>
 
@@ -330,6 +347,7 @@
     
     <!-- INTRO -->
     <section id="intro" class="card card-reveal">
+      <div class="module-label">Модуль 1</div>
       <span class="pill">🌙 Введение</span>
       <h1>Физическое пробуждение и высвобождение застрявших импульсов</h1>
       <p>Этот модуль <strong>не является массажем, релаксацией или эстетической процедурой</strong>. Это осознанный, физически ощутимый протокол перезагрузки нервной системы и фасциального кокона, направленный на высвобождение импульсов, которые когда-то были испытаны душой, но не получили телесного выражения.</p>
@@ -590,10 +608,10 @@
     const UZ = {
       // Splash / шапка / навигация
       "🌿 Курс «Особенный»":"🌿 «Особенный» kursi",
-      "Модуль 1: Физическое пробуждение":"1-modul: Jismoniy uyg'onish",
       "Лекарь Абу Мухаммад":"Tabib Abu Muhammad",
       "Введение":"Kirish","Протокол":"Tartib","Карта":"Xarita","Формулы":"Formulalar","Итог":"Xulosa",
       // Intro
+      "Модуль 1":"1-modul",
       "🌙 Введение":"🌙 Kirish",
       "Физическое пробуждение и высвобождение застрявших импульсов":"Jismoniy uyg'onish va qotib qolgan impulslarni ozod qilish",
       "Этот модуль":"Bu modul",
