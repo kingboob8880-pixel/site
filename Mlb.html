@@ -1255,6 +1255,228 @@ body {
 .info-table td {
   color: var(--text);
 }
+
+/* ===== LAST-HIT / ДОБИВАНИЕ GAME ===== */
+.lasthit-area {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: var(--bg-primary);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.lasthit-placeholder {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.lasthit-creep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem 2rem;
+  width: 85%;
+  max-width: 320px;
+  z-index: 5;
+  animation: targetAppear 0.25s ease;
+}
+
+.lasthit-creep-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.lasthit-creep-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.lasthit-hp-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+.lasthit-hp-track {
+  width: 100%;
+  height: 22px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 11px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border);
+}
+
+.lasthit-hp-bar {
+  height: 100%;
+  width: 100%;
+  border-radius: 11px;
+  transition: width 0.05s linear, background 0.3s ease;
+}
+
+.lasthit-kill-zone {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  width: 2px;
+  height: 100%;
+  background: rgba(255,255,255,0.6);
+  z-index: 3;
+}
+
+.lasthit-kill-zone::after {
+  content: '⚔';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.lasthit-hp-label {
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.lasthit-hp-bar.hp-high   { background: var(--success); }
+.lasthit-hp-bar.hp-medium { background: var(--warning); }
+.lasthit-hp-bar.hp-low    { background: var(--danger); }
+.lasthit-hp-bar.hp-kill   {
+  background: var(--accent);
+  animation: killZonePulse 0.35s ease infinite alternate;
+}
+
+@keyframes killZonePulse {
+  from { background: var(--accent); box-shadow: 0 0 0 rgba(233,69,96,0); }
+  to   { background: #ff6b85;       box-shadow: 0 0 12px rgba(233,69,96,0.6); }
+}
+
+.lasthit-tap-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 12px;
+  background: var(--gradient2);
+  border: 2px solid rgba(233,69,96,0.3);
+  color: var(--text-bright);
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-align: center;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, border-color 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+}
+
+.lasthit-tap-btn:active {
+  transform: scale(0.95);
+}
+
+.lasthit-tap-btn.killzone-active {
+  background: var(--gradient1);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(233,69,96,0.45);
+  animation: btnPulse 0.4s ease infinite alternate;
+}
+
+@keyframes btnPulse {
+  from { box-shadow: 0 0 8px rgba(233,69,96,0.3); }
+  to   { box-shadow: 0 0 22px rgba(233,69,96,0.7); }
+}
+
+.lasthit-feedback {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-size: 1.8rem;
+  font-weight: 900;
+  pointer-events: none;
+  z-index: 20;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+.lasthit-feedback.show-perfect {
+  animation: feedbackPerfect 0.7s ease forwards;
+  color: var(--gold);
+}
+
+.lasthit-feedback.show-early {
+  animation: feedbackEarly 0.6s ease forwards;
+  color: var(--warning);
+}
+
+.lasthit-feedback.show-miss {
+  animation: feedbackMiss 0.6s ease forwards;
+  color: var(--text-dim);
+}
+
+@keyframes feedbackPerfect {
+  0%   { transform: translate(-50%, -50%) scale(0.4); opacity: 0; }
+  30%  { transform: translate(-50%, -60%) scale(1.2); opacity: 1; }
+  70%  { transform: translate(-50%, -65%) scale(1);   opacity: 1; }
+  100% { transform: translate(-50%, -75%) scale(0.8); opacity: 0; }
+}
+
+@keyframes feedbackEarly {
+  0%   { transform: translate(-50%, -50%) scale(0.6); opacity: 0; }
+  25%  { transform: translate(-50%, -55%) scale(1);   opacity: 1; }
+  75%  { opacity: 1; }
+  100% { transform: translate(-50%, -60%) scale(0.9); opacity: 0; }
+}
+
+@keyframes feedbackMiss {
+  0%   { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  20%  { opacity: 0.85; }
+  80%  { opacity: 0.85; }
+  100% { transform: translate(-50%, -55%) scale(1);   opacity: 0; }
+}
+
+.lasthit-wave-badge {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: rgba(15,52,96,0.7);
+  border: 1px solid rgba(15,52,96,0.9);
+  border-radius: 8px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+  z-index: 6;
+}
+
+@media (max-width: 480px) {
+  .lasthit-area { height: 340px; }
+  .lasthit-creep { padding: 1.2rem 1.4rem; width: 92%; }
+  .lasthit-creep-icon { font-size: 2.4rem; }
+}
 </style>
 </head>
 <body>
@@ -1762,7 +1984,7 @@ body {
       <h2>Мини-игры: <span class="accent">тренировка навыков</span></h2>
     </div>
 
-    <p style="text-align:center;color:var(--text-dim);font-size:0.9rem;margin:-1rem 0 1.5rem;">6 тренажёров под каждый навык: рефлекс, реакция, периферия, внимательность, знание экипировки и прицеливание.</p>
+    <p style="text-align:center;color:var(--text-dim);font-size:0.9rem;margin:-1rem 0 1.5rem;">7 тренажёров под каждый навык: рефлекс, реакция, периферия, внимательность, знание экипировки, прицеливание и добивание крипов.</p>
 
     <!-- GAME 1: Target Clicker -->
     <div class="game-container">
@@ -2012,6 +2234,78 @@ body {
         </ul>
       </div>
     </div>
+
+    <!-- GAME 7: Last-Hit / Добивание -->
+    <div class="game-container" style="margin-bottom:1rem;">
+      <div class="game-header blue">
+        <h2>⚔️ ДОБИВАНИЕ</h2>
+        <p>Добей крипа в момент критического здоровья. Точно. Вовремя.</p>
+      </div>
+
+      <div class="game-stats">
+        <div class="game-stat">
+          <div class="value" id="lasthitScore">0/10</div>
+          <div class="label">Добито</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="lasthitAccuracy">—</div>
+          <div class="label">Точность</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="lasthitAvgHp">—</div>
+          <div class="label">Ср. HP при ударе</div>
+        </div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="fill" id="lasthitProgress"></div>
+      </div>
+
+      <div class="lasthit-area" id="lasthitArea">
+        <div class="lasthit-placeholder" id="lasthitPlaceholder">
+          Нажми «СТАРТ» чтобы начать
+        </div>
+
+        <div class="lasthit-creep" id="lasthitCreep" style="display:none;">
+          <div class="lasthit-creep-icon" id="lasthitCreepIcon">👹</div>
+          <div class="lasthit-creep-name" id="lasthitCreepName">Крип</div>
+          <div class="lasthit-hp-container">
+            <div class="lasthit-hp-track">
+              <div class="lasthit-hp-bar hp-high" id="lasthitHpBar"></div>
+              <div class="lasthit-kill-zone"></div>
+            </div>
+            <div class="lasthit-hp-label" id="lasthitHpLabel">100%</div>
+          </div>
+          <div class="lasthit-tap-btn" id="lasthitTapBtn">⚔️ ДОБИТЬ</div>
+        </div>
+
+        <div class="lasthit-feedback" id="lasthitFeedback"></div>
+      </div>
+
+      <div class="game-result" id="lasthitResult">
+        <div class="result-title" id="lasthitResultTitle"></div>
+        <div class="result-detail" id="lasthitResultDetail"></div>
+        <div class="result-times" id="lasthitResultBreakdown"></div>
+      </div>
+
+      <div class="game-controls">
+        <button class="game-btn start" id="lasthitStartBtn" onclick="startLastHitGame()">🚀 СТАРТ</button>
+        <button class="game-btn reset" onclick="resetLastHitGame()">↺ Сбросить</button>
+      </div>
+
+      <div class="game-rules">
+        <h4>📖 Правила</h4>
+        <ul>
+          <li>HP крипа падает — союзники атакуют его</li>
+          <li>Зона добивания: ниже 20% HP — красная полоса начинает мигать</li>
+          <li>Нажми «ДОБИТЬ» пока HP в красной зоне — засчитывается</li>
+          <li>Нажал слишком рано (HP выше 20%) — промах, крип живёт дальше</li>
+          <li>Не нажал — крип умирает сам, ты упускаешь золото</li>
+          <li>10 крипов за раунд, каждый следующий умирает быстрее</li>
+        </ul>
+      </div>
+    </div>
+
   </section>
 
   <!-- ===== FOOTER ===== -->
@@ -2755,6 +3049,273 @@ function resetAimGame() {
   document.getElementById('aimPlaceholder').style.display = 'block';
   document.getElementById('aimPlaceholder').textContent = 'Нажми «СТАРТ». Цель движется — тапни по ней';
 }
+
+// ===== LAST-HIT / ДОБИВАНИЕ GAME =====
+
+let lasthitActive       = false;
+let lasthitCreepIndex   = 0;
+const lasthitMax        = 10;
+let lasthitSuccesses    = 0;
+let lasthitHpLog        = [];
+let lasthitRAF          = null;
+let lasthitHpPct        = 1.0;
+let lasthitDrainRate    = 0;
+let lasthitLastTs       = 0;
+let lasthitCreepDead    = false;
+let lasthitTapHandled   = false;
+let lasthitFeedbackTimer = null;
+
+const LASTHIT_KILL_ZONE = 0.20;
+
+const lasthitCreeps = [
+  { icon: '👹', name: 'Лесной крип' },
+  { icon: '🐺', name: 'Лесной волк' },
+  { icon: '🦎', name: 'Ящерица' },
+  { icon: '🐗', name: 'Кабан' },
+  { icon: '🦂', name: 'Скорпион' },
+  { icon: '🐢', name: 'Черепаха' },
+  { icon: '🦅', name: 'Крипт-птица' },
+  { icon: '🐊', name: 'Крокодил' },
+  { icon: '🦁', name: 'Лев-рейдер' },
+  { icon: '🐉', name: 'Мини-дракон' },
+];
+
+function startLastHitGame() {
+  if (lasthitActive) return;
+  resetLastHitGame();
+  lasthitActive     = true;
+  lasthitCreepIndex = 0;
+  lasthitSuccesses  = 0;
+  lasthitHpLog      = [];
+
+  document.getElementById('lasthitStartBtn').disabled = true;
+  document.getElementById('lasthitResult').classList.remove('show');
+  document.getElementById('lasthitPlaceholder').style.display = 'none';
+
+  const area = document.getElementById('lasthitArea');
+  let waveBadge = document.getElementById('lasthitWaveBadge');
+  if (!waveBadge) {
+    waveBadge = document.createElement('div');
+    waveBadge.className = 'lasthit-wave-badge';
+    waveBadge.id = 'lasthitWaveBadge';
+    area.appendChild(waveBadge);
+  }
+
+  spawnLastHitCreep();
+}
+
+function spawnLastHitCreep() {
+  if (!lasthitActive || lasthitCreepIndex >= lasthitMax) {
+    finishLastHitGame();
+    return;
+  }
+
+  lasthitHpPct      = 1.0;
+  lasthitCreepDead  = false;
+  lasthitTapHandled = false;
+
+  const baseDuration = 4000 - lasthitCreepIndex * 240;
+  lasthitDrainRate   = 1.0 / baseDuration;
+
+  const creepData = lasthitCreeps[lasthitCreepIndex];
+  document.getElementById('lasthitCreepIcon').textContent = creepData.icon;
+  document.getElementById('lasthitCreepName').textContent = creepData.name;
+  document.getElementById('lasthitCreep').style.display  = 'flex';
+  document.getElementById('lasthitHpBar').style.width    = '100%';
+  document.getElementById('lasthitHpBar').className      = 'lasthit-hp-bar hp-high';
+  document.getElementById('lasthitHpLabel').textContent  = '100%';
+  document.getElementById('lasthitTapBtn').className     = 'lasthit-tap-btn';
+
+  const badge = document.getElementById('lasthitWaveBadge');
+  if (badge) badge.textContent = 'Крип ' + (lasthitCreepIndex + 1) + '/' + lasthitMax;
+
+  updateLastHitUI();
+
+  lasthitLastTs = performance.now();
+  lasthitRAF    = requestAnimationFrame(lasthitDrainLoop);
+}
+
+function lasthitDrainLoop(timestamp) {
+  if (!lasthitActive || lasthitCreepDead || lasthitTapHandled) return;
+
+  const delta   = Math.min(timestamp - lasthitLastTs, 200);
+  lasthitLastTs = timestamp;
+  lasthitHpPct -= lasthitDrainRate * delta;
+
+  if (lasthitHpPct <= 0) {
+    lasthitHpPct     = 0;
+    lasthitCreepDead = true;
+    updateLastHitHpBar(0);
+    showLastHitFeedback('miss', '💀 УПУСТИЛ!');
+    lasthitCreepIndex++;
+    updateLastHitUI();
+    setTimeout(spawnLastHitCreep, 1100);
+    return;
+  }
+
+  updateLastHitHpBar(lasthitHpPct);
+  lasthitRAF = requestAnimationFrame(lasthitDrainLoop);
+}
+
+function updateLastHitHpBar(pct) {
+  const bar    = document.getElementById('lasthitHpBar');
+  const label  = document.getElementById('lasthitHpLabel');
+  const tapBtn = document.getElementById('lasthitTapBtn');
+
+  bar.style.width = (pct * 100).toFixed(1) + '%';
+  label.textContent = Math.ceil(pct * 100) + '%';
+
+  if (pct > 0.50) {
+    bar.className = 'lasthit-hp-bar hp-high';
+    tapBtn.className = 'lasthit-tap-btn';
+  } else if (pct > 0.20) {
+    bar.className = 'lasthit-hp-bar hp-medium';
+    tapBtn.className = 'lasthit-tap-btn';
+  } else if (pct > 0) {
+    bar.className = 'lasthit-hp-bar hp-kill';
+    tapBtn.className = 'lasthit-tap-btn killzone-active';
+  }
+}
+
+function onLastHitTap() {
+  if (!lasthitActive || lasthitTapHandled || lasthitCreepDead) return;
+
+  const currentHp = lasthitHpPct;
+
+  if (currentHp <= LASTHIT_KILL_ZONE && currentHp > 0) {
+    lasthitTapHandled = true;
+    cancelAnimationFrame(lasthitRAF);
+    lasthitSuccesses++;
+    lasthitHpLog.push(Math.round(currentHp * 100));
+    showLastHitFeedback('perfect', '✨ PERFECT!');
+    lasthitCreepIndex++;
+    updateLastHitUI();
+    setTimeout(spawnLastHitCreep, 1000);
+  } else if (currentHp > LASTHIT_KILL_ZONE) {
+    showLastHitFeedback('early', '⚠️ РАНО!');
+    const creepEl = document.getElementById('lasthitCreep');
+    creepEl.style.transform = 'translateX(-6px)';
+    setTimeout(function() { creepEl.style.transform = ''; }, 120);
+    cancelAnimationFrame(lasthitRAF);
+    setTimeout(function() {
+      if (!lasthitActive || lasthitCreepDead) return;
+      lasthitLastTs = performance.now();
+      lasthitRAF    = requestAnimationFrame(lasthitDrainLoop);
+    }, 350);
+  }
+}
+
+function showLastHitFeedback(type, text) {
+  const fb = document.getElementById('lasthitFeedback');
+  fb.className   = 'lasthit-feedback';
+  fb.textContent = text;
+  void fb.offsetWidth;
+  if (type === 'perfect') fb.classList.add('show-perfect');
+  else if (type === 'early') fb.classList.add('show-early');
+  else fb.classList.add('show-miss');
+
+  if (lasthitFeedbackTimer) clearTimeout(lasthitFeedbackTimer);
+  lasthitFeedbackTimer = setTimeout(function() {
+    fb.className   = 'lasthit-feedback';
+    fb.textContent = '';
+  }, 700);
+}
+
+function updateLastHitUI() {
+  document.getElementById('lasthitScore').textContent = lasthitSuccesses + '/' + lasthitMax;
+
+  const acc = lasthitCreepIndex > 0
+    ? Math.round(lasthitSuccesses / lasthitCreepIndex * 100) + '%'
+    : '—';
+  document.getElementById('lasthitAccuracy').textContent = acc;
+
+  const avgHp = lasthitHpLog.length > 0
+    ? Math.round(lasthitHpLog.reduce(function(a, b) { return a + b; }, 0) / lasthitHpLog.length) + '%'
+    : '—';
+  document.getElementById('lasthitAvgHp').textContent = avgHp;
+
+  document.getElementById('lasthitProgress').style.width =
+    (lasthitCreepIndex / lasthitMax * 100) + '%';
+}
+
+function finishLastHitGame() {
+  lasthitActive = false;
+  if (lasthitRAF) cancelAnimationFrame(lasthitRAF);
+
+  document.getElementById('lasthitCreep').style.display      = 'none';
+  document.getElementById('lasthitStartBtn').disabled         = false;
+  document.getElementById('lasthitPlaceholder').style.display = 'block';
+  document.getElementById('lasthitPlaceholder').textContent   = 'Раунд завершён! Нажми СТАРТ для нового раунда';
+
+  const waveBadge = document.getElementById('lasthitWaveBadge');
+  if (waveBadge) waveBadge.remove();
+
+  const acc   = Math.round(lasthitSuccesses / lasthitMax * 100);
+  const avgHp = lasthitHpLog.length > 0
+    ? Math.round(lasthitHpLog.reduce(function(a, b) { return a + b; }, 0) / lasthitHpLog.length)
+    : 0;
+
+  const r = document.getElementById('lasthitResult');
+  r.classList.add('show');
+
+  document.getElementById('lasthitResultTitle').textContent =
+    acc >= 80 ? '🏆 Мастер добивания!' :
+    acc >= 60 ? '🔥 Хорошая реакция!' :
+    acc >= 40 ? '👍 Неплохо! Продолжай!' :
+                '💪 Тренируйся ещё!';
+
+  document.getElementById('lasthitResultDetail').textContent =
+    'Добито: ' + lasthitSuccesses + '/' + lasthitMax +
+    ' · Точность: ' + acc + '%' +
+    ' · Ср. HP при добивании: ' + (avgHp > 0 ? avgHp + '%' : '—');
+
+  const breakdown = document.getElementById('lasthitResultBreakdown');
+  breakdown.innerHTML = '';
+  lasthitHpLog.forEach(function(hp, i) {
+    const span = document.createElement('span');
+    span.className = 'result-time' + (hp <= 10 ? ' fast' : '');
+    span.textContent = 'CS#' + (i + 1) + ': ' + hp + '% HP';
+    breakdown.appendChild(span);
+  });
+}
+
+function resetLastHitGame() {
+  lasthitActive = false;
+  if (lasthitRAF) cancelAnimationFrame(lasthitRAF);
+  lasthitCreepIndex  = 0;
+  lasthitSuccesses   = 0;
+  lasthitHpLog       = [];
+  lasthitHpPct       = 1.0;
+  lasthitCreepDead   = false;
+  lasthitTapHandled  = false;
+
+  document.getElementById('lasthitScore').textContent    = '0/10';
+  document.getElementById('lasthitAccuracy').textContent = '—';
+  document.getElementById('lasthitAvgHp').textContent    = '—';
+  document.getElementById('lasthitProgress').style.width = '0%';
+  document.getElementById('lasthitResult').classList.remove('show');
+  document.getElementById('lasthitStartBtn').disabled    = false;
+  document.getElementById('lasthitCreep').style.display  = 'none';
+  document.getElementById('lasthitFeedback').className   = 'lasthit-feedback';
+  document.getElementById('lasthitFeedback').textContent = '';
+  document.getElementById('lasthitPlaceholder').style.display = 'block';
+  document.getElementById('lasthitPlaceholder').textContent   = 'Нажми «СТАРТ» чтобы начать';
+
+  const waveBadge = document.getElementById('lasthitWaveBadge');
+  if (waveBadge) waveBadge.remove();
+}
+
+(function() {
+  var btn = document.getElementById('lasthitTapBtn');
+  if (!btn) return;
+  btn.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    onLastHitTap();
+  }, { passive: false });
+  btn.addEventListener('mousedown', function() {
+    onLastHitTap();
+  });
+})();
 </script>
 
 </body>
