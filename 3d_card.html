@@ -49,6 +49,17 @@
   .controls button.active{background:var(--ink);color:#1a1822;font-weight:600;}
   .controls input[type=color]{width:26px;height:26px;border:none;background:none;padding:0;cursor:pointer;border-radius:50%;}
 
+  /* Плавающая метка, следующая за выбранной точкой */
+  #pt-label{position:absolute;left:0;top:0;z-index:6;transform:translate(-50%,-135%);
+    background:var(--panel2);border:1px solid var(--line);border-radius:999px;
+    padding:0.34rem 0.72rem;font-size:0.82rem;font-weight:600;color:var(--ink);
+    display:flex;align-items:center;gap:0.4rem;white-space:nowrap;max-width:62vw;
+    box-shadow:0 6px 22px rgba(0,0,0,0.5);cursor:pointer;transition:opacity .18s;will-change:left,top;}
+  #pt-label .ttl{overflow:hidden;text-overflow:ellipsis;max-width:48vw;}
+  #pt-label::after{content:'';position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);
+    border:6px solid transparent;border-top-color:var(--panel2);}
+  #pt-label.hidden{opacity:0;pointer-events:none;}
+
   #side{width:380px;flex-shrink:0;background:var(--panel);border-left:1px solid var(--line);display:flex;flex-direction:column;}
   .side-head{padding:1.1rem 1.3rem 0.8rem;border-bottom:1px solid var(--line);}
   .side-head h2{margin:0 0 0.2rem;font-size:1.05rem;}
@@ -76,17 +87,20 @@
 
   @media (max-width:860px){
     #app{flex-direction:column;}
-    #scene-col{height:50vh;height:50dvh;}
-    #side{width:100%;height:50vh;height:50dvh;border-left:none;border-top:1px solid var(--line);}
+    #scene-col{height:56vh;height:56dvh;}
+    #side{width:100%;height:44vh;height:44dvh;border-left:none;border-top:1px solid var(--line);}
     .scene-header{padding:0.6rem 0.9rem;}
     .scene-header h1{font-size:0.92rem;}
     .scene-header .hint{display:none;}
     .legend{top:0.6rem;right:0.6rem;padding:0.4rem 0.55rem;font-size:0.72rem;}
     .controls{bottom:0.6rem;gap:0.3rem;}
     .controls button,.controls label{padding:0.55rem 0.8rem;font-size:0.9rem;}
-    .side-body{padding:0.9rem 1rem;}
-    .view-item{padding:0.7rem;font-size:0.95rem;}
+    .side-body{padding:0.9rem 1rem;padding-bottom:calc(1rem + env(safe-area-inset-bottom));}
+    .view-item{padding:0.75rem 0.7rem;font-size:0.95rem;}
     .detail h2{font-size:1.1rem;}
+    #pt-label{font-size:0.9rem;padding:0.46rem 0.8rem;max-width:82vw;}
+    #pt-label .ttl{max-width:64vw;}
+    .controls button,.controls label{padding:0.6rem 0.85rem;}
   }
   @supports(padding:max(0px)){ .controls{padding-bottom:max(0.3rem,env(safe-area-inset-bottom));} }
 </style>
@@ -95,6 +109,7 @@
 <div id="app">
   <div id="scene-col">
     <div id="canvas-wrap"></div>
+    <div id="pt-label" class="hidden" aria-hidden="true"></div>
     <div id="loader"><div class="spinner"></div><div>Загружаю модель…</div></div>
     <div class="scene-header">
       <h1>Курс по духовным и телесным зажимам «Особенный»</h1>
@@ -4124,6 +4139,33 @@ let model=null, modelMeshes=[], modelBox=null;
 const COL={body:0xff7a4d, soul:0x8a82f0};
 let points=[]; let selectedId=null; let pidCounter=1; let pointRadius=0.03; let filterType='all';
 
+// ===== Плавающая метка, следующая за выбранной точкой =====
+const ptLabel=document.getElementById('pt-label');
+const _lblVec=new THREE.Vector3();
+function setPointLabel(){
+  if(!ptLabel) return;
+  const p=points.find(x=>x.id===selectedId);
+  if(!p){ ptLabel.classList.add('hidden'); ptLabel.innerHTML=''; return; }
+  ptLabel.innerHTML='<i class="dot '+p.type+'"></i><span class="ttl">'+esc(p.name)+'</span>';
+}
+function updatePointLabelPos(){
+  if(!ptLabel) return;
+  const p=points.find(x=>x.id===selectedId);
+  if(!p || !p.group.visible){ if(!ptLabel.classList.contains('hidden')) ptLabel.classList.add('hidden'); return; }
+  p.group.getWorldPosition(_lblVec); _lblVec.project(camera);
+  if(_lblVec.z>1){ ptLabel.classList.add('hidden'); return; } // точка позади камеры
+  const w=wrap.clientWidth, h=wrap.clientHeight;
+  ptLabel.style.left=((_lblVec.x*0.5+0.5)*w)+'px';
+  ptLabel.style.top=((-_lblVec.y*0.5+0.5)*h)+'px';
+  ptLabel.classList.remove('hidden');
+}
+if(ptLabel){
+  ptLabel.addEventListener('click', ()=>{
+    const sb=document.getElementById('side-body'); const dh=document.getElementById('detail-host');
+    if(sb && dh){ sb.scrollTo({top:0,behavior:'smooth'}); }
+  });
+}
+
 // ===== Вид / цвет =====
 const VIEWS=['red','blue','white','grey'];
 const VIEW_COLORS={red:'#e8504e', blue:'#6aa6ff', white:'#ffffff', grey:'#d8d4e0'};
@@ -4200,7 +4242,9 @@ function makePointMesh(type){
   const g=new THREE.Group();
   const core=new THREE.Mesh(new THREE.SphereGeometry(1,18,18), new THREE.MeshStandardMaterial({color:COL[type], emissive:COL[type], emissiveIntensity:0.95, roughness:0.3}));
   const halo=new THREE.Mesh(new THREE.SphereGeometry(1.7,18,18), new THREE.MeshBasicMaterial({color:COL[type], transparent:true, opacity:0.22}));
-  g.add(core); g.add(halo); return {g,core,halo};
+  // Невидимая увеличенная зона нажатия (удобнее попадать пальцем на телефоне)
+  const hit=new THREE.Mesh(new THREE.SphereGeometry(IS_MOBILE?3.6:2.4,10,10), new THREE.MeshBasicMaterial({transparent:true, opacity:0, depthWrite:false, depthTest:false}));
+  g.add(core); g.add(halo); g.add(hit); return {g,core,halo};
 }
 function clearPoints(){ points.slice().forEach(p=>pointsGroup.remove(p.group)); points=[]; selectedId=null; }
 function addPoint(d){
@@ -4212,16 +4256,55 @@ function addPoint(d){
 }
 function loadTemplate(key){
   currentTpl=key; clearPoints();
+  // FIX: сбрасываем фильтр «Все», иначе при активном фильтре «Тело/Душа»
+  // несовпадающий шаблон (например «Телесные зажимы») оказывался полностью скрыт.
+  filterType='all';
+  const fb=document.getElementById('btn-filter'); if(fb) fb.innerHTML='👁 Все';
   const t=TEMPLATES[key]; if(!t) return;
   t.points.forEach(addPoint);
   points.forEach(p=>p.group.scale.setScalar(pointRadius));
+  snapPointsToSurface();
   applyFilter();
   buildList(); renderDetail();
   document.querySelectorAll('.tpl-row button').forEach(b=> b.classList.toggle('active', b.dataset.k===key));
 }
 
+// ===== Привязка точек к поверхности модели (чтобы не висели и не тонули) =====
+function snapPointsToSurface(){
+  if(!model || !modelMeshes.length || !points.length) return;
+  scene.updateMatrixWorld(true);
+  const box=new THREE.Box3().setFromObject(model);
+  const center=box.getCenter(new THREE.Vector3());
+  const size=box.getSize(new THREE.Vector3());
+  const bigR=Math.max(size.x,size.z)*2+1;
+  const maxJump=Math.max(size.x,size.z)*0.6; // защита от «улёта» точки
+  const r=new THREE.Raycaster();
+  const wp=new THREE.Vector3(), dir=new THREE.Vector3(), origin=new THREE.Vector3(), nd=new THREE.Vector3();
+  points.forEach(p=>{
+    p.group.getWorldPosition(wp);
+    // горизонтальное направление от вертикальной оси к точке (высота сохраняется)
+    dir.set(wp.x-center.x, 0, wp.z-center.z);
+    if(dir.lengthSq()<1e-6) return; // точка на самой оси — не трогаем
+    dir.normalize();
+    origin.set(center.x+dir.x*bigR, wp.y, center.z+dir.z*bigR);
+    nd.copy(dir).multiplyScalar(-1);
+    r.set(origin, nd);
+    const hits=r.intersectObjects(modelMeshes,false);
+    if(!hits.length) return;
+    // ближайшая к исходной позиции поверхность → минимальное смещение
+    let best=hits[0], bd=best.point.distanceToSquared(wp);
+    for(let i=1;i<hits.length;i++){ const d=hits[i].point.distanceToSquared(wp); if(d<bd){ bd=d; best=hits[i]; } }
+    if(Math.sqrt(bd)>maxJump) return;
+    const surf=best.point.clone().addScaledVector(dir, pointRadius*0.55);
+    const local=pointsGroup.worldToLocal(surf);
+    p.group.position.copy(local);
+    p.pos=[local.x,local.y,local.z];
+  });
+}
+
 function selectPoint(id){ selectedId=id; renderDetail(); buildList(); }
 function renderDetail(){
+  setPointLabel();
   const host=document.getElementById('detail-host'); if(!host) return;
   const p=points.find(x=>x.id===selectedId);
   if(!p){ host.innerHTML='<p class="placeholder">Выберите точку на модели или в списке, чтобы увидеть описание.</p>'; return; }
@@ -4317,6 +4400,8 @@ function animate(){
   human.rotation.set(rotX,rotY,0);
   points.forEach((p,i)=>{ const s=1+Math.sin(t*2+i)*0.18; p.halo.scale.setScalar(s); const sel=p.id===selectedId; p.core.scale.setScalar(sel?1.7:1); p.core.material.emissiveIntensity=sel?1.9:0.95; });
   camera.position.set(panX,panY,dist); camera.lookAt(panX,panY,0);
+  camera.updateMatrixWorld();
+  updatePointLabelPos();
   renderer.render(scene,camera);
 }
 animate();
