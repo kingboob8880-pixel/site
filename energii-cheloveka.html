@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0E1419">
+<title>Энергии человека — реальны ли они в свете Ислама</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0E1419;
+    --ink-2: #141A21;
+    --ink-3: #1C232C;
+    --parchment: #ECDFC8;
+    --parchment-dim: #C9BCA4;
+    --parchment-mute: #8A8170;
+    --gold: #C9A961;
+    --gold-dim: #8E7B47;
+    --gold-bright: #E0BE7A;
+    --crimson: #B14842;
+    --crimson-deep: #6F2625;
+    --leaf: #88AE82;
+    --leaf-dim: #5A7A56;
+    --azure: #7FA8C2;
+    --rule: rgba(201,169,97,0.22);
+    --rule-soft: rgba(236,223,200,0.10);
+    --shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    background-image:
+      radial-gradient(ellipse at 50% -10%, rgba(201,169,97,0.07), transparent 55%),
+      radial-gradient(ellipse at 0% 90%, rgba(136,174,130,0.04), transparent 50%),
+      radial-gradient(ellipse at 100% 100%, rgba(127,168,194,0.03), transparent 50%);
+    color: var(--parchment);
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 22px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 88px 22px 56px;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 50% 30%, rgba(201,169,97,0.12), transparent 45%);
+    pointer-events: none;
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 0 auto 30px;
+    color: var(--gold);
+    opacity: 0.75;
+  }
+
+  .ornament-rule {
+    width: 70px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .ornament-symbol {
+    font-family: 'Amiri', serif;
+    font-size: 22px;
+    line-height: 1;
+    opacity: 0.85;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Spectral', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(34px, 8vw, 54px);
+    line-height: 1.08;
+    margin: 0 0 22px;
+    color: var(--parchment);
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--parchment-dim);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.55;
+  }
+
+  /* ---------- SECTION ---------- */
+  section {
+    padding: 50px 0 30px;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    font-family: 'Spectral', serif;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 6vw, 38px);
+    line-height: 1.15;
+    margin: 0 0 22px;
+    color: var(--parchment);
+    letter-spacing: -0.005em;
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.25;
+    margin: 32px 0 12px;
+    color: var(--parchment);
+  }
+
+  p {
+    margin: 0 0 18px;
+    color: var(--parchment);
+  }
+
+  strong { color: var(--parchment); font-weight: 600; }
+  em { font-style: italic; color: var(--parchment-dim); }
+
+  ul, ol {
+    padding-left: 22px;
+    color: var(--parchment-dim);
+  }
+  ul li, ol li { margin-bottom: 8px; }
+  ul li strong, ol li strong { color: var(--parchment); }
+
+  /* ---------- INTRO TWO EXTREMES ---------- */
+  .two-extremes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 30px 0;
+  }
+
+  @media (min-width: 600px) {
+    .two-extremes { grid-template-columns: 1fr 1fr; }
+  }
+
+  .extreme {
+    padding: 22px 20px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    background: rgba(177,72,66,0.04);
+    position: relative;
+  }
+
+  .extreme::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 32px; height: 2px;
+    background: var(--crimson);
+  }
+
+  .extreme-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--crimson);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+
+  .extreme-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--parchment);
+    margin-bottom: 8px;
+  }
+
+  .extreme-text {
+    font-size: 14.5px;
+    color: var(--parchment-dim);
+    line-height: 1.55;
+  }
+
+  .middle-path {
+    margin: 26px 0;
+    padding: 26px 22px;
+    border: 1px solid rgba(136,174,130,0.35);
+    border-radius: 2px;
+    background: rgba(136,174,130,0.05);
+    position: relative;
+  }
+
+  .middle-path::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--leaf), transparent);
+  }
+
+  .middle-path-label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--leaf);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .middle-path p:last-child { margin-bottom: 0; }
+
+  /* ---------- AYAH ---------- */
+  .ayah {
+    margin: 26px 0;
+    padding: 22px 20px;
+    border-left: 2px solid var(--gold);
+    background: rgba(201,169,97,0.04);
+  }
+
+  .arabic {
+    font-family: 'Amiri', serif;
+    font-size: 22px;
+    line-height: 1.9;
+    direction: rtl;
+    text-align: right;
+    color: var(--parchment);
+    margin-bottom: 12px;
+  }
+
+  .translit {
+    font-style: italic;
+    color: var(--gold);
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .meaning {
+    color: var(--parchment-dim);
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .source {
+    font-size: 13px;
+    color: var(--parchment-mute);
+    letter-spacing: 0.04em;
+  }
+
+  /* ---------- ENERGY GRID ---------- */
+  .grid-intro {
+    margin-bottom: 24px;
+    font-style: italic;
+    color: var(--parchment-dim);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.55;
+  }
+
+  .energy-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 24px 0 16px;
+  }
+
+  @media (min-width: 540px) {
+    .energy-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .e-card {
+    appearance: none;
+    background: var(--ink-2);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 22px 20px;
+    text-align: left;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  }
+
+  .e-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 0 24px 24px 0;
+    border-color: transparent var(--gold-dim) transparent transparent;
+    opacity: 0.4;
+    transition: opacity 0.25s ease;
+  }
+
+  .e-card:active { transform: scale(0.98); }
+  .e-card:hover {
+    border-color: var(--gold);
+    background: var(--ink-3);
+  }
+  .e-card:hover::after { opacity: 0.85; }
+
+  .e-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 20px;
+    color: var(--gold);
+    direction: rtl;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .e-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.1;
+    color: var(--parchment);
+    margin-bottom: 4px;
+  }
+
+  .e-sub {
+    font-style: italic;
+    color: var(--parchment-mute);
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .e-summary {
+    font-size: 14px;
+    color: var(--parchment-dim);
+    line-height: 1.55;
+  }
+
+  /* ---------- RED FLAGS ---------- */
+  .flags-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  @media (min-width: 600px) {
+    .flags-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .flag-card {
+    appearance: none;
+    background: rgba(177,72,66,0.05);
+    border: 1px solid rgba(177,72,66,0.3);
+    border-radius: 2px;
+    padding: 20px;
+    text-align: left;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    position: relative;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  }
+
+  .flag-card:active { transform: scale(0.98); }
+  .flag-card:hover {
+    border-color: var(--crimson);
+    background: rgba(177,72,66,0.1);
+  }
+
+  .flag-num {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--crimson);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .flag-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.2;
+    color: var(--parchment);
+    margin-bottom: 8px;
+  }
+
+  .flag-hint {
+    font-size: 13.5px;
+    color: var(--parchment-dim);
+    line-height: 1.5;
+  }
+
+  /* ---------- MODAL ---------- */
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .modal[aria-hidden="false"] { display: flex; }
+
+  .modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: fade 0.3s ease;
+  }
+
+  @keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .modal-content {
+    position: relative;
+    background: var(--ink-2);
+    width: 100%;
+    max-width: 660px;
+    max-height: 92vh;
+    border-radius: 14px 14px 0 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    border-top: 1px solid var(--gold);
+    box-shadow: var(--shadow);
+  }
+
+  @media (min-width: 720px) {
+    .modal { align-items: center; padding: 24px; }
+    .modal-content {
+      border-radius: 4px;
+      max-height: 88vh;
+      border: 1px solid var(--rule);
+      border-top: 2px solid var(--gold);
+    }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .modal-grab {
+    width: 40px;
+    height: 4px;
+    background: var(--parchment-mute);
+    border-radius: 2px;
+    margin: 10px auto 0;
+    opacity: 0.4;
+  }
+
+  @media (min-width: 720px) { .modal-grab { display: none; } }
+
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(236,223,200,0.08);
+    border: 1px solid var(--rule);
+    color: var(--parchment);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: background 0.2s ease;
+  }
+
+  .modal-close:hover { background: rgba(236,223,200,0.14); }
+  .modal-close:active { transform: scale(0.92); }
+
+  .modal-body {
+    padding: 36px 24px 44px;
+  }
+
+  @media (min-width: 720px) {
+    .modal-body { padding: 44px 38px 48px; }
+  }
+
+  .modal-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .modal-arabic-big {
+    font-family: 'Amiri', serif;
+    font-size: 38px;
+    color: var(--gold);
+    direction: rtl;
+    text-align: right;
+    margin: 0 0 6px;
+    line-height: 1;
+  }
+
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 1.05;
+    margin: 0 0 6px;
+    color: var(--parchment);
+  }
+
+  .modal-title-translit {
+    font-style: italic;
+    color: var(--parchment-mute);
+    font-size: 15px;
+    margin-bottom: 22px;
+  }
+
+  .modal-tagline {
+    margin: 0 0 24px;
+    padding: 14px 16px;
+    background: rgba(136,174,130,0.07);
+    border-left: 2px solid var(--leaf);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--parchment);
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  .modal-tagline.warning {
+    background: rgba(177,72,66,0.08);
+    border-left-color: var(--crimson);
+  }
+
+  .modal-body h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 26px 0 10px;
+  }
+
+  .modal-body p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .modal-body ul, .modal-body ol {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ---------- DEVELOPMENT BLOCK ---------- */
+  .dev-block {
+    background: rgba(136,174,130,0.04);
+    border: 1px solid rgba(136,174,130,0.2);
+    border-radius: 2px;
+    padding: 24px 22px;
+    margin: 26px 0;
+  }
+
+  .dev-block-label {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--leaf);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+
+  .dev-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dev-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(136,174,130,0.12);
+    color: var(--parchment-dim);
+    font-size: 15.5px;
+    line-height: 1.55;
+  }
+
+  .dev-list li:last-child { border-bottom: 0; }
+
+  .dev-list .dev-name {
+    color: var(--parchment);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 17px;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* ---------- COMPARISON ---------- */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 26px 0;
+  }
+
+  @media (min-width: 640px) {
+    .compare { grid-template-columns: 1fr 1fr; }
+  }
+
+  .compare-col {
+    padding: 22px 20px;
+    border-radius: 2px;
+    border: 1px solid var(--rule);
+  }
+
+  .compare-col.bad {
+    background: rgba(177,72,66,0.05);
+    border-color: rgba(177,72,66,0.28);
+  }
+
+  .compare-col.good {
+    background: rgba(136,174,130,0.05);
+    border-color: rgba(136,174,130,0.3);
+  }
+
+  .compare-label {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .compare-col.bad .compare-label { color: var(--crimson); }
+  .compare-col.good .compare-label { color: var(--leaf); }
+
+  .compare-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--parchment);
+    margin-bottom: 14px;
+  }
+
+  .compare-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+
+  .compare-list li {
+    padding: 8px 0;
+    color: var(--parchment-dim);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .compare-list li:last-child { border-bottom: 0; }
+
+  .compare-list .ck {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--parchment-mute);
+    font-size: 13px;
+    margin-bottom: 2px;
+    display: block;
+    letter-spacing: 0.04em;
+  }
+
+  .compare-list .cv { color: var(--parchment); }
+
+  /* ---------- TWO PATHS ---------- */
+  .paths-grid {
+    display: grid;
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  @media (min-width: 600px) {
+    .paths-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .path-card {
+    appearance: none;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    padding: 24px 22px;
+    border-radius: 2px;
+    border: 1px solid var(--rule);
+    background: var(--ink-2);
+    position: relative;
+    transition: transform 0.25s, border-color 0.25s, background 0.25s;
+  }
+
+  .path-card:active { transform: scale(0.98); }
+  .path-card:hover { border-color: var(--gold); }
+
+  .path-card.bad { border-color: rgba(177,72,66,0.32); background: rgba(177,72,66,0.04); }
+  .path-card.bad:hover { border-color: var(--crimson); }
+  .path-card.good { border-color: rgba(136,174,130,0.3); background: rgba(136,174,130,0.04); }
+  .path-card.good:hover { border-color: var(--leaf); }
+
+  .path-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .path-card.bad .path-eyebrow { color: var(--crimson); }
+  .path-card.good .path-eyebrow { color: var(--leaf); }
+
+  .path-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--parchment);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .path-hint {
+    font-size: 14px;
+    color: var(--parchment-dim);
+    line-height: 1.5;
+  }
+
+  /* ---------- CONCLUSION ---------- */
+  .conclusion {
+    margin-top: 40px;
+    padding: 40px 0 80px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .closing-ornament {
+    text-align: center;
+    margin: 40px 0 30px;
+    color: var(--gold);
+    font-size: 26px;
+    letter-spacing: 0.3em;
+    opacity: 0.6;
+  }
+
+  .closing-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 19px;
+    text-align: center;
+    color: var(--parchment-dim);
+    margin: 8px 0;
+    direction: rtl;
+  }
+
+  .closing-meaning {
+    text-align: center;
+    font-style: italic;
+    color: var(--parchment-mute);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+  }
+
+  /* ---------- UTIL ---------- */
+  .lock { overflow: hidden; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="ornament">
+    <span class="ornament-rule"></span>
+    <span class="ornament-symbol">۞</span>
+    <span class="ornament-rule"></span>
+  </div>
+  <div class="hero-eyebrow">Богословский разбор</div>
+  <h1>Энергии человека — <em>реальны?</em></h1>
+  <div class="hero-sub">Что в человеке существует на самом деле, как Аллах это назвал, и можно ли мусульманину развивать эти силы — подробный разбор глазами ракыя.</div>
+</div>
+
+<div class="container">
+
+  <!-- ВВЕДЕНИЕ -->
+  <section>
+    <div class="section-label">Введение</div>
+    <h2>Важный вопрос — без двух крайностей</h2>
+
+    <p>Это очень важный вопрос, и нужно ответить на него честно, не уходя ни в одну из двух крайностей:</p>
+
+    <div class="two-extremes">
+      <div class="extreme">
+        <div class="extreme-num">Крайность · I</div>
+        <div class="extreme-title">Материалистическая</div>
+        <div class="extreme-text">«Никаких энергий нет, всё это выдумки, человек — это просто биохимия». Позиция атеистов. <strong>Не соответствует Исламу</strong>, потому что игнорирует ру́х, реальность сглаза, барака и всё, описанное в Коране и Сунне.</div>
+      </div>
+      <div class="extreme">
+        <div class="extreme-num">Крайность · II</div>
+        <div class="extreme-title">Синкретическая</div>
+        <div class="extreme-text">«Раз энергия есть — значит, можно использовать чакры, прану, ци, ведь это всё про одно». <strong>Тоже неверно</strong>, потому что подменяет шариатские понятия чужими и встраивает мусульманина в чужую метафизику.</div>
+      </div>
+    </div>
+
+    <div class="middle-path">
+      <div class="middle-path-label">Правильный путь — посередине</div>
+      <p><strong>Да, в человеке есть реальные тонкие силы, и Аллах их даровал.</strong> И да, мусульманину дозволено и даже желательно их развивать — но через средства, которые установил Аллах, и в рамках понятий, данных Кораном и Сунной.</p>
+    </div>
+  </section>
+
+  <!-- 8 СИЛ -->
+  <section>
+    <div class="section-label">I. Перечень реальных сил</div>
+    <h2>Что есть в человеке на самом деле</h2>
+
+    <div class="grid-intro">Аллах создал в человеке несколько уровней тонкой силы. Нажми на любую — раскроется полный разбор: что это, доказательства из Корана и Сунны, и как это связано с тем, что энергопрактики смутно ощущают.</div>
+
+    <div class="energy-grid">
+      <button class="e-card" data-modal="bioenergy">
+        <div class="e-arabic">۱</div>
+        <div class="e-name">Биоэнергия</div>
+        <div class="e-sub">физический уровень</div>
+        <div class="e-summary">Электричество нервов, поля сердца и мозга, биофотоны — реальные явления, признанные наукой.</div>
+      </button>
+
+      <button class="e-card" data-modal="ruh">
+        <div class="e-arabic">روح</div>
+        <div class="e-name">Ру́х</div>
+        <div class="e-sub">душа · тайна Аллаха</div>
+        <div class="e-summary">Высший уровень — то, что Аллах вдохнул в Адама. Не «прокачивается» техниками.</div>
+      </button>
+
+      <button class="e-card" data-modal="qalb">
+        <div class="e-arabic">قلب</div>
+        <div class="e-name">Кальб</div>
+        <div class="e-sub">духовное сердце</div>
+        <div class="e-summary">Центр духовной жизни. То, что чакровые системы ошибочно называют «анахатой».</div>
+      </button>
+
+      <button class="e-card" data-modal="nafs">
+        <div class="e-arabic">نفس</div>
+        <div class="e-name">Нафс</div>
+        <div class="e-sub">самость · эго</div>
+        <div class="e-summary">Уровень желаний и личности. Может быть «грязным» или «чистым». Тазкият ан-нафс реален.</div>
+      </button>
+
+      <button class="e-card" data-modal="aql">
+        <div class="e-arabic">عقل</div>
+        <div class="e-name">'Акль</div>
+        <div class="e-sub">разум</div>
+        <div class="e-summary">Инструмент познания, дарованный Аллахом. Развивается изучением и размышлением.</div>
+      </button>
+
+      <button class="e-card" data-modal="sirr">
+        <div class="e-arabic">سر</div>
+        <div class="e-name">Сирр</div>
+        <div class="e-sub">тайна · глубинная связь</div>
+        <div class="e-summary">Самый сокровенный уровень связи с Аллахом. У близких к Аллаху раскрыт.</div>
+      </button>
+
+      <button class="e-card" data-modal="nur">
+        <div class="e-arabic">نور</div>
+        <div class="e-name">Нур</div>
+        <div class="e-sub">свет верующего</div>
+        <div class="e-summary">Реальный духовный свет. То, что биоэнергеты смутно чувствуют как «сильную ауру» праведников.</div>
+      </button>
+
+      <button class="e-card" data-modal="barakah">
+        <div class="e-arabic">بركة</div>
+        <div class="e-name">Барака</div>
+        <div class="e-sub">благословение</div>
+        <div class="e-summary">Реальная сила, прикреплённая к чему-то от Аллаха. Не «позитивная энергия», а милость Аллаха.</div>
+      </button>
+    </div>
+  </section>
+
+  <!-- ТОНКАЯ СТРУКТУРА -->
+  <section>
+    <div class="section-label">II. Подтверждение из Сунны</div>
+    <h2>Реальность тонкой структуры в теле</h2>
+
+    <p>Есть ли в человеке реальная тонкая структура, по которой проходит что-то? <strong>Да, есть.</strong> Пророк ﷺ сказал:</p>
+
+    <div class="ayah">
+      <div class="arabic">إِنَّ الشَّيْطَانَ يَجْرِي مِنَ ابْنِ آدَمَ مَجْرَى الدَّمِ</div>
+      <div class="translit">Инна-шшайтана йаджри мин-бни Адама маджрад-дам</div>
+      <div class="meaning">«Поистине, шайтан течёт в сыне Адама подобно тому, как течёт кровь»</div>
+      <div class="source">Аль-Бухари 2035, Муслим 2175</div>
+    </div>
+
+    <p>Этот хадис принципиально важен. Он говорит:</p>
+    <ol>
+      <li>В человеке есть <strong>пути</strong>, по которым может двигаться нечто тонкое (шайтан — джинн)</li>
+      <li>Эти пути <strong>подобны кровеносной системе</strong> — реальная сеть в теле</li>
+      <li>По этой же сети, естественно, проходит и доброе — нур, барака, ангельское влияние</li>
+    </ol>
+
+    <p>То есть <strong>тонкая структура существует</strong>. Просто:</p>
+    <ul>
+      <li>В индуизме её назвали «нади» и налепили на неё чакры с божествами</li>
+      <li>В китайской медицине её назвали «меридианы» и приписали ей «ци»</li>
+      <li>В Исламе мы знаем, что она есть, но <strong>не дали ей чужих имён и не приписали ей чужой метафизики</strong></li>
+    </ul>
+
+    <p>Реальность — одна. Интерпретации — разные.</p>
+
+    <h3>Пророк ﷺ сам использовал тонкие силы</h3>
+
+    <p><strong>Дуновение на руки и обтирание тела:</strong> Когда Пророк ﷺ ложился спать, он дул на ладони, читал три «куль» и обтирал ими тело, начиная с головы и лица, три раза (аль-Бухари 5017).</p>
+
+    <p><strong>Слюна для исцеления:</strong> При болезни Пророк ﷺ касался пальцем земли и со своей слюной говорил: «С именем Аллаха. Земля нашей земли и слюна некоторых из нас — исцеляется ею наш больной с дозволения нашего Господа» (аль-Бухари 5746, Муслим 2194).</p>
+
+    <p><strong>Возложение рук, дуновение (нафас), чтение Корана над больным</strong> — всё это конкретное использование тонкой стороны человека. Допустимое, благословенное, рекомендованное Сунной.</p>
+  </section>
+
+  <!-- РАЗВИТИЕ -->
+  <section>
+    <div class="section-label">III. Развитие сил</div>
+    <h2>Можно ли учиться использовать?</h2>
+
+    <p><strong>Да, можно. Более того, для ракыя — нужно.</strong> Но это не «изучение энергопрактик», это развитие того, что Аллах дал, через средства, которые Он установил.</p>
+
+    <h3>Что развивать</h3>
+    <p>Это реальные «энергии» верующего: <strong>якын</strong> (убеждённость), <strong>хушу'</strong> (присутствие в поклонении), <strong>фирасат</strong> (проницательность), <strong>чувствительность рук</strong>, <strong>сила голоса и нафаса</strong>, <strong>барака рук</strong>, <strong>истинные сны</strong>, <strong>способность к ильхаму</strong>.</p>
+
+    <div class="ayah">
+      <div class="arabic">اتَّقُوا فِرَاسَةَ الْمُؤْمِنِ فَإِنَّهُ يَنْظُرُ بِنُورِ اللَّهِ</div>
+      <div class="translit">Иттаку фирасаталь-му'мин фа-иннаху йанзуру би-нуриЛлях</div>
+      <div class="meaning">«Остерегайтесь проницательности верующего, ибо он смотрит светом Аллаха»</div>
+      <div class="source">Ат-Тирмизи, 3127</div>
+    </div>
+
+    <p>Это и есть «третий глаз», но истинный. <strong>Не «открытие аджны»</strong>, а свет от Аллаха в сердце. Развивается таквой, оставлением сомнительного, постоянным зикром.</p>
+
+    <h3>Главный принцип</h3>
+
+    <div class="middle-path">
+      <div class="middle-path-label">Принципиальная разница</div>
+      <p>Все эти силы развиваются <strong>не упражнениями на коврике йоги</strong>, а <strong>поклонением Аллаху</strong>. Чем больше человек поклоняется Аллаху искренне — тем больше эти силы в нём раскрываются.</p>
+    </div>
+
+    <div class="dev-block">
+      <div class="dev-block-label">Фундамент развития</div>
+      <ul class="dev-list">
+        <li>
+          <span class="dev-name">Намаз пять раз вовремя</span>
+          Основа. Без него ничего не развивается. С ним даже без других усилий человек уже над уровнем 90% людей.
+        </li>
+        <li>
+          <span class="dev-name">Тахаджжуд</span>
+          Главный «реактор» развития духовных сил. Аллах нисходит в последнюю треть ночи. Годы практики дают то, чего биоэнергеты тщетно ищут медитациями.
+        </li>
+        <li>
+          <span class="dev-name">Сура аль-Бакара ежедневно</span>
+          Пропитывает сердце и все тонкие слои нуром. Шайтан бежит из дома, где её читают (Муслим 780).
+        </li>
+        <li>
+          <span class="dev-name">Утренние и вечерние азкары</span>
+          Постоянное обновление защиты. Непрерывная связь с Аллахом в течение дня.
+        </li>
+        <li>
+          <span class="dev-name">Чистота от грехов</span>
+          Каждый грех создаёт ран на сердце и пробивает дыру в защите. Тауба и истигфар — постоянное обслуживание.
+        </li>
+        <li>
+          <span class="dev-name">Халяльная пища</span>
+          Чем питается тело — питает и тонкое. Одна харамная еда блокирует принятие дуа на 40 дней.
+        </li>
+        <li>
+          <span class="dev-name">Сохранение языка и глаз</span>
+          Взгляд на запретное и пустой язык пробивают нур. Опускание глаз и сдержанность речи — реально укрепляют духовную силу.
+        </li>
+      </ul>
+    </div>
+
+    <h3>Дополнительные практики ракыя</h3>
+
+    <p>Помимо фундамента, ракый может специально развивать определённые навыки:</p>
+    <ul>
+      <li><strong>Тренировка чувствительности рук</strong> — потирание ладоней, разведение и сведение. Физическое упражнение для нервной чувствительности. С бисмиллях и нийятом служения. 5–10 минут в день.</li>
+      <li><strong>Длительное чтение Корана вслух</strong> — развивает «силу нафаса». Голос становится насыщенным, дуновение — действенным. Многолетняя работа.</li>
+      <li><strong>Уединение и тишина (халва)</strong> — не медитация, а уединение с зикром и Кораном. Сунна Пророка ﷺ в пещере Хира.</li>
+      <li><strong>Малое еды и сна</strong> — сдержанность, а не голодание. Пост в понедельник и четверг. Вставание на тахаджжуд.</li>
+      <li><strong>Тренировка муракабы в намазе</strong> — каждый намаз как упражнение в осознании присутствия Аллаха.</li>
+    </ul>
+  </section>
+
+  <!-- 4 КРАСНЫХ ФЛАГА -->
+  <section>
+    <div class="section-label">IV. Границы дозволенного</div>
+    <h2>Где начинается проблема</h2>
+
+    <p>Учитывать существование тонких сил и развивать их — <strong>не проблема</strong>, если соблюдены границы. Проблема начинается, когда пересекается одна из четырёх линий. Нажми на любой флаг — узнаешь подробно.</p>
+
+    <div class="flags-grid">
+      <button class="flag-card" data-modal="flag1">
+        <span class="flag-num">Флаг · 1</span>
+        <div class="flag-title">Энергия как самостоятельная сила</div>
+        <div class="flag-hint">Считать, что в теле течёт «универсальная энергия», работающая автономно от Аллаха.</div>
+      </button>
+      <button class="flag-card" data-modal="flag2">
+        <span class="flag-num">Флаг · 2</span>
+        <div class="flag-title">Персонификация</div>
+        <div class="flag-hint">Связывать точки тела с «энергиями-личностями» — богами, духами, архетипами.</div>
+      </button>
+      <button class="flag-card" data-modal="flag3">
+        <span class="flag-num">Флаг · 3</span>
+        <div class="flag-title">Внешняя метафизика</div>
+        <div class="flag-hint">Принимать рамку чужой религии — карму, реинкарнацию, инь-ян, «единство с Брахманом».</div>
+      </button>
+      <button class="flag-card" data-modal="flag4">
+        <span class="flag-num">Флаг · 4</span>
+        <div class="flag-title">Контакт с сущностями</div>
+        <div class="flag-hint">Открывать себя «гайдам», «учителям», «высшему Я» — кому-либо помимо Аллаха.</div>
+      </button>
+    </div>
+  </section>
+
+  <!-- СХЕМА ИСТИННОЕ / ЛОЖНОЕ -->
+  <section>
+    <div class="section-label">V. Рабочая схема</div>
+    <h2>Истинное и ложное «развитие»</h2>
+
+    <p>Чтобы быть кратким и практичным — вот рабочая схема для самопроверки:</p>
+
+    <div class="compare">
+      <div class="compare-col bad">
+        <div class="compare-label">Ложное</div>
+        <div class="compare-title">«Энергетическое развитие»</div>
+        <ul class="compare-list">
+          <li><span class="ck">Источник</span><span class="cv">«Универсум», «Энергия», «Высшее Я», «Гуру»</span></li>
+          <li><span class="ck">Средства</span><span class="cv">Мантры, визуализации, инициации, чакры</span></li>
+          <li><span class="ck">Рамка</span><span class="cv">Чакры, прана, ци, карма, реинкарнация</span></li>
+          <li><span class="ck">Результат</span><span class="cv">«Слияние», «осознание единства»</span></li>
+          <li><span class="ck">Плоды</span><span class="cv">Эзотерика, иногда сверхспособности (истидрадж)</span></li>
+          <li><span class="ck">Изменения</span><span class="cv">Гордыня, «избранность», отдаление от Аллаха</span></li>
+        </ul>
+      </div>
+      <div class="compare-col good">
+        <div class="compare-label">Истинное</div>
+        <div class="compare-title">Развитие верующего</div>
+        <ul class="compare-list">
+          <li><span class="ck">Источник</span><span class="cv">Аллах, и только Аллах</span></li>
+          <li><span class="ck">Средства</span><span class="cv">Намаз, Коран, дуа, зикр, тауба</span></li>
+          <li><span class="ck">Рамка</span><span class="cv">Рух, кальб, нафс, нур, барака</span></li>
+          <li><span class="ck">Результат</span><span class="cv">Близость к Аллаху, смирение, рабство Ему</span></li>
+          <li><span class="ck">Плоды</span><span class="cv">Спокойствие, ясность сердца, ответ на дуа</span></li>
+          <li><span class="ck">Изменения</span><span class="cv">Скромность, страх Аллаха, любовь к Сунне</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ДВА ПУТИ -->
+  <section>
+    <div class="section-label">VI. Конкретный пример</div>
+    <h2>Два пути развития чувствительности</h2>
+
+    <p>Чтобы это не было абстракцией, рассмотрим конкретно: развитие чувствительности к тонкому в теле другого человека — то, что биоэнергетика называет «диагностикой ауры».</p>
+
+    <div class="paths-grid">
+      <button class="path-card bad" data-modal="path-bio">
+        <div class="path-eyebrow">Путь · биоэнергет</div>
+        <div class="path-title">Через чакры и визуализации</div>
+        <div class="path-hint">Открытие чакр, настройка на «энергополе», сканирование, чистка своей «энергией». Цена — отход от Аллаха.</div>
+      </button>
+      <button class="path-card good" data-modal="path-ruqyah">
+        <div class="path-eyebrow">Путь · ракый</div>
+        <div class="path-title">Через Коран и поклонение</div>
+        <div class="path-hint">Намаз, тахаджжуд, Сура аль-Бакара, простое физическое упражнение для рук, чтение Корана над пациентом. Цена — ноль.</div>
+      </button>
+    </div>
+
+    <div class="middle-path" style="margin-top: 26px;">
+      <div class="middle-path-label">Главное</div>
+      <p>Те же руки. Та же чувствительность. Та же зона тела. <strong>Но один путь ведёт в систему ширка, другой — в близость к Аллаху.</strong></p>
+    </div>
+  </section>
+
+  <!-- ПОЧЕМУ ВАЖНО -->
+  <section>
+    <div class="section-label">VII. Третий путь</div>
+    <h2>Почему важно правильно понять</h2>
+
+    <p>Есть мусульмане, которые из страха «впасть в ширк» отрицают вообще все тонкие явления в человеке: «никаких энергий, никакой ауры». <strong>Это неправильно</strong>, потому что:</p>
+
+    <ol>
+      <li>Противоречит Корану и Сунне, где прямо описаны рух, нур, барака, шайтан в человеке как кровь</li>
+      <li>Парализует ракыя — человек, отрицающий тонкое, не сможет работать с тонким</li>
+      <li>Передаёт монополию на эту область кафирам и заблудшим. Мусульмане, столкнувшись с реальными духовными вопросами, идут к ним</li>
+    </ol>
+
+    <p>С другой стороны — есть мусульмане, которые из любопытства или из желания «помочь людям» заигрывают с энергопрактиками, надеясь «взять только хорошее». <strong>Это тоже неправильно</strong>, и опасно.</p>
+
+    <div class="middle-path">
+      <div class="middle-path-label">Правильный путь — третий</div>
+      <p>Признать реальность тонких сил, которыми Аллах наделил человека. Развивать их через средства, которые установил Аллах. <strong>Не давать им чужих имён.</strong> Не встраивать себя в чужие системы. И не приписывать никаких автономных сил никому, кроме Аллаха.</p>
+      <p style="margin-bottom: 0;">Это путь сахабов. Путь саляф ас-салих. Путь великих ракыев.</p>
+    </div>
+  </section>
+
+  <!-- ЗАКЛЮЧЕНИЕ -->
+  <div class="conclusion">
+    <div class="section-label">Заключение</div>
+    <h2>Развивайся — но через Того, Кто дал тебе всё это</h2>
+
+    <p><strong>Да, в человеке реальны</strong> физические биоэнергии, ру́х, кальб, нафс, 'акль, сирр, нур, барака, и тонкие пути в теле, по которым может двигаться как добро, так и зло.</p>
+
+    <p><strong>Да, мусульманину дозволено и желательно развивать эти силы</strong> — при пяти условиях:</p>
+    <ol>
+      <li>Средствами, установленными Аллахом (намаз, Коран, зикр, дуа, тахаджжуд, чистота от харама)</li>
+      <li>Зная, что источник — Аллах, и только Аллах</li>
+      <li>Не используя терминологию и систему чужих религий</li>
+      <li>Не открывая себя никаким «сущностям» помимо Аллаха</li>
+      <li>Используя всё это в служении (рукья, помощь людям) — а не для «личного просветления»</li>
+    </ol>
+
+    <h3>Главное правило</h3>
+
+    <div class="ayah">
+      <div class="arabic">كُلُّ نَفْسٍ بِمَا كَسَبَتْ رَهِينَةٌ</div>
+      <div class="translit">Куллю нафсин бима касабат рахина</div>
+      <div class="meaning">«Каждая душа — заложница того, что приобрела»</div>
+      <div class="source">Аль-Муддассир, 38</div>
+    </div>
+
+    <p>То, что ты приобретаешь намазом, Кораном, зикром — твоё навсегда. То, что приобретаешь чакрами, мантрами, инициациями — <strong>долг, который будет стребован</strong>.</p>
+
+    <p>Развивайся. Но развивайся через <strong>Того, Кто дал тебе всё это</strong>, и средствами, которые Он установил. У того, кто долго и искренне идёт этим путём, Аллах раскрывает такие силы и такую близость, что <strong>все мантры, чакры и кундалини мира</strong> покажутся детскими игрушками.</p>
+
+    <div class="closing-ornament">۞</div>
+
+    <div class="ayah">
+      <div class="arabic">وَالَّذِينَ جَاهَدُوا فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا ۚ وَإِنَّ اللَّهَ لَمَعَ الْمُحْسِنِينَ</div>
+      <div class="translit">Валлязина джахаду фина ля-нахдийаннахум субуляна, ва инналлаха ля-ма'аль-мухсинин</div>
+      <div class="meaning">«А тех, кто прилагал усилия ради Нас, Мы непременно поведём по Нашим путям. Поистине, Аллах — с творящими добро»</div>
+      <div class="source">Аль-'Анкабут, 69</div>
+    </div>
+
+    <div class="closing-arabic" style="margin-top: 36px;">وَاللَّهُ أَعْلَمُ</div>
+    <div class="closing-meaning">А Аллах знает лучше</div>
+
+    <div class="closing-arabic" style="margin-top: 18px;">وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ</div>
+    <div class="closing-meaning">И нет мощи и силы, кроме как от Аллаха Всевышнего, Великого</div>
+  </div>
+
+</div>
+
+<!-- ============ MODALS ============ -->
+
+<!-- БИОЭНЕРГИЯ -->
+<div class="modal" id="modal-bioenergy" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">I · Физический уровень</div>
+      <h2 class="modal-title">Биоэнергия</h2>
+      <div class="modal-title-translit">реальные физические явления, признанные наукой</div>
+
+      <div class="modal-tagline">Это часть творения Аллаха. Знать об этом, учитывать, использовать в медицине — никаких проблем нет.</div>
+
+      <h4>Что реально измерила наука</h4>
+      <ul>
+        <li><strong>Биоэлектричество нервной системы</strong> — нейроны передают сигналы электрическими импульсами. ЭКГ и ЭЭГ измеряют это напрямую.</li>
+        <li><strong>Электромагнитное поле сердца</strong> — измерено магнитокардиографами, простирается на несколько метров от тела.</li>
+        <li><strong>Электромагнитное поле мозга</strong> — измерено магнитоэнцефалографами.</li>
+        <li><strong>Биофотоны</strong> — сверхслабое свечение клеток (открыто советским биологом А.Г. Гурвичем в 1920-х, подтверждено современными исследованиями).</li>
+        <li><strong>Тепловое излучение</strong> — каждое тело излучает в инфракрасном диапазоне.</li>
+        <li><strong>Химическая энергия</strong> — АТФ, глюкоза, метаболизм.</li>
+      </ul>
+
+      <h4>Что это значит</h4>
+      <p>Когда биоэнергет говорит, что «чувствует поле» — он может действительно чувствовать тепловое излучение, статическое электричество и тонкие изменения этих полей. <strong>Это не выдумка.</strong></p>
+
+      <p>Проблема не в самом факте существования этих полей, а в том, как их интерпретируют и используют. Поля реальны — но они не «универсальная энергия Космоса» и не работают автономно. Аллах их создал и в каждый момент поддерживает.</p>
+    </div>
+  </div>
+</div>
+
+<!-- РУХ -->
+<div class="modal" id="modal-ruh" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">II · Тайна Аллаха</div>
+      <div class="modal-arabic-big">روح</div>
+      <h2 class="modal-title">Ру́х</h2>
+      <div class="modal-title-translit">душа · высший уровень тонкого в человеке</div>
+
+      <div class="modal-tagline">Это не «энергия для прокачки» — это тайна (сирр) Аллаха. Душа очищается покаянием и поклонением, не техниками.</div>
+
+      <h4>Что о ней сказано в Коране</h4>
+
+      <div class="ayah">
+        <div class="arabic">وَيَسْأَلُونَكَ عَنِ الرُّوحِ ۖ قُلِ الرُّوحُ مِنْ أَمْرِ رَبِّي وَمَا أُوتِيتُم مِّنَ الْعِلْمِ إِلَّا قَلِيلًا</div>
+        <div class="meaning">«Они спрашивают тебя о душе. Скажи: душа — из дела Господа моего, и даровано вам знания лишь немного»</div>
+        <div class="source">Аль-Исра, 85</div>
+      </div>
+
+      <p>Это та самая жизненная сила, которую вдохнул Аллах в Адама:</p>
+
+      <div class="ayah">
+        <div class="arabic">فَإِذَا سَوَّيْتُهُ وَنَفَخْتُ فِيهِ مِن رُّوحِي فَقَعُوا لَهُ سَاجِدِينَ</div>
+        <div class="meaning">«Когда Я придам ему форму и вдохну в него от Моего духа — падите перед ним ниц»</div>
+        <div class="source">Аль-Хиджр, 29</div>
+      </div>
+
+      <h4>Двойная ошибка тантры и энергопрактик</h4>
+      <p><strong>1.</strong> Считают, что душу можно «прокачать» техниками — но душа не прокачивается, душа очищается покаянием и поклонением.</p>
+      <p><strong>2.</strong> Считают, что душа в конце «сливается с Абсолютом» — но душа возвращается к Аллаху как Его творение, не как Его часть. Творение никогда не становится Творцом.</p>
+
+      <p>Мы знаем что ру́х есть, что она в теле и оживляет его, что она выходит при смерти. Большего нам не открыто, и попытки «проникнуть» в эту тайну техниками — обречены и опасны.</p>
+    </div>
+  </div>
+</div>
+
+<!-- КАЛЬБ -->
+<div class="modal" id="modal-qalb" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">III · Духовный центр</div>
+      <div class="modal-arabic-big">قلب</div>
+      <h2 class="modal-title">Кальб</h2>
+      <div class="modal-title-translit">сердце · центр духовной жизни человека</div>
+
+      <div class="modal-tagline">Это и есть тот самый центр, который чакровые системы ошибочно называют «анахатой». Только без Шивы, биджи и гексаграммы.</div>
+
+      <h4>Хадис о сердце</h4>
+
+      <div class="ayah">
+        <div class="arabic">أَلَا وَإِنَّ فِي الْجَسَدِ مُضْغَةً إِذَا صَلَحَتْ صَلَحَ الْجَسَدُ كُلُّهُ، وَإِذَا فَسَدَتْ فَسَدَ الْجَسَدُ كُلُّهُ، أَلَا وَهِيَ الْقَلْبُ</div>
+        <div class="meaning">«Поистине, в теле есть кусок плоти. Если он здоров — здорово всё тело. А если он испорчен — испорчено всё тело. Это — сердце»</div>
+        <div class="source">Аль-Бухари, Муслим</div>
+      </div>
+
+      <h4>Где смотрит Аллах</h4>
+
+      <div class="ayah">
+        <div class="arabic">إِنَّ اللَّهَ لَا يَنْظُرُ إِلَى أَجْسَادِكُمْ وَلَا إِلَى صُوَرِكُمْ وَلَكِنْ يَنْظُرُ إِلَى قُلُوبِكُمْ</div>
+        <div class="meaning">«Поистине, Аллах не смотрит на ваши тела и ваши формы, но смотрит на ваши сердца»</div>
+        <div class="source">Муслим</div>
+      </div>
+
+      <h4>Реальная духовная жизнь кальба</h4>
+      <p>В кальбе реально происходят процессы — он темнеет от грехов, светлеет от поминания Аллаха, болеет от страстей, исцеляется покаянием. <strong>Это не метафора</strong> — это реальные духовные явления в реальном духовном центре.</p>
+
+      <p>Сравни с тантрой: они навешали на эту зону Шиву, богиню Какини, биджу «Ям», гексаграмму Шивы-Шакти. Всё это — попытка описать реальное явление через ложную систему. Реальность кальба остаётся, но истина о нём — только в Исламе.</p>
+    </div>
+  </div>
+</div>
+
+<!-- НАФС -->
+<div class="modal" id="modal-nafs" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">IV · Самость</div>
+      <div class="modal-arabic-big">نفس</div>
+      <h2 class="modal-title">Нафс</h2>
+      <div class="modal-title-translit">эго · уровень желаний, личности, страстей</div>
+
+      <div class="modal-tagline">Тазкият ан-нафс (очищение нафса) — реальная духовная работа. Это и есть «работа с энергией эго» в правильной рамке.</div>
+
+      <h4>Три состояния нафса в Коране</h4>
+      <ul>
+        <li><strong>Нафс аммара би-с-су</strong>' (повелевающая злом) — низшее, побуждает к страстям и грехам</li>
+        <li><strong>Нафс ляввама</strong> (порицающая) — среднее, упрекает себя за грехи</li>
+        <li><strong>Нафс мутма'инна</strong> (умиротворённая) — высшее, обретшая покой в Аллахе</li>
+      </ul>
+
+      <h4>Что это значит на практике</h4>
+      <p>Нафс реально может быть «грязным» (полным страстей, гордыни, зависти, скупости, любви к дунья) и «чистым» (свободным от этих привязанностей).</p>
+
+      <p>Процесс очищения называется <strong>тазкият ан-нафс</strong> — это и есть подлинная «духовная работа над собой». Не через медитации и визуализации, а через:</p>
+      <ul>
+        <li>Постоянное наблюдение за своими мотивами</li>
+        <li>Истигфар за гордыню, зависть, лицемерие</li>
+        <li>Принуждение нафса к поклонению, особенно когда не хочется</li>
+        <li>Оставление того, что любит нафс, ради того, что любит Аллах</li>
+        <li>Сохранение языка, глаз, желудка от харама</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- АКЛЬ -->
+<div class="modal" id="modal-aql" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">V · Разум</div>
+      <div class="modal-arabic-big">عقل</div>
+      <h2 class="modal-title">'Акль</h2>
+      <div class="modal-title-translit">инструмент познания, дарованный Аллахом</div>
+
+      <div class="modal-tagline">Тоже сила, дарованная Аллахом. Развивается изучением, размышлением, тадаббуром Корана.</div>
+
+      <h4>Что говорит Коран</h4>
+      <p>Аллах многократно обращается к разуму: <em>«Не размышляют ли они над Кораном?»</em> (Мухаммад, 24), <em>«Воистину, в этом — знамение для размышляющих»</em> (ар-Ра'д, 4), <em>«Неужели вы не разумеете?»</em></p>
+
+      <p>'Акль — не противник веры, а её союзник. Истинный разум приводит к Таухиду, ложный «разум» (хава замаскированная под разум) — к отрицанию.</p>
+
+      <h4>Как развивать</h4>
+      <ul>
+        <li><strong>Тадаббур аль-Кур'ан</strong> — глубокое размышление над аятами, «жевание» смысла каждого слова</li>
+        <li><strong>Тафаккур</strong> — размышление над творениями Аллаха (небеса, земля, тело, события жизни)</li>
+        <li><strong>Изучение шариатских наук</strong> — акыда, фикх, тафсир, хадис</li>
+        <li><strong>Общение с учёными и праведниками</strong></li>
+        <li><strong>Чтение книг саляф</strong></li>
+      </ul>
+
+      <p>'Акль укрепляется халяльным знанием и слабеет от пустых развлечений, бессмысленного контента, чрезмерного отдыха.</p>
+    </div>
+  </div>
+</div>
+
+<!-- СИРР -->
+<div class="modal" id="modal-sirr" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">VI · Глубинная связь</div>
+      <div class="modal-arabic-big">سر</div>
+      <h2 class="modal-title">Сирр</h2>
+      <div class="modal-title-translit">тайна · самый сокровенный уровень связи с Аллахом</div>
+
+      <div class="modal-tagline">Не у всех развит. У близких к Аллаху (аулия) — раскрыт. Здесь происходит истинная муракаба и даруется фирасат.</div>
+
+      <h4>Что это</h4>
+      <p>Сирр — это самый глубокий, сокровенный уровень в человеке, где он соприкасается с Аллахом наиболее тесно. У большинства людей этот уровень спит. У <strong>аулия (близких к Аллаху)</strong> он раскрыт.</p>
+
+      <h4>Что происходит на уровне сирр</h4>
+      <ul>
+        <li><strong>Муракаба</strong> — постоянное осознание присутствия Аллаха (степень ихсана: «поклоняться Аллаху так, как будто видишь Его»)</li>
+        <li><strong>Фирасат</strong> — проницательность, дарованная Аллахом</li>
+        <li><strong>Казф</strong> — внутреннее наведение от Аллаха</li>
+        <li><strong>Истинный ильхам</strong> — внушение от Аллаха, не подсказка от шайтана</li>
+      </ul>
+
+      <h4>Как развивается</h4>
+      <p>Через <strong>годы искреннего поклонения</strong>, оставление мирского, постоянство в тахаджжуде, абсолютную чистоту от харама.</p>
+
+      <p>Это не «откроется за курс из 8 недель». Это дар Аллаха тому, кто долго и искренне идёт к Нему. Многие саляф пришли к этому уровню — но никогда не выставляли его напоказ. <strong>Аулия не рекламируют себя</strong> — это один из их признаков.</p>
+    </div>
+  </div>
+</div>
+
+<!-- НУР -->
+<div class="modal" id="modal-nur" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">VII · Свет верующего</div>
+      <div class="modal-arabic-big">نور</div>
+      <h2 class="modal-title">Нур</h2>
+      <div class="modal-title-translit">реальный духовный свет, дарованный Аллахом</div>
+
+      <div class="modal-tagline">То, что биоэнергетика смутно ощущает как «сильную позитивную ауру» у духовных людей. Они называют это «энергией» — но это нур от Аллаха.</div>
+
+      <h4>Доказательство из Корана</h4>
+
+      <div class="ayah">
+        <div class="arabic">يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ وَآمِنُوا بِرَسُولِهِ يُؤْتِكُمْ كِفْلَيْنِ مِن رَّحْمَتِهِ وَيَجْعَل لَّكُمْ نُورًا تَمْشُونَ بِهِ</div>
+        <div class="meaning">«О те, которые уверовали! Бойтесь Аллаха и веруйте в Его Посланника, тогда Он одарит вас вдвойне из Своей милости, и установит для вас свет, с которым вы будете идти»</div>
+        <div class="source">Аль-Хадид, 28</div>
+      </div>
+
+      <h4>Что делает нур</h4>
+      <ul>
+        <li>Освещает сердце верующего</li>
+        <li>Проявляется на лице (свет благочестия — реальное явление, заметное людям)</li>
+        <li>Защищает от шайтанов — они бегут от света</li>
+        <li>В Судный день будет идти впереди верующего по мосту Сират</li>
+        <li>Чувствуется другими людьми как покой и притяжение</li>
+      </ul>
+
+      <h4>Откуда он берётся</h4>
+      <p>Нур приходит от:</p>
+      <ul>
+        <li>Намаза (особенно ночного)</li>
+        <li>Чтения Корана</li>
+        <li>Постоянного зикра</li>
+        <li>Оставления грехов (особенно греха языка и глаз)</li>
+        <li>Халяльной пищи</li>
+        <li>Искренности (ихляс) в поклонении</li>
+      </ul>
+
+      <p>И теряется от противоположного. Один взгляд на запретное может ощутимо «потушить» нур на несколько дней. Это эмпирически проверяется любым, кто внимателен к своему сердцу.</p>
+    </div>
+  </div>
+</div>
+
+<!-- БАРАКА -->
+<div class="modal" id="modal-barakah" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">VIII · Благословение</div>
+      <div class="modal-arabic-big">بركة</div>
+      <h2 class="modal-title">Барака</h2>
+      <div class="modal-title-translit">реальное благословение от Аллаха, прикреплённое к чему-то</div>
+
+      <div class="modal-tagline">Не «позитивная энергия» в смысле биоэнергетики — это милость Аллаха, привязанная к чему-то. Малое с баракой больше большого без бараки.</div>
+
+      <h4>Где бывает барака</h4>
+      <ul>
+        <li><strong>В человеке</strong> — Пророк ﷺ, праведники, родители (молящиеся за детей)</li>
+        <li><strong>Во времени</strong> — ночь Лейлят аль-Кадр, последняя треть ночи, утренние часы, пятница</li>
+        <li><strong>В месте</strong> — Мекка, Медина, Аль-Акса, мечети</li>
+        <li><strong>В пище</strong> — если с «Бисмиллях», в общей еде, после произнесения дуа</li>
+        <li><strong>В предметах</strong> — Зам-зам, чёрный тмин, оливковое масло, мёд</li>
+        <li><strong>В деяниях</strong> — поминание Аллаха, садака, родительская молитва</li>
+      </ul>
+
+      <h4>Барака реально воздействует</h4>
+      <p>Хадис: <em>«Поистине, в чёрном тмине — исцеление от всякой болезни, кроме смерти»</em> (аль-Бухари 5687). Это не метафора — это реальное свойство, прикреплённое Аллахом к конкретному растению.</p>
+
+      <p>Барака может <strong>передаваться</strong> — общая еда, рукопожатие праведника, молитва за тебя. <strong>Прорабатывать «энергию»</strong> верующего — это не качать прану, это быть рядом с источниками бараки.</p>
+
+      <h4>Как умножать бараку в своей жизни</h4>
+      <ul>
+        <li>«Бисмиллях» перед каждым делом — еда, питьё, выход, въезд</li>
+        <li>Зикр после намазов и в течение дня</li>
+        <li>Сохранение родственных связей (силят ар-рахим)</li>
+        <li>Почтение к родителям</li>
+        <li>Раннее начало дня после фаджра</li>
+        <li>Тахаджжуд</li>
+        <li>Садака — даже малая</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ФЛАГ 1 -->
+<div class="modal" id="modal-flag1" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">Флаг · 1</div>
+      <h2 class="modal-title">Энергия как самостоятельная сила</h2>
+
+      <div class="modal-tagline warning">Это придание автономности творению. Никакая энергия в твоём теле не работает «сама».</div>
+
+      <h4>Граница</h4>
+      <p>Считать, что в теле течёт <strong>«универсальная жизненная энергия»</strong>, которая существует сама по себе и работает автономно от Аллаха.</p>
+
+      <h4>Почему это проблема</h4>
+      <p>Аллах <strong>в каждый момент</strong> поддерживает движение каждого электрона, каждого нейронного импульса в твоём теле. Это <strong>истимрар халк</strong> — постоянное творение, концепция в исламском вероубеждении. Ничто не работает «само по себе».</p>
+
+      <p>Когда биоэнергет говорит «энергия течёт по моим каналам и работает», он молчаливо предполагает, что эта энергия — самосущая. Это шаг от Таухида в сторону придания автономии творению.</p>
+
+      <h4>Правильная позиция</h4>
+      <p>«В моём теле есть силы и тонкие движения, которые <strong>Аллах создал и которые Он поддерживает каждое мгновение</strong>. Если Он отнимет — они исчезнут. Я не "работаю с энергией" — я использую то, что Аллах даёт мне в каждый момент.»</p>
+    </div>
+  </div>
+</div>
+
+<!-- ФЛАГ 2 -->
+<div class="modal" id="modal-flag2" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">Флаг · 2</div>
+      <h2 class="modal-title">Персонификация</h2>
+
+      <div class="modal-tagline warning">Это ширк в самом прямом виде. Чакры с божествами, духи-помощники, тотемные животные, «архетип Шивы внутри тебя».</div>
+
+      <h4>Граница</h4>
+      <p>Связывать конкретные точки тела с конкретными «энергиями-личностями»:</p>
+      <ul>
+        <li>Богами (Шива, Вишну, Брахма в чакрах)</li>
+        <li>Богинями (Кундалини как «змея-богиня»)</li>
+        <li>Духами-помощниками («гайды», «вознесённые мастера»)</li>
+        <li>«Архетипами» из коллективного бессознательного, которые «активируются» в тебе</li>
+        <li>Тотемными животными</li>
+        <li>«Энергиями предков», которые «живут» в твоём теле</li>
+      </ul>
+
+      <h4>Почему это проблема</h4>
+      <p>Любая персонификация тонкой силы — это <strong>приписывание ей сознания, воли, ответа</strong>, то есть свойств божественности. Если ты обращаешься к «энергии Шивы» с просьбой об активации — ты совершил поклонение Шиве, даже если не подозреваешь об этом.</p>
+
+      <h4>Правильная позиция</h4>
+      <p>Зоны тела — это анатомические зоны. Силы в них — это часть творения Аллаха. <strong>Никаких личностей в них нет</strong>, кроме (возможно негативного присутствия) джиннов, которых нужно изгонять, а не «активировать».</p>
+    </div>
+  </div>
+</div>
+
+<!-- ФЛАГ 3 -->
+<div class="modal" id="modal-flag3" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">Флаг · 3</div>
+      <h2 class="modal-title">Внешняя метафизика</h2>
+
+      <div class="modal-tagline warning">Подмена шариатской космологии чужой. Даже без «полной веры» — терминология формирует мышление.</div>
+
+      <h4>Граница</h4>
+      <p>Принимать рамку чужой религии для описания себя:</p>
+      <ul>
+        <li><strong>Карму</strong> — закон причинно-следственных связей через перерождения</li>
+        <li><strong>Реинкарнацию</strong> — веру в множественные жизни</li>
+        <li><strong>Дхарму</strong> — индуистский космический закон</li>
+        <li><strong>Дао</strong> — китайский «путь» как космический принцип</li>
+        <li><strong>Инь-Ян</strong> как космические принципы реальности (не просто как описание контраста)</li>
+        <li><strong>«Единство всего с Брахманом»</strong> — пантеизм</li>
+        <li><strong>«Высшее Я»</strong> как часть Бога внутри тебя</li>
+      </ul>
+
+      <h4>Почему это проблема</h4>
+      <p>Это <strong>подмена шариатской космологии чужой</strong>. Даже если человек говорит «я не верю» — терминология формирует мышление. Думающий чакрами думает индуистскими категориями, ему легче принять и остальное.</p>
+
+      <p>Думающий «кармой» — уже не думает «кадаром» (предопределением Аллаха). Думающий «реинкарнацией» — уже не верит полностью в Судный день. Эти системы взаимоисключающи на уровне основ.</p>
+
+      <h4>Правильная позиция</h4>
+      <p>Шариатская антропология (рух, нафс, кальб, акль, сирр) и шариатская космология (Аллах-Творец, ангелы, джинны, души, Судный день, барзах). <strong>Этого полностью достаточно</strong> для описания любого реального явления.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ФЛАГ 4 -->
+<div class="modal" id="modal-flag4" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">Флаг · 4</div>
+      <h2 class="modal-title">Контакт с сущностями</h2>
+
+      <div class="modal-tagline warning">На этот вход откликаются джинны, представляющиеся «высшим Я», «архангелом», «вознесёнными мастерами», «инопланетянами».</div>
+
+      <h4>Граница</h4>
+      <p>Открывать себя <strong>«высшим существам»</strong>, «гайдам», «проводникам», «учителям», «высшему Я» — кому-либо помимо Аллаха.</p>
+
+      <h4>Почему это проблема</h4>
+      <p>На такой «вход» откликаются <strong>джинны</strong>, которые в Коране названы <em>«шайатин ал-инс уа-ль-джинн»</em> (шайтаны из людей и джиннов — аль-Ан'ам, 112). Они представляются:</p>
+      <ul>
+        <li>«Высшим Я»</li>
+        <li>«Архангелом Михаилом» или другими ангельскими именами</li>
+        <li>«Вознесёнными мастерами»</li>
+        <li>«Инопланетянами с миссией для человечества»</li>
+        <li>«Духами предков» или «духовными гайдами»</li>
+        <li>Иногда — даже именем пророков или святых, обманывая</li>
+      </ul>
+
+      <h4>Реальность</h4>
+      <p>Это <strong>эмпирический факт</strong>, наблюдаемый в практике рукьи многократно. Кто открыл такой канал — тот в <strong>масс</strong> (одержимости) разной степени.</p>
+
+      <p>Многие современные «ченнелеры», «контактёры», «получатели информации» — все имеют установленный контакт с джиннами. Эти джинны дают реальную информацию (иногда удивительно точную) в обмен на углубление контакта и отдаление человека от Аллаха.</p>
+
+      <h4>Правильная позиция</h4>
+      <p>Все обращения — <strong>только к Аллаху</strong>. Все знания — через Коран, Сунну, и фирасат, дарованный Аллахом <strong>без специальных «открытий каналов»</strong>. Аллах открывает Своему рабу столько знания скрытого, сколько Сам пожелает, в ответ на его поклонение — не в ответ на медитативные техники.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ПУТЬ БИОЭНЕРГЕТА -->
+<div class="modal" id="modal-path-bio" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">Путь биоэнергета</div>
+      <h2 class="modal-title">Через чакры и визуализации</h2>
+
+      <div class="modal-tagline warning">Та же чувствительность достигается, но через систему ширка. Цена — отход от Аллаха.</div>
+
+      <h4>Этапы пути</h4>
+      <ol>
+        <li>Учится «открывать чакры» через визуализации и мантры</li>
+        <li>«Активирует» ладонные чакры специальными техниками</li>
+        <li>«Настраивается» на «энергополе» другого человека</li>
+        <li>«Сканирует» — где грязь, где блок</li>
+        <li>«Чистит» своей «энергией»</li>
+      </ol>
+
+      <h4>Что реально происходит</h4>
+      <p>Часть случаев — развивается <strong>обычная нервная чувствительность рук</strong> (которая дана всем людям Аллахом) + самовнушение + иногда подключение джинна, который «подсказывает» правильные ответы, что выглядит как «сверхчувствительность».</p>
+
+      <h4>Цена</h4>
+      <ul>
+        <li>Ширк в основе всей системы (обращение к «энергии» как самостоятельной силе)</li>
+        <li>Принятие индуистской/нью-эйджевской метафизики</li>
+        <li>Риск масс (одержимости джинном)</li>
+        <li>Отдаление от Аллаха</li>
+        <li>Иногда — психологические нарушения от длительной работы с антитаухидной системой</li>
+        <li>В Судный день — отчёт за время, потраченное на ширк, и за тех, кого ты «лечил» через эту систему</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ПУТЬ РАКЫЯ -->
+<div class="modal" id="modal-path-ruqyah" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <div class="modal-grab"></div>
+    <button class="modal-close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal-body">
+      <div class="modal-eyebrow">Путь ракыя</div>
+      <h2 class="modal-title">Через Коран и поклонение</h2>
+
+      <div class="modal-tagline">Та же чувствительность развивается естественно, как побочный плод близости к Аллаху. Цена — ноль. Только польза.</div>
+
+      <h4>Этапы пути</h4>
+      <ol>
+        <li>Регулярные намазы + тахаджжуд</li>
+        <li>Ежедневная Сура аль-Бакара</li>
+        <li>Утренние и вечерние азкары</li>
+        <li>Чистая еда, оставление харама — особенно в зрении и слухе</li>
+        <li>Простое физическое упражнение для чувствительности рук (без всякой системы — 5-10 минут в день, потирание ладоней, разведение-сведение)</li>
+        <li>Чтение Корана над пациентом</li>
+        <li>Ладонями над телом — наблюдение реакции пациента и собственных ощущений</li>
+        <li>Главное в диагностике — <strong>реакция тела пациента на конкретные аяты</strong>, поддержанная чувствительностью рук</li>
+        <li>Лечение — Кораном, дуа, заклинаниями действия</li>
+      </ol>
+
+      <h4>Что реально происходит</h4>
+      <p>Аллах дарует <strong>свет (нур)</strong> в руки и сердце ракыя. Развивается фирасат — реальная проницательность. Появляется барака в работе. С годами — становится одним из тех, кого Аллах использует для облегчения Своих рабов.</p>
+
+      <h4>Плоды</h4>
+      <ul>
+        <li>Близость к Аллаху</li>
+        <li>Награда в обоих мирах</li>
+        <li>Реальная сила в работе — пациенты исцеляются</li>
+        <li>Чистая совесть — нет страха перед Судным днём за метод</li>
+        <li>Те, кого ты вылечил — твои свидетели на твою пользу</li>
+        <li>С годами — открытие реальных духовных дарований, превосходящих всё, что обещают энергопрактики</li>
+      </ul>
+
+      <p style="margin-top: 20px; font-style: italic; color: var(--leaf);">Те же руки. Та же чувствительность. Та же зона тела пациента. Один путь ведёт в систему ширка — другой в близость к Аллаху.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const modals = document.querySelectorAll('.modal');
+  const triggers = document.querySelectorAll('[data-modal]');
+  const closers = document.querySelectorAll('[data-close]');
+  let lastFocus = null;
+
+  function openModal(id) {
+    const m = document.getElementById('modal-' + id);
+    if (!m) return;
+    lastFocus = document.activeElement;
+    m.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lock');
+    const content = m.querySelector('.modal-content');
+    if (content) content.scrollTop = 0;
+    const close = m.querySelector('.modal-close');
+    if (close) setTimeout(() => close.focus(), 50);
+  }
+
+  function closeModal(m) {
+    m.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lock');
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  triggers.forEach(t => {
+    t.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(t.dataset.modal);
+    });
+  });
+
+  closers.forEach(c => {
+    c.addEventListener('click', (e) => {
+      e.preventDefault();
+      const m = c.closest('.modal');
+      if (m) closeModal(m);
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      modals.forEach(m => {
+        if (m.getAttribute('aria-hidden') === 'false') closeModal(m);
+      });
+    }
+  });
+
+  // Swipe down to close on mobile
+  modals.forEach(m => {
+    const content = m.querySelector('.modal-content');
+    if (!content) return;
+    let startY = 0;
+    let currentY = 0;
+    let dragging = false;
+
+    content.addEventListener('touchstart', (e) => {
+      if (content.scrollTop > 0) return;
+      startY = e.touches[0].clientY;
+      dragging = true;
+    }, { passive: true });
+
+    content.addEventListener('touchmove', (e) => {
+      if (!dragging) return;
+      currentY = e.touches[0].clientY;
+      const diff = currentY - startY;
+      if (diff > 0 && content.scrollTop === 0) {
+        content.style.transform = `translateY(${diff * 0.5}px)`;
+      }
+    }, { passive: true });
+
+    content.addEventListener('touchend', () => {
+      if (!dragging) return;
+      dragging = false;
+      const diff = currentY - startY;
+      content.style.transition = 'transform 0.25s ease';
+      if (diff > 100) closeModal(m);
+      content.style.transform = '';
+      setTimeout(() => { content.style.transition = ''; }, 260);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
