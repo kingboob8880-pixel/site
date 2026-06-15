@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#EFE7D5">
+<title>Чакры и энергетические точки — разбор глазами ракыя</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #EFE7D5;
+  --bg-card: #E6DBC2;
+  --bg-card-hover: #DCCFB0;
+  --bg-modal: #F2EAD8;
+  --bg-modal-inner: rgba(255, 248, 232, 0.4);
+  --ink: #1F1810;
+  --ink-soft: #4A3D2C;
+  --ink-light: #6B5C44;
+  --rule: #C9BDA0;
+  --rule-soft: #D6CCB3;
+  --accent: #8B6F2F;
+  --accent-deep: #6B5421;
+  --accent-soft: rgba(139, 111, 47, 0.08);
+
+  --shirk-bg: #6B1818;
+  --shirk-fg: #F2EAD8;
+  --kufr-bg: #3A0808;
+  --kufr-fg: #F2EAD8;
+  --ihtilaf-bg: #8B6F2F;
+  --ihtilaf-fg: #F2EAD8;
+  --halal-bg: #2D4A2B;
+  --halal-fg: #F2EAD8;
+  --reject-bg: #5A3625;
+  --reject-fg: #F2EAD8;
+
+  --shadow: 0 1px 0 rgba(31, 24, 16, 0.04), 0 4px 16px rgba(31, 24, 16, 0.06);
+  --shadow-lg: 0 20px 60px rgba(31, 24, 16, 0.25);
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+body.modal-open { overflow: hidden; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, rgba(107, 84, 33, 0.05) 1px, transparent 0);
+  background-size: 28px 28px;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 18px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── HERO ─────────────────────────────── */
+.hero {
+  padding: 56px 0 44px;
+  text-align: center;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 56px;
+  position: relative;
+}
+
+.hero::before, .hero::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+  margin: 0 auto;
+}
+.hero::before { margin-bottom: 36px; }
+
+.hero-eyebrow {
+  font-family: 'Lora', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 22px;
+  font-weight: 600;
+}
+
+h1.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(2.1rem, 7.5vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 3vw, 1.4rem);
+  color: var(--ink-soft);
+  letter-spacing: 0.01em;
+  max-width: 580px;
+  margin: 0 auto 40px;
+  line-height: 1.4;
+}
+
+.hadith-block {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 26px 22px;
+  background: var(--accent-soft);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.arabic {
+  font-family: 'Amiri', serif;
+  font-size: 1.5rem;
+  line-height: 2;
+  direction: rtl;
+  text-align: center;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.hadith-translation {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-bottom: 8px;
+  line-height: 1.45;
+}
+
+.hadith-source {
+  font-family: 'Lora', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  text-align: center;
+  font-weight: 600;
+}
+
+/* ─── INTRO BLOCK ─────────────────────── */
+.intro-block {
+  max-width: 720px;
+  margin: 0 auto 60px;
+  text-align: left;
+}
+
+.intro-lede {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.32rem;
+  line-height: 1.5;
+  color: var(--ink);
+  font-style: italic;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.intro-lede::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.2rem;
+  font-style: normal;
+  font-weight: 500;
+  float: left;
+  line-height: 0.9;
+  padding: 6px 8px 0 0;
+  color: var(--accent);
+}
+
+.intro-body p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+
+/* ─── SECTIONS ────────────────────────── */
+.section { margin-bottom: 64px; position: relative; }
+
+.section-head {
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.section-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--accent);
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+  line-height: 1.1;
+  color: var(--ink);
+  flex: 1;
+}
+
+.section-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin-bottom: 36px;
+}
+
+/* ─── CARD GRID ───────────────────────── */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 580px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+@media (min-width: 960px) {
+  .card-grid { grid-template-columns: repeat(3, 1fr); }
+  .card-grid--narrow { grid-template-columns: repeat(2, 1fr); max-width: 820px; }
+}
+
+/* ─── CARDS ───────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-soft);
+  padding: 24px 22px 22px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  color: inherit;
+  position: relative;
+  transition: background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 200px;
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: var(--rule);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.card-mark {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.card-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card-arabic-num {
+  font-family: 'Amiri', serif;
+  font-size: 1.15rem;
+  color: var(--accent);
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.card-position {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--ink-light);
+  line-height: 1.35;
+}
+
+.card-summary {
+  font-family: 'Lora', serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-top: 2px;
+  flex-grow: 1;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--rule-soft);
+}
+
+.verdict {
+  display: inline-block;
+  padding: 5px 11px;
+  font-family: 'Lora', serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.verdict--shirk { background: var(--shirk-bg); color: var(--shirk-fg); }
+.verdict--kufr { background: var(--kufr-bg); color: var(--kufr-fg); }
+.verdict--ihtilaf { background: var(--ihtilaf-bg); color: var(--ihtilaf-fg); }
+.verdict--halal { background: var(--halal-bg); color: var(--halal-fg); }
+.verdict--reject { background: var(--reject-bg); color: var(--reject-fg); }
+
+.card-arrow {
+  font-family: 'Lora', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  transition: color 0.2s, transform 0.2s;
+  font-weight: 600;
+}
+
+.card:hover .card-arrow {
+  color: var(--accent-deep);
+  transform: translateX(3px);
+}
+
+/* ─── MODAL ───────────────────────────── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 24, 16, 0.55);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.modal-backdrop.active { opacity: 1; pointer-events: all; }
+
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: var(--bg-modal);
+  z-index: 101;
+  transform: translateY(100%);
+  transition: transform 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+}
+.modal.active { transform: translateY(0); }
+
+@media (min-width: 768px) {
+  .modal {
+    top: 4vh;
+    bottom: 4vh;
+    left: 50%;
+    right: auto;
+    width: min(780px, 92vw);
+    transform: translate(-50%, 110vh);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--rule);
+  }
+  .modal.active { transform: translate(-50%, 0); }
+}
+
+.modal-header {
+  position: sticky;
+  top: 0;
+  background: var(--bg-modal);
+  padding: 22px 20px 14px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  z-index: 2;
+}
+
+.modal-drag {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 4px;
+  background: var(--rule);
+  border-radius: 2px;
+}
+@media (min-width: 768px) {
+  .modal-drag { display: none; }
+  .modal-header { padding: 22px 28px 14px; }
+}
+
+.modal-eyebrow {
+  font-family: 'Lora', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  font-weight: 700;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modal-close {
+  background: var(--bg-modal);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  font-family: 'Lora', serif;
+  font-size: 1.05rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+  padding: 0;
+}
+.modal-close:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.modal-body {
+  padding: 28px 20px 80px;
+  max-width: 100%;
+}
+@media (min-width: 768px) {
+  .modal-body { padding: 36px 44px 80px; }
+}
+
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(1.85rem, 5.5vw, 2.4rem);
+  line-height: 1.05;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.modal-position {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink-light);
+  margin-bottom: 22px;
+}
+
+.modal-verdict-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: rgba(31, 24, 16, 0.045);
+  border-left: 3px solid var(--accent);
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.modal-verdict-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--ink-soft);
+  line-height: 1.4;
+  flex: 1;
+  min-width: 200px;
+}
+
+.modal-body h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.22rem;
+  margin: 30px 0 12px;
+  color: var(--ink);
+  padding-left: 14px;
+  border-left: 2px solid var(--accent);
+  line-height: 1.2;
+}
+.modal-body h3:first-of-type { margin-top: 0; }
+
+.modal-body p {
+  margin-bottom: 14px;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.modal-body ul {
+  list-style: none;
+  margin-bottom: 18px;
+  padding-left: 0;
+}
+
+.modal-body li {
+  padding: 7px 0 7px 22px;
+  position: relative;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+
+.modal-body li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: var(--accent);
+  font-size: 0.5rem;
+}
+
+.modal-body strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.modal-body em {
+  font-style: italic;
+  color: var(--ink);
+}
+
+.quote-block {
+  margin: 22px 0;
+  padding: 22px 22px;
+  background: var(--accent-soft);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.quote-block .arabic {
+  font-size: 1.32rem;
+  line-height: 1.85;
+  margin-bottom: 12px;
+}
+
+.quote-block .translation {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.quote-block .source {
+  font-family: 'Lora', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  text-align: center;
+  font-weight: 600;
+}
+
+.anatomy-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.92rem;
+}
+
+.anatomy-table th, .anatomy-table td {
+  padding: 12px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: top;
+}
+
+.anatomy-table th {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--accent-soft);
+}
+
+.anatomy-table td { color: var(--ink-soft); }
+
+.anatomy-table td:first-child {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.callout {
+  margin: 22px 0;
+  padding: 18px 20px;
+  background: rgba(107, 24, 24, 0.06);
+  border-left: 3px solid var(--shirk-bg);
+}
+
+.callout strong { color: var(--shirk-bg); }
+
+.callout--warning {
+  background: rgba(139, 111, 47, 0.1);
+  border-left-color: var(--accent);
+}
+.callout--warning strong { color: var(--accent-deep); }
+
+/* ─── CLOSING ─────────────────────────── */
+.closing {
+  padding: 70px 0 80px;
+  text-align: center;
+  border-top: 1px solid var(--rule);
+  margin-top: 40px;
+}
+
+.closing::before {
+  content: '◆';
+  display: block;
+  font-size: 0.65rem;
+  color: var(--accent);
+  margin-bottom: 36px;
+}
+
+.closing-pre {
+  font-family: 'Lora', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.closing-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 1.45rem;
+  line-height: 1.95;
+  direction: rtl;
+  color: var(--ink);
+  margin-bottom: 22px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.closing-translation {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
+
+.closing-source {
+  font-family: 'Lora', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.closing-mark {
+  font-family: 'Amiri', serif;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+  line-height: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ────────────────────────────── -->
+<div class="container">
+  <header class="hero">
+    <div class="hero-eyebrow">Трактат · Глазами ракыя</div>
+    <h1 class="hero-title">Чакры и энергетические точки</h1>
+    <p class="hero-subtitle">Полный разбор системы — что несёт каждая чакра, на чём держится доктрина, и где проходит граница между анатомией и поклонением</p>
+
+    <div class="hadith-block">
+      <div class="arabic">اعْرِضُوا عَلَيَّ رُقَاكُمْ، لَا بَأْسَ بِالرُّقَى مَا لَمْ يَكُنْ فِيهِ شِرْكٌ</div>
+      <div class="hadith-translation">«Покажите мне ваши заклинания. Нет проблем в заклинании, если в нём нет многобожия»</div>
+      <div class="hadith-source">Муслим, 2200</div>
+    </div>
+  </header>
+
+  <!-- ─── INTRO ─────────────────────────── -->
+  <section class="intro-block">
+    <p class="intro-lede">Чакра — это не «точка тела». Это место обитания божества, носитель его имени-мантры, изображение его символа. Разбор системы — это разбор того, кому в ней поклоняются.</p>
+    <div class="intro-body">
+      <p>Если бы это была просто схема нервных сплетений с описанием их функций — её можно было бы взять как медицинский инструмент. Но <strong>каждая чакра в исходной системе — это завершённый мини-храм</strong> с пресидирующим божеством (девата), связанной богиней (шакти), биджа-мантрой, янтрой и атрибутами поклонения.</p>
+      <p>Поэтому ответ на главный вопрос — <em>«есть ли среди чакр безобидное?»</em> — известен заранее: <strong>нет ни одной нейтральной чакры</strong>, потому что само понятие «чакра» неотделимо от своей метафизики. Ниже — разбор каждой по отдельности, потом — доктрины, объединяющей систему, и наконец — энергетических точек других традиций.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION I: SEVEN CHAKRAS ──────── -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">I</span>
+      <h2 class="section-title">Семь главных чакр</h2>
+    </div>
+    <p class="section-intro">Каждая из семи — место конкретного божества с собственным именем, мантрой и символом. Ни одна не является нейтральной точкой тела. Открой карточку, чтобы увидеть, что несёт каждая из них.</p>
+
+    <div class="card-grid">
+      <button class="card" data-modal="muladhara">
+        <div class="card-mark"><span class="card-num">Чакра I</span><span class="card-arabic-num">١</span></div>
+        <div class="card-title">Муладхара</div>
+        <div class="card-position">Основание позвоночника · промежность</div>
+        <div class="card-summary">Место бога Брахмы и спящей богини-змеи Кундалини. Биджа-мантра Лам, элемент земли.</div>
+        <div class="card-footer"><span class="verdict verdict--shirk">Ширк</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+
+      <button class="card" data-modal="svadhisthana">
+        <div class="card-mark"><span class="card-num">Чакра II</span><span class="card-arabic-num">٢</span></div>
+        <div class="card-title">Свадхистана</div>
+        <div class="card-position">Нижняя часть живота · крестец</div>
+        <div class="card-summary">Место Вишну и богини Ракини. Биджа-мантра Вам. В практиках связана с сексуальными ритуалами.</div>
+        <div class="card-footer"><span class="verdict verdict--shirk">Ширк</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+
+      <button class="card" data-modal="manipura">
+        <div class="card-mark"><span class="card-num">Чакра III</span><span class="card-arabic-num">٣</span></div>
+        <div class="card-title">Манипура</div>
+        <div class="card-position">Солнечное сплетение</div>
+        <div class="card-summary">Место Рудры (одна из форм Шивы). Биджа-мантра Рам. Концепция «накопления праны» внутри себя.</div>
+        <div class="card-footer"><span class="verdict verdict--shirk">Ширк</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+
+      <button class="card" data-modal="anahata">
+        <div class="card-mark"><span class="card-num">Чакра IV</span><span class="card-arabic-num">٤</span></div>
+        <div class="card-title">Анахата</div>
+        <div class="card-position">Центр груди · «сердечная»</div>
+        <div class="card-summary">Самая обманчивая. Место Иши (форма Шивы), янтра-гексаграмма как символ божественной пары. Здесь «дживатман сливается с Параматманом».</div>
+        <div class="card-footer"><span class="verdict verdict--shirk">Ширк</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+
+      <button class="card" data-modal="vishuddha">
+        <div class="card-mark"><span class="card-num">Чакра V</span><span class="card-arabic-num">٥</span></div>
+        <div class="card-title">Вишуддха</div>
+        <div class="card-position">Горло · щитовидная железа</div>
+        <div class="card-summary">Место Садашивы («Вечного Шивы»). «Открытие» связано с получением «истин извне» — дверь для контакта с джиннами.</div>
+        <div class="card-footer"><span class="verdict verdict--shirk">Ширк</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+
+      <button class="card" data-modal="ajna">
+        <div class="card-mark"><span class="card-num">Чакра VI</span><span class="card-arabic-num">٦</span></div>
+        <div class="card-title">Аджна</div>
+        <div class="card-position">Межбровье · «третий глаз»</div>
+        <div class="card-summary">Биджа-мантра — Ом, главное обращение индуизма. «Открытие» = попытка обрести знание сокровенного помимо Аллаха.</div>
+        <div class="card-footer"><span class="verdict verdict--shirk">Ширк</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+
+      <button class="card" data-modal="sahasrara">
+        <div class="card-mark"><span class="card-num">Чакра VII</span><span class="card-arabic-num">٧</span></div>
+        <div class="card-title">Сахасрара</div>
+        <div class="card-position">Макушка головы · «коронная»</div>
+        <div class="card-summary">Конечная цель всей системы: слияние индивидуальной души с Брахманом. Программная установка на отрицание Таухида.</div>
+        <div class="card-footer"><span class="verdict verdict--kufr">Куфр</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+
+      <button class="card" data-modal="minor-chakras">
+        <div class="card-mark"><span class="card-num">Дополнительно</span><span class="card-arabic-num">+</span></div>
+        <div class="card-title">Малые чакры</div>
+        <div class="card-position">Ладони · стопы · затылок · суставы</div>
+        <div class="card-summary">Хридая, Бинду, ладонные, подошвенные, локтевые, коленные — все части той же системы и той же метафизики.</div>
+        <div class="card-footer"><span class="verdict verdict--shirk">Ширк</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+    </div>
+  </section>
+
+  <!-- ─── SECTION II: DOCTRINE ──────────── -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">II</span>
+      <h2 class="section-title">Доктрина и практика</h2>
+    </div>
+    <p class="section-intro">Формулы, объединяющие систему — «всё есть Одно» как мировоззрение и «убрать блоки, чтобы энергия текла» как практика. Здесь — анализ философской основы.</p>
+
+    <div class="card-grid card-grid--narrow">
+      <button class="card" data-modal="all-is-one">
+        <div class="card-mark"><span class="card-num">Доктрина</span><span class="card-arabic-num">◆</span></div>
+        <div class="card-title">«Всё суть Одно»</div>
+        <div class="card-position">Адвайта-веданта · пантеизм</div>
+        <div class="card-summary">Главный тезис: твоё «Я» (Атман) есть Брахман. Различие между творцом и творением — иллюзия. Это противоположность Таухида.</div>
+        <div class="card-footer"><span class="verdict verdict--kufr">Куфр</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+
+      <button class="card" data-modal="energy-flow">
+        <div class="card-mark"><span class="card-num">Практика</span><span class="card-arabic-num">◆</span></div>
+        <div class="card-title">Поток энергии и блоки</div>
+        <div class="card-position">«Очищение чакр» · кундалини · нади</div>
+        <div class="card-summary">«Убрать блоки, чтобы энергия текла свободно» — не нейтральная техника, а инструмент конкретной религиозной цели.</div>
+        <div class="card-footer"><span class="verdict verdict--reject">Отвергается</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+    </div>
+  </section>
+
+  <!-- ─── SECTION III: ENERGY POINTS ────── -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">III</span>
+      <h2 class="section-title">Энергетические точки других традиций</h2>
+    </div>
+    <p class="section-intro">Меридианы китайской медицины, марма-точки Аюрведы, точки тэппинга — у каждой системы своя религиозная или философская рамка. Разбираем отдельно.</p>
+
+    <div class="card-grid">
+      <button class="card" data-modal="meridians">
+        <div class="card-mark"><span class="card-num">Точки</span><span class="card-arabic-num">◆</span></div>
+        <div class="card-title">Меридианы и акупунктура</div>
+        <div class="card-position">Традиционная китайская медицина</div>
+        <div class="card-summary">12 основных меридианов, концепция ци, инь-ян. Точки не персонифицированы как божества — это даёт область разногласия.</div>
+        <div class="card-footer"><span class="verdict verdict--ihtilaf">Ихтиляф</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+
+      <button class="card" data-modal="marma">
+        <div class="card-mark"><span class="card-num">Точки</span><span class="card-arabic-num">◆</span></div>
+        <div class="card-title">Марма-точки</div>
+        <div class="card-position">Аюрведа · 107 точек</div>
+        <div class="card-summary">Связаны с праной и индуистскими божествами Аюрведы. Глубже встроены в религиозную систему, чем акупунктура.</div>
+        <div class="card-footer"><span class="verdict verdict--reject">Отвергается</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+
+      <button class="card" data-modal="eft">
+        <div class="card-mark"><span class="card-num">Точки</span><span class="card-arabic-num">◆</span></div>
+        <div class="card-title">EFT — тэппинг</div>
+        <div class="card-position">Современный вариант · аффирмации</div>
+        <div class="card-summary">Простукивание точек с аффирмациями. Может быть заменено простым тактильным самоуспокоением с зикром.</div>
+        <div class="card-footer"><span class="verdict verdict--ihtilaf">Область осторожности</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+    </div>
+  </section>
+
+  <!-- ─── SECTION IV: REALITY ───────────── -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">IV</span>
+      <h2 class="section-title">Анатомическая реальность</h2>
+    </div>
+    <p class="section-intro">Места, которые тантра называет чакрами, действительно являются особыми зонами тела — но не потому, что там «крутятся колёса энергии». Что там на самом деле — и как с этим работает ракый.</p>
+
+    <div class="card-grid card-grid--narrow">
+      <button class="card" data-modal="anatomy">
+        <div class="card-mark"><span class="card-num">Реальность</span><span class="card-arabic-num">◆</span></div>
+        <div class="card-title">Нервные сплетения и психосоматика</div>
+        <div class="card-position">То, что на самом деле есть в этих зонах</div>
+        <div class="card-summary">Солнечное сплетение, сердечное сплетение, гипофиз — реальные анатомические структуры. Тантра увидела их и навесила религиозную интерпретацию.</div>
+        <div class="card-footer"><span class="verdict verdict--halal">Анатомия</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+
+      <button class="card" data-modal="ruqyah-approach">
+        <div class="card-mark"><span class="card-num">Подход</span><span class="card-arabic-num">◆</span></div>
+        <div class="card-title">Что вместо чакр</div>
+        <div class="card-position">Антропология от Аллаха и Его Посланника ﷺ</div>
+        <div class="card-summary">Джасад, кальб, рух, нафс, 'акль, сирр — полная и достаточная карта человека для верующего. Не нужны заимствования.</div>
+        <div class="card-footer"><span class="verdict verdict--halal">Сунна</span><span class="card-arrow">Раскрыть →</span></div>
+      </button>
+    </div>
+  </section>
+
+  <!-- ─── CLOSING ───────────────────────── -->
+  <section class="closing">
+    <div class="closing-pre">Итог</div>
+    <div class="closing-arabic">أَلَا إِنَّ أَوْلِيَاءَ اللَّهِ لَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ</div>
+    <div class="closing-translation">«Поистине, у приближённых Аллаха — нет страха, и не будут они опечалены»</div>
+    <div class="closing-source">Сура Юнус, 10:62</div>
+    <div class="closing-mark">وَاللَّهُ أَعْلَمُ</div>
+  </section>
+
+</div>
+
+<!-- ─── MODAL CONTAINER ─────────────────── -->
+<div class="modal-backdrop" id="backdrop"></div>
+
+<!-- MODAL: MULADHARA -->
+<aside class="modal" id="modal-muladhara" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Чакра I · ١</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Муладхара</h2>
+    <div class="modal-position">Основание позвоночника, между анусом и половыми органами</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--shirk">Ширк</span>
+      <span class="modal-verdict-text">Каждый компонент — обращение к божеству. «Активация» означает «разбудить богиню-змею».</span>
+    </div>
+
+    <h3>Что несёт в себе</h3>
+    <ul>
+      <li><strong>Божество:</strong> Брахма — творец индуистского пантеона. Поклонение Брахме = ширк акбар.</li>
+      <li><strong>Богиня (шакти):</strong> Дакини — одна из тантрических богинь.</li>
+      <li><strong>Биджа-мантра:</strong> «Лам» — произнесение является обращением к стихии земли как божественной.</li>
+      <li><strong>Лотос:</strong> 4 красных лепестка с санскритскими буквами Вам, Шам, Сам, Сам.</li>
+      <li><strong>Элемент:</strong> Притхиви (богиня-земля).</li>
+      <li><strong>Животное:</strong> слон Айравата (вахана Индры).</li>
+      <li><strong>Янтра:</strong> жёлтый квадрат с треугольником.</li>
+    </ul>
+
+    <h3>Главное содержимое</h3>
+    <p>Здесь, согласно тантре, <strong>спит богиня Кундалини в форме змеи</strong>, обвитой 3,5 раза вокруг лингама (символа Шивы). Вся последующая «чакровая работа» построена на её пробуждении и проведении через все остальные чакры до сахасрары.</p>
+
+    <h3>Безобидно ли её «активировать»?</h3>
+    <p>Нет. Сам факт упоминания «муладхары» в практике уже встраивает человека в эту систему. «Активация» в исходном смысле означает <strong>разбудить богиню-змею</strong>. В современных «адаптированных» версиях те же символы, биджа и метафизика — просто без явного называния божеств.</p>
+
+    <div class="callout">
+      <p>То, что находится в этой анатомической зоне в реальности — это <strong>копчиково-крестцовое нервное сплетение и мышцы тазового дна</strong>. Их можно укреплять обычными медицинскими упражнениями (например, Кегеля) без всяких религиозных рамок.</p>
+    </div>
+  </div>
+</aside>
+
+<!-- MODAL: SVADHISTHANA -->
+<aside class="modal" id="modal-svadhisthana" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Чакра II · ٢</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Свадхистана</h2>
+    <div class="modal-position">Нижняя часть живота, около крестца</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--shirk">Ширк</span>
+      <span class="modal-verdict-text">Полный ширк по форме плюс мост к харамным практикам.</span>
+    </div>
+
+    <h3>Что несёт в себе</h3>
+    <ul>
+      <li><strong>Божество:</strong> Вишну — вторая ипостась индуистской «троицы» Тримурти. Поклонение Вишну = ширк акбар.</li>
+      <li><strong>Богиня:</strong> Ракини.</li>
+      <li><strong>Биджа-мантра:</strong> «Вам» — обращение к стихии воды через божество Варуни.</li>
+      <li><strong>Лотос:</strong> 6 оранжевых лепестков.</li>
+      <li><strong>Элемент:</strong> вода.</li>
+      <li><strong>Животное:</strong> Макара — мифический морской зверь, вахана Варуны.</li>
+      <li><strong>Янтра:</strong> серебряный полумесяц.</li>
+      <li><strong>Ассоциации:</strong> сексуальность, эмоции, творчество.</li>
+    </ul>
+
+    <h3>Двойная опасность</h3>
+    <p>Эта чакра в тантрических практиках связывается с <strong>сексуальной энергией как сакральной</strong>. Практики «открытия свадхистаны» часто включают сексуальные ритуалы и визуализации — что для мусульманина становится <strong>двойным харамом</strong>:</p>
+
+    <ul>
+      <li>Ширк — по форме обращения к божеству и стихии</li>
+      <li>Непристойность — по содержанию практик</li>
+    </ul>
+
+    <p>«Освобождение этой чакры» в современных нью-эйджевских терапиях часто означает снятие здоровых нравственных ограничений в области интимного — что для мусульманина прямо противоположно тазкият ан-нафс (очищению души).</p>
+  </div>
+</aside>
+
+<!-- MODAL: MANIPURA -->
+<aside class="modal" id="modal-manipura" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Чакра III · ٣</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Манипура</h2>
+    <div class="modal-position">Солнечное сплетение, между пупком и грудиной</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--shirk">Ширк</span>
+      <span class="modal-verdict-text">Ширк по божественному содержимому плюс ложная антропология силы.</span>
+    </div>
+
+    <h3>Что несёт в себе</h3>
+    <ul>
+      <li><strong>Божество:</strong> Рудра (одна из форм Шивы). Поклонение Шиве = ширк акбар.</li>
+      <li><strong>Богиня:</strong> Лакини.</li>
+      <li><strong>Биджа-мантра:</strong> «Рам» (это также имя аватара Вишну — Рамы).</li>
+      <li><strong>Лотос:</strong> 10 жёлтых лепестков.</li>
+      <li><strong>Элемент:</strong> огонь (бог Агни).</li>
+      <li><strong>Животное:</strong> баран — вахана Агни.</li>
+      <li><strong>Янтра:</strong> красный треугольник.</li>
+    </ul>
+
+    <h3>Антропология «накопления силы»</h3>
+    <p>В тантре именно здесь начинается «накопление праны» в практиках хатха-йоги. Концепция «накопления силы внутри себя» как самостоятельного источника <strong>противоречит таваккулю</strong> (упованию на Аллаха).</p>
+
+    <p>Сила раба — от Аллаха в каждый момент, не из «накопителя в животе». Аллах сказал:</p>
+
+    <div class="quote-block">
+      <div class="arabic">وَمَا بِكُم مِّن نِّعْمَةٍ فَمِنَ اللَّهِ</div>
+      <div class="translation">«Какие бы блага у вас ни были — они от Аллаха»</div>
+      <div class="source">Сура ан-Нахль, 16:53</div>
+    </div>
+
+    <p>Не из «даньтянь», не из «манипуры», не из «накопленной праны» — а в каждый момент свежо от Аллаха.</p>
+  </div>
+</aside>
+
+<!-- MODAL: ANAHATA -->
+<aside class="modal" id="modal-anahata" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Чакра IV · ٤ · Особое внимание</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Анахата</h2>
+    <div class="modal-position">Центр груди — «сердечная чакра»</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--shirk">Ширк</span>
+      <span class="modal-verdict-text">Самая обманчивая чакра — выглядит «безобидно-любящей», по сути храм Шивы.</span>
+    </div>
+
+    <h3>Что несёт в себе</h3>
+    <ul>
+      <li><strong>Божество:</strong> Иша (одна из форм Шивы).</li>
+      <li><strong>Богиня:</strong> Какини.</li>
+      <li><strong>Биджа-мантра:</strong> «Ям» — обращение к стихии воздуха через божество Вайю.</li>
+      <li><strong>Лотос:</strong> 12 зелёных лепестков.</li>
+      <li><strong>Элемент:</strong> воздух.</li>
+      <li><strong>Янтра:</strong> <em>гексаграмма</em> — два переплетённых треугольника (шаткона). Это символ союза Шивы (вершиной вверх) и Шакти (вершиной вниз). <strong>Это символ божественной пары.</strong></li>
+    </ul>
+
+    <h3>Самообман «универсальной любви»</h3>
+    <p>На Западе многие нью-эйджевские движения объявили «сердечную чакру» центром «безусловной любви» и пытаются представить её как универсальную и нейтральную, «совместимую с любой религией», особенно с христианством. <strong>Это иллюзия.</strong></p>
+    <p>Анахата — это <strong>место Шивы</strong>. Зелёный цвет, гексаграмма, биджа-мантра Ям — всё это шиваитская символика. Никакая «адаптация» не меняет имени божества, к которому обращаются по этой системе.</p>
+
+    <h3>Главное — концепция «дживатмана»</h3>
+    <p>Здесь, согласно тантре, <strong>обитает дживатман</strong> — индивидуальная душа, которая в конечном итоге должна «слиться» с Параматманом (Высшей Душой).</p>
+
+    <div class="callout">
+      <p>Концепция <strong>«дживатман сливается с Брахманом» = пантеизм = чистый куфр</strong>. Раб не сливается с Аллахом. Между Творцом и творением — бесконечная онтологическая пропасть.</p>
+    </div>
+
+    <div class="quote-block">
+      <div class="arabic">لَيْسَ كَمِثْلِهِ شَيْءٌ ۖ وَهُوَ السَّمِيعُ الْبَصِيرُ</div>
+      <div class="translation">«Нет ничего подобного Ему. И Он — Слышащий, Видящий»</div>
+      <div class="source">Сура аш-Шура, 42:11</div>
+    </div>
+  </div>
+</aside>
+
+<!-- MODAL: VISHUDDHA -->
+<aside class="modal" id="modal-vishuddha" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Чакра V · ٥</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Вишуддха</h2>
+    <div class="modal-position">Горло, область щитовидной железы</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--shirk">Ширк</span>
+      <span class="modal-verdict-text">Ширк плюс практическая опасность контакта с джиннами.</span>
+    </div>
+
+    <h3>Что несёт в себе</h3>
+    <ul>
+      <li><strong>Божество:</strong> Садашива («Вечный Шива») — высшая форма Шивы в шиваизме.</li>
+      <li><strong>Богиня:</strong> Шакини.</li>
+      <li><strong>Биджа-мантра:</strong> «Хам» — стихия эфира как божественное пространство.</li>
+      <li><strong>Лотос:</strong> 16 синих лепестков.</li>
+      <li><strong>Элемент:</strong> акаша (эфир) — индуистская космологическая концепция.</li>
+      <li><strong>Животное:</strong> белый слон.</li>
+    </ul>
+
+    <h3>Опасность «открытия»</h3>
+    <p>«Открытие вишуддхи» в практиках часто связывается с <strong>получением «истин» откуда-то извне</strong> — это прямая дверь для контактов с джиннами, которые подбрасывают «откровения», «послания», «истины».</p>
+
+    <p>Многие современные «ченнелеры» и «получатели информации от высших существ» утверждают, что у них «открыта горловая чакра». С точки зрения ракыя — у них установлен контакт с шайтаном.</p>
+
+    <div class="callout">
+      <p><strong>Признаки опасности:</strong> человек начинает «получать послания», «говорить от имени высших», слышать «внутренний голос наставника» — это классические симптомы установленного контакта с джинном через эту систему.</p>
+    </div>
+  </div>
+</aside>
+
+<!-- MODAL: AJNA -->
+<aside class="modal" id="modal-ajna" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Чакра VI · ٦ · Высокая опасность</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Аджна</h2>
+    <div class="modal-position">Межбровье — «третий глаз»</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--shirk">Ширк</span>
+      <span class="modal-verdict-text">Самая опасная чакра в практическом плане. Дорога к контакту с шайтанами через «знание сокровенного».</span>
+    </div>
+
+    <h3>Что несёт в себе</h3>
+    <ul>
+      <li><strong>Божество:</strong> Парамашива («Высший Шива»).</li>
+      <li><strong>Богиня:</strong> Хакини.</li>
+      <li><strong>Биджа-мантра:</strong> <strong>«Ом» (Аум)</strong> — главная мантра индуизма, представляющая Брахмана-абсолют. Произнесение «Ом» = обращение к высшему индуистскому божественному принципу = большое многобожие.</li>
+      <li><strong>Лотос:</strong> 2 лепестка (индиго или фиолетовых).</li>
+      <li><strong>Особенность:</strong> здесь, согласно тантре, встречаются три главные нади — Ида (лунный канал), Пингала (солнечный канал) и Сушумна (центральный). Считается «гуру-чакрой».</li>
+    </ul>
+
+    <h3>«Открытие третьего глаза» = попытка обойти Аллаха</h3>
+    <p>Это попытка обрести знание скрытого через техники, обращённые не к Аллаху. Аллах сказал:</p>
+
+    <div class="quote-block">
+      <div class="arabic">قُل لَّا يَعْلَمُ مَن فِي السَّمَاوَاتِ وَالْأَرْضِ الْغَيْبَ إِلَّا اللَّهُ</div>
+      <div class="translation">«Скажи: никто на небесах и на земле не знает сокровенного, кроме Аллаха»</div>
+      <div class="source">Сура ан-Намль, 27:65</div>
+    </div>
+
+    <p>Знание гайба — только у Аллаха. Он открывает его, кому пожелает, и в той мере, в какой пожелает (пророкам в виде откровения, верующим — в виде фирасата и истинных снов). <strong>Попытка «вырвать» это знание через техники — это попытка обойти Аллаха, и тот, кто откликается на такие попытки — джинны.</strong></p>
+
+    <h3>Тот же механизм, что у колдунов</h3>
+    <p>Это точно тот же механизм, через который работают «ясновидящие» и колдуны: джинны поставляют информацию в обмен на отход человека от единобожия. Пророк ﷺ сказал:</p>
+
+    <div class="quote-block">
+      <div class="arabic">مَنْ أَتَى عَرَّافًا فَسَأَلَهُ عَنْ شَيْءٍ لَمْ تُقْبَلْ لَهُ صَلَاةٌ أَرْبَعِينَ لَيْلَةً</div>
+      <div class="translation">«Кто пришёл к гадателю и спросил его о чём-то — у того не будет принят намаз сорок ночей»</div>
+      <div class="source">Муслим, 2230</div>
+    </div>
+
+    <p>А что говорить о том, кто <strong>сам стал «гадателем», открыв третий глаз</strong>?</p>
+  </div>
+</aside>
+
+<!-- MODAL: SAHASRARA -->
+<aside class="modal" id="modal-sahasrara" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Чакра VII · ٧ · Сердцевина системы</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Сахасрара</h2>
+    <div class="modal-position">Макушка головы — «коронная»</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--kufr">Куфр</span>
+      <span class="modal-verdict-text">Это не «безобидная макушка», а программная установка на отрицание Таухида.</span>
+    </div>
+
+    <h3>Что несёт в себе</h3>
+    <ul>
+      <li><strong>«Божество»:</strong> само Высшее — Пара Брахман.</li>
+      <li><strong>Главное событие:</strong> здесь, согласно тантре, Кундалини-Шакти соединяется с Шивой в священном сексуальном союзе («майтхуна» космического масштаба).</li>
+      <li><strong>Биджа:</strong> «безмолвное Ом» или полное молчание.</li>
+      <li><strong>Лотос:</strong> 1000 лепестков — символическое бесконечное многообразие.</li>
+      <li><strong>Цвет:</strong> фиолетовый/белый.</li>
+      <li><strong>Цель:</strong> «самадхи» — растворение индивидуального сознания в Абсолюте.</li>
+    </ul>
+
+    <h3>Сердцевина куфра всей системы</h3>
+    <p>Конечная цель «активации чакр» через подъём кундалини — это <strong>слияние человеческой души с «Абсолютом», стирание различия между рабом и Господом</strong>. Это центральная доктрина адвайта-веданты и тантры: «Атман есть Брахман» — «индивидуальная душа есть Бог».</p>
+
+    <div class="callout">
+      <p>В Исламе это — <strong>прямое отрицание основы основ</strong>. Творение никогда не становится Творцом. Раб никогда не сливается с Господом. Между ними — онтологическая бесконечность.</p>
+    </div>
+
+    <div class="quote-block">
+      <div class="arabic">قُلْ هُوَ اللَّهُ أَحَدٌ ۞ اللَّهُ الصَّمَدُ ۞ لَمْ يَلِدْ وَلَمْ يُولَدْ ۞ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ</div>
+      <div class="translation">«Скажи: Он — Аллах, Единственный. Аллах — Самодостаточный. Не родил и не был рождён, и нет никого, равного Ему»</div>
+      <div class="source">Сура аль-Ихляс</div>
+    </div>
+
+    <p>Сахасрара — это <strong>не «безобидная макушка»</strong>, а финальная остановка поезда, который везёт человека к отрицанию различия между ним и Богом. Все предыдущие шесть чакр — это станции на пути к этой конечной.</p>
+  </div>
+</aside>
+
+<!-- MODAL: MINOR CHAKRAS -->
+<aside class="modal" id="modal-minor-chakras" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Малые чакры</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Малые чакры</h2>
+    <div class="modal-position">Ладони, стопы, суставы, затылок, лоб</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--shirk">Ширк</span>
+      <span class="modal-verdict-text">Не самостоятельны. Часть той же системы и той же метафизики.</span>
+    </div>
+
+    <h3>Какие бывают</h3>
+    <p>Кроме семи основных, тантрические и нью-эйджевские системы говорят о множестве малых чакр:</p>
+
+    <ul>
+      <li><strong>Хридая</strong> — между анахатой и манипурой, «истинное сердце», ещё одно место Атмана</li>
+      <li><strong>Бинду</strong> — затылок, связана с лунной энергией</li>
+      <li><strong>Лалата</strong> — лоб над аджной</li>
+      <li><strong>Ладонные чакры</strong> — на середине ладоней</li>
+      <li><strong>Подошвенные чакры</strong> — на стопах</li>
+      <li><strong>Локтевые и коленные</strong> — на суставах</li>
+      <li>В новейших западных системах появились «выше-головные» чакры (8-я, 9-я, до 12-й и больше), «земная звезда» под стопами — это уже современное смешение теософии и New Age</li>
+    </ul>
+
+    <h3>Все они — части одной системы</h3>
+    <p>Они не самостоятельны, не нейтральны, не «технические». Они привязаны к той же метафизике: к идее «универсальной энергии», к Кундалини, к «слиянию с Абсолютом».</p>
+
+    <h3>Особый случай — «ладонные чакры»</h3>
+    <p>То, что в них описывается (чувствительность ладоней, способность ощущать тонкое руками), <strong>физически реально и дано Аллахом всем людям</strong>. Но называть это «чакрой» = встраивать в систему, в которой эта способность объясняется через прану и связь с «универсальной энергией».</p>
+
+    <div class="callout callout--warning">
+      <p><strong>Способность сохраняем, термин и систему отвергаем.</strong> Ракый развивает чувствительность рук через обычные физические упражнения и применяет её в работе с Кораном — а не через «активацию ладонных чакр».</p>
+    </div>
+  </div>
+</aside>
+
+<!-- MODAL: ALL IS ONE -->
+<aside class="modal" id="modal-all-is-one" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Доктрина · Сердцевина системы</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">«Всё суть Одно»</h2>
+    <div class="modal-position">Адвайта-веданта · пантеизм · недвойственность</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--kufr">Куфр</span>
+      <span class="modal-verdict-text">Это противоположность Таухида в самой основе.</span>
+    </div>
+
+    <h3>Что означает формула</h3>
+    <p>Формула «всё суть одно» (на санскрите: «Сарвам кхалу идам брахма» — «Воистину, всё это есть Брахман») — это <strong>центральный тезис адвайта-веданты</strong>, главного философского направления индуизма.</p>
+
+    <p>Что она утверждает:</p>
+    <ul>
+      <li>Существует только <strong>Одна Реальность</strong> — Брахман</li>
+      <li>Всё видимое многообразие — <strong>иллюзия (майя)</strong></li>
+      <li>Твоё «Я» (Атман) <strong>и есть</strong> Брахман — нет различия между душой и Богом</li>
+      <li>Различие между «я» и «другим», между «творцом» и «творением» — <strong>невежество</strong></li>
+      <li>Цель жизни — осознать это единство («самореализация»)</li>
+    </ul>
+
+    <h3>С точки зрения Ислама</h3>
+    <p>Это куфр в самой основе — противоположность Таухида.</p>
+
+    <p>Таухид — это <strong>единственность Аллаха в противопоставлении к творению</strong>. Единственность через различие, а не через слияние. Аллах — Один, и нет ничего, подобного Ему. Творение — отдельно от Творца, оно бесконечно меньше Творца и подчинено Ему.</p>
+
+    <div class="quote-block">
+      <div class="arabic">اللَّهُ الصَّمَدُ ۞ لَمْ يَلِدْ وَلَمْ يُولَدْ ۞ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ</div>
+      <div class="translation">«Аллах — Самодостаточный. Не родил и не был рождён, и нет никого, равного Ему»</div>
+      <div class="source">Сура аль-Ихляс, 2-4</div>
+    </div>
+
+    <p>Это — отрицание любого пантеизма. Аллах не «во всём» в смысле слияния. Творение — это творение, а не «эманация» или «проявление» Аллаха.</p>
+
+    <h3>Связка «Всё есть Одно + поток энергии + блоки»</h3>
+    <p>Когда говорят: «<em>Всё есть Одно, чтобы энергия свободно текла, ушли все блоки и грязь из чакр</em>» — это не отдельные технические утверждения. Это <strong>связная цепочка, основанная на пантеистической метафизике</strong>:</p>
+
+    <ul>
+      <li>«Всё есть Одно» — пантеистическая основа</li>
+      <li>«Энергия — это проявление этого Одного» — космическая энергия как «дыхание Абсолюта»</li>
+      <li>«В тебе эта энергия течёт по чакрам и нади» — индивидуальная микрокопия макрокосма</li>
+      <li>«Блоки — это твоё невежество, эго, привязанности» — то, что мешает осознать единство</li>
+      <li>«Очисти чакры — энергия потечёт — ты осознаешь, что ты есть Брахман»</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Конечная станция этой цепочки</strong> — идея, что «я сам есть Бог». Это не «духовное освобождение», а <strong>духовная ловушка</strong>, замаскированная под него.</p>
+    </div>
+  </div>
+</aside>
+
+<!-- MODAL: ENERGY FLOW -->
+<aside class="modal" id="modal-energy-flow" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Практика · Поток энергии</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Поток энергии и блоки</h2>
+    <div class="modal-position">«Очищение чакр», нади, подъём кундалини</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--reject">Отвергается</span>
+      <span class="modal-verdict-text">Не нейтральная техника, а инструмент конкретной религиозной цели.</span>
+    </div>
+
+    <h3>Система каналов (нади)</h3>
+    <p>В тантрической системе помимо чакр есть нади — каналы, по которым течёт прана. Главных три:</p>
+
+    <ul>
+      <li><strong>Сушумна</strong> — центральный канал вдоль позвоночника</li>
+      <li><strong>Ида</strong> — левый канал, «лунный», женский, прохладный</li>
+      <li><strong>Пингала</strong> — правый канал, «солнечный», мужской, тёплый</li>
+    </ul>
+
+    <p>Всего по разным традициям насчитывают <strong>72 000 нади</strong> — сеть каналов в теле.</p>
+
+    <h3>Цель «очищения»</h3>
+    <ul>
+      <li>Очистить нади (через пранаяму, асаны, мантры)</li>
+      <li>Поднять Кундалини-богиню из муладхары</li>
+      <li>Провести её по сушумне через все чакры</li>
+      <li>Соединить её с Шивой в сахасраре</li>
+      <li>Достичь самадхи — слияния с Абсолютом</li>
+    </ul>
+
+    <p>Это <strong>завершённая религиозная программа куфра</strong>, а не «техника здоровья».</p>
+
+    <h3>Что в Исламе называется «блоками» и как они удаляются</h3>
+    <p>В Исламе действительно есть концепция препятствий между рабом и Аллахом — но они называются иначе и удаляются иначе:</p>
+
+    <ul>
+      <li><strong>Грехи (зунуб)</strong> — реальные препятствия, создающие пелену на сердце. Удаляются истигфаром и таубой.</li>
+      <li><strong>Ран (ржавчина) на сердце</strong> — накопленная тьма от грехов. Очищается чтением Корана, дуа, добрыми делами.</li>
+      <li><strong>Привязанности к дунья</strong> — отвлекают сердце. Лечатся зухдом и зикром.</li>
+      <li><strong>Хава и гордыня</strong> — препятствия для смирения. Лечатся тазкият ан-нафс.</li>
+      <li><strong>Вред извне</strong> — сихр, 'айн, масс. Удаляются рукьей с Кораном.</li>
+    </ul>
+
+    <div class="callout callout--warning">
+      <p><strong>Главное отличие:</strong> в Исламе «удаление блоков» не ведёт к слиянию с Аллахом. Оно ведёт к <strong>более чистому поклонению Аллаху</strong>, к более ясному различению между Господом и рабом. Цель — не «осознать, что ты есть Бог», а осознать, что ты есть раб — в самом прекрасном смысле этого слова.</p>
+    </div>
+
+    <h3>Три исхода длительной практики</h3>
+    <p>С точки зрения ракыя, когда человек упорно практикует «открытие чакр» и «подъём кундалини», возможны три исхода:</p>
+
+    <ul>
+      <li><strong>Ничего не происходит</strong> — самовнушение, человек думает что «продвигается», но реально просто тратит время и удаляется от Аллаха.</li>
+      <li><strong>Психологические нарушения</strong> — разрушение здоровых психических границ из-за длительной работы с антитаухидной метафизикой.</li>
+      <li><strong>Реальное «пробуждение»</strong> — но не богини, а установление связи с джиннами, которые откликаются на длительный зов системы. Это объясняет реальные феномены: видения, голоса, «энергетические переживания», иногда сверхспособности (шариатски называемые <em>истидрадж</em> — постепенное предоставление возможностей шайтанами тому, кто отдаляется от Аллаха).</li>
+    </ul>
+  </div>
+</aside>
+
+<!-- MODAL: MERIDIANS -->
+<aside class="modal" id="modal-meridians" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Энерготочки · Китайская традиция</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Меридианы и акупунктура</h2>
+    <div class="modal-position">Традиционная китайская медицина (ТКМ)</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--ihtilaf">Ихтиляф</span>
+      <span class="modal-verdict-text">Область разногласия среди современных учёных Ислама.</span>
+    </div>
+
+    <h3>Что это</h3>
+    <p>Традиционная китайская медицина описывает 12 основных и 8 «чудесных» меридианов — каналов, по которым течёт <strong>ци</strong>. На этих меридианах расположены точки акупунктуры (около 365 классических), в которые можно воздействовать иглами, давлением (акупрессура), теплом (моксы).</p>
+
+    <h3>Философская рамка</h3>
+    <ul>
+      <li>Ци как универсальная жизненная сила</li>
+      <li>Инь и Ян как два полярных принципа Вселенной</li>
+      <li>Пять элементов (У-син): дерево, огонь, земля, металл, вода</li>
+      <li>Связь органов с сезонами, эмоциями, цветами, звуками</li>
+    </ul>
+
+    <p>Это даосская/конфуцианская космология. Концепция «ци» как самостоятельной субстанции, инь-ян как космических принципов — религиозная рамка.</p>
+
+    <h3>Важное отличие от чакр</h3>
+    <p>В отличие от чакр, <strong>точки акупунктуры не связаны с конкретными божествами</strong>. Нет «бога точки Цзу-сань-ли» или «богини Хэ-гу». Меридианы не персонифицированы. Это делает систему <strong>менее религиозно насыщенной</strong>, чем чакры — но всё равно не нейтральной.</p>
+
+    <h3>Что говорит современная медицина</h3>
+    <p>Точки акупунктуры частично соответствуют реальной анатомии:</p>
+    <ul>
+      <li>Многие точки расположены в местах прохождения нервов, рядом с нервными ганглиями</li>
+      <li>Воздействие вызывает реальные физиологические эффекты: выброс эндорфинов, изменение кровообращения, рефлекторные реакции</li>
+      <li>ВОЗ признаёт акупунктуру эффективной в некоторых областях — контроль боли, тошнота при химиотерапии, мигрень</li>
+    </ul>
+
+    <p>То есть техника частично работает — но <strong>не потому, что в человеке течёт «ци по меридианам»</strong>, а потому что воздействие на нервные точки даёт нейрофизиологический ответ.</p>
+
+    <h3>Позиция исламских учёных</h3>
+    <p><strong>Часть учёных разрешает</strong> при условии: использование как чисто медицинской процедуры, без принятия философской рамки ци и инь-ян, без визуализаций и медитаций, у сертифицированного специалиста, при подтверждённой медицинской пользе.</p>
+
+    <p><strong>Часть учёных запрещает или не рекомендует</strong> из-за: непроверяемости теоретической базы, риска её принятия пациентом, наличия альтернативных методов лечения, принципа сада аз-зара'и (закрытие путей к ширку).</p>
+
+    <div class="callout callout--warning">
+      <p><strong>Безопасная позиция:</strong> если есть медицинская альтернатива — выбирать её. Если акупунктура необходима для лечения и проводится в чисто медицинском контексте — допустимо с осторожностью, при категорическом отказе от философской рамки ци.</p>
+    </div>
+  </div>
+</aside>
+
+<!-- MODAL: MARMA -->
+<aside class="modal" id="modal-marma" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Энерготочки · Аюрведа</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Марма-точки</h2>
+    <div class="modal-position">Аюрведа — 107 точек</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--reject">Отвергается</span>
+      <span class="modal-verdict-text">Глубже встроены в религиозную систему индуизма, чем акупунктура.</span>
+    </div>
+
+    <h3>Что это</h3>
+    <p>Аюрведа (индуистская традиционная медицина) описывает 107 марма-точек на теле — места, где встречаются мышцы, сосуды, связки, кости, суставы. Воздействие на них (массажем, давлением) считается лечебным.</p>
+
+    <h3>Чем отличается от акупунктуры</h3>
+    <p>В отличие от акупунктурных точек, марма-точки в исходной системе:</p>
+    <ul>
+      <li><strong>Связаны с праной</strong> напрямую, как чакры</li>
+      <li><strong>Часто связаны с божествами Аюрведы</strong> в более глубоких уровнях работы</li>
+      <li><strong>Используются в духовных практиках</strong>, не только в медицинских</li>
+    </ul>
+
+    <p>Поэтому марма-терапия <strong>проблематичнее акупунктуры</strong> — она глубже встроена в религиозную систему индуизма.</p>
+
+    <div class="callout callout--warning">
+      <p><strong>Безопасная позиция:</strong> воздерживаться. Обычный лечебный массаж без всей этой системы даёт схожие физические эффекты без религиозных рисков.</p>
+    </div>
+  </div>
+</aside>
+
+<!-- MODAL: EFT -->
+<aside class="modal" id="modal-eft" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Энерготочки · Современная практика</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">EFT — тэппинг</h2>
+    <div class="modal-position">Emotional Freedom Technique · аффирмации + точки</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--ihtilaf">Область осторожности</span>
+      <span class="modal-verdict-text">Имеет физическую основу, но опасные элементы в подаче.</span>
+    </div>
+
+    <h3>Что это</h3>
+    <p>Постукивание пальцами по определённым точкам тела (в основном точкам акупунктуры) с одновременным проговариванием аффирмаций.</p>
+
+    <h3>Анализ по компонентам</h3>
+
+    <ul>
+      <li><strong>Физический компонент</strong> (постукивание по точкам): сами точки соответствуют нервным сплетениям, и тактильное воздействие даёт реальный эффект самоуспокоения. Чисто физически — нейтрально.</li>
+      <li><strong>Теоретическая рамка</strong> («меридианы», «нарушения энергопотока»): китайская медицина, концепция ци. Если рассматривать как самостоятельную силу — проблематично.</li>
+      <li><strong>Аффирмации</strong> — самое опасное. Если человек проговаривает «Я люблю и принимаю себя», «Я отпускаю эту проблему» как абсолютные утверждения, отсылающие к собственной силе — это самовнушение без обращения к Аллаху.</li>
+    </ul>
+
+    <h3>Что можно сохранить</h3>
+    <p>Тактильное самоуспокоение через лёгкие прикосновения к лицу/телу + <strong>дуа и зикр</strong> вместо аффирмаций.</p>
+
+    <p>Например, человек в стрессе — кладёт ладонь на грудь, делает глубокий вдох, и говорит:</p>
+
+    <div class="quote-block">
+      <div class="arabic">حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ</div>
+      <div class="translation">«Достаточно нам Аллаха, и прекрасный Он Покровитель»</div>
+      <div class="source">Сура Аль 'Имран, 3:173</div>
+    </div>
+
+    <p>Или:</p>
+
+    <div class="quote-block">
+      <div class="arabic">لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ</div>
+      <div class="translation">«Нет мощи и силы ни у кого, кроме как от Аллаха»</div>
+      <div class="source">Из достоверной Сунны</div>
+    </div>
+
+    <div class="callout callout--warning">
+      <p>Тактильный контакт с зикром = успокоение, благословенное Сунной. Без всякого «меридианного тэппинга» и без аффирмаций самонадеянности.</p>
+    </div>
+  </div>
+</aside>
+
+<!-- MODAL: ANATOMY -->
+<aside class="modal" id="modal-anatomy" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Реальность · То, что есть на самом деле</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Нервные сплетения и психосоматика</h2>
+    <div class="modal-position">Анатомическая основа того, что приписывают чакрам</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--halal">Анатомия</span>
+      <span class="modal-verdict-text">Реальные структуры тела, не имеющие отношения к индуистской метафизике.</span>
+    </div>
+
+    <h3>Реальные анатомические структуры</h3>
+    <p>Места, которые тантра называет чакрами, действительно являются особыми зонами тела. Но они особые не потому, что там «крутятся колёса энергии», а потому что там расположены реальные анатомические структуры.</p>
+
+    <table class="anatomy-table">
+      <thead>
+        <tr><th>Чакра</th><th>Анатомическая зона</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Муладхара</td><td>Копчиково-крестцовое сплетение, тазовое дно</td></tr>
+        <tr><td>Свадхистана</td><td>Крестцовое сплетение, мочеполовая система</td></tr>
+        <tr><td>Манипура</td><td>Солнечное сплетение — реальный медицинский термин</td></tr>
+        <tr><td>Анахата</td><td>Сердечное сплетение, область сердца и лёгких</td></tr>
+        <tr><td>Вишуддха</td><td>Глоточное сплетение, щитовидная железа</td></tr>
+        <tr><td>Аджна</td><td>Гипофиз, шишковидная железа, зрительный перекрест</td></tr>
+        <tr><td>Сахасрара</td><td>Кора головного мозга, темя</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Это реально особо чувствительные зоны</h3>
+    <ul>
+      <li><strong>Эмоции вызывают физические ощущения в этих зонах</strong> — известный медицинский факт. Тревога — узел в животе (солнечное сплетение). Печаль — тяжесть в груди (сердечное сплетение). Гнев — жар в голове. Стыд — ком в горле.</li>
+      <li><strong>Психосоматика</strong> — реальная связь психики и тела через эти нервные узлы.</li>
+      <li><strong>Ось мозг-кишечник</strong> — современная наука признаёт, что кишечник имеет «второй мозг» (энтеральная нервная система).</li>
+    </ul>
+
+    <h3>Что произошло</h3>
+    <div class="callout callout--warning">
+      <p>Тантра увидела эти реальные явления и навесила на них свою религиозную интерпретацию. <strong>Это похоже на то, как древние видели грозу и назвали её «гневом Зевса». Гроза реальна — Зевса нет. Нервные сплетения реальны — божеств в них нет.</strong></p>
+    </div>
+
+    <h3>Что наблюдает ракый</h3>
+    <p>С точки зрения практики рукьи, эти же зоны действительно являются местами, где концентрируются последствия духовных поражений:</p>
+
+    <ul>
+      <li>'Айн (сглаз) часто оседает в груди или животе</li>
+      <li>Сихр аль-ма'куль (съеденное колдовство) — в желудке и кишечнике</li>
+      <li>Масс (присутствие джинна) часто ощущается в голове или плечах</li>
+      <li>Сихр аль-махабба (приворотный сихр) может локализоваться в области сердца</li>
+    </ul>
+
+    <p>Ракый работает с этими зонами <strong>не потому, что верит в «чакры»</strong>, а потому что эмпирически наблюдает: эти зоны — концентраторы как нервной, так и тонкой активности тела. Но называет он их анатомически — «голова», «грудь», «живот», «горло» — а не «сахасрара» и «манипура». <strong>Названия несут систему. Использовать чужие имена — встраивать себя в чужую систему.</strong></p>
+  </div>
+</aside>
+
+<!-- MODAL: RUQYAH APPROACH -->
+<aside class="modal" id="modal-ruqyah-approach" aria-hidden="true">
+  <div class="modal-drag"></div>
+  <header class="modal-header">
+    <div class="modal-eyebrow">Подход ракыя · Антропология Сунны</div>
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+  </header>
+  <div class="modal-body">
+    <h2 class="modal-title">Что вместо чакр</h2>
+    <div class="modal-position">Антропология от Аллаха и Его Посланника ﷺ</div>
+
+    <div class="modal-verdict-banner">
+      <span class="verdict verdict--halal">Сунна</span>
+      <span class="modal-verdict-text">Полная и достаточная карта человека для верующего.</span>
+    </div>
+
+    <h3>Мусульманину не нужна чакровая система</h3>
+    <p>У него есть полная и достаточная антропология от Аллаха и Его Посланника ﷺ:</p>
+
+    <ul>
+      <li><strong>Джасад</strong> — тело, доверенное Аллахом (амана)</li>
+      <li><strong>Кальб</strong> — сердце, духовный центр, на котором сосредоточена вся работа верующего</li>
+      <li><strong>Рух</strong> — душа, тайна Аллаха («Они спрашивают тебя о душе. Скажи: душа — из дела Господа моего, и даровано вам знания лишь немного» — аль-Исра, 85)</li>
+      <li><strong>Нафс</strong> — самость, эго, которое нужно воспитывать (тазкият ан-нафс)</li>
+      <li><strong>'Акль</strong> — разум, инструмент познания</li>
+      <li><strong>Сирр</strong> — глубинный уровень связи с Аллахом</li>
+    </ul>
+
+    <h3>Главная зона работы — сердце (кальб)</h3>
+    <p>Не «сердечная чакра», а то самое сердце, о котором Пророк ﷺ сказал:</p>
+
+    <div class="quote-block">
+      <div class="arabic">أَلَا وَإِنَّ فِي الْجَسَدِ مُضْغَةً إِذَا صَلَحَتْ صَلَحَ الْجَسَدُ كُلُّهُ وَإِذَا فَسَدَتْ فَسَدَ الْجَسَدُ كُلُّهُ أَلَا وَهِيَ الْقَلْبُ</div>
+      <div class="translation">«Поистине, в теле есть кусок плоти. Если он здоров — здорово всё тело. А если он испорчен — испорчено всё тело. И это — сердце»</div>
+      <div class="source">Аль-Бухари, Муслим</div>
+    </div>
+
+    <h3>Работа с сердцем в Исламе</h3>
+    <ul>
+      <li>Зикр — постоянное поминание Аллаха</li>
+      <li>Тауба — покаяние от грехов</li>
+      <li>Дуа — обращение к Аллаху</li>
+      <li>Чтение Корана с тадаббуром</li>
+      <li>Любовь к Аллаху и Его Посланнику ﷺ</li>
+      <li>Страх перед Аллахом и надежда на Его милость</li>
+      <li>Тазкият ан-нафс — очищение от низменных качеств (зависть, гордыня, скупость, любовь к дунья)</li>
+      <li>Привитие высоких качеств (тавакуль, ихсан, сабр, шукр)</li>
+    </ul>
+
+    <div class="callout callout--warning">
+      <p><strong>Это и есть истинная «работа с энергетическими центрами»</strong> — реальная, эффективная, проверенная веками, ведущая не к иллюзии слияния с Брахманом, а к реальной близости к Аллаху, которая в Судный день обернётся вечным благом.</p>
+    </div>
+
+    <h3>Истинное «развитие»</h3>
+    <p>Не открытие чакр и не пробуждение кундалини, а то, что описано в Коране:</p>
+
+    <div class="quote-block">
+      <div class="arabic">وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ</div>
+      <div class="translation">«У человека не будет ничего, кроме того, к чему он стремился»</div>
+      <div class="source">Сура ан-Наджм, 53:39</div>
+    </div>
+
+    <p>Стремление верующего — к Аллаху. Не «всё есть Одно», а <strong>«Господин — Один, и я — Его раб»</strong>. Возвышение в рабстве, а не растворение в Абсолюте.</p>
+  </div>
+</aside>
+
+<script>
+(function() {
+  const backdrop = document.getElementById('backdrop');
+  const cards = document.querySelectorAll('.card[data-modal]');
+  const modals = document.querySelectorAll('.modal');
+  const closeButtons = document.querySelectorAll('.modal-close');
+  let activeModal = null;
+  let lastFocused = null;
+
+  function openModal(id) {
+    const modal = document.getElementById('modal-' + id);
+    if (!modal) return;
+    lastFocused = document.activeElement;
+    activeModal = modal;
+    modal.classList.add('active');
+    backdrop.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    modal.scrollTop = 0;
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) setTimeout(() => closeBtn.focus(), 100);
+  }
+
+  function closeModal() {
+    if (!activeModal) return;
+    activeModal.classList.remove('active');
+    backdrop.classList.remove('active');
+    activeModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    if (lastFocused) lastFocused.focus();
+    activeModal = null;
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => openModal(card.dataset.modal));
+  });
+
+  closeButtons.forEach(btn => {
+    btn.addEventListener('click', closeModal);
+  });
+
+  backdrop.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && activeModal) closeModal();
+  });
+
+  // Swipe down to close on mobile
+  modals.forEach(modal => {
+    let startY = 0;
+    let currentY = 0;
+    let dragging = false;
+
+    modal.addEventListener('touchstart', e => {
+      if (modal.scrollTop > 0) return;
+      startY = e.touches[0].clientY;
+      dragging = true;
+    }, { passive: true });
+
+    modal.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      currentY = e.touches[0].clientY;
+      const delta = currentY - startY;
+      if (delta > 0 && modal.scrollTop === 0) {
+        modal.style.transform = `translateY(${delta}px)`;
+        modal.style.transition = 'none';
+      }
+    }, { passive: true });
+
+    modal.addEventListener('touchend', () => {
+      if (!dragging) return;
+      dragging = false;
+      const delta = currentY - startY;
+      modal.style.transition = '';
+      modal.style.transform = '';
+      if (delta > 120) closeModal();
+    });
+  });
+})();
+</script>
+</body>
+</html>
