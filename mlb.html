@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Mobile Legends — Полный Гайд | von group | kyro</title>
+<title>Mobile Legends — Полный Гайд Про-уровня | von group | kyro</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap');
 
@@ -1066,6 +1066,222 @@ body {
 .aim-crosshair::before { left:50%; top:0; width:2px; height:100%; transform:translateX(-50%); }
 .aim-crosshair::after { top:50%; left:0; height:2px; width:100%; transform:translateY(-50%); }
 
+/* ===== HERO CARD (A.4 template) ===== */
+.hero-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.hero-card.template {
+  border-style: dashed;
+  border-color: var(--accent3);
+  background: rgba(83,52,131,0.06);
+}
+.hero-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+.hero-card-head .hc-icon {
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: var(--gradient2);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.hero-card-head .hc-title { font-size: 1.05rem; font-weight: 800; color: var(--text-bright); }
+.hero-card-head .hc-sub { font-size: 0.78rem; color: var(--text-dim); }
+.hero-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+}
+.hero-card-field {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  padding: 0.5rem 0.7rem;
+  background: rgba(0,0,0,0.15);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent);
+}
+.hero-card-field b {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.2rem;
+}
+
+/* ===== CHECKLIST (G.4) ===== */
+.checklist { list-style: none; padding: 0; }
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist .chk {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: rgba(0,200,83,0.15);
+  color: var(--success);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 0.8rem;
+  font-weight: 900;
+  margin-top: 0.1rem;
+}
+
+/* ===== SPELL / EMBLEM GRID (Block F) ===== */
+.spell-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+.spell-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 0.8rem;
+  text-align: center;
+}
+.spell-card .sc-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
+.spell-card .sc-name { font-size: 0.85rem; font-weight: 700; color: var(--text-bright); margin-bottom: 0.2rem; }
+.spell-card .sc-desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.5; }
+
+/* ===== LEVEL SCALE (Block I) ===== */
+.level-scale { margin: 1rem 0; }
+.level-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0.4rem;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+.level-row:hover { background: rgba(255,255,255,0.03); }
+.level-row .lv-badge {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--gradient2);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: white;
+}
+.level-row.legend .lv-badge {
+  background: var(--gradient3);
+  color: #111;
+  box-shadow: 0 0 16px rgba(240,192,64,0.5);
+}
+.level-row .lv-info { flex: 1; }
+.level-row .lv-name { font-size: 0.9rem; font-weight: 700; color: var(--text-bright); }
+.level-row .lv-req { font-size: 0.75rem; color: var(--text-dim); }
+.level-row .lv-mps { font-size: 0.75rem; color: var(--gold); font-family: 'JetBrains Mono', monospace; flex-shrink:0; }
+
+/* ===== MPS BUILDER STAT ROW (game 5 upgrade / battle) ===== */
+.battle-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-primary);
+}
+.battle-side { flex: 1; text-align: center; }
+.battle-side .bs-icon { font-size: 2.2rem; margin-bottom: 0.4rem; }
+.battle-side .bs-name { font-size: 0.8rem; font-weight: 700; color: var(--text-bright); margin-bottom: 0.5rem; }
+.battle-vs-mark { font-size: 1.1rem; font-weight: 900; color: var(--accent); flex-shrink: 0; }
+
+/* ===== OBJECTIVE TIMING GAME (H.3) ===== */
+.obj-map {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: var(--bg-primary);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.obj-map .grid-bg { position: absolute; inset: 0; }
+.obj-icon {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+}
+.obj-icon.ally { background: rgba(0,200,83,0.2); border: 1px solid var(--success); }
+.obj-icon.enemy { background: rgba(244,67,54,0.2); border: 1px solid var(--danger); }
+.obj-icon.enemy.hidden { background: rgba(255,255,255,0.05); border: 1px dashed var(--text-dim); color: var(--text-dim); }
+.obj-icon.objective { font-size: 1.8rem; background: rgba(240,192,64,0.15); border: 2px solid var(--gold); }
+.obj-scenario-text {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.7;
+  padding: 0.8rem 1rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.obj-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.6rem;
+  padding: 0 1.2rem 1.2rem;
+}
+.obj-choice-btn {
+  padding: 0.8rem 0.4rem;
+  border-radius: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+.obj-choice-btn:hover { border-color: var(--accent); }
+.obj-choice-btn:active { transform: scale(0.95); }
+.obj-choice-btn.correct { background: rgba(0,200,83,0.2); border-color: var(--success); }
+.obj-choice-btn.wrong { background: rgba(244,67,54,0.2); border-color: var(--danger); }
+.obj-choice-btn:disabled { pointer-events: none; opacity: 0.6; }
+.obj-explain {
+  margin: 0 1.2rem 1.2rem;
+  padding: 0.8rem 1rem;
+  background: rgba(240,192,64,0.06);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  display: none;
+}
+.obj-explain.show { display: block; }
+
+@media (max-width: 480px) {
+  .hero-card-grid { grid-template-columns: 1fr; }
+  .obj-choices { grid-template-columns: 1fr; }
+  .obj-map { height: 200px; }
+}
+
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
@@ -1489,17 +1705,21 @@ body {
       <span class="dot"></span>
       von group — гайд
     </div>
-    <h1>MOBILE LEGENDS<br><span class="highlight">ПОЛНЫЙ ГАЙД</span></h1>
-    <p class="subtitle">Правила эффективной игры. Рефлексы. Периферия. Дисциплина.</p>
+    <h1>MOBILE LEGENDS<br><span class="highlight">ПОЛНЫЙ ГАЙД ПРО-УРОВНЯ</span></h1>
+    <p class="subtitle">От новичка до high-elo. Механика. Макро. Психология. Прогресс.</p>
     <p class="author">Составитель: <span>kyro</span> | von group</p>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="num">5</div>
-        <div class="label">Правил игры</div>
+        <div class="num">9</div>
+        <div class="label">Блоков гайда</div>
       </div>
       <div class="hero-stat">
-        <div class="num">10+</div>
-        <div class="label">Упражнений</div>
+        <div class="num">40+</div>
+        <div class="label">Разделов</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">8</div>
+        <div class="label">Мини-игр</div>
       </div>
       <div class="hero-stat">
         <div class="num">∞</div>
@@ -1516,6 +1736,9 @@ body {
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
+    <a href="#roles"><span class="nav-icon">🧭</span> Роли</a>
+    <a href="#draft"><span class="nav-icon">🔀</span> Драфт</a>
+    <a href="#hero-card"><span class="nav-icon">🗂</span> Карточка героя</a>
     <a href="#rules"><span class="nav-icon">📜</span> Правила</a>
     <a href="#peripheral"><span class="nav-icon">👁</span> Периферия</a>
     <a href="#reaction"><span class="nav-icon">⚡</span> Реакция</a>
@@ -1523,7 +1746,25 @@ body {
     <a href="#discipline"><span class="nav-icon">📋</span> Дисциплина</a>
     <a href="#aim"><span class="nav-icon">🎯</span> Прицеливание</a>
     <a href="#apps"><span class="nav-icon">📱</span> Приложения</a>
-    <a href="#game"><span class="nav-icon">🎮</span> Мини-игра</a>
+    <a href="#map-reading"><span class="nav-icon">🗺</span> Карта</a>
+    <a href="#objectives"><span class="nav-icon">🐢</span> Объективы</a>
+    <a href="#rotations"><span class="nav-icon">🔁</span> Ротации</a>
+    <a href="#economy"><span class="nav-icon">💰</span> Экономика</a>
+    <a href="#mobility"><span class="nav-icon">🏃</span> Манёвренность</a>
+    <a href="#teamplay"><span class="nav-icon">💬</span> Команда</a>
+    <a href="#psychology"><span class="nav-icon">🧠</span> Психология</a>
+    <a href="#internet"><span class="nav-icon">📶</span> Интернет</a>
+    <a href="#device"><span class="nav-icon">📲</span> Устройство</a>
+    <a href="#emblems"><span class="nav-icon">🔷</span> Эмблемы</a>
+    <a href="#spells"><span class="nav-icon">✨</span> Заклинания</a>
+    <a href="#equipment-guide"><span class="nav-icon">🛡</span> Экипировка</a>
+    <a href="#ranks"><span class="nav-icon">🏆</span> Ранги</a>
+    <a href="#selfreview"><span class="nav-icon">📊</span> Self-review</a>
+    <a href="#training-plan"><span class="nav-icon">📅</span> План 30 дней</a>
+    <a href="#pregame-checklist"><span class="nav-icon">✅</span> Чек-лист</a>
+    <a href="#game"><span class="nav-icon">🎮</span> Мини-игры</a>
+    <a href="#levels"><span class="nav-icon">👑</span> Уровни</a>
+    <a href="#beyond"><span class="nav-icon">🚀</span> Что дальше</a>
   </div>
 </nav>
 
@@ -1534,6 +1775,10 @@ body {
   <div class="toc reveal">
     <h3>📑 Содержание</h3>
     <ol>
+      <li><a href="#roles">Роли и позиции</a></li>
+      <li><a href="#draft">Драфт и пик-бан</a></li>
+      <li><a href="#meta">Мета и архетипы героев</a></li>
+      <li><a href="#hero-card">Шаблон «Карточка героя»</a></li>
       <li><a href="#rules">Правила эффективной игры</a></li>
       <li><a href="#peripheral">Упражнения для периферического зрения</a></li>
       <li><a href="#reaction">Упражнения для реакции</a></li>
@@ -1542,9 +1787,222 @@ body {
       <li><a href="#apps-external">Сторонние тренажёры</a></li>
       <li><a href="#aim">Точное прицеливание</a></li>
       <li><a href="#apps">Сторонние приложения</a></li>
-      <li><a href="#game">Мини-игра на тренировку рефлекса</a></li>
+      <li><a href="#map-reading">Чтение карты и мини-карты</a></li>
+      <li><a href="#objectives">Объективы: черепаха, лорд, вышки</a></li>
+      <li><a href="#rotations">Ротации и роуминг</a></li>
+      <li><a href="#economy">Экономика игры</a></li>
+      <li><a href="#mobility">Манёвренность</a></li>
+      <li><a href="#teamplay">Командная игра и коммуникация</a></li>
+      <li><a href="#psychology">Психологическая подготовка</a></li>
+      <li><a href="#internet">Интернет-соединение</a></li>
+      <li><a href="#device">Настройки устройства</a></li>
+      <li><a href="#emblems">Эмблемы (таланты)</a></li>
+      <li><a href="#spells">Боевые заклинания</a></li>
+      <li><a href="#equipment-guide">Экипировка: адаптивные сборки</a></li>
+      <li><a href="#ranks">Ранговая система</a></li>
+      <li><a href="#selfreview">Разбор своих матчей</a></li>
+      <li><a href="#training-plan">План тренировок на 30 дней</a></li>
+      <li><a href="#pregame-checklist">Чек-лист перед стартом</a></li>
+      <li><a href="#game">8 мини-игр на тренировку навыков</a></li>
+      <li><a href="#levels">Путь к 100 килам и шкала уровней</a></li>
+      <li><a href="#beyond">Что дальше — за пределами этого гайда</a></li>
     </ol>
   </div>
+
+  <!-- ===== SECTION: ROLES (A.1) ===== -->
+  <section class="section reveal" id="roles">
+    <div class="section-header">
+      <div class="section-icon blue">🧭</div>
+      <h2>Роли <span class="accent">и позиции</span></h2>
+    </div>
+
+    <div class="card">
+      <div class="card-number">1</div>
+      <h3>🛡 Роумер (поддержка)</h3>
+      <p>Ходит с саппортом/танком на линию союзника, контролирует кусты и вижен, инициирует или защищает команду. Приоритет фарма — самый низкий: голд отдаётся керри.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">2</div>
+      <h3>🌲 Джанглер</h3>
+      <p>Фармит джунгли, контролирует черепаху/лорда, роумит на линии для ганков. Отвечает за темп всей игры — от его тайминга зависит, когда команда начинает давить.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">3</div>
+      <h3>🔮 Мидлейнер</h3>
+      <p>Держит центральную линию, часто маг с бёрст-уроном. Быстро левелится соло, после пуша своей волны — роумит на боковые линии или к объективам.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">4</div>
+      <h3>🏹 Голд-лейн (Марксмен)</h3>
+      <p>Главный керри команды на поздней стадии игры. Фармит нижнюю линию, в ранней игре уязвим и зависит от роумера, в поздней — решает исход тимфайтов автоатаками.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">5</div>
+      <h3>⚔️ Эксплейнер (верхняя линия)</h3>
+      <p>Держит верхнюю линию один на один, часто танк или боец. Задача — не проиграть линию, а затем инициировать командные бои или сплит-пушить вышки.</p>
+      <div class="highlight-box">
+        <p><strong>Главный принцип:</strong> каждая роль имеет свою <span class="keyword">зону ответственности</span> на карте и свой приоритет фарма. Игра, где все 5 фармят одну линию — это игра без структуры и почти гарантированное поражение.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: DRAFT (A.2) ===== -->
+  <section class="section reveal" id="draft">
+    <div class="section-header">
+      <div class="section-icon purple">🔀</div>
+      <h2>Драфт <span class="accent">и пик-бан</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>Принципы контр-пиков</h3>
+      <p>Контр-пик — это герой, который получает явное преимущество в матчапе против конкретного вражеского героя (по дальности атаки, урону в начале боя, контролю или мобильности). Контр-пикать эффективнее последним в очереди пиков, когда виден почти весь состав врага.</p>
+    </div>
+
+    <div class="card">
+      <h3>Синергия команды: 4 роли в композиции</h3>
+      <ul>
+        <li><span class="keyword">Инициация</span> — кто начинает бой (контроль по площади, дальний хук/прыжок)</li>
+        <li><span class="keyword">Контроль</span> — станы, замедления, обездвиживания, которые продлевают инициацию</li>
+        <li><span class="keyword">Урон</span> — источник основного дамага (керри, бёрст-маг)</li>
+        <li><span class="keyword">Защита</span> — щиты, лечение, пипл-контроль на своих (кто «отменяет» вражеский бой)</li>
+      </ul>
+      <div class="highlight-box">
+        <p>Если в команде нет ни одной инициации — тимфайты будут проигрываться на «кто зайдёт первым», отдавая инициативу врагу.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Баны и гибкость (флекс-пики)</h3>
+      <p>Баны — не только против «читерски сильных» героев меты, но и против героев, которые доминируют лично над твоим планом на игру (например, забанить единственного сильного контр-пика твоему керри). Флекс-пик — герой, способный закрыть 2+ роли: пикая его первым, ты не раскрываешь свой план команде врага.</p>
+      <div class="gold-box">
+        <p><strong>Порядок действий:</strong> ранние пики — гибкие/флекс, ранние баны — самые опасные под мету; поздние пики — точечные контр-пики под уже видимый состав врага.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: META / ARCHETYPES (A.3) ===== -->
+  <section class="section reveal" id="meta">
+    <div class="section-header">
+      <div class="section-icon gold">🧬</div>
+      <h2>Мета <span class="accent">и типы героев</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>Таймфрейм героя</h3>
+      <table class="info-table">
+        <tr><th>Фаза</th><th>Кто силён</th></tr>
+        <tr><td>Ранняя (1-8 мин)</td><td>Герои с сильными ранними скиллами — быстро выигрывают линию/джунгли</td></tr>
+        <tr><td>Средняя (8-15 мин)</td><td>Герои с core-предметом на 2-3 слоте — начинают решать тимфайты</td></tr>
+        <tr><td>Поздняя (15+ мин)</td><td>Керри с полной сборкой — один авто-атакующий герой способен решить бой</td></tr>
+      </table>
+      <div class="highlight-box">
+        <p>Понимание своего таймфрейма — это понимание, <span class="keyword">когда форсировать драки</span>, а когда играть от обороны и копить ресурсы до своего пика силы.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Burst vs Sustained Damage</h3>
+      <p><strong>Burst</strong> (взрывной урон) — одно мощное комбо, убивающее цель за 1-2 секунды: сильно против героев с малым HP, слабо — если промазал или враг успел среагировать. <strong>Sustained</strong> (продолжительный урон) — стабильный DPS от автоатак/DoT-эффектов: сильнее в затяжных боях, слабее против бёрст-килла в начале файта.</p>
+    </div>
+
+    <div class="card">
+      <h3>Engage vs Peel</h3>
+      <p><strong>Engage</strong> (герои входа в бой) — заходят первыми, инициируют контролем. <strong>Peel</strong> (герои защиты) — держатся рядом с керри, отменяют вражеский engage щитами/контролем на угрозу. Команда без peel теряет своего керри в первые секунды любого файта.</p>
+      <div class="quote">
+        <p>Архетип важнее конкретного имени героя — понимая роль урона/контроля/защиты, ты быстро адаптируешься под любую мету, даже если герои в ней поменяются.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: HERO CARD TEMPLATE (A.4) ===== -->
+  <section class="section reveal" id="hero-card">
+    <div class="section-header">
+      <div class="section-icon red">🗂</div>
+      <h2>Шаблон <span class="accent">«Карточка героя»</span></h2>
+    </div>
+
+    <p style="color:var(--text-dim);font-size:0.92rem;margin-bottom:1.2rem;">Заполни эту карточку сам под 1-2 своих героя (см. раздел «Дисциплина: один герой» ниже). Три примера ниже показывают, как заполнять шаблон на архетипах.</p>
+
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hc-icon">🛡</div>
+        <div>
+          <div class="hc-title">Пример: Танк-инициатор</div>
+          <div class="hc-sub">Роумер/Эксплейнер · сложность низкая-средняя</div>
+        </div>
+      </div>
+      <div class="hero-card-grid">
+        <div class="hero-card-field"><b>Сильные стороны</b>Высокое HP, контроль по площади, открывает тимфайты</div>
+        <div class="hero-card-field"><b>Слабые стороны</b>Низкий личный урон, уязвим без союзников рядом для фоллоу-апа</div>
+        <div class="hero-card-field"><b>Таймфрейм</b>Средняя-поздняя игра, после core защитного предмета</div>
+        <div class="hero-card-field"><b>Комбо и core-предмет</b>Контроль → удержание цели → предмет на HP/регенерацию маны</div>
+        <div class="hero-card-field"><b>Синергия / контр-пик</b>Синергирует с бёрст-магом (фоллоу-ап после стана); слаб против героев с очищением контроля</div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hc-icon">🔥</div>
+        <div>
+          <div class="hc-title">Пример: Маг-бёрст</div>
+          <div class="hc-sub">Мидлейнер · сложность средняя</div>
+        </div>
+      </div>
+      <div class="hero-card-grid">
+        <div class="hero-card-field"><b>Сильные стороны</b>Высокий взрывной урон по одиночной цели или площади</div>
+        <div class="hero-card-field"><b>Слабые стороны</b>Низкое HP, уязвим до отката ключевого скилла</div>
+        <div class="hero-card-field"><b>Таймфрейм</b>Пик силы сразу после первого core-предмета урона</div>
+        <div class="hero-card-field"><b>Комбо и core-предмет</b>Контроль союзника → бёрст-комбо → предмет на пробив магической защиты</div>
+        <div class="hero-card-field"><b>Синергия / контр-пик</b>Синергирует с инициатором; слаб против ассасинов, добегающих до отката ульты</div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hc-icon">🏹</div>
+        <div>
+          <div class="hc-title">Пример: Физ-керри</div>
+          <div class="hc-sub">Голд-лейн · сложность средняя-высокая</div>
+        </div>
+      </div>
+      <div class="hero-card-grid">
+        <div class="hero-card-field"><b>Сильные стороны</b>Стабильный высокий DPS в поздней игре, решает файты один</div>
+        <div class="hero-card-field"><b>Слабые стороны</b>Крайне уязвим в ранней игре, зависит от защиты роумера</div>
+        <div class="hero-card-field"><b>Таймфрейм</b>Поздняя игра, 3+ core-предмета</div>
+        <div class="hero-card-field"><b>Комбо и core-предмет</b>Позиционирование за танком → авто-атаки → предмет на скорость атаки/крит</div>
+        <div class="hero-card-field"><b>Синергия / контр-пик</b>Синергирует с peel-саппортом; слаб против ассасинов с доступом в тыл</div>
+      </div>
+    </div>
+
+    <div class="hero-card template">
+      <div class="hero-card-head">
+        <div class="hc-icon">✏️</div>
+        <div>
+          <div class="hc-title">Пустой шаблон — заполни сам</div>
+          <div class="hc-sub">Роль · сложность</div>
+        </div>
+      </div>
+      <div class="hero-card-grid">
+        <div class="hero-card-field"><b>Сильные стороны</b>—</div>
+        <div class="hero-card-field"><b>Слабые стороны</b>—</div>
+        <div class="hero-card-field"><b>Таймфрейм</b>—</div>
+        <div class="hero-card-field"><b>Комбо и core-предмет</b>—</div>
+        <div class="hero-card-field"><b>Синергия / контр-пик</b>—</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
 
   <!-- ===== SECTION: RULES ===== -->
   <section class="section reveal" id="rules">
@@ -1713,6 +2171,75 @@ body {
 
   <div class="separator">⚔️</div>
 
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: INTERNET (E.1-E.2) ===== -->
+  <section class="section reveal" id="internet">
+    <div class="section-header">
+      <div class="section-icon blue">📶</div>
+      <h2>Интернет-соединение: <span class="accent">невидимая скорость реакции</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>Как интернет влияет на игру</h3>
+      <p>Таблица реакции выше — это время мозга и пальцев. Но фактическая задержка между твоим нажатием и тем, что произойдёт на сервере, складывается из <span class="keyword">реакции + пинга + обработки на сервере</span>. Игрок с рефлексом 0.1 сек, но пингом 150 мс, реагирует медленнее игрока с рефлексом 0.2 сек и пингом 20 мс.</p>
+      <table class="info-table">
+        <tr><th>Пинг</th><th>Оценка</th></tr>
+        <tr><td>20–40 мс</td><td>Отлично — задержка не ощущается</td></tr>
+        <tr><td>40–80 мс</td><td>Нормально для большинства матчей</td></tr>
+        <tr><td>80–150 мс</td><td>Заметные подтормаживания в файтах</td></tr>
+        <tr><td>150+ мс</td><td>Критично для соревновательной игры</td></tr>
+      </table>
+      <div class="highlight-box">
+        <p><strong>Пинг ≠ скорость тарифа.</strong> Тариф на 500 Мбит/с не гарантирует низкий пинг — это разные характеристики. Скорость важна для стабильности без просадок, а не для быстроты реакции сервера. Также важны <span class="keyword">джиттер</span> (нестабильность пинга) и <span class="keyword">packet loss</span> (потеря пакетов) — оба вызывают микрофризы даже при в целом хорошем пинге.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Как повысить качество соединения</h3>
+      <ul>
+        <li><strong>Кабель вместо Wi-Fi</strong> — самый весомый шаг для стабильного низкого пинга</li>
+        <li>Если только Wi-Fi — ближе к роутеру, без стен/металла на пути, диапазон <span class="keyword">5 ГГц</span> вместо 2.4 ГГц</li>
+        <li>Освободи канал — отключи фоновые загрузки/синхронизации на всех устройствах дома во время игры</li>
+        <li>Проверь тариф — недостаточная скорость при нескольких активных устройствах создаёт очереди пакетов и скачки пинга</li>
+        <li>Если дом делит канал с соседями — рассмотри более качественный/выделенный тариф</li>
+        <li>На мобильном интернете — приоритет 4G/5G с хорошим сигналом над слабым Wi-Fi</li>
+        <li>Используй <span class="keyword">QoS</span> в роутере, если доступен — приоритизирует трафик игры</li>
+        <li>Перезагружай роутер перед важной рангед-сессией</li>
+      </ul>
+      <div class="gold-box">
+        <p>Проверяй пинг через встроенный тест соединения в настройках MLBB <strong>перед стартом</strong> — не начинай важный матч на плохом канале.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: DEVICE (E.3) ===== -->
+  <section class="section reveal" id="device">
+    <div class="section-header">
+      <div class="section-icon purple">📲</div>
+      <h2>Настройки <span class="accent">устройства</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>Вторая причина задержки — не только сеть</h3>
+      <ul>
+        <li><strong>FPS-режим:</strong> высокий FPS (60/90/120 на поддерживаемых устройствах) снижает визуальную задержку между действием и отрисовкой — важнее «красивой картинки» для соревновательной игры</li>
+        <li><strong>Перегрев и троттлинг:</strong> при долгих сессиях (40+ минут) процессор снижает частоту от перегрева — падают FPS именно в кульминационные моменты тимфайтов. Чехол не должен закрывать вентиляцию, делай перерывы между катками</li>
+        <li><strong>«Не беспокоить»:</strong> всплывающее уведомление во время файта = потерянные драгоценные доли секунды</li>
+        <li><strong>Очистка фона:</strong> закрой лишние приложения перед стартом сессии — освобождает RAM, снижает микролаги</li>
+        <li><strong>Зарядка во время игры:</strong> быстрая зарядка иногда увеличивает нагрев — держи баланс между зарядом и температурой</li>
+        <li><strong>Защитная плёнка/стекло:</strong> некачественная плёнка может добавлять миллисекунды задержки отклика тача</li>
+      </ul>
+      <div class="highlight-box">
+        <p>Игрок с идеальным пингом, но перегретым телефоном на низком FPS — <span class="keyword">теряет ту же реакцию</span>, что и игрок с плохим интернетом. Оба фактора нужно контролировать вместе.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
   <!-- ===== SECTION: EMOTIONS ===== -->
   <section class="section reveal" id="emotions">
     <div class="section-header">
@@ -1736,6 +2263,61 @@ body {
       <div class="highlight-box">
         <p><strong>Принцип:</strong> Эмоции рождаются из голосовой связи и музыки. <span class="keyword">Тишина закаляет хладнокровие.</span></p>
       </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: PSYCHOLOGY (D.5) ===== -->
+  <section class="section reveal" id="psychology">
+    <div class="section-header">
+      <div class="section-icon green">🧠</div>
+      <h2>Психологическая <span class="accent">подготовка</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>Природа игрового страха</h3>
+      <p>Паника в MLBB чаще всего вызвана не самой опасностью, а <span class="keyword">неопределённостью</span> — не понимаешь, где враг, сколько урона получишь, успеешь ли среагировать. Знание карты и героев (см. разделы выше) — это не только тактика, но и психологическая защита: меньше неизвестности — меньше паники.</p>
+    </div>
+
+    <div class="card">
+      <h3>Правило «до 4-х секунд»</h3>
+      <p>При внезапной опасности (ганк, потеря HP) отведи 1-2 секунды не на действие, а на быструю оценку: живые союзники рядом? путь отхода свободен? скилл на КД? <strong>Импульсивное нажатие кнопок вслепую убивает чаще, чем сама угроза.</strong></p>
+    </div>
+
+    <div class="card">
+      <h3>Техника «якорной фразы»</h3>
+      <p>Короткая фраза-триггер, которую проговариваешь (можно мысленно) в стрессовый момент, чтобы вернуть рациональное мышление вместо паники. Развитие приёма из раздела «Контроль эмоций» выше — работает не только при лейте, но и при любом стрессовом триггере: первая смерть в матче, потеря объективов, груп-файт 1vs3.</p>
+    </div>
+
+    <div class="card">
+      <h3>Страх ошибки vs страх поражения</h3>
+      <p>Страх сделать неверный ход парализует принятие решений сильнее, чем страх проиграть матч. Учись действовать даже при неполной уверенности — <span class="keyword">сыграть на 70% уверенности лучше, чем зависнуть в нерешительности на 2 секунды.</span></p>
+    </div>
+
+    <div class="card">
+      <h3>Работа с лоз-стриком</h3>
+      <ul>
+        <li>Пауза — «2 поражения подряд, перерыв 20 минут» (см. раздел «Дисциплина» ниже)</li>
+        <li>Смена фокуса с результата на процесс — «сегодня цель не ранг, а 3 чистых ротации»</li>
+        <li>Отказ от игры «на эмоциях отыгрыша» (revenge queue) — типичная причина ещё большего падения ранга</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Предматчевый ритуал и волнение vs паника</h3>
+      <p>3-5 глубоких вдохов перед стартом каждого рангед-матча, короткая мысленная установка: <em>«играю свою игру, не результат решает мою ценность как игрока»</em>. Лёгкое волнение перед важным матчем нормально и даже полезно — мобилизует внимание. Сигнал тревоги — именно <strong>потеря контроля над решениями</strong>. Учись распознавать этот момент раньше, чем паника повлияет на игру.</p>
+    </div>
+
+    <div class="gold-box">
+      <p class="tag">Лучшие советы</p>
+      <p>
+        1. Не бывает «непоправимой» ситуации в отдельном матче — худшее, что может случиться, это поражение, а не что-то, разрушающее твой уровень игры.<br>
+        2. Дыши осознанно в момент пиковой опасности — это не потеря времени, а способ вернуть точность.<br>
+        3. Оценивай, а не реагируй рефлекторно на панику союзников в чате.<br>
+        4. Твоя ценность как игрока не определяется одним матчем или одной серией поражений.<br>
+        5. Разрешай себе ошибаться — разбор ошибки после матча продуктивнее, чем страх её совершить во время игры.
+      </p>
     </div>
   </section>
 
@@ -1977,6 +2559,369 @@ body {
 
   <div class="separator">⚔️</div>
 
+  <!-- ===== SECTION: MAP READING (C.1) ===== -->
+  <section class="section reveal" id="map-reading">
+    <div class="section-header">
+      <div class="section-icon blue">🗺</div>
+      <h2>Чтение <span class="accent">карты</span> и мини-карты</h2>
+    </div>
+
+    <div class="card">
+      <h3>Правило «взгляд каждые 2-3 секунды»</h3>
+      <p>Заведи привычку бросать взгляд на мини-карту каждые 2-3 секунды, даже во время фарма. Это не отвлекает от боя, если делать это периферией (см. упражнения выше) — ты не теряешь фокус с центра экрана, а лишь считываешь позиции.</p>
+    </div>
+
+    <div class="card">
+      <h3>Исчезновение вражеских крестиков</h3>
+      <p>Когда 2-3 вражеских иконки одновременно пропадают с радара — это почти всегда означает <span class="keyword">группировку для ганка или объектива</span>, а не случайность. Одиночное исчезновение — герой зашёл в кусты или зону тумана. Разница критична для решения «идти на линию фармить» или «отступить и ждать пинга союзников».</p>
+      <div class="highlight-box">
+        <p><strong>Пуш-таймеры:</strong> следи за состоянием волн крипов на всех линиях — заброшенная линия отдаёт вышку врагу бесплатно, а перекачанная волна на твоей линии может «занырнуть» под вышку без прикрытия.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: OBJECTIVES (C.2) ===== -->
+  <section class="section reveal" id="objectives">
+    <div class="section-header">
+      <div class="section-icon gold">🐢</div>
+      <h2>Объективы: <span class="accent">черепаха, лорд, вышки</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>Кто должен контестить и когда</h3>
+      <table class="info-table">
+        <tr><th>Объект</th><th>Эффект</th><th>Кто идёт</th></tr>
+        <tr><td>Черепаха (Turtle)</td><td>Голд + опыт всей команде, разовый бонус</td><td>Команда, если превосходство рядом с объектом</td></tr>
+        <tr><td>Лорд (Lord)</td><td>Мощный юнит, пушит линию, меняет исход игры</td><td>Только при явном контроле зоны — размен без лорда бессмысленен</td></tr>
+        <tr><td>Вышки</td><td>Открывают карту, дают golden позиции</td><td>После победного тимфайта, не заходить под 2 вышки без прикрытия</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>«Сила объектива vs сила пуша» и типичные ловушки</h3>
+      <p>Иногда выгоднее не контестить объект, а пушить свободную линию, пока враг занят объектом — если суммарная выгода от разрушенных построек выше, чем сам объект. Главная ловушка новичков: <span class="keyword">размен 3-4 жизней на объект</span>, который не приводит к победе — если после файта у команды нет ресурсов реализовать преимущество (например, лорд идёт в пустоту без сопровождения), объект бесполезен.</p>
+      <div class="gold-box">
+        <p><strong>Золотое правило:</strong> не дерись за объект, если размен окажется невыгодным даже при успехе.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: ROTATIONS (C.3) ===== -->
+  <section class="section reveal" id="rotations">
+    <div class="section-header">
+      <div class="section-icon purple">🔁</div>
+      <h2>Ротации <span class="accent">и роуминг</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>Тайминги роума</h3>
+      <p>Саппорт/джанглер эффективнее всего роумит: <span class="keyword">после первой волны крипов</span> (когда линии стабилизировались) и <span class="keyword">во время риспавна вражеского джанглера</span> (меньше риска встречного ганка). Синхронизируй ганки с готовностью ключевого контроля — заходить без стана/замедления часто равно потере ресурсов зря.</p>
+      <div class="highlight-box">
+        <p>Роум без пинга союзнику на линии — вклад в статистику убийств, а не в победу команды: предупреждай тиммейта заранее, чтобы он тоже сыграл агрессивно после твоего захода.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: ECONOMY (C.4) ===== -->
+  <section class="section reveal" id="economy">
+    <div class="section-header">
+      <div class="section-icon gold">💰</div>
+      <h2>Экономика <span class="accent">игры</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>Приоритет фарма и снежный ком</h3>
+      <p>Голд-лид не значение само по себе — это <span class="keyword">потенциал</span>, который нужно конвертировать в объективы, иначе он «сгорает» к позднему гейму. Ведущая команда должна форсировать драки и объекты, пока разница в силе максимальна — это и есть snowballing.</p>
+      <div class="gold-box">
+        <p><strong>Если отстаёшь:</strong> играй от обороны (turtle play) — фарми безопасно под вышками, избегай неразменных драк, жди ошибки врага вместо форсирования событий.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: MOBILITY (C.5) ===== -->
+  <section class="section reveal" id="mobility">
+    <div class="section-header">
+      <div class="section-icon red">🏃</div>
+      <h2>Манёвренность</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-number">1</div>
+      <h3>Рельеф карты как укрытие</h3>
+      <p>Стены джунглей, узкие проходы и кусты — не просто декорации, а инструмент входа и выхода из боя. Заход через стену там, где враг не ожидает, часто равен бесплатному урону; выход через куст разрывает линию видимости преследователей.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">2</div>
+      <h3>Кайтинг (kiting)</h3>
+      <p>Атака с постоянным отступлением — базовая техника для марксменов и мидлейнеров против героев ближнего боя. Двигайся <span class="keyword">от</span> угрозы между автоатаками/скиллами, не давая ей приблизиться на дистанцию удара.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">3</div>
+      <h3>Джукинг (juking)</h3>
+      <p>Сброс погони через резкие повороты вокруг стен, заход в кусты не по прямой линии. Цель — разорвать линию видимости преследователя хотя бы на секунду, за которую он потеряет твою точную позицию.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">4</div>
+      <h3>Микро-манёвры и экономия мобильных скиллов</h3>
+      <p>Используй даш/блинк не только для атаки, но и для репозиционирования между кастами способностей в файте. <strong>Не трать даш на фарм</strong>, если он может понадобиться для отхода через 10 секунд — мобильные скиллы это страховка жизни, а не просто ускорение фарма.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">5</div>
+      <h3>Групповая манёвренность</h3>
+      <p>Синхронный отход или заход всей командой сильнее, чем действия в одиночку. Команда, которая «размазывается» по карте под давлением врага, гибнет по одному — держитесь корпусом, отступайте вместе.</p>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: TEAMPLAY (D.1-D.4) ===== -->
+  <section class="section reveal" id="teamplay">
+    <div class="section-header">
+      <div class="section-icon green">💬</div>
+      <h2>Командная <span class="accent">игра и коммуникация</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>Коммуникация и пинги</h3>
+      <p>Минимальный набор — пинг опасности, пинг сбора, пинг «атакую цель». В чате пиши коротко и по делу: «роум топ», «черепаха через 20», а не долгие сообщения посреди боя. Коммуникация должна ускорять решения команды, а не отвлекать от игры.</p>
+    </div>
+
+    <div class="card">
+      <h3>Синергия и тайминги тимфайтов</h3>
+      <p>Инициатор заходит первым по готовности ключевого контроля, дальше команда фокусит цель по приоритету — обычно вражеский маркс или мидлейнер, а не танк (урон по танку — потраченное время, пока керри врага всех убивает). Позиционирование по ролям: керри и маги держатся сзади, танки и бойцы держат фронт.</p>
+      <div class="highlight-box">
+        <p><span class="keyword">Порядок целей</span> в тимфайте решает исход чаще, чем суммарный урон команды — убить не того первым равно проигранному файту.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Разбор поражений без обвинений</h3>
+      <p>После проигранного файта важнее понять паттерн ошибки, чем найти виноватого: слишком ранний заход без прикрытия, потеря позиции (overextend) без прикрытия союзников, игра сплитом, когда нужна была группа — или наоборот. Обвинения в чате не исправляют ошибку, а только портят командную динамику следующих 20 минут игры.</p>
+    </div>
+
+    <div class="card">
+      <h3>Токсичность в команде: что делать</h3>
+      <ul>
+        <li>Конструктивная критика — про действие («иди роум чаще»), не про личность</li>
+        <li>Если союзник материт — не отвечай эмоционально, при необходимости отключи чат/пинги от него в настройках</li>
+        <li>Если тиммейт «сдаётся» морально (afk-farm, стоит на базе) — переключись на самостоятельную игру: фарм, объективы, сплит, не трать силы на споры в чате</li>
+        <li>Голосование за сдачу — рациональное решение при объективно проигрышной ситуации, не способ наказать команду</li>
+        <li>После матча — жалоба через встроенный репорт на реально токсичное поведение, не как слив раздражения за проигрыш</li>
+      </ul>
+      <div class="quote">
+        <p>Своё поведение — единственное, что контролируешь на 100%. Тильт от чужой токсичности бьёт по собственной игре сильнее, чем действия самого токсика.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: EMBLEMS (F.1) ===== -->
+  <section class="section reveal" id="emblems">
+    <div class="section-header">
+      <div class="section-icon purple">🔷</div>
+      <h2>Эмблемы <span class="accent">(таланты)</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>Что это и чем отличается от предметов</h3>
+      <p>Эмблемы — отдельная система пассивной прокачки, которая растёт через сыгранные матчи, а не покупается за голд в бою. Внутри каждой эмблемы есть таланты — выбор из нескольких веток на разных уровнях, усиливающих конкретный стиль игры.</p>
+      <table class="info-table">
+        <tr><th>Роль</th><th>Категория эмблемы</th><th>Типичный талант</th></tr>
+        <tr><td>Танк</td><td>Танк</td><td>Больше HP / устойчивость к контролю</td></tr>
+        <tr><td>Маг</td><td>Маг</td><td>Пробив магической защиты / ускорение отката</td></tr>
+        <tr><td>Марксмен</td><td>Марксмен</td><td>Скорость атаки / крит на старте боя</td></tr>
+        <tr><td>Ассасин</td><td>Ассасин</td><td>Бонус урона по цели с высоким HP</td></tr>
+        <tr><td>Боец</td><td>Боец</td><td>Регенерация HP в бою</td></tr>
+        <tr><td>Поддержка</td><td>Поддержка</td><td>Ускорение или щит союзникам</td></tr>
+      </table>
+      <div class="highlight-box">
+        <p><strong>Частая ошибка новичков:</strong> эмблема «не под роль» (например, эмблема мага на бойце) — теряется весь потенциал бонусов, которые заточены под конкретный стиль игры.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: SPELLS (F.2) ===== -->
+  <section class="section reveal" id="spells">
+    <div class="section-header">
+      <div class="section-icon red">✨</div>
+      <h2>Боевые <span class="accent">заклинания</span></h2>
+    </div>
+
+    <p style="color:var(--text-dim);font-size:0.9rem;margin-bottom:1rem;">Обязательный выбор перед каждым матчем — драфт без осознанного заклинания это упущенное преимущество.</p>
+
+    <div class="spell-grid">
+      <div class="spell-card">
+        <div class="sc-icon">💨</div>
+        <div class="sc-name">Мобильность / побег</div>
+        <div class="sc-desc">Короткий рывок в сторону курсора — спасение или добивание на дистанции</div>
+      </div>
+      <div class="spell-card">
+        <div class="sc-icon">🧼</div>
+        <div class="sc-name">Очищение контроля</div>
+        <div class="sc-desc">Снимает большинство эффектов контроля и даёт кратковременный иммунитет</div>
+      </div>
+      <div class="spell-card">
+        <div class="sc-icon">🌲</div>
+        <div class="sc-name">Помощь в джунглях</div>
+        <div class="sc-desc">Бонусный урон по монстрам/крипам — почти обязательно для джанглера</div>
+      </div>
+      <div class="spell-card">
+        <div class="sc-icon">🔪</div>
+        <div class="sc-name">Агрессия / добивание</div>
+        <div class="sc-desc">Урон по цели с низким HP — помогает завершить размен в свою пользу</div>
+      </div>
+      <div class="spell-card">
+        <div class="sc-icon">🛡</div>
+        <div class="sc-name">Защита союзника</div>
+        <div class="sc-desc">Щит или отмена урона на цель — типичный выбор саппорта/танка</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Принцип выбора по роли и тайминг использования</h3>
+      <p>Джанглер почти всегда берёт заклинание для фарма/инвейда, керри — мобильность, саппорт/танк — защиту команды или контроль. <strong>Не трать заклинание-побег на агрессию впустую</strong> — придерживай его под критичный момент: ганк или тимфайт, где цена ошибки высокая.</p>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: EQUIPMENT GUIDE (F.3) ===== -->
+  <section class="section reveal" id="equipment-guide">
+    <div class="section-header">
+      <div class="section-icon gold">🛡</div>
+      <h2>Экипировка: <span class="accent">адаптивные сборки</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>Категории предметов</h3>
+      <ul>
+        <li><span class="keyword">Урон</span> — физический или магический, основной источник DPS</li>
+        <li><span class="keyword">Защита</span> — броня (от физ. урона) или маг. сопротивление</li>
+        <li><span class="keyword">Эффекты</span> — лечение, замедление, пробив защиты, шанс крита</li>
+        <li><span class="keyword">Утилити</span> — мана, скорость передвижения, сокращение отката</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Адаптивная сборка под матчап</h3>
+      <table class="info-table">
+        <tr><th>Угроза в составе врага</th><th>Что докупить</th></tr>
+        <tr><td>Сильный физический керри</td><td>Броня</td></tr>
+        <tr><td>Сильный маг-бёрст</td><td>Магическое сопротивление</td></tr>
+        <tr><td>Команда с лечением</td><td>Антихил (эффект снижения лечения)</td></tr>
+        <tr><td>Враг с высокой защитой</td><td>Пробив защиты</td></tr>
+      </table>
+      <div class="highlight-box">
+        <p>Минимум 1-2 предмета в финальной сборке должны отвечать конкретному вражескому составу — сборка «в одну сторону» (только урон без выживания) проигрывает опытным соперникам.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Билд-ордер и частые ошибки</h3>
+      <p>Порядок: стартовый предмет → core/сигнатурный предмет героя → ситуативные слоты под матчап → защитный слот в конце игры. Частые ошибки новичков — игнорирование антихила/пробива против конкретных угроз и покупка защитных предметов слишком поздно, когда команда уже несколько раз проиграла файт из-за твоей хрупкости.</p>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: RANKS (G.1) ===== -->
+  <section class="section reveal" id="ranks">
+    <div class="section-header">
+      <div class="section-icon gold">🏆</div>
+      <h2>Ранговая <span class="accent">система</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>Лестница рангов</h3>
+      <p>Warrior → Elite → Master → Grandmaster → Epic → Legend → Mythic → Mythical Honor → Mythical Glory → Mythical Immortal. Победа приносит звёзды, поражение — забирает; заполнение всех звёзд тира повышает ранг. Mythic и выше — уже без делений на «дивизионы», игра идёт на очки (Stars) напрямую.</p>
+      <div class="highlight-box">
+        <p><strong>Правило одной роли для рангед-игры:</strong> стабильно поднимается тот, кто играет 1-2 роли досконально, а не пробует всё подряд — рангед не место для экспериментов с новыми героями.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Менталитет длинной дистанции</h3>
+      <p>Ранг растёт не за один вечер, а за десятки матчей с постепенным улучшением решений. Не тильтуй после лоз-стрика (см. раздел «Психологическая подготовка» выше) — единичное поражение не отменяет общий прогресс за месяц игры.</p>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: SELF-REVIEW (G.2) ===== -->
+  <section class="section reveal" id="selfreview">
+    <div class="section-header">
+      <div class="section-icon blue">📊</div>
+      <h2>Разбор <span class="accent">своих матчей</span></h2>
+    </div>
+
+    <div class="card">
+      <h3>На что смотреть после матча</h3>
+      <p><span class="keyword">KDA — не главный показатель.</span> Смотри урон нанесённый/полученный, участие в тимфайтах (%), голд к 10-й минуте относительно оппонента на своей роли. Игрок с 2/5/10 может быть полезнее игрока с 10/1/2, если первый держал линию и контролировал карту.</p>
+      <div class="gold-box">
+        <p><strong>Дневник прогресса:</strong> расширение уже знакомого «Дневника героя» — после каждого рангед-матча запиши одно решение, которое стоило пересмотреть (не механику, а именно решение: тайминг роума, выбор цели в файте, поход на объект).</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: TRAINING PLAN (G.3) ===== -->
+  <section class="section reveal" id="training-plan">
+    <div class="section-header">
+      <div class="section-icon purple">📅</div>
+      <h2>План тренировок <span class="accent">на 30 дней</span></h2>
+    </div>
+
+    <div class="card">
+      <table class="info-table">
+        <tr><th>Период</th><th>Фокус</th></tr>
+        <tr><td>Дни 1-7</td><td>Механика: периферия, реакция, прицеливание — мини-игры раздела ниже ежедневно</td></tr>
+        <tr><td>Неделя 2</td><td>Макро: чтение карты, объективы, ротации — играй с осознанным вниманием на мини-карту</td></tr>
+        <tr><td>Неделя 3</td><td>Драфт и роль: закрепи 1-2 героя, заполни «Карточку героя», изучи контр-пики</td></tr>
+        <tr><td>Неделя 4</td><td>Рангед-грайнд с самоанализом — веди дневник прогресса, разбирай каждое поражение</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: PREGAME CHECKLIST (G.4) ===== -->
+  <section class="section reveal" id="pregame-checklist">
+    <div class="section-header">
+      <div class="section-icon red">✅</div>
+      <h2>Чек-лист <span class="accent">перед стартом сессии</span></h2>
+    </div>
+
+    <div class="card">
+      <p style="margin-bottom:0.8rem;color:var(--text-dim);font-size:0.88rem;">30 секунд перед каждым рангед-матчем — стягивает воедино интернет, устройство и настрой.</p>
+      <ul class="checklist">
+        <li><span class="chk">✓</span> Проверен пинг (тест соединения в настройках MLBB) — в пределах нормы</li>
+        <li><span class="chk">✓</span> Подключение через кабель/сильный Wi-Fi 5 ГГц, фоновые загрузки отключены</li>
+        <li><span class="chk">✓</span> Закрыты фоновые приложения, включён режим «Не беспокоить»</li>
+        <li><span class="chk">✓</span> Уровень заряда и температура телефона в норме</li>
+        <li><span class="chk">✓</span> Нет накопленной усталости/раздражения после предыдущих матчей</li>
+        <li><span class="chk">✓</span> Выбрана роль/герой под текущий настрой и знание матчапа</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
   <!-- ===== MINI GAME SECTION ===== -->
   <section class="game-section reveal" id="game">
     <div class="section-header">
@@ -2141,11 +3086,11 @@ body {
       </div>
     </div>
 
-    <!-- GAME 5: Loadout / Equipment -->
+    <!-- GAME 5: Loadout / Equipment + Battle vs Bot -->
     <div class="game-container" style="margin-bottom:3rem;">
       <div class="game-header gold">
-        <h2>🛡 ЭКИПИРОВКА</h2>
-        <p>Собери правильную сборку под роль героя в MLBB.</p>
+        <h2>🛡 ЭКИПИРОВКА: собери и проверь в бою</h2>
+        <p>Собери сборку под роль героя — затем сразу проверь её в бою против бота.</p>
       </div>
       <div class="game-stats">
         <div class="game-stat">
@@ -2157,18 +3102,38 @@ body {
           <div class="label">Очки</div>
         </div>
         <div class="game-stat">
-          <div class="value" id="loadStreak">0</div>
-          <div class="label">Серия</div>
+          <div class="value" id="loadWins">0</div>
+          <div class="label">Побед над ботом</div>
         </div>
       </div>
       <div class="progress-bar"><div class="fill" id="loadProgress"></div></div>
-      <div class="load-area">
+      <div class="load-area" id="loadStepBuild">
         <div class="load-task" id="loadTask">
           <div class="role-name">Нажми «СТАРТ»</div>
           <div class="role-desc">Соберём правильные предметы под роль</div>
         </div>
         <div class="load-slots" id="loadSlots"></div>
         <div class="load-options" id="loadOptions"></div>
+      </div>
+      <div class="load-area" id="loadStepBattle" style="display:none;">
+        <div class="load-task">
+          <div class="role-name" id="battleTitle">⚔️ Бой против бота</div>
+          <div class="role-desc" id="battleSub"></div>
+        </div>
+        <div class="battle-vs">
+          <div class="battle-side">
+            <div class="bs-icon">🧑‍💻</div>
+            <div class="bs-name">Твоя сборка</div>
+            <div class="lasthit-hp-track"><div class="lasthit-hp-bar hp-high" id="battlePlayerHp" style="width:100%;"></div></div>
+          </div>
+          <div class="battle-vs-mark">VS</div>
+          <div class="battle-side">
+            <div class="bs-icon" id="battleBotIcon">🛡</div>
+            <div class="bs-name" id="battleBotName">Бот</div>
+            <div class="lasthit-hp-track"><div class="lasthit-hp-bar hp-high" id="battleBotHp" style="width:100%;"></div></div>
+          </div>
+        </div>
+        <div class="highlight-box" id="battleResultBox" style="margin:0 1.2rem 1rem;"></div>
       </div>
       <div class="game-result" id="loadResult">
         <div class="result-title" id="loadResultTitle"></div>
@@ -2183,8 +3148,9 @@ body {
         <ul>
           <li>Показана роль и описание (танк, маг, стрелок и т.д.)</li>
           <li>Выбери 3 подходящих предмета из 9 вариантов</li>
-          <li>За каждый верный предмет — очко; лишний/неверный портит сборку</li>
-          <li>5 сборок за раунд. Тренирует знание предметов из правила №4</li>
+          <li>Затем сборка идёт в бой против одного из 3 ботов: 🛡 Танк-инициатор / 🔥 Маг-бёрст / 🏹 Физ-керри</li>
+          <li>Результат боя показывает, что усилило или подвело сборку — верные предметы побеждают ощутимо быстрее</li>
+          <li>5 сборок за раунд. Тренирует знание предметов и адаптацию под матчап</li>
         </ul>
       </div>
     </div>
@@ -2306,6 +3272,173 @@ body {
       </div>
     </div>
 
+    <!-- GAME 8: Objective Timing -->
+    <div class="game-container" style="margin-bottom:1rem;">
+      <div class="game-header blue">
+        <h2>🗺 ТАЙМИНГ ОБЪЕКТИВОВ</h2>
+        <p>Оцени ситуацию на карте и прими решение: контестить, ждать или отступить.</p>
+      </div>
+
+      <div class="game-stats">
+        <div class="game-stat">
+          <div class="value" id="objRound">0/10</div>
+          <div class="label">Раунд</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="objScore">0</div>
+          <div class="label">Верно</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="objStreak">0</div>
+          <div class="label">Серия</div>
+        </div>
+      </div>
+
+      <div class="progress-bar"><div class="fill" id="objProgress"></div></div>
+      <div class="progress-bar" style="height:4px;"><div class="fill" id="objTimer" style="background:var(--gold);"></div></div>
+
+      <div class="obj-map" id="objMap">
+        <div class="grid-bg"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--text-dim);font-size:0.9rem;text-align:center;width:80%;" id="objPlaceholder">
+          Нажми «СТАРТ» чтобы начать
+        </div>
+      </div>
+
+      <div class="obj-scenario-text" id="objScenarioText" style="display:none;"></div>
+
+      <div class="obj-choices" id="objChoices" style="display:none;">
+        <button class="obj-choice-btn" data-choice="contest" onclick="pickObjChoice('contest')">⚔️ Контестить</button>
+        <button class="obj-choice-btn" data-choice="wait" onclick="pickObjChoice('wait')">👀 Ждать</button>
+        <button class="obj-choice-btn" data-choice="retreat" onclick="pickObjChoice('retreat')">🏃 Отступить</button>
+      </div>
+
+      <div class="obj-explain" id="objExplain"></div>
+
+      <div class="game-result" id="objResult">
+        <div class="result-title" id="objResultTitle"></div>
+        <div class="result-detail" id="objResultDetail"></div>
+      </div>
+
+      <div class="game-controls">
+        <button class="game-btn start" id="objStartBtn" onclick="startObjGame()">🚀 СТАРТ</button>
+        <button class="game-btn reset" onclick="resetObjGame()">↺ Сбросить</button>
+      </div>
+
+      <div class="game-rules">
+        <h4>📖 Правила</h4>
+        <ul>
+          <li>Каждый раунд — ситуация на карте: счёт по золоту, живые союзники, видимость врагов, таймер объекта</li>
+          <li>У тебя 5 секунд — выбери «Контестить», «Ждать» или «Отступить»</li>
+          <li>Пропавшие враги с радара (❓) — сигнал опасности, не случайность</li>
+          <li>10 раундов. Тренирует макро-чтение карты, а не рефлекс</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== SECTION: LEVELS / 100 KILLS (I.1-I.3) ===== -->
+  <section class="section reveal" id="levels">
+    <div class="section-header">
+      <div class="section-icon gold">👑</div>
+      <h2>Путь к <span class="accent">100 килам</span> и шкала уровней</h2>
+    </div>
+
+    <div class="quote">
+      <p>Путь к 100 килам за катку — вершина мастерства. Редкий, но реальный high-level кейс, к которому стремится каждый серьёзный игрок.</p>
+    </div>
+
+    <div class="card">
+      <h3>Условия, которые в совокупности делают 100 килов возможными</h3>
+      <ul>
+        <li><strong>Формат матча:</strong> кастомная игра / тренировочный режим против ботов на арене — respawn ботов настроен на минимальный таймер</li>
+        <li><strong>Роль и герой:</strong> фарм-керри с высоким AoE и мобильностью — постоянный дэш/скольжение для зачистки волн ботов почти без пауз</li>
+        <li><strong>Длительность сессии:</strong> искусственно продлённая игра — чем дольше сессия, тем больше респавнов ботов</li>
+        <li><strong>Сборка на чистый DPS и мобильность:</strong> предметы на атаку по площади и скорость передвижения/атаки</li>
+        <li><strong>Механика:</strong> безостановочные комбо-циклы скилл→автоатака→скилл, минимизация пауз между волнами</li>
+      </ul>
+      <div class="gold-box">
+        <p><strong>Практический смысл:</strong> даже если ты не наберёшь ровно 100 в конкретной сессии — тренировка в таком формате прокачивает скорость добивания, механику комбо и манёвренность. Путь к цели важнее самой цифры.</p>
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--text-dim);font-size:0.85rem;margin:1rem 0;">А для обычных соревновательных матчей против живых игроков — вот честная шкала мастерства, где 100 — это не килы, а суммарный вклад в победу ↓</p>
+
+    <div class="card">
+      <h3>Match Power Score (MPS) — формула очков за один матч</h3>
+      <table class="info-table">
+        <tr><th>Действие</th><th>Очки</th></tr>
+        <tr><td>Килл</td><td>3</td></tr>
+        <tr><td>Ассист</td><td>1</td></tr>
+        <tr><td>Разрушенная вышка (участие)</td><td>2</td></tr>
+        <tr><td>Контест/секьюр черепахи</td><td>2</td></tr>
+        <tr><td>Секьюр лорда</td><td>5</td></tr>
+        <tr><td>MVP матча</td><td>+10 бонус</td></tr>
+        <tr><td>Победа</td><td>×1.5 к итоговой сумме</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>10 уровней прогрессии</h3>
+      <div class="level-scale">
+        <div class="level-row"><div class="lv-badge">Lv.1</div><div class="lv-info"><div class="lv-name">Новичок</div><div class="lv-req">Понимание ролей, базовое прицеливание</div></div><div class="lv-mps">0–10</div></div>
+        <div class="level-row"><div class="lv-badge">Lv.2</div><div class="lv-info"><div class="lv-name">Ученик</div><div class="lv-req">Периферия + реакция на базовом уровне</div></div><div class="lv-mps">11–20</div></div>
+        <div class="level-row"><div class="lv-badge">Lv.3</div><div class="lv-info"><div class="lv-name">Боец</div><div class="lv-req">Дисциплина одного героя, стабильный фарм</div></div><div class="lv-mps">21–30</div></div>
+        <div class="level-row"><div class="lv-badge">Lv.4</div><div class="lv-info"><div class="lv-name">Тактик</div><div class="lv-req">Чтение карты, безопасные ротации</div></div><div class="lv-mps">31–40</div></div>
+        <div class="level-row"><div class="lv-badge">Lv.5</div><div class="lv-info"><div class="lv-name">Стратег</div><div class="lv-req">Контест объективов, манёвренность</div></div><div class="lv-mps">41–50</div></div>
+        <div class="level-row"><div class="lv-badge">Lv.6</div><div class="lv-info"><div class="lv-name">Виртуоз</div><div class="lv-req">Кайтинг/джукинг под давлением</div></div><div class="lv-mps">51–60</div></div>
+        <div class="level-row"><div class="lv-badge">Lv.7</div><div class="lv-info"><div class="lv-name">Командир</div><div class="lv-req">Синергия тимфайтов, фокус целей</div></div><div class="lv-mps">61–70</div></div>
+        <div class="level-row"><div class="lv-badge">Lv.8</div><div class="lv-info"><div class="lv-name">Мастер</div><div class="lv-req">Стабильный snowballing, самоанализ</div></div><div class="lv-mps">71–85</div></div>
+        <div class="level-row"><div class="lv-badge">Lv.9</div><div class="lv-info"><div class="lv-name">Элита</div><div class="lv-req">Микро-манёвры + макро одновременно</div></div><div class="lv-mps">86–99</div></div>
+        <div class="level-row legend"><div class="lv-badge">Lv.10</div><div class="lv-info"><div class="lv-name">Легенда сервера</div><div class="lv-req">Полный синтез всех блоков гайда в одном матче</div></div><div class="lv-mps">100+</div></div>
+      </div>
+      <div class="progress-bar"><div class="fill" style="width:100%;"></div></div>
+    </div>
+
+    <div class="card">
+      <h3>Как реально дойти до 100 MPS за матч</h3>
+      <ul>
+        <li>Матч должен быть длинным и решающим (25+ минут, close game)</li>
+        <li>Играй керри-роль (Маркс или Мидлейнер) с высоким пейсом фарма</li>
+        <li>Держи 100% участие в тимфайтах — ассист-фарм даёт очки почти без риска</li>
+        <li>Контести оба объектива при каждом появлении</li>
+        <li>Не умирай без нужды — смерть обнуляет прогресс волны/фарма</li>
+        <li>Действуй «заметно» для MVP — килы на объективах, спасения союзников, разрушение вышек</li>
+      </ul>
+      <div class="highlight-box">
+        <p>Сначала стабильно доходи до Lv.5–6 (40-60 MPS), и только затем «охоться» за редкими матчами уровня Lv.10 — это <span class="keyword">редкое, выдающееся достижение</span>, а не рутинная цель каждого матча.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: BEYOND THE GUIDE ===== -->
+  <section class="section reveal" id="beyond">
+    <div class="section-header">
+      <div class="section-icon purple">🚀</div>
+      <h2>Что дальше — <span class="accent">за пределами этого гайда</span></h2>
+    </div>
+
+    <div class="quote">
+      <p>Этот гайд даёт осознанность и дисциплину — реалистичный потолок с ним: стабильный рост до Legend/Mythic и выше при регулярной практике. Дальше начинается то, что не умещается в текст.</p>
+    </div>
+
+    <div class="card">
+      <h3>Чего гайд дать не может — и что вместо него</h3>
+      <ul>
+        <li><strong>Реальную моторику под давлением.</strong> Мини-игры тренируют изолированные рефлексы, но не заменяют тысячи часов реальных матчей против непредсказуемых противников — механика нарабатывается только в игре.</li>
+        <li><strong>Объективную обратную связь.</strong> Самоанализ (раздел «Разбор своих матчей») не видит того, что видит взгляд со стороны. Настоящий скачок в скилле почти всегда происходит через тренера, ментора или разбор с более сильным игроком.</li>
+        <li><strong>Актуальную мету.</strong> Гайд намеренно не привязан к текущему патчу, чтобы не устаревать — конкретных сильных героев/предметы/тайминги нужно доучивать из живых источников: патчноуты, топ-стримеры, актуальные тир-листы.</li>
+        <li><strong>Синхронизацию с реальной командой.</strong> Принципы командной игры выше работают только на практике — реальная синергия нарабатывается с постоянным сквадом, который тренируется вместе.</li>
+        <li><strong>Соревновательный стресс-тест.</strong> Психологические техники дальше нужно откалибровать в реальном турнирном давлении — гайд может дать инструмент, но не может симулировать сам стресс.</li>
+      </ul>
+    </div>
+
+    <div class="gold-box">
+      <p class="tag">Честный итог</p>
+      <p>Несокрушимый киберспортсмен не рождается из одного гайда — даже самого полного. Этот гайд закрывает то, что 90% игроков никогда не формализуют: структуру, знание и психологию. Дальше — часы игры, тренер или ментор, постоянная команда и настоящие турниры. Гайд — фундамент, а не потолок.</p>
+    </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
@@ -2760,27 +3893,27 @@ function resetAttnGame() {
   document.getElementById('attnStartBtn').disabled = false;
 }
 
-// ===== LOADOUT / EQUIPMENT GAME =====
+// ===== LOADOUT / EQUIPMENT GAME + BATTLE VS BOT =====
 const loadItems = {
-  bootsTank:  { ic:'🥾', nm:'Сапоги стойкости', tags:['tank','support'] },
-  antique:    { ic:'💚', nm:'Антик кьюрасс', tags:['tank','fighter'] },
-  immortal:   { ic:'😇', nm:'Бессмертие', tags:['tank','fighter'] },
-  cursed:     { ic:'☠️', nm:'Проклятый шлем', tags:['tank'] },
-  warAxe:     { ic:'🪓', nm:'Боевой топор', tags:['fighter'] },
-  bloodlust:  { ic:'🩸', nm:'Кровавая жажда', tags:['fighter','assassin'] },
-  endless:    { ic:'⚔️', nm:'Бесконечная битва', tags:['fighter','assassin'] },
-  hunter:     { ic:'🗡', nm:'Охотничий нож', tags:['assassin','jungle'] },
-  bladeDesp:  { ic:'🔪', nm:'Клинок отчаяния', tags:['assassin','marksman'] },
-  windTalker: { ic:'🌀', nm:'Говорящий с ветром', tags:['marksman'] },
-  berserker:  { ic:'💢', nm:'Ярость берсерка', tags:['marksman','assassin'] },
-  demonHunter:{ ic:'🏹', nm:'Меч охотника', tags:['marksman'] },
-  lightning:  { ic:'⚡', nm:'Молниевая правда', tags:['mage'] },
-  holyCrystal:{ ic:'🔮', nm:'Святой кристалл', tags:['mage'] },
-  glowingWand:{ ic:'🪄', nm:'Светящийся жезл', tags:['mage'] },
-  bootsMagic: { ic:'👢', nm:'Маг. сапоги', tags:['mage','support'] },
-  oracle:     { ic:'📿', nm:'Оракул', tags:['support','tank'] },
-  fleeting:   { ic:'⏳', nm:'Мимолётное время', tags:['support'] },
-  dominance:  { ic:'🛡', nm:'Меч господства', tags:['tank','support'] },
+  bootsTank:  { ic:'🥾', nm:'Сапоги стойкости', tags:['tank','support'], dmg:0,  def:20, hp:300 },
+  antique:    { ic:'💚', nm:'Антик кьюрасс', tags:['tank','fighter'], dmg:0,  def:35, hp:400 },
+  immortal:   { ic:'😇', nm:'Бессмертие', tags:['tank','fighter'], dmg:0,  def:25, hp:600 },
+  cursed:     { ic:'☠️', nm:'Проклятый шлем', tags:['tank'], dmg:0,  def:30, hp:500 },
+  warAxe:     { ic:'🪓', nm:'Боевой топор', tags:['fighter'], dmg:35, def:10, hp:300 },
+  bloodlust:  { ic:'🩸', nm:'Кровавая жажда', tags:['fighter','assassin'], dmg:40, def:0,  hp:150 },
+  endless:    { ic:'⚔️', nm:'Бесконечная битва', tags:['fighter','assassin'], dmg:45, def:5,  hp:200 },
+  hunter:     { ic:'🗡', nm:'Охотничий нож', tags:['assassin','jungle'], dmg:50, def:0,  hp:0 },
+  bladeDesp:  { ic:'🔪', nm:'Клинок отчаяния', tags:['assassin','marksman'], dmg:55, def:0,  hp:0 },
+  windTalker: { ic:'🌀', nm:'Говорящий с ветром', tags:['marksman'], dmg:50, def:0,  hp:100 },
+  berserker:  { ic:'💢', nm:'Ярость берсерка', tags:['marksman','assassin'], dmg:60, def:0,  hp:0 },
+  demonHunter:{ ic:'🏹', nm:'Меч охотника', tags:['marksman'], dmg:55, def:0,  hp:0 },
+  lightning:  { ic:'⚡', nm:'Молниевая правда', tags:['mage'], dmg:60, def:0,  hp:0 },
+  holyCrystal:{ ic:'🔮', nm:'Святой кристалл', tags:['mage'], dmg:65, def:0,  hp:0 },
+  glowingWand:{ ic:'🪄', nm:'Светящийся жезл', tags:['mage'], dmg:50, def:0,  hp:150 },
+  bootsMagic: { ic:'👢', nm:'Маг. сапоги', tags:['mage','support'], dmg:10, def:15, hp:100 },
+  oracle:     { ic:'📿', nm:'Оракул', tags:['support','tank'], dmg:0,  def:15, hp:350 },
+  fleeting:   { ic:'⏳', nm:'Мимолётное время', tags:['support'], dmg:15, def:10, hp:150 },
+  dominance:  { ic:'🛡', nm:'Меч господства', tags:['tank','support'], dmg:5,  def:25, hp:300 },
 };
 const loadRoles = [
   { name:'🛡 Танк', desc:'Стойкость, защита, инициация', tag:'tank' },
@@ -2790,8 +3923,13 @@ const loadRoles = [
   { name:'🔮 Маг', desc:'Магический бурст и контроль', tag:'mage' },
   { name:'📿 Саппорт', desc:'Поддержка, ауры, защита команды', tag:'support' },
 ];
+const battleBots = [
+  { key:'tank',  icon:'🛡', name:'Танк-инициатор', dmg:30, def:40, hp:700 },
+  { key:'mage',  icon:'🔥', name:'Маг-бёрст',       dmg:60, def:5,  hp:350 },
+  { key:'mm',    icon:'🏹', name:'Физ-керри',        dmg:50, def:15, hp:450 },
+];
 
-let loadActive = false, loadRound = 0, loadScore = 0, loadStreak = 0;
+let loadActive = false, loadRound = 0, loadScore = 0, loadWins = 0;
 let loadCurrentRole = null, loadPicked = [], loadCorrectSet = [];
 const loadMax = 5, loadNeed = 3;
 
@@ -2799,7 +3937,7 @@ function startLoadGame() {
   if (loadActive) return;
   resetLoadGame();
   loadActive = true;
-  loadRound = 0; loadScore = 0; loadStreak = 0;
+  loadRound = 0; loadScore = 0; loadWins = 0;
   document.getElementById('loadStartBtn').disabled = true;
   document.getElementById('loadResult').classList.remove('show');
   nextLoadRound();
@@ -2810,6 +3948,8 @@ function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.flo
 function nextLoadRound() {
   if (loadRound >= loadMax) { finishLoadGame(); return; }
   loadPicked = [];
+  document.getElementById('loadStepBuild').style.display = '';
+  document.getElementById('loadStepBattle').style.display = 'none';
   const role = loadRoles[Math.floor(Math.random()*loadRoles.length)];
   loadCurrentRole = role;
 
@@ -2861,50 +4001,114 @@ function evalLoadRound() {
       if (o.dataset.key === k) o.classList.add(loadCorrectSet.includes(k) ? 'good' : 'bad');
     }
   });
-  // reveal any correct items not picked
   for (const o of opts) {
     if (loadCorrectSet.includes(o.dataset.key) && !loadPicked.includes(o.dataset.key)) {
       o.classList.add('good'); o.style.opacity = '1';
     }
   }
   loadScore += correct;
-  loadStreak = (correct === loadNeed) ? loadStreak + 1 : 0;
   loadRound++;
   updateLoadUI();
-  setTimeout(nextLoadRound, 1100);
+  setTimeout(() => runBattle(loadPicked), 900);
+}
+
+function runBattle(pickedKeys) {
+  document.getElementById('loadStepBuild').style.display = 'none';
+  const battleEl = document.getElementById('loadStepBattle');
+  battleEl.style.display = '';
+
+  let playerDmg = 0, playerDef = 0, playerHp = 500;
+  pickedKeys.forEach(k => {
+    const it = loadItems[k];
+    playerDmg += it.dmg; playerDef += it.def; playerHp += it.hp;
+  });
+
+  const bot = battleBots[Math.floor(Math.random()*battleBots.length)];
+  document.getElementById('battleBotIcon').textContent = bot.icon;
+  document.getElementById('battleBotName').textContent = bot.name;
+  document.getElementById('battleSub').textContent = `Раунд ${loadRound}/${loadMax} · твоя сборка против бота`;
+
+  // simplified TTK: effective damage reduced by opponent's defense, higher HP survives longer
+  const playerEffDmg = Math.max(5, playerDmg - bot.def * 0.5);
+  const botEffDmg = Math.max(5, bot.dmg - playerDef * 0.5);
+  const playerTTK = bot.hp / playerEffDmg;
+  const botTTK = playerHp / botEffDmg;
+  const playerWins = playerTTK <= botTTK;
+
+  document.getElementById('battlePlayerHp').style.width = '100%';
+  document.getElementById('battleBotHp').style.width = '100%';
+
+  let t = 0;
+  const totalTicks = 20;
+  const battleInterval = setInterval(() => {
+    t++;
+    const playerHpPct = Math.max(0, 100 - (t / (botTTK * 4)) * 100 * (botEffDmg > 0 ? 1 : 0));
+    const botHpPct = Math.max(0, 100 - (t / (playerTTK * 4)) * 100);
+    document.getElementById('battlePlayerHp').style.width = (playerWins ? Math.max(20, playerHpPct) : playerHpPct) + '%';
+    document.getElementById('battleBotHp').style.width = (playerWins ? botHpPct : Math.max(20, botHpPct)) + '%';
+    if (t >= totalTicks) {
+      clearInterval(battleInterval);
+      document.getElementById('battlePlayerHp').style.width = playerWins ? '55%' : '0%';
+      document.getElementById('battleBotHp').style.width = playerWins ? '0%' : '55%';
+      finishBattleRound(playerWins, pickedKeys, bot);
+    }
+  }, 60);
+}
+
+function finishBattleRound(playerWins, pickedKeys, bot) {
+  const correctPicked = pickedKeys.filter(k => loadCorrectSet.includes(k)).length;
+  if (playerWins) loadWins++;
+  const box = document.getElementById('battleResultBox');
+  let note = '';
+  if (playerWins) {
+    note = correctPicked === loadNeed
+      ? `Победа! Верная сборка под роль ощутимо переиграла ${bot.name.toLowerCase()}.`
+      : `Победа, но не идеально — ${loadNeed - correctPicked} предмет(а) были не по роли. С верной сборкой бой был бы быстрее.`;
+  } else {
+    note = correctPicked === loadNeed
+      ? `Поражение, хотя предметы были верными — против ${bot.name.toLowerCase()} не хватило запаса прочности/урона именно в этом раунде.`
+      : `Поражение — сборка не отвечала на угрозу от ${bot.name.toLowerCase()}. Пересмотри предметы под этот тип противника.`;
+  }
+  box.innerHTML = `<p><strong>${playerWins ? '✅ Победа' : '❌ Поражение'}</strong> · ${note}</p>`;
+  updateLoadUI();
+  setTimeout(nextLoadRound, 1600);
 }
 
 function updateLoadUI() {
   document.getElementById('loadRound').textContent = loadRound + '/' + loadMax;
   document.getElementById('loadScore').textContent = loadScore;
-  document.getElementById('loadStreak').textContent = loadStreak;
+  document.getElementById('loadWins').textContent = loadWins;
   document.getElementById('loadProgress').style.width = (loadRound / loadMax * 100) + '%';
 }
 
 function finishLoadGame() {
   loadActive = false;
   document.getElementById('loadStartBtn').disabled = false;
+  document.getElementById('loadStepBuild').style.display = '';
+  document.getElementById('loadStepBattle').style.display = 'none';
   document.getElementById('loadSlots').innerHTML = '';
   document.getElementById('loadOptions').innerHTML = '';
   const maxScore = loadMax * loadNeed;
-  document.getElementById('loadTask').innerHTML = `<div class="role-name">Готово!</div><div class="role-desc">Правильных предметов: ${loadScore} из ${maxScore}</div>`;
+  document.getElementById('loadTask').innerHTML = `<div class="role-name">Готово!</div><div class="role-desc">Правильных предметов: ${loadScore} из ${maxScore} · побед над ботом: ${loadWins}/${loadMax}</div>`;
   const r = document.getElementById('loadResult');
   r.classList.add('show');
   const pct = Math.round(loadScore/maxScore*100);
   document.getElementById('loadResultTitle').textContent =
     pct >= 90 ? '🧠 Билд-мастер!' : pct >= 70 ? '🔥 Хорошо знаешь предметы!' : '📚 Подучи экипировку!';
-  document.getElementById('loadResultDetail').textContent = `Точность сборок: ${pct}% · ${loadScore}/${maxScore}`;
+  document.getElementById('loadResultDetail').textContent = `Точность сборок: ${pct}% · ${loadScore}/${maxScore} · побед в бою: ${loadWins}/${loadMax}`;
 }
 
 function resetLoadGame() {
   loadActive = false;
-  loadRound = 0; loadScore = 0; loadStreak = 0; loadPicked = [];
+  loadRound = 0; loadScore = 0; loadWins = 0; loadPicked = [];
+  document.getElementById('loadStepBuild').style.display = '';
+  document.getElementById('loadStepBattle').style.display = 'none';
   document.getElementById('loadSlots').innerHTML = '';
   document.getElementById('loadOptions').innerHTML = '';
   document.getElementById('loadTask').innerHTML = '<div class="role-name">Нажми «СТАРТ»</div><div class="role-desc">Соберём правильные предметы под роль</div>';
   document.getElementById('loadRound').textContent = '0/5';
   document.getElementById('loadScore').textContent = '0';
-  document.getElementById('loadStreak').textContent = '0';
+  document.getElementById('loadWins').textContent = '0';
   document.getElementById('loadProgress').style.width = '0%';
   document.getElementById('loadResult').classList.remove('show');
   document.getElementById('loadStartBtn').disabled = false;
@@ -3316,6 +4520,169 @@ function resetLastHitGame() {
     onLastHitTap();
   });
 })();
+
+// ===== OBJECTIVE TIMING GAME =====
+const objScenarios = [
+  { text: 'Черепаха через 15 сек. Твоя команда 5/5 живы, видно 4 из 5 врагов на карте.', allies: 5, enemiesVisible: 4, enemiesTotal: 5, obj: 'turtle', correct: 'contest', explain: 'Полный состав живой, почти все враги видны — можно безопасно контестить объект.' },
+  { text: 'Лорд через 10 сек. У врага пропало 3 из 5 героев с радара, твоя команда 4/5.', allies: 4, enemiesVisible: 2, enemiesTotal: 5, obj: 'lord', correct: 'retreat', explain: 'Пропавшие враги у объекта — почти всегда засада. Контест здесь = размен без объекта.' },
+  { text: 'Черепаха через 5 сек. Счёт по золоту: ты ведёшь на 3000, все 5 союзников рядом.', allies: 5, enemiesVisible: 5, enemiesTotal: 5, obj: 'turtle', correct: 'contest', explain: 'Голд-лид и полный состав — контестить безопасно, закрепляешь преимущество.' },
+  { text: 'Лорд через 20 сек. Ты один рядом с объектом, союзники далеко на других линиях.', allies: 1, enemiesVisible: 3, enemiesTotal: 5, obj: 'lord', correct: 'retreat', explain: 'В одиночку против объекта и видимых врагов — верная смерть без пользы команде.' },
+  { text: 'Вышка вот-вот падёт, но враг всей командой (5/5) стоит рядом с ней.', allies: 3, enemiesVisible: 5, enemiesTotal: 5, obj: 'tower', correct: 'retreat', explain: 'Вышка того не стоит, если размен будет 3 против 5 — потеря вышки восстановима, потеря состава — нет.' },
+  { text: 'Черепаха через 8 сек. Видно всех 5 врагов, они фармят вдалеке от объекта.', allies: 5, enemiesVisible: 5, enemiesTotal: 5, obj: 'turtle', correct: 'contest', explain: 'Враг далеко и весь на виду — не успеет отреагировать, объект твой.' },
+  { text: 'Лорд через 12 сек. Пропал только 1 враг (роумер), остальные 4 видны на своих линиях.', allies: 5, enemiesVisible: 4, enemiesTotal: 5, obj: 'lord', correct: 'wait' , explain: 'Один пропавший — не обязательно засада у объекта, но и не 100% безопасно. Займи позицию и подожди подтверждения.' },
+  { text: 'Черепаха через 6 сек. У тебя 3 живых союзника, у врага пропало 2 из 5.', allies: 3, enemiesVisible: 3, enemiesTotal: 5, obj: 'turtle', correct: 'wait', explain: 'Неполный состав с обеих сторон и частичная неизвестность — займи позицию, не форсируй бой.' },
+  { text: 'Лорд через 25 сек. Полное превосходство: 5/5 живы, все 5 врагов видны и без хилок.', allies: 5, enemiesVisible: 5, enemiesTotal: 5, obj: 'lord', correct: 'contest', explain: 'Явное превосходство и полная видимость — лучший момент для форсирования лорда.' },
+  { text: 'Черепаха через 4 сек. Пропало 4 из 5 врагов, твоя команда 2/5 живы после недавнего файта.', allies: 2, enemiesVisible: 1, enemiesTotal: 5, obj: 'turtle', correct: 'retreat', explain: 'Слабый состав против невидимой почти всей вражеской команды — классическая ловушка на размен.' },
+];
+let objActive = false, objRound = 0, objScore = 0, objStreak = 0;
+let objCurrentScenario = null, objTimerInterval = null, objTimeLeft = 0;
+const objMax = 10, objTimeLimit = 5;
+const objIcons = { turtle: '🐢', lord: '👹', tower: '🏰' };
+
+function startObjGame() {
+  if (objActive) return;
+  resetObjGame();
+  objActive = true;
+  objRound = 0; objScore = 0; objStreak = 0;
+  document.getElementById('objStartBtn').disabled = true;
+  document.getElementById('objResult').classList.remove('show');
+  document.getElementById('objScenarioText').style.display = '';
+  document.getElementById('objChoices').style.display = '';
+  nextObjRound();
+}
+
+function nextObjRound() {
+  if (objRound >= objMax) { finishObjGame(); return; }
+  document.getElementById('objExplain').classList.remove('show');
+  document.getElementById('objPlaceholder').style.display = 'none';
+
+  const scenario = objScenarios[Math.floor(Math.random() * objScenarios.length)];
+  objCurrentScenario = scenario;
+
+  document.getElementById('objScenarioText').textContent = scenario.text;
+
+  const map = document.getElementById('objMap');
+  map.querySelectorAll('.obj-icon').forEach(el => el.remove());
+
+  const objIcon = document.createElement('div');
+  objIcon.className = 'obj-icon objective';
+  objIcon.style.top = '50%'; objIcon.style.left = '50%';
+  objIcon.textContent = objIcons[scenario.obj] || '🎯';
+  map.appendChild(objIcon);
+
+  for (let i = 0; i < scenario.allies; i++) {
+    const el = document.createElement('div');
+    el.className = 'obj-icon ally';
+    el.style.top = (20 + Math.random() * 25) + '%';
+    el.style.left = (15 + i * 15 + Math.random() * 5) + '%';
+    el.textContent = '🟢';
+    map.appendChild(el);
+  }
+
+  for (let i = 0; i < scenario.enemiesTotal; i++) {
+    const el = document.createElement('div');
+    const visible = i < scenario.enemiesVisible;
+    el.className = 'obj-icon enemy' + (visible ? '' : ' hidden');
+    el.style.top = (65 + Math.random() * 20) + '%';
+    el.style.left = (15 + i * 15 + Math.random() * 5) + '%';
+    el.textContent = visible ? '🔴' : '❓';
+    map.appendChild(el);
+  }
+
+  const btns = document.querySelectorAll('.obj-choice-btn');
+  btns.forEach(b => { b.disabled = false; b.classList.remove('correct', 'wrong'); });
+
+  objTimeLeft = objTimeLimit * 10;
+  updateObjTimerBar();
+  if (objTimerInterval) clearInterval(objTimerInterval);
+  objTimerInterval = setInterval(() => {
+    objTimeLeft--;
+    updateObjTimerBar();
+    if (objTimeLeft <= 0) {
+      clearInterval(objTimerInterval);
+      pickObjChoice(null);
+    }
+  }, 100);
+}
+
+function updateObjTimerBar() {
+  const pct = Math.max(0, (objTimeLeft / (objTimeLimit * 10)) * 100);
+  document.getElementById('objTimer').style.width = pct + '%';
+}
+
+function pickObjChoice(choice) {
+  if (!objActive || !objCurrentScenario) return;
+  clearInterval(objTimerInterval);
+  const btns = document.querySelectorAll('.obj-choice-btn');
+  btns.forEach(b => b.disabled = true);
+
+  const correct = choice === objCurrentScenario.correct;
+  if (choice) {
+    btns.forEach(b => {
+      if (b.dataset.choice === objCurrentScenario.correct) b.classList.add('correct');
+      else if (b.dataset.choice === choice && !correct) b.classList.add('wrong');
+    });
+  } else {
+    btns.forEach(b => { if (b.dataset.choice === objCurrentScenario.correct) b.classList.add('correct'); });
+  }
+
+  if (correct) { objScore++; objStreak++; } else { objStreak = 0; }
+  objRound++;
+
+  const explainEl = document.getElementById('objExplain');
+  explainEl.textContent = (correct ? '✅ Верно. ' : '❌ ' + (choice ? 'Неверно. ' : 'Время вышло. ')) + objCurrentScenario.explain;
+  explainEl.classList.add('show');
+
+  updateObjUI();
+  setTimeout(nextObjRound, 2000);
+}
+
+function updateObjUI() {
+  document.getElementById('objRound').textContent = objRound + '/' + objMax;
+  document.getElementById('objScore').textContent = objScore;
+  document.getElementById('objStreak').textContent = objStreak;
+  document.getElementById('objProgress').style.width = (objRound / objMax * 100) + '%';
+}
+
+function finishObjGame() {
+  objActive = false;
+  clearInterval(objTimerInterval);
+  document.getElementById('objStartBtn').disabled = false;
+  document.getElementById('objScenarioText').style.display = 'none';
+  document.getElementById('objChoices').style.display = 'none';
+  document.getElementById('objExplain').classList.remove('show');
+  const map = document.getElementById('objMap');
+  map.querySelectorAll('.obj-icon').forEach(el => el.remove());
+  document.getElementById('objPlaceholder').style.display = 'block';
+  document.getElementById('objPlaceholder').textContent = 'Готово!';
+
+  const r = document.getElementById('objResult');
+  r.classList.add('show');
+  const pct = Math.round(objScore / objMax * 100);
+  document.getElementById('objResultTitle').textContent =
+    pct >= 90 ? '🧠 Ты видишь карту как стратег!' : pct >= 60 ? '🔥 Хорошее макро-чутьё!' : '📚 Перечитай раздел про объективы!';
+  document.getElementById('objResultDetail').textContent = `Точность решений: ${pct}% · ${objScore}/${objMax}`;
+}
+
+function resetObjGame() {
+  objActive = false;
+  clearInterval(objTimerInterval);
+  objRound = 0; objScore = 0; objStreak = 0; objCurrentScenario = null;
+  const map = document.getElementById('objMap');
+  if (map) map.querySelectorAll('.obj-icon').forEach(el => el.remove());
+  document.getElementById('objPlaceholder').style.display = 'block';
+  document.getElementById('objPlaceholder').textContent = 'Нажми «СТАРТ» чтобы начать';
+  document.getElementById('objScenarioText').style.display = 'none';
+  document.getElementById('objChoices').style.display = 'none';
+  document.getElementById('objExplain').classList.remove('show');
+  document.getElementById('objRound').textContent = '0/10';
+  document.getElementById('objScore').textContent = '0';
+  document.getElementById('objStreak').textContent = '0';
+  document.getElementById('objProgress').style.width = '0%';
+  document.getElementById('objTimer').style.width = '100%';
+  document.getElementById('objResult').classList.remove('show');
+  document.getElementById('objStartBtn').disabled = false;
+}
 </script>
 
 </body>
