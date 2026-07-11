@@ -1065,6 +1065,77 @@ body {
 .aim-crosshair::before { left:50%; top:0; width:2px; height:100%; transform:translateX(-50%); }
 .aim-crosshair::after { top:50%; left:0; height:2px; width:100%; transform:translateY(-50%); }
 
+/* ===== BREATHING PACER GAME ===== */
+.breath-area {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.breath-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,200,83,0.28), rgba(0,200,83,0.06));
+  border: 2px solid var(--success);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-bright);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  transform: scale(1);
+  transition: transform 4s linear, box-shadow 4s linear;
+  box-shadow: 0 0 25px rgba(0,200,83,0.25);
+}
+.breath-circle.inhale, .breath-circle.hold {
+  transform: scale(1.7);
+  box-shadow: 0 0 45px rgba(0,200,83,0.55);
+}
+.breath-circle .phase-timer {
+  font-size: 1.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 0.3rem;
+  font-weight: 900;
+}
+
+/* ===== POMODORO TIMER GAME ===== */
+.pomo-area {
+  width: 100%;
+  height: 240px;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pomo-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--accent3);
+  background: rgba(83,52,131,0.08);
+  transition: border-color 0.4s ease, background 0.4s ease;
+}
+.pomo-circle.work { border-color: var(--accent3); background: rgba(83,52,131,0.08); }
+.pomo-circle.break { border-color: var(--success); background: rgba(0,200,83,0.08); }
+.pomo-circle .pomo-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--text-bright);
+}
+
 /* ===== HERO CARD (A.4 template) ===== */
 .hero-card {
   background: var(--bg-card);
@@ -1802,7 +1873,7 @@ body {
       <li><a href="#selfreview">Разбор своих матчей</a></li>
       <li><a href="#training-plan">План тренировок на 30 дней</a></li>
       <li><a href="#pregame-checklist">Чек-лист перед стартом</a></li>
-      <li><a href="#game">8 мини-игр на тренировку навыков</a></li>
+      <li><a href="#game">10 мини-игр на тренировку навыков</a></li>
       <li><a href="#levels">Путь к 100 килам и шкала уровней</a></li>
       <li><a href="#beyond">Что дальше — за пределами этого гайда</a></li>
     </ol>
@@ -2460,6 +2531,15 @@ body {
       </div>
 
       <div class="link-card">
+        <div class="link-icon">🎮</div>
+        <div class="link-content">
+          <h4>Не хочешь ставить приложение? Тренируйся прямо здесь</h4>
+          <p>В разделе мини-игр ниже есть встроенный тренажёр <strong>«Дыхание»</strong> — квадратное дыхание с визуальным ритмом, без установки стороннего приложения.</p>
+          <a href="#game">↓ Открыть тренажёр «Дыхание»</a>
+        </div>
+      </div>
+
+      <div class="link-card">
         <div class="link-icon">🎵</div>
         <div class="link-content">
           <h4>Osu! (режим без музыки)</h4>
@@ -2484,6 +2564,15 @@ body {
         <div class="link-content">
           <h4>Таймер Pomodoro</h4>
           <p>Играешь 25 минут – перерыв 5 минут (встать, выпить воды). Это не даёт «исчерпывать жизненные ресурсы». Подойдёт любое приложение с таймером.</p>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🎮</div>
+        <div class="link-content">
+          <h4>Или запусти встроенный таймер</h4>
+          <p>В разделе мини-игр ниже есть тренажёр <strong>«Pomodoro»</strong> — те же 25/5 минут, с визуальным кругом и счётчиком сессий, без стороннего приложения.</p>
+          <a href="#game">↓ Открыть тренажёр «Pomodoro»</a>
         </div>
       </div>
 
@@ -2969,7 +3058,7 @@ body {
       <h2>Мини-игры: <span class="accent">тренировка навыков</span></h2>
     </div>
 
-    <p style="text-align:center;color:var(--text-dim);font-size:0.9rem;margin:-1rem 0 1.5rem;">7 тренажёров под каждый навык: рефлекс, реакция, периферия, внимательность, знание экипировки, прицеливание и добивание крипов.</p>
+    <p style="text-align:center;color:var(--text-dim);font-size:0.9rem;margin:-1rem 0 1.5rem;">10 тренажёров под каждый навык: рефлекс, реакция, периферия, внимательность, знание экипировки, прицеливание, добивание крипов, макро-чтение объективов, дыхание и ресурс-менеджмент.</p>
 
     <!-- GAME 1: Target Clicker -->
     <div class="game-container">
@@ -3371,6 +3460,90 @@ body {
           <li>У тебя 5 секунд — выбери «Контестить», «Ждать» или «Отступить»</li>
           <li>Пропавшие враги с радара (❓) — сигнал опасности, не случайность</li>
           <li>10 раундов. Тренирует макро-чтение карты, а не рефлекс</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GAME 9: Breathing Pacer -->
+    <div class="game-container" style="margin-bottom:3rem;">
+      <div class="game-header green">
+        <h2>🫁 ДЫХАНИЕ</h2>
+        <p>Квадратное дыхание (box breathing): вдох → задержка → выдох → задержка, по 4 секунды каждая фаза.</p>
+      </div>
+      <div class="game-stats">
+        <div class="game-stat">
+          <div class="value" id="breathCycleVal">0/5</div>
+          <div class="label">Циклов</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="breathPhaseStat">—</div>
+          <div class="label">Фаза</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="fill" id="breathProgress"></div></div>
+      <div class="breath-area" id="breathArea">
+        <div class="breath-circle" id="breathCircle">
+          <div id="breathPhaseText">Готов?</div>
+          <div class="phase-timer" id="breathPhaseTimer">—</div>
+        </div>
+      </div>
+      <div class="game-result" id="breathResult">
+        <div class="result-title" id="breathResultTitle">🧘 Готово!</div>
+        <div class="result-detail" id="breathResultDetail"></div>
+      </div>
+      <div class="game-controls">
+        <button class="game-btn start" id="breathStartBtn" onclick="startBreathGame()">🚀 СТАРТ</button>
+        <button class="game-btn reset" onclick="resetBreathGame()">↺ Сбросить</button>
+      </div>
+      <div class="game-rules">
+        <h4>📖 Правила</h4>
+        <ul>
+          <li>Следуй за кругом: расширяется — вдох, сужается — выдох, замер в увеличенном/уменьшенном состоянии — задержка</li>
+          <li>4 секунды на каждую из 4 фаз, 5 циклов за раунд (~80 секунд)</li>
+          <li>Это тот же приём, что «Дыхание при лейте» из раздела «Эмоции» выше, но с точным ритмом для наработки привычки</li>
+          <li>Используй перед стартом рангед-матча, между катками или сразу после лоза, чтобы не занести тильт в следующий бой</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GAME 10: Pomodoro Timer -->
+    <div class="game-container" style="margin-bottom:3rem;">
+      <div class="game-header purple">
+        <h2>⏱ POMODORO</h2>
+        <p>25 минут игры/тренировки — 5 минут отдыха. Ресурс-менеджмент из раздела «Дисциплина», прямо на странице.</p>
+      </div>
+      <div class="game-stats">
+        <div class="game-stat">
+          <div class="value" id="pomoTime">25:00</div>
+          <div class="label">Осталось</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="pomoPhaseLabel">💻 Работа</div>
+          <div class="label">Фаза</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="pomoSession">1</div>
+          <div class="label">Сессия</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="fill" id="pomoProgress"></div></div>
+      <div class="pomo-area">
+        <div class="pomo-circle work" id="pomoCircle">
+          <div class="pomo-time" id="pomoCircleTime">25:00</div>
+        </div>
+      </div>
+      <div class="game-controls">
+        <button class="game-btn start" id="pomoStartBtn" onclick="startPomoGame()">🚀 СТАРТ</button>
+        <button class="game-btn reset" id="pomoPauseBtn" onclick="togglePausePomoGame()">⏸ Пауза</button>
+        <button class="game-btn reset" onclick="resetPomoGame()">↺ Сбросить</button>
+      </div>
+      <div class="game-rules">
+        <h4>📖 Правила</h4>
+        <ul>
+          <li>25 минут игровой/тренировочной сессии — 5 минут перерыва, затем новая сессия (счётчик растёт)</li>
+          <li>Не сокращай перерыв — см. правило «2 поражения подряд — 20 минут перерыва» из раздела «Дисциплина»</li>
+          <li>Таймер тикает и в свёрнутой вкладке — просто не закрывай её</li>
+          <li>«Пауза» — если катка ещё не закончилась к концу сессии, не бросай матч ради таймера</li>
         </ul>
       </div>
     </div>
@@ -4722,6 +4895,152 @@ function resetObjGame() {
   document.getElementById('objTimer').style.width = '100%';
   document.getElementById('objResult').classList.remove('show');
   document.getElementById('objStartBtn').disabled = false;
+}
+
+// ===== BREATHING PACER GAME =====
+let breathActive = false, breathCycle = 0, breathPhaseTimer = null, breathSecondsLeft = 4;
+const breathMaxCycles = 5;
+const breathPhases = [
+  { label: 'ВДОХ',     cls: 'inhale', dur: 4 },
+  { label: 'ЗАДЕРЖКА', cls: 'hold',   dur: 4 },
+  { label: 'ВЫДОХ',    cls: '',       dur: 4 },
+  { label: 'ЗАДЕРЖКА', cls: '',       dur: 4 }
+];
+
+function startBreathGame() {
+  if (breathActive) return;
+  resetBreathGame();
+  breathActive = true;
+  document.getElementById('breathStartBtn').disabled = true;
+  document.getElementById('breathResult').classList.remove('show');
+  runBreathPhase(0);
+}
+
+function runBreathPhase(idx) {
+  if (!breathActive) return;
+  if (idx >= breathPhases.length) {
+    breathCycle++;
+    updateBreathCycleUI();
+    if (breathCycle >= breathMaxCycles) { finishBreathGame(); return; }
+    idx = 0;
+  }
+  const phase = breathPhases[idx];
+  const circle = document.getElementById('breathCircle');
+  circle.className = 'breath-circle' + (phase.cls ? ' ' + phase.cls : '');
+  document.getElementById('breathPhaseText').textContent = phase.label;
+  document.getElementById('breathPhaseStat').textContent = phase.label;
+  breathSecondsLeft = phase.dur;
+  document.getElementById('breathPhaseTimer').textContent = breathSecondsLeft;
+
+  clearInterval(breathPhaseTimer);
+  breathPhaseTimer = setInterval(() => {
+    if (!breathActive) { clearInterval(breathPhaseTimer); return; }
+    breathSecondsLeft--;
+    if (breathSecondsLeft <= 0) {
+      clearInterval(breathPhaseTimer);
+      runBreathPhase(idx + 1);
+    } else {
+      document.getElementById('breathPhaseTimer').textContent = breathSecondsLeft;
+    }
+  }, 1000);
+}
+
+function updateBreathCycleUI() {
+  document.getElementById('breathCycleVal').textContent = breathCycle + '/' + breathMaxCycles;
+  document.getElementById('breathProgress').style.width = (breathCycle / breathMaxCycles * 100) + '%';
+}
+
+function finishBreathGame() {
+  breathActive = false;
+  clearInterval(breathPhaseTimer);
+  document.getElementById('breathStartBtn').disabled = false;
+  document.getElementById('breathCircle').className = 'breath-circle';
+  document.getElementById('breathPhaseText').textContent = 'Готово';
+  document.getElementById('breathPhaseStat').textContent = '—';
+  document.getElementById('breathPhaseTimer').textContent = '—';
+  const r = document.getElementById('breathResult');
+  r.classList.add('show');
+  document.getElementById('breathResultTitle').textContent = '🧘 Ритм восстановлен';
+  document.getElementById('breathResultDetail').textContent = `Пройдено ${breathMaxCycles} циклов квадратного дыхания (~${breathMaxCycles * 16} сек). Используй перед стартом матча.`;
+}
+
+function resetBreathGame() {
+  breathActive = false;
+  clearInterval(breathPhaseTimer);
+  breathCycle = 0;
+  breathSecondsLeft = 4;
+  document.getElementById('breathCircle').className = 'breath-circle';
+  document.getElementById('breathPhaseText').textContent = 'Готов?';
+  document.getElementById('breathPhaseStat').textContent = '—';
+  document.getElementById('breathPhaseTimer').textContent = '—';
+  document.getElementById('breathCycleVal').textContent = '0/' + breathMaxCycles;
+  document.getElementById('breathProgress').style.width = '0%';
+  document.getElementById('breathResult').classList.remove('show');
+  document.getElementById('breathStartBtn').disabled = false;
+}
+
+// ===== POMODORO TIMER GAME =====
+let pomoActive = false, pomoPaused = false, pomoPhase = 'work', pomoInterval = null, pomoSession = 1;
+const pomoWorkSec = 25 * 60, pomoBreakSec = 5 * 60;
+let pomoSecondsLeft = pomoWorkSec;
+
+function startPomoGame() {
+  if (pomoActive) return;
+  pomoActive = true;
+  pomoPaused = false;
+  document.getElementById('pomoStartBtn').disabled = true;
+  document.getElementById('pomoPauseBtn').textContent = '⏸ Пауза';
+  updatePomoUI();
+  clearInterval(pomoInterval);
+  pomoInterval = setInterval(tickPomo, 1000);
+}
+
+function tickPomo() {
+  if (!pomoActive || pomoPaused) return;
+  if (pomoSecondsLeft <= 0) {
+    if (pomoPhase === 'work') {
+      pomoPhase = 'break';
+      pomoSecondsLeft = pomoBreakSec;
+    } else {
+      pomoSession++;
+      pomoPhase = 'work';
+      pomoSecondsLeft = pomoWorkSec;
+    }
+  }
+  updatePomoUI();
+  pomoSecondsLeft--;
+}
+
+function togglePausePomoGame() {
+  if (!pomoActive) return;
+  pomoPaused = !pomoPaused;
+  document.getElementById('pomoPauseBtn').textContent = pomoPaused ? '▶ Продолжить' : '⏸ Пауза';
+}
+
+function updatePomoUI() {
+  const mm = String(Math.floor(pomoSecondsLeft / 60)).padStart(2, '0');
+  const ss = String(pomoSecondsLeft % 60).padStart(2, '0');
+  const timeStr = mm + ':' + ss;
+  document.getElementById('pomoTime').textContent = timeStr;
+  document.getElementById('pomoCircleTime').textContent = timeStr;
+  document.getElementById('pomoPhaseLabel').textContent = pomoPhase === 'work' ? '💻 Работа' : '☕ Перерыв';
+  document.getElementById('pomoSession').textContent = pomoSession;
+  const totalSec = pomoPhase === 'work' ? pomoWorkSec : pomoBreakSec;
+  const pct = Math.max(0, Math.min(100, (1 - pomoSecondsLeft / totalSec) * 100));
+  document.getElementById('pomoProgress').style.width = pct + '%';
+  document.getElementById('pomoCircle').className = 'pomo-circle ' + pomoPhase;
+}
+
+function resetPomoGame() {
+  pomoActive = false;
+  pomoPaused = false;
+  clearInterval(pomoInterval);
+  pomoPhase = 'work';
+  pomoSecondsLeft = pomoWorkSec;
+  pomoSession = 1;
+  document.getElementById('pomoStartBtn').disabled = false;
+  document.getElementById('pomoPauseBtn').textContent = '⏸ Пауза';
+  updatePomoUI();
 }
 </script>
 
