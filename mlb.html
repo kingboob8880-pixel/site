@@ -1346,10 +1346,44 @@ body {
 }
 .obj-explain.show { display: block; }
 
+/* ===== FOCUS TARGET GAME ("Кого бить") ===== */
+.focus-choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 0 1.2rem 1.2rem;
+}
+.focus-target-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  min-width: 100px;
+}
+.focus-target-btn .ft-icon { font-size: 1.8rem; }
+.focus-target-btn .ft-role { font-size: 0.75rem; font-weight: 700; }
+.focus-target-btn .ft-hp { font-size: 0.7rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; }
+.focus-target-btn .ft-tag { font-size: 0.65rem; color: var(--gold); }
+.focus-target-btn:hover { border-color: var(--accent); }
+.focus-target-btn:active { transform: scale(0.95); }
+.focus-target-btn.correct { background: rgba(0,200,83,0.2); border-color: var(--success); }
+.focus-target-btn.wrong { background: rgba(244,67,54,0.2); border-color: var(--danger); }
+.focus-target-btn:disabled { pointer-events: none; opacity: 0.6; }
+
 @media (max-width: 480px) {
   .hero-card-grid { grid-template-columns: 1fr; }
   .obj-choices { grid-template-columns: 1fr; }
   .obj-map { height: 200px; }
+  .focus-target-btn { min-width: 84px; padding: 0.6rem 0.7rem; }
 }
 
 /* ===== FOOTER ===== */
@@ -1807,6 +1841,7 @@ body {
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="#roles"><span class="nav-icon">🧭</span> Роли</a>
+    <a href="#lane-start"><span class="nav-icon">🚦</span> Старт по линиям</a>
     <a href="#draft"><span class="nav-icon">🔀</span> Драфт</a>
     <a href="#hero-card"><span class="nav-icon">🗂</span> Карточка героя</a>
     <a href="#rules"><span class="nav-icon">📜</span> Правила</a>
@@ -1846,6 +1881,7 @@ body {
     <h3>📑 Содержание</h3>
     <ol>
       <li><a href="#roles">Роли и позиции</a></li>
+      <li><a href="#lane-start">Старт матча по линиям: что делать и кого бить</a></li>
       <li><a href="#draft">Драфт и пик-бан</a></li>
       <li><a href="#meta">Мета и архетипы героев</a></li>
       <li><a href="#hero-card">Шаблон «Карточка героя»</a></li>
@@ -1873,7 +1909,7 @@ body {
       <li><a href="#selfreview">Разбор своих матчей</a></li>
       <li><a href="#training-plan">План тренировок на 30 дней</a></li>
       <li><a href="#pregame-checklist">Чек-лист перед стартом</a></li>
-      <li><a href="#game">10 мини-игр на тренировку навыков</a></li>
+      <li><a href="#game">11 мини-игр на тренировку навыков</a></li>
       <li><a href="#levels">Путь к 100 килам и шкала уровней</a></li>
       <li><a href="#beyond">Что дальше — за пределами этого гайда</a></li>
     </ol>
@@ -1918,6 +1954,95 @@ body {
         <p><strong>Главный принцип:</strong> каждая роль имеет свою <span class="keyword">зону ответственности</span> на карте и свой приоритет фарма. Игра, где все 5 фармят одну линию — это игра без структуры и почти гарантированное поражение.</p>
       </div>
     </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: LANE START SEQUENCE ===== -->
+  <section class="section reveal" id="lane-start">
+    <div class="section-header">
+      <div class="section-icon red">🚦</div>
+      <h2>Старт матча по линиям: <span class="accent">что делать и кого бить</span></h2>
+    </div>
+
+    <p style="color:var(--text-dim);font-size:0.92rem;margin-bottom:1.2rem;">Для каждой роли — пошаговая последовательность первых минут матча и приоритет целей в бою. Это конкретика поверх раздела «Роли» выше: не просто «кто есть кто», а что именно делать по шагам.</p>
+
+    <div class="card">
+      <div class="card-number">1</div>
+      <h3>🛡 Роумер — с чего начать</h3>
+      <ol style="padding-left:1.2rem;margin:0.5rem 0;">
+        <li style="margin-bottom:0.4rem;"><strong>0:00</strong> — иду к джанглеру союзника, помогаю лишить первый баф (leash)</li>
+        <li style="margin-bottom:0.4rem;"><strong>~0:20</strong> — после лишения бафа иду на свою линию (голд-лейн/маркс), прикрываю его</li>
+        <li style="margin-bottom:0.4rem;"><strong>~1:00-1:30</strong> — волна стабилизировалась, маркс фармит безопасно один → начинаю роумить, проверяю кусты</li>
+        <li>Далее — синхронизирую роум с респавном вражеского джанглера и готовностью CC-скилла</li>
+      </ol>
+      <div class="highlight-box">
+        <p><strong>Кого бить:</strong> CC — на самого опасного вражеского героя, не на танка. В тимфайте — контроль строго на squishy-керри врага; если недоступен — на инициатора врага, чтобы сорвать его заход.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">2</div>
+      <h3>🌲 Джанглер — с чего начать</h3>
+      <ol style="padding-left:1.2rem;margin:0.5rem 0;">
+        <li style="margin-bottom:0.4rem;"><strong>0:00</strong> — стартовый баф (сила/скорость — по герою), с лишением от союзника-лейнера клир быстрее</li>
+        <li style="margin-bottom:0.4rem;"><strong>~0:30-1:00</strong> — клирю малые камни, слежу за HP: клирить дальше или уже ганкать</li>
+        <li style="margin-bottom:0.4rem;"><strong>~1:30-2:30</strong> — первый ганк на линию с открытой возможностью килла (враг без прикрытия), не «на удачу»</li>
+        <li>С 3-го уровня (комбо/ульта открыты) — приоритет смещается на черепаху и активные ганки</li>
+      </ol>
+      <div class="highlight-box">
+        <p><strong>Кого бить:</strong> для ганка — линия с реальным окном килла важнее «любимой» линии. В драке — фокус на squishy (маг/маркс/ассасин врага), танка обхожу стороной, если он не единственная цель.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">3</div>
+      <h3>🔮 Мидлейнер — с чего начать</h3>
+      <ol style="padding-left:1.2rem;margin:0.5rem 0;">
+        <li style="margin-bottom:0.4rem;"><strong>0:00-1:00</strong> — фармлю волну соло, слежу за неаккуратностью вражеского мидера</li>
+        <li style="margin-bottom:0.4rem;"><strong>~1:00-2:00</strong> — проверяю карту: пропали роум/джангл врага? — играю осторожнее</li>
+        <li style="margin-bottom:0.4rem;"><strong>~2:00-4:00</strong> — волна пушится безопасно → роумлю на боковую линию или к джанглеру за объектом</li>
+        <li>Далее — цикл «фарм → короткий выход на помощь → возврат на фарм»</li>
+      </ol>
+      <div class="highlight-box">
+        <p><strong>Кого бить:</strong> на линии — прямой оппонент, цель — не проиграть обмен. В ганке — squishy-цель, не танк-эксплейнер. В тимфайте — вражеский керри/маркс первым кастом, иначе второй по опасности squishy.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">4</div>
+      <h3>🏹 Голд-лейн (Маркс) — с чего начать</h3>
+      <ol style="padding-left:1.2rem;margin:0.5rem 0;">
+        <li style="margin-bottom:0.4rem;"><strong>0:00-1:30</strong> — фармлю чисто под прикрытием роумера, без рискованных разменов</li>
+        <li style="margin-bottom:0.4rem;">Постоянно — проверяю карту между каждым добиванием: пропавший враг = потенциальный ганк</li>
+        <li style="margin-bottom:0.4rem;"><strong>~1:30+</strong> — роумер ушёл роумить → отступаю в безопасную позицию за линию/вышку</li>
+        <li>После core-предмета (2-3 слот) — активнее участвую в объективах и группе</li>
+      </ol>
+      <div class="highlight-box">
+        <p><strong>Кого бить:</strong> сам не инициирую — жду захода союзника. После инициации — ближайшая доступная squishy-цель. Если недоступна — цель уже под контролем союзников (гарантированный урон), не гонюсь за убегающим.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">5</div>
+      <h3>⚔️ Эксп-лейн — с чего начать</h3>
+      <ol style="padding-left:1.2rem;margin:0.5rem 0;">
+        <li style="margin-bottom:0.4rem;"><strong>0:00-2:00</strong> — фармлю линию 1в1, приоритет — не проиграть уровень/фарм</li>
+        <li style="margin-bottom:0.4rem;">Явное преимущество — можно инвейдить ближайший вражеский камп, только с уверенным отходом</li>
+        <li style="margin-bottom:0.4rem;">После core-предмета — давлю линию сильнее или ухожу роумить/сплит-пушить</li>
+        <li>В поздних тимфайтах — прихожу вторым фокусом после танка-инициатора, не жду в стороне</li>
+      </ol>
+      <div class="highlight-box">
+        <p><strong>Кого бить:</strong> на линии — прямой оппонент. В тимфайте — уже подавленная контролем цель (добивание), а не новый враг без CC. Если союзный инициатор застрял один в толпе — разрываю контроль с него, а не добиваю третью цель.</p>
+      </div>
+    </div>
+
+    <div class="gold-box">
+      <p class="tag">Общий принцип для всех ролей</p>
+      <p><strong>Порядок приоритета цели в бою:</strong> 1) squishy-керри врага (маркс/маг/ассасин) в зоне досягаемости → 2) цель, уже подавленная контролем союзника → 3) цель с наименьшим HP, которую реально добить → 4) танк — только если это единственная доступная цель или чтобы снять с него контроль с союзника.</p>
+    </div>
+
+    <p style="text-align:center;color:var(--text-dim);font-size:0.85rem;margin-top:1rem;">Хочешь проверить, усвоил ли ты приоритет целей? В разделе мини-игр есть тренажёр <strong>«Кого бить»</strong> — 10 боевых сценариев с разбором. <a href="#game" style="color:var(--accent);font-weight:600;">↓ Открыть тренажёр</a></p>
   </section>
 
   <div class="separator">⚔️</div>
@@ -3058,7 +3183,7 @@ body {
       <h2>Мини-игры: <span class="accent">тренировка навыков</span></h2>
     </div>
 
-    <p style="text-align:center;color:var(--text-dim);font-size:0.9rem;margin:-1rem 0 1.5rem;">10 тренажёров под каждый навык: рефлекс, реакция, периферия, внимательность, знание экипировки, прицеливание, добивание крипов, макро-чтение объективов, дыхание и ресурс-менеджмент.</p>
+    <p style="text-align:center;color:var(--text-dim);font-size:0.9rem;margin:-1rem 0 1.5rem;">11 тренажёров под каждый навык: рефлекс, реакция, периферия, внимательность, знание экипировки, прицеливание, добивание крипов, макро-чтение объективов, дыхание, ресурс-менеджмент и приоритет целей в бою.</p>
 
     <!-- GAME 1: Target Clicker -->
     <div class="game-container">
@@ -3544,6 +3669,59 @@ body {
           <li>Не сокращай перерыв — см. правило «2 поражения подряд — 20 минут перерыва» из раздела «Дисциплина»</li>
           <li>Таймер тикает и в свёрнутой вкладке — просто не закрывай её</li>
           <li>«Пауза» — если катка ещё не закончилась к концу сессии, не бросай матч ради таймера</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GAME 11: Focus Target ("Кого бить") -->
+    <div class="game-container" style="margin-bottom:3rem;">
+      <div class="game-header red">
+        <h2>🎯 КОГО БИТЬ</h2>
+        <p>Боевой сценарий — выбери правильную цель для атаки/контроля. 10 раундов на приоритет целей из раздела «Старт по линиям».</p>
+      </div>
+      <div class="game-stats">
+        <div class="game-stat">
+          <div class="value" id="focusRound">0/10</div>
+          <div class="label">Раунд</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="focusScore">0</div>
+          <div class="label">Верно</div>
+        </div>
+        <div class="game-stat">
+          <div class="value" id="focusStreak">0</div>
+          <div class="label">Серия</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="fill" id="focusProgress"></div></div>
+
+      <div id="focusScenarioText" class="obj-scenario-text" style="display:none;margin:1rem 1.2rem 0;"></div>
+      <div id="focusChoices" class="focus-choices" style="display:none;"></div>
+      <div id="focusExplain" class="obj-explain"></div>
+
+      <div style="position:relative;min-height:60px;">
+        <div id="focusPlaceholder" style="text-align:center;color:var(--text-dim);font-size:0.9rem;padding:1.5rem;">
+          Нажми «СТАРТ» чтобы начать
+        </div>
+      </div>
+
+      <div class="game-result" id="focusResult">
+        <div class="result-title" id="focusResultTitle"></div>
+        <div class="result-detail" id="focusResultDetail"></div>
+      </div>
+
+      <div class="game-controls">
+        <button class="game-btn start" id="focusStartBtn" onclick="startFocusGame()">🚀 СТАРТ</button>
+        <button class="game-btn reset" onclick="resetFocusGame()">↺ Сбросить</button>
+      </div>
+
+      <div class="game-rules">
+        <h4>📖 Правила</h4>
+        <ul>
+          <li>Каждый раунд — короткое описание боевой ситуации и 2-3 вражеские цели с ролью/HP/статусом</li>
+          <li>Выбери, кого атаковать/контролить первым — по правилу приоритета из раздела «Старт по линиям»</li>
+          <li>После выбора — подсветка правильного ответа и объяснение</li>
+          <li>10 раундов, тренирует принятие решений в бою, а не рефлекс</li>
         </ul>
       </div>
     </div>
@@ -5041,6 +5219,199 @@ function resetPomoGame() {
   document.getElementById('pomoStartBtn').disabled = false;
   document.getElementById('pomoPauseBtn').textContent = '⏸ Пауза';
   updatePomoUI();
+}
+
+// ===== FOCUS TARGET GAME ("Кого бить") =====
+const focusScenarios = [
+  {
+    text: 'Тимфайт у черепахи: вражеский маркс без прикрытия в радиусе атаки. Рядом вражеский танк, недавно скастовал щит.',
+    explain: 'Squishy-керри в приоритете — он опаснее и умирает быстрее. Не трать ресурсы на танка, если есть доступ к марксу.',
+    targets: [
+      { icon: '🏹', role: 'Маркс', hp: 95, tag: 'открыт', correct: true },
+      { icon: '🛡', role: 'Танк', hp: 80, tag: 'щит недавно', correct: false }
+    ]
+  },
+  {
+    text: 'Вражеский маг под контролем союзника, 40% HP, в радиусе. Вражеский стрелок на полном HP, но вне досягаемости.',
+    explain: 'Цель уже подавлена контролем союзника — гарантированный урон. Не гонись за недоступной целью.',
+    targets: [
+      { icon: '🔮', role: 'Маг', hp: 40, tag: 'под контролем', correct: true },
+      { icon: '🏹', role: 'Стрелок', hp: 100, tag: 'вне радиуса', correct: false }
+    ]
+  },
+  {
+    text: 'Два вражеских героя доступны: ассасин с 25% HP (можно добить) и маг с 90% HP.',
+    explain: 'Цель с наименьшим HP, которую реально добить — гарантированный килл важнее попытки продавить полного HP.',
+    targets: [
+      { icon: '🗡', role: 'Ассасин', hp: 25, tag: 'добить', correct: true },
+      { icon: '🔮', role: 'Маг', hp: 90, tag: 'полное HP', correct: false }
+    ]
+  },
+  {
+    text: 'В радиусе — только вражеский танк, остальные герои врага вне досягаемости.',
+    explain: 'Танк — цель только когда он единственный доступный вариант. Атакуй его, а не жди недоступную цель.',
+    targets: [
+      { icon: '🛡', role: 'Танк', hp: 100, tag: 'единственная цель', correct: true },
+      { icon: '❓', role: 'Остальные', hp: 0, tag: 'вне радиуса', correct: false }
+    ]
+  },
+  {
+    text: 'Союзный инициатор один в толпе врагов, на нём контроль вражеского саппорта. Рядом вражеский маркс, полное HP, без контроля на союзниках.',
+    explain: 'Разрывай контроль с застрявшего союзника — убей/останови того, кто его держит, а не добивай третью цель.',
+    targets: [
+      { icon: '📿', role: 'Саппорт', hp: 60, tag: 'держит контроль на союзнике', correct: true },
+      { icon: '🏹', role: 'Маркс', hp: 100, tag: 'не участвует', correct: false }
+    ]
+  },
+  {
+    text: 'Ганк роума: вражеский ассасин на линии без контроля на нём. Рядом вражеский танк, недавно использовал щит.',
+    explain: 'CC — на самого опасного героя врага, не на танка. Ассасин убивает твоего керри быстрее всего.',
+    targets: [
+      { icon: '🗡', role: 'Ассасин', hp: 100, tag: 'опасен', correct: true },
+      { icon: '🛡', role: 'Танк', hp: 85, tag: 'щит использован', correct: false }
+    ]
+  },
+  {
+    text: 'Ганк джанглера: враг на линии, 35% HP, путь отхода отрезан. Второй враг (танк) добежал защищать, 100% HP.',
+    explain: 'Реальное окно килла (отрезан путь, низкое HP) важнее «стандартного» приоритета цели.',
+    targets: [
+      { icon: '🔮', role: 'Маг', hp: 35, tag: 'отход отрезан', correct: true },
+      { icon: '🛡', role: 'Танк', hp: 100, tag: 'только что подбежал', correct: false }
+    ]
+  },
+  {
+    text: 'Дуэль на миде: вражеский маркс в радиусе бёрст-комбо. Вражеский маг вне досягаемости, готовит скилл.',
+    explain: 'Вражеский керри — первым кастом, если он в зоне досягаемости. Не жди недоступную цель.',
+    targets: [
+      { icon: '🏹', role: 'Маркс', hp: 100, tag: 'в радиусе', correct: true },
+      { icon: '🔮', role: 'Маг', hp: 100, tag: 'вне радиуса', correct: false }
+    ]
+  },
+  {
+    text: 'Тимфайт: вражеский маркс уже под контролем твоего союзника, 50% HP. Вражеский ассасин без контроля, полное HP, только что зашёл.',
+    explain: 'Цель под контролем союзника — бей автоатаками её. Гарантированный урон важнее переключения на подвижную цель.',
+    targets: [
+      { icon: '🏹', role: 'Маркс', hp: 50, tag: 'под контролем', correct: true },
+      { icon: '🗡', role: 'Ассасин', hp: 100, tag: 'без контроля', correct: false }
+    ]
+  },
+  {
+    text: 'Эксп-лейн тимфайт: вражеский боец уже подавлен станом, 30% HP. Свежий вражеский маг без контроля, 100% HP, только зашёл в бой.',
+    explain: 'Добивай уже подавленную контролем цель — не переключайся на нового врага без CC на нём.',
+    targets: [
+      { icon: '⚔️', role: 'Боец', hp: 30, tag: 'под станом', correct: true },
+      { icon: '🔮', role: 'Маг', hp: 100, tag: 'без контроля', correct: false }
+    ]
+  }
+];
+
+let focusActive = false, focusRound = 0, focusScore = 0, focusStreak = 0, focusCurrentScenario = null;
+const focusMax = 10;
+
+function startFocusGame() {
+  if (focusActive) return;
+  resetFocusGame();
+  focusActive = true;
+  focusRound = 0; focusScore = 0; focusStreak = 0;
+  document.getElementById('focusStartBtn').disabled = true;
+  document.getElementById('focusResult').classList.remove('show');
+  document.getElementById('focusPlaceholder').style.display = 'none';
+  document.getElementById('focusScenarioText').style.display = '';
+  document.getElementById('focusChoices').style.display = '';
+  nextFocusRound();
+}
+
+function nextFocusRound() {
+  if (focusRound >= focusMax) { finishFocusGame(); return; }
+  document.getElementById('focusExplain').classList.remove('show');
+
+  const base = focusScenarios[Math.floor(Math.random() * focusScenarios.length)];
+  const shuffledTargets = shuffle(base.targets);
+  focusCurrentScenario = {
+    text: base.text,
+    explain: base.explain,
+    targets: shuffledTargets,
+    correctIndex: shuffledTargets.findIndex(t => t.correct)
+  };
+
+  document.getElementById('focusScenarioText').textContent = focusCurrentScenario.text;
+
+  const choicesEl = document.getElementById('focusChoices');
+  choicesEl.innerHTML = '';
+  focusCurrentScenario.targets.forEach((t, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'focus-target-btn';
+    btn.dataset.index = i;
+    btn.innerHTML = `<div class="ft-icon">${t.icon}</div><div class="ft-role">${t.role}</div><div class="ft-hp">${t.hp}% HP</div><div class="ft-tag">${t.tag}</div>`;
+    btn.addEventListener('click', () => pickFocusTarget(i));
+    choicesEl.appendChild(btn);
+  });
+
+  updateFocusUI();
+}
+
+function pickFocusTarget(idx) {
+  if (!focusActive || !focusCurrentScenario) return;
+  const btns = document.querySelectorAll('.focus-target-btn');
+  btns.forEach(b => b.disabled = true);
+
+  const correct = idx === focusCurrentScenario.correctIndex;
+  btns.forEach(b => {
+    const bi = parseInt(b.dataset.index, 10);
+    if (bi === focusCurrentScenario.correctIndex) b.classList.add('correct');
+    else if (bi === idx && !correct) b.classList.add('wrong');
+  });
+
+  if (correct) { focusScore++; focusStreak++; } else { focusStreak = 0; }
+  focusRound++;
+
+  const explainEl = document.getElementById('focusExplain');
+  explainEl.textContent = (correct ? '✅ Верно. ' : '❌ Неверно. ') + focusCurrentScenario.explain;
+  explainEl.classList.add('show');
+
+  updateFocusUI();
+  setTimeout(nextFocusRound, 2200);
+}
+
+function updateFocusUI() {
+  document.getElementById('focusRound').textContent = focusRound + '/' + focusMax;
+  document.getElementById('focusScore').textContent = focusScore;
+  document.getElementById('focusStreak').textContent = focusStreak;
+  document.getElementById('focusProgress').style.width = (focusRound / focusMax * 100) + '%';
+}
+
+function finishFocusGame() {
+  focusActive = false;
+  document.getElementById('focusStartBtn').disabled = false;
+  document.getElementById('focusScenarioText').style.display = 'none';
+  document.getElementById('focusChoices').style.display = 'none';
+  document.getElementById('focusExplain').classList.remove('show');
+  document.getElementById('focusPlaceholder').style.display = 'block';
+  document.getElementById('focusPlaceholder').textContent = 'Готово!';
+
+  const r = document.getElementById('focusResult');
+  r.classList.add('show');
+  const pct = Math.round(focusScore / focusMax * 100);
+  document.getElementById('focusResultTitle').textContent =
+    pct >= 90 ? '🧠 Идеальный таргет-приоритет!' : pct >= 60 ? '🔥 Хорошее чутьё на цель!' : '📚 Перечитай раздел «Старт по линиям»!';
+  document.getElementById('focusResultDetail').textContent = `Точность: ${pct}% · ${focusScore}/${focusMax}`;
+}
+
+function resetFocusGame() {
+  focusActive = false;
+  focusRound = 0; focusScore = 0; focusStreak = 0; focusCurrentScenario = null;
+  document.getElementById('focusScenarioText').style.display = 'none';
+  document.getElementById('focusChoices').innerHTML = '';
+  document.getElementById('focusChoices').style.display = 'none';
+  document.getElementById('focusExplain').classList.remove('show');
+  document.getElementById('focusPlaceholder').style.display = 'block';
+  document.getElementById('focusPlaceholder').textContent = 'Нажми «СТАРТ» чтобы начать';
+  document.getElementById('focusRound').textContent = '0/' + focusMax;
+  document.getElementById('focusScore').textContent = '0';
+  document.getElementById('focusStreak').textContent = '0';
+  document.getElementById('focusProgress').style.width = '0%';
+  document.getElementById('focusResult').classList.remove('show');
+  document.getElementById('focusStartBtn').disabled = false;
 }
 </script>
 
