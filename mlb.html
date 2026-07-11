@@ -593,6 +593,7 @@ body {
 /* ===== MINI GAME SECTION ===== */
 .game-section {
   margin: 4rem 0 3rem;
+  animation: fadeInUp 0.6s ease both;
 }
 
 .game-container {
@@ -1446,6 +1447,7 @@ body {
   border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 2rem;
+  animation: fadeInUp 0.6s ease both;
 }
 
 .toc h3 {
@@ -1822,7 +1824,7 @@ body {
         <div class="label">Разделов</div>
       </div>
       <div class="hero-stat">
-        <div class="num">8</div>
+        <div class="num">11</div>
         <div class="label">Мини-игр</div>
       </div>
       <div class="hero-stat">
@@ -1850,7 +1852,6 @@ body {
     <a href="#emotions"><span class="nav-icon">🧊</span> Эмоции</a>
     <a href="#discipline"><span class="nav-icon">📋</span> Дисциплина</a>
     <a href="#aim"><span class="nav-icon">🎯</span> Прицеливание</a>
-    <a href="#apps"><span class="nav-icon">📱</span> Приложения</a>
     <a href="#map-reading"><span class="nav-icon">🗺</span> Карта</a>
     <a href="#objectives"><span class="nav-icon">🐢</span> Объективы</a>
     <a href="#rotations"><span class="nav-icon">🔁</span> Ротации</a>
@@ -1890,9 +1891,7 @@ body {
       <li><a href="#reaction">Упражнения для реакции</a></li>
       <li><a href="#emotions">Упражнения для контроля эмоций</a></li>
       <li><a href="#discipline">Дисциплина и фокус на одном герое</a></li>
-      <li><a href="#apps-external">Сторонние тренажёры</a></li>
       <li><a href="#aim">Точное прицеливание</a></li>
-      <li><a href="#apps">Сторонние приложения</a></li>
       <li><a href="#map-reading">Чтение карты и мини-карты</a></li>
       <li><a href="#objectives">Объективы: черепаха, лорд, вышки</a></li>
       <li><a href="#rotations">Ротации и роуминг</a></li>
@@ -2568,151 +2567,6 @@ body {
 
   <div class="separator">⚔️</div>
 
-  <!-- ===== SECTION: EXTERNAL TRAINERS ===== -->
-  <section class="section reveal" id="apps-external">
-    <div class="section-header">
-      <div class="section-icon blue">🧠</div>
-      <h2>Сторонние <span class="accent">тренажёры</span></h2>
-    </div>
-
-    <div class="subsection">
-      <h3><span class="emoji">👁</span> Для периферического зрения (вне игры)</h3>
-
-      <div class="link-card">
-        <div class="link-icon">🖥</div>
-        <div class="link-content">
-          <h4>Тренажёр «Perya» (сайт / ПК)</h4>
-          <p>На экране быстро вспыхивают точки по краям. Ты должен кликать, не отрывая взгляда от центра. 5 минут перед каждой игровой сессией. Добейся, чтобы замечал вспышки на 90° и более.</p>
-          <a href="https://perya.com" target="_blank">https://perya.com</a>
-        </div>
-      </div>
-
-      <div class="link-card">
-        <div class="link-icon">📱</div>
-        <div class="link-content">
-          <h4>Приложение «UltimEyes» (iOS, Android)</h4>
-          <p>Платное, но мощное. Тренирует «мягкий фокус» и расширение полезного поля зрения. Изначально для бейсболистов, но идеально для MLBB. Через 2 недели миникарта станет ощущаться «краем глаза».</p>
-        </div>
-      </div>
-
-      <div class="link-card">
-        <div class="link-icon">📄</div>
-        <div class="link-content">
-          <h4>Бумажная тренировка (без телефона/ПК)</h4>
-          <p>На стену вешаешь лист А4 с точкой в центре. По углам листа — маленькие цифры (1,2,3,4). Смотришь только в центр и называешь, какая цифра моргнула (её закрывает и открывает помощник). Можно заменить на наклейки на мониторе.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <h3><span class="emoji">⚡</span> Для реакции (0.1–1 сек) – сторонние</h3>
-
-      <div class="link-card">
-        <div class="link-icon">🌐</div>
-        <div class="link-content">
-          <h4>Human Benchmark → Reaction Time Test</h4>
-          <p>Показывает твою среднюю реакцию на смену цвета. Цель — стабильно 200 мс и ниже. Когда достигнешь 200 мс на кликах — переноси это в игру: на звук/анимацию ульты.</p>
-          <a href="https://humanbenchmark.com/tests/reactiontime" target="_blank">humanbenchmark.com/tests/reactiontime</a>
-        </div>
-      </div>
-
-      <div class="link-card">
-        <div class="link-icon">🎮</div>
-        <div class="link-content">
-          <h4>Aim Lab (Steam, бесплатно) — режим Cognition / Detection</h4>
-          <p>Тренировки на зрительное обнаружение и быстрый выбор действия (нажать / не нажать). Это аналог уклонения от хука Франко.</p>
-        </div>
-      </div>
-
-      <div class="link-card">
-        <div class="link-icon">📏</div>
-        <div class="link-content">
-          <h4>Физический тренажёр «Реакция на падающую линейку»</h4>
-          <p>Берёшь обычную линейку (30 см). Помощник держит её вертикально, ноль внизу. Ты ловишь её пальцами, как только она начинает падать. Отметка, на которой сжал — время реакции в миллисекундах (1 см ≈ 20 мс).</p>
-          <div class="highlight-box">
-            <p><strong>Норма для MLBB:</strong> ловить на <span class="keyword">10–15 см (200–300 мс)</span>.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="link-card">
-        <div class="link-icon">💡</div>
-        <div class="link-content">
-          <h4>Световой/звуковой раздражитель (Arduino)</h4>
-          <p>Можно сделать самому: Arduino с кнопкой и светодиодом. Зажигается свет → жми кнопку. Звук → жми другую. Тренирует <strong>раздельную реакцию</strong> (в игре: ульт звук → фликер; анимация → щит).</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <h3><span class="emoji">🧊</span> Для эмоций (стресс-тренировка вне игры)</h3>
-
-      <div class="link-card">
-        <div class="link-icon">🫁</div>
-        <div class="link-content">
-          <h4>Приложение «Breathe» (Apple Watch / Android «Breathe2Relax»)</h4>
-          <p>Учит делать 3-секундный вдох-выдох, который блокирует выброс адреналина. Используй <strong>между смертями</strong> в MLBB.</p>
-        </div>
-      </div>
-
-      <div class="link-card">
-        <div class="link-icon">🎮</div>
-        <div class="link-content">
-          <h4>Не хочешь ставить приложение? Тренируйся прямо здесь</h4>
-          <p>В разделе мини-игр ниже есть встроенный тренажёр <strong>«Дыхание»</strong> — квадратное дыхание с визуальным ритмом, без установки стороннего приложения.</p>
-          <a href="#game">↓ Открыть тренажёр «Дыхание»</a>
-        </div>
-      </div>
-
-      <div class="link-card">
-        <div class="link-icon">🎵</div>
-        <div class="link-content">
-          <h4>Osu! (режим без музыки)</h4>
-          <p>Osu! тренирует держать ритм и не дёргаться при ошибке. Аналог «не паниковать в гуше». Играй 10 минут в день, стараясь сохранять пульс ровным.</p>
-        </div>
-      </div>
-
-      <div class="link-card">
-        <div class="link-icon">❄️</div>
-        <div class="link-content">
-          <h4>Холодная вода на лицо (физический метод)</h4>
-          <p>Перед ответственным матчем умойся ледяной водой на 15 секунд. Это вызывает <span class="keyword">нырятельный рефлекс</span> — пульс падает, мозг переключается в спокойный режим. Работает лучше любых мантр.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <h3><span class="emoji">📋</span> Для дисциплины (один герой, экономия ресурсов)</h3>
-
-      <div class="link-card">
-        <div class="link-icon">⏱</div>
-        <div class="link-content">
-          <h4>Таймер Pomodoro</h4>
-          <p>Играешь 25 минут – перерыв 5 минут (встать, выпить воды). Это не даёт «исчерпывать жизненные ресурсы». Подойдёт любое приложение с таймером.</p>
-        </div>
-      </div>
-
-      <div class="link-card">
-        <div class="link-icon">🎮</div>
-        <div class="link-content">
-          <h4>Или запусти встроенный таймер</h4>
-          <p>В разделе мини-игр ниже есть тренажёр <strong>«Pomodoro»</strong> — те же 25/5 минут, с визуальным кругом и счётчиком сессий, без стороннего приложения.</p>
-          <a href="#game">↓ Открыть тренажёр «Pomodoro»</a>
-        </div>
-      </div>
-
-      <div class="link-card">
-        <div class="link-icon">📓</div>
-        <div class="link-content">
-          <h4>Блокнот для ошибок (физический)</h4>
-          <p>После каждого матча ручкой на бумаге пиши: «3-я минута – не посмотрел на миникарту». <strong>Цифровые заметки не работают так же хорошо, как ручка.</strong></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="separator">⚔️</div>
-
   <!-- ===== SECTION: AIM ===== -->
   <section class="section reveal" id="aim">
     <div class="section-header">
@@ -2756,38 +2610,6 @@ body {
         </ul>
         <div class="highlight-box">
           <p>Это отдельная привычка, но она <strong>сильно повышает точность</strong>.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="separator">⚔️</div>
-
-  <!-- ===== SECTION: APPS ===== -->
-  <section class="section reveal" id="apps">
-    <div class="section-header">
-      <div class="section-icon green">📱</div>
-      <h2>Сторонние <span class="accent">приложения</span> для телефона</h2>
-    </div>
-
-    <div class="link-card">
-      <div class="link-icon">🎵</div>
-      <div class="link-content">
-        <h4>Osu!stream</h4>
-        <p>Мобильная версия Osu. Скачай её в магазине приложений — она есть и для Android, и для iOS. Играй стандартные карты на точное нажатие кружков. Это прямая тренировка координации «глаз → палец»: чем сложнее карта, тем выше становится твоя скорость прицела в MLBB.</p>
-        <div class="highlight-box">
-          <p><strong>Достаточно уделять этому 10 минут в день.</strong></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="link-card">
-      <div class="link-icon">🎯</div>
-      <div class="link-content">
-        <h4>Aimtastic Mobile или любой тренажёр прицеливания</h4>
-        <p>Официальной версии Aim Lab для телефона нет, но есть Aimtastic Mobile — маленькое приложение с тестами на точность. Или просто поищи в магазине по запросу «aim trainer mobile».</p>
-        <div class="highlight-box">
-          <p><strong>Главное условие:</strong> в приложении должен быть режим точного нажатия, а не просто удержание пальца.</p>
         </div>
       </div>
     </div>
