@@ -1033,6 +1033,8 @@ body {
 }
 .load-item:active { transform:scale(0.94); }
 .load-item .ic { font-size:1.5rem; }
+.load-item .ic img { width:36px; height:36px; object-fit:contain; display:block; margin:0 auto; border-radius:50%; }
+.load-slot img { width:40px; height:40px; object-fit:contain; border-radius:50%; }
 .load-item .nm { font-size:0.65rem; color:var(--text-dim); margin-top:0.2rem; line-height:1.2; }
 .load-item.picked { opacity:0.35; pointer-events:none; }
 .load-item.good { border-color:var(--success); background:rgba(0,200,83,0.12); }
@@ -1168,6 +1170,17 @@ body {
   font-size: 1.3rem;
   flex-shrink: 0;
 }
+.hero-card-head .hc-icon img { width: 24px; height: 24px; object-fit: contain; }
+
+/* ===== MLBB ROLE ICONS (real in-game class icons) ===== */
+.role-icon-inline {
+  width: 1.1em; height: 1.1em;
+  object-fit: contain;
+  vertical-align: -0.18em;
+  margin-right: 0.3rem;
+}
+.bs-icon img { width: 36px; height: 36px; object-fit: contain; }
+.role-name img.role-icon-inline { width: 1.3rem; height: 1.3rem; vertical-align: -0.25em; }
 .hero-card-head .hc-title { font-size: 1.05rem; font-weight: 800; color: var(--text-bright); }
 .hero-card-head .hc-sub { font-size: 0.78rem; color: var(--text-dim); }
 .hero-card-grid {
@@ -1373,6 +1386,7 @@ body {
   min-width: 100px;
 }
 .focus-target-btn .ft-icon { font-size: 1.8rem; }
+.focus-target-btn .ft-icon img { width: 32px; height: 32px; object-fit: contain; }
 .focus-target-btn .ft-role { font-size: 0.75rem; font-weight: 700; }
 .focus-target-btn .ft-hp { font-size: 0.7rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; }
 .focus-target-btn .ft-tag { font-size: 0.65rem; color: var(--gold); }
@@ -1925,7 +1939,7 @@ body {
 
     <div class="card">
       <div class="card-number">1</div>
-      <h3>🛡 Роумер (поддержка)</h3>
+      <h3><img src="icons/roles/support.png" class="role-icon-inline" alt="">Роумер (поддержка)</h3>
       <p>Ходит с саппортом/танком на линию союзника, контролирует кусты и вижен, инициирует или защищает команду. Приоритет фарма — самый низкий: голд отдаётся керри.</p>
     </div>
 
@@ -1937,19 +1951,19 @@ body {
 
     <div class="card">
       <div class="card-number">3</div>
-      <h3>🔮 Мидлейнер</h3>
+      <h3><img src="icons/roles/mage.png" class="role-icon-inline" alt="">Мидлейнер</h3>
       <p>Держит центральную линию, часто маг с бёрст-уроном. Быстро левелится соло, после пуша своей волны — роумит на боковые линии или к объективам.</p>
     </div>
 
     <div class="card">
       <div class="card-number">4</div>
-      <h3>🏹 Голд-лейн (Марксмен)</h3>
+      <h3><img src="icons/roles/marksman.png" class="role-icon-inline" alt="">Голд-лейн (Марксмен)</h3>
       <p>Главный керри команды на поздней стадии игры. Фармит нижнюю линию, в ранней игре уязвим и зависит от роумера, в поздней — решает исход тимфайтов автоатаками.</p>
     </div>
 
     <div class="card">
       <div class="card-number">5</div>
-      <h3>⚔️ Эксплейнер (верхняя линия)</h3>
+      <h3><img src="icons/roles/fighter.png" class="role-icon-inline" alt="">Эксплейнер (верхняя линия)</h3>
       <p>Держит верхнюю линию один на один, часто танк или боец. Задача — не проиграть линию, а затем инициировать командные бои или сплит-пушить вышки.</p>
       <div class="highlight-box">
         <p><strong>Главный принцип:</strong> каждая роль имеет свою <span class="keyword">зону ответственности</span> на карте и свой приоритет фарма. Игра, где все 5 фармят одну линию — это игра без структуры и почти гарантированное поражение.</p>
@@ -1970,7 +1984,7 @@ body {
 
     <div class="card">
       <div class="card-number">1</div>
-      <h3>🛡 Роумер — с чего начать</h3>
+      <h3><img src="icons/roles/support.png" class="role-icon-inline" alt="">Роумер — с чего начать</h3>
       <ol style="padding-left:1.2rem;margin:0.5rem 0;">
         <li style="margin-bottom:0.4rem;"><strong>0:00</strong> — иду к джанглеру союзника, помогаю лишить первый баф (leash)</li>
         <li style="margin-bottom:0.4rem;"><strong>~0:20</strong> — после лишения бафа иду на свою линию (голд-лейн/маркс), прикрываю его</li>
@@ -1998,7 +2012,7 @@ body {
 
     <div class="card">
       <div class="card-number">3</div>
-      <h3>🔮 Мидлейнер — с чего начать</h3>
+      <h3><img src="icons/roles/mage.png" class="role-icon-inline" alt="">Мидлейнер — с чего начать</h3>
       <ol style="padding-left:1.2rem;margin:0.5rem 0;">
         <li style="margin-bottom:0.4rem;"><strong>0:00-1:00</strong> — фармлю волну соло, слежу за неаккуратностью вражеского мидера</li>
         <li style="margin-bottom:0.4rem;"><strong>~1:00-2:00</strong> — проверяю карту: пропали роум/джангл врага? — играю осторожнее</li>
@@ -2012,7 +2026,7 @@ body {
 
     <div class="card">
       <div class="card-number">4</div>
-      <h3>🏹 Голд-лейн (Маркс) — с чего начать</h3>
+      <h3><img src="icons/roles/marksman.png" class="role-icon-inline" alt="">Голд-лейн (Маркс) — с чего начать</h3>
       <ol style="padding-left:1.2rem;margin:0.5rem 0;">
         <li style="margin-bottom:0.4rem;"><strong>0:00-1:30</strong> — фармлю чисто под прикрытием роумера, без рискованных разменов</li>
         <li style="margin-bottom:0.4rem;">Постоянно — проверяю карту между каждым добиванием: пропавший враг = потенциальный ганк</li>
@@ -2026,7 +2040,7 @@ body {
 
     <div class="card">
       <div class="card-number">5</div>
-      <h3>⚔️ Эксп-лейн — с чего начать</h3>
+      <h3><img src="icons/roles/fighter.png" class="role-icon-inline" alt="">Эксп-лейн — с чего начать</h3>
       <ol style="padding-left:1.2rem;margin:0.5rem 0;">
         <li style="margin-bottom:0.4rem;"><strong>0:00-2:00</strong> — фармлю линию 1в1, приоритет — не проиграть уровень/фарм</li>
         <li style="margin-bottom:0.4rem;">Явное преимущество — можно инвейдить ближайший вражеский камп, только с уверенным отходом</li>
@@ -2137,7 +2151,7 @@ body {
 
     <div class="hero-card">
       <div class="hero-card-head">
-        <div class="hc-icon">🛡</div>
+        <div class="hc-icon"><img src="icons/roles/tank.png" alt=""></div>
         <div>
           <div class="hc-title">Пример: Танк-инициатор</div>
           <div class="hc-sub">Роумер/Эксплейнер · сложность низкая-средняя</div>
@@ -2154,7 +2168,7 @@ body {
 
     <div class="hero-card">
       <div class="hero-card-head">
-        <div class="hc-icon">🔥</div>
+        <div class="hc-icon"><img src="icons/roles/mage.png" alt=""></div>
         <div>
           <div class="hc-title">Пример: Маг-бёрст</div>
           <div class="hc-sub">Мидлейнер · сложность средняя</div>
@@ -2171,7 +2185,7 @@ body {
 
     <div class="hero-card">
       <div class="hero-card-head">
-        <div class="hc-icon">🏹</div>
+        <div class="hc-icon"><img src="icons/roles/marksman.png" alt=""></div>
         <div>
           <div class="hc-title">Пример: Физ-керри</div>
           <div class="hc-sub">Голд-лейн · сложность средняя-высокая</div>
@@ -3206,7 +3220,7 @@ body {
           </div>
           <div class="battle-vs-mark">VS</div>
           <div class="battle-side">
-            <div class="bs-icon" id="battleBotIcon">🛡</div>
+            <div class="bs-icon" id="battleBotIcon"><img src="icons/roles/tank.png" alt=""></div>
             <div class="bs-name" id="battleBotName">Бот</div>
             <div class="lasthit-hp-track"><div class="lasthit-hp-bar hp-high" id="battleBotHp" style="width:100%;"></div></div>
           </div>
@@ -3226,7 +3240,7 @@ body {
         <ul>
           <li>Показана роль и описание (танк, маг, стрелок и т.д.)</li>
           <li>Выбери 3 подходящих предмета из 9 вариантов</li>
-          <li>Затем сборка идёт в бой против одного из 3 ботов: 🛡 Танк-инициатор / 🔥 Маг-бёрст / 🏹 Физ-керри</li>
+          <li>Затем сборка идёт в бой против одного из 3 ботов: <img src="icons/roles/tank.png" class="role-icon-inline" alt="">Танк-инициатор / <img src="icons/roles/mage.png" class="role-icon-inline" alt="">Маг-бёрст / <img src="icons/roles/marksman.png" class="role-icon-inline" alt="">Физ-керри</li>
           <li>Результат боя показывает, что усилило или подвело сборку — верные предметы побеждают ощутимо быстрее</li>
           <li>5 сборок за раунд. Тренирует знание предметов и адаптацию под матчап</li>
         </ul>
@@ -4110,38 +4124,38 @@ function resetAttnGame() {
 
 // ===== LOADOUT / EQUIPMENT GAME + BATTLE VS BOT =====
 const loadItems = {
-  bootsTank:  { ic:'🥾', nm:'Сапоги стойкости', tags:['tank','support'], dmg:0,  def:20, hp:300 },
-  antique:    { ic:'💚', nm:'Антик кьюрасс', tags:['tank','fighter'], dmg:0,  def:35, hp:400 },
-  immortal:   { ic:'😇', nm:'Бессмертие', tags:['tank','fighter'], dmg:0,  def:25, hp:600 },
-  cursed:     { ic:'☠️', nm:'Проклятый шлем', tags:['tank'], dmg:0,  def:30, hp:500 },
-  warAxe:     { ic:'🪓', nm:'Боевой топор', tags:['fighter'], dmg:35, def:10, hp:300 },
-  bloodlust:  { ic:'🩸', nm:'Кровавая жажда', tags:['fighter','assassin'], dmg:40, def:0,  hp:150 },
-  endless:    { ic:'⚔️', nm:'Бесконечная битва', tags:['fighter','assassin'], dmg:45, def:5,  hp:200 },
-  hunter:     { ic:'🗡', nm:'Охотничий нож', tags:['assassin','jungle'], dmg:50, def:0,  hp:0 },
-  bladeDesp:  { ic:'🔪', nm:'Клинок отчаяния', tags:['assassin','marksman'], dmg:55, def:0,  hp:0 },
-  windTalker: { ic:'🌀', nm:'Говорящий с ветром', tags:['marksman'], dmg:50, def:0,  hp:100 },
-  berserker:  { ic:'💢', nm:'Ярость берсерка', tags:['marksman','assassin'], dmg:60, def:0,  hp:0 },
-  demonHunter:{ ic:'🏹', nm:'Меч охотника', tags:['marksman'], dmg:55, def:0,  hp:0 },
-  lightning:  { ic:'⚡', nm:'Молниевая правда', tags:['mage'], dmg:60, def:0,  hp:0 },
-  holyCrystal:{ ic:'🔮', nm:'Святой кристалл', tags:['mage'], dmg:65, def:0,  hp:0 },
-  glowingWand:{ ic:'🪄', nm:'Светящийся жезл', tags:['mage'], dmg:50, def:0,  hp:150 },
-  bootsMagic: { ic:'👢', nm:'Маг. сапоги', tags:['mage','support'], dmg:10, def:15, hp:100 },
-  oracle:     { ic:'📿', nm:'Оракул', tags:['support','tank'], dmg:0,  def:15, hp:350 },
-  fleeting:   { ic:'⏳', nm:'Мимолётное время', tags:['support'], dmg:15, def:10, hp:150 },
-  dominance:  { ic:'🛡', nm:'Меч господства', tags:['tank','support'], dmg:5,  def:25, hp:300 },
+  bootsTank:  { ic:'icons/items/bootsTank.png', nm:'Сапоги стойкости', tags:['tank','support'], dmg:0,  def:20, hp:300 },
+  antique:    { ic:'icons/items/antique.png', nm:'Антик кьюрасс', tags:['tank','fighter'], dmg:0,  def:35, hp:400 },
+  immortal:   { ic:'icons/items/immortal.png', nm:'Бессмертие', tags:['tank','fighter'], dmg:0,  def:25, hp:600 },
+  cursed:     { ic:'icons/items/cursed.png', nm:'Проклятый шлем', tags:['tank'], dmg:0,  def:30, hp:500 },
+  warAxe:     { ic:'icons/items/warAxe.png', nm:'Боевой топор', tags:['fighter'], dmg:35, def:10, hp:300 },
+  bloodlust:  { ic:'icons/items/bloodlust.png', nm:'Кровавая жажда', tags:['fighter','assassin'], dmg:40, def:0,  hp:150 },
+  endless:    { ic:'icons/items/endless.png', nm:'Бесконечная битва', tags:['fighter','assassin'], dmg:45, def:5,  hp:200 },
+  hunter:     { ic:'icons/items/hunter.png', nm:'Охотничий нож', tags:['assassin','jungle'], dmg:50, def:0,  hp:0 },
+  bladeDesp:  { ic:'icons/items/bladeDesp.png', nm:'Клинок отчаяния', tags:['assassin','marksman'], dmg:55, def:0,  hp:0 },
+  windTalker: { ic:'icons/items/windTalker.png', nm:'Говорящий с ветром', tags:['marksman'], dmg:50, def:0,  hp:100 },
+  berserker:  { ic:'icons/items/berserker.png', nm:'Ярость берсерка', tags:['marksman','assassin'], dmg:60, def:0,  hp:0 },
+  demonHunter:{ ic:'icons/items/demonHunter.png', nm:'Меч охотника', tags:['marksman'], dmg:55, def:0,  hp:0 },
+  lightning:  { ic:'icons/items/lightning.png', nm:'Молниевая правда', tags:['mage'], dmg:60, def:0,  hp:0 },
+  holyCrystal:{ ic:'icons/items/holyCrystal.png', nm:'Святой кристалл', tags:['mage'], dmg:65, def:0,  hp:0 },
+  glowingWand:{ ic:'icons/items/glowingWand.png', nm:'Светящийся жезл', tags:['mage'], dmg:50, def:0,  hp:150 },
+  bootsMagic: { ic:'icons/items/bootsMagic.png', nm:'Маг. сапоги', tags:['mage','support'], dmg:10, def:15, hp:100 },
+  oracle:     { ic:'icons/items/oracle.png', nm:'Оракул', tags:['support','tank'], dmg:0,  def:15, hp:350 },
+  fleeting:   { ic:'icons/items/fleeting.png', nm:'Мимолётное время', tags:['support'], dmg:15, def:10, hp:150 },
+  dominance:  { ic:'icons/items/dominance.png', nm:'Меч господства', tags:['tank','support'], dmg:5,  def:25, hp:300 },
 };
 const loadRoles = [
-  { name:'🛡 Танк', desc:'Стойкость, защита, инициация', tag:'tank' },
-  { name:'⚔️ Файтер', desc:'Урон + живучесть в ближнем бою', tag:'fighter' },
-  { name:'🗡 Ассасин', desc:'Бурст и проникновение в тыл', tag:'assassin' },
-  { name:'🏹 Стрелок', desc:'Стабильный урон с дистанции', tag:'marksman' },
-  { name:'🔮 Маг', desc:'Магический бурст и контроль', tag:'mage' },
-  { name:'📿 Саппорт', desc:'Поддержка, ауры, защита команды', tag:'support' },
+  { name:'<img src="icons/roles/tank.png" class="role-icon-inline" alt="">Танк', desc:'Стойкость, защита, инициация', tag:'tank' },
+  { name:'<img src="icons/roles/fighter.png" class="role-icon-inline" alt="">Файтер', desc:'Урон + живучесть в ближнем бою', tag:'fighter' },
+  { name:'<img src="icons/roles/assassin.png" class="role-icon-inline" alt="">Ассасин', desc:'Бурст и проникновение в тыл', tag:'assassin' },
+  { name:'<img src="icons/roles/marksman.png" class="role-icon-inline" alt="">Стрелок', desc:'Стабильный урон с дистанции', tag:'marksman' },
+  { name:'<img src="icons/roles/mage.png" class="role-icon-inline" alt="">Маг', desc:'Магический бурст и контроль', tag:'mage' },
+  { name:'<img src="icons/roles/support.png" class="role-icon-inline" alt="">Саппорт', desc:'Поддержка, ауры, защита команды', tag:'support' },
 ];
 const battleBots = [
-  { key:'tank',  icon:'🛡', name:'Танк-инициатор', dmg:30, def:40, hp:700 },
-  { key:'mage',  icon:'🔥', name:'Маг-бёрст',       dmg:60, def:5,  hp:350 },
-  { key:'mm',    icon:'🏹', name:'Физ-керри',        dmg:50, def:15, hp:450 },
+  { key:'tank',  icon:'<img src="icons/roles/tank.png" alt="">', name:'Танк-инициатор', dmg:30, def:40, hp:700 },
+  { key:'mage',  icon:'<img src="icons/roles/mage.png" alt="">', name:'Маг-бёрст',       dmg:60, def:5,  hp:350 },
+  { key:'mm',    icon:'<img src="icons/roles/marksman.png" alt="">', name:'Физ-керри',        dmg:50, def:15, hp:450 },
 ];
 
 let loadActive = false, loadRound = 0, loadScore = 0, loadWins = 0;
@@ -4189,7 +4203,7 @@ function nextLoadRound() {
     const el = document.createElement('div');
     el.className = 'load-item';
     el.dataset.key = k;
-    el.innerHTML = `<div class="ic">${it.ic}</div><div class="nm">${it.nm}</div>`;
+    el.innerHTML = `<div class="ic"><img src="${it.ic}" alt="${it.nm}"></div><div class="nm">${it.nm}</div>`;
     el.addEventListener('click', () => pickLoadItem(k, el));
     opt.appendChild(el);
   });
@@ -4202,7 +4216,7 @@ function pickLoadItem(key, el) {
   el.classList.add('picked');
   const slots = document.getElementById('loadSlots').children;
   const slot = slots[loadPicked.length-1];
-  slot.textContent = loadItems[key].ic;
+  slot.innerHTML = `<img src="${loadItems[key].ic}" alt="">`;
   slot.classList.add('filled');
   if (loadPicked.length === loadNeed) setTimeout(evalLoadRound, 350);
 }
@@ -4239,7 +4253,7 @@ function runBattle(pickedKeys) {
   });
 
   const bot = battleBots[Math.floor(Math.random()*battleBots.length)];
-  document.getElementById('battleBotIcon').textContent = bot.icon;
+  document.getElementById('battleBotIcon').innerHTML = bot.icon;
   document.getElementById('battleBotName').textContent = bot.name;
   document.getElementById('battleSub').textContent = `Раунд ${loadRound}/${loadMax} · твоя сборка против бота`;
 
@@ -5051,31 +5065,31 @@ const focusScenarios = [
     text: 'Тимфайт у черепахи: вражеский маркс без прикрытия в радиусе атаки. Рядом вражеский танк, недавно скастовал щит.',
     explain: 'Squishy-керри в приоритете — он опаснее и умирает быстрее. Не трать ресурсы на танка, если есть доступ к марксу.',
     targets: [
-      { icon: '🏹', role: 'Маркс', hp: 95, tag: 'открыт', correct: true },
-      { icon: '🛡', role: 'Танк', hp: 80, tag: 'щит недавно', correct: false }
+      { icon: '<img src="icons/roles/marksman.png" alt="">', role: 'Маркс', hp: 95, tag: 'открыт', correct: true },
+      { icon: '<img src="icons/roles/tank.png" alt="">', role: 'Танк', hp: 80, tag: 'щит недавно', correct: false }
     ]
   },
   {
     text: 'Вражеский маг под контролем союзника, 40% HP, в радиусе. Вражеский стрелок на полном HP, но вне досягаемости.',
     explain: 'Цель уже подавлена контролем союзника — гарантированный урон. Не гонись за недоступной целью.',
     targets: [
-      { icon: '🔮', role: 'Маг', hp: 40, tag: 'под контролем', correct: true },
-      { icon: '🏹', role: 'Стрелок', hp: 100, tag: 'вне радиуса', correct: false }
+      { icon: '<img src="icons/roles/mage.png" alt="">', role: 'Маг', hp: 40, tag: 'под контролем', correct: true },
+      { icon: '<img src="icons/roles/marksman.png" alt="">', role: 'Стрелок', hp: 100, tag: 'вне радиуса', correct: false }
     ]
   },
   {
     text: 'Два вражеских героя доступны: ассасин с 25% HP (можно добить) и маг с 90% HP.',
     explain: 'Цель с наименьшим HP, которую реально добить — гарантированный килл важнее попытки продавить полного HP.',
     targets: [
-      { icon: '🗡', role: 'Ассасин', hp: 25, tag: 'добить', correct: true },
-      { icon: '🔮', role: 'Маг', hp: 90, tag: 'полное HP', correct: false }
+      { icon: '<img src="icons/roles/assassin.png" alt="">', role: 'Ассасин', hp: 25, tag: 'добить', correct: true },
+      { icon: '<img src="icons/roles/mage.png" alt="">', role: 'Маг', hp: 90, tag: 'полное HP', correct: false }
     ]
   },
   {
     text: 'В радиусе — только вражеский танк, остальные герои врага вне досягаемости.',
     explain: 'Танк — цель только когда он единственный доступный вариант. Атакуй его, а не жди недоступную цель.',
     targets: [
-      { icon: '🛡', role: 'Танк', hp: 100, tag: 'единственная цель', correct: true },
+      { icon: '<img src="icons/roles/tank.png" alt="">', role: 'Танк', hp: 100, tag: 'единственная цель', correct: true },
       { icon: '❓', role: 'Остальные', hp: 0, tag: 'вне радиуса', correct: false }
     ]
   },
@@ -5083,48 +5097,48 @@ const focusScenarios = [
     text: 'Союзный инициатор один в толпе врагов, на нём контроль вражеского саппорта. Рядом вражеский маркс, полное HP, без контроля на союзниках.',
     explain: 'Разрывай контроль с застрявшего союзника — убей/останови того, кто его держит, а не добивай третью цель.',
     targets: [
-      { icon: '📿', role: 'Саппорт', hp: 60, tag: 'держит контроль на союзнике', correct: true },
-      { icon: '🏹', role: 'Маркс', hp: 100, tag: 'не участвует', correct: false }
+      { icon: '<img src="icons/roles/support.png" alt="">', role: 'Саппорт', hp: 60, tag: 'держит контроль на союзнике', correct: true },
+      { icon: '<img src="icons/roles/marksman.png" alt="">', role: 'Маркс', hp: 100, tag: 'не участвует', correct: false }
     ]
   },
   {
     text: 'Ганк роума: вражеский ассасин на линии без контроля на нём. Рядом вражеский танк, недавно использовал щит.',
     explain: 'CC — на самого опасного героя врага, не на танка. Ассасин убивает твоего керри быстрее всего.',
     targets: [
-      { icon: '🗡', role: 'Ассасин', hp: 100, tag: 'опасен', correct: true },
-      { icon: '🛡', role: 'Танк', hp: 85, tag: 'щит использован', correct: false }
+      { icon: '<img src="icons/roles/assassin.png" alt="">', role: 'Ассасин', hp: 100, tag: 'опасен', correct: true },
+      { icon: '<img src="icons/roles/tank.png" alt="">', role: 'Танк', hp: 85, tag: 'щит использован', correct: false }
     ]
   },
   {
     text: 'Ганк джанглера: враг на линии, 35% HP, путь отхода отрезан. Второй враг (танк) добежал защищать, 100% HP.',
     explain: 'Реальное окно килла (отрезан путь, низкое HP) важнее «стандартного» приоритета цели.',
     targets: [
-      { icon: '🔮', role: 'Маг', hp: 35, tag: 'отход отрезан', correct: true },
-      { icon: '🛡', role: 'Танк', hp: 100, tag: 'только что подбежал', correct: false }
+      { icon: '<img src="icons/roles/mage.png" alt="">', role: 'Маг', hp: 35, tag: 'отход отрезан', correct: true },
+      { icon: '<img src="icons/roles/tank.png" alt="">', role: 'Танк', hp: 100, tag: 'только что подбежал', correct: false }
     ]
   },
   {
     text: 'Дуэль на миде: вражеский маркс в радиусе бёрст-комбо. Вражеский маг вне досягаемости, готовит скилл.',
     explain: 'Вражеский керри — первым кастом, если он в зоне досягаемости. Не жди недоступную цель.',
     targets: [
-      { icon: '🏹', role: 'Маркс', hp: 100, tag: 'в радиусе', correct: true },
-      { icon: '🔮', role: 'Маг', hp: 100, tag: 'вне радиуса', correct: false }
+      { icon: '<img src="icons/roles/marksman.png" alt="">', role: 'Маркс', hp: 100, tag: 'в радиусе', correct: true },
+      { icon: '<img src="icons/roles/mage.png" alt="">', role: 'Маг', hp: 100, tag: 'вне радиуса', correct: false }
     ]
   },
   {
     text: 'Тимфайт: вражеский маркс уже под контролем твоего союзника, 50% HP. Вражеский ассасин без контроля, полное HP, только что зашёл.',
     explain: 'Цель под контролем союзника — бей автоатаками её. Гарантированный урон важнее переключения на подвижную цель.',
     targets: [
-      { icon: '🏹', role: 'Маркс', hp: 50, tag: 'под контролем', correct: true },
-      { icon: '🗡', role: 'Ассасин', hp: 100, tag: 'без контроля', correct: false }
+      { icon: '<img src="icons/roles/marksman.png" alt="">', role: 'Маркс', hp: 50, tag: 'под контролем', correct: true },
+      { icon: '<img src="icons/roles/assassin.png" alt="">', role: 'Ассасин', hp: 100, tag: 'без контроля', correct: false }
     ]
   },
   {
     text: 'Эксп-лейн тимфайт: вражеский боец уже подавлен станом, 30% HP. Свежий вражеский маг без контроля, 100% HP, только зашёл в бой.',
     explain: 'Добивай уже подавленную контролем цель — не переключайся на нового врага без CC на нём.',
     targets: [
-      { icon: '⚔️', role: 'Боец', hp: 30, tag: 'под станом', correct: true },
-      { icon: '🔮', role: 'Маг', hp: 100, tag: 'без контроля', correct: false }
+      { icon: '<img src="icons/roles/fighter.png" alt="">', role: 'Боец', hp: 30, tag: 'под станом', correct: true },
+      { icon: '<img src="icons/roles/mage.png" alt="">', role: 'Маг', hp: 100, tag: 'без контроля', correct: false }
     ]
   }
 ];
