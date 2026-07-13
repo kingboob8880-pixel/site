@@ -246,17 +246,46 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-scroll {
   overflow-x: auto;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
+  flex: 1;
+  min-width: 0;
 }
 
-.nav::-webkit-scrollbar { display: none; }
+.nav-scroll::-webkit-scrollbar { display: none; }
 
 .nav-inner {
   display: flex;
   gap: 0.5rem;
   min-width: max-content;
+}
+
+.nav-tg {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, #2AABEE, #229ED9);
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-tg:hover {
+  transform: scale(1.04);
+  box-shadow: 0 2px 12px rgba(42,171,238,0.4);
 }
 
 .nav a {
@@ -1857,6 +1886,7 @@ body {
 
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav" id="nav">
+  <div class="nav-scroll">
   <div class="nav-inner">
     <a href="#roles"><span class="nav-icon">🧭</span> Роли</a>
     <a href="#lane-start"><span class="nav-icon">🚦</span> Старт по линиям</a>
@@ -1890,6 +1920,8 @@ body {
     <a href="#levels"><span class="nav-icon">👑</span> Уровни</a>
     <a href="#beyond"><span class="nav-icon">🚀</span> Что дальше</a>
   </div>
+  </div>
+  <a href="https://t.me/kyrolab" target="_blank" rel="noopener" class="nav-tg">📣 Канал</a>
 </nav>
 
 <!-- ===== MAIN CONTENT ===== -->
