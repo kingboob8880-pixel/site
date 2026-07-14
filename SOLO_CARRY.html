@@ -1,0 +1,2730 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mobile Legends — Solo Carry: агрессивный гайд «1 против 5» | von group | kyro</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<style>
+:root {
+  --bg-primary: #0a0a12;
+  --bg-secondary: #12121f;
+  --bg-card: #1a1a2e;
+  --bg-card-hover: #1f1f35;
+  --accent: #e94560;
+  --accent2: #0f3460;
+  --accent3: #533483;
+  --gold: #f0c040;
+  --gold-dim: #c9a030;
+  --text: #e8e8f0;
+  --text-dim: #9898b0;
+  --text-bright: #ffffff;
+  --border: #2a2a45;
+  --success: #00c853;
+  --warning: #ff9800;
+  --danger: #f44336;
+  --gradient1: linear-gradient(135deg, #e94560, #533483);
+  --gradient2: linear-gradient(135deg, #0f3460, #533483);
+  --gradient3: linear-gradient(135deg, #f0c040, #e94560);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(233,69,96,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(83,52,131,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 0%, rgba(15,52,96,0.2) 0%, transparent 60%);
+  z-index: 0;
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 0.4; }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(233,69,96,0.12);
+  border: 1px solid rgba(233,69,96,0.3);
+  border-radius: 50px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  animation: fadeInDown 0.8s ease;
+}
+
+.hero-badge .dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.hero h1 .highlight {
+  background: var(--gradient1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero .subtitle {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  color: var(--text-dim);
+  margin-bottom: 0.3rem;
+  animation: fadeInUp 0.8s ease 0.35s both;
+}
+
+.hero .author {
+  font-size: 0.95rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease 0.5s both;
+}
+
+.hero .author span {
+  color: var(--accent);
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease 0.65s both;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat .num {
+  font-size: 2rem;
+  font-weight: 900;
+  background: var(--gradient3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-stat .label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  animation: bounce 2s ease infinite;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.scroll-indicator .arrow {
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 0.3rem;
+  color: var(--accent);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,18,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  min-width: 0;
+}
+
+.nav-scroll::-webkit-scrollbar { display: none; }
+
+.nav-inner {
+  display: flex;
+  gap: 0.5rem;
+  min-width: max-content;
+}
+
+.nav-tg {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, #2AABEE, #229ED9);
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-tg:hover {
+  transform: scale(1.04);
+  box-shadow: 0 2px 12px rgba(42,171,238,0.4);
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.nav a:hover, .nav a.active {
+  color: var(--text-bright);
+  background: rgba(233,69,96,0.15);
+  border-color: rgba(233,69,96,0.3);
+}
+
+.nav a .nav-icon {
+  font-size: 1rem;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem 4rem;
+}
+
+/* ===== SECTION ===== */
+.section {
+  margin-bottom: 3rem;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.section-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.section-icon.red { background: rgba(233,69,96,0.15); }
+.section-icon.blue { background: rgba(15,52,96,0.3); }
+.section-icon.purple { background: rgba(83,52,131,0.3); }
+.section-icon.gold { background: rgba(240,192,64,0.15); }
+.section-icon.green { background: rgba(0,200,83,0.15); }
+
+.section-header h2 {
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.section-header h2 .accent {
+  color: var(--accent);
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(233,69,96,0.2);
+  transform: translateY(-2px);
+}
+
+.card-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--gradient1);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: var(--text-bright);
+}
+
+.card p, .card li {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card ul li {
+  padding: 0.3rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.card ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ===== HIGHLIGHT BOX ===== */
+.highlight-box {
+  background: linear-gradient(135deg, rgba(233,69,96,0.08), rgba(83,52,131,0.08));
+  border: 1px solid rgba(233,69,96,0.2);
+  border-radius: 14px;
+  padding: 1.2rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.highlight-box p {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.highlight-box .tag {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== GOLD BOX ===== */
+.gold-box {
+  background: linear-gradient(135deg, rgba(240,192,64,0.08), rgba(233,69,96,0.05));
+  border: 1px solid rgba(240,192,64,0.2);
+  border-radius: 14px;
+  padding: 1.2rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.gold-box p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.gold-box .tag {
+  display: inline-block;
+  background: var(--gold);
+  color: #111;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== SUBSECTION ===== */
+.subsection {
+  margin: 2rem 0;
+}
+
+.subsection h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.subsection h3 .emoji {
+  font-size: 1.3rem;
+}
+
+/* ===== EXERCISE CARD ===== */
+.exercise-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.3rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--accent);
+}
+
+.exercise-card .exercise-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-bright);
+  margin-bottom: 0.6rem;
+}
+
+.exercise-card p {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.exercise-card .difficulty {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.difficulty.easy { background: rgba(0,200,83,0.15); color: var(--success); }
+.difficulty.medium { background: rgba(255,152,0,0.15); color: var(--warning); }
+.difficulty.hard { background: rgba(244,67,54,0.15); color: var(--danger); }
+
+/* ===== LINK CARD ===== */
+.link-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.link-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(15,52,96,0.4);
+}
+
+.link-card .link-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  background: var(--gradient2);
+}
+
+.link-card .link-content h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 0.3rem;
+}
+
+.link-card .link-content p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.link-card .link-content a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+
+/* ===== SEPARATOR ===== */
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.separator::before, .separator::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ===== MINI GAME SECTION ===== */
+.game-section {
+  margin: 4rem 0 3rem;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.game-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.game-header {
+  background: var(--gradient1);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.game-header h2 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 0.3rem;
+}
+
+.game-header p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.game-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  background: rgba(0,0,0,0.3);
+}
+
+.game-stat {
+  text-align: center;
+}
+
+.game-stat .value {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.game-stat .label {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.game-area {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  background: var(--bg-primary);
+  overflow: hidden;
+  cursor: crosshair;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.game-area .grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(233,69,96,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(233,69,96,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.game-target {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  animation: targetAppear 0.15s ease;
+  box-shadow: 0 0 20px rgba(233,69,96,0.5);
+  z-index: 10;
+}
+
+.game-target:active {
+  transform: scale(0.9);
+}
+
+@keyframes targetAppear {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.game-target.hit {
+  animation: targetHit 0.2s ease forwards;
+}
+
+@keyframes targetHit {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+.game-controls {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.game-btn {
+  width: 100%;
+  max-width: 300px;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Inter', sans-serif;
+}
+
+.game-btn.start {
+  background: var(--gradient1);
+  color: white;
+}
+
+.game-btn.start:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(233,69,96,0.4);
+}
+
+.game-btn.start:active {
+  transform: scale(0.98);
+}
+
+.game-btn.reset {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+}
+
+.game-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.game-rules {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.game-rules h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.game-rules ul {
+  list-style: none;
+  padding: 0;
+}
+
+.game-rules li {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  padding: 0.2rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.game-rules li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.game-result {
+  display: none;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.game-result.show {
+  display: block;
+}
+
+.game-result .result-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.game-result .result-detail {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+.game-result .result-times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.game-result .result-time {
+  background: rgba(233,69,96,0.1);
+  border: 1px solid rgba(233,69,96,0.2);
+  border-radius: 8px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text);
+}
+
+.game-result .result-time.fast {
+  background: rgba(0,200,83,0.1);
+  border-color: rgba(0,200,83,0.2);
+  color: var(--success);
+}
+
+/* ===== REACTION TIMER MINI GAME ===== */
+.reaction-game {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.reaction-header {
+  background: var(--gradient3);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.reaction-header h2 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #111;
+  margin-bottom: 0.3rem;
+}
+
+.reaction-header p {
+  font-size: 0.85rem;
+  color: rgba(0,0,0,0.6);
+}
+
+.reaction-area {
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background 0.3s ease;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.reaction-area.waiting {
+  background: var(--danger);
+  color: white;
+}
+
+.reaction-area.ready {
+  background: var(--bg-primary);
+  color: var(--text);
+}
+
+.reaction-area.go {
+  background: var(--success);
+  color: white;
+}
+
+.reaction-area.result {
+  background: var(--accent2);
+  color: white;
+}
+
+.reaction-area .reaction-text {
+  max-width: 80%;
+}
+
+.reaction-area .reaction-time {
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.reaction-best {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.reaction-best .best-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.reaction-best .best-value {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== PERIPHERAL GAME ===== */
+.game-header.blue { background: var(--gradient2); }
+.game-header.purple { background: linear-gradient(135deg,#533483,#0f3460); }
+.game-header.gold { background: var(--gradient3); }
+.game-header.gold h2 { color:#111; }
+.game-header.gold p { color: rgba(0,0,0,0.6); }
+.game-header.green { background: linear-gradient(135deg,#00c853,#0f3460); }
+
+.peri-area {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  background: var(--bg-primary);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.peri-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: rgba(240,192,64,0.12);
+  border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold);
+  font-size: 1.5rem; font-weight: 900;
+  z-index: 5;
+  box-shadow: 0 0 18px rgba(240,192,64,0.35);
+}
+.peri-center.beat { animation: periBeat 0.4s ease; }
+@keyframes periBeat { 0%{transform:translate(-50%,-50%) scale(1);} 50%{transform:translate(-50%,-50%) scale(1.25);} 100%{transform:translate(-50%,-50%) scale(1);} }
+.peri-dot {
+  position: absolute;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 16px rgba(233,69,96,0.6);
+  cursor: pointer;
+  z-index: 8;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:900; color:#fff; font-size:0.9rem;
+  animation: targetAppear 0.12s ease;
+}
+.peri-dot.miss { background: var(--text-dim); box-shadow:none; }
+.peri-hint {
+  position:absolute; bottom:8px; left:50%; transform:translateX(-50%);
+  font-size:0.7rem; color:var(--text-dim); text-align:center; width:90%;
+}
+
+/* ===== ATTENTION / SPOT GAME ===== */
+.attn-area {
+  padding: 1.2rem;
+  background: var(--bg-primary);
+}
+.attn-grid {
+  display: grid;
+  gap: 6px;
+  margin: 0 auto;
+  max-width: 340px;
+}
+.attn-cell {
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: transform 0.1s ease, background 0.2s ease;
+  user-select: none; -webkit-user-select:none;
+}
+.attn-cell:active { transform: scale(0.92); }
+.attn-cell.correct { background: rgba(0,200,83,0.25); border-color: var(--success); animation: targetAppear 0.2s ease; }
+.attn-cell.wrong { background: rgba(244,67,54,0.25); border-color: var(--danger); }
+.attn-prompt {
+  text-align:center; font-size:0.9rem; color:var(--text);
+  padding: 0.5rem 0 1rem; min-height: 1.4rem;
+}
+.attn-prompt strong { color: var(--gold); }
+
+/* ===== LOADOUT / EQUIPMENT GAME ===== */
+.load-area { padding: 1.2rem; background: var(--bg-primary); }
+.load-task {
+  text-align:center; margin-bottom:1rem;
+}
+.load-task .role-name { font-size:1.2rem; font-weight:900; color:var(--gold); }
+.load-task .role-desc { font-size:0.8rem; color:var(--text-dim); }
+.load-slots {
+  display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:1.2rem; min-height:58px;
+}
+.load-slot {
+  width:54px; height:54px; border-radius:10px;
+  border:2px dashed var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.6rem; background:var(--bg-card);
+}
+.load-slot.filled { border-style:solid; border-color:var(--accent); background:rgba(233,69,96,0.1); }
+.load-options { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.load-item {
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:10px; padding:0.6rem 0.4rem; text-align:center;
+  cursor:pointer; transition:transform 0.1s ease, border-color 0.2s ease;
+  user-select:none; -webkit-user-select:none;
+}
+.load-item:active { transform:scale(0.94); }
+.load-item .ic { font-size:1.5rem; }
+.load-item .ic img { width:36px; height:36px; object-fit:contain; display:block; margin:0 auto; border-radius:50%; }
+.load-slot img { width:40px; height:40px; object-fit:contain; border-radius:50%; }
+.load-item .nm { font-size:0.65rem; color:var(--text-dim); margin-top:0.2rem; line-height:1.2; }
+.load-item.picked { opacity:0.35; pointer-events:none; }
+.load-item.good { border-color:var(--success); background:rgba(0,200,83,0.12); }
+.load-item.bad { border-color:var(--danger); background:rgba(244,67,54,0.12); }
+
+/* ===== AIM / TRACKING GAME ===== */
+.aim-area {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: var(--bg-primary);
+  overflow: hidden;
+  cursor: crosshair;
+  user-select:none; -webkit-user-select:none;
+}
+.aim-mover {
+  position:absolute;
+  width:48px; height:48px; border-radius:50%;
+  background: var(--accent2);
+  border:2px solid var(--accent);
+  box-shadow:0 0 16px rgba(15,52,96,0.7);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; z-index:6;
+}
+.aim-mover.hit { animation: targetHit 0.25s ease forwards; }
+.aim-crosshair {
+  position:absolute; width:30px; height:30px; pointer-events:none;
+  z-index:9; transform:translate(-50%,-50%);
+}
+.aim-crosshair::before, .aim-crosshair::after {
+  content:''; position:absolute; background:var(--gold);
+}
+.aim-crosshair::before { left:50%; top:0; width:2px; height:100%; transform:translateX(-50%); }
+.aim-crosshair::after { top:50%; left:0; height:2px; width:100%; transform:translateY(-50%); }
+
+/* ===== BREATHING PACER GAME ===== */
+.breath-area {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.breath-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,200,83,0.28), rgba(0,200,83,0.06));
+  border: 2px solid var(--success);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-bright);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  transform: scale(1);
+  transition: transform 4s linear, box-shadow 4s linear;
+  box-shadow: 0 0 25px rgba(0,200,83,0.25);
+}
+.breath-circle.inhale, .breath-circle.hold {
+  transform: scale(1.7);
+  box-shadow: 0 0 45px rgba(0,200,83,0.55);
+}
+.breath-circle .phase-timer {
+  font-size: 1.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 0.3rem;
+  font-weight: 900;
+}
+
+/* ===== POMODORO TIMER GAME ===== */
+.pomo-area {
+  width: 100%;
+  height: 240px;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pomo-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--accent3);
+  background: rgba(83,52,131,0.08);
+  transition: border-color 0.4s ease, background 0.4s ease;
+}
+.pomo-circle.work { border-color: var(--accent3); background: rgba(83,52,131,0.08); }
+.pomo-circle.break { border-color: var(--success); background: rgba(0,200,83,0.08); }
+.pomo-circle .pomo-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--text-bright);
+}
+
+/* ===== HERO CARD (A.4 template) ===== */
+.hero-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.hero-card.template {
+  border-style: dashed;
+  border-color: var(--accent3);
+  background: rgba(83,52,131,0.06);
+}
+.hero-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+.hero-card-head .hc-icon {
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: var(--gradient2);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.hero-card-head .hc-icon img { width: 24px; height: 24px; object-fit: contain; }
+
+/* ===== MLBB ROLE ICONS (real in-game class icons) ===== */
+.role-icon-inline {
+  width: 1.1em; height: 1.1em;
+  object-fit: contain;
+  vertical-align: -0.18em;
+  margin-right: 0.3rem;
+}
+.bs-icon img { width: 36px; height: 36px; object-fit: contain; }
+.role-name img.role-icon-inline { width: 1.3rem; height: 1.3rem; vertical-align: -0.25em; }
+.hero-card-head .hc-title { font-size: 1.05rem; font-weight: 800; color: var(--text-bright); }
+.hero-card-head .hc-sub { font-size: 0.78rem; color: var(--text-dim); }
+.hero-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+}
+.hero-card-field {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  padding: 0.5rem 0.7rem;
+  background: rgba(0,0,0,0.15);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent);
+}
+.hero-card-field b {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.2rem;
+}
+
+/* ===== CHECKLIST (G.4) ===== */
+.checklist { list-style: none; padding: 0; }
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist .chk {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: rgba(0,200,83,0.15);
+  color: var(--success);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 0.8rem;
+  font-weight: 900;
+  margin-top: 0.1rem;
+}
+
+/* ===== SPELL / EMBLEM GRID (Block F) ===== */
+.spell-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+.spell-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 0.8rem;
+  text-align: center;
+}
+.spell-card .sc-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
+.spell-card .sc-name { font-size: 0.85rem; font-weight: 700; color: var(--text-bright); margin-bottom: 0.2rem; }
+.spell-card .sc-desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.5; }
+
+/* ===== LEVEL SCALE (Block I) ===== */
+.level-scale { margin: 1rem 0; }
+.level-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0.4rem;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+.level-row:hover { background: rgba(255,255,255,0.03); }
+.level-row .lv-badge {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--gradient2);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: white;
+}
+.level-row.legend .lv-badge {
+  background: var(--gradient3);
+  color: #111;
+  box-shadow: 0 0 16px rgba(240,192,64,0.5);
+}
+.level-row .lv-info { flex: 1; }
+.level-row .lv-name { font-size: 0.9rem; font-weight: 700; color: var(--text-bright); }
+.level-row .lv-req { font-size: 0.75rem; color: var(--text-dim); }
+.level-row .lv-mps { font-size: 0.75rem; color: var(--gold); font-family: 'JetBrains Mono', monospace; flex-shrink:0; }
+
+/* ===== MPS BUILDER STAT ROW (game 5 upgrade / battle) ===== */
+.battle-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-primary);
+}
+.battle-side { flex: 1; text-align: center; }
+.battle-side .bs-icon { font-size: 2.2rem; margin-bottom: 0.4rem; }
+.battle-side .bs-name { font-size: 0.8rem; font-weight: 700; color: var(--text-bright); margin-bottom: 0.5rem; }
+.battle-vs-mark { font-size: 1.1rem; font-weight: 900; color: var(--accent); flex-shrink: 0; }
+
+/* ===== OBJECTIVE TIMING GAME (H.3) ===== */
+.obj-map {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: var(--bg-primary);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.obj-map .grid-bg { position: absolute; inset: 0; }
+.obj-icon {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+}
+.obj-icon.ally { background: rgba(0,200,83,0.2); border: 1px solid var(--success); }
+.obj-icon.enemy { background: rgba(244,67,54,0.2); border: 1px solid var(--danger); }
+.obj-icon.enemy.hidden { background: rgba(255,255,255,0.05); border: 1px dashed var(--text-dim); color: var(--text-dim); }
+.obj-icon.objective { font-size: 1.8rem; background: rgba(240,192,64,0.15); border: 2px solid var(--gold); }
+.obj-scenario-text {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.7;
+  padding: 0.8rem 1rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.obj-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.6rem;
+  padding: 0 1.2rem 1.2rem;
+}
+.obj-choice-btn {
+  padding: 0.8rem 0.4rem;
+  border-radius: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+.obj-choice-btn:hover { border-color: var(--accent); }
+.obj-choice-btn:active { transform: scale(0.95); }
+.obj-choice-btn.correct { background: rgba(0,200,83,0.2); border-color: var(--success); }
+.obj-choice-btn.wrong { background: rgba(244,67,54,0.2); border-color: var(--danger); }
+.obj-choice-btn:disabled { pointer-events: none; opacity: 0.6; }
+.obj-explain {
+  margin: 0 1.2rem 1.2rem;
+  padding: 0.8rem 1rem;
+  background: rgba(240,192,64,0.06);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  display: none;
+}
+.obj-explain.show { display: block; }
+
+/* ===== FOCUS TARGET GAME ("Кого бить") ===== */
+.focus-choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 0 1.2rem 1.2rem;
+}
+.focus-target-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  min-width: 100px;
+}
+.focus-target-btn .ft-icon { font-size: 1.8rem; }
+.focus-target-btn .ft-icon img { width: 32px; height: 32px; object-fit: contain; }
+.focus-target-btn .ft-role { font-size: 0.75rem; font-weight: 700; }
+.focus-target-btn .ft-hp { font-size: 0.7rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; }
+.focus-target-btn .ft-tag { font-size: 0.65rem; color: var(--gold); }
+.focus-target-btn:hover { border-color: var(--accent); }
+.focus-target-btn:active { transform: scale(0.95); }
+.focus-target-btn.correct { background: rgba(0,200,83,0.2); border-color: var(--success); }
+.focus-target-btn.wrong { background: rgba(244,67,54,0.2); border-color: var(--danger); }
+.focus-target-btn:disabled { pointer-events: none; opacity: 0.6; }
+
+@media (max-width: 480px) {
+  .hero-card-grid { grid-template-columns: 1fr; }
+  .obj-choices { grid-template-columns: 1fr; }
+  .obj-map { height: 200px; }
+  .focus-target-btn { min-width: 84px; padding: 0.6rem 0.7rem; }
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer .logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  background: var(--gradient1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.footer p {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.footer .divider {
+  width: 60px;
+  height: 3px;
+  background: var(--gradient1);
+  border-radius: 2px;
+  margin: 1rem auto;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .hero { min-height: 90vh; padding: 1.5rem 1rem; }
+  .hero-stats { gap: 1.5rem; }
+  .main { padding: 1.5rem 1rem 3rem; }
+  .card { padding: 1.2rem; }
+  .game-area { height: 300px; }
+  .section-header { gap: 0.8rem; }
+  .section-icon { width: 42px; height: 42px; font-size: 1.2rem; }
+}
+
+/* ===== ANIMATIONS ON SCROLL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== TOC ===== */
+.toc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.toc h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--gold);
+}
+
+.toc ol {
+  list-style: none;
+  counter-reset: toc;
+  padding: 0;
+}
+
+.toc li {
+  counter-increment: toc;
+  padding: 0.4rem 0;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.toc li::before {
+  content: counter(toc);
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(233,69,96,0.15);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0.45rem;
+}
+
+.toc a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.toc a:hover {
+  color: var(--accent);
+}
+
+/* ===== QUOTE ===== */
+.quote {
+  background: linear-gradient(135deg, rgba(240,192,64,0.05), rgba(233,69,96,0.05));
+  border-left: 4px solid var(--gold);
+  border-radius: 0 14px 14px 0;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+
+.quote p {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.quote .author-quote {
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* ===== PROGRESS BAR FOR GAME ===== */
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-primary);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0.8rem 0;
+}
+
+.progress-bar .fill {
+  height: 100%;
+  background: var(--gradient1);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+/* ===== KEYWORD ===== */
+.keyword {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.keyword-gold {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ===== TABLE ===== */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.info-table th, .info-table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.info-table th {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-table td {
+  color: var(--text);
+}
+
+/* ===== LAST-HIT / ДОБИВАНИЕ GAME ===== */
+.lasthit-area {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: var(--bg-primary);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.lasthit-placeholder {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.lasthit-creep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem 2rem;
+  width: 85%;
+  max-width: 320px;
+  z-index: 5;
+  animation: targetAppear 0.25s ease;
+}
+
+.lasthit-creep-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.lasthit-creep-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.lasthit-hp-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+.lasthit-hp-track {
+  width: 100%;
+  height: 22px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 11px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border);
+}
+
+.lasthit-hp-bar {
+  height: 100%;
+  width: 100%;
+  border-radius: 11px;
+  transition: width 0.05s linear, background 0.3s ease;
+}
+
+.lasthit-kill-zone {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  width: 2px;
+  height: 100%;
+  background: rgba(255,255,255,0.6);
+  z-index: 3;
+}
+
+.lasthit-kill-zone::after {
+  content: '⚔';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.lasthit-hp-label {
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.lasthit-hp-bar.hp-high   { background: var(--success); }
+.lasthit-hp-bar.hp-medium { background: var(--warning); }
+.lasthit-hp-bar.hp-low    { background: var(--danger); }
+.lasthit-hp-bar.hp-kill   {
+  background: var(--accent);
+  animation: killZonePulse 0.35s ease infinite alternate;
+}
+
+@keyframes killZonePulse {
+  from { background: var(--accent); box-shadow: 0 0 0 rgba(233,69,96,0); }
+  to   { background: #ff6b85;       box-shadow: 0 0 12px rgba(233,69,96,0.6); }
+}
+
+.lasthit-tap-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 12px;
+  background: var(--gradient2);
+  border: 2px solid rgba(233,69,96,0.3);
+  color: var(--text-bright);
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-align: center;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, border-color 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+}
+
+.lasthit-tap-btn:active {
+  transform: scale(0.95);
+}
+
+.lasthit-tap-btn.killzone-active {
+  background: var(--gradient1);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(233,69,96,0.45);
+  animation: btnPulse 0.4s ease infinite alternate;
+}
+
+@keyframes btnPulse {
+  from { box-shadow: 0 0 8px rgba(233,69,96,0.3); }
+  to   { box-shadow: 0 0 22px rgba(233,69,96,0.7); }
+}
+
+.lasthit-feedback {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-size: 1.8rem;
+  font-weight: 900;
+  pointer-events: none;
+  z-index: 20;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+.lasthit-feedback.show-perfect {
+  animation: feedbackPerfect 0.7s ease forwards;
+  color: var(--gold);
+}
+
+.lasthit-feedback.show-early {
+  animation: feedbackEarly 0.6s ease forwards;
+  color: var(--warning);
+}
+
+.lasthit-feedback.show-miss {
+  animation: feedbackMiss 0.6s ease forwards;
+  color: var(--text-dim);
+}
+
+@keyframes feedbackPerfect {
+  0%   { transform: translate(-50%, -50%) scale(0.4); opacity: 0; }
+  30%  { transform: translate(-50%, -60%) scale(1.2); opacity: 1; }
+  70%  { transform: translate(-50%, -65%) scale(1);   opacity: 1; }
+  100% { transform: translate(-50%, -75%) scale(0.8); opacity: 0; }
+}
+
+@keyframes feedbackEarly {
+  0%   { transform: translate(-50%, -50%) scale(0.6); opacity: 0; }
+  25%  { transform: translate(-50%, -55%) scale(1);   opacity: 1; }
+  75%  { opacity: 1; }
+  100% { transform: translate(-50%, -60%) scale(0.9); opacity: 0; }
+}
+
+@keyframes feedbackMiss {
+  0%   { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  20%  { opacity: 0.85; }
+  80%  { opacity: 0.85; }
+  100% { transform: translate(-50%, -55%) scale(1);   opacity: 0; }
+}
+
+.lasthit-wave-badge {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: rgba(15,52,96,0.7);
+  border: 1px solid rgba(15,52,96,0.9);
+  border-radius: 8px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+  z-index: 6;
+}
+
+@media (max-width: 480px) {
+  .lasthit-area { height: 340px; }
+  .lasthit-creep { padding: 1.2rem 1.4rem; width: 92%; }
+  .lasthit-creep-icon { font-size: 2.4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      von group — соло-гайд v2
+    </div>
+    <h1>SOLO CARRY<br><span class="highlight">АГРЕССИВНЫЙ ГАЙД «1 ПРОТИВ 5»</span></h1>
+    <p class="subtitle">Веб-исследование + фундамент mlb.html: механика, макро, психология и тренировки — объединены под одну цель</p>
+    <p class="author">Составитель: <a href="https://t.me/kyrolab" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">kyro</a> | von group</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">13</div>
+        <div class="label">Разделов</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">6</div>
+        <div class="label">Героев-архетипов</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">2</div>
+        <div class="label">Подтверждённые цитаты</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">∞</div>
+        <div class="label">Практика</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    ЛИСТАЙ ВНИЗ
+    <span class="arrow">↓</span>
+  </div>
+</section>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="nav">
+  <div class="nav-scroll">
+  <div class="nav-inner">
+    <a href="#foundation"><span class="nav-icon">🧱</span> Фундамент</a>
+    <a href="#heroes"><span class="nav-icon">🦸</span> Герои</a>
+    <a href="#laning"><span class="nav-icon">❄️</span> Лейн-фаза</a>
+    <a href="#objectives-first"><span class="nav-icon">🐢</span> Объективы</a>
+    <a href="#macro"><span class="nav-icon">🗺</span> Макро</a>
+    <a href="#target-priority"><span class="nav-icon">🎯</span> Таргет-приоритет</a>
+    <a href="#assassin"><span class="nav-icon">🗡</span> Механика ассасина</a>
+    <a href="#mobility"><span class="nav-icon">🏃</span> Манёвренность</a>
+    <a href="#psychology"><span class="nav-icon">🧠</span> Психология</a>
+    <a href="#loadout"><span class="nav-icon">🔷</span> Эмблемы/сборка</a>
+    <a href="#tower-dive"><span class="nav-icon">🏰</span> Тауэр-дайв</a>
+    <a href="#checklist"><span class="nav-icon">✅</span> Чек-лист</a>
+    <a href="#analytics"><span class="nav-icon">📈</span> Аналитика</a>
+    <a href="#sources"><span class="nav-icon">📚</span> Источники</a>
+  </div>
+  </div>
+  <a href="https://t.me/kyrolab" target="_blank" rel="noopener" class="nav-tg">📣 Канал</a>
+</nav>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main">
+
+  <!-- TOC -->
+  <div class="toc reveal">
+    <h3>📑 Содержание</h3>
+    <ol>
+      <li><a href="#foundation">Фундамент из mlb.html: без этого агрессия не работает</a></li>
+      <li><a href="#heroes">Герои под агрессивный соло-керри</a></li>
+      <li><a href="#laning">Лейн-фаза: снежный ком с первых минут</a></li>
+      <li><a href="#objectives-first">Правило «объективы важнее киллов»</a></li>
+      <li><a href="#macro">Макро для соло-игрока: карта и ротации</a></li>
+      <li><a href="#target-priority">Таргет-приоритет в бою</a></li>
+      <li><a href="#assassin">Механика ассасина: изоляция целей</a></li>
+      <li><a href="#mobility">Манёвренность: кайтинг, джукинг, микро</a></li>
+      <li><a href="#psychology">Психологическая устойчивость под давлением пятерых</a></li>
+      <li><a href="#loadout">Эмблемы, заклинания и адаптивная сборка</a></li>
+      <li><a href="#tower-dive">Тауэр-дайв: три условия</a></li>
+      <li><a href="#checklist">Практический чек-лист</a></li>
+      <li><a href="#analytics">Аналитика: тренировки (mlb.html) → результат</a></li>
+      <li><a href="#sources">Источники</a></li>
+    </ol>
+  </div>
+
+  <!-- ===== SECTION: HONEST 1v5 NOTE (kept from v1, condensed) ===== -->
+  <div class="gold-box reveal">
+    <p class="tag">Честная оговорка про «1v5»</p>
+    <p>Буквальный одновременный размен 1 против 5 живых, полных HP врагов — не реалистичная механика ни на каком уровне игры. То, что реально называют «1v5» — это <span class="keyword-gold">последовательное уничтожение изолированных/ослабленных целей</span>. Весь гайд построен вокруг того, как <strong>создавать</strong> такие ситуации, а не вокруг мифа о буквальном единовременном размене с целой командой.</p>
+  </div>
+
+  <!-- ===== SECTION: FOUNDATION (I) ===== -->
+  <section class="section reveal" id="foundation">
+    <div class="section-header">
+      <div class="section-icon red">🧱</div>
+      <h2>I. Фундамент из mlb.html: <span class="accent">без этого агрессия не работает</span></h2>
+    </div>
+
+    <p style="color:var(--text-dim);font-size:0.92rem;margin-bottom:1.2rem;">Агрессивный стиль без этой базы — это не агрессия, а слив ресурсов. Ниже — то, что уже есть в mlb.html и обязательно для соло-керри в первую очередь.</p>
+
+    <div class="card">
+      <div class="card-number">1</div>
+      <h3><img src="icons/roles/assassin.png" class="role-icon-inline" alt="">Периферическое зрение</h3>
+      <p>Соло-игрок не может позволить себе смотреть только в центр экрана: миникарта, HP-полоски, таймеры скиллов и приближающийся враг должны считываться одновременно, иначе изоляция целей физически невозможна — ты просто не увидишь момент.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">2</div>
+      <h3>⚡ Скорость реакции 0.1–1 сек</h3>
+      <p>Критическая реакция (даш/щит/фликер) должна укладываться в 0.1 сек; звук способности врага должен вызывать рефлекс раньше, чем картинка. Без этого порога кайтинг не работает против скилшотов.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">3</div>
+      <h3>🧊 Холодный расчёт важнее эмоций</h3>
+      <p>В разгаре боя эмоции сужают восприятие: пропускаешь позицию саппорта врага, тайминг ульты, момент для отхода. Для соло-агрессора это дороже, чем для любой другой роли — цена одной ошибки в позиционировании выше, когда рассчитываешь только на себя.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">4</div>
+      <h3>📋 Дисциплина: один герой</h3>
+      <p>50 матчей подряд одним героем, дневник ошибок после каждого матча, кастом-комнаты для наработки мышечной памяти комбо до захода в рангед.</p>
+      <div class="quote">
+        <p>Отрабатывать связки скиллов в кастом-комнате — до того, как заходить с новым комбо или героем в рангед: мышечная память нарабатывается в безопасной среде без цены за ошибку.</p>
+        <div class="author-quote">— Coach Zeys (Bjorn Ong), EVOS Legends → Team Flash, тренер-чемпион M1 2019</div>
+      </div>
+      <div class="highlight-box">
+        <p>Агрессивные герои из раздела «Герои» (Hayabusa, Ling, Fanny) прощают ошибки исполнения хуже, чем любой другой архетип — дисциплина здесь не опция, а условие входа.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">5</div>
+      <h3>📶 Интернет и устройство</h3>
+      <p>Фактическая задержка = реакция + пинг + обработка на сервере. Игрок с рефлексом 0.1 сек и пингом 150 мс реагирует медленнее игрока с рефлексом 0.2 сек и пингом 20 мс.</p>
+      <div class="gold-box">
+        <p>Для агрессивного входа в толпу врагов, где решает доля секунды, нестабильный пинг или троттлинг телефона от перегрева — это тот же проигрыш, что и неверный тактический выбор.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: HEROES (II) ===== -->
+  <section class="section reveal" id="heroes">
+    <div class="section-header">
+      <div class="section-icon purple">🦸</div>
+      <h2>II. Герои <span class="accent">под агрессивный соло-керри</span></h2>
+    </div>
+
+    <p style="color:var(--text-dim);font-size:0.92rem;margin-bottom:1.2rem;">Общий принцип выбора: герой должен уметь <span class="keyword">создать преимущество сам</span>, не дожидаясь роума/тиммейтов — побег/мобильность + бёрст-урон + низкая зависимость от чужой инициации.</p>
+
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hc-icon"><img src="icons/roles/assassin.png" alt=""></div>
+        <div>
+          <div class="hc-title">Ассасин-джанглер (Hayabusa / Ling / Fanny)</div>
+          <div class="hc-sub">Архетип — соло-снежный ком</div>
+        </div>
+      </div>
+      <div class="hero-card-grid">
+        <div class="hero-card-field"><b>Почему подходит соло</b>Высокая мобильность + бёрст, не зависят от тиммейтов для инициации, могут в одиночку разогнать снежный ком</div>
+        <div class="hero-card-field"><b>Слабое место</b>Крайне хрупкие — окно ошибки почти нулевое, вход не вовремя = смерть</div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hc-icon"><img src="icons/roles/marksman.png" alt=""></div>
+        <div>
+          <div class="hc-title">Ранний бёрст-маркс (Granger)</div>
+          <div class="hc-sub">Архетип — керри без ожидания</div>
+        </div>
+      </div>
+      <div class="hero-card-grid">
+        <div class="hero-card-field"><b>Почему подходит соло</b>Сильный с первых уровней — не нужно ждать 15 минут фарма, чтобы начать что-то решать</div>
+        <div class="hero-card-field"><b>Слабое место</b>Как и любой маркс, уязвим без прикрытия в раннем окне до core-предмета</div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hc-icon"><img src="icons/roles/fighter.png" alt=""></div>
+        <div>
+          <div class="hc-title">Простой агрессивный керри (Dyrroth)</div>
+          <div class="hc-sub">Архетип — вход в агрессивный стиль</div>
+        </div>
+      </div>
+      <div class="hero-card-grid">
+        <div class="hero-card-field"><b>Почему подходит соло</b>Высокий урон, прощает ошибки механики — хороший старт без сверхсложных комбо</div>
+        <div class="hero-card-field"><b>Слабое место</b>Меньше опций спасения, чем у чистых ассасинов — цена ошибки в позиционировании выше</div>
+      </div>
+    </div>
+
+    <div class="hero-card template">
+      <div class="hero-card-head">
+        <div class="hc-icon"><img src="icons/roles/tank.png" alt=""></div>
+        <div>
+          <div class="hc-title">Самодостаточные S-tier (Hayabusa / Lukas / Granger)</div>
+          <div class="hc-sub">Архетип — минимум зависимости от команды</div>
+        </div>
+      </div>
+      <div class="hero-card-grid">
+        <div class="hero-card-field"><b>Джангл</b>Hayabusa — самодостаточный темп без чужой синхронизации</div>
+        <div class="hero-card-field"><b>Эксп-лейн</b>Lukas — держит линию 1в1 и сам создаёт давление</div>
+        <div class="hero-card-field"><b>Голд-лейн</b>Granger — не ждёт мид-лейт, чтобы начать решать</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: LANING (III) ===== -->
+  <section class="section reveal" id="laning">
+    <div class="section-header">
+      <div class="section-icon red">❄️</div>
+      <h2>III. Лейн-фаза: <span class="accent">снежный ком с первых минут</span></h2>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">🌾</span> Базовая агрессия на линии</h3>
+      <div class="card">
+        <ul>
+          <li><strong>Фарми чисто и дольше оппонента</strong> — забирай все ластхиты себе и не давай оппоненту делать то же самое: база голд/опыт-разрыва</li>
+          <li><strong>Фриз волны у своей вышки</strong>, если матчап невыгодный — крипы стоят близко к тебе, оппоненту приходится подходить под вышку</li>
+          <li><strong>Зонирование</strong> — если матчап выгодный, стой так, чтобы оппонент физически не мог подойти к крипам без урона от тебя</li>
+          <li><strong>Харасс без переразмена</strong> — поке скиллами/автоатаками, считай ману/кулдауны/HP перед каждым обменом</li>
+          <li><strong>Ведёшь — дожимай, отстаёшь — держи фриз</strong> и жди ганк от джанглера/роума, не форсируй размен вслепую</li>
+          <li>Контест черепахи на раннем этапе особенно ценен — задаёт тон всему раннему миду</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">🌊</span> Управление волной крипов — инструмент, а не побочный эффект</h3>
+      <table class="info-table">
+        <tr><th>Состояние</th><th>Как получить</th><th>Зачем соло-агрессору</th></tr>
+        <tr><td><strong>Заморозка</strong></td><td>Дай своим крипам почти убить вражеских, не добивай лишнего</td><td>Волна стоит у твоей вышки — безопасный фарм, пока ждёшь окно для агрессии</td></tr>
+        <tr><td><strong>Слоу-пуш</strong></td><td>Несколько волн подряд не добивай 1-2 крипов</td><td>Большая волна сама пробивает вражескую вышку, пока ты охотишься за изолированной целью</td></tr>
+        <tr><td><strong>Быстрый пуш</strong></td><td>Добивай всё максимально быстро, AoE по волне</td><td>Можешь уйти на объект/ганк, враг вынужден остаться защищать линию</td></tr>
+      </table>
+      <div class="highlight-box">
+        <p><strong>Правило перед уходом с линии:</strong> реши заранее, что нужно — заморозка или шов. Уходить посреди случайного состояния волны — либо потерянный фарм, либо подаренный ганк.</p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">🔄</span> Эффективный recall</h3>
+      <div class="card">
+        <ul>
+          <li>Запускай телепорт на пуше волны, а не после — покупка предметов и пуш линии идут параллельно</li>
+          <li>Не жди «круглую сумму» золота — если хватает на core-компонент прямо сейчас и линия безопасна, иди в магазин</li>
+          <li>Возвращайся заранее при ожидаемом ганке (по чтению карты), а не когда уже пришлось отступить с пустыми руками</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: OBJECTIVES FIRST (IV) ===== -->
+  <section class="section reveal" id="objectives-first">
+    <div class="section-header">
+      <div class="section-icon gold">🐢</div>
+      <h2>IV. Правило «<span class="accent">объективы важнее киллов</span>»</h2>
+    </div>
+
+    <p style="color:var(--text-dim);font-size:0.92rem;margin-bottom:1rem;">Ключевая ошибка агрессивных соло-игроков: разменять преимущество на бесполезные погони вместо конвертации в объективы.</p>
+
+    <div class="quote">
+      <p>Трипл-килл ничего не стоит, если враг в этот момент берёт Лорда, пока ты гоняешься за четвёртым. Будь тем, кто пингует черепаху, кто идёт на вышку после выигранного файта, кто берёт Лорда, когда три врага мертвы. Объективы выигрывают игры. Киллы важны только тогда, когда конвертируются в объективы.</p>
+    </div>
+
+    <table class="info-table">
+      <tr><th>Объект</th><th>Эффект</th><th>Кто идёт</th></tr>
+      <tr><td>Черепаха (Turtle)</td><td>Голд + опыт всей команде, разовый бонус</td><td>Команда, если превосходство рядом с объектом</td></tr>
+      <tr><td>Лорд (Lord)</td><td>Мощный юнит, пушит линию, меняет исход игры</td><td>Только при явном контроле зоны — размен без лорда бессмысленен</td></tr>
+      <tr><td>Вышки</td><td>Открывают карту, дают позиционное преимущество</td><td>После победного тимфайта, не заходить под 2 вышки без прикрытия</td></tr>
+    </table>
+
+    <div class="gold-box">
+      <p class="tag">Золотое правило</p>
+      <p>Не дерись за объект, если размен окажется невыгодным даже при успехе — размен 3-4 жизней на объект, который не приводит к победе (например, лорд идёт в пустоту без сопровождения) — типичная ловушка, в которую попадают именно за счёт агрессивного азарта.</p>
+    </div>
+
+    <div class="card">
+      <h3>💰 Экономика: голд-лид — это потенциал, а не гарантия</h3>
+      <p>Голд-лид нужно конвертировать в объективы, иначе он «сгорает» к позднему гейму. Ведущий игрок форсирует драки и объекты, пока разница в силе максимальна — это и есть снежный ком.</p>
+      <div class="highlight-box">
+        <p><strong>Если отстаёшь:</strong> играй от обороны («черепашья игра») — фарми безопасно под вышками, избегай неразменных драк, жди ошибки врага вместо форсирования событий.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: MACRO (V) ===== -->
+  <section class="section reveal" id="macro">
+    <div class="section-header">
+      <div class="section-icon blue">🗺</div>
+      <h2>V. Макро для соло-игрока: <span class="accent">карта и ротации</span></h2>
+    </div>
+
+    <div class="card">
+      <div class="card-number">1</div>
+      <h3>Правило «взгляд каждые 2-3 секунды»</h3>
+      <p>Привычка бросать взгляд на миникарту даже во время фарма, периферией, без потери фокуса с центра экрана.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">2</div>
+      <h3>Исчезновение вражеских крестиков</h3>
+      <p>Когда 2-3 иконки враз пропадают с радара — это почти всегда группировка для ганка/объекта, а не случайность. Одиночное исчезновение — герой зашёл в кусты. Разница критична: это сигнал, что где-то на карте сейчас образуется изолированная/ослабленная цель — или, наоборот, опасность для тебя самого.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">3</div>
+      <h3>Пуш-таймеры</h3>
+      <p>Следи за состоянием волн на всех линиях: заброшенная линия отдаёт вышку бесплатно, перекачанная волна на своей линии может занырнуть под вышку без прикрытия.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">4</div>
+      <h3>Тайминги роума</h3>
+      <p>Эффективнее всего роумить после первой волны крипов (линии стабилизировались) и во время респавна вражеского джанглера (меньше риска встречного ганка). Синхронизируй заход с готовностью ключевого CC.</p>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>Пинг перед заходом.</strong> Роум/агрессивный выход без предупреждения союзника на линии — вклад в личную статистику, а не в победу: даже соло-агрессору полезен тиммейт, готовый доиграть размен.</p>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: TARGET PRIORITY (VI) ===== -->
+  <section class="section reveal" id="target-priority">
+    <div class="section-header">
+      <div class="section-icon blue">🎯</div>
+      <h2>VI. Таргет-приоритет <span class="accent">в бою</span></h2>
+    </div>
+
+    <div class="gold-box">
+      <p class="tag">Порядок приоритета цели</p>
+      <p>1) <strong>Хрупкая керри-цель</strong> врага (маг/маркс/ассасин) в радиусе досягаемости — первая цель почти всегда.<br>
+      2) <strong>Цель уже под контролем</strong> (CC) союзника или ослабленная предыдущим обменом — гарантированный урон, наименьший риск.<br>
+      3) <strong>Цель с наименьшим HP</strong>, которую реально добить за 1-2 действия.<br>
+      4) <strong>Танк — в последнюю очередь</strong>, только если это единственная доступная цель.</p>
+    </div>
+
+    <div class="card">
+      <h3>🔁 Как это работает против пятерых по очереди</h3>
+      <p>Не входи в бой с целой командой одновременно — жди, пока враги CC потратят на предыдущий обмен или подойдут по одному, и добивай именно в этот момент, а не раньше.</p>
+    </div>
+
+    <div class="highlight-box">
+      <p><span class="keyword">Позиционирование и порядок целей</span> решают исход тимфайта чаще, чем суммарный урон — убить не того первым равно проигранному файту, даже если урона по команде было нанесено больше, чем у врага.</p>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: ASSASSIN MECHANICS (VII) ===== -->
+  <section class="section reveal" id="assassin">
+    <div class="section-header">
+      <div class="section-icon purple">🗡</div>
+      <h2>VII. Механика ассасина: <span class="accent">как изолировать и убивать по одному</span></h2>
+    </div>
+
+    <div class="card">
+      <div class="card-number">1</div>
+      <h3>⏳ Не входи первым в толпу из 5</h3>
+      <p>Дождись, пока враги потратят CC-скиллы на предыдущий размен, и только тогда заходи на изолированную/ослабленную цель.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">2</div>
+      <h3>🌫 Позиция для входа</h3>
+      <p>Куст или зона тумана войны, через которую враг обязан пройти. Вход должен быть внезапным, а не «в лоб».</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">3</div>
+      <h3>⚡ Формула ассасина</h3>
+      <p>Найди самую ценную доступную цель → сократи дистанцию → исполни комбо до того, как враг успеет среагировать.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">4</div>
+      <h3>🚫 Не гонись через полкарты за одним киллом</h3>
+      <p>Частая ошибка — увлечься погоней за одной целью и попасться под контроль сразу нескольких врагов. Жадность допустима, но не ценой позиции.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">5</div>
+      <h3>🎭 Обманные манёвры</h3>
+      <p>«Притвориться слабым» (низкое видимое HP/пассивная игра) лучше всего работает против самоуверенных/жадных противников, которые сами лезут добивать и попадают под встречный бёрст.</p>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>Ресурс перед агрессией:</strong> для мана/энергозависимых ассасинов (Ling, Fanny, Hayabusa) в начале матча приоритет — забрать бафф, дающий ресурс для быстрого клира и последующих комбо.</p>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: MOBILITY (VIII) ===== -->
+  <section class="section reveal" id="mobility">
+    <div class="section-header">
+      <div class="section-icon green">🏃</div>
+      <h2>VIII. Манёвренность: <span class="accent">кайтинг, джукинг и микро против нескольких целей</span></h2>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">🏹</span> Специфика соло-агрессии</h3>
+      <div class="card">
+        <p><strong>Кайтинг</strong> — атака с одновременным отходом, максимально эффективен против ближников: не давай врагу закрыть дистанцию, но продолжай наносить урон.</p>
+      </div>
+      <table class="info-table">
+        <tr><th>Требование</th><th>Зачем</th></tr>
+        <tr><td>Высокий сустейн</td><td>Лечение / щит / природная защита — чтобы пережить размен на несколько целей</td></tr>
+        <tr><td>Сильный CC</td><td>Стан / сбивание / замедление по площади — разрывает координацию врагов</td></tr>
+        <tr><td>Высокая мобильность</td><td>Даш / блинк / невидимость — уклонение от скилшотов и уход от опасности</td></tr>
+      </table>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">🌲</span> Полный набор манёвров из mlb.html</h3>
+      <div class="card">
+        <div class="card-number">1</div>
+        <h3>Рельеф карты как укрытие</h3>
+        <p>Стены джунглей, узкие проходы и кусты — инструмент входа/выхода из боя. Заход через стену там, где враг не ожидает, часто равен бесплатному урону.</p>
+      </div>
+      <div class="card">
+        <div class="card-number">2</div>
+        <h3>Джукинг (juking)</h3>
+        <p>Сброс погони через резкие повороты вокруг стен, заход в кусты не по прямой. Цель — разорвать линию видимости преследователя хотя бы на секунду.</p>
+      </div>
+      <div class="card">
+        <div class="card-number">3</div>
+        <h3>Экономия мобильных скиллов</h3>
+        <p>Не трать даш на фарм, если он может понадобиться для отхода через 10 секунд: мобильные скиллы — страховка жизни, а не просто ускорение фарма.</p>
+      </div>
+      <div class="card">
+        <div class="card-number">4</div>
+        <h3>Микро-манёвры</h3>
+        <p>Используй даш/блинк для репозиционирования между кастами способностей в файте, а не только в момент атаки.</p>
+      </div>
+    </div>
+
+    <div class="gold-box">
+      <p>Механически всё это означает: <span class="keyword-gold">кайтить, уклоняться от скилшотов, репозиционироваться</span> — тренировка этого навыка важнее знания теории (см. раздел «Аналитика» про тренажёры).</p>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: PSYCHOLOGY (IX) ===== -->
+  <section class="section reveal" id="psychology">
+    <div class="section-header">
+      <div class="section-icon green">🧠</div>
+      <h2>IX. Психологическая устойчивость <span class="accent">под давлением пятерых</span></h2>
+    </div>
+
+    <p style="color:var(--text-dim);font-size:0.92rem;margin-bottom:1.2rem;">Раздела не было в первой версии этого гайда — критичен именно для соло-агрессора: ты чаще, чем любая другая роль, оказываешься один на экране против группы врагов, и без управления паникой вся механика из разделов выше разваливается в момент реального боя.</p>
+
+    <div class="card">
+      <h3>⏱ Правило «до 4 секунд»</h3>
+      <p>При внезапной опасности отведи 1-2 секунды не на действие, а на быструю оценку: живые союзники рядом? путь отхода свободен? скилл на КД? <strong>Импульсивное нажатие кнопок вслепую убивает чаще, чем сама угроза.</strong></p>
+    </div>
+
+    <div class="card">
+      <h3>🗣 Техника «якорной фразы»</h3>
+      <p>Короткая фраза-триггер («смотрю миникарту, ищу выход»), проговариваемая мысленно в стрессовый момент, чтобы вернуть рациональное мышление вместо паники. Работает не только при уходе на 15% HP, но при любом стрессовом триггере — в том числе в момент, когда вокруг реально пятеро врагов.</p>
+    </div>
+
+    <div class="card">
+      <h3>⚖️ Страх ошибки vs страх поражения</h3>
+      <p>Страх сделать неверный ход парализует решения сильнее, чем страх проиграть матч. <span class="keyword">Сыграть на 70% уверенности лучше, чем зависнуть в нерешительности на 2 секунды</span> — именно нерешительность губит попытки изоляции целей чаще, чем недостаток механики.</p>
+    </div>
+
+    <div class="card">
+      <h3>❓ Природа игрового страха</h3>
+      <p>Паника вызвана не самой опасностью, а неопределённостью: не понимаешь, где враг, сколько урона получишь. Знание карты и героев работает не только как тактика, но и как психологическая защита.</p>
+    </div>
+
+    <div class="quote">
+      <p>«I think the reason why Filipinos are successful in Indonesia is we have a different way of thinking about MLBB. I don't think it's just about the mechanics, but we're really thinking about how to win when we compete.»</p>
+      <div class="author-quote">— Kairi, ONIC Esports, джанглер, 4-кратный чемпион MPL Indonesia</div>
+      <p style="margin-top:0.6rem;font-style:normal;">Техника решает не всё — то, ЗАЧЕМ ты делаешь действие в моменте, часто важнее того, КАК быстро ты его выполняешь.</p>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: LOADOUT (X) ===== -->
+  <section class="section reveal" id="loadout">
+    <div class="section-header">
+      <div class="section-icon gold">🔷</div>
+      <h2>X. Эмблемы, заклинания <span class="accent">и адаптивная сборка под агрессию</span></h2>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">🗡</span> Ассасин (агрессивный соло-керри)</h3>
+      <p style="font-size:0.9rem;color:var(--text-dim);margin-bottom:0.8rem;">Типичный агрессивный сетап талантов: разрывающий урон по HP + талант, усиливающий добивание изолированных целей + талант, превращающий килл в ресет к следующей цели.</p>
+      <div class="highlight-box">
+        <p>На герое с сильным личным сустейном (файтер-тип) эмблема ассасина хуже эмблемы файтера. На DPS-марксе (crit/атака-спид) — нужна маркс-эмблема, а не ассасинская. Подбирай эмблему под фактический стиль, а не только под «роль по умолчанию».</p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">🏹</span> Маркс (агрессивный керри)</h3>
+      <div class="spell-grid">
+        <div class="spell-card">
+          <div class="sc-icon">💥</div>
+          <div class="sc-name">Крит-маркс</div>
+          <div class="sc-desc">Ранний крит + усиление каждой статы от предметов; связка с движением после автоатаки — инструмент кайтинга</div>
+        </div>
+        <div class="spell-card">
+          <div class="sc-icon">🐌</div>
+          <div class="sc-name">Атака-спид маркс</div>
+          <div class="sc-desc">Замедление + снижение атаки врага при попадании — цикл «кайт-и-замедли», ценно против мобильных вражеских керри</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="info-table">
+      <tr><th>Роль</th><th>Категория эмблемы</th><th>Типичный талант</th></tr>
+      <tr><td>Ассасин</td><td>Ассасин</td><td>Бонус урона по цели с высоким HP</td></tr>
+      <tr><td>Марксмен</td><td>Марксмен</td><td>Скорость атаки / крит на старте боя</td></tr>
+      <tr><td>Боец</td><td>Боец</td><td>Регенерация HP в бою</td></tr>
+    </table>
+    <div class="highlight-box">
+      <p>Частая ошибка новичков — эмблема «не под роль»: теряется весь потенциал бонусов, заточенных под конкретный стиль игры.</p>
+    </div>
+
+    <div class="gold-box">
+      <p class="tag">Общий принцип</p>
+      <p>Сначала реши, <strong>как именно ты хочешь выигрывать файт</strong> (Tier 3 талант под конкретный план), и только потом подбирай Tier 1/2 под этот план — а не выбирай тир за тиром «по порядку» в надежде, что само сложится.</p>
+    </div>
+
+    <div class="card">
+      <h3>✨ Боевые заклинания</h3>
+      <p>Для агрессивного соло-стиля почти всегда мобильность/побег или заклинание на добивание, а не защитное — агрессору важнее самому создавать разрывы дистанции, чем прикрывать союзника. Не трать заклинание-побег на агрессию впустую — придерживай его под критичный момент.</p>
+    </div>
+
+    <div class="card">
+      <h3>🛡 Адаптивная сборка</h3>
+      <table class="info-table">
+        <tr><th>Угроза в составе врага</th><th>Что докупить</th></tr>
+        <tr><td>Сильный физический керри</td><td>Броня</td></tr>
+        <tr><td>Сильный маг-бёрст</td><td>Магическое сопротивление</td></tr>
+        <tr><td>Команда с лечением</td><td>Антихил</td></tr>
+        <tr><td>Враг с высокой защитой</td><td>Пробив защиты</td></tr>
+      </table>
+      <div class="highlight-box">
+        <p>Минимум 1-2 предмета в финальной сборке должны отвечать конкретному вражескому составу — сборка «в одну сторону» (только урон без выживания) проигрывает опытным соперникам.</p>
+      </div>
+      <div class="quote">
+        <p>«If you use Moskov, you should buy items that will make him strong and effective in team fights»</p>
+        <div class="author-quote">— Branz, EVOS Legends, топовый голд-лейнер MPL Indonesia (эксклюзивное интервью ONE Esports)</div>
+        <p style="margin-top:0.6rem;font-style:normal;">Покупай предметы, усиливающие именно сильную сторону конкретного героя, а не универсальный «мета-билд». Для соло-агрессора это тем более важно: сборка «по мете» без учёта собственного стиля не даёт того окна для изоляции целей, которое даёт сборка под реальные сильные стороны героя.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: TOWER DIVE (XI) ===== -->
+  <section class="section reveal" id="tower-dive">
+    <div class="section-header">
+      <div class="section-icon red">🏰</div>
+      <h2>XI. Тауэр-дайв: <span class="accent">три условия агрессии без суицида</span></h2>
+    </div>
+
+    <div class="card">
+      <div class="card-number">1</div>
+      <h3>💯 Килл гарантирован за 1-2 удара вышки</h3>
+      <p>Если нужно больше — урон вышки успеет решить исход в пользу защищающегося.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">2</div>
+      <h3>🛡 Нет прикрытия у цели</h3>
+      <p>Либо ты уже снял контроль с защитника вышки.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">3</div>
+      <h3>🚪 Есть путь отхода после</h3>
+      <p>Не дайвь, если единственный выход из-под вышки заблокирован вторым врагом.</p>
+    </div>
+
+    <div class="gold-box">
+      <p class="tag">Правило</p>
+      <p>Если хотя бы одно из трёх условий не выполняется — не дайвь, отступи и жди лучшего окна. Частая ошибка новичков — дайв «на голом желании киллнуть», без расчёта, сколько ударов вышки ты получишь и хватит ли HP их пережить.</p>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: CHECKLIST (XII) ===== -->
+  <section class="section reveal" id="checklist">
+    <div class="section-header">
+      <div class="section-icon green">✅</div>
+      <h2>XII. Практический чек-лист <span class="accent">«агрессивный соло-керри»</span></h2>
+    </div>
+
+    <div class="card">
+      <ul class="checklist">
+        <li><span class="chk">✓</span> Пик — герой с самодостаточной мобильностью/бёрстом, не завязанный на синхронизацию с рандомной командой</li>
+        <li><span class="chk">✓</span> Дисциплина: играешь этого героя не первый матч, есть дневник ошибок</li>
+        <li><span class="chk">✓</span> Лейн: фарм чище оппонента, фриз/слоу-пуш/шов осознанно, а не хаотично</li>
+        <li><span class="chk">✓</span> После любого выигранного размена — вопрос «какой объект я могу забрать», а не «кого ещё догнать»</li>
+        <li><span class="chk">✓</span> Взгляд на карту каждые 2-3 секунды, реакция на пропавших с радара врагов</li>
+        <li><span class="chk">✓</span> Вход в бой — только когда враг изолирован/ослаблен/потратил CC, не в лоб на полную пятёрку</li>
+        <li><span class="chk">✓</span> В момент паники — правило «до 4 секунд» и якорная фраза вместо импульсивных нажатий</li>
+        <li><span class="chk">✓</span> Эмблема/талант/спелл/сборка выбраны под конкретный план победы в файте, а не «по умолчанию для роли»</li>
+        <li><span class="chk">✓</span> Дайв под вышку — только если выполнены все три условия</li>
+        <li><span class="chk">✓</span> Не гонишься через полкарты за одной целью ценой позиции всей команды</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: ANALYTICS (XIII) ===== -->
+  <section class="section reveal" id="analytics">
+    <div class="section-header">
+      <div class="section-icon gold">📈</div>
+      <h2>XIII. Аналитика: <span class="accent">тренировки (mlb.html) → результат в соло-керри</span></h2>
+    </div>
+
+    <div class="gold-box">
+      <p class="tag">Честная оговорка сразу</p>
+      <p>Ниже — не статистика реальных матчей и не гарантия победы (винрейт зависит от матчапа, пинга, состава врагов и т.д.), а <span class="keyword-gold">логическая связка</span> между конкретными порогами тренажёров из <a href="mlb.html#game" style="color:var(--gold);font-weight:600;">mlb.html (раздел «Мини-игры»)</a> и конкретными механиками агрессивного соло-стиля из этого гайда. Все пороги ниже — реальные значения из кода игр в mlb.html, не выдуманные.</p>
+    </div>
+
+    <div class="level-scale">
+      <div class="level-row">
+        <div class="lv-badge">НЕД.1</div>
+        <div class="lv-info">
+          <div class="lv-name">Механика: реакция + периферия + прицел</div>
+          <div class="lv-req">Реакция &lt;200мс («🔥 СУПЕР!»), Периферия ≥80% («🔥 Отличная периферия!»), Прицел ≥65% («🔥 Хорошее упреждение!»)</div>
+        </div>
+      </div>
+      <div class="level-row">
+        <div class="lv-badge">НЕД.2</div>
+        <div class="lv-info">
+          <div class="lv-name">Макро: внимательность + объективы + экипировка</div>
+          <div class="lv-req">Внимательность &lt;900мс, ≤2 ошибки («🔥 Острый глаз!»), Объективы ≥90% точности, Экипировка ≥70%</div>
+        </div>
+      </div>
+      <div class="level-row">
+        <div class="lv-badge">НЕД.3</div>
+        <div class="lv-info">
+          <div class="lv-name">Драфт и дисциплина одного героя</div>
+          <div class="lv-req">Стабильное прохождение тренажёров 1–7 на уровне недели 1, закреплённых на одном герое</div>
+        </div>
+      </div>
+      <div class="level-row legend">
+        <div class="lv-badge">НЕД.4</div>
+        <div class="lv-info">
+          <div class="lv-name">Рангед-грайнд — итоговые пороги дня 30</div>
+          <div class="lv-req">Реакция &lt;200мс стабильно, Периферия ≥90% («⚡ Орлиный глаз!»), Прицел ≥85% («🎯 Снайпер!»), Объективы ≥90%, Экипировка ≥90%</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="info-table">
+      <tr><th>Порог тренажёра</th><th>Что это даёт в соло-керри</th></tr>
+      <tr><td>Реакция &lt;200мс</td><td>Успеваешь кайтить/уклоняться от CC-скилла (раздел «Манёвренность») — без этого мобильность героя из раздела «Герои» остаётся неиспользуемой</td></tr>
+      <tr><td>Периферия ≥80–90%</td><td>Замечаешь на карте изолированную/ослабленную цель врага (раздел «Механика ассасина») до того, как окно для входа закроется</td></tr>
+      <tr><td>Объективы ≥90%</td><td>Стабильно конвертируешь выигранный размен в объект вместо бесполезной погони (раздел «Объективы важнее киллов»)</td></tr>
+      <tr><td>Внимательность &lt;900мс</td><td>Быстрее считываешь, кто из врагов уже под CC/ослаблен — основа таргет-приоритета</td></tr>
+      <tr><td>Экипировка ≥90%</td><td>Сборка/эмблема выбираются под план победы в файте, а не наугад (раздел «Эмблемы/сборка»)</td></tr>
+    </table>
+
+    <div class="highlight-box">
+      <p><strong>Как читать эту связку:</strong> это не «пройди тренажёр — получи +X% винрейта», а «без этого конкретного навыка эта конкретная тактика физически невозможна». Правило «не входи первым, жди, пока враг потратит CC» требует именно периферии/внимательности уровня недели 2 — иначе просто не увидишь нужный момент вовремя.</p>
+    </div>
+
+    <p style="text-align:center;color:var(--text-dim);font-size:0.85rem;margin-top:1rem;">Полный 30-дневный план с тренажёрами — в <a href="mlb.html#game" style="color:var(--accent);font-weight:600;">mlb.html (раздел «Мини-игры»)</a> и файле <strong>TRAINING_PLAN.md</strong> в репозитории проекта.</p>
+  </section>
+
+  <div class="separator">⚔️</div>
+
+  <!-- ===== SECTION: SOURCES ===== -->
+  <section class="section reveal" id="sources">
+    <div class="section-header">
+      <div class="section-icon blue">📚</div>
+      <h2>Источники</h2>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">🌐</span> Веб-исследование (профильные ресурсы, не спам-домены)</h3>
+      <p style="color:var(--text-dim);font-size:0.9rem;margin-bottom:1rem;">Часть выдачи по этой теме — растиражированный SEO-спам через взломанные поддомены университетов и госорганов (десятки идентичных статей «Dominate 1v1/5v5» под разными доменами). Такой контент сюда не попал.</p>
+
+      <div class="link-card">
+        <div class="link-icon">🎮</div>
+        <div class="link-content">
+          <h4>Mobile Legends Bang Bang: Best Heroes to Solo Rank in 2026</h4>
+          <a href="https://www.ldplayer.net/blog/mlbb-best-heroes-to-solo-rank-up.html" target="_blank" rel="noopener">ldplayer.net</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🎮</div>
+        <div class="link-content">
+          <h4>Top 10 Carry Heroes in MLBB (2025)</h4>
+          <a href="https://www.g2a.com/news/features/top-10-carry-heroes-in-mlbb-2025-to-climb-ranked-fast/" target="_blank" rel="noopener">g2a.com</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🎮</div>
+        <div class="link-content">
+          <h4>Solo Rank Push to Mythic in MLBB S40: Best Carry Heroes</h4>
+          <a href="https://mlbbhub.com/news/solo-rank-push-mythic-mlbb-s40-best-carry-heroes" target="_blank" rel="noopener">mlbbhub.com</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🗡</div>
+        <div class="link-content">
+          <h4>MLBB Assassin Guide — Best Heroes & Tips (2026)</h4>
+          <a href="https://mlbbhub.com/roles/assassin" target="_blank" rel="noopener">mlbbhub.com</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🌲</div>
+        <div class="link-content">
+          <h4>How to Jungle in MLBB</h4>
+          <a href="https://esportsinsider.com/how-to-jungle-in-mlbb" target="_blank" rel="noopener">esportsinsider.com</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🌲</div>
+        <div class="link-content">
+          <h4>What is a jungler in Mobile Legends?</h4>
+          <a href="https://www.oneesports.gg/mobile-legends/jungler-guide-tips-best-heroes/" target="_blank" rel="noopener">oneesports.gg</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🐢</div>
+        <div class="link-content">
+          <h4>MLBB Jungle Pathing 2026: How to Secure First Blood and the First Turtle</h4>
+          <a href="https://www.u7buy.com/blog/mlbb-jungle-pathing-guide/" target="_blank" rel="noopener">u7buy.com</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🗡</div>
+        <div class="link-content">
+          <h4>Master Any MLBB Assassin: Timing, Patience, Execution</h4>
+          <a href="https://boostroom.com/blog/how-to-master-any-assassin-timing-patience-execution" target="_blank" rel="noopener">boostroom.com</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🔷</div>
+        <div class="link-content">
+          <h4>Assassin Emblem: Full Talents & Best Loadout (MLBB 2026)</h4>
+          <a href="https://mlbbhub.com/emblems/assassin" target="_blank" rel="noopener">mlbbhub.com</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🔷</div>
+        <div class="link-content">
+          <h4>Best MLBB Emblems: Top Talents & Setups (2026)</h4>
+          <a href="https://boostroom.com/blog/mobile-legend-best-emblem" target="_blank" rel="noopener">boostroom.com</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🔷</div>
+        <div class="link-content">
+          <h4>Best MLBB Emblems 2026: Role Builds and When to Change Talents</h4>
+          <a href="https://www.u7buy.com/blog/best-mlbb-emblems-guide/" target="_blank" rel="noopener">u7buy.com</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">🏹</div>
+        <div class="link-content">
+          <h4>Gold Lane Guide MLBB: Snowball and Keep Lead</h4>
+          <a href="https://boostroom.com/blog/gold-lane-guide-how-to-snowball-and-keep-the-lead" target="_blank" rel="noopener">boostroom.com</a>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <div class="link-icon">⚔️</div>
+        <div class="link-content">
+          <h4>EXP Lane Domination Guide</h4>
+          <a href="https://mlbbhub.com/guides/exp-lane-tips" target="_blank" rel="noopener">mlbbhub.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3><span class="emoji">📁</span> Внутренние источники проекта</h3>
+      <div class="card">
+        <ul>
+          <li><strong>mlb.html</strong> — разделы «Правила», «Периферия», «Реакция», «Интернет», «Устройство», «Эмоции», «Психология», «Дисциплина», «Прицеливание», «Чтение карты», «Объективы», «Ротации», «Экономика», «Тактика линии», «Манёвренность», «Команда», «Эмблемы», «Заклинания», «Экипировка»</li>
+          <li><strong>TRAINING_PLAN.md</strong> — 30-дневный план с реальными порогами тренажёров</li>
+          <li><strong>PRO_TIPS_RESEARCH.md</strong> — методология проверки цитат про-игроков (источник цитат Branz и Kairi)</li>
+          <li><strong>GUIDE_PLAN.md</strong> — структура блоков mlb.html</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--text-dim);font-size:0.85rem;margin-top:1.5rem;">Полный research-конспект с полным текстом каждого раздела — в файле <strong>SOLO_CARRY_GUIDE.md</strong> в репозитории проекта.</p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="logo">von group</div>
+    <p>Solo Carry — агрессивный гайд «1 против 5» (v2, объединён с mlb.html)</p>
+    <div class="divider"></div>
+    <p>Составитель: <strong style="color:var(--accent)">dendiiii</strong></p>
+    <p style="margin-top:0.5rem;"><a href="https://t.me/kyrolab" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;font-weight:600;">t.me/kyrolab</a></p>
+    <p style="margin-top:0.5rem;opacity:0.5;">Изолируй. Дожимай. Бери объективы.</p>
+  </footer>
+
+</main>
+<script>
+// ===== PARTICLES =====
+(function() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (5 + Math.random() * 10) + 's';
+    p.style.animationDelay = Math.random() * 5 + 's';
+    p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+    const colors = ['#e94560', '#533483', '#0f3460', '#f0c040'];
+    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+    container.appendChild(p);
+  }
+})();
+
+// ===== SCROLL REVEAL =====
+(function() {
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+})();
+
+// ===== NAV ACTIVE STATE =====
+(function() {
+  const navLinks = document.querySelectorAll('.nav a');
+  const sections = document.querySelectorAll('section[id], .game-section');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 100;
+      if (window.scrollY >= top) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
